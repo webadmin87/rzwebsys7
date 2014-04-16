@@ -28,15 +28,23 @@ class User extends ActiveRecord implements IdentityInterface
 
     const ROLE_USER = 10;
 
+    public $password;
+
+    public $confirm_password;
+
+    public static function tableName() {
+        return "user";
+    }
+
     /**
      * Creates a new user
      *
      * @param  array       $attributes the attributes given by field => value
      * @return static|null the newly created model, or null on failure
      */
-    public static function create($attributes)
+/*    public static function create($attributes)
     {
-        /** @var User $user */
+
         $user = new static();
         $user->setAttributes($attributes);
         $user->setPassword($attributes['password']);
@@ -45,6 +53,21 @@ class User extends ActiveRecord implements IdentityInterface
             return $user;
         } else {
             return null;
+        }
+    }*/
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+
+            if(!empty($this->password)) {
+                $this->setPassword($this->password);
+                $this->generateAuthKey();
+            }
+
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -203,6 +226,9 @@ class User extends ActiveRecord implements IdentityInterface
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'unique'],
+            ['password', 'string', 'min' => 6],
+            ['confirm_password', 'compare', 'compareAttribute'=>'password'],
+            ['password', 'required', 'on'=>['insert']],
         ];
     }
 }

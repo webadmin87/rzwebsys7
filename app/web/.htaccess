@@ -1,0 +1,23 @@
+AddDefaultCharset utf-8
+
+php_flag display_errors On
+
+RewriteEngine on
+
+# Редирект для index.php
+#RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+#RewriteRule ^index\.php$ http://www.rzwebsys6.ru/ [R=301,L]
+
+# Редирект без слеша на слеш
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{REQUEST_URI} !^/admin
+RewriteRule ^([^.]+[^./])$  /$1/ [R=301,L]
+
+RewriteBase /
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.php
