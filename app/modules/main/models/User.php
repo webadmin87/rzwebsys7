@@ -1,6 +1,7 @@
 <?php
-namespace common\models;
+namespace app\modules\main\models;
 
+use Yii;
 use yii\base\NotSupportedException;
 use yii\db\ActiveRecord;
 use yii\helpers\Security;
@@ -15,7 +16,7 @@ use yii\web\IdentityInterface;
  * @property string $password_reset_token
  * @property string $email
  * @property string $auth_key
- * @property integer $role
+ * @property string $role
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
@@ -26,8 +27,6 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
-    const ROLE_USER = 10;
-
     public $password;
 
     public $confirm_password;
@@ -36,25 +35,6 @@ class User extends ActiveRecord implements IdentityInterface
         return "user";
     }
 
-    /**
-     * Creates a new user
-     *
-     * @param  array       $attributes the attributes given by field => value
-     * @return static|null the newly created model, or null on failure
-     */
-/*    public static function create($attributes)
-    {
-
-        $user = new static();
-        $user->setAttributes($attributes);
-        $user->setPassword($attributes['password']);
-        $user->generateAuthKey();
-        if ($user->save()) {
-            return $user;
-        } else {
-            return null;
-        }
-    }*/
 
     public function beforeSave($insert)
     {
@@ -65,11 +45,27 @@ class User extends ActiveRecord implements IdentityInterface
                 $this->generateAuthKey();
             }
 
+
             return true;
         } else {
             return false;
         }
     }
+
+    public function afterSave($insert) {
+
+        parent::afterSave($insert);
+
+        $auth = Yii::$app->authManager;
+
+        $auth->revokeAll($this->getId());
+
+        $role = $auth->getRole($this->role);
+
+        $auth->assign($role, $this->getId());
+
+    }
+
 
     /**
      * @inheritdoc
@@ -214,13 +210,12 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
 
-            ['role', 'default', 'value' => self::ROLE_USER],
-            ['role', 'in', 'range' => [self::ROLE_USER]],
-
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
             ['username', 'unique'],
             ['username', 'string', 'min' => 2, 'max' => 255],
+
+            ['role', 'required'],
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
@@ -231,4 +226,18 @@ class User extends ActiveRecord implements IdentityInterface
             ['password', 'required', 'on'=>['insert']],
         ];
     }
+
+    public function getRolesNames() {
+
+        $roles = Yii::$app->authManager->getRoles();
+
+        $arr = array();
+
+        foreach($roles AS $role)
+            $arr[$role->name] = $role->name;
+
+        return $arr;
+
+    }
+
 }

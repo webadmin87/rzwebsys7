@@ -11,14 +11,36 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'app\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+
+        'admin' => [
+            'class'=>app\modules\admin\Admin::className(),
+            'modules'=> ['main'=>[
+                'class'=>app\modules\admin\modules\main\Main::className()
+            ]],
+
+        ],
+
+        'main' => [
+            'class'=>app\modules\main\Main::className(),
+        ],
+
+    ],
     'components' => [
+
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'rules'=>[
+
+            ]
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'app\modules\main\models\User',
             'enableAutoLogin' => true,
         ],
         'log' => [
