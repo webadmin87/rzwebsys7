@@ -15,7 +15,7 @@ use yii\grid\GridView;
         'username',
         'email:email',
         'role',
-        'status',
+        'active',
 
         ['class' => 'yii\grid\ActionColumn'],
     ],
