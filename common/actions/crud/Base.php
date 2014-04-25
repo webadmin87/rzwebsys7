@@ -36,6 +36,12 @@ class Base extends Action {
     public $validateParam = "ajax";
 
     /**
+     * @var array массив дополнительных параметров передаваемых в представление
+     */
+
+    public $viewParams = [];
+
+    /**
      * Ajax валидация модели
      * @param \yii\db\ActiveRecord $model
      * @return array
@@ -58,6 +64,36 @@ class Base extends Action {
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    /**
+     * Рендеринг представления
+     * @param string $view путь к представлению
+     * @param array $params массив параметров передаваемых в представление
+     * @return string
+     */
+
+    protected function render($view, $params = []) {
+
+        $params = array_merge($params, $this->viewParams);
+
+        return $this->controller->render($view, $params);
+
+    }
+
+    /**
+     * Рендеринг представления без layout
+     * @param string $view путь к представлению
+     * @param array $params массив параметров передаваемых в представление
+     * @return string
+     */
+
+    protected function renderPartial($view, $params = []) {
+
+        $params = array_merge($params, $this->viewParams);
+
+        return $this->controller->renderPartial($view, $params);
+
     }
 
 }

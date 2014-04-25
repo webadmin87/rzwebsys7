@@ -11,13 +11,13 @@ use yii\web\ForbiddenHttpException;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class Create extends Action {
+class Create extends Base {
 
     /**
      * @var array атрибуты по умолчанию
      */
 
-    public $defaultAttrs = array();
+    public $defaultAttrs = [];
 
     /**
      * @var string сценарий для валидации
@@ -84,7 +84,7 @@ class Create extends Action {
 
 
             if($request->post($this->applyParam))
-                return $this->redirect([$this->updateUrl, 'id' => $model->id]);
+                return $this->controller->redirect([$this->updateUrl, 'id' => $model->id]);
             else {
 
 
@@ -93,13 +93,13 @@ class Create extends Action {
                 if(empty($returnUrl))
                     $returnUrl = $this->defaultRedirectUrl;
 
-                return $this->redirect($returnUrl);
+                return $this->controller->redirect($returnUrl);
 
             }
 
         } else {
 
-            return $this->controller->render($this->view, [
+            return $this->render($this->view, [
                 'model' => $model,
             ]);
 
