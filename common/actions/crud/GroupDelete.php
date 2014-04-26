@@ -3,7 +3,6 @@ namespace common\actions\crud;
 
 use Yii;
 use yii\web\ForbiddenHttpException;
-use yii\data\ActiveDataProvider;
 /**
  * Class GroupDelete
  * Класс для группового удаления моделей
@@ -45,7 +44,7 @@ class GroupDelete extends Base {
 
     public function run() {
 
-        $class = $this->class;
+        $class = $this->modelClass;
 
         $ids = Yii::$app->request->post($this->groupIdsAttr, array());
 
@@ -69,7 +68,7 @@ class GroupDelete extends Base {
         if(empty($returnUrl))
             $returnUrl = $this->defaultRedirectUrl;
 
-        return $this->redirect($returnUrl);
+        return $this->controller->redirect($returnUrl);
 
 
     }

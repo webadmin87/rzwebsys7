@@ -25,13 +25,15 @@ class UserSearch extends User
         return Model::scenarios();
     }
 
-    public function search($params)
+    public function search($params, $dataProviderConfig=[])
     {
         $query = User::find();
 
-        $dataProvider = new ActiveDataProvider([
+        $config = array_merge([
             'query' => $query,
-        ]);
+        ], $dataProviderConfig);
+
+        $dataProvider = new ActiveDataProvider($config);
 
         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;

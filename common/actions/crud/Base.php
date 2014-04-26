@@ -5,6 +5,7 @@ use Yii;
 use yii\base\Action;
 use yii\widgets\ActiveForm;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 
 /**
@@ -21,7 +22,7 @@ class Base extends Action {
      * @var string имя класса модели
      */
 
-    public $class;
+    public $modelClass;
 
     /**
      * @var string путь к шаблону для отображения
@@ -57,7 +58,7 @@ class Base extends Action {
     protected function findModel($id)
     {
 
-        $class = $this->class;
+        $class = $this->modelClass;
 
         if (($model = $class::findOne($id)) !== null) {
             return $model;

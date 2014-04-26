@@ -73,7 +73,7 @@ class Update extends Base {
             if(empty($returnUrl))
                 $returnUrl = $this->defaultRedirectUrl;
 
-            return $this->controller->redirect($request->post($returnUrl));
+            return $this->controller->redirect($returnUrl);
 
         } else {
             return $this->render($this->view, [

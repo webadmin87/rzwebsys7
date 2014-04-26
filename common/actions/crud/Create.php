@@ -63,7 +63,7 @@ class Create extends Base {
 
     public function run() {
 
-        $class = $this->class;
+        $class = $this->modelClass;
 
         $model = new $class(['scenario'=>$this->modelScenario]);
 

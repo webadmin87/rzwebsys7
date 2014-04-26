@@ -6,16 +6,24 @@ use Yii;
 use app\modules\main\models\User;
 use app\modules\main\models\UserSearch;
 use yii\web\Controller;
-use yii\web\Response;
-use yii\widgets\ActiveForm;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\actions\crud;
+
 
 /**
- * UserController implements the CRUD actions for User model.
+ * Class UserController
+ * Контроллер CRUD действий для моделей пользователей системы
+ * @package app\modules\admin\modules\main\controllers
+ * @author Churkin Anton <webadmin87@gmail.com>
  */
 class UserController extends Controller
 {
+
+    /**
+     * Поведения
+     * @return array
+     */
+
     public function behaviors()
     {
         return [
@@ -23,142 +31,54 @@ class UserController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                    'groupdelete' => ['post'],
                 ],
             ],
         ];
     }
 
     /**
-     * Lists all User models.
-     * @return mixed
+     * Действия
+     * @return array
      */
-    public function actionIndex()
-    {
+    public function actions() {
 
-        $searchModel = new UserSearch;
-        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+        $class = User::className();
 
-        $params = [
-            'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel,
+        $classSearch = UserSearch::className();
+
+        return [
+
+            'index'=>[
+                'class'=>crud\Admin::className(),
+                'modelClass'=>$classSearch,
+            ],
+            'create'=>[
+                'class'=>crud\Create::className(),
+                'modelClass'=>$class,
+            ],
+            'update'=>[
+                'class'=>crud\Update::className(),
+                'modelClass'=>$class,
+            ],
+
+            'view'=>[
+                'class'=>crud\View::className(),
+                'modelClass'=>$class,
+            ],
+
+            'delete'=>[
+                'class'=>crud\Delete::className(),
+                'modelClass'=>$class,
+            ],
+
+            'groupdelete'=>[
+                'class'=>crud\GroupDelete::className(),
+                'modelClass'=>$class,
+            ],
+
         ];
 
-        if(!Yii::$app->request->isAjax)
-            return $this->render('index', $params);
-        else
-            return $this->renderPartial('_grid', $params);
-
     }
 
-    /**
-     * Displays a single User model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new User model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new User(['scenario'=>'insert']);
-
-        $request = Yii::$app->request;
-
-        $load = $model->load($request->post());
-
-        if ($load && $request->post('ajax')) {
-            return $this->performAjaxValidation($model);
-        }
-
-        if ($load && $model->save()) {
-
-
-            if($request->post('apply'))
-                return $this->redirect(['update', 'id' => $model->id]);
-            else
-                return $this->redirect($request->post('returnUrl'));
-
-
-        } else {
-
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-
-        }
-    }
-
-    /**
-     * Updates an existing User model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        $request = Yii::$app->request;
-
-        $load = $model->load(Yii::$app->request->post());
-
-        if ($load && $request->post('ajax')) {
-            return $this->performAjaxValidation($model);
-        }
-
-        if ($load && $model->save() && !$request->post('apply')) {
-
-            return $this->redirect($request->post('returnUrl'));
-
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Deletes an existing User model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the User model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return User the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = User::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
-
-    protected function performAjaxValidation($model) {
-
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return ActiveForm::validate($model);
-
-    }
 }

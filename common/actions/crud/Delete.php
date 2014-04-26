@@ -45,7 +45,7 @@ class Delete extends Base {
         if(empty($returnUrl))
             $returnUrl = $this->defaultRedirectUrl;
 
-        return $this->redirect($returnUrl);
+        return $this->controller->redirect($returnUrl);
 
     }
 
