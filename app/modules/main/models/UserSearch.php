@@ -19,15 +19,11 @@ class UserSearch extends User
         ];
     }
 
-    public function scenarios()
-    {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
-    }
-
     public function search($params, $dataProviderConfig=[])
     {
-        $query = User::find();
+        $parentClass = get_parent_class();
+
+        $query = $parentClass::find();
 
         $config = array_merge([
             'query' => $query,
@@ -43,6 +39,7 @@ class UserSearch extends User
             'id' => $this->id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'active' => $this->active,
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])
@@ -50,8 +47,7 @@ class UserSearch extends User
             ->andFilterWhere(['like', 'password_hash', $this->password_hash])
             ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'role', $this->role])
-            ->andFilterWhere(['like', 'active', $this->active]);
+            ->andFilterWhere(['like', 'role', $this->role]);
 
         return $dataProvider;
     }

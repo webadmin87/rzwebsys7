@@ -205,21 +205,21 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['active', 'default', 'value' => true, 'on'=>['insert', 'update']],
+            ['active', 'safe'],
 
-            ['username', 'filter', 'filter' => 'trim', 'on'=>['insert', 'update']],
-            ['username', 'required', 'on'=>['insert', 'update']],
-            ['username', 'unique', 'on'=>['insert', 'update']],
-            ['username', 'string', 'min' => 2, 'max' => 255, 'on'=>['insert', 'update']],
+            ['username', 'filter', 'filter' => 'trim'],
+            ['username', 'required'],
+            ['username', 'unique'],
+            ['username', 'string', 'min' => 2, 'max' => 255],
 
-            ['role', 'required', 'on'=>['insert', 'update']],
+            ['role', 'required'],
 
-            ['email', 'filter', 'filter' => 'trim', 'on'=>['insert', 'update']],
-            ['email', 'required', 'on'=>['insert', 'update']],
-            ['email', 'email', 'on'=>['insert', 'update']],
-            ['email', 'unique', 'on'=>['insert', 'update']],
-            ['password', 'string', 'min' => 6, 'on'=>['insert', 'update']],
-            ['confirm_password', 'compare', 'compareAttribute'=>'password', 'on'=>['insert', 'update']],
+            ['email', 'filter', 'filter' => 'trim'],
+            ['email', 'required'],
+            ['email', 'email'],
+            ['email', 'unique'],
+            ['password', 'string', 'min' => 6],
+            ['confirm_password', 'compare', 'compareAttribute'=>'password'],
             ['password', 'required', 'on'=>['insert']],
         ];
     }
