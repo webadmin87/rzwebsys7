@@ -76,11 +76,13 @@ class TextField extends  Object {
      * @param string $attr атрибут
      */
 
-    public function __construct(ActiveRecord $model, string $attr) {
+    public function __construct(ActiveRecord $model, $attr, $config=[]) {
 
         $this->model = $model;
 
         $this->attr = $attr;
+
+        parent::__construct( $config = [] );
 
     }
 
@@ -105,7 +107,7 @@ class TextField extends  Object {
      * @return string
      */
 
-    public function extendedFilterForm(ActiveForm $form ,Array $options = []) {
+    public function extendedFilterForm(ActiveForm $form , Array $options = []) {
 
         return $this->form($form, $options);
 

@@ -63,9 +63,7 @@ class Create extends Base {
 
     public function run() {
 
-        $class = $this->modelClass;
-
-        $model = new $class(['scenario'=>$this->modelScenario]);
+        $model = Yii::createObject($this->modelClass, [['scenario'=>$this->modelScenario]]);
 
         if(!Yii::$app->user->can('createModel', array("model"=>$model)))
             throw new ForbiddenHttpException('Forbidden');

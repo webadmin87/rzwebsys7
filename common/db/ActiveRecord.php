@@ -1,6 +1,7 @@
 <?php
 namespace common\db;
 
+use Yii;
 use yii\db\ActiveRecord AS YiiRecord;
 
 /**
@@ -10,7 +11,7 @@ use yii\db\ActiveRecord AS YiiRecord;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class ActiveRecord extends YiiRecord {
+abstract class ActiveRecord extends YiiRecord {
 
     /**
      * Сценарии валидации
@@ -44,7 +45,7 @@ class ActiveRecord extends YiiRecord {
 
         foreach($this->_baseScenarios AS $scenario) {
 
-            if(!isset($sceniros[$scenario])) {
+            if(!isset($scenarios[$scenario])) {
 
                 $scenarios[$scenario] = $scenarios[YiiRecord::SCENARIO_DEFAULT];
             }
@@ -66,7 +67,7 @@ class ActiveRecord extends YiiRecord {
 
             $class = $this->metaClass();
 
-            $this->metaFields =  new $class($this);
+            $this->metaFields =  Yii::createObject($class, [$this]);
 
         }
 
@@ -125,7 +126,15 @@ class ActiveRecord extends YiiRecord {
 
         $fields = $this->getMetaFields()->getFields();
 
-        $behaviors = [];
+        $behaviors = [
+            'timestamp' => [
+                'class' => 'yii\behaviors\TimestampBehavior',
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+            ],
+        ];
 
         foreach($fields AS $field) {
 
@@ -137,7 +146,11 @@ class ActiveRecord extends YiiRecord {
 
     }
 
+    /**
+     * Возвращает имя класса содержащего описание полей модели
+     * @return string
+     */
 
-    public function metaClass(){}
+    public abstract function metaClass();
 
 }

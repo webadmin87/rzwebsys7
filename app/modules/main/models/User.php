@@ -8,7 +8,7 @@ use yii\helpers\Security;
 use yii\web\IdentityInterface;
 
 /**
- * User model
+ * Модель пользователей
  *
  * @property integer $id
  * @property string $username
@@ -25,14 +25,31 @@ use yii\web\IdentityInterface;
 class User extends ActiveRecord implements IdentityInterface
 {
 
+    /**
+     * @var string пароль
+     */
+
     public $password;
 
+    /**
+     * @var string подтверждение пароля
+     */
+
     public $confirm_password;
+
+    /**
+     * Возвращает имя таблицы
+     * @return string
+     */
 
     public static function tableName() {
         return "user";
     }
 
+
+    /**
+     * @inheritdoc
+     */
 
     public function beforeSave($insert)
     {
@@ -50,6 +67,10 @@ class User extends ActiveRecord implements IdentityInterface
         }
     }
 
+    /**
+     * @inheritdoc
+     */
+
     public function afterSave($insert) {
 
         parent::afterSave($insert);
@@ -62,23 +83,6 @@ class User extends ActiveRecord implements IdentityInterface
 
         $auth->assign($role, $this->getId());
 
-    }
-
-
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'timestamp' => [
-                'class' => 'yii\behaviors\TimestampBehavior',
-                'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
-                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
-                ],
-            ],
-        ];
     }
 
     /**
@@ -100,7 +104,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Finds user by username
      *
-     * @param  string      $username
+     * @param  string $username
      * @return static|null
      */
     public static function findByUsername($username)
@@ -204,27 +208,26 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function rules()
     {
-        return [
-            ['active', 'safe'],
 
-            ['username', 'filter', 'filter' => 'trim'],
-            ['username', 'required'],
+        $parentRule = parent::rules();
+
+        $rule = [
+
             ['username', 'unique'],
             ['username', 'string', 'min' => 2, 'max' => 255],
-
-            ['role', 'required'],
-
-            ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
             ['email', 'unique'],
-            ['password', 'string', 'min' => 6],
             ['confirm_password', 'compare', 'compareAttribute'=>'password'],
-            ['password', 'required', 'on'=>['insert']],
+            [['password', 'confirm_password'], 'required', 'on'=>['insert']],
         ];
+
+        return array_merge($parentRule, $rule);
+
     }
 
-
+    /**
+     * Возвращает массив ролей пользователей
+     * @return array
+     */
 
     public function getRolesNames() {
 
@@ -237,6 +240,13 @@ class User extends ActiveRecord implements IdentityInterface
 
         return $arr;
 
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function metaClass() {
+        return meta\UserMeta::className();
     }
 
 }

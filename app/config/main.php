@@ -39,6 +39,18 @@ return [
 
             ]
         ],
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    //'basePath' => '@app/messages',
+                    //'sourceLanguage' => 'en',
+                    'fileMap' => [
+                        'core' => 'core.php',
+                    ],
+                ],
+            ],
+        ],
         'user' => [
             'identityClass' => 'app\modules\main\models\User',
             'enableAutoLogin' => true,
