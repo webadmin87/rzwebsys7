@@ -53,6 +53,7 @@ class UserMeta extends MetaFields {
                     "class"=>\common\db\fields\PasswordField::className(),
                     "title"=>Yii::t('core', 'Password'),
                     "isRequired"=>false,
+                    "showInGrid"=>false,
                 ],
                 "params"=>[$this->owner, "password"]
             ],
@@ -62,6 +63,7 @@ class UserMeta extends MetaFields {
                     "class"=>\common\db\fields\PasswordField::className(),
                     "title"=>Yii::t('core', 'Confirm password'),
                     "isRequired"=>false,
+                    "showInGrid"=>false,
                 ],
                 "params"=>[$this->owner, "confirm_password"]
             ],
@@ -70,7 +72,7 @@ class UserMeta extends MetaFields {
             [
                 "definition"=>[
                     "class"=>\common\db\fields\EmailField::className(),
-                    "title"=>Yii::t('core', 'Confirm password'),
+                    "title"=>Yii::t('core', 'Email'),
                     "isRequired"=>true,
                 ],
                 "params"=>[$this->owner, "email"]

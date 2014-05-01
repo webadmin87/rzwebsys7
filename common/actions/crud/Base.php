@@ -93,7 +93,7 @@ class Base extends Action {
 
         $params = array_merge($params, $this->viewParams);
 
-        return $this->controller->renderPartial($view, $params);
+        return $this->controller->renderAjax($view, $params);
 
     }
 

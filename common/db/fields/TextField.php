@@ -53,6 +53,7 @@ class TextField extends  Object {
      */
     public $showInFilter = true;
 
+
     /**
      * @var bool отображать в расширенном фильре
      */
@@ -70,6 +71,13 @@ class TextField extends  Object {
 
     public $isRequired = false;
 
+
+    /**
+     * @var mixed значение фильтра грида установленное
+     */
+    protected $gridFilter;
+
+
     /**
      * Конструктор
      * @param ActiveRecord $model модель
@@ -82,7 +90,7 @@ class TextField extends  Object {
 
         $this->attr = $attr;
 
-        parent::__construct( $config = [] );
+        parent::__construct( $config );
 
     }
 
@@ -122,11 +130,48 @@ class TextField extends  Object {
         $grid = ['attribute'=>$this->attr];
 
         if($this->showInFilter)
-            $grid['filter'] = true;
+            $grid['filter'] = $this->getGridFilter();
 
         return $grid;
 
     }
+
+    /**
+     * Возвращает значение фильтра для грида
+     * @return mixed
+     */
+
+    public function getGridFilter() {
+
+        if($this->gridFilter !== null) {
+            return $this->gridFilter;
+        } else {
+            return $this->defaultGridFilter();
+        }
+
+    }
+
+    /**
+     * @param $value mixed установка значения фильтра
+     */
+
+    public function setGridFilter($value) {
+
+        $this->gridFilter = $value;
+
+    }
+
+    /**
+     * Возвращает значение фильтра для по умолчанию
+     * @return mixed
+     */
+
+    protected function defaultGridFilter() {
+
+        return true;
+
+    }
+
 
     /**
      * Конфигурация полядля детального просмотра

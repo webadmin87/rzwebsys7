@@ -88,7 +88,8 @@ abstract class ActiveRecord extends YiiRecord {
 
         foreach($fields AS $field) {
 
-            $rules = array_merge($rules, $field->rules());
+            if($field->rules())
+                $rules = array_merge($rules, $field->rules());
 
         }
 
@@ -138,7 +139,8 @@ abstract class ActiveRecord extends YiiRecord {
 
         foreach($fields AS $field) {
 
-            $behaviors = array_merge($behaviors, $field->behaviors());
+            if($field->behaviors())
+                $behaviors = array_merge($behaviors, $field->behaviors());
 
         }
 

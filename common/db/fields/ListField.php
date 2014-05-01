@@ -29,4 +29,14 @@ class ListField extends TextField {
 
     }
 
+    /**
+     * @inheritdoc
+     */
+
+    protected function defaultGridFilter() {
+
+        return $this->data;
+
+    }
+
 }

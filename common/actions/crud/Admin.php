@@ -37,6 +37,12 @@ class Admin extends Base {
     public $gridView = "_grid";
 
     /**
+     * @var int количество элементов на странице
+     */
+
+    public $pageSize = 20;
+
+    /**
      * Запуск действия вывода списка моделей
      * @return string
      * @throws \yii\web\ForbiddenHttpException
@@ -54,6 +60,8 @@ class Admin extends Base {
 
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams(), $this->dataProviderConfig);
 
+        $dataProvider->getPagination()->pageSize = $this->pageSize;
+
         $params = [
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
@@ -62,7 +70,7 @@ class Admin extends Base {
         if(!Yii::$app->request->isAjax)
             return $this->render($this->view, $params);
         else
-            return $this->renderPartial($this->gridView, $params);
+            return $this->renderPartial($this->view, $params);
 
 
     }

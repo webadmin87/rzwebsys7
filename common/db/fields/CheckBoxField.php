@@ -33,7 +33,9 @@ class CheckBoxField extends TextField {
 
         $grid = parent::grid();
 
-        $grid['value']=($this->model->{$this->attr})?Yii::t('core', 'Yes'):Yii::t('core', 'No');
+        $grid['value']=function ($model, $index, $widget) {
+            return $model->{$this->attr}?Yii::t('core', 'Yes'):Yii::t('core', 'No');
+        };
 
         return $grid;
 
@@ -50,6 +52,21 @@ class CheckBoxField extends TextField {
         $view['value']=($this->model->{$this->attr})?Yii::t('core', 'Yes'):Yii::t('core', 'No');
 
         return $view;
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+
+    protected function defaultGridFilter() {
+
+        return [
+
+            1=>Yii::t('core', 'Yes'),
+            0=>Yii::t('core', 'No'),
+
+        ];
 
     }
 
