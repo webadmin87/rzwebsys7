@@ -25,16 +25,10 @@ class GroupDelete extends Base {
     public $modelScenario = 'search';
 
     /**
-     * @var string имя параметра запроса содержащего url для редиректа в случае успешного обновления
-     */
-
-    public $redirectParam = "returnUrl";
-
-    /**
      * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
      */
 
-    public $defaultRedirectUrl = "index";
+    public $defaultRedirectUrl = "admin";
 
 
     /**
@@ -63,13 +57,16 @@ class GroupDelete extends Base {
 
         }
 
-        $returnUrl = Yii::$app->request->post($this->redirectParam);
+        if(!Yii::$app->request->isAjax) {
 
-        if(empty($returnUrl))
-            $returnUrl = $this->defaultRedirectUrl;
+            $returnUrl = Yii::$app->request->referrer;
 
-        return $this->controller->redirect($returnUrl);
+            if(empty($returnUrl))
+                $returnUrl = $this->defaultRedirectUrl;
 
+            return $this->controller->redirect($returnUrl);
+
+        }
 
     }
 

@@ -1,8 +1,9 @@
 <?php
 namespace common\widgets\admin;
 
+use Yii;
 use yii\base\Widget;
-
+use yii\helpers\ArrayHelper;
 
 /**
  * Class Grid
@@ -12,6 +13,12 @@ use yii\base\Widget;
  */
 
 class Grid extends Widget {
+
+    /**
+     * Преффикс идентификатора грида
+     */
+
+    const GRID_ID_PREF = "grid-";
 
     /**
      * @var \common\db\ActiveRecord модель
@@ -35,13 +42,81 @@ class Grid extends Widget {
      * @var array кнопки групповых операций
      */
 
-    public $groupButtons = [];
+    protected $groupButtons;
+
+    /**
+     * @var string идентификатор виджета
+     */
+
+    protected $id;
 
     /**
      * @var string шаблон
      */
 
     public $view = "grid";
+
+    public function init() {
+
+        $model = $this->model;
+
+        $this->id = strtolower(self::GRID_ID_PREF.str_replace("\\", "-", $model::className()));
+
+    }
+
+    /**
+     * Установка кнопок групповых операций
+     * @param array $buttons описание кнопок, имеет следующий вид
+     * [
+     *  "delete"=>[
+     *      "title"=>"Delete",
+     *      "options"=>[],
+     *  ],
+     * ]
+     */
+    public function setGroupButtons(Array $buttons) {
+
+        $this->$groupButtons = ArrayHelper::merge($this->defaultGroupButtons(), $buttons);
+
+    }
+
+    /**
+     * Возвращает массив кнопок групповых операций
+     * @return array
+     */
+
+    public function getGroupButtons() {
+
+        if($this->groupButtons !== null) {
+            return $this->$groupButtons;
+        } else {
+            return $this->defaultGroupButtons();
+        }
+
+    }
+
+    /**
+     * Кнопки групповых операций по умолчанию
+     * @return array
+     */
+
+    protected function defaultGroupButtons() {
+
+        return [
+
+            "delete" => [
+
+                "title"=>Yii::t('core', 'Delete'),
+                "options" => [
+                    'data-url'=>'groupdelete',
+                    'class'=>'btn btn-danger btn-xs',
+                ],
+
+            ],
+
+        ];
+
+    }
 
     /**
      * Возвращает описание колонок
@@ -52,7 +127,7 @@ class Grid extends Widget {
 
         $columns = [
 
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\CheckboxColumn'],
             'id',
 
         ];
@@ -85,6 +160,8 @@ class Grid extends Widget {
            "model"=>$this->model,
            "dataProvider"=>$this->dataProvider,
            "columns"=>$this->getColumns(),
+           "groupButtons"=>$this->getGroupButtons(),
+           "id"=>$this->id,
        ]);
 
     }

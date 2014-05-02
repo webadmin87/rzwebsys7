@@ -14,16 +14,10 @@ use yii\web\ForbiddenHttpException;
 class Delete extends Base {
 
     /**
-     * @var string имя параметра запроса содержащего url для редиректа в случае успешного обновления
-     */
-
-    public $redirectParam = "returnUrl";
-
-    /**
      * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
      */
 
-    public $defaultRedirectUrl = "index";
+    public $defaultRedirectUrl = "admin";
 
     /**
      * Запуск действия удаления модели
@@ -40,12 +34,16 @@ class Delete extends Base {
 
         $model->delete();
 
-        $returnUrl = Yii::$app->request->post($this->redirectParam);
+        if(!Yii::$app->request->isAjax) {
 
-        if(empty($returnUrl))
-            $returnUrl = $this->defaultRedirectUrl;
+            $returnUrl = Yii::$app->request->referrer;
 
-        return $this->controller->redirect($returnUrl);
+            if(empty($returnUrl))
+                $returnUrl = $this->defaultRedirectUrl;
+
+            return $this->controller->redirect($returnUrl);
+
+        }
 
     }
 
