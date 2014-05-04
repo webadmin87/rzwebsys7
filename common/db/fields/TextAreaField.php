@@ -1,6 +1,6 @@
 <?php
 namespace common\db\fields;
-
+use Yii\widgets\ActiveForm;
 /**
  * Class TextAreaField
  * Поле текстовой области модели
@@ -34,7 +34,7 @@ class TextAreaField extends TextField {
 
     public function form(ActiveForm $form, Array $options = []) {
 
-        return $form->field($this->$model, $this->attr)->textarea($options);
+        return $form->field($this->model, $this->attr)->textarea($options);
 
     }
 

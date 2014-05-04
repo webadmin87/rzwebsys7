@@ -1,6 +1,6 @@
 <?php
 namespace common\db\fields;
-
+use Yii\widgets\ActiveForm;
 /**
  * Class PasswordField
  * Поле ввода пароля модели
@@ -24,7 +24,7 @@ class PasswordField extends TextField {
 
     public function form(ActiveForm $form, Array $options = []) {
 
-        return $form->field($this->$model, $this->attr)->passwordInput($options);
+        return $form->field($this->model, $this->attr)->passwordInput($options);
 
     }
 

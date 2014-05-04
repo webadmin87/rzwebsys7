@@ -216,7 +216,7 @@ class User extends ActiveRecord implements IdentityInterface
             ['username', 'unique'],
             ['username', 'string', 'min' => 2, 'max' => 255],
             ['email', 'unique'],
-            ['confirm_password', 'compare', 'compareAttribute'=>'password'],
+            ['confirm_password', 'compare', 'skipOnEmpty'=>false, 'compareAttribute'=>'password'],
             [['password', 'confirm_password'], 'required', 'on'=>['insert']],
         ];
 

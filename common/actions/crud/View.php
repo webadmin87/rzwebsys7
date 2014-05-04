@@ -19,7 +19,7 @@ class View extends Base {
      * @var string путь к шаблону для отображения
      */
 
-    public $view = "view";
+    public $tpl = "view";
 
     /**
      * Запуск действия просмотра модели
@@ -39,7 +39,7 @@ class View extends Base {
         if(!Yii::$app->user->can('readModel', array("model"=>$model)))
             throw new ForbiddenHttpException('Forbidden');
 
-        return $this->render($this->view, ["model"=>$model]);
+        return $this->render($this->tpl, ["model"=>$model]);
 
     }
 

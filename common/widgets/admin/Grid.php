@@ -54,7 +54,7 @@ class Grid extends Widget {
      * @var string шаблон
      */
 
-    public $view = "grid";
+    public $tpl = "grid";
 
     public function init() {
 
@@ -160,7 +160,7 @@ class Grid extends Widget {
 
     public function run() {
 
-       return $this->render($this->view, [
+       return $this->render($this->tpl, [
            "model"=>$this->model,
            "dataProvider"=>$this->dataProvider,
            "columns"=>$this->getColumns(),

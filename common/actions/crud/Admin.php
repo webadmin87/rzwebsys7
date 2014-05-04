@@ -28,13 +28,7 @@ class Admin extends Base {
      * @var string путь к шаблону для отображения
      */
 
-    public $view = "index";
-
-    /**
-     * @var string путь к шаблону для отображения грида
-     */
-
-    public $gridView = "_grid";
+    public $tpl = "index";
 
     /**
      * @var int количество элементов на странице
@@ -68,9 +62,9 @@ class Admin extends Base {
         ];
 
         if(!Yii::$app->request->isAjax)
-            return $this->render($this->view, $params);
+            return $this->render($this->tpl, $params);
         else
-            return $this->renderPartial($this->view, $params);
+            return $this->renderPartial($this->tpl, $params);
 
 
     }

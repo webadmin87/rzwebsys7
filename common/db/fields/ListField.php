@@ -1,6 +1,6 @@
 <?php
 namespace common\db\fields;
-
+use Yii\widgets\ActiveForm;
 /**
  * Class ListField
  * Списочное поле модели
@@ -25,7 +25,7 @@ class ListField extends TextField {
 
     public function form(ActiveForm $form, Array $options = []) {
 
-        return $form->field($this->$model, $this->attr)->dropDownList($this->data, $options);
+        return $form->field($this->model, $this->attr)->dropDownList($this->data, $options);
 
     }
 

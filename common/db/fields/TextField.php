@@ -103,7 +103,7 @@ class TextField extends  Object {
 
     public function form(ActiveForm $form, Array $options = []) {
 
-        return $form->field($this->$model, $this->attr)->textInput($options);
+        return $form->field($this->model, $this->attr)->textInput($options);
 
     }
 

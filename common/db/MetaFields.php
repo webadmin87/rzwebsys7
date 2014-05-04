@@ -68,6 +68,28 @@ abstract class MetaFields extends Object {
     }
 
     /**
+     * Возвращает поля по коду вкладки
+     * @param string $tab код вкладки
+     * @return array
+     */
+
+    public function getFieldsByTab($tab) {
+
+        $fields = $this->getFields();
+
+        $arr = [];
+
+        foreach($fields AS $field) {
+
+            if($field->tab == $tab)
+                $arr[] = $field;
+
+        }
+
+        return $arr;
+    }
+
+    /**
      * Массив вкладок формы редактирования модели (key=>name)
      * @return array
      */

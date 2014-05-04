@@ -1,6 +1,6 @@
 <?php
 namespace common\db\fields;
-
+use Yii\widgets\ActiveForm;
 use Yii;
 
 /**
@@ -21,7 +21,7 @@ class CheckBoxField extends TextField {
 
     public function form(ActiveForm $form, Array $options = []) {
 
-        return $form->field($this->$model, $this->attr)->checkbox($options);
+        return $form->field($this->model, $this->attr)->checkbox($options);
 
     }
 

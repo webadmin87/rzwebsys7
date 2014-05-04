@@ -54,7 +54,7 @@ class Create extends Base {
      * @var string путь к шаблону для отображения
      */
 
-    public $view = "create";
+    public $tpl = "create";
 
     /**
      * Запуск действия
@@ -97,7 +97,7 @@ class Create extends Base {
 
         } else {
 
-            return $this->render($this->view, [
+            return $this->render($this->tpl, [
                 'model' => $model,
             ]);
 

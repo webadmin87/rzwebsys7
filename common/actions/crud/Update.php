@@ -40,7 +40,7 @@ class Update extends Base {
      * @var string путь к шаблону для отображения
      */
 
-    public $view = "update";
+    public $tpl = "update";
 
     /**
      * Запуск действия
@@ -76,7 +76,7 @@ class Update extends Base {
             return $this->controller->redirect($returnUrl);
 
         } else {
-            return $this->render($this->view, [
+            return $this->render($this->tpl, [
                 'model' => $model,
             ]);
         }

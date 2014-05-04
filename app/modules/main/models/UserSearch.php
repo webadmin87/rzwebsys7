@@ -49,6 +49,8 @@ class UserSearch extends User
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'role', $this->role]);
 
+        $dataProvider->getSort()->defaultOrder = ["id"=>"desc"];
+
         return $dataProvider;
     }
 }
