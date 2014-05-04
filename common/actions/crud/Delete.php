@@ -27,12 +27,16 @@ class Delete extends Base {
 
     public function run($id) {
 
-        $model = $this->findModel($id);
+        if(Yii::$app->request->isPost) {
 
-        if(!Yii::$app->user->can('deleteModel', array("model"=>$model)))
-            throw new ForbiddenHttpException('Forbidden');
+            $model = $this->findModel($id);
 
-        $model->delete();
+            if(!Yii::$app->user->can('deleteModel', array("model"=>$model)))
+                throw new ForbiddenHttpException('Forbidden');
+
+            $model->delete();
+
+        }
 
         if(!Yii::$app->request->isAjax) {
 

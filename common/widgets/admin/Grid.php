@@ -70,7 +70,11 @@ class Grid extends Widget {
      * [
      *  "delete"=>[
      *      "title"=>"Delete",
-     *      "options"=>[],
+     *      "options"=>[
+     *           "id"=>"group-delete",
+     *           "class"=>"btn btn-danger btn-xs",
+     *      ],
+     *      "url"=>"groupdelete"
      *  ],
      * ]
      */
@@ -108,10 +112,10 @@ class Grid extends Widget {
 
                 "title"=>Yii::t('core', 'Delete'),
                 "options" => [
-                    'data-url'=>'groupdelete',
+                    'id'=>'group-delete',
                     'class'=>'btn btn-danger btn-xs',
                 ],
-
+                "url"=>"groupdelete",
             ],
 
         ];

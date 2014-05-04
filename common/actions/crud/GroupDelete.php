@@ -16,7 +16,7 @@ class GroupDelete extends Base {
      * @var string имя параметра в запросе в котором передаются идентификаторы материалов при групповых операциях
      */
 
-    public $groupIdsAttr = "items";
+    public $groupIdsAttr = "selection";
 
     /**
      * @var string сценарий для валидации
