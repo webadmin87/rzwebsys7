@@ -1,11 +1,11 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+use common\widgets\admin\Detail;
 
 /**
  * @var yii\web\View $this
- * @var common\models\User $model
+ * @var app\modules\main\models\User $model
  */
 
 $this->title = $model->id;
@@ -27,16 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
+    <?= Detail::widget([
         'model' => $model,
-        'attributes' => [
-            'id',
-            'username',
-            'email:email',
-            ['attribute'=>'role'],
-            'created_at',
-            'updated_at',
-        ],
     ]) ?>
 
 </div>

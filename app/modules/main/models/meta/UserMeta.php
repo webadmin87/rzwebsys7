@@ -54,6 +54,7 @@ class UserMeta extends MetaFields {
                     "title"=>Yii::t('core', 'Password'),
                     "isRequired"=>false,
                     "showInGrid"=>false,
+                    "showInView"=>false,
                 ],
                 "params"=>[$this->owner, "password"]
             ],
@@ -64,6 +65,7 @@ class UserMeta extends MetaFields {
                     "title"=>Yii::t('core', 'Confirm password'),
                     "isRequired"=>false,
                     "showInGrid"=>false,
+                    "showInView"=>false,
                 ],
                 "params"=>[$this->owner, "confirm_password"]
             ],
