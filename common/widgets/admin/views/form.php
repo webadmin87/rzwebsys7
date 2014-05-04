@@ -6,6 +6,8 @@ use yii\helpers\Html;
 /**
  * @var \common\db\ActiveRecord $model модель
  * @var \yii\web\View $this
+ * @var string $id идентификатор виджета
+ * @var array $formOptions параметры \yii\widgets\ActiveForm
  */
 
 $meta = $model->getMetaFields();
@@ -51,11 +53,15 @@ $this->registerJs("
 
 <?= Html::hiddenInput('apply', 0) ?>
 
-<?= Html::hiddenInput('returnUrl', Yii::$app->request->post('returnUrl', Yii::$app->request->referrer)) ?>
+<?$returnUrl = Yii::$app->request->post('returnUrl', Yii::$app->request->referrer);?>
+
+<?= Html::hiddenInput('returnUrl', $returnUrl) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('core', 'Save'), ['class' => 'btn btn-success']) ?>
         <?= Html::submitButton(Yii::t('core', 'Apply'), ['class' => 'btn btn-primary', 'onClick' => '$("input[name=\'apply\']").val(1)']) ?>
+        <?= Html::submitButton(Yii::t('core', 'Cancel'), ['class' => 'btn btn-default', 'onClick' => "window.location.href='$returnUrl'"]) ?>
+
     </div>
 
 <? ActiveForm::end(); ?>
