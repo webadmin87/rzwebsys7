@@ -1,4 +1,7 @@
 <?php
+namespace common\controllers;
+
+use Yii;
 use yii\web\Controller;
 
 /**
@@ -7,6 +10,12 @@ use yii\web\Controller;
 
 class Admin extends Controller {
 
+    public $layout = "@app/views/layouts/admin.php";
+
+    /**
+     * @inheritdoc
+     */
+
     public function behaviors()
     {
         return [
@@ -14,12 +23,10 @@ class Admin extends Controller {
                 'class' => \yii\filters\AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => '*',
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => '*',
                         'allow' => false,
                     ],
                 ],
@@ -28,7 +35,20 @@ class Admin extends Controller {
     }
 
 
+    /**
+     * Возвращает меню админки
+     * @return array
+     */
 
+    public function getMenuItems() {
+
+        return [
+
+            ['label' => Yii::t('core', 'Users'), 'url' => ['/admin/main/user']],
+
+        ];
+
+    }
 
 
 

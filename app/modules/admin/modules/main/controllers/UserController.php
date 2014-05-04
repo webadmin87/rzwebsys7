@@ -5,9 +5,9 @@ namespace app\modules\admin\modules\main\controllers;
 use Yii;
 use app\modules\main\models\User;
 use app\modules\main\models\UserSearch;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use common\actions\crud;
+use common\controllers\Admin;
 
 
 /**
@@ -16,7 +16,7 @@ use common\actions\crud;
  * @package app\modules\admin\modules\main\controllers
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class UserController extends Controller
+class UserController extends Admin
 {
 
     /**

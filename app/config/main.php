@@ -15,6 +15,7 @@ return [
 
         'admin' => [
             'class'=>app\modules\admin\Admin::className(),
+            'controllerNamespace' => 'app\modules\admin\controllers',
             'modules'=> ['main'=>[
                 'class'=>app\modules\admin\modules\main\Main::className()
             ]],
