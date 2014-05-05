@@ -66,21 +66,18 @@ class Grid extends Widget {
 
     /**
      * Установка кнопок групповых операций
-     * @param array $buttons описание кнопок, имеет следующий вид
+     * @param array $buttons параметры виджетов кнопок
      * [
      *  "delete"=>[
-     *      "title"=>"Delete",
-     *      "options"=>[
-     *           "id"=>"group-delete",
-     *           "class"=>"btn btn-danger btn-xs",
-     *      ],
-     *      "url"=>"groupdelete"
+     *      "class"=>\common\widgets\admin\ActionButton::getClass(),
+     *      "label"=>Yii::t("core", "Delete"),
+     *      "url"=>"groupdelete",
      *  ],
      * ]
      */
     public function setGroupButtons(Array $buttons) {
 
-        $this->$groupButtons = ArrayHelper::merge($this->defaultGroupButtons(), $buttons);
+        $this->groupButtons = ArrayHelper::merge($this->defaultGroupButtons(), $buttons);
 
     }
 
@@ -109,13 +106,13 @@ class Grid extends Widget {
         return [
 
             "delete" => [
-
-                "title"=>Yii::t('core', 'Delete'),
+                "class"=>\common\widgets\admin\ActionButton::className(),
+                "label"=>Yii::t('core', 'Delete'),
                 "options" => [
                     'id'=>'group-delete',
                     'class'=>'btn btn-danger btn-xs',
                 ],
-                "url"=>"groupdelete",
+                "url"=>Yii::$app->urlManager->createUrl($this->view->context->uniqueId."/groupdelete"),
             ],
 
         ];

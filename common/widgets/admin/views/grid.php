@@ -13,7 +13,7 @@ use Yii;
  */
 
 ?>
-<?=HTML::beginForm();?>
+<?=Html::beginForm();?>
 <?
 echo GridView::widget([
     "id" => $id,
@@ -28,32 +28,12 @@ echo GridView::widget([
     <span><?= Yii::t('core', 'Actions with selected') ?>:</span>
 
     <? foreach ($groupButtons AS $button): ?>
-        <? if (is_array($button)): ?>
-
-            <?if (!empty($button["options"]["id"])):
-
-                $url = $button["url"];
-
-                $this->registerJs("
-
-                    $('#{$button["options"]["id"]}').on('click', function(){
-
-                       var form = $(this).parents('form');
-
-                       form.attr('action', '{$url}');
-
-                       form.submit();
-
-                    });
-
-                ");
-
-            endif;
+        <? if (is_array($button)):
+            $widget = Yii::createObject($button);
             ?>
-
-            <?= Html::button($button["title"], $button["options"]) ?>
+            <?=$widget->run();?>
         <? endif; ?>
     <? endforeach; ?>
 
 </div>
-<?=HTML::endForm();?>
+<?=Html::endForm();?>
