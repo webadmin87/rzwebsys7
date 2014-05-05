@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-
+use common\widgets\admin\CrudLinks;
 /**
  * @var yii\web\View $this
  * @var yii\data\ActiveDataProvider $dataProvider
@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <hr />
 
     <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
+        <?=CrudLinks::widget(["action"=>CrudLinks::CRUD_LIST, "model"=>$searchModel])?>
     </p>
 
     <?php echo $this->render('_grid', ['dataProvider' => $dataProvider, "searchModel"=>$searchModel]); ?>

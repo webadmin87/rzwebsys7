@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 
 /**
- * @var yii\web\View $this
- * @var app\modules\main\models\User $model
+ * @var \yii\web\View $this
+ * @var \app\modules\main\models\User $model
  */
 
 $this->title = 'Create User';
