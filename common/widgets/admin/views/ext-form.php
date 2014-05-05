@@ -19,7 +19,7 @@ $searchBtnName = $id."-search";
 
 ?>
 
-<div id="<?= $id ?>" <?if(Yii::$app->request->get($searchBtnName) !== null):?>style="display: none;"<?endif?> class="panel panel-default">
+<div id="<?= $id ?>" <?if(Yii::$app->request->get($searchBtnName) === null):?>style="display: none;"<?endif?> class="panel panel-default">
     <div class="panel-body">
         <?php $form = ActiveForm::begin($formOptions); ?>
 
@@ -44,12 +44,12 @@ $searchBtnName = $id."-search";
         <? endfor; ?>
 
         <div class="form-group">
-            <?= Html::submitButton(Yii::t('core', 'Search'), ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(Yii::t('core', 'Search'), ['name'=>$searchBtnName, 'class' => 'btn btn-primary']) ?>
         </div>
 
         <? ActiveForm::end(); ?>
     </div>
 </div>
 <p>
-    <?= Html::button(Yii::t('core', 'Extended search'), ['name'=>$searchBtnName, 'class' => 'btn btn-default', 'onClick' => '$("#' . $id . '").toggle()']) ?>
+    <?= Html::button(Yii::t('core', 'Extended search'), ['class' => 'btn btn-default', 'onClick' => '$("#' . $id . '").toggle()']) ?>
 </p>
