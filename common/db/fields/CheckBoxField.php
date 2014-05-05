@@ -59,6 +59,21 @@ class CheckBoxField extends TextField {
      * @inheritdoc
      */
 
+    public function extendedFilterForm(ActiveForm $form , Array $options = []) {
+
+        $data = $this->defaultGridFilter();
+
+        if(!isset($options['prompt']))
+            $options['prompt'] = '';
+
+        return $form->field($this->model, $this->attr)->dropDownList($data, $options);
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+
     protected function defaultGridFilter() {
 
         return [

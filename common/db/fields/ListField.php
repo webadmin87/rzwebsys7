@@ -33,6 +33,19 @@ class ListField extends TextField {
      * @inheritdoc
      */
 
+    public function extendedFilterForm(ActiveForm $form , Array $options = []) {
+
+        if(!isset($options['prompt']))
+            $options['prompt'] = '';
+
+        return parent::extendedFilterForm($form, $options);
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+
     protected function defaultGridFilter() {
 
         return $this->data;
