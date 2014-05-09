@@ -129,7 +129,6 @@ class Grid extends Widget {
         $columns = [
 
             ['class' => 'yii\grid\CheckboxColumn'],
-            'id',
 
         ];
 

@@ -3,6 +3,7 @@ namespace common\db;
 
 use Yii;
 use yii\db\ActiveRecord AS YiiRecord;
+use yii\data\ActiveDataProvider;
 
 /**
  * Class ActiveRecord
@@ -22,6 +23,12 @@ abstract class ActiveRecord extends YiiRecord {
     const SCENARIO_UPDATE = "update";
 
     const SCENARIO_SEARCH = "search";
+
+    /**
+     * @var array значение сортировки по умолчанию
+     */
+
+    protected $_defaultSearchOrder = ["id"=>"desc"];
 
     /**
      * Базовые сценарии
@@ -147,6 +154,49 @@ abstract class ActiveRecord extends YiiRecord {
         return $behaviors;
 
     }
+
+    /**
+     * @inheritdoc
+     * @return \common\db\ActiveQuery
+     */
+    public static function find()
+    {
+        return Yii::createObject(\common\db\ActiveQuery::className(), [get_called_class()]);
+    }
+
+    /**
+     * Возвращает провайдер данных для поиска
+     * @param array $params массив значений атрибутов модели
+     * @param array $dataProviderConfig параметры провайдера данных
+     * @return \yii\data\ActiveDataProvider
+     */
+
+    public function search($params, $dataProviderConfig=[]) {
+
+        $fields = $this->getMetaFields()->getFields();
+
+        $query = $this->find();
+
+        $config = array_merge([
+            'query' => $query,
+        ], $dataProviderConfig);
+
+        $dataProvider = Yii::createObject(ActiveDataProvider::className(), [$config]);
+
+        $dataProvider->getSort()->defaultOrder = $this->_defaultSearchOrder;
+
+        if (!($this->load($params) && $this->validate())) {
+            return $dataProvider;
+        }
+
+        foreach($fields AS $field)
+            $field->search($query);
+
+
+        return $dataProvider;
+
+    }
+
 
     /**
      * Возвращает имя класса содержащего описание полей модели

@@ -54,7 +54,9 @@ abstract class MetaFields extends Object {
 
             $this->fields = [];
 
-            foreach($this->config() AS $config) {
+            $config = array_merge($this->defaultConfig(), $this->config());
+
+            foreach($config AS $config) {
 
                 $this->fields[] = Yii::createObject($config["definition"], $config["params"]);
 
@@ -81,7 +83,7 @@ abstract class MetaFields extends Object {
 
         foreach($fields AS $field) {
 
-            if($field->tab == $tab)
+            if($field->tab == $tab AND $field->showInForm)
                 $arr[] = $field;
 
         }
@@ -99,6 +101,28 @@ abstract class MetaFields extends Object {
     }
 
     /**
+     * Конфигурация полей по умолчанию
+     * @return array
+     */
+
+    protected function defaultConfig() {
+
+        return [
+
+            [
+                'definition'=>[
+                    "class"=>\common\db\fields\TextField::className(),
+                    "title"=>"ID",
+                    "showInForm"=>false,
+                ],
+                "params"=>[$this->owner, "id"]
+            ],
+
+        ];
+
+    }
+
+    /**
      * Данный метод должен возвращать массив конфигураций объектов для создания полей модели
      * через Yii::createObject()
      *
@@ -108,7 +132,7 @@ abstract class MetaFields extends Object {
      *
      *      [
      *          "definition"=>[
-     *              "class"=>common\db\fields\TextField::className(),
+     *              "class"=>\common\db\fields\TextField::className(),
      *              "title"=>"Название",
      *          ],
      *          "params"=>[$this->owner, "title"]

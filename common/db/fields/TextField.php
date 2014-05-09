@@ -44,9 +44,14 @@ class TextField extends  Object {
     public $showInGrid = true;
 
     /**
-     * @var bool отображать придетальном просмотре
+     * @var bool отображать при детальном просмотре
      */
     public $showInView = true;
+
+    /**
+     * @var bool отображать в форме
+     */
+    public $showInForm = true;
 
     /**
      * @var bool отображать в фильтре грида

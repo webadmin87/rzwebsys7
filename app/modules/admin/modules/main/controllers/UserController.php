@@ -51,7 +51,7 @@ class UserController extends Admin
 
             'index'=>[
                 'class'=>crud\Admin::className(),
-                'modelClass'=>$classSearch,
+                'modelClass'=>$class,
             ],
             'create'=>[
                 'class'=>crud\Create::className(),
