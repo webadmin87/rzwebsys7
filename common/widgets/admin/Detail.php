@@ -57,10 +57,6 @@ class Detail extends Widget {
 
     protected function getAttributes() {
 
-        $format = Yii::$app->formatter;
-
-        $attrs = ['id'];
-
         $fields = $this->model->getMetaFields()->getFields();
 
         foreach($fields AS $field) {
@@ -71,10 +67,6 @@ class Detail extends Widget {
                 $attrs[] = $view;
 
         }
-
-        $attrs[] = ['attribute' => 'created_at', 'value' => $format->asDateTime($this->model->created_at)];
-
-        $attrs[] = ['attribute' => 'updated_at', 'value' => $format->asDateTime($this->model->updated_at)];
 
         return $attrs;
 

@@ -25,6 +25,9 @@ class ListField extends TextField {
 
     public function form(ActiveForm $form, Array $options = []) {
 
+        if(!isset($options['prompt']))
+            $options['prompt'] = '';
+
         return $form->field($this->model, $this->attr)->dropDownList($this->data, $options);
 
     }

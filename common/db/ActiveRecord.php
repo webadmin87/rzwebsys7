@@ -4,6 +4,7 @@ namespace common\db;
 use Yii;
 use yii\db\ActiveRecord AS YiiRecord;
 use yii\data\ActiveDataProvider;
+use app\modules\main\models\User;
 
 /**
  * Class ActiveRecord
@@ -197,6 +198,27 @@ abstract class ActiveRecord extends YiiRecord {
 
     }
 
+    /**
+     * @inheritdoc
+     */
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+
+            if(empty($this->author_id)) {
+
+                $id = Yii::$app->user->id;
+
+                $this->author_id = $id?$id:0;
+
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     /**
      * Возвращает имя класса содержащего описание полей модели
@@ -204,5 +226,14 @@ abstract class ActiveRecord extends YiiRecord {
      */
 
     public abstract function metaClass();
+
+    /**
+     * @return User возвращает автора модели
+     */
+
+    public function getAuthor()
+    {
+        return $this->hasOne(User::className(), ['id' => 'author_id']);
+    }
 
 }

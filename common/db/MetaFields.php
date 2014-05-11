@@ -3,8 +3,10 @@
 namespace common\db;
 
 use Yii;
-use Yii\base\Object;
-use common\db\ActiveRecord;
+use yii\base\Object;
+use common\db\fields;
+use yii\helpers\ArrayHelper;
+
 /**
  * Class MetaFields
  * Класс содержащий описание полей модели
@@ -12,7 +14,8 @@ use common\db\ActiveRecord;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-abstract class MetaFields extends Object {
+abstract class MetaFields extends Object
+{
 
     /**
      * Вкладка формы по умолчанию
@@ -37,7 +40,8 @@ abstract class MetaFields extends Object {
      * @param ActiveRecord $owner
      */
 
-    public function __construct(ActiveRecord $owner) {
+    public function __construct(ActiveRecord $owner)
+    {
 
         $this->owner = $owner;
 
@@ -48,15 +52,19 @@ abstract class MetaFields extends Object {
      * @return array
      */
 
-    public function getFields() {
+    public function getFields()
+    {
 
-        if($this->fields === null) {
+        if ($this->fields === null) {
 
             $this->fields = [];
 
-            $config = array_merge($this->defaultConfig(), $this->config());
+            $config = ArrayHelper::merge($this->defaultConfig(), $this->config());
 
-            foreach($config AS $config) {
+            foreach ($config AS $config) {
+
+                if(!is_array($config))
+                    continue;
 
                 $this->fields[] = Yii::createObject($config["definition"], $config["params"]);
 
@@ -75,15 +83,16 @@ abstract class MetaFields extends Object {
      * @return array
      */
 
-    public function getFieldsByTab($tab) {
+    public function getFieldsByTab($tab)
+    {
 
         $fields = $this->getFields();
 
         $arr = [];
 
-        foreach($fields AS $field) {
+        foreach ($fields AS $field) {
 
-            if($field->tab == $tab AND $field->showInForm)
+            if ($field->tab == $tab AND $field->showInForm)
                 $arr[] = $field;
 
         }
@@ -96,8 +105,9 @@ abstract class MetaFields extends Object {
      * @return array
      */
 
-    public function tabs() {
-        return [self::DEFAULT_TAB=>Yii::t('core', 'Element')];
+    public function tabs()
+    {
+        return [self::DEFAULT_TAB => Yii::t('core', 'Element')];
     }
 
     /**
@@ -105,17 +115,58 @@ abstract class MetaFields extends Object {
      * @return array
      */
 
-    protected function defaultConfig() {
+    protected function defaultConfig()
+    {
+
+        $authorQuery = Yii::createObject(\yii\db\Query::className());
+        $authorCommand = $authorQuery->select('id, username')->from('user')->createCommand();
+        $authors = $authorCommand->queryAll();
 
         return [
 
-            [
-                'definition'=>[
-                    "class"=>\common\db\fields\TextField::className(),
-                    "title"=>"ID",
-                    "showInForm"=>false,
+            "id" => [
+                'definition' => [
+                    "class" => fields\TextField::className(),
+                    "title" => "ID",
+                    "showInForm" => false,
                 ],
-                "params"=>[$this->owner, "id"]
+                "params" => [$this->owner, "id"]
+            ],
+
+            "created_at" => [
+                'definition' => [
+                    "class" => fields\TimestampField::className(),
+                    "title" => Yii::t('core', 'Created'),
+                ],
+                "params" => [$this->owner, "created_at"]
+            ],
+
+
+            "updated_at" => [
+                'definition' => [
+                    "class" => fields\TimestampField::className(),
+                    "title" => Yii::t('core', 'Updated'),
+                ],
+                "params" => [$this->owner, "updated_at"]
+            ],
+
+            "active" => [
+                "definition" => [
+                    "class" => fields\CheckBoxField::className(),
+                    "title" => Yii::t('core', 'Active'),
+                ],
+                "params" => [$this->owner, "active"]
+            ],
+
+            "author_id" => [
+                'definition' => [
+                    "class" => fields\HasOneField::className(),
+                    "title" => Yii::t('core', 'Author'),
+                    "showInForm" => true,
+                    "data" => ArrayHelper::map($authors, 'id', 'username'),
+                    "gridAttr"=>"username",
+                ],
+                "params" => [$this->owner, "author_id", "author"]
             ],
 
         ];
@@ -130,14 +181,13 @@ abstract class MetaFields extends Object {
      *
      * return [
      *
-     *      [
-     *          "definition"=>[
-     *              "class"=>\common\db\fields\TextField::className(),
-     *              "title"=>"Название",
-     *          ],
-     *          "params"=>[$this->owner, "title"]
-     *      ],
-     *
+     *      "title"=>[
+     *                  "definition"=>[
+     *                      "class"=>\common\db\fields\TextField::className(),
+     *                      "title"=>"Название",
+     *                  ],
+     *                  "params"=>[$this->owner, "title"]
+     *              ],
      * ];
      *
      * @return array

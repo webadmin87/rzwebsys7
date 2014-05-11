@@ -11,73 +11,68 @@ use common\db\MetaFields;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class UserMeta extends MetaFields {
+class UserMeta extends MetaFields
+{
 
     /**
      * @inheritdoc
      */
 
-    public function config() {
+    public function config()
+    {
 
         return [
 
-            [
-                "definition"=>[
-                    "class"=>\common\db\fields\CheckBoxField::className(),
-                    "title"=>Yii::t('core', 'Active'),
+
+            "role" => [
+                "definition" => [
+                    "class" => \common\db\fields\ListField::className(),
+                    "title" => Yii::t('core', 'Role'),
+                    "isRequired" => true,
+                    "data" => $this->owner->getRolesNames(),
                 ],
-                "params"=>[$this->owner, "active"]
+                "params" => [$this->owner, "role"]
             ],
 
-            [
-                "definition"=>[
-                    "class"=>\common\db\fields\ListField::className(),
-                    "title"=>Yii::t('core', 'Role'),
-                    "isRequired"=>true,
-                    "data"=>$this->owner->getRolesNames(),
+            "username" => [
+                "definition" => [
+                    "class" => \common\db\fields\TextField::className(),
+                    "title" => Yii::t('core', 'Username'),
+                    "isRequired" => true,
                 ],
-                "params"=>[$this->owner, "role"]
+                "params" => [$this->owner, "username"]
             ],
 
-            [
-                "definition"=>[
-                    "class"=>\common\db\fields\TextField::className(),
-                    "title"=>Yii::t('core', 'Username'),
-                    "isRequired"=>true,
+            "password" => [
+                "definition" => [
+                    "class" => \common\db\fields\PasswordField::className(),
+                    "title" => Yii::t('core', 'Password'),
+                    "isRequired" => false,
+                    "showInGrid" => false,
+                    "showInView" => false,
                 ],
-                "params"=>[$this->owner, "username"]
+                "params" => [$this->owner, "password"]
             ],
 
-            [
-                "definition"=>[
-                    "class"=>\common\db\fields\PasswordField::className(),
-                    "title"=>Yii::t('core', 'Password'),
-                    "isRequired"=>false,
-                    "showInGrid"=>false,
-                    "showInView"=>false,
+            "confirm_password" => [
+                "definition" => [
+                    "class" => \common\db\fields\PasswordField::className(),
+                    "title" => Yii::t('core', 'Confirm password'),
+                    "isRequired" => false,
+                    "showInGrid" => false,
+                    "showInView" => false,
                 ],
-                "params"=>[$this->owner, "password"]
-            ],
-
-            [
-                "definition"=>[
-                    "class"=>\common\db\fields\PasswordField::className(),
-                    "title"=>Yii::t('core', 'Confirm password'),
-                    "isRequired"=>false,
-                    "showInGrid"=>false,
-                    "showInView"=>false,
-                ],
-                "params"=>[$this->owner, "confirm_password"]
+                "params" => [$this->owner, "confirm_password"]
             ],
 
 
-            [
-                "definition"=>[
-                    "class"=>\common\db\fields\EmailField::className(),
-                    "title"=>Yii::t('core', 'Email'),
-                    "isRequired"=>true,
+            "email" => [
+                "definition" => [
+                    "class" => \common\db\fields\EmailField::className(),
+                    "title" => Yii::t('core', 'Email'),
+                    "isRequired" => true,
                 ],
-                "params"=>[$this->owner, "email"]
+                "params" => [$this->owner, "email"]
             ],
 
 
