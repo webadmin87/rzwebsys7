@@ -6,6 +6,8 @@ use yii\web\Controller;
 
 /**
  * Class Admin базовый класс контроллеров административного модуля
+ * @package common\controllers
+ * @author Churkin Anton <webadmin87@gmail.com>
  */
 
 class Admin extends Controller {
