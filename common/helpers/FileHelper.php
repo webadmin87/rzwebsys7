@@ -107,5 +107,20 @@ class FileHelper extends YiiFileHelper{
 
     }
 
+    /**
+     * Является ли файл изображением
+     * @param string $path путь к файлу
+     * @return bool
+     */
+
+    public static function isImage($path) {
+
+        if(preg_match('/image/i', static::getMimeType($path))>0)
+            return true;
+        else
+            return false;
+
+    }
+
 
 }

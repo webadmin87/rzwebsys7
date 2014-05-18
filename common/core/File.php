@@ -178,10 +178,7 @@ class File extends Object {
 
     public function isImage() {
 
-        if(preg_match('/image/i', $this->getMimeType())>0)
-            return true;
-        else
-            return false;
+        return FileHelper::isImage($this->path);
 
     }
 
