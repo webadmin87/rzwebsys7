@@ -199,7 +199,7 @@ class TextField extends  Object {
 
         $rules = [];
 
-        $rules[] = [$this->attr, 'filter', 'filter' => 'trim'];
+       // $rules[] = [$this->attr, 'filter', 'filter' => 'trim'];
 
         if($this->isSafe)
             $rules[] = [$this->attr, 'safe'];

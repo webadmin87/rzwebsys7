@@ -49,7 +49,7 @@ class Html5UploadBehavior extends UploadBehavior {
 
         $this->deleteFiles();
 
-        $attr = $this->attributeName;
+        $attr = $this->attribute;
 
         if (is_array($this->owner->$attr)) {
 
@@ -80,7 +80,7 @@ class Html5UploadBehavior extends UploadBehavior {
     public function afterSave()
     {
 
-        $attr = $this->attributeName;
+        $attr = $this->attribute;
 
         if (!empty($this->owner->$attr))
             $this->owner->$attr = unserialize($this->owner->$attr);
@@ -96,7 +96,7 @@ class Html5UploadBehavior extends UploadBehavior {
     public function afterFind()
     {
 
-        $attr = $this->attributeName;
+        $attr = $this->attribute;
 
         if (!empty($this->owner->$attr)) {
 

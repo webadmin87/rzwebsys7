@@ -28,7 +28,7 @@ class UploadBehavior extends Behavior
     /**
      * @var string название атрибута, хранящего в себе имя файла и файл
      */
-    public $attributeName = 'image';
+    public $attribute = 'image';
 
     /**
      * @var string алиас папки для сохранения картинок
@@ -152,7 +152,7 @@ class UploadBehavior extends Behavior
 
             foreach ($files As $file) {
 
-                $fileName = FileHelper::getNameForSave($this->getSavePath(), $file->getName());
+                $fileName = FileHelper::getNameForSave($this->getSavePath(), $file->name);
 
                 $fileNames[] = $this->getRelPath() . $fileName;
 
@@ -239,20 +239,20 @@ class UploadBehavior extends Behavior
 
         // Валидируем размер файлов
 
-        $files = UploadedFile::getInstances($this->owner, $this->attributeName);
+        $files = UploadedFile::getInstances($this->owner, $this->attribute);
 
         $maxSize = (double)$this->getMaxFileSize(); // Максимальный размер файла
 
         foreach ($files As $file) {
 
-            $fileSize = (double)($file->getSize() / 1024) / 1024; // Размер файла в мегабайтах
+            $fileSize = (double)($file->size / 1024) / 1024; // Размер файла в мегабайтах
 
             if ($fileSize > $maxSize)
-                $this->owner->addError($this->attributeName,
+                $this->owner->addError($this->attribute,
                     Yii::t('core', 'Size of file {file} is more than {size} Mb', ['{file}' => $file->name, '{size}' => $maxSize]));
 
             if (!$this->isAllowedToUpload($file))
-                $this->owner->addError($this->attributeName,
+                $this->owner->addError($this->attribute,
                     Yii::t('core', 'File {file} is not allowed to upload', ['{file}' => $file->name]));
 
         }
@@ -288,7 +288,7 @@ class UploadBehavior extends Behavior
     {
 
         if (empty($attr)) {
-            $attr = $this->attributeName;
+            $attr = $this->attribute;
         }
 
         $files = $this->owner->$attr;
@@ -319,7 +319,7 @@ class UploadBehavior extends Behavior
     public function getFirstFile($attr = null)
     {
         if (empty($attr)) {
-            $attr = $this->attributeName;
+            $attr = $this->attribute;
         }
 
         $files = $this->owner->$attr;
@@ -354,7 +354,7 @@ class UploadBehavior extends Behavior
     {
 
         if (empty($attr))
-            $attr = $this->attributeName;
+            $attr = $this->attribute;
 
         $arr = [];
 
@@ -387,7 +387,7 @@ class UploadBehavior extends Behavior
     public function hasFile($fileName)
     {
 
-        $attr = $this->attributeName;
+        $attr = $this->attribute;
 
         if (is_array($this->owner->$attr)) {
 
@@ -416,7 +416,7 @@ class UploadBehavior extends Behavior
     {
 
         if (empty($attr)) {
-            $attr = $this->attributeName;
+            $attr = $this->attribute;
         }
 
         if (empty($this->owner->$attr)) {
@@ -439,7 +439,7 @@ class UploadBehavior extends Behavior
     {
 
         if (empty($attr)) {
-            $attr = $this->attributeName;
+            $attr = $this->attribute;
         }
 
         if (!is_array($this->owner->$attr))
