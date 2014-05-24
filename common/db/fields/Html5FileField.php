@@ -3,7 +3,6 @@ namespace common\db\fields;
 
 use Yii;
 use Yii\widgets\ActiveForm;
-use yii\helpers\Html;
 use common\widgets\html5uploader\Widget AS Html5Widget;
 
 
@@ -13,7 +12,7 @@ use common\widgets\html5uploader\Widget AS Html5Widget;
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Html5FileField extends TextField {
+class Html5FileField extends Field {
 
     /**
      * @inheritdoc

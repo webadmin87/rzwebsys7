@@ -176,13 +176,14 @@ abstract class ActiveRecord extends YiiRecord {
 
         $fields = $this->getMetaFields()->getFields();
 
-        $query = $this->find();
+        $query = static::find();
 
         $config = array_merge([
-            'query' => $query,
+            'class' => ActiveDataProvider::className(),
+            "query" => $query,
         ], $dataProviderConfig);
 
-        $dataProvider = Yii::createObject(ActiveDataProvider::className(), [$config]);
+        $dataProvider = Yii::createObject($config);
 
         $dataProvider->getSort()->defaultOrder = $this->_defaultSearchOrder;
 

@@ -40,10 +40,12 @@ abstract class MetaFields extends Object
      * @param ActiveRecord $owner
      */
 
-    public function __construct(ActiveRecord $owner)
+    public function __construct(ActiveRecord $owner, $params=array())
     {
 
         $this->owner = $owner;
+
+        parent::__construct($params);
 
     }
 
