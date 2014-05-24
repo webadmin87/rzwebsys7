@@ -6,5 +6,8 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'resizer'=>[
+            "class" => \common\components\Resizer::className()
+        ]
     ],
 ];

@@ -27,6 +27,12 @@ class Html5FileField extends Field {
     public $route = "admin/upload";
 
     /**
+     * @var string алиас DOCUMENT ROOT
+     */
+
+    public $webroot = "@webroot";
+
+    /**
      * Преффикс поведений
      */
 
@@ -85,7 +91,7 @@ class Html5FileField extends Field {
 
             if(is_array($model->{$this->attr})) {
 
-                return $this->renderFilesView($model->{$this->attr});
+                return $this->renderFilesGridView($model->{$this->attr});
 
             } else {
 
@@ -116,8 +122,8 @@ class Html5FileField extends Field {
     }
 
     /**
-     * Возвращает строку для отображения файлов в гриде
-     * @param $files
+     * Возвращает строку для отображения файлов при детальном просмотре
+     * @param array $files массив с описанием файлов
      * @return string
      */
 
@@ -129,6 +135,18 @@ class Html5FileField extends Field {
             $html .= '<a href="'.$file["file"].'"><span class="glyphicon glyphicon-download"></span></a>'."\n";
 
         return $html;
+
+    }
+
+    /**
+     * Возвращает строку для отображения файлов в гриде
+     * @param array $files массив с описанием файлов
+     * @return string
+     */
+
+    protected function renderFilesGridView($files) {
+
+        return $this->renderFilesGridView($files);
 
     }
 

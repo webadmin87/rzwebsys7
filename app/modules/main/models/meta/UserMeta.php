@@ -77,7 +77,7 @@ class UserMeta extends MetaFields
 
             "image" => [
                 "definition" => [
-                    "class" => \common\db\fields\Html5FileField::className(),
+                    "class" => \common\db\fields\Html5ImageField::className(),
                     "title" => Yii::t('core', 'Image'),
                     "isRequired" => false,
                 ],
