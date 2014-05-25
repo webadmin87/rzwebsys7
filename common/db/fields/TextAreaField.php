@@ -1,6 +1,6 @@
 <?php
 namespace common\db\fields;
-use Yii\widgets\ActiveForm;
+use yii\widgets\ActiveForm;
 /**
  * Class TextAreaField
  * Поле текстовой области модели

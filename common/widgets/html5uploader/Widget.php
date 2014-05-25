@@ -69,6 +69,8 @@ class Widget extends InputWidget {
 
     protected function registerScripts() {
 
+        // @TOFIX сделать ограничение на загружаемые расширения
+
         $this->view->registerJs("
 
             $('#{$this->id}').html5Uploader({uploadUrl: '{$this->uploadUrl}', maxFileSize: '{$this->maxFileSize}'});

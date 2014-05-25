@@ -84,6 +84,14 @@ class UserMeta extends MetaFields
                 "params" => [$this->owner, "image"]
             ],
 
+            "text" => [
+                "definition" => [
+                    "class" => \common\db\fields\HtmlField::className(),
+                    "title" => Yii::t('core', 'Text'),
+                    "isRequired" => false,
+                ],
+                "params" => [$this->owner, "text"]
+            ],
 
 
         ];
