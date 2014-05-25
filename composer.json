@@ -18,7 +18,8 @@
 		"yiisoft/yii2": "*",
 		"yiisoft/yii2-bootstrap": "*",
 		"yiisoft/yii2-swiftmailer": "*",
-        "yiisoft/yii2-imagine": "*"
+        "yiisoft/yii2-imagine": "*",
+        "yiisoft/yii2-jui": "*"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

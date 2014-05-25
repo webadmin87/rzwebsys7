@@ -14,6 +14,7 @@ class AssetBundle extends YiiBundle {
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        'yii\jui\SortableAsset'
     ];
 
     public function init() {
