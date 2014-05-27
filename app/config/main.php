@@ -11,6 +11,20 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'app\controllers',
     'bootstrap' => ['log'],
+    'controllerMap' => [
+        'elfinder' => [
+            'class' => mihaildev\elfinder\Controller::className(),
+            'access' => ['root'],
+            'disabledCommands' => ['netmount'], //отключение ненужных команд https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#commands
+            'roots' => [
+                [
+                    'path' => 'userfiles',
+                    'name' => Yii::t('core', 'Userfiles'),
+                ],
+
+            ]
+        ],
+    ],
     'modules' => [
 
         'admin' => [

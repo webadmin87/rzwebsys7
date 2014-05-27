@@ -3,6 +3,7 @@
 namespace common\db\fields;
 use yii\widgets\ActiveForm;
 use mihaildev\ckeditor\CKEditor;
+use mihaildev\elfinder\ElFinder;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -21,6 +22,12 @@ class HtmlField extends TextAreaField {
     public $editorOptions = [];
 
     /**
+     * @var string контроллер файлового менеджера
+     */
+
+    public $fileManagerController = "elfinder";
+
+    /**
      * @inheritdoc
      */
 
@@ -31,8 +38,10 @@ class HtmlField extends TextAreaField {
             'inline' => false,
         ], $this->editorOptions);
 
+        $ckeditorOptions = ElFinder::ckeditorOptions($this->fileManagerController, $options);
+
         return $form->field($this->model, $this->attr)->widget(CKEditor::className(),[
-            'editorOptions' => $options,
+            'editorOptions' => $ckeditorOptions,
         ]);;
 
     }

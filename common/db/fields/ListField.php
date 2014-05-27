@@ -10,11 +10,16 @@ use Yii\widgets\ActiveForm;
 
 class ListField extends TextField {
 
+    /**
+     * @var closure анонимная функция возвращающая данны для заполнения списка
+     */
+
+    public $data;
 
     /**
      * @var array данные для заполнения списка (key=>value)
      */
-    public $data = [];
+    protected $dataValue;
 
     /**
      * Формирование Html кода поля для вывода в форме
@@ -28,7 +33,7 @@ class ListField extends TextField {
         if(!isset($options['prompt']))
             $options['prompt'] = '';
 
-        return $form->field($this->model, $this->attr)->dropDownList($this->data, $options);
+        return $form->field($this->model, $this->attr)->dropDownList($this->getDataValue(), $options);
 
     }
 
@@ -51,8 +56,27 @@ class ListField extends TextField {
 
     protected function defaultGridFilter() {
 
-        return $this->data;
+        return $this->getDataValue();
 
     }
+
+    /**
+     * Возвращает массив данных для заполнения списка
+     * @return array
+     */
+
+    public function getDataValue() {
+
+        if($this->dataValue === null) {
+
+            $func = $this->data;
+
+            $this->dataValue = is_callable($func)?$func():[];
+
+        }
+
+        return $this->dataValue;
+    }
+
 
 }

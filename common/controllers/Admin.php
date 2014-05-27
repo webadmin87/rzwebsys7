@@ -26,7 +26,7 @@ class Admin extends Controller {
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['root'],
                     ],
                     [
                         'allow' => false,
@@ -47,6 +47,7 @@ class Admin extends Controller {
         return [
 
             ['label' => Yii::t('core', 'Users'), 'url' => ['/admin/main/user']],
+            ['label' => Yii::t('core', 'FileManger'), 'url' => ['/admin/main/file-manager']],
 
         ];
 

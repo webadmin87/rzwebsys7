@@ -29,7 +29,7 @@ class UserMeta extends MetaFields
                     "class" => \common\db\fields\ListField::className(),
                     "title" => Yii::t('core', 'Role'),
                     "isRequired" => true,
-                    "data" => $this->owner->getRolesNames(),
+                    "data" => function() { return $this->owner->getRolesNames(); },
                 ],
                 "params" => [$this->owner, "role"]
             ],
