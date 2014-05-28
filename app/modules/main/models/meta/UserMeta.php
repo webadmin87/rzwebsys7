@@ -75,6 +75,15 @@ class UserMeta extends MetaFields
                 "params" => [$this->owner, "email"]
             ],
 
+            "name" => [
+                "definition" => [
+                    "class" => \common\db\fields\TextField::className(),
+                    "title" => Yii::t('core', 'Name'),
+                    "isRequired" => false,
+                ],
+                "params" => [$this->owner, "name"]
+            ],
+
             "image" => [
                 "definition" => [
                     "class" => \common\db\fields\Html5ImageField::className(),
@@ -86,7 +95,7 @@ class UserMeta extends MetaFields
 
             "text" => [
                 "definition" => [
-                    "class" => \common\db\fields\HtmlField::className(),
+                    "class" => \common\db\fields\TextAreaField::className(),
                     "title" => Yii::t('core', 'Text'),
                     "isRequired" => false,
                 ],
