@@ -56,6 +56,18 @@ class UploadBehavior extends Behavior
     public $filePerm = 0644;
 
     /**
+     * @var int максимальная ширина загружаемого изображения
+     */
+
+    public $maxWidth = 1000;
+
+    /**
+     * @var int максимальная высота загружаемого изображения
+     */
+
+    public $maxHeight = 1000;
+
+    /**
      * @var int максимальный размер файла в мегабайтах
      */
 
@@ -162,7 +174,11 @@ class UploadBehavior extends Behavior
 
                 chmod($savePath, $this->filePerm);
 
-                // @tofix сделать резайз изображений, если превышают пороговое значение
+                if(FileHelper::isImage($savePath)) {
+
+                    Yii::$app->resizer->resizeIfGreater($savePath, $this->maxWidth, $this->maxHeight);
+
+                }
 
             }
 
@@ -172,6 +188,7 @@ class UploadBehavior extends Behavior
         return $fileNames;
 
     }
+
 
     /**
      * Возвращает массив описывающий загруженные файлы

@@ -4,7 +4,7 @@ namespace common\components;
 use Yii;
 use yii\base\Component;
 use yii\imagine\Image;
-
+use Imagine\Image\Box;
 use common\helpers\FileHelper;
 
 /**
@@ -49,9 +49,11 @@ class Resizer extends Component {
 
         }
 
-        list($newWidth, $newHeight) = $this->getSize($path, $width, $height);
+        $image = Image::getImagine()->open($path);
 
-        $image = Image::thumbnail($path, $newWidth, $newHeight);
+        $box = $this->getSize($image, $width, $height);
+
+        $image->resize($box);
 
         $image->save($savePath);
 
@@ -60,16 +62,61 @@ class Resizer extends Component {
     }
 
     /**
-     * Возвращает массив с размеров конечного зображения [$width, $height]
-     * @param string $path путь к файлу
-     * @param int $width требуемая ширина
-     * @param int $height требуемая высота
-     * @return array
+     * Уменьшает изображение если его размер превашает заданные значения
+     * @param $savePath путь до изображения
+     * @param int $width максимальная ширина
+     * @param int $height максимальная высота
+     * @return bool
      */
 
-    public function getSize($path, $width, $height) {
+    public function resizeIfGreater($savePath, $width, $height) {
 
-        $image = Image::getImagine()->open($path);
+        $image = Image::getImagine()->open($savePath);
+
+        if(!$image) return false;
+
+        $size = $image->getSize();
+
+        $resize = false;
+
+        if( $size->getWidth() > $width ) {
+
+            $box = $this->getSize($image, $width, 0);
+
+            $image->resize($box);
+
+            $size = $image->getSize();
+
+            $resize = true;
+
+        }
+
+        if( $size->getHeight() > $height ) {
+
+            $box = $this->getSize($image, 0, $height);
+
+            $image->resize($box);
+
+            $resize = true;
+
+        }
+
+        if($resize)
+            $image->save($savePath);
+
+        return $resize;
+
+    }
+
+    /**
+     * Возвращает размеры конечного зображения
+     * @param \Imagine\Image\ImageInterface $image изображение
+     * @param int $width требуемая ширина
+     * @param int $height требуемая высота
+     * @return \Imagine\Image\Box
+     */
+
+    public function getSize($image, $width, $height) {
 
         $size = $image->getSize();
 
@@ -95,7 +142,9 @@ class Resizer extends Component {
 
         }
 
-        return $arr;
+        $box = new Box($arr[0], $arr[1]);
+
+        return $box;
 
     }
 

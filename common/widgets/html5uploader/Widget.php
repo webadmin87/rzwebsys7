@@ -116,7 +116,7 @@ class Widget extends InputWidget {
 
             "name" => $this->name,
             "options" => $this->options,
-            "maxFileSize" => 0,
+            "maxFileSize" => $this->model->getMaxFileSize(),
             "files" =>$files,
             "webroot"=>$this->webroot,
         ]);
