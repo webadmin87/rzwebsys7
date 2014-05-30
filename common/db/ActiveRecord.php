@@ -170,14 +170,15 @@ abstract class ActiveRecord extends YiiRecord {
      * Возвращает провайдер данных для поиска
      * @param array $params массив значений атрибутов модели
      * @param array $dataProviderConfig параметры провайдера данных
+     * @param \common\db\ActiveQuery $query запрос
      * @return \yii\data\ActiveDataProvider
      */
 
-    public function search($params, $dataProviderConfig=[]) {
+    public function search($params, $dataProviderConfig=[], $query = null) {
 
         $fields = $this->getMetaFields()->getFields();
 
-        $query = static::find();
+        $query = $query?$query:static::find();
 
         $config = array_merge([
             'class' => ActiveDataProvider::className(),

@@ -21,7 +21,8 @@
         "yiisoft/yii2-imagine": "*",
         "yiisoft/yii2-jui": "*",
         "mihaildev/yii2-ckeditor": "*",
-        "mihaildev/yii2-elfinder": "*"
+        "mihaildev/yii2-elfinder": "*",
+        "creocoder/yii2-nested-set-behavior": "*"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",
