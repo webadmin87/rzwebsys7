@@ -42,7 +42,7 @@ class Create extends Base {
      * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
      */
 
-    public $defaultRedirectUrl = "/admin";
+    public $defaultRedirectUrl = "/admin/";
 
     /**
      * @var string адрес для редиректа в случае нажатия кнопки применить
@@ -59,11 +59,12 @@ class Create extends Base {
     /**
      * Запуск действия
      * @return mixed
+     * @throws ForbiddenHttpException
      */
 
     public function run() {
 
-        $model = Yii::createObject($this->modelClass, [['scenario'=>$this->modelScenario]]);
+        $model = Yii::createObject(["class"=>$this->modelClass, 'scenario'=>$this->modelScenario]);
 
         if(!Yii::$app->user->can('createModel', array("model"=>$model)))
             throw new ForbiddenHttpException('Forbidden');

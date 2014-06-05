@@ -87,6 +87,7 @@ class Field extends  Object {
      * Конструктор
      * @param ActiveRecord $model модель
      * @param string $attr атрибут
+     * @param array $config массив значений атрибутов
      */
 
     public function __construct(ActiveRecord $model, $attr, $config=[]) {

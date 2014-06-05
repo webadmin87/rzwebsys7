@@ -24,13 +24,4 @@ class TActiveQuery extends ActiveQuery {
         ];
     }
 
-    /**
-     * @inheritdoc
-     * @return \common\db\ActiveQuery
-     */
-    public static function find()
-    {
-        return Yii::createObject(\common\db\TActiveQuery::className(), [get_called_class()]);
-    }
-
 }

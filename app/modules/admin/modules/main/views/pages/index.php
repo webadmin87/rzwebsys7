@@ -6,6 +6,7 @@ use common\widgets\admin\CrudLinks;
  * @var yii\web\View $this
  * @var yii\data\ActiveDataProvider $dataProvider
  * @var app\modules\main\models\UserSearch $searchModel
+ * @var int $parent_id
  */
 
 $this->title = 'Pages';
@@ -22,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <hr />
 
     <p>
-        <?=CrudLinks::widget(["action"=>CrudLinks::CRUD_LIST, "model"=>$searchModel])?>
+        <?=CrudLinks::widget(["action"=>CrudLinks::CRUD_LIST, "model"=>$searchModel, "urlParams"=>["parent_id"=>$parent_id]])?>
     </p>
 
     <?php echo $this->render('_grid', ['dataProvider' => $dataProvider, "searchModel"=>$searchModel]); ?>

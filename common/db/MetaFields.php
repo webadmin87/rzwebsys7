@@ -135,9 +135,8 @@ abstract class MetaFields extends Object
 
             "id" => [
                 'definition' => [
-                    "class" => fields\TextField::className(),
+                    "class" => fields\PkField::className(),
                     "title" => "ID",
-                    "showInForm" => false,
                 ],
                 "params" => [$this->owner, "id"]
             ],

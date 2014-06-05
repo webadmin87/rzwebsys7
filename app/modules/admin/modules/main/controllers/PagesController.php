@@ -51,7 +51,7 @@ class PagesController extends Admin
                 'modelClass'=>$class,
             ],
             'create'=>[
-                'class'=>crud\Create::className(),
+                'class'=>crud\TCreate::className(),
                 'modelClass'=>$class,
             ],
             'update'=>[

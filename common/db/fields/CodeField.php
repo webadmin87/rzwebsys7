@@ -20,7 +20,7 @@ class CodeField extends TextField {
 
         $rules[] = [$this->attr, 'unique'];
 
-        $rules[] = [$this->attr, 'regexp', 'pattern'=>'/^[A-z0-9_-]$/i'];
+        $rules[] = [$this->attr, 'match', 'pattern'=>'/^[A-z0-9_-]+$/i'];
 
         return $rules;
 

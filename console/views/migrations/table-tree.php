@@ -36,7 +36,7 @@ class <?= $className ?> extends \yii\db\Migration
             'author_id'=>1,
             'root'=>1,
             'lft'=>1,
-            'rgt'=>1,
+            'rgt'=>2,
             'level'=>1,
 
         ]);

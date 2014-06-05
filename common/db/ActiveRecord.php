@@ -43,6 +43,21 @@ abstract class ActiveRecord extends YiiRecord {
     protected $metaFields;
 
     /**
+     * @inheritdoc
+     * Устанавливаем активность по умолчанию при создании новой модели
+     */
+
+    public function init() {
+
+        if($this->scenario == self::SCENARIO_INSERT) {
+
+            $this->active = true;
+
+        }
+
+    }
+
+    /**
      * Сченари валидации
      * @return array
      *

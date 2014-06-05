@@ -23,6 +23,17 @@ class PagesMeta extends MetaFields
 
         return [
 
+            "parent_id" => [
+                "definition" => [
+                    "class" => \common\db\fields\ListField::className(),
+                    "title" => Yii::t('core', 'Parent'),
+                    "isRequired" => true,
+                    "showInGrid"=>false,
+                    "showInExtendedFilter"=>false,
+                    "data" => function(){ return $this->owner->getListTreeData(); },
+                ],
+                "params" => [$this->owner, "parent_id"]
+            ],
 
             "title" => [
                 "definition" => [
@@ -35,7 +46,7 @@ class PagesMeta extends MetaFields
 
             "code" => [
                 "definition" => [
-                    "class" => \common\db\fields\TextField::className(),
+                    "class" => \common\db\fields\CodeField::className(),
                     "title" => Yii::t('core', 'Code'),
                     "isRequired" => true,
                 ],

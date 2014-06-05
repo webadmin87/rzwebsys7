@@ -31,7 +31,7 @@ class m140529_191317_main_create_pages extends \yii\db\Migration
             'author_id'=>1,
             'root'=>1,
             'lft'=>1,
-            'rgt'=>1,
+            'rgt'=>2,
             'level'=>1,
             'title'=>'',
             'code'=>''

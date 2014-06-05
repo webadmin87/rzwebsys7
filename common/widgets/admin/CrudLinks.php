@@ -34,6 +34,12 @@ class CrudLinks extends Widget {
     public $model;
 
     /**
+     * @var array массив дополнительных параметров для url
+     */
+
+    public $urlParams = [];
+
+    /**
      * Возвращает описание ссылок
      * @return array
      */
@@ -46,7 +52,7 @@ class CrudLinks extends Widget {
 
                 [
                     'label'=>Yii::t('core', 'Create'),
-                    'url'=>['create'],
+                    'url'=>array_merge(['create'], $this->urlParams),
                     'options'=>['class' => 'btn btn-success'],
                     'permission'=>'createModel',
                 ]
@@ -57,14 +63,14 @@ class CrudLinks extends Widget {
 
                 [
                     'label'=>Yii::t('core', 'Update'),
-                    'url'=>['update', 'id' => $this->model->id],
+                    'url'=>array_merge(['update', 'id' => $this->model->id], $this->urlParams),
                     'options'=>['class' => 'btn btn-primary'],
                     'permission'=>'updateModel',
                 ],
 
                 [
                     'label'=>Yii::t('core', 'Delete'),
-                    'url'=>['delete', 'id' => $this->model->id],
+                    'url'=>array_merge(['delete', 'id' => $this->model->id], $this->urlParams),
                     'options'=>['class' => 'btn btn-danger',
                         'data' => [
                             'confirm' => Yii::t('core', 'Are you sure?'),

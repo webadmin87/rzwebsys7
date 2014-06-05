@@ -34,7 +34,7 @@ class Update extends Base {
      * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
      */
 
-    public $defaultRedirectUrl = "/admin";
+    public $defaultRedirectUrl = "/admin/";
 
     /**
      * @var string путь к шаблону для отображения
