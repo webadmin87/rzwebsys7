@@ -4,36 +4,16 @@ namespace common\actions\crud;
 use Yii;
 use yii\web\ForbiddenHttpException;
 /**
- * Class GroupDelete
- * Класс для группового удаления моделей
+ * Class TGroupDelete
+ * Класс для группового удаления древовидных моделей
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class GroupDelete extends Base {
+class TGroupDelete extends GroupDelete {
 
     /**
-     * @var string имя параметра в запросе в котором передаются идентификаторы материалов при групповых операциях
-     */
-
-    public $groupIdsAttr = "selection";
-
-    /**
-     * @var string сценарий для валидации
-     */
-
-    public $modelScenario = 'search';
-
-    /**
-     * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
-     */
-
-    public $defaultRedirectUrl = "/admin/";
-
-
-    /**
-     * Запуск группового удалнеия моделей
-     * @throws \yii\web\ForbiddenHttpException
+     * @inheritdoc
      */
 
     public function run() {
@@ -51,7 +31,7 @@ class GroupDelete extends Base {
                 if(!Yii::$app->user->can('deleteModel', array("model"=>$model)))
                     throw new ForbiddenHttpException('Forbidden');
 
-                $model->delete();
+                $model->deleteNode();
 
             }
 

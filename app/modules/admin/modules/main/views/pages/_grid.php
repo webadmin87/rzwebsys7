@@ -8,6 +8,7 @@ Pjax::begin();
 echo Grid::widget([
     'dataProvider' => $dataProvider,
     'model' => $searchModel,
+    'tree' => true,
 ]);
 Pjax::end();
 ?>

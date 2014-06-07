@@ -26,11 +26,6 @@ class TCreate extends Create {
 
         $class = $this->modelClass;
 
-        $parentModel = $class::find()->where(["id"=>$parent_id])->one();
-
-        if(!$parentModel)
-            throw new BadRequestHttpException('Bad Request');
-
         $model = Yii::createObject(["class"=>$this->modelClass, 'scenario'=>$this->modelScenario]);
 
         $model->parent_id = $parent_id;
@@ -41,6 +36,11 @@ class TCreate extends Create {
         $request = Yii::$app->request;
 
         $load = $model->load($request->post());
+
+        $parentModel = $class::find()->where(["id"=>$model->parent_id])->one();
+
+        if(!$parentModel)
+            throw new BadRequestHttpException('Bad Request');
 
         $model->attributes = array_merge($this->defaultAttrs, $model->attributes);
 

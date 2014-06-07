@@ -5,24 +5,17 @@ use Yii;
 use yii\web\ForbiddenHttpException;
 
 /**
- * Class Delete
- * Класс действия для удаления модели
+ * Class TDelete
+ * Класс действия для удаления древовидной модели
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class Delete extends Base {
+class TDelete extends Delete {
+
 
     /**
-     * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
-     */
-
-    public $defaultRedirectUrl = "/admin/";
-
-    /**
-     * Запуск действия удаления модели
-     * @param integer $id идентификатор модели
-     * @throws \yii\web\ForbiddenHttpException
+     * @inheritdoc
      */
 
     public function run($id) {
@@ -34,7 +27,7 @@ class Delete extends Base {
             if(!Yii::$app->user->can('deleteModel', array("model"=>$model)))
                 throw new ForbiddenHttpException('Forbidden');
 
-            $model->delete();
+            $model->deleteNode();
 
         }
 

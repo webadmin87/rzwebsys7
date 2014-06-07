@@ -3,6 +3,7 @@ namespace common\db;
 
 use Yii;
 use \creocoder\behaviors\NestedSet;
+use yii\bootstrap\ActiveForm;
 
 
 /**
@@ -94,7 +95,7 @@ abstract class TActiveRecord extends ActiveRecord {
             if($this->inArray($descendants, $m))
                 continue;
 
-            $arr[$m->id] = str_repeat("-", $m->level) . $model->$attr;
+            $arr[$m->id] = str_repeat("-", $m->level) . $m->$attr;
 
         }
 
@@ -118,6 +119,43 @@ abstract class TActiveRecord extends ActiveRecord {
         }
 
         return false;
+
+    }
+
+    /**
+     * Возвращает массив для хлебных крошек
+     * @param int $id идентификатор модели до которой строить хлебные крошки
+     * @param string $route маршрут для url
+     * @param string $attr имя атрибута для label
+     * @return array
+     */
+
+    public function getBreadCrumbsItems($id, $route, $attr = "title") {
+
+        $model = static::find()->where(["id"=>$id])->one();
+
+        $models = $model->ancestors()->all();
+
+        $models[] = $model;
+
+        $arr = [];
+
+        foreach($models AS $model) {
+
+            if(empty($model->$attr))
+                continue;
+
+            $arr[] = [
+
+                "url"=>[$route, "parent_id"=>$model->id],
+                "label"=>$model->$attr,
+
+            ];
+
+        }
+
+
+        return $arr;
 
     }
 

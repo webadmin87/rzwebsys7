@@ -4,6 +4,7 @@ namespace common\widgets\admin;
 use Yii;
 use yii\base\Widget;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 /**
  * Class Grid
@@ -37,6 +38,12 @@ class Grid extends Widget {
      */
 
     public $rowButtons = [];
+
+    /**
+     * @var bool вывод древовидных моделей
+     */
+
+    public $tree = false;
 
     /**
      * @var array кнопки групповых операций
@@ -143,9 +150,43 @@ class Grid extends Widget {
 
         }
 
-        $columns[] = array_merge(['class' => 'yii\grid\ActionColumn'], $this->rowButtons);
+        $columns[] = array_merge($this->getDefaultRowButtons(), $this->rowButtons);
 
         return $columns;
+
+    }
+
+
+    /**
+     * Возвращает настройки по умолчанию кнопок действий над моделями
+     * @return array
+     */
+
+    public function getDefaultRowButtons() {
+
+        if($this->tree) {
+
+            return [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{enter} {view} {update} {delete}',
+                'buttons' => [
+
+                    'enter'=>function($url, $model){
+
+                            $url = Yii::$app->urlManager->createUrl([Yii::$app->controller->route, "parent_id"=>$model->id]);
+
+                            return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-open']), ['data-pjax'=>0, 'href'=>$url, 'title'=>Yii::t('core', 'Enter')]);
+
+                        }
+
+                ],
+            ];
+
+        } else {
+
+            return ['class' => 'yii\grid\ActionColumn'];
+
+        }
 
     }
 

@@ -55,7 +55,7 @@ class PagesController extends Admin
                 'modelClass'=>$class,
             ],
             'update'=>[
-                'class'=>crud\Update::className(),
+                'class'=>crud\TUpdate::className(),
                 'modelClass'=>$class,
             ],
 
@@ -65,12 +65,12 @@ class PagesController extends Admin
             ],
 
             'delete'=>[
-                'class'=>crud\Delete::className(),
+                'class'=>crud\TDelete::className(),
                 'modelClass'=>$class,
             ],
 
             'groupdelete'=>[
-                'class'=>crud\GroupDelete::className(),
+                'class'=>crud\TGroupDelete::className(),
                 'modelClass'=>$class,
             ],
 
