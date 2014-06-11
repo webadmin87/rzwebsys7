@@ -29,6 +29,8 @@ class TUpdate extends Update {
 
         $parentModel = $model->parent()->one();
 
+        $model->parent_id = $parentModel->id;
+
         $load = $model->load(Yii::$app->request->post());
 
         if($parentModel->id != $model->parent_id) {

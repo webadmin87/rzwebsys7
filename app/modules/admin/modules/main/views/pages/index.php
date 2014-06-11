@@ -1,6 +1,4 @@
 <?php
-
-use Yii;
 use yii\helpers\Html;
 use common\widgets\admin\CrudLinks;
 use yii\widgets\Breadcrumbs;

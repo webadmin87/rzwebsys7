@@ -1,5 +1,5 @@
 <?php
-use Yii;
+
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 
@@ -53,7 +53,7 @@ $this->registerJs("
 
 <?= Html::hiddenInput('apply', 0) ?>
 
-<?$returnUrl = Yii::$app->request->post('returnUrl', Yii::$app->request->referrer);?>
+<?$returnUrl = Yii::$app->request->get('returnUrl', Yii::$app->request->post('returnUrl', Yii::$app->request->referrer));?>
 
 <?= Html::hiddenInput('returnUrl', $returnUrl) ?>
 

@@ -1,7 +1,7 @@
 <?php
 use yii\grid\GridView;
 use yii\helpers\Html;
-use Yii;
+
 
 /**
  * @var string $id идентификатор виджета

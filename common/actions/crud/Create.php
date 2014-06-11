@@ -82,18 +82,15 @@ class Create extends Base {
         if ($load && $model->save()) {
 
 
+            $returnUrl = $request->post($this->redirectParam);
+
+            if(empty($returnUrl))
+                $returnUrl = $this->defaultRedirectUrl;
+
             if($request->post($this->applyParam))
-                return $this->controller->redirect([$this->updateUrl, 'id' => $model->id]);
+                return $this->controller->redirect([$this->updateUrl, 'id' => $model->id, $this->defaultRedirectUrl => $returnUrl]);
             else {
-
-
-                $returnUrl = $request->post($this->redirectParam);
-
-                if(empty($returnUrl))
-                    $returnUrl = $this->defaultRedirectUrl;
-
                 return $this->controller->redirect($returnUrl);
-
             }
 
         } else {

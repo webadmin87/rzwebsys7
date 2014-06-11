@@ -30,6 +30,7 @@ class PagesMeta extends MetaFields
                     "isRequired" => true,
                     "showInGrid"=>false,
                     "showInExtendedFilter"=>false,
+                    "search"=>false,
                     "data" => function(){ return $this->owner->getListTreeData(); },
                 ],
                 "params" => [$this->owner, "parent_id"]

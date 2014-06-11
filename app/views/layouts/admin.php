@@ -1,5 +1,5 @@
 <?php
-use Yii;
+
 use yii\widgets\Breadcrumbs;
 use yii\bootstrap\Nav AS Menu;
 /**

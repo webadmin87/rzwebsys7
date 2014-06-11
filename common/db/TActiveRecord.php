@@ -2,7 +2,7 @@
 namespace common\db;
 
 use Yii;
-use \creocoder\behaviors\NestedSet;
+use common\behaviors\NestedSet;
 use yii\bootstrap\ActiveForm;
 
 

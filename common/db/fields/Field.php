@@ -76,6 +76,11 @@ class Field extends  Object {
 
     public $isRequired = false;
 
+    /**
+     * @var bool участвует ли поле при поиске
+     */
+
+    public $search = true;
 
     /**
      * @var mixed значение фильтра грида установленное
@@ -229,7 +234,8 @@ class Field extends  Object {
 
     public function search(ActiveQuery $query) {
 
-        $query->andFilterWhere([$this->attr=>$this->model->{$this->attr}]);
+       if($this->search)
+            $query->andFilterWhere([$this->attr=>$this->model->{$this->attr}]);
 
     }
 

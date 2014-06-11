@@ -26,7 +26,7 @@ class TGroupDelete extends GroupDelete {
 
             $query = $class::find()->where(['id'=>$ids]);
 
-            foreach($query->each() as $model) {
+            foreach($query->all() as $model) {
 
                 if(!Yii::$app->user->can('deleteModel', array("model"=>$model)))
                     throw new ForbiddenHttpException('Forbidden');
