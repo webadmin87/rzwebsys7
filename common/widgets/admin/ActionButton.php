@@ -1,5 +1,6 @@
 <?php
 namespace common\widgets\admin;
+use Yii;
 use yii\base\Widget;
 use yii\helpers\Html;
 
@@ -25,10 +26,10 @@ class ActionButton extends Widget {
     public $label;
 
     /**
-     * @var string url на которую будет отправлена форма
+     * @var string route маршрут для отправки формы
      */
 
-    public $url;
+    public $route;
 
     /**
      * @var array html атрибуты кнопки
@@ -37,13 +38,21 @@ class ActionButton extends Widget {
     public $options = [];
 
     /**
+     * @var string url на которую будет отправлена форма
+     */
+
+    protected $url;
+
+    /**
      * @inheritdoc
      */
 
     public function init() {
 
-        if(empty($options["id"]))
-            $options["id"] = static::ID_PREF . uniqid(rand());
+        $this->url = Yii::$app->urlManager->createUrl($this->route);
+
+        if(empty($this->options["id"]))
+            $this->options["id"] = static::ID_PREF . uniqid(rand());
 
         $this->registerJs();
     }

@@ -124,19 +124,42 @@ class Grid extends Widget {
 
     protected function defaultGroupButtons() {
 
-        return [
+        $arr = [
 
             "delete" => [
                 "class"=>\common\widgets\admin\ActionButton::className(),
                 "label"=>Yii::t('core', 'Delete'),
                 "options" => [
                     'id'=>'group-delete',
-                    'class'=>'btn btn-danger btn-xs',
+                    'class'=>'btn btn-danger',
                 ],
-                "url"=>Yii::$app->urlManager->createUrl($this->view->context->uniqueId."/groupdelete"),
+                "route"=>$this->view->context->uniqueId."/groupdelete",
             ],
 
         ];
+
+        if($this->tree) {
+
+            $arr["replace"] = [
+
+                "class"=>\common\widgets\admin\ReplaceInTreeButton::className(),
+                "label"=>Yii::t('core', 'Replace'),
+                "options" => [
+                    'id'=>'group-replace',
+                    'class'=>'btn btn-primary',
+                ],
+                "optionsOk" => [
+                    'id'=>'group-replace-ok',
+                    'class'=>'btn btn-primary',
+                ],
+                "route"=>$this->view->context->uniqueId."/replace",
+
+            ];
+
+
+        }
+
+        return $arr;
 
     }
 

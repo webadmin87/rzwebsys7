@@ -58,11 +58,12 @@ abstract class TActiveRecord extends ActiveRecord {
     /**
      * Возвращает массив для заполнения списка выбора родителя модели
      * @param int $parent_id
+     * @param array $exclude массив id моделей ветки которых необходимо исключить из списка
      * @param string $attr
      * @return array
      */
 
-    public function getListTreeData($parent_id = self::ROOT_ID, $attr = "title") {
+    public function getListTreeData($parent_id = self::ROOT_ID, $exclude = [], $attr = "title") {
 
         $arr = [self::ROOT_ID=>Yii::t('core', 'Root')];
 
@@ -76,17 +77,31 @@ abstract class TActiveRecord extends ActiveRecord {
 
         $models = $model->descendants()->published()->all();
 
+        $descendants = [];
+
         if(!$this->isNewRecord) {
 
-            // @tofix получить массив потомков и исключить их из списка
-
-            $descendants = $this->descendants()->published()->all();
+            $descendants = $this->descendants()->all();
 
             $descendants[] = $this;
 
-        } else {
+        }
 
-            $descendants = [];
+
+        if(!empty($exclude)) {
+
+            $exModels = static::find()->where(["id"=>$exclude])->all();
+
+            foreach($exModels AS $exModel) {
+
+                $descendants[] = $exModel;
+
+                $exDescendants = $exModel->descendants()->all();
+
+                $descendants = array_merge($descendants, $exDescendants);
+
+            }
+
 
         }
 

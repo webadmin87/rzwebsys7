@@ -84,6 +84,11 @@ class PagesController extends Admin
                 'modelClass'=>$class,
             ],
 
+            'replace'=>[
+                'class'=>crud\TReplace::className(),
+                'modelClass'=>$class,
+            ],
+
         ];
 
     }
