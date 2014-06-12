@@ -25,12 +25,8 @@ class PagesMeta extends MetaFields
 
             "parent_id" => [
                 "definition" => [
-                    "class" => \common\db\fields\ListField::className(),
+                    "class" => \common\db\fields\ParentListField::className(),
                     "title" => Yii::t('core', 'Parent'),
-                    "isRequired" => true,
-                    "showInGrid"=>false,
-                    "showInExtendedFilter"=>false,
-                    "search"=>false,
                     "data" => function(){ return $this->owner->getListTreeData(); },
                 ],
                 "params" => [$this->owner, "parent_id"]

@@ -45,8 +45,6 @@ class UserController extends Admin
 
         $class = User::className();
 
-        $classSearch = UserSearch::className();
-
         return [
 
             'index'=>[
