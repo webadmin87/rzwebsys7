@@ -74,6 +74,16 @@ class PagesController extends Admin
                 'modelClass'=>$class,
             ],
 
+            'up'=>[
+                'class'=>crud\TUp::className(),
+                'modelClass'=>$class,
+            ],
+
+            'down'=>[
+                'class'=>crud\TDown::className(),
+                'modelClass'=>$class,
+            ],
+
         ];
 
     }

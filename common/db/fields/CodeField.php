@@ -1,6 +1,6 @@
 <?php
 namespace common\db\fields;
-
+use common\db\ActiveRecord;
 /**
  * Class CodeField
  * Поле символьного кода
@@ -18,7 +18,7 @@ class CodeField extends TextField {
 
         $rules = parent::rules();
 
-        $rules[] = [$this->attr, 'unique'];
+        $rules[] = [$this->attr, 'unique', 'except'=>ActiveRecord::SCENARIO_SEARCH];
 
         $rules[] = [$this->attr, 'match', 'pattern'=>'/^[A-z0-9_-]+$/i'];
 

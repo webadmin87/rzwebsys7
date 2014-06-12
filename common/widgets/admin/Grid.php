@@ -22,6 +22,12 @@ class Grid extends Widget {
     const GRID_ID_PREF = "grid-";
 
     /**
+     * Суфикс иденификатора виджета Pjax
+     */
+
+    const PJAX_SUF = "-pjax";
+
+    /**
      * @var \common\db\ActiveRecord модель
      */
 
@@ -58,6 +64,12 @@ class Grid extends Widget {
     protected $id;
 
     /**
+     * @var string идентификатор виджета PJAX
+     */
+
+    protected $pjaxId;
+
+    /**
      * @var string шаблон
      */
 
@@ -68,6 +80,8 @@ class Grid extends Widget {
         $model = $this->model;
 
         $this->id = strtolower(self::GRID_ID_PREF.str_replace("\\", "-", $model::className()));
+
+        $this->pjaxId = $this->id.self::PJAX_SUF;
 
     }
 
@@ -164,12 +178,32 @@ class Grid extends Widget {
 
     public function getDefaultRowButtons() {
 
+
+
         if($this->tree) {
+
+            $js = function($u) {
+
+                return '$.get("'.$u.'", function(){ $.pjax.reload({container: "#'.$this->pjaxId.'", timeout: false}); }); return false;';
+
+            };
 
             return [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{enter} {view} {update} {delete}',
+                'template' => '{up} {down} {enter} {view} {update} {delete}',
                 'buttons' => [
+
+                    'up'=>function($url, $model) use ($js){
+
+                            return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-arrow-up']), ['data-pjax'=>0, 'onClick'=>$js($url), 'href'=>'#', 'title'=>Yii::t('core', 'Up')]);
+
+                        },
+
+                    'down'=>function($url, $model)  use ($js){
+
+                             return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-arrow-down']), ['data-pjax'=>0, 'onClick'=>$js($url), 'href'=>'#', 'title'=>Yii::t('core', 'Down')]);
+
+                    },
 
                     'enter'=>function($url, $model){
 
@@ -177,7 +211,7 @@ class Grid extends Widget {
 
                             return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-open']), ['data-pjax'=>0, 'href'=>$url, 'title'=>Yii::t('core', 'Enter')]);
 
-                        }
+                    },
 
                 ],
             ];
@@ -203,6 +237,7 @@ class Grid extends Widget {
            "columns"=>$this->getColumns(),
            "groupButtons"=>$this->getGroupButtons(),
            "id"=>$this->id,
+           "pjaxId"=>$this->pjaxId,
        ]);
 
     }

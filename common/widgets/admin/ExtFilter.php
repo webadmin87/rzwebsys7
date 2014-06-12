@@ -45,6 +45,12 @@ class ExtFilter extends Widget {
     public $tpl = "ext-form";
 
     /**
+     * @var array массив полей модели
+     */
+
+    protected $fields = array();
+
+    /**
      * @var array параметры \yii\widgets\ActiveForm по умолчанию
      */
 
@@ -59,13 +65,40 @@ class ExtFilter extends Widget {
 
     protected $id;
 
+    /**
+     * @inheritdoc
+     */
+
     public function init() {
 
        $model = $this->model;
 
        $this->id = strtolower(self::FORM_ID_PREF.str_replace("\\", "-", $model::className()));
 
+       $this->loadFields();
+
     }
+
+    /**
+     * Формирует массив полей выводимых в фильтре
+     */
+
+    protected function loadFields() {
+
+        $fields = $this->model->getMetaFields()->getFields();
+
+        foreach($fields AS $field) {
+
+            if($field->showInExtendedFilter)
+                $this->fields[] = $field;
+
+        }
+
+    }
+
+    /**
+     * @inheritdoc
+     */
 
     public function run() {
 
@@ -76,6 +109,7 @@ class ExtFilter extends Widget {
             "formOptions"=>$formOptions,
             "id"=>$this->id,
             "cols"=>$this->cols,
+            "fields"=>$this->fields,
             ]
         );
 

@@ -5,13 +5,12 @@ use yii\helpers\Html;
 
 /**
  * @var \common\db\ActiveRecord $model модель
+ * @var array fields массив полей модели
  * @var \yii\web\View $this
  * @var string $id идентификатор виджета
  * @var array $formOptions параметры \yii\widgets\ActiveForm
  * @var integer $cols количество колонок в фильтре
  */
-
-$fields = $model->getMetaFields()->getFields();
 
 $cls = 12 / $cols;
 

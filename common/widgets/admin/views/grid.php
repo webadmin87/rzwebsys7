@@ -1,10 +1,12 @@
 <?php
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\widgets\Pjax;
 
 
 /**
  * @var string $id идентификатор виджета
+ * @var string $pjaxId идентификатор виджета PJAX
  * @var \yii\data\ActiveDataProvider $dataProvider провайдер данных
  * @var \common\db\ActiveRecord $model модель
  * @var array $columns массив с описанием полей таблицы
@@ -13,6 +15,7 @@ use yii\helpers\Html;
  */
 
 ?>
+<?Pjax::begin(["id"=>$pjaxId]);?>
 <?=Html::beginForm();?>
 <?
 echo GridView::widget([
@@ -37,3 +40,4 @@ echo GridView::widget([
 
 </div>
 <?=Html::endForm();?>
+<?Pjax::end();?>
