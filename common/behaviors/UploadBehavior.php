@@ -16,7 +16,7 @@ use common\core\File;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class UploadBehavior extends Behavior
+abstract class UploadBehavior extends Behavior
 {
 
     /**
@@ -74,6 +74,12 @@ class UploadBehavior extends Behavior
     protected $maxFileSize = 50;
 
     /**
+     * @var array предыдущее значение атрибута модели хранящего информацию о прицепленных файлах. Устанавливается в afterFind.
+     */
+
+    protected $_value = array();
+
+    /**
      * @inheritdoc
      */
 
@@ -82,11 +88,16 @@ class UploadBehavior extends Behavior
         return [
 
             ActiveRecord::EVENT_BEFORE_VALIDATE => "beforeValidate",
+            ActiveRecord::EVENT_BEFORE_INSERT => "beforeSave",
+            ActiveRecord::EVENT_BEFORE_UPDATE => "beforeSave",
+            ActiveRecord::EVENT_AFTER_INSERT => "afterSave",
+            ActiveRecord::EVENT_AFTER_UPDATE => "afterSave",
+            ActiveRecord::EVENT_AFTER_FIND => "afterFind",
+            ActiveRecord::EVENT_BEFORE_DELETE => "beforeDelete",
 
         ];
 
     }
-
 
     /**
      * Возвращает путь к директории,
@@ -156,7 +167,19 @@ class UploadBehavior extends Behavior
 
         $this->checkModelFolder();
 
+        // Множественная загрузка файлов
+
         $files = UploadedFile::getInstancesByName($name);
+
+        // Единичная загрузка. Удаляем старые файлы
+
+        if(empty($files) AND $file = UploadedFile::getInstanceByName($name)) {
+
+            $this->deleteFiles();
+
+            $files = array($file);
+
+        }
 
         $fileNames = [];
 
@@ -487,6 +510,84 @@ class UploadBehavior extends Behavior
         return false;
 
     }
+
+    /**
+     * После сохранения модели
+     * @return bool
+     */
+
+    public function afterSave()
+    {
+
+        $attr = $this->attribute;
+
+        if (!empty($this->owner->$attr))
+            $this->owner->$attr = unserialize($this->owner->$attr);
+
+        return true;
+    }
+
+    /**
+     * После выборки модели
+     * @return bool
+     */
+
+    public function afterFind()
+    {
+
+        $attr = $this->attribute;
+
+        if (!empty($this->owner->$attr)) {
+
+            $arr = unserialize($this->owner->$attr);
+            $this->owner->$attr = $arr;
+            $this->_value = $arr;
+
+        }
+        return true;
+    }
+
+
+    /**
+     * Перед удалением модели
+     * @return bool
+     */
+
+    public function beforeDelete() {
+        $this->deleteAllFiles(); // удалили модель, удаляем и файл от неё
+        return true;
+    }
+
+
+    /**
+     * Удаляет файлы перед сохранением
+     * @return bool
+     */
+
+    protected function deleteFiles() {
+
+        if(!is_array($this->_value))
+            return false;
+
+        foreach($this->_value AS $v) {
+
+            $path = Yii::getAlias($this->webroot) . $v["file"];
+
+            if(!$this->hasFile($v["file"]) AND is_file($path))
+                unlink($path);
+
+        }
+
+        return true;
+
+    }
+
+    /**
+     * Обработка загрузки файлов должна быть здесь
+     */
+
+    abstract function beforeSave();
+
 
 
 }

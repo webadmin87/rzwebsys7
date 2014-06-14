@@ -8,7 +8,6 @@
  * @var string $webroot алиас DOCUMENT ROOT
  */
 
-use Yii;
 use yii\helpers\Html;
 use common\helpers\FileHelper;
 
