@@ -9,6 +9,18 @@ if (!YII_ENV_TEST) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         'allowedIPs' => ['127.0.0.1', '192.168.56.1'],
+        'generators'=>[
+
+            'crud'=>[
+                'class' => 'yii\gii\generators\crud\Generator',
+                "templates"=>[
+                    'App CRUD'=>'@app/views/gii/crud/app',
+                    'App tree CRUD'=>'@app/views/gii/crud/app-tree',
+                ],
+
+            ],
+
+        ],
     ];
 
 }

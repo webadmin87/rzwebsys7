@@ -4,7 +4,6 @@ namespace app\modules\main\modules\admin\controllers;
 
 use Yii;
 use app\modules\main\models\User;
-use app\modules\main\models\UserSearch;
 use yii\filters\VerbFilter;
 use common\actions\crud;
 use common\controllers\Admin;
