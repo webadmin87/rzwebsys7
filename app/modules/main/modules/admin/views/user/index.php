@@ -5,7 +5,7 @@ use common\widgets\admin\CrudLinks;
 /**
  * @var yii\web\View $this
  * @var yii\data\ActiveDataProvider $dataProvider
- * @var app\modules\main\models\UserSearch $searchModel
+ * @var app\modules\main\models\User $searchModel
  */
 
 $this->title = \Yii::t($this->context->tFile, 'Users');

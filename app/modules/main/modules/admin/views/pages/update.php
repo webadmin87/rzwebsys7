@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /**
  * @var yii\web\View $this
- * @var \app\modules\main\models\User $model
+ * @var \app\modules\main\models\Pages $model
  */
 
 $this->title = \Yii::t($this->context->tFile, 'Update Page').': ' . $model->id;

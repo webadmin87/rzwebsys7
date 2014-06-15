@@ -5,7 +5,7 @@ use yii\widgets\Breadcrumbs;
 /**
  * @var yii\web\View $this
  * @var yii\data\ActiveDataProvider $dataProvider
- * @var app\modules\main\models\UserSearch $searchModel
+ * @var app\modules\main\models\Pages $searchModel
  * @var int $parent_id
  */
 
