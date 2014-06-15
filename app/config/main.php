@@ -30,17 +30,14 @@ return [
     ],
     'modules' => [
 
-        'admin' => [
-            'class'=>app\modules\admin\Admin::className(),
-            'controllerNamespace' => 'app\modules\admin\controllers',
-            'modules'=> ['main'=>[
-                'class'=>app\modules\admin\modules\main\Main::className()
-            ]],
-
-        ],
-
         'main' => [
             'class'=>app\modules\main\Main::className(),
+            'controllerNamespace' => 'app\modules\main\controllers',
+            'modules'=> ['admin'=>[
+                'class'=>app\modules\main\modules\admin\Admin::className(),
+                'controllerNamespace' => 'app\modules\main\modules\admin\controllers',
+            ]],
+
         ],
 
     ],
@@ -56,6 +53,13 @@ return [
             'suffix'=>'/',
             'rules'=>[
 
+                // Правила для админки
+
+                'admin/<module:\w+>/<controller:[A-z0-9_-]+>/<action:[A-z0-9_-]+>/<id:\d+>'=>'<module>/admin/<controller>/<action>',
+                'admin/<module:\w+>/<controller:[A-z0-9_-]+>/<action:[A-z0-9_-]+>'=>'<module>/admin/<controller>/<action>',
+                'admin/<module:\w+>/<controller:[A-z0-9_-]+>'=>'<module>/admin/<controller>',
+                'admin/<module:\w+>'=>'<module>/admin',
+                'admin'=>'main/admin',
             ]
         ],
         'i18n' => [

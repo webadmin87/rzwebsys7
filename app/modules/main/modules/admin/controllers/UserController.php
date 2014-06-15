@@ -1,21 +1,22 @@
 <?php
 
-namespace app\modules\admin\modules\main\controllers;
+namespace app\modules\main\modules\admin\controllers;
 
 use Yii;
-use app\modules\main\models\Pages;
+use app\modules\main\models\User;
+use app\modules\main\models\UserSearch;
 use yii\filters\VerbFilter;
 use common\actions\crud;
 use common\controllers\Admin;
 
 
 /**
- * Class PagesController
+ * Class UserController
  * Контроллер CRUD действий для моделей пользователей системы
  * @package app\modules\admin\modules\main\controllers
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class PagesController extends Admin
+class UserController extends Admin
 {
 
     /**
@@ -42,20 +43,20 @@ class PagesController extends Admin
      */
     public function actions() {
 
-        $class = Pages::className();
+        $class = User::className();
 
         return [
 
             'index'=>[
-                'class'=>crud\TAdmin::className(),
+                'class'=>crud\Admin::className(),
                 'modelClass'=>$class,
             ],
             'create'=>[
-                'class'=>crud\TCreate::className(),
+                'class'=>crud\Create::className(),
                 'modelClass'=>$class,
             ],
             'update'=>[
-                'class'=>crud\TUpdate::className(),
+                'class'=>crud\Update::className(),
                 'modelClass'=>$class,
             ],
 
@@ -65,27 +66,12 @@ class PagesController extends Admin
             ],
 
             'delete'=>[
-                'class'=>crud\TDelete::className(),
+                'class'=>crud\Delete::className(),
                 'modelClass'=>$class,
             ],
 
             'groupdelete'=>[
-                'class'=>crud\TGroupDelete::className(),
-                'modelClass'=>$class,
-            ],
-
-            'up'=>[
-                'class'=>crud\TUp::className(),
-                'modelClass'=>$class,
-            ],
-
-            'down'=>[
-                'class'=>crud\TDown::className(),
-                'modelClass'=>$class,
-            ],
-
-            'replace'=>[
-                'class'=>crud\TReplace::className(),
+                'class'=>crud\GroupDelete::className(),
                 'modelClass'=>$class,
             ],
 

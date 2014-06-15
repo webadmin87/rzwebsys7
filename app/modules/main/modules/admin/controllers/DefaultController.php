@@ -1,5 +1,5 @@
 <?php
-namespace app\modules\admin\controllers;
+namespace app\modules\main\modules\admin\controllers;
 use common\controllers\Admin;
 
 /**

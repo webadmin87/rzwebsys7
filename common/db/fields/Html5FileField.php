@@ -24,7 +24,7 @@ class Html5FileField extends Field {
      * @var string маршруд для загрузки файлов
      */
 
-    public $route = "admin/upload";
+    public $route = "main/admin/upload";
 
     /**
      * @var string алиас DOCUMENT ROOT
