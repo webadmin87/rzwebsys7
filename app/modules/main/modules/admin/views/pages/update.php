@@ -7,10 +7,10 @@ use yii\helpers\Html;
  * @var \app\modules\main\models\User $model
  */
 
-$this->title = 'Update User: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Pages', 'url' => ['index']];
+$this->title = \Yii::t($this->context->tFile, 'Update Page').': ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Pages'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = \Yii::t('core', 'Update');
 ?>
 <div class="user-update">
 

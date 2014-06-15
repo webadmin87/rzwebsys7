@@ -1,7 +1,7 @@
 <?php
 
 use yii\widgets\Breadcrumbs;
-use yii\bootstrap\Nav AS Menu;
+use common\widgets\admin\Menu;
 /**
  * @var \yii\web\View $this
  * @var string $content
@@ -21,13 +21,7 @@ use yii\bootstrap\Nav AS Menu;
 
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
            <?
-           echo Menu::widget([
-               'route'=>$this->context->uniqueId,
-               'items' => $this->context->menuItems?$this->context->menuItems:[],
-               'options' => [
-                   'class'=>'nav nav-pills nav-stacked'
-               ]
-           ]);
+           echo Menu::widget();
            ?>
         </div>
 

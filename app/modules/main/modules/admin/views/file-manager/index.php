@@ -2,7 +2,7 @@
 use mihaildev\elfinder\ElFinder;
 
 ?>
-
+<h1><?=\Yii::t($this->context->tFile, 'FileManager')?></h1>
     <?
     // @TOFIX заменить файловый менеджер на более конфигурируемый
     echo ElFinder::widget([

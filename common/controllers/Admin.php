@@ -12,6 +12,16 @@ use yii\web\Controller;
 
 class Admin extends Controller {
 
+    /**
+     * @var string идентификатор файла перевода
+     */
+
+    public $tFile = "core";
+
+    /**
+     * @inheritdoc
+     */
+
     public $layout = "@app/views/layouts/admin.php";
 
     /**
@@ -35,24 +45,5 @@ class Admin extends Controller {
             ],
         ];
     }
-
-
-    /**
-     * Возвращает меню админки
-     * @return array
-     */
-
-    public function getMenuItems() {
-
-        return [
-
-            ['label' => Yii::t('core', 'Users'), 'url' => ['/admin/main/user']],
-            ['label' => Yii::t('core', 'FileManger'), 'url' => ['/admin/main/file-manager']],
-
-        ];
-
-    }
-
-
 
 }

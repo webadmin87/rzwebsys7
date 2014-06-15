@@ -19,6 +19,12 @@ class PagesController extends Admin
 {
 
     /**
+     * @var string идентификатор файла перевода
+     */
+
+    public $tFile = "main/app";
+
+    /**
      * Поведения
      * @return array
      */

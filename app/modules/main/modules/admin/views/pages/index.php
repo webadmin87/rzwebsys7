@@ -9,7 +9,8 @@ use yii\widgets\Breadcrumbs;
  * @var int $parent_id
  */
 
-$this->title = 'Pages';
+$this->title = \Yii::t($this->context->tFile,'Pages');
+
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -28,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= Breadcrumbs::widget([
         'homeLink'=>[
-            "label"=>Yii::t('core', 'Root'),
+            "label"=>\Yii::t($this->context->tFile, 'Root'),
             "url"=>["/".Yii::$app->controller->route]
         ],
         'links' => $searchModel->getBreadCrumbsItems($parent_id, "/".Yii::$app->controller->route),

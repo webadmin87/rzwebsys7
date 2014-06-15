@@ -27,7 +27,7 @@ class UserMeta extends MetaFields
             "role" => [
                 "definition" => [
                     "class" => \common\db\fields\ListField::className(),
-                    "title" => Yii::t('core', 'Role'),
+                    "title" => Yii::t('main/app', 'Role'),
                     "isRequired" => true,
                     "data" => function() { return $this->owner->getRolesNames(); },
                 ],
@@ -37,7 +37,7 @@ class UserMeta extends MetaFields
             "username" => [
                 "definition" => [
                     "class" => \common\db\fields\TextField::className(),
-                    "title" => Yii::t('core', 'Username'),
+                    "title" => Yii::t('main/app', 'Username'),
                     "isRequired" => true,
                 ],
                 "params" => [$this->owner, "username"]
@@ -46,7 +46,7 @@ class UserMeta extends MetaFields
             "password" => [
                 "definition" => [
                     "class" => \common\db\fields\PasswordField::className(),
-                    "title" => Yii::t('core', 'Password'),
+                    "title" => Yii::t('main/app', 'Password'),
                     "isRequired" => false,
                     "showInGrid" => false,
                     "showInView" => false,
@@ -57,7 +57,7 @@ class UserMeta extends MetaFields
             "confirm_password" => [
                 "definition" => [
                     "class" => \common\db\fields\PasswordField::className(),
-                    "title" => Yii::t('core', 'Confirm password'),
+                    "title" => Yii::t('main/app', 'Confirm password'),
                     "isRequired" => false,
                     "showInGrid" => false,
                     "showInView" => false,
@@ -69,7 +69,7 @@ class UserMeta extends MetaFields
             "email" => [
                 "definition" => [
                     "class" => \common\db\fields\EmailField::className(),
-                    "title" => Yii::t('core', 'Email'),
+                    "title" => Yii::t('main/app', 'Email'),
                     "isRequired" => true,
                 ],
                 "params" => [$this->owner, "email"]
@@ -78,7 +78,7 @@ class UserMeta extends MetaFields
             "name" => [
                 "definition" => [
                     "class" => \common\db\fields\TextField::className(),
-                    "title" => Yii::t('core', 'Name'),
+                    "title" => Yii::t('main/app', 'Name'),
                     "isRequired" => false,
                 ],
                 "params" => [$this->owner, "name"]
@@ -87,7 +87,7 @@ class UserMeta extends MetaFields
             "image" => [
                 "definition" => [
                     "class" => \common\db\fields\Html5ImageField::className(),
-                    "title" => Yii::t('core', 'Image'),
+                    "title" => Yii::t('main/app', 'Image'),
                     "isRequired" => false,
                 ],
                 "params" => [$this->owner, "image"]
@@ -96,7 +96,7 @@ class UserMeta extends MetaFields
             "text" => [
                 "definition" => [
                     "class" => \common\db\fields\TextAreaField::className(),
-                    "title" => Yii::t('core', 'Text'),
+                    "title" => Yii::t('main/app', 'Text'),
                     "isRequired" => false,
                 ],
                 "params" => [$this->owner, "text"]

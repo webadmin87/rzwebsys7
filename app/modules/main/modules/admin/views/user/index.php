@@ -8,7 +8,7 @@ use common\widgets\admin\CrudLinks;
  * @var app\modules\main\models\UserSearch $searchModel
  */
 
-$this->title = 'Users';
+$this->title = \Yii::t($this->context->tFile, 'Users');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

@@ -9,7 +9,7 @@ use common\widgets\admin\CrudLinks;
  */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Pages', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Pages'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">

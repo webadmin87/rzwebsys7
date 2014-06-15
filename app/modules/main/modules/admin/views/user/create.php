@@ -7,8 +7,8 @@ use yii\helpers\Html;
  * @var \app\modules\main\models\User $model
  */
 
-$this->title = 'Create User';
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+$this->title = \Yii::t($this->context->tFile, 'Create User');
+$this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-create">

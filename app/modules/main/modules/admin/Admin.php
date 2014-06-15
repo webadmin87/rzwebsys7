@@ -2,9 +2,16 @@
 
 namespace app\modules\main\modules\admin;
 
-use yii\base\Module;
+use  common\core\AdminModule;
 
-class Admin extends Module {
+/**
+ * Class Admin
+ * Административный модуль главного модуля
+ * @package app\modules\main\modules\admin
+ * @author Churkin Anton <webadmin87@gmail.com>
+ */
+
+class Admin extends AdminModule {
 
 
 }
