@@ -1,46 +1,24 @@
 <?php
 
-use yii\db\ActiveRecordInterface;
-use yii\helpers\StringHelper;
-
-/**
- * This is the template for generating a CRUD controller class file.
- *
- * @var yii\web\View $this
- * @var yii\gii\generators\crud\Generator $generator
- */
-
-$controllerClass = StringHelper::basename($generator->controllerClass);
-$modelClass = StringHelper::basename($generator->modelClass);
-$searchModelClass = StringHelper::basename($generator->searchModelClass);
-if ($modelClass === $searchModelClass) {
-    $searchModelAlias = $searchModelClass . 'Search';
-}
-echo "<?php\n";
-?>
-
-namespace <?= StringHelper::dirname(ltrim($generator->controllerClass, '\\')) ?>;
+namespace app\modules\main\modules\admin\controllers;
 
 use Yii;
-use <?= ltrim($generator->modelClass, '\\') ?>;
-<?php if (!empty($generator->searchModelClass)): ?>
-use <?= ltrim($generator->searchModelClass, '\\') . (isset($searchModelAlias) ? " as $searchModelAlias" : "") ?>;
-<?php endif; ?>
-use <?= ltrim($generator->baseControllerClass, '\\') ?>;
+use app\modules\main\models\Template;
+use common\controllers\Admin;
 use yii\filters\VerbFilter;
 use common\actions\crud;
 
 /**
- * <?= $controllerClass ?> implements the CRUD actions for <?= $modelClass ?> model.
+ * TemplateController implements the CRUD actions for Template model.
  */
-class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->baseControllerClass) . "\n" ?>
+class TemplateController extends Admin
 {
 
     /**
     * @var string идентификатор файла перевода
     */
 
-    public $tFile = "moduleCode/app";
+    public $tFile = "main/app";
 
     /**
     * Поведения
@@ -66,7 +44,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     */
     public function actions() {
 
-        $class = <?= $modelClass ?>::className();
+        $class = Template::className();
 
         return [
 

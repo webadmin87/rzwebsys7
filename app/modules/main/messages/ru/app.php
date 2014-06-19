@@ -15,4 +15,13 @@ return [
     "Create Page"=>"Создать страницу",
     "Update User"=>"Изменить пользователя",
     "Update Page"=>"Изменить страницу",
+    "Templates"=>"Шаблоны",
+    "Condition"=>"Условие",
+    "Condition type"=>"Тип условия",
+    "Sort"=>"Сортировка",
+    "Update Template"=>"Изменить шаблон",
+    "No condition"=>"Без условия",
+    "Url condition"=>"Url адрес",
+    "Php condition"=>"Php выражение",
+    "Create Template"=>"Создать шаблон"
 ];

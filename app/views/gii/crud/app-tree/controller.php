@@ -29,7 +29,6 @@ use <?= ltrim($generator->searchModelClass, '\\') . (isset($searchModelAlias) ? 
 use <?= ltrim($generator->baseControllerClass, '\\') ?>;
 use yii\filters\VerbFilter;
 use common\actions\crud;
-use common\controllers\Admin;
 
 /**
  * <?= $controllerClass ?> implements the CRUD actions for <?= $modelClass ?> model.
