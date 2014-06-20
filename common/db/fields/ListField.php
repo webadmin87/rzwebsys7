@@ -78,5 +78,21 @@ class ListField extends TextField {
         return $this->dataValue;
     }
 
+    /**
+     * @inheritdoc
+     */
+
+    public function xEditable() {
+
+        return [
+
+            'class' => \mcms\xeditable\XEditableColumn::className(),
+            'url' => $this->getEditableUrl(),
+            'dataType' => 'select',
+            'format' => 'raw',
+            'editable' => [ 'source' => $this->defaultGridFilter() ],
+        ];
+
+    }
 
 }

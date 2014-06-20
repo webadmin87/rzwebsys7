@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d3376c88123797002a09c7e504f64a0a",
+    "hash": "91c533453ba8c880f0c24007d71238aa",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -203,6 +203,49 @@
                 "image processing"
             ],
             "time": "2013-07-10 17:25:36"
+        },
+        {
+            "name": "marciocamello/yii2-x-editable",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marciocamello/yii2-x-editable.git",
+                "reference": "1a0fe4049ba1aab79b039f28b24670de23689fac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marciocamello/yii2-x-editable/zipball/1a0fe4049ba1aab79b039f28b24670de23689fac",
+                "reference": "1a0fe4049ba1aab79b039f28b24670de23689fac",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "mcms\\xeditable\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "MarcioCamello",
+                    "email": "marciocamello@outlook.com"
+                }
+            ],
+            "description": "X-editable extensions for Yii 2, based in X-editable with Bootstrap",
+            "keywords": [
+                "extension",
+                "mcms",
+                "x-editable",
+                "yii2"
+            ],
+            "time": "2014-05-30 19:38:14"
         },
         {
             "name": "mihaildev/yii2-ckeditor",
@@ -914,9 +957,9 @@
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "marciocamello/yii2-x-editable": 20
+    },
     "platform": {
         "php": ">=5.4.0"
     },

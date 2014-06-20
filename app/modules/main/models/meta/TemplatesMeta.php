@@ -67,6 +67,7 @@ class TemplatesMeta extends MetaFields {
                     "class" => \common\db\fields\TextField::className(),
                     "title" => Yii::t('main/app', 'Sort'),
                     "isRequired" => false,
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "sort"]
             ],

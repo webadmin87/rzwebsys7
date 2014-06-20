@@ -76,6 +76,11 @@ class TemplateController extends Admin
                 'modelClass'=>$class,
             ],
 
+            'editable'=>[
+                'class'=>crud\XEditable::className(),
+                'modelClass'=>$class,
+            ],
+
         ];
 
     }

@@ -22,7 +22,8 @@
         "yiisoft/yii2-jui": "*",
         "mihaildev/yii2-ckeditor": "*",
         "mihaildev/yii2-elfinder": "*",
-        "creocoder/yii2-nested-set-behavior": "*"
+        "creocoder/yii2-nested-set-behavior": "*",
+		"marciocamello/yii2-x-editable": "dev-master"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

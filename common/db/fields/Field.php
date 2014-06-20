@@ -83,6 +83,18 @@ class Field extends  Object {
     public $search = true;
 
     /**
+     * @var bool возможность редактирования значения поля в гриде
+     */
+
+    public $editInGrid = false;
+
+    /**
+     * @var string действие для редактирования модели из грида
+     */
+
+    public $editableAction = "editable";
+
+    /**
      * @var mixed значение фильтра грида установленное
      */
     protected $gridFilter;
@@ -143,7 +155,35 @@ class Field extends  Object {
         if($this->showInFilter)
             $grid['filter'] = $this->getGridFilter();
 
+        if($this->editInGrid) {
+
+            $grid = array_merge($grid, $this->xEditable());
+
+        }
+
         return $grid;
+
+    }
+
+    public function xEditable() {
+
+        return [
+
+            'class' => \mcms\xeditable\XEditableColumn::className(),
+            'url' => $this->getEditableUrl(),
+            'format' => 'raw',
+        ];
+
+    }
+
+    /**
+     * Создает url для x-editable
+     * @return string
+     */
+
+    public function getEditableUrl() {
+
+        return Yii::$app->urlManager->createUrl(Yii::$app->controller->uniqueId."/".$this->editableAction);
 
     }
 

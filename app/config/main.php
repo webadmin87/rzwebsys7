@@ -1,6 +1,8 @@
 <?php
 
 \Yii::$container->set(\yii\widgets\Pjax::className(), ["timeout" => false]);
+\Yii::$container->set(\mcms\xeditable\XEditableAsset::className(), ["publishOptions" => ['forceCopy' => false]]);
+\Yii::$container->set(\mcms\xeditable\XEditableColumn::className(), ['editable' => null]);
 
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),

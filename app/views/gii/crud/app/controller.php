@@ -98,6 +98,11 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
                 'modelClass'=>$class,
             ],
 
+            'editable'=>[
+                'class'=>crud\XEditable::className(),
+                'modelClass'=>$class,
+            ],
+
         ];
 
     }
