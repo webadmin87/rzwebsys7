@@ -29,6 +29,9 @@ AppAsset::register($this);
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
+        'innerContainerOptions' => [
+            'class'=>'container-fluid',
+        ],
     ]);
     $menuItems = [
         ['label' => Yii::t('core', 'Home'), 'url' => ['/site/index']],
