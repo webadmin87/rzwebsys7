@@ -2,10 +2,10 @@
 
 use yii\db\Schema;
 
-class m140529_191317_main_create_pages extends \yii\db\Migration
+class m140621_141441_create_menu_table extends \yii\db\Migration
 {
 
-    public $tableName = "pages";
+    public $tableName = "menu";
 
     public function up()
     {
@@ -20,14 +20,10 @@ class m140529_191317_main_create_pages extends \yii\db\Migration
             'lft'=>Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
             'rgt'=>Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
             'level'=>Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
-            'title'=>Schema::TYPE_TEXT . ' NOT NULL',
-            'code'=>Schema::TYPE_TEXT . ' NOT NULL',
-            'text'=>Schema::TYPE_TEXT,
-            'image'=>Schema::TYPE_TEXT,
-            'metatitle'=>Schema::TYPE_TEXT,
-            'keywords'=>Schema::TYPE_TEXT,
-            'description'=>Schema::TYPE_TEXT,
-            'comments'=>Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT false',
+            'title'=>Schema::TYPE_TEXT,
+            'link'=>Schema::TYPE_TEXT,
+            'target'=>Schema::TYPE_STRING . " NOT NULL DEFAULT '_self'",
+            'class'=>Schema::TYPE_STRING,
         ]);
 
         $this->insert("{{%$this->tableName}}",[
@@ -37,8 +33,7 @@ class m140529_191317_main_create_pages extends \yii\db\Migration
             'lft'=>1,
             'rgt'=>2,
             'level'=>1,
-            'title'=>'',
-            'code'=>''
+
         ]);
 
     }

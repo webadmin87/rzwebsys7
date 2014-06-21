@@ -71,9 +71,9 @@ class Create extends Base {
 
         $request = Yii::$app->request;
 
-        $load = $model->load($request->post());
+        $model->attributes = $this->defaultAttrs;
 
-        $model->attributes = array_merge($this->defaultAttrs, $model->attributes);
+        $load = $model->load($request->post());
 
         if ($load && $request->post($this->validateParam)) {
             return $this->performAjaxValidation($model);

@@ -12,6 +12,7 @@ echo "<?php\n";
 ?>
 use yii\helpers\Html;
 use common\widgets\admin\CrudLinks;
+use yii\widgets\Breadcrumbs;
 /**
 * @var yii\web\View $this
 * @var yii\data\ActiveDataProvider $dataProvider

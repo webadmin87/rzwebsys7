@@ -15,6 +15,7 @@ return [
                             'label'=>Yii::t('main/app', 'Main module'),
                             'items'=>[
                                 ['label' => Yii::t('main/app', 'Pages'), 'url' => ['/admin/main/pages']],
+                                ['label' => Yii::t('main/app', 'Menu'), 'url' => ['/admin/main/menu']],
                                 ['label' => Yii::t('main/app', 'Users'), 'url' => ['/admin/main/user']],
                                 ['label' => Yii::t('main/app', 'FileManager'), 'url' => ['/admin/main/file-manager']],
                                 ['label' => Yii::t('main/app', 'Templates'), 'url' => ['/admin/main/template']],

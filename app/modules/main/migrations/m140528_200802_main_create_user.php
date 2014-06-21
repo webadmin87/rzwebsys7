@@ -29,7 +29,6 @@ class m140528_200802_main_create_user extends \yii\db\Migration
 
         $this->insert("{{%$this->tableName}}",[
 
-            'id'=>1,
             'author_id'=>1,
             'username'=>'admin',
             'auth_key'=>'PBBpK3K8_YDofSoP1AYWcGZAbISA0O2T',

@@ -35,14 +35,14 @@ class TCreate extends Create {
 
         $request = Yii::$app->request;
 
+        $model->attributes = $this->defaultAttrs;
+
         $load = $model->load($request->post());
 
         $parentModel = $class::find()->where(["id"=>$model->parent_id])->one();
 
         if(!$parentModel)
             throw new BadRequestHttpException('Bad Request');
-
-        $model->attributes = array_merge($this->defaultAttrs, $model->attributes);
 
         if ($load && $request->post($this->validateParam)) {
             return $this->performAjaxValidation($model);

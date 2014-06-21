@@ -26,7 +26,6 @@ class m140616_185756_create_templates_table extends \yii\db\Migration
 
         $this->insert("{{%$this->tableName}}",[
 
-            'id'=>1,
             'author_id'=>1,
             'title'=>'Demo',
             'code'=>'demo',

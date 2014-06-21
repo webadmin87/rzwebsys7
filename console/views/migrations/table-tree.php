@@ -32,7 +32,6 @@ class <?= $className ?> extends \yii\db\Migration
 
         $this->insert("{{%$this->tableName}}",[
 
-            'id'=>1,
             'author_id'=>1,
             'root'=>1,
             'lft'=>1,

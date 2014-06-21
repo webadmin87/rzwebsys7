@@ -3,6 +3,7 @@ namespace common\actions\crud;
 
 use Yii;
 use yii\web\ForbiddenHttpException;
+use common\db\TActiveRecord;
 
 /**
  * Class XEditable
@@ -40,8 +41,11 @@ class XEditable extends Base {
 
             $model->{$request->post('name')} = $request->post('value');
 
-            return $model->save();
-
+            if($model instanceof TActiveRecord) {
+                return $model->saveNode();
+            } else {
+                return $model->save();
+            }
         }
 
         return false;

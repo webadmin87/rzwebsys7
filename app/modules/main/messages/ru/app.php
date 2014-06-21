@@ -29,4 +29,12 @@ return [
     "Meta title"=>"Заголовок браузера",
     "Keywords"=>"Ключевые слова",
     "Description"=>"Описание",
+    "Menu"=>"Меню",
+    "Menus"=>"Меню",
+    "Css class"=>"Css класс",
+    "Target"=>"Назначение",
+    "Self window"=>"Текущее окно",
+    "Blank window"=>"Новое окно",
+    "Create Menu"=>"Создать пункт меню",
+    "Root"=>"Корень",
 ];
