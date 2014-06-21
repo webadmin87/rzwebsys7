@@ -38,4 +38,17 @@ class TextAreaField extends TextField {
 
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function view() {
+
+        $view = parent::view();
+
+        $view['format'] = 'html';
+
+        return $view;
+
+    }
+
 }

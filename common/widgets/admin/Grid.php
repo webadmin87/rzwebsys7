@@ -46,6 +46,12 @@ class Grid extends Widget {
     public $rowButtons = [];
 
     /**
+     * @var array дополнительные пользовательские колонки
+     */
+
+    public $userColumns = [];
+
+    /**
      * @var bool вывод древовидных моделей
      */
 
@@ -186,6 +192,8 @@ class Grid extends Widget {
                 $columns[] = $grid;
 
         }
+
+        $columns = array_merge($columns, $this->userColumns);
 
         $columns[] = array_merge($this->getDefaultRowButtons(), $this->rowButtons);
 

@@ -34,7 +34,7 @@ AdminAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => Yii::t('core', 'Home'), 'url' => ['/site/index']],
+        ['label' => Yii::t('core', 'Home'), 'url' => Yii::$app->homeUrl],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => Yii::t('core', 'Login'), 'url' => ['/site/login']];

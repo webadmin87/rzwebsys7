@@ -23,5 +23,10 @@ return [
     "No condition"=>"Без условия",
     "Url condition"=>"Url адрес",
     "Php condition"=>"Php выражение",
-    "Create Template"=>"Создать шаблон"
+    "Create Template"=>"Создать шаблон",
+    "Link"=>"Ссылка",
+    "Comments"=>"Комментарии",
+    "Meta title"=>"Заголовок браузера",
+    "Keywords"=>"Ключевые слова",
+    "Description"=>"Описание",
 ];

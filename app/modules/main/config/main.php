@@ -47,6 +47,16 @@ return [
 
         ],
 
+        'urlManager' => [
+
+            'rules'=>[
+
+                'page/<code:[A-z0-9_-]+>'=>'main/pages'
+
+            ],
+
+        ],
+
     ],
 
 ];

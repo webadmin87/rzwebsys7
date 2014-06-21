@@ -30,6 +30,8 @@ class PagesController extends App {
         if(!$model)
             throw new NotFoundHttpException;
 
+        $this->view->registerMetaTags($model);
+
         return $this->render('index', ["model"=>$model]);
 
     }

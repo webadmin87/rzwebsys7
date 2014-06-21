@@ -4,13 +4,12 @@
    padding: 40px 0;
    background: #62488A;
    margin-bottom: 20px;
-    color: #fff;
+   color: #fff;
 }
 
 #content {
-
-    height: 500px;
-
+    min-height: 500px;
+    margin-bottom: 20px;
 }
 
 .footer {
