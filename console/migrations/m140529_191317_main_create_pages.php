@@ -23,6 +23,11 @@ class m140529_191317_main_create_pages extends \yii\db\Migration
             'title'=>Schema::TYPE_TEXT . ' NOT NULL',
             'code'=>Schema::TYPE_TEXT . ' NOT NULL',
             'text'=>Schema::TYPE_TEXT,
+            'image'=>Schema::TYPE_TEXT,
+            'metatitle'=>Schema::TYPE_TEXT,
+            'keywords'=>Schema::TYPE_TEXT,
+            'description'=>Schema::TYPE_TEXT,
+            'comments'=>Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT false',
         ]);
 
         $this->insert("{{%$this->tableName}}",[

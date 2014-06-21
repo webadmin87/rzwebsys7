@@ -1,0 +1,21 @@
+#top {
+
+   height: 200px;
+   padding: 40px 0;
+   background: #62488A;
+   margin-bottom: 20px;
+    color: #fff;
+}
+
+#content {
+
+    height: 500px;
+
+}
+
+.footer {
+    background-color: #F5F5F5;
+    border-top: 1px solid #DDDDDD;
+    height: 60px;
+    padding-top: 20px;
+}

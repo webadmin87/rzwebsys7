@@ -6,10 +6,10 @@ use yii\web\AssetBundle as YiiBundle;
 class AssetBundle extends YiiBundle {
 
     public $css = [
-        'assets/uploader.css',
+        'uploader.css',
     ];
     public $js = [
-        'assets/uploader.js',
+        'uploader.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
@@ -19,7 +19,7 @@ class AssetBundle extends YiiBundle {
 
     public function init() {
 
-        $this->sourcePath = __DIR__;
+        $this->sourcePath = __DIR__."/assets";
 
     }
 

@@ -57,4 +57,41 @@ class Template extends ActiveRecord {
         return meta\TemplatesMeta::className();
     }
 
+    /**
+     * Подключать ли данный шаблон
+     * @return bool
+     */
+
+    public function isSuitable() {
+
+        if(empty($this->cond_type))
+            return true;
+        else {
+
+            $match = $this->getMatch();
+
+            if($match)
+                return $match->test($this->cond);
+            else
+                return false;
+        }
+
+
+    }
+
+    /**
+     * Возвращает объект для проверки условия подключения шаблона. False в случае ошибки
+     * @return bool|\common\components\IMatch
+     */
+
+    public function getMatch() {
+
+        if($this->cond_type == self::COND_PHP)
+            return Yii::createObject(\common\components\PhpMatch::className());
+        elseif($this->cond_type == self::COND_URL)
+            return Yii::createObject(\common\components\UrlMatch::className());
+        else
+            return false;
+    }
+
 }

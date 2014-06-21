@@ -8,6 +8,9 @@ return [
         ],
         'resizer'=>[
             "class" => \common\components\Resizer::className()
-        ]
+        ],
+        'view'=>[
+            'class' => \common\components\View::className(),
+        ],
     ],
 ];

@@ -18,6 +18,8 @@ return [
     'language' => 'ru-RU',
     'controllerNamespace' => 'app\controllers',
     'bootstrap' => ['log'],
+    'defaultRoute'=>'main/pages',
+    'homeUrl'=>'/',
     'controllerMap' => [
         'elfinder' => [
             'class' => mihaildev\elfinder\Controller::className(),
@@ -80,6 +82,15 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@app/themes/demo',
+                    '@app/modules' => '@app/themes/demo/modules',
+                ],
+                'baseUrl' => '@web/themes/demo',
+            ],
         ],
     ],
     'params' => $params,
