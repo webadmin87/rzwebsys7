@@ -3,14 +3,15 @@ namespace common\components;
 
 use Yii;
 
+
 /**
- * Class PhpMatch
- * Php выражение
+ * Class RouteMatch
+ * Совпадение с текущим маршрутом
  * @package common\components
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class PhpMatch extends Match {
+class RouteMatch extends Match {
 
     /**
      * Проверяет истинность php выражения
@@ -20,7 +21,7 @@ class PhpMatch extends Match {
     public function test($value)
     {
 
-        return eval($value);
+        return $value  == Yii::$app->requestedRoute;
 
     }
 

@@ -2,7 +2,6 @@
 namespace common\components;
 
 use Yii;
-use yii\base\Object;
 
 /**
  * Class UrlMatch
@@ -11,7 +10,7 @@ use yii\base\Object;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class UrlMatch extends Object implements IMatch {
+class UrlMatch extends Match {
 
     /**
      * Проверяет соответствие текущего url заданному значению
