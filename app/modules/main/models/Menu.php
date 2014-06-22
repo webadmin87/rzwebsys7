@@ -48,4 +48,36 @@ class Menu extends TActiveRecord {
         return meta\MenuMeta::className();
     }
 
+    /**
+     * Определяет является ли пункт меню активным
+     * @return bool
+     */
+
+    public function isAct() {
+
+        if(empty($this->link))
+            return false;
+
+        $request = Yii::$app->request;
+
+        // Главная
+
+        if($this->link == "/") {
+
+            if(empty($request->pathinfo))
+                return true;
+
+        } else {
+
+            $pathinfo = "/".$request->pathinfo."/";
+
+            if(strpos($pathinfo, $this->link) === 0)
+                return true;
+
+        }
+
+        return false;
+
+    }
+
 }

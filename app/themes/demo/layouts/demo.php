@@ -29,7 +29,11 @@ AppAsset::register($this);
 
 <div class="container" id="content">
     <div class="row">
-        <div class="col-xs-3"></div>
+        <div class="col-xs-3">
+
+            <? echo \app\modules\main\widgets\menu\Menu::widget(["options"=>["class"=>"nav nav-pills nav-stacked"], "parentId"=>2]);?>
+
+        </div>
         <div  class="col-xs-9"><?= $content ?></div>
     </div>
 
