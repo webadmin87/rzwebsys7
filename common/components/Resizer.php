@@ -6,7 +6,7 @@ use yii\base\Component;
 use yii\imagine\Image;
 use Imagine\Image\Box;
 use common\helpers\FileHelper;
-
+use \Imagine\Image\ImageInterface;
 /**
  * Class Resizer
  * Компонент для ресайза изображений. Использует библиотеку расширение imagine
@@ -28,6 +28,12 @@ class Resizer extends Component {
      */
 
     public  $webroot = "@webroot";
+
+    /**
+     * @var int качество сохранения изображений
+     */
+
+    public $quality = 100;
 
     /**
      * Уменьшение размеров изображения. Возвращает путь к изображению относительно DOCUMENT ROOT.
@@ -53,9 +59,9 @@ class Resizer extends Component {
 
         $box = $this->getSize($image, $width, $height);
 
-        $image->resize($box);
+        $thumb = $image->thumbnail($box, ImageInterface::THUMBNAIL_OUTBOUND);
 
-        $image->save($savePath);
+        $thumb->save($savePath, ["quality"=>$this->quality]);
 
         return $this->getRelPath($savePath);
 
@@ -102,7 +108,7 @@ class Resizer extends Component {
         }
 
         if($resize)
-            $image->save($savePath);
+            $image->save($savePath, ["quality"=>$this->quality]);
 
         return $resize;
 

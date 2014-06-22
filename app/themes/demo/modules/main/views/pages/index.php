@@ -5,3 +5,5 @@
  */
 
 echo $model->text;
+
+echo \app\modules\main\widgets\gallery\Gallery::widget(["files"=>$model->getFiles('image')]);

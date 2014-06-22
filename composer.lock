@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "91c533453ba8c880f0c24007d71238aa",
+    "hash": "17ff5cb8865cb3067264dee666743e51",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -335,6 +335,123 @@
                 "yii"
             ],
             "time": "2014-06-04 21:53:43"
+        },
+        {
+            "name": "newerton/fancy-box",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newerton/fancy-box.git",
+                "reference": "ee714eeb8a81914619f8ab5c7c3a9fd72b1a2ce2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newerton/fancy-box/zipball/ee714eeb8a81914619f8ab5c7c3a9fd72b1a2ce2",
+                "reference": "ee714eeb8a81914619f8ab5c7c3a9fd72b1a2ce2",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Newerton Vargas de Araujo",
+                    "homepage": "http://newerton.com.br",
+                    "role": "Developer / Freelancer"
+                }
+            ],
+            "description": "fancyBox is a tool that offers a nice and elegant way to add zooming functionality for images, html content and multi-media on your webpages",
+            "homepage": "http://fancyapps.com/fancybox/",
+            "keywords": [
+                "fancyapps",
+                "fancybox",
+                "gallery",
+                "jquery"
+            ],
+            "time": "2014-04-30 21:10:22"
+        },
+        {
+            "name": "newerton/jquery-mousewheel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newerton/jquery-mousewheel.git",
+                "reference": "7786a0912e92521f963924fe37026f87eadfbe62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newerton/jquery-mousewheel/zipball/7786a0912e92521f963924fe37026f87eadfbe62",
+                "reference": "7786a0912e92521f963924fe37026f87eadfbe62",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Newerton Vargas de Araujo",
+                    "homepage": "http://newerton.com.br",
+                    "role": "Developer / Freelancer"
+                }
+            ],
+            "description": "A jQuery plugin that adds cross-browser mouse wheel support.",
+            "homepage": "https://github.com/brandonaaron/jquery-mousewheel",
+            "keywords": [
+                "jquery",
+                "mouse",
+                "mousewheel",
+                "wheel"
+            ],
+            "time": "2014-04-30 19:29:53"
+        },
+        {
+            "name": "newerton/yii2-fancybox",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newerton/yii2-fancybox.git",
+                "reference": "9254a7399a699310a77543a69aeba26c8dacc9e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newerton/yii2-fancybox/zipball/9254a7399a699310a77543a69aeba26c8dacc9e3",
+                "reference": "9254a7399a699310a77543a69aeba26c8dacc9e3",
+                "shasum": ""
+            },
+            "require": {
+                "newerton/fancy-box": "dev-master",
+                "newerton/jquery-mousewheel": "dev-master",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "newerton\\fancybox\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Newerton Vargas de Araujo",
+                    "email": "newerton.araujo@gmail.com"
+                }
+            ],
+            "description": "fancyBox is a tool that offers a nice and elegant way to add zooming functionality for images, html content and multi-media on your webpages.",
+            "keywords": [
+                "extension",
+                "fancyapps",
+                "fancybox",
+                "yii2"
+            ],
+            "time": "2014-05-03 18:44:10"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -958,7 +1075,8 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "marciocamello/yii2-x-editable": 20
+        "marciocamello/yii2-x-editable": 20,
+        "newerton/yii2-fancybox": 20
     },
     "platform": {
         "php": ">=5.4.0"

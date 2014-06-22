@@ -106,7 +106,7 @@ class TreeList extends App {
         if(!$this->isShow() OR empty($this->models))
             return false;
 
-        return $this->render("index",[
+        return $this->render($this->tpl,[
             "models"=>$this->models,
             "options"=>$this->options,
             "parentLevel"=>$this->parentLevel,
