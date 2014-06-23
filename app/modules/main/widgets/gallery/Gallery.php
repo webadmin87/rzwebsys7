@@ -12,6 +12,10 @@ use common\widgets\App;
 
 class Gallery extends App {
 
+    const DEFAULT_REL_PREF = "rel-";
+
+    const DEFAULT_CLASS = "yii-gallery";
+
     /**
      * @var \common\core\File[] массив файлов
      */
@@ -43,10 +47,28 @@ class Gallery extends App {
     public $options = [];
 
     /**
+     * @var bool подключать ли ассет виджета
+     */
+
+    public $registerAsset = true;
+
+    /**
+     * @var string атрибут rel фотогаллереи
+     */
+
+    protected $_rel;
+
+    /**
      * @inheritdoc
      */
 
     public function init() {
+
+        if(!$this->isShow())
+            return false;
+
+        if($this->registerAsset)
+            AssetBundle::register($this->view);
 
         if($this->skipFromStart>0) {
 
@@ -69,10 +91,34 @@ class Gallery extends App {
             "files"=>$this->files,
             "width"=>$this->width,
             "height"=>$this->height,
-            "options"=>$this->options,
+            "options"=>array_merge(["class"=>self::DEFAULT_CLASS], $this->options),
+            "rel"=>$this->rel,
         ]);
 
     }
 
+    /**
+     * Установка атрибута rel
+     * @param string $rel
+     */
+
+    public function setRel($rel) {
+
+        $this->_rel = $rel;
+    }
+
+    /**
+     * Получение значения атрибута rel
+     * @return string
+     */
+
+    public function getRel() {
+
+        if($this->_rel === null)
+            $this->_rel = self::DEFAULT_REL_PREF.$this->id;
+
+        return $this->_rel;
+
+    }
 
 }

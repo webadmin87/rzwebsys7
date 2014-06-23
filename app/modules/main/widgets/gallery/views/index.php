@@ -4,6 +4,7 @@
  * @var int $width ширина изображения
  * @var int $height высота изображения
  * @var array $options массив Html атрибутов
+ * @var string $rel значение атрибута rel
  */
 
 use yii\helpers\Html;
@@ -17,7 +18,7 @@ foreach($files AS $file) {
 
     $src = Yii::$app->resizer->resize($file->getPath(), $width, $height);
 
-    echo Html::tag('div', Html::img($src));
+    echo Html::tag('div', Html::a(Html::img($src), $file->getRelPath(), ["rel"=>$rel]));
 
 }
 

@@ -16,6 +16,26 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+
+    <?php
+    echo newerton\fancybox\FancyBox::widget([
+        'target' => '.yii-gallery a',
+        'helpers' => true,
+        'mouse' => true,
+        'config' => [
+            'helpers' => [
+                'title' => ['type' => 'float'],
+                'buttons' => [],
+                'thumbs' => ['width' => 68, 'height' => 50],
+                'overlay' => [
+                    'css' => [
+                        'background' => 'rgba(0, 0, 0, 0.8)'
+                    ]
+                ]
+            ],
+        ]
+    ]);?>
+
 </head>
 <body>
 <?php $this->beginBody() ?>
