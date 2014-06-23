@@ -22,6 +22,7 @@ AdminAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <div class="wrap">
+
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
@@ -30,7 +31,7 @@ AdminAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
         'innerContainerOptions' => [
-            'class'=>'container-fluid',
+          //  'class'=>'container-fluid',
         ],
     ]);
     $menuItems = [

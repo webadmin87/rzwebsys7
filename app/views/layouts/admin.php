@@ -8,7 +8,7 @@ use common\widgets\admin\Menu;
  */
 ?>
 <?$this->beginContent('@app/views/layouts/admin-wrapper.php');?>
-<div class="container-fluid">
+<div class="container">
     <?= Breadcrumbs::widget([
         'homeLink'=>[
             "label"=>Yii::t('core', 'Start'),
