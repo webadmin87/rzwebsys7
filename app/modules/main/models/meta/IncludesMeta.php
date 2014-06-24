@@ -50,6 +50,15 @@ class IncludesMeta extends MetaFields {
                 "params" => [$this->owner, "text"]
             ],
 
+            "file" => [
+                "definition" => [
+                    "class" => \common\db\fields\TextField::className(),
+                    "title" => Yii::t('main/app', 'File path'),
+                    "isRequired" => false,
+                ],
+                "params" => [$this->owner, "file"]
+            ],
+
         ];
     }
 

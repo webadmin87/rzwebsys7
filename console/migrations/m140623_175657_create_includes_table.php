@@ -19,6 +19,7 @@ class m140623_175657_create_includes_table extends \yii\db\Migration
             "title"=>Schema::TYPE_STRING,
             "code"=>Schema::TYPE_STRING,
             "text"=>Schema::TYPE_TEXT,
+            "file"=>Schema::TYPE_TEXT,
         ]);
 
     }
