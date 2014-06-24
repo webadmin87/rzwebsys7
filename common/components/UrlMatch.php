@@ -26,7 +26,7 @@ class UrlMatch extends Match {
 
         foreach ($condArr AS $cond) {
 
-            $cond = trim($cond, " /");
+            $cond = trim($cond);
 
             $pattern = "!^" . str_replace("*", ".*?", $cond) . "$!i"; // Преобразуем шаблон в регулярное выражение
 

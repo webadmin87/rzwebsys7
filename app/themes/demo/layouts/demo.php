@@ -53,6 +53,14 @@ AppAsset::register($this);
 
             <? echo \app\modules\main\widgets\menu\Menu::widget(["options"=>["class"=>"nav nav-pills nav-stacked"], "parentId"=>2]);?>
 
+            <br />
+
+            <div class="well">
+                <? echo \app\modules\main\widgets\includes\Includes::widget(
+                    ["code"=>"left",]
+                );?>
+            </div>
+
         </div>
         <div  class="col-xs-9"><?= $content ?></div>
     </div>

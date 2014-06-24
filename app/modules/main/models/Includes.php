@@ -14,6 +14,12 @@ use common\components\Match;
 
 class Includes extends ActiveRecord {
 
+    /**
+     * @var Includes[] массив включаемых областей
+     */
+
+    protected static $models;
+
      /**
      * @inheritdoc
      */
@@ -29,5 +35,43 @@ class Includes extends ActiveRecord {
         return meta\IncludesMeta::className();
     }
 
+    /**
+     * Возвращает выборку всех активных включаемых областей.
+     * Кешируются в статическом свойстве
+     * @return Includes[]
+     */
+
+    public static function findAllModels() {
+
+        if(static::$models === null) {
+
+            static::$models = static::find()->published()->all();
+
+        }
+
+        return static::$models;
+
+    }
+
+    /**
+     * Возвращает включаемую область по символьному коду
+     * @param string $code символьный код включаемой области
+     * @return Includes|null
+     */
+
+    public static function findByCode($code) {
+
+        $models = static::findAllModels();
+
+        foreach($models As $model) {
+
+            if($model->code == $code)
+                return $model;
+
+        }
+
+        return null;
+
+    }
 
 }
