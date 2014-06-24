@@ -7,7 +7,7 @@ use common\widgets\App;
 /**
  * Class EList
  * Виджет для вывода элементов. Отображаемая сущность должна наследовать \common\db\ActiveRecord
- * @package app\modules\main\widgets\treelist
+ * @package app\modules\main\widgets\elist
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
@@ -31,12 +31,12 @@ class EList extends App {
     public $order = ['id'=>'DESC'];
 
     /**
-     * @var closure функция возвращающая url модели. Принимает аргументом модель для которой необходимо создать url
+     * @var callable функция возвращающая url модели. Принимает аргументом модель для которой необходимо создать url
      */
     public $urlCreate;
 
     /**
-     * @var closure функция для модификации запроса. Принимает аргументом \common\db\TActiveQuery
+     * @var callable функция для модификации запроса. Принимает аргументом \common\db\TActiveQuery
      */
     public $queryModify;
 

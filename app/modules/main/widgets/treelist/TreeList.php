@@ -30,12 +30,12 @@ class TreeList extends App {
     public $actClass = "active";
 
     /**
-     * @var closure функция возвращающая url модели. Принимает аргументом модель для которой необходимо создать url
+     * @var callable функция возвращающая url модели. Принимает аргументом модель для которой необходимо создать url
      */
     public $urlCreate;
 
     /**
-     * @var closure функция для модификации запроса. Принимает аргументом \common\db\TActiveQuery
+     * @var callable функция для модификации запроса. Принимает аргументом \common\db\TActiveQuery
      */
     public $queryModify;
 
