@@ -54,7 +54,7 @@ return [
 
             'rules'=>[
 
-                'page/<code:[A-z0-9_-]+>'=>'main/pages'
+                'page/<code:[A-z0-9_-]+>'=>'main/pages/index',
 
             ],
 

@@ -2,6 +2,7 @@
 namespace app\modules\main\models;
 
 use Yii;
+use common\db\ActiveRecord;
 use common\db\TActiveRecord;
 use common\components\Match;
 
@@ -18,7 +19,7 @@ class Comments extends TActiveRecord {
 
         parent::init();
 
-        if($this->isNewRecord AND !Yii::$app->user->isGuest) {
+        if($this->isNewRecord AND $this->scenario == ActiveRecord::SCENARIO_INSERT AND !Yii::$app->user->isGuest) {
 
             $this->username = Yii::$app->user->identity->username;
             $this->email = Yii::$app->user->identity->email;

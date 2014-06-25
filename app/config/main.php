@@ -18,7 +18,7 @@ return [
     'language' => 'ru-RU',
     'controllerNamespace' => 'app\controllers',
     'bootstrap' => ['log'],
-    'defaultRoute'=>'main/pages',
+    'defaultRoute'=>'main/pages/index',
     'homeUrl'=>'/',
     'controllerMap' => [
         'elfinder' => [
@@ -45,6 +45,10 @@ return [
             'showScriptName' => false,
             'suffix'=>'/',
             'rules'=>[
+
+                // Главная страница
+
+                '/'=>'main/pages/index',
 
                 // Правила для админки
 

@@ -1,0 +1,45 @@
+.comments-item {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+}
+
+.comments-info {
+	color: #666666;
+}
+
+.comments-info, .comments-tools {
+	font-size: 80%;
+}
+
+.comments-username {
+	color: #80000c;
+}
+
+#comments-error-message, #comments-forbidden-message {
+	color: #ff0000;
+}
+
+#comments-success-message {
+	color: #0bb100;
+}
+
+#comments-error-message, #comments-forbidden-message, #comments-success-message {
+	margin: 5px 0;
+}
+
+#comments-re-wrapper {
+	margin-bottom: 10px;
+	font-size: 80%;
+}
+
+.comments-body {
+	margin: 5px 0;
+}
+
+.comments-filed input[type="text"] {
+	width: 50%;
+}
+
+.comments-btn {}

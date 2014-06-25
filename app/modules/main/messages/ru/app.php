@@ -44,4 +44,5 @@ return [
     "Item id"=>"ID модели",
     "Create Comments"=>"Создать комментарий",
     "Comment"=>"Коментарий",
+    "Be the first to leave a comment"=>"Будьте первым кто оставит комментарий",
 ];
