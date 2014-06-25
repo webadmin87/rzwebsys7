@@ -20,6 +20,7 @@ return [
                                 ['label' => Yii::t('main/app', 'FileManager'), 'url' => ['/admin/main/file-manager']],
                                 ['label' => Yii::t('main/app', 'Templates'), 'url' => ['/admin/main/template']],
                                 ['label' => Yii::t('main/app', 'Includes'), 'url' => ['/admin/main/includes']],
+                                ['label' => Yii::t('main/app', 'Comments'), 'url' => ['/admin/main/comments']],
                             ]
                         ],
                     ];},

@@ -40,4 +40,8 @@ return [
     "Includes"=>"Включаемые области",
     "Create Includes"=>"Создать включаемую область",
     "File path"=>"Путь к файлу",
+    "Model class"=>"Класс модели",
+    "Item id"=>"ID модели",
+    "Create Comments"=>"Создать комментарий",
+    "Comment"=>"Коментарий",
 ];
