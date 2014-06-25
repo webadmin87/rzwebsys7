@@ -4,6 +4,7 @@ namespace common\actions\crud;
 use Yii;
 use yii\web\ForbiddenHttpException;
 use yii\web\BadRequestHttpException;
+use common\db\TActiveRecord;
 
 /**
  * Class TCreate
@@ -13,6 +14,12 @@ use yii\web\BadRequestHttpException;
  */
 
 class TCreate extends Create {
+
+    /**
+     * @var array массив атрибутов значения которых должны наследоваться от родительской модели
+     */
+
+    public $extendedAttrs = [];
 
     /**
      * Запуск действия
@@ -35,14 +42,21 @@ class TCreate extends Create {
 
         $request = Yii::$app->request;
 
-        $model->attributes = $this->defaultAttrs;
-
-        $load = $model->load($request->post());
-
         $parentModel = $class::find()->where(["id"=>$model->parent_id])->one();
 
         if(!$parentModel)
             throw new BadRequestHttpException('Bad Request');
+
+        if($parentModel->id != TActiveRecord::ROOT_ID AND !empty($this->extendedAttrs)) {
+
+            foreach($this->extendedAttrs AS $attr)
+                $model->$attr = $parentModel->$attr;
+
+        }
+
+        $model->attributes = $this->defaultAttrs;
+
+        $load = $model->load($request->post());
 
         if ($load && $request->post($this->validateParam)) {
             return $this->performAjaxValidation($model);

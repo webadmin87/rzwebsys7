@@ -14,6 +14,19 @@ use common\components\Match;
 
 class Comments extends TActiveRecord {
 
+    public function init() {
+
+        parent::init();
+
+        if($this->isNewRecord AND !Yii::$app->user->isGuest) {
+
+            $this->username = Yii::$app->user->identity->username;
+            $this->email = Yii::$app->user->identity->email;
+
+        }
+
+    }
+
      /**
      * @inheritdoc
      */

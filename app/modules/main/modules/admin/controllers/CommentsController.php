@@ -55,6 +55,7 @@ class CommentsController extends Admin
             'create'=>[
                 'class'=>crud\TCreate::className(),
                 'modelClass'=>$class,
+                'extendedAttrs'=>['model', 'item_id'],
             ],
             'update'=>[
                 'class'=>crud\TUpdate::className(),
