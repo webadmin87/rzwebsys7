@@ -1,7 +1,7 @@
 (function($){
 
 
-	$(document).ready(function(){
+	/*$(document).ready(function(){
 
 		// Редактор
 
@@ -52,7 +52,54 @@
 
 		});
 
-	});
+	});*/
 
+    $.fn.commentsWidget = function() {
+
+        return this.each(function(){
+
+
+            var bl = $(this);
+
+            bl.find('.comments-add').on('click', function(e){
+
+                e.preventDefault();
+
+                var form = $(this).parents('form');
+
+                var action = form.attr('action');
+
+                var initValidate = function() {
+
+                    form.find("input,select,textarea").each(function(){
+                        $(this).trigger('blur');
+                    });
+
+                }
+
+                $.ajax({
+                    url: action,
+                    type: 'post',
+                    data: form.serialize(),
+                    headers: {},
+                    dataType: 'json',
+                    success: function (data, status, xhr) {
+                        if(xhr.status == 201)
+                            alert('OK')
+
+                    },
+                    error: function() {
+                        initValidate();
+                    }
+                });
+
+            })
+
+
+
+        });
+
+
+    }
 
 })(jQuery);

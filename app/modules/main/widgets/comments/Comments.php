@@ -4,6 +4,7 @@ use Yii;
 use app\modules\main\models\Comments AS Model;
 use yii\base\Widget;
 use yii\data\ActiveDataProvider;
+use common\db\ActiveRecord;
 use common\db\TActiveRecord;
 
 
@@ -60,6 +61,30 @@ class Comments extends Widget {
      */
 
     public $tpl = "index";
+
+    /**
+     * @var array атрибуты формы
+     */
+
+    public $formOptions = [];
+
+    /**
+     * @var string маршрут добавления комментария
+     */
+
+    public $actionRoute = "main/comments/add";
+
+    /**
+     * @var string имя класса виджета редактора комментариев
+     */
+
+    public $editorClass = "\\common\\widgets\\markitup\\MarkItUp";
+
+    /**
+     * @var array настройки виджета редактора
+     */
+
+    public $editorOptions = [];
 
     /**
      * @var \yii\web\AssetBundle ассет скина
@@ -135,6 +160,10 @@ class Comments extends Widget {
 
         $this->dataProvider->getPagination()->pageSize = $this->pageSize;
 
+        $id = $this->getId();
+
+        $this->view->registerJs("$('#$id').commentsWidget()");
+
     }
 
     /**
@@ -143,9 +172,26 @@ class Comments extends Widget {
 
     public function run() {
 
+        $model = Yii::createObject(["class"=>Model::className(), "scenario"=>ActiveRecord::SCENARIO_INSERT]);
+
+        $model->model = $this->modelClass;
+
+        $model->item_id = $this->itemId;
+
+        $formOptions = array_merge([
+            "enableClientValidation"=>true,
+            "validateOnSubmit"=>true,
+            "action"=>Yii::$app->urlManager->createUrl($this->actionRoute)
+        ], $this->formOptions);
+
         return $this->render($this->tpl,[
+            "model"=>$model,
             "dataProvider"=>$this->dataProvider,
             "marginStep"=>$this->marginStep,
+            "formOptions"=>$formOptions,
+            "editorClass"=>$this->editorClass,
+            "editorOptions"=>$this->editorOptions,
+            "id"=>$this->getId(),
         ]);
 
     }

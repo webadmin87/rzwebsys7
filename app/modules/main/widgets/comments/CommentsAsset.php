@@ -16,6 +16,14 @@ class CommentsAsset extends AssetBundle {
         'script.js',
     ];
 
+    public $publishOptions=[
+        "forceCopy"=>true,
+    ];
+
+    public $depends = [
+        'yii\web\JqueryAsset',
+    ];
+
     public function init() {
 
         $this->sourcePath = __DIR__."/assets";
