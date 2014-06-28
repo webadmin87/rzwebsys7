@@ -24,6 +24,9 @@ $this->registerJs("
 ?>
 
 <? $form = ActiveForm::begin($formOptions); ?>
+
+<? echo $form->errorSummary($model);?>
+
     <ul id="<?= $tabId ?>" class="nav nav-tabs">
         <?
         $i = 0;
