@@ -41,7 +41,7 @@ class App extends Controller {
 
         $class = $this->templateClass;
 
-        $models = $class::find()->published()->orderBy(['sort'=>'ASC'])->all();
+        $models = $class::find()->published()->orderBy(['sort'=>SORT_ASC])->all();
 
         foreach($models As $model){
 

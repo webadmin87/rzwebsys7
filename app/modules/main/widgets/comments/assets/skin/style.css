@@ -43,3 +43,7 @@
 }
 
 .comments-btn {}
+
+.comments-ok, .comments-error, .comments-re-wrapper {
+    display: none;
+}

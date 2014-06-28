@@ -51,6 +51,7 @@ class TemplateController extends Admin
             'index'=>[
                 'class'=>crud\Admin::className(),
                 'modelClass'=>$class,
+                'orderBy'=>['sort'=>SORT_ASC],
             ],
             'create'=>[
                 'class'=>crud\Create::className(),

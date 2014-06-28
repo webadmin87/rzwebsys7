@@ -15,6 +15,20 @@ use common\components\Match;
 class Template extends ActiveRecord {
 
     /**
+     * @inheritdoc
+     */
+
+    public function rules() {
+
+        $rules = parent::rules();
+
+        $rules[] = ['sort', 'default', 'value'=>ActiveRecord::DEFAULT_SORT];
+
+        return $rules;
+
+    }
+
+    /**
      * Возвращает массив условий подклбчений шаблона
      * @return array
      */

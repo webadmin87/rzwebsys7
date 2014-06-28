@@ -32,11 +32,6 @@ class Comments extends Widget {
 
     public $marginStep = 20;
 
-    /**
-     * @var string маршрут для добавления коментария
-     */
-
-    public $addRoute = "/main/comments/add";
 
     /**
      * @var int количество комментариев на одной странице. 0 - нет пагинации
@@ -72,7 +67,7 @@ class Comments extends Widget {
      * @var string маршрут добавления комментария
      */
 
-    public $actionRoute = "main/comments/add";
+    public $actionRoute = "/main/comments/add";
 
     /**
      * @var string имя класса виджета редактора комментариев

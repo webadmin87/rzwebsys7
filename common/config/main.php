@@ -6,6 +6,9 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'bbParser'=>[
+            "class" => \common\components\BBCodeParser::className()
+        ],
         'resizer'=>[
             "class" => \common\components\Resizer::className()
         ],

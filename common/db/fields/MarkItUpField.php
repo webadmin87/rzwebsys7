@@ -1,8 +1,8 @@
 <?php
 
 namespace common\db\fields;
+use Yii;
 use yii\widgets\ActiveForm;
-use mihaildev\ckeditor\CKEditor;
 use common\widgets\markitup\MarkItUp;
 
 /**
@@ -27,5 +27,16 @@ class MarkItUpField extends TextAreaField {
 
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function view() {
 
+        $view = parent::view();
+
+        $view['value'] = Yii::$app->bbParser->parse($this->model->{$this->attr});
+
+        return $view;
+
+    }
 }

@@ -37,6 +37,12 @@ class Admin extends Base {
     public $pageSize = 20;
 
     /**
+     * @var array сортировка
+     */
+
+    public $orderBy;
+
+    /**
      * Запуск действия вывода списка моделей
      * @return string
      * @throws \yii\web\ForbiddenHttpException
@@ -55,6 +61,9 @@ class Admin extends Base {
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams(), $this->dataProviderConfig);
 
         $dataProvider->getPagination()->pageSize = $this->pageSize;
+
+        if($this->orderBy)
+            $dataProvider->getSort()->defaultOrder = $this->orderBy;
 
         $params = [
             'dataProvider' => $dataProvider,

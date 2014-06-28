@@ -23,7 +23,7 @@ $marginLeft = $marginStep*($model->level - 2);
     </div>
 
     <div class="comments-body">
-        <?=$model->text?>
+        <?=Yii::$app->bbParser->parse($model->text)?>
     </div>
     <div class="comments-tools">
         <a class="comments-re-link" href="#comments-add-form" data-id="<?=$model->id?>" data-username="<?=$model->username?>">Ответить</a> |

@@ -26,10 +26,16 @@ abstract class ActiveRecord extends YiiRecord {
     const SCENARIO_SEARCH = "search";
 
     /**
+     * Значение сортировки по умолчанию
+     */
+
+    const DEFAULT_SORT = 500;
+
+    /**
      * @var array значение сортировки по умолчанию
      */
 
-    protected $_defaultSearchOrder = ["id"=>"desc"];
+    protected $_defaultSearchOrder = ["id"=>SORT_DESC];
 
     /**
      * Базовые сценарии

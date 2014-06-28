@@ -35,6 +35,9 @@ class TAdmin extends Admin {
 
         $dataProvider->getPagination()->pageSize = $this->pageSize;
 
+        if($this->orderBy)
+            $dataProvider->getSort()->defaultOrder = $this->orderBy;
+
         $params = [
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,

@@ -45,4 +45,6 @@ return [
     "Create Comments"=>"Создать комментарий",
     "Comment"=>"Коментарий",
     "Be the first to leave a comment"=>"Будьте первым кто оставит комментарий",
+    "Comment added successfully"=>"Комментарий успешно добавлен",
+    "Error when adding a comment"=>"Ошибка при добавлении комментария"
 ];

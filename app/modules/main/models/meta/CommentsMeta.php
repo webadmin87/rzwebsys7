@@ -37,6 +37,7 @@ class CommentsMeta extends MetaFields {
                     "class" => \common\db\fields\EmailField::className(),
                     "title" => Yii::t('main/app', 'Email'),
                     "isRequired" => false,
+                    "showInGrid"=>false
                 ],
                 "params" => [$this->owner, "email"]
             ],
@@ -46,6 +47,7 @@ class CommentsMeta extends MetaFields {
                     "class" => \common\db\fields\MarkItUpField::className(),
                     "title" => Yii::t('main/app', 'Comment'),
                     "isRequired" => true,
+                    "showInGrid"=>true,
                 ],
                 "params" => [$this->owner, "text"]
             ],
