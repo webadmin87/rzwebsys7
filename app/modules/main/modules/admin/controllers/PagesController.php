@@ -31,15 +31,17 @@ class PagesController extends Admin
 
     public function behaviors()
     {
-        return [
-            'verbs' => [
+        $beh = parent::behaviors();
+
+        $beh['verbs'] = [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
                     'groupdelete' => ['post'],
                 ],
-            ],
         ];
+
+        return $beh;
     }
 
     /**

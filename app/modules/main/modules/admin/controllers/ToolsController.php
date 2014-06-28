@@ -22,15 +22,18 @@ class ToolsController extends Admin
      */
     public function behaviors()
     {
-        return [
-            'contentNegotiator' => [
-                'class' => ContentNegotiator::className(),
-                'formats' => [
-                    'application/json' => Response::FORMAT_JSON,
-                ],
-                'except'=>['index'],
+        $beh = parent::behaviors();
+
+        $beh['contentNegotiator'] = [
+            'class' => ContentNegotiator::className(),
+            'formats' => [
+                'application/json' => Response::FORMAT_JSON,
             ],
+            'except'=>['index'],
         ];
+
+        return $beh;
+
     }
 
     /**
@@ -56,6 +59,10 @@ class ToolsController extends Admin
 
         $auth->removeAll();
 
+        $accessAdmin = $auth->createPermission('accessAdmin');
+        $accessAdmin->description = 'access admin panel';
+        $auth->add($accessAdmin);
+
         $createModel = $auth->createPermission('createModel');
         $createModel->description = 'create model';
         $auth->add($createModel);
@@ -80,6 +87,7 @@ class ToolsController extends Admin
 
         $root = $auth->createRole('root');
         $auth->add($root);
+        $auth->addChild($root, $accessAdmin);
         $auth->addChild($root, $createModel);
         $auth->addChild($root, $readModel);
         $auth->addChild($root, $updateModel);

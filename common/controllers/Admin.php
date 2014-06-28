@@ -36,10 +36,7 @@ class Admin extends Controller {
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['root'],
-                    ],
-                    [
-                        'allow' => false,
+                        'roles' => ['accessAdmin'],
                     ],
                 ],
             ],

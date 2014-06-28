@@ -49,15 +49,17 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
     public function behaviors()
     {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                    'groupdelete' => ['post'],
-                ],
+        $beh = parent::behaviors();
+
+        $beh['verbs'] = [
+            'class' => VerbFilter::className(),
+            'actions' => [
+                'delete' => ['post'],
+                'groupdelete' => ['post'],
             ],
         ];
+
+        return $beh;
     }
 
     /**

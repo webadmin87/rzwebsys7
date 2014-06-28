@@ -27,15 +27,17 @@ class CommentsController extends Admin
 
     public function behaviors()
     {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                    'groupdelete' => ['post'],
-                ],
+        $beh = parent::behaviors();
+
+        $beh['verbs'] = [
+            'class' => VerbFilter::className(),
+            'actions' => [
+                'delete' => ['post'],
+                'groupdelete' => ['post'],
             ],
         ];
+
+        return $beh;
     }
 
     /**
