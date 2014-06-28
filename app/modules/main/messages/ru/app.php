@@ -46,5 +46,8 @@ return [
     "Comment"=>"Коментарий",
     "Be the first to leave a comment"=>"Будьте первым кто оставит комментарий",
     "Comment added successfully"=>"Комментарий успешно добавлен",
-    "Error when adding a comment"=>"Ошибка при добавлении комментария"
+    "Error when adding a comment"=>"Ошибка при добавлении комментария",
+    "Tools"=>"Инструмнты",
+    "Install roles"=>"Установка ролей",
+    "Clear cache"=>"Очистка кеша"
 ];
