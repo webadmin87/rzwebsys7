@@ -46,10 +46,6 @@ return [
             'suffix'=>'/',
             'rules'=>[
 
-                // Главная страница
-
-                '/'=>'main/pages/index',
-
                 // Правила для админки
 
                 'admin/<module:\w+>/<controller:[A-z0-9_-]+>/<action:[A-z0-9_-]+>/<id:\d+>'=>'<module>/admin/<controller>/<action>',
