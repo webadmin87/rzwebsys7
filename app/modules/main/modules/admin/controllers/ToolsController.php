@@ -7,7 +7,7 @@ use common\controllers\Admin;
 use yii\data\ActiveDataProvider;
 use yii\filters\ContentNegotiator;
 use yii\web\Response;
-
+use yii\web\Controller;
 /**
  * Class ToolsController
  * Контроллер различных административный действий
@@ -60,8 +60,12 @@ class ToolsController extends Admin
         $auth->removeAll();
 
         $accessAdmin = $auth->createPermission('accessAdmin');
-        $accessAdmin->description = 'access admin panel';
+        $accessAdmin->description = 'access to admin panel';
         $auth->add($accessAdmin);
+
+        $rootAccess = $auth->createPermission('rootAccess');
+        $rootAccess->description = 'root access to admin panel';
+        $auth->add($rootAccess);
 
         $createModel = $auth->createPermission('createModel');
         $createModel->description = 'create model';
@@ -83,11 +87,70 @@ class ToolsController extends Admin
         $listModels->description = 'list models';
         $auth->add($listModels);
 
+        // rules
+
+        $createRule = new \app\modules\main\rbac\CreateRule;
+        $auth->add($createRule);
+
+        $createModelRule = $auth->createPermission('createModelRule');
+        $createModelRule->description = 'create model';
+        $createModelRule->ruleName = $createRule->name;
+        $auth->add($createModelRule);
+        $auth->addChild($createModelRule, $createModel);
+
+        $readRule = new \app\modules\main\rbac\ReadRule;
+        $auth->add($readRule);
+
+        $readModelRule = $auth->createPermission('readModelRule');
+        $readModelRule->description = 'read model';
+        $readModelRule->ruleName = $readRule->name;
+        $auth->add($readModelRule);
+        $auth->addChild($readModelRule, $readModel);
+
+        $updateRule = new \app\modules\main\rbac\UpdateRule;
+        $auth->add($updateRule);
+
+        $updateModelRule = $auth->createPermission('updateModelRule');
+        $updateModelRule->description = 'update model';
+        $updateModelRule->ruleName = $updateRule->name;
+        $auth->add($updateModelRule);
+        $auth->addChild($updateModelRule, $updateModel);
+
+        $deleteRule = new \app\modules\main\rbac\DeleteRule;
+        $auth->add($deleteRule);
+
+        $deleteModelRule = $auth->createPermission('deleteModelRule');
+        $deleteModelRule->description = 'delete model';
+        $deleteModelRule->ruleName = $deleteRule->name;
+        $auth->add($deleteModelRule);
+        $auth->addChild($deleteModelRule, $deleteModel);
+
+        $listRule = new \app\modules\main\rbac\ListRule;
+        $auth->add($listRule);
+
+        $listModelsRule = $auth->createPermission('listModelsRule');
+        $listModelsRule->description = 'list models';
+        $listModelsRule->ruleName = $listRule->name;
+        $auth->add($listModelsRule);
+        $auth->addChild($listModelsRule, $listModels);
+
+        // admin role
+
+        $admin = $auth->createRole('admin');
+        $auth->add($admin);
+        $auth->addChild($admin, $accessAdmin);
+        $auth->addChild($admin, $listModelsRule);
+        $auth->addChild($admin, $createModelRule);
+        $auth->addChild($admin, $readModelRule);
+        $auth->addChild($admin, $updateModelRule);
+        $auth->addChild($admin, $deleteModelRule);
+
         // root role
 
         $root = $auth->createRole('root');
         $auth->add($root);
-        $auth->addChild($root, $accessAdmin);
+        $auth->addChild($root, $admin);
+        $auth->addChild($root, $rootAccess);
         $auth->addChild($root, $createModel);
         $auth->addChild($root, $readModel);
         $auth->addChild($root, $updateModel);

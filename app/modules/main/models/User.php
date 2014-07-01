@@ -229,7 +229,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @return array
      */
 
-    public function getRolesNames() {
+    public static function getRolesNames() {
 
         $roles = Yii::$app->authManager->getRoles();
 

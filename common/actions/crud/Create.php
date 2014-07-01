@@ -88,7 +88,7 @@ class Create extends Base {
                 $returnUrl = $this->defaultRedirectUrl;
 
             if($request->post($this->applyParam))
-                return $this->controller->redirect([$this->updateUrl, 'id' => $model->id, $this->defaultRedirectUrl => $returnUrl]);
+                return $this->controller->redirect([$this->updateUrl, 'id' => $model->id, $this->redirectParam => $returnUrl]);
             else {
                 return $this->controller->redirect($returnUrl);
             }

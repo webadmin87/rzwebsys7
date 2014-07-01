@@ -49,5 +49,14 @@ return [
     "Error when adding a comment"=>"Ошибка при добавлении комментария",
     "Tools"=>"Инструмнты",
     "Install roles"=>"Установка ролей",
-    "Clear cache"=>"Очистка кеша"
+    "Clear cache"=>"Очистка кеша",
+    "Permission"=>"Права доступа",
+    "Permissions"=>"Права доступа",
+    "Create"=>"Создание",
+    "Read"=>"Чтение",
+    "Update"=>"Изменение",
+    "Delete"=>"Удаление",
+    "Constraint class"=>"Класс ограничения",
+    "Create Permission"=>"Создать правило",
+
 ];

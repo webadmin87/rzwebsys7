@@ -64,15 +64,21 @@ class ActionButton extends Widget {
 
     protected function registerJs() {
 
+        $message = Yii::t('core', 'Are you shure?');
+
         $this->view->registerJs("
 
              $('#{$this->options["id"]}').on('click', function(){
 
-                 var form = $(this).parents('form');
+                 if(confirm('$message')) {
 
-                 form.attr('action', '{$this->url}');
+                     var form = $(this).parents('form');
 
-                 form.submit();
+                     form.attr('action', '{$this->url}');
+
+                     form.submit();
+
+                 }
 
                  });
 

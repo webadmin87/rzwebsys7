@@ -22,6 +22,7 @@ return [
                                 ['label' => Yii::t('main/app', 'Includes'), 'url' => ['/admin/main/includes']],
                                 ['label' => Yii::t('main/app', 'Comments'), 'url' => ['/admin/main/comments']],
                                 ['label' => Yii::t('main/app', 'Tools'), 'url' => ['/admin/main/tools']],
+                                ['label' => Yii::t('main/app', 'Permission'), 'url' => ['/admin/main/permission']],
                             ]
                         ],
                     ];},

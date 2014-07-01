@@ -102,4 +102,18 @@ class CheckBoxField extends TextField {
 
     }
 
+    /**
+     * @inheritdoc
+     */
+
+    public function rules() {
+
+        $rules = parent::rules();
+
+        $rules[] = [$this->attr, 'default', 'value'=>0];
+
+        return $rules;
+
+    }
+
 }
