@@ -1,5 +1,6 @@
 <?php
 namespace common\db\fields;
+use common\db\ActiveRecord;
 use Yii\widgets\ActiveForm;
 use Yii;
 
@@ -110,7 +111,7 @@ class CheckBoxField extends TextField {
 
         $rules = parent::rules();
 
-        $rules[] = [$this->attr, 'default', 'value'=>0];
+        $rules[] = [$this->attr, 'default', 'value'=>0, 'except'=>ActiveRecord::SCENARIO_SEARCH];
 
         return $rules;
 

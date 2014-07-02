@@ -58,5 +58,6 @@ return [
     "Delete"=>"Удаление",
     "Constraint class"=>"Класс ограничения",
     "Create Permission"=>"Создать правило",
+    "Forbidden attributes"=>"Запрещенные к изменению атрибуты (с новой строки)"
 
 ];

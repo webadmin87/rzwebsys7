@@ -17,7 +17,7 @@ trait PermissionTrait {
 
     public function getPermission() {
 
-        return Permission::getPermission(get_class($this));
+        return Permission::findPermission(get_class($this));
 
     }
 

@@ -60,6 +60,11 @@ class Admin extends Base {
 
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams(), $this->dataProviderConfig);
 
+        $perm = $searchModel->getPermission();
+
+        if($perm)
+            $perm->applyConstraint($dataProvider->query);
+
         $dataProvider->getPagination()->pageSize = $this->pageSize;
 
         if($this->orderBy)

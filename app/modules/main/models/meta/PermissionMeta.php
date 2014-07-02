@@ -89,6 +89,15 @@ class PermissionMeta extends MetaFields {
                 "params" => [$this->owner, "constraint"]
             ],
 
+            "forbidden_attrs" => [
+                "definition" => [
+                    "class" => \common\db\fields\TextAreaField::className(),
+                    "title" => Yii::t('main/app', 'Forbidden attributes'),
+                    "editInGrid"=>true,
+                ],
+                "params" => [$this->owner, "forbidden_attrs"]
+            ],
+
 
 
 

@@ -31,6 +31,8 @@ class ReplaceInTreeButton extends ActionButton {
 
     public function init() {
 
+        if(!$this->visible)
+            return "";
 
         if(empty($this->optionsOk["id"]))
             $this->optionsOk["id"] = static::ID_PREF . uniqid(rand());
@@ -106,6 +108,9 @@ class ReplaceInTreeButton extends ActionButton {
      */
 
     public function run() {
+
+        if(!$this->visible)
+            return "";
 
         $str =  Html::button($this->label, $this->options);
 

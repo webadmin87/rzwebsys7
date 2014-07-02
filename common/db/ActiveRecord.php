@@ -260,4 +260,15 @@ abstract class ActiveRecord extends YiiRecord {
         return $this->hasOne(User::className(), ['id' => 'author_id']);
     }
 
+    /**
+     * Возвращает модель правил доступа
+     * @return \common\rbac\IPermission|null
+     */
+
+    public function getPermission() {
+
+        return null;
+
+    }
+
 }

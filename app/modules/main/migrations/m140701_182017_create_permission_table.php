@@ -23,6 +23,7 @@ class m140701_182017_create_permission_table extends \yii\db\Migration
             'update'=>Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT false',
             'delete'=>Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT false',
             'constraint'=>Schema::TYPE_STRING,
+            'forbidden_attrs'=>Schema::TYPE_TEXT,
         ]);
 
     }

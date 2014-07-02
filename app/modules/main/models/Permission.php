@@ -3,8 +3,7 @@ namespace app\modules\main\models;
 
 use Yii;
 use common\db\ActiveRecord;
-use common\components\Match;
-
+use common\rbac\IPermission;
 /**
  * Class Permission
  * Модель прав доступа
@@ -12,13 +11,19 @@ use common\components\Match;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class Permission extends ActiveRecord {
+class Permission extends ActiveRecord implements IPermission {
 
     /**
      * @var \common\rbac\IConstraint объект ограничения доступа
      */
 
     protected $_constraintObject;
+
+    /**
+     * @var array массив атрибутов запрещенных к редактированию
+     */
+
+    protected $_forbiddenAttrs;
 
     /**
      * @var Permission[]
@@ -50,7 +55,7 @@ class Permission extends ActiveRecord {
      * @return Permission
      */
 
-    public static function getPermission($class) {
+    public static function findPermission($class) {
 
         if(!isset(self::$_permissions[$class])) {
             self::$_permissions[$class] = static::find()->published()->where(["model"=>$class, "role"=>Yii::$app->user->identity->role])->one();
@@ -95,6 +100,28 @@ class Permission extends ActiveRecord {
     public function listModels() {
 
         return (boolean) $this->read;
+
+    }
+
+    /**
+     * Возможность удаления моделей
+     * @return bool
+     */
+
+    public function deleteModels() {
+
+        return (boolean) $this->delete;
+
+    }
+
+    /**
+     * Возможность изменения моделей
+     * @return bool
+     */
+
+    public function updateModels() {
+
+        return (boolean) $this->update;
 
     }
 
@@ -168,5 +195,64 @@ class Permission extends ActiveRecord {
     }
 
 
+    /**
+     * Возвращает массив имен атрибутов запрещенных к редактировнаию
+     * @return array
+     */
+
+    public function getForbiddenAttrs() {
+
+        if($this->_forbiddenAttrs === null) {
+
+            $arr = [];
+
+            $strs = explode("\n", $this->forbidden_attrs);
+
+            foreach($strs AS $str) {
+
+                $str = trim($str);
+
+                if(!empty($str))
+                    $arr[] = $str;
+
+            }
+
+            $this->_forbiddenAttrs = $arr;
+
+        }
+
+        return $this->_forbiddenAttrs;
+
+    }
+
+    /**
+     * Является ди атрибут запрещенным к редактированию
+     * @param string $attr атрибут
+     * @return bool
+     */
+
+    public function isAttributeForbidden($attr) {
+
+        $arr = $this->getDisabledAttrsArr();
+
+        return in_array($attr, $arr);
+    }
+
+    /**
+     * Присутствуют ли в массиве атрибутов запрещенные к изменению
+     * @param array $attrs массив атрибутов key=>value
+     * @return bool
+     */
+
+    public function hasForbiddenAttrs($attrs) {
+
+        $arr = $this->getDisabledAttrsArr();
+
+        $keys = array_keys($attrs);
+
+        $inter = array_intersect($keys, $arr);
+
+        return count($inter)>0;
+    }
 
 }

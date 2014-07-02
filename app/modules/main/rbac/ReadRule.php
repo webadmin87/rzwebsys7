@@ -19,7 +19,9 @@ class ReadRule extends Rule {
      */
     public function execute($user, $item, $params)
     {
-        return true;
+        $perm = $params['model']->getPermission();
+
+        return $perm AND $perm->readModel($params['model']);
     }
 
 

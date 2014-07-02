@@ -38,6 +38,12 @@ class ActionButton extends Widget {
     public $options = [];
 
     /**
+     * @var bool отображать ли данный виджет
+     */
+
+    public $visible = true;
+
+    /**
      * @var string url на которую будет отправлена форма
      */
 
@@ -48,6 +54,9 @@ class ActionButton extends Widget {
      */
 
     public function init() {
+
+        if(!$this->visible)
+            return;
 
         $this->url = Yii::$app->urlManager->createUrl($this->route);
 
@@ -92,6 +101,9 @@ class ActionButton extends Widget {
      */
 
     public function run() {
+
+        if(!$this->visible)
+            return "";
 
         return  Html::button($this->label, $this->options);
 

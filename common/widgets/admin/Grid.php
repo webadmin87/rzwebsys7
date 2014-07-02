@@ -89,6 +89,8 @@ class Grid extends Widget {
 
         $this->pjaxId = $this->id.self::PJAX_SUF;
 
+        $this->view->registerCss(".grid-checkbox-disabled input[type='checkbox'] { display:none; }");
+
     }
 
     /**
@@ -130,11 +132,14 @@ class Grid extends Widget {
 
     protected function defaultGroupButtons() {
 
+        $perm = $this->model->getPermission();
+
         $arr = [
 
             "delete" => [
                 "class"=>\common\widgets\admin\ActionButton::className(),
                 "label"=>Yii::t('core', 'Delete'),
+                "visible"=>!$perm OR $perm->deleteModels(),
                 "options" => [
                     'id'=>'group-delete',
                     'class'=>'btn btn-danger',
@@ -149,6 +154,7 @@ class Grid extends Widget {
             $arr["replace"] = [
 
                 "class"=>\common\widgets\admin\ReplaceInTreeButton::className(),
+                "visible"=>!$perm OR $perm->updateModels(),
                 "label"=>Yii::t('core', 'Replace'),
                 "options" => [
                     'id'=>'group-replace',
@@ -178,7 +184,19 @@ class Grid extends Widget {
 
         $columns = [
 
-            ['class' => 'yii\grid\CheckboxColumn'],
+            [
+                'class' => 'yii\grid\CheckboxColumn',
+                'contentOptions' => function ($model, $key, $index, $gridView) {
+                    $arr = [];
+
+                    $perm = $model->getPermission();
+
+                    if($perm AND !$perm->updateModel($model) AND !$perm->deleteModel($model))
+                        $arr = ["class"=>"grid-checkbox-disabled"];
+
+                    return $arr;
+                }
+            ],
 
         ];
 
@@ -209,47 +227,91 @@ class Grid extends Widget {
 
     public function getDefaultRowButtons() {
 
+        $js = function($u) {
 
+            return '$.get("'.$u.'", function(){ $.pjax.reload({container: "#'.$this->pjaxId.'", timeout: false}); }); return false;';
+
+        };
+
+        $buttonsTree = [
+
+            'up'=>function($url, $model) use ($js){
+
+                $perm = $model->getPermission();
+
+                if(!$perm OR $perm->updateModel($model))
+                    return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-arrow-up']), ['data-pjax'=>0, 'onClick'=>$js($url), 'href'=>'#', 'title'=>Yii::t('core', 'Up')]);
+
+            },
+
+            'down'=>function($url, $model)  use ($js){
+
+                $perm = $model->getPermission();
+
+                if(!$perm OR $perm->updateModel($model))
+                    return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-arrow-down']), ['data-pjax'=>0, 'onClick'=>$js($url), 'href'=>'#', 'title'=>Yii::t('core', 'Down')]);
+
+            },
+
+            'enter'=>function($url, $model){
+
+                $url = Yii::$app->urlManager->createUrl([Yii::$app->controller->route, "parent_id"=>$model->id]);
+
+                $perm = $model->getPermission();
+
+                if(!$perm OR $perm->readModel($model))
+                    return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-open']), ['data-pjax'=>0, 'href'=>$url, 'title'=>Yii::t('core', 'Enter')]);
+
+            },
+        ];
+
+        $buttonsDefault = [
+
+            'view'=>function($url, $model) use ($js){
+
+                $perm = $model->getPermission();
+
+                if(!$perm OR $perm->readModel($model))
+                    return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-eye-open']), ['data-pjax'=>0, 'href'=>$url, 'title'=>Yii::t('core', 'View')]);
+
+            },
+
+            'update'=>function($url, $model) use ($js){
+
+                $perm = $model->getPermission();
+
+                if(!$perm OR $perm->updateModel($model))
+                    return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-pencil']), ['data-pjax'=>0, 'href'=>$url, 'title'=>Yii::t('core', 'Update')]);
+
+            },
+
+            'delete'=>function($url, $model) use ($js){
+
+                $perm = $model->getPermission();
+
+                if(!$perm OR $perm->deleteModel($model))
+                    return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-trash']), ['data-pjax'=>0, 'href'=>$url, 'title'=>Yii::t('core', 'Delete')]);
+
+            },
+
+
+        ];
 
         if($this->tree) {
 
-            $js = function($u) {
-
-                return '$.get("'.$u.'", function(){ $.pjax.reload({container: "#'.$this->pjaxId.'", timeout: false}); }); return false;';
-
-            };
 
             return [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{up} {down} {enter} {view} {update} {delete}',
-                'buttons' => [
-
-                    'up'=>function($url, $model) use ($js){
-
-                            return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-arrow-up']), ['data-pjax'=>0, 'onClick'=>$js($url), 'href'=>'#', 'title'=>Yii::t('core', 'Up')]);
-
-                        },
-
-                    'down'=>function($url, $model)  use ($js){
-
-                             return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-arrow-down']), ['data-pjax'=>0, 'onClick'=>$js($url), 'href'=>'#', 'title'=>Yii::t('core', 'Down')]);
-
-                    },
-
-                    'enter'=>function($url, $model){
-
-                            $url = Yii::$app->urlManager->createUrl([Yii::$app->controller->route, "parent_id"=>$model->id]);
-
-                            return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-open']), ['data-pjax'=>0, 'href'=>$url, 'title'=>Yii::t('core', 'Enter')]);
-
-                    },
-
-                ],
+                'buttons' => array_merge($buttonsTree,$buttonsDefault),
             ];
 
         } else {
 
-            return ['class' => 'yii\grid\ActionColumn'];
+            return [
+                'class' => 'yii\grid\ActionColumn',
+                'buttons' => $buttonsDefault,
+            ];
 
         }
 

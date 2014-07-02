@@ -26,18 +26,25 @@ echo GridView::widget([
 ]);
 ?>
 
-<div class="form-group form-inline">
+<?
+$btnHtml = null;
+foreach ($groupButtons AS $button): ?>
+    <? if (is_array($button)):
+        $widget = Yii::createObject($button);
+        ?>
+        <?$btnHtml .= $widget->run();?>
+    <? endif; ?>
+<? endforeach; ?>
 
-    <span><?= Yii::t('core', 'Actions with selected') ?>:</span>
+<?if($btnHtml):?>
+    <div class="form-group form-inline">
 
-    <? foreach ($groupButtons AS $button): ?>
-        <? if (is_array($button)):
-            $widget = Yii::createObject($button);
-            ?>
-            <?=$widget->run();?>
-        <? endif; ?>
-    <? endforeach; ?>
+        <span><?= Yii::t('core', 'Actions with selected') ?>:</span>
 
-</div>
+        <?=$btnHtml?>
+
+    </div>
+<?endif;?>
+
 <?=Html::endForm();?>
 <?Pjax::end();?>
