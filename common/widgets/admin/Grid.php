@@ -239,7 +239,7 @@ class Grid extends Widget {
 
                 $perm = $model->getPermission();
 
-                if(!$perm OR $perm->updateModel($model))
+                if(!$perm)
                     return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-arrow-up']), ['data-pjax'=>0, 'onClick'=>$js($url), 'href'=>'#', 'title'=>Yii::t('core', 'Up')]);
 
             },
@@ -248,7 +248,7 @@ class Grid extends Widget {
 
                 $perm = $model->getPermission();
 
-                if(!$perm OR $perm->updateModel($model))
+                if(!$perm)
                     return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-arrow-down']), ['data-pjax'=>0, 'onClick'=>$js($url), 'href'=>'#', 'title'=>Yii::t('core', 'Down')]);
 
             },

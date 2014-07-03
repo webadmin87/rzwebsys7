@@ -58,6 +58,8 @@ class Update extends Base {
 
         $model->setScenario($this->modelScenario);
 
+        $this->checkForbiddenAttrs($model);
+
         $request = Yii::$app->request;
 
         $load = $model->load(Yii::$app->request->post());

@@ -53,7 +53,7 @@ class Admin extends Base {
 
         $searchModel = new $this->modelClass;
 
-        if(!Yii::$app->user->can('listModel', array("model"=>$searchModel)))
+        if(!Yii::$app->user->can('listModels', array("model"=>$searchModel)))
             throw new ForbiddenHttpException('Forbidden');
 
         $searchModel->setScenario($this->modelScenario);

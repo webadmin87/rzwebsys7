@@ -32,7 +32,7 @@ foreach ($groupButtons AS $button): ?>
     <? if (is_array($button)):
         $widget = Yii::createObject($button);
         ?>
-        <?$btnHtml .= $widget->run();?>
+        <?$btnHtml .= $widget->run() . "\n";?>
     <? endif; ?>
 <? endforeach; ?>
 

@@ -1,4 +1,5 @@
 <?php
+use \app\modules\main\models;
 return [
 
     'modules' => [
@@ -14,15 +15,24 @@ return [
                         [
                             'label'=>Yii::t('main/app', 'Main module'),
                             'items'=>[
-                                ['label' => Yii::t('main/app', 'Pages'), 'url' => ['/admin/main/pages']],
-                                ['label' => Yii::t('main/app', 'Menu'), 'url' => ['/admin/main/menu']],
-                                ['label' => Yii::t('main/app', 'Users'), 'url' => ['/admin/main/user']],
-                                ['label' => Yii::t('main/app', 'FileManager'), 'url' => ['/admin/main/file-manager']],
-                                ['label' => Yii::t('main/app', 'Templates'), 'url' => ['/admin/main/template']],
-                                ['label' => Yii::t('main/app', 'Includes'), 'url' => ['/admin/main/includes']],
-                                ['label' => Yii::t('main/app', 'Comments'), 'url' => ['/admin/main/comments']],
-                                ['label' => Yii::t('main/app', 'Tools'), 'url' => ['/admin/main/tools']],
-                                ['label' => Yii::t('main/app', 'Permission'), 'url' => ['/admin/main/permission']],
+                                ['label' => Yii::t('main/app', 'Pages'), 'url' => ['/admin/main/pages'],
+                                    "permission"=>["listModels", ["model"=>Yii::createObject(models\Pages::className())]]],
+                                ['label' => Yii::t('main/app', 'Menu'), 'url' => ['/admin/main/menu'],
+                                    "permission"=>["listModels", ["model"=>Yii::createObject(models\Menu::className())]]],
+                                ['label' => Yii::t('main/app', 'Users'), 'url' => ['/admin/main/user'],
+                                    "permission"=>["listModels", ["model"=>Yii::createObject(models\User::className())]]],
+                                ['label' => Yii::t('main/app', 'FileManager'), 'url' => ['/admin/main/file-manager'],
+                                    "permission"=>["fileManager",]],
+                                ['label' => Yii::t('main/app', 'Templates'), 'url' => ['/admin/main/template'],
+                                    "permission"=>["rootAccess"]],
+                                ['label' => Yii::t('main/app', 'Includes'), 'url' => ['/admin/main/includes'],
+                                    "permission"=>["listModels", ["model"=>Yii::createObject(models\Includes::className())]]],
+                                ['label' => Yii::t('main/app', 'Comments'), 'url' => ['/admin/main/comments'],
+                                    "permission"=>["listModels", ["model"=>Yii::createObject(models\Comments::className())]]],
+                                ['label' => Yii::t('main/app', 'Tools'), 'url' => ['/admin/main/tools'],
+                                    "permission"=>["rootAccess"]],
+                                ['label' => Yii::t('main/app', 'Permission'), 'url' => ['/admin/main/permission'],
+                                    "permission"=>["rootAccess"]],
                             ]
                         ],
                     ];},

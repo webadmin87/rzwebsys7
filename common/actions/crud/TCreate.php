@@ -40,6 +40,8 @@ class TCreate extends Create {
         if(!Yii::$app->user->can('createModel', array("model"=>$model)))
             throw new ForbiddenHttpException('Forbidden');
 
+        $this->checkForbiddenAttrs($model);
+
         $request = Yii::$app->request;
 
         $parentModel = $class::find()->where(["id"=>$model->parent_id])->one();

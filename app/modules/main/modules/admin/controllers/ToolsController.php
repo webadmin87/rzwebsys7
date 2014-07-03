@@ -83,7 +83,7 @@ class ToolsController extends Admin
         $deleteModel->description = 'delete model';
         $auth->add($deleteModel);
 
-        $listModels = $auth->createPermission('listModel');
+        $listModels = $auth->createPermission('listModels');
         $listModels->description = 'list models';
         $auth->add($listModels);
 
@@ -134,16 +134,32 @@ class ToolsController extends Admin
         $auth->add($listModelsRule);
         $auth->addChild($listModelsRule, $listModels);
 
+        // user role
+
+        $user = $auth->createRole('user');
+        $auth->add($user);
+
+        // manager role
+
+        $manager = $auth->createRole('manager');
+        $auth->add($manager);
+        $auth->addChild($manager, $accessAdmin);
+        $auth->addChild($manager, $listModelsRule);
+        $auth->addChild($manager, $createModelRule);
+        $auth->addChild($manager, $readModelRule);
+        $auth->addChild($manager, $updateModelRule);
+        $auth->addChild($manager, $deleteModelRule);
+
         // admin role
 
         $admin = $auth->createRole('admin');
         $auth->add($admin);
-        $auth->addChild($admin, $accessAdmin);
-        $auth->addChild($admin, $listModelsRule);
-        $auth->addChild($admin, $createModelRule);
-        $auth->addChild($admin, $readModelRule);
-        $auth->addChild($admin, $updateModelRule);
-        $auth->addChild($admin, $deleteModelRule);
+        $auth->addChild($admin, $manager);
+        $auth->addChild($admin, $createModel);
+        $auth->addChild($admin, $readModel);
+        $auth->addChild($admin, $updateModel);
+        $auth->addChild($admin, $deleteModel);
+        $auth->addChild($admin, $listModels);
 
         // root role
 
@@ -151,11 +167,7 @@ class ToolsController extends Admin
         $auth->add($root);
         $auth->addChild($root, $admin);
         $auth->addChild($root, $rootAccess);
-        $auth->addChild($root, $createModel);
-        $auth->addChild($root, $readModel);
-        $auth->addChild($root, $updateModel);
-        $auth->addChild($root, $deleteModel);
-        $auth->addChild($root, $listModels);
+
 
         $config = array_merge([
             'class' => ActiveDataProvider::className(),

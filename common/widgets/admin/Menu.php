@@ -29,6 +29,8 @@ class Menu extends Widget {
     /**
      * @var array описание пунктов меню для виджета \yii\bootstrap\Nav
      * @link http://www.yiiframework.com/doc-2.0/yii-bootstrap-nav.html
+     * Также добавлен элеиент с ключом permission. Представляет собой массив первый элемент которого имя права доступа, второй массив параметров для проверки.
+     * "permission"=>["listModels", ["model"=>Yii::createObject(models\User::className())]]
      */
 
     protected $items = [];
@@ -51,15 +53,50 @@ class Menu extends Widget {
 
                if($admin AND is_callable($admin->menuItems)) {
 
-                   $func = $admin->menuItems;
+                   $this->items = array_merge($this->items, call_user_func($admin->menuItems));
 
-                   $this->items = array_merge($this->items, $func());
+                   $this->processAccess();
 
                }
 
            }
 
         }
+
+    }
+
+    /**
+     * Ограничение прав доступа к пунктам меню
+     */
+
+    public function processAccess() {
+
+        if(Yii::$app->user->can("rootAccess"))
+            return;
+
+        $arr = [];
+
+        foreach($this->items AS $moduleItem) {
+
+            if(empty($moduleItem["items"]))
+                continue;
+
+            foreach($moduleItem["items"] AS $k => $item) {
+                $permission = $item["permission"][0];
+
+                $params = isset($item["permission"][1])?$item["permission"][1]:[];
+
+                if (!isset($item["permission"]) OR !Yii::$app->user->can($permission, $params))
+                    unset($moduleItem["items"][$k]);
+
+            }
+
+            if(!empty($moduleItem["items"]))
+                $arr[] = $moduleItem;
+
+        }
+
+        $this->items = $arr;
 
     }
 

@@ -24,7 +24,7 @@ class TAdmin extends Admin {
 
         $parentModel = $class::find()->where(["id"=>$parent_id])->one();
 
-        if(!Yii::$app->user->can('listModel', array("model"=>$searchModel)))
+        if(!Yii::$app->user->can('listModels', array("model"=>$searchModel)))
             throw new ForbiddenHttpException('Forbidden');
 
         $searchModel->setScenario($this->modelScenario);

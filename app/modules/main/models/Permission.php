@@ -233,7 +233,7 @@ class Permission extends ActiveRecord implements IPermission {
 
     public function isAttributeForbidden($attr) {
 
-        $arr = $this->getDisabledAttrsArr();
+        $arr = $this->getForbiddenAttrs();
 
         return in_array($attr, $arr);
     }
@@ -246,7 +246,7 @@ class Permission extends ActiveRecord implements IPermission {
 
     public function hasForbiddenAttrs($attrs) {
 
-        $arr = $this->getDisabledAttrsArr();
+        $arr = $this->getForbiddenAttrs();
 
         $keys = array_keys($attrs);
 

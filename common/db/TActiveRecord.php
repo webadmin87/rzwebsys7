@@ -67,7 +67,15 @@ abstract class TActiveRecord extends ActiveRecord {
 
         $arr = [self::ROOT_ID=>Yii::t('core', 'Root')];
 
-        $model = static::find()->where(["id"=>$parent_id])->one();
+        $query = static::find();
+
+        if($perm = $this->getPermission()) {
+
+            $perm->applyConstraint($query);
+
+        }
+
+        $model = $query->andWhere(["id"=>$parent_id])->one();
 
         if(!$model) {
 

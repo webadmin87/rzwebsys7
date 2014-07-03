@@ -25,6 +25,8 @@ class TUpdate extends Update {
 
         $model->setScenario($this->modelScenario);
 
+        $this->checkForbiddenAttrs($model);
+
         $request = Yii::$app->request;
 
         $parentModel = $model->parent()->one();

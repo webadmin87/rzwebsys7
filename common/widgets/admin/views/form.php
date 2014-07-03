@@ -10,6 +10,8 @@ use yii\helpers\Html;
  * @var array $formOptions параметры \yii\widgets\ActiveForm
  */
 
+$perm = $model->getPermission();
+
 $meta = $model->getMetaFields();
 
 $tabId = "$id-tabs";
@@ -43,7 +45,10 @@ $this->registerJs("
         foreach ($meta->tabs() AS $key => $title): ?>
             <div class="<? if ($i == 0): ?>active <? endif; ?>tab-pane" id="<?= $key ?>">
 
-                <? foreach ($meta->getFieldsByTab($key) AS $field): ?>
+                <? foreach ($meta->getFieldsByTab($key) AS $field):
+                    if($perm AND $perm->isAttributeForbidden($field->attr))
+                        continue;
+                    ?>
                     <?= $field->form($form); ?>
                 <? endforeach; ?>
 
