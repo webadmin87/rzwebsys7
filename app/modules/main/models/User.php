@@ -71,9 +71,9 @@ class User extends ActiveRecord implements IdentityInterface
      * @inheritdoc
      */
 
-    public function afterSave($insert) {
+    public function afterSave($insert, $changeAttributes) {
 
-        parent::afterSave($insert);
+        parent::afterSave($insert, $changeAttributes);
 
         $auth = Yii::$app->authManager;
 

@@ -36,9 +36,7 @@ return [
     ],
     'components' => [
 
-        'authManager' => [
-            'class' => 'yii\rbac\PhpManager',
-        ],
+
 
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -54,18 +52,6 @@ return [
                 'admin/<module:\w+>'=>'<module>/admin',
                 'admin'=>'main/admin',
             ]
-        ],
-        'i18n' => [
-            'translations' => [
-                '*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    //'basePath' => '@app/messages',
-                    //'sourceLanguage' => 'en',
-                    'fileMap' => [
-                        'core' => 'core.php',
-                    ],
-                ],
-            ],
         ],
         'user' => [
             'identityClass' => 'app\modules\main\models\User',

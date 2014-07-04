@@ -47,14 +47,19 @@
 	},
 	"extra": {
 		"writable": [
-			"backend/runtime",
-			"backend/web/assets",
 
 			"console/runtime",
 			"console/migrations",
 
-			"frontend/runtime",
-			"frontend/web/assets"
+			"app/runtime",
+			"app/web/assets"
 		]
-	}
+	},
+    "autoload": {
+        "psr-0": {
+            "common\\": "",
+            "console\\": "",
+            "app\\": ""
+        }
+    }
 }
