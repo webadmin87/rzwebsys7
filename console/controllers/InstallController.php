@@ -13,6 +13,8 @@ use yii\console\Controller;
  */
 class InstallController extends Controller {
 
+    const MIGRATE_ID = "migrate";
+
     /**
      * Установка системы
      * @return int
@@ -20,7 +22,19 @@ class InstallController extends Controller {
 
     public function actionIndex() {
 
-        $this->installRoles();
+        echo Yii::t('main/app', 'Apply migrations...') . "\n";
+
+        $migrate = $controller = Yii::createObject([
+            "class"=>Yii::$app->controllerMap[self::MIGRATE_ID],
+            "db"=>Yii::$app->db,
+            "migrationPath"=>Yii::getAlias('@console/migrations'),
+        ], [self::MIGRATE_ID, Yii::$app]);
+
+        $migrate->actionUp();
+
+        $this->actionRoles();
+
+        echo Yii::t('main/app', 'Install complete!') . "\n";
 
         return 0;
 
@@ -31,7 +45,9 @@ class InstallController extends Controller {
      * @throws \yii\base\InvalidConfigException
      */
 
-    protected function installRoles() {
+    protected function actionRoles() {
+
+        echo Yii::t('main/app', 'Installing roles...') . "\n";
 
         $installer = Yii::createObject(\app\modules\main\rbac\Installer::className());
 
@@ -50,6 +66,7 @@ class InstallController extends Controller {
 
         }
 
+        return 0;
 
     }
 
