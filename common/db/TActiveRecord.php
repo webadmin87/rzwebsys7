@@ -148,7 +148,7 @@ abstract class TActiveRecord extends ActiveRecord {
     /**
      * Возвращает массив для хлебных крошек
      * @param int $id идентификатор модели до которой строить хлебные крошки
-     * @param string $route маршрут для url
+     * @param callable $route функция возвращающая маршрут/url. Принимает в себя параметром экземпляр модели
      * @param string $attr имя атрибута для label
      * @return array
      */
@@ -170,7 +170,7 @@ abstract class TActiveRecord extends ActiveRecord {
 
             $arr[] = [
 
-                "url"=>[$route, "parent_id"=>$model->id],
+                "url"=>call_user_func($route, $model),
                 "label"=>$model->$attr,
 
             ];

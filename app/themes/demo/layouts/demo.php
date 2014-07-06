@@ -1,6 +1,7 @@
 <?php
 use app\themes\demo\assets\AppAsset;
 use yii\helpers\Html;
+use yii\widgets\Breadcrumbs;
 
 /**
  * @var \yii\web\View $this
@@ -62,7 +63,12 @@ AppAsset::register($this);
             </div>
 
         </div>
-        <div  class="col-xs-9"><?= $content ?></div>
+        <div  class="col-xs-9">
+            <? echo Breadcrumbs::widget([
+                'links' => $this->breadCrumbs,
+            ]);?>
+            <?= $content ?>
+        </div>
     </div>
 
 </div>

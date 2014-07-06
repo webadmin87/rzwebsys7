@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             "label"=>\Yii::t($this->context->tFile, 'Root'),
             "url"=>["/".Yii::$app->controller->route]
         ],
-        'links' => $searchModel->getBreadCrumbsItems($parent_id, "/".Yii::$app->controller->route),
+        'links' => $searchModel->getBreadCrumbsItems($parent_id, function($model) { return ["/".Yii::$app->controller->route, "parent_id"=>$model->id]; }),
     ]) ?>
 
     <?php echo $this->render('_grid', ['dataProvider' => $dataProvider, "searchModel"=>$searchModel]); ?>

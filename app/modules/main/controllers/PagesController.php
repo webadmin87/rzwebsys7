@@ -30,6 +30,9 @@ class PagesController extends App {
         if(!$model)
             throw new NotFoundHttpException;
 
+        if($model->code != self::INDEX_CODE)
+            $this->view->breadCrumbs = $model->getBreadCrumbsItems($model->id, function($model){ return ['/main/pages/index', 'code'=>$model->code];});
+
         $this->view->registerMetaTags($model);
 
         return $this->render('index', ["model"=>$model]);
