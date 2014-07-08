@@ -1,7 +1,7 @@
 <?php
 namespace common\widgets\launcher;
 
-use yii\web\AssetBundle as YiiBundle;
+use common\components\AssetBundle as BaseBundle;
 
 /**
  * Class AssetBundle
@@ -9,11 +9,16 @@ use yii\web\AssetBundle as YiiBundle;
  * @package common\widgets\launcher
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class AssetBundle extends YiiBundle {
+class AssetBundle extends BaseBundle {
 
     public $js = [
         'starter.js',
         "init.js",
+    ];
+
+    public $jsMin = [
+        'starter.min.js',
+        "init.min.js",
     ];
 
     public $publishOptions = [
@@ -28,6 +33,8 @@ class AssetBundle extends YiiBundle {
     public function init() {
 
         $this->sourcePath = __DIR__."/assets";
+
+        parent::init();
 
     }
 

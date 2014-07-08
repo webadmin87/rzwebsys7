@@ -1,7 +1,7 @@
 <?php
 namespace app\modules\main\widgets\gallery;
 
-use yii\web\AssetBundle as YiiBundle;
+use common\components\AssetBundle AS BaseBundle;
 
 /**
  * Class AssetBundle
@@ -10,7 +10,7 @@ use yii\web\AssetBundle as YiiBundle;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class AssetBundle extends YiiBundle {
+class AssetBundle extends BaseBundle {
 
     public $css = [
         'styles.css',
@@ -19,6 +19,7 @@ class AssetBundle extends YiiBundle {
     public function init() {
 
         $this->sourcePath = __DIR__."/assets";
+        parent::init();
 
     }
 

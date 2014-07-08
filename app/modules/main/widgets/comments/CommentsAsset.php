@@ -1,7 +1,7 @@
 <?php
 namespace app\modules\main\widgets\comments;
 
-use yii\web\AssetBundle;
+use common\components\AssetBundle;
 
 /**
  * Class CommentsAsset
@@ -16,6 +16,10 @@ class CommentsAsset extends AssetBundle {
         'script.js',
     ];
 
+    public $jsMin = [
+        'script.min.js',
+    ];
+
     public $depends = [
         'yii\web\JqueryAsset',
     ];
@@ -23,7 +27,7 @@ class CommentsAsset extends AssetBundle {
     public function init() {
 
         $this->sourcePath = __DIR__."/assets/script";
-
+        parent::init();
     }
 
 }

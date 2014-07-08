@@ -1,7 +1,7 @@
 <?php
 namespace common\widgets\markitup;
 
-use yii\web\AssetBundle;
+use common\components\AssetBundle;
 
 /**
  * Class SetBbCodeAsset
@@ -19,6 +19,10 @@ class SetBbCodeAsset extends AssetBundle {
         'set.js',
     ];
 
+    public $jsMin = [
+        'set.min.js',
+    ];
+
     public $depends = [
         '\common\widgets\markitup\MarkItUpAsset',
     ];
@@ -26,6 +30,8 @@ class SetBbCodeAsset extends AssetBundle {
     public function init() {
 
         $this->sourcePath = __DIR__."/assets/sets/bbcode";
+
+        parent::init();
 
     }
 

@@ -36,7 +36,13 @@ return [
     ],
     'components' => [
 
-
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'js' => ['jquery.min.js']
+                ],
+            ],
+        ],
 
         'urlManager' => [
             'enablePrettyUrl' => true,

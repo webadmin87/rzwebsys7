@@ -1,6 +1,4 @@
 (function ($) {
-
-
     /**
      * Валидатор файлов
      * @param params
@@ -15,7 +13,6 @@
             ext: []
 
         }
-
 
         $.extend(this.params, params);
 
@@ -36,7 +33,6 @@
         return this.validateSize(file) && this.validateExt(file);
 
     }
-
 
     FileValidator.prototype.validateSize = function(file) {
 

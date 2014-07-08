@@ -1,7 +1,7 @@
 <?php
 namespace common\widgets\markitup;
 
-use yii\web\AssetBundle;
+use common\components\AssetBundle;
 
 /**
  * Class SkinSimpleAsset
@@ -18,6 +18,8 @@ class SkinSimpleAsset extends AssetBundle {
     public function init() {
 
         $this->sourcePath = __DIR__."/assets/skins/simple";
+
+        parent::init();
 
     }
 

@@ -1,9 +1,15 @@
 <?php
 namespace common\widgets\html5uploader;
 
-use yii\web\AssetBundle as YiiBundle;
+use common\components\AssetBundle as BaseBundle;
 
-class AssetBundle extends YiiBundle {
+/**
+ * Class AssetBundle
+ * @package common\widgets\html5uploader
+ * @author Churkin Anton <webadmin87@gmail.com>
+ */
+
+class AssetBundle extends BaseBundle {
 
     public $css = [
         'uploader.css',
@@ -11,6 +17,12 @@ class AssetBundle extends YiiBundle {
     public $js = [
         'uploader.js',
     ];
+
+    public $jsMin = [
+        'uploader.min.js',
+    ];
+
+
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
@@ -20,6 +32,8 @@ class AssetBundle extends YiiBundle {
     public function init() {
 
         $this->sourcePath = __DIR__."/assets";
+
+        parent::init();
 
     }
 

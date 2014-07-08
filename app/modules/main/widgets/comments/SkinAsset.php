@@ -1,7 +1,7 @@
 <?php
 namespace app\modules\main\widgets\comments;
 
-use yii\web\AssetBundle;
+use common\components\AssetBundle;
 
 /**
  * Class SkinAsset
@@ -19,6 +19,7 @@ class SkinAsset extends AssetBundle {
     public function init() {
 
         $this->sourcePath = __DIR__."/assets/skin";
+        parent::init();
 
     }
 

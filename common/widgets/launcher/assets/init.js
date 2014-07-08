@@ -1,5 +1,4 @@
 (function($){
-
     $.fn.ajaxLauncher = function(url){
 
         return this.each(function(){
