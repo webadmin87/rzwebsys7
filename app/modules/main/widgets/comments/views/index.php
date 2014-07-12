@@ -36,6 +36,8 @@ echo Html::activeHiddenInput($model, 'item_id');
 
 echo Html::hiddenInput("parent_id");
 
+echo \common\widgets\JsCaptcha::widget(["model"=>$model, "attribute"=>"verifyCode", "value"=>$model::VERIFY_CODE]);
+
 ?>
 <div class="form-group">
     <?=Html::submitButton(Yii::t('main/app', 'Submit'), ["class"=>"comments-add btn btn-primary"]);?>

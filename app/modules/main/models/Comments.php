@@ -15,6 +15,36 @@ use common\components\Match;
 
 class Comments extends TActiveRecord {
 
+
+    const VERIFY_CODE = "fcfd5a664144ae35c6eafca228de66e3";
+
+    /**
+     * @var string значение капчи
+     */
+
+    public $verifyCode;
+
+    /**
+     * @inheritdoc
+     */
+
+    public function rules() {
+
+        $rules = parent::rules();
+
+        $rules[] = ['verifyCode', 'compare', 'skipOnEmpty'=>false, 'compareValue'=>self::VERIFY_CODE,
+            'when'=>function($model, $attribute){
+                return Yii::$app->user->isGuest;
+            }];
+
+        return $rules;
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+
     public function init() {
 
         parent::init();
