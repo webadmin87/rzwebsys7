@@ -4,6 +4,10 @@ return [
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'components' => [
 
+        'mail' => [
+            'class' => 'yii\swiftmailer\Mailer',
+        ],
+
         'i18n' => [
             'translations' => [
                 '*' => [
