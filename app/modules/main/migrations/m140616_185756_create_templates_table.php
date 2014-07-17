@@ -28,7 +28,7 @@ class m140616_185756_create_templates_table extends \yii\db\Migration
 
             'author_id'=>1,
             'title'=>'Demo',
-            'code'=>'demo',
+            'code'=>'//demo',
             'text'=>'Demo template',
 
         ]);

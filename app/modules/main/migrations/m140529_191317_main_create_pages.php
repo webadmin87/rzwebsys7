@@ -35,10 +35,24 @@ class m140529_191317_main_create_pages extends \yii\db\Migration
             'author_id'=>1,
             'root'=>1,
             'lft'=>1,
-            'rgt'=>2,
+            'rgt'=>4,
             'level'=>1,
             'title'=>'',
             'code'=>''
+        ]);
+
+
+        $this->insert("{{%$this->tableName}}",[
+
+            'author_id'=>1,
+            'root'=>1,
+            'lft'=>2,
+            'rgt'=>3,
+            'level'=>2,
+            'title'=>'Главная',
+            'metatitle'=>'Главная',
+            'code'=>'main',
+            'text'=>'Главная страница',
         ]);
 
     }
