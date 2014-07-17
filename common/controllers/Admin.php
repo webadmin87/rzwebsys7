@@ -13,6 +13,12 @@ use yii\web\Controller;
 class Admin extends Controller {
 
     /**
+     * @inheritdoc
+     */
+
+    public $enableCsrfValidation = false;
+
+    /**
      * @var string идентификатор файла перевода
      */
 

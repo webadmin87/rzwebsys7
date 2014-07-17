@@ -290,7 +290,7 @@ class Grid extends Widget {
                 $perm = $model->getPermission();
 
                 if(!$perm OR $perm->deleteModel($model))
-                    return Html::tag('a', Html::tag('span', '', ['class'=>'glyphicon glyphicon-trash']), ['data-pjax'=>0, 'href'=>$url, 'title'=>Yii::t('core', 'Delete')]);
+                    return Html::a(Html::tag('span', '', ['class'=>'glyphicon glyphicon-trash']), $url, ['data-pjax'=>0, 'data-method' => 'post',  'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'), 'title'=>Yii::t('core', 'Delete')]);
 
             },
 
