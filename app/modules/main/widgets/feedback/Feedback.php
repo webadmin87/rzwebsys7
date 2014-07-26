@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\main\widgets;
+namespace app\modules\main\widgets\feedback;
 
 use Yii;
 use yii\base\Widget;
@@ -18,7 +18,7 @@ class Feedback extends Widget {
      * @var array маршрут отправки формы
      */
 
-    public $route = ['/main/feedback/index'];
+    public $route = ['/main/feedback/send'];
 
     /**
      * @var string класс модели
@@ -50,7 +50,15 @@ class Feedback extends Widget {
 
     public function init() {
 
+        FeedbackAsset::register($this->view);
+
         $this->model = Yii::createObject($this->modelClass);
+
+        $id = $this->getId();
+
+        $url = Url::toRoute($this->route);
+
+        $this->view->registerJs("$('#$id').feedbackWidget('$url')");
 
     }
 
@@ -63,10 +71,11 @@ class Feedback extends Widget {
         $formOptions = array_merge([
             "action" => Url::toRoute($this->route),
             "enableClientValidation"=>true,
+            "validateOnSubmit"=>true,
 
         ], $this->formOptions);
 
-        return $this->render($this->tpl, ["model"=>$this->model, "formOptions"=>$formOptions]);
+        return $this->render($this->tpl, ["id"=>$this->getId(), "model"=>$this->model, "formOptions"=>$formOptions]);
 
     }
 

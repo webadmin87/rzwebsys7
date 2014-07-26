@@ -40,7 +40,7 @@ class FeedbackForm extends Model {
 
             [['name', 'email', 'text'], 'required'],
             ['email', 'email'],
-            ['phone', 'number', 'integerOnly'=>true, 'min'=>10, 'max'=>10],
+            ['phone', 'number', 'integerOnly'=>true, 'min'=>10],
 
         ];
 
