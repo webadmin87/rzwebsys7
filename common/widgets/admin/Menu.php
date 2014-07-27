@@ -43,13 +43,13 @@ class Menu extends Widget {
 
         $modules = Yii::$app->modules;
 
-        foreach($modules AS $module) {
+        foreach($modules AS $code => $value) {
+
+           $module = Yii::$app->getModule($code);
 
            if(is_object($module)) {
 
                $admin = $module->getModule($this->adminId);
-
-               // @tofix сделать проверку прав при формировании меню
 
                if($admin AND is_callable($admin->menuItems)) {
 

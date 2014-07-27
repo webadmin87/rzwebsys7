@@ -11,7 +11,7 @@ $config = yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/../../common/config/main-local.php'),
     require(__DIR__ . '/../config/main.php'),
     require(__DIR__ . '/../config/main-local.php'),
-    \common\helpers\ConfigHelper::getModulesConfigs(['main'])
+    \common\helpers\ConfigHelper::getModulesConfigs($params["enabledModules"])
 );
 
 $application = new yii\web\Application($config);

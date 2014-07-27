@@ -34,7 +34,6 @@ class ConfigHelper {
            }
 
        }
-
         return $config;
 
     }

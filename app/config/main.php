@@ -3,6 +3,7 @@
 \Yii::$container->set(\yii\widgets\Pjax::className(), ["timeout" => false]);
 \Yii::$container->set(\mcms\xeditable\XEditableAsset::className(), ["publishOptions" => ['forceCopy' => false]]);
 \Yii::$container->set(\mcms\xeditable\XEditableColumn::className(), ['editable' => null]);
+\Yii::$container->set(\yii\jui\DatePicker::className(), ['language' => "ru", "clientOptions"=>["dateFormat"=>"yy-mm-dd"]]);
 
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
