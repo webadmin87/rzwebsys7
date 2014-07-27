@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\main\models;
 
+use Yii;
 use yii\base\Model;
 
 /**
@@ -40,10 +41,28 @@ class FeedbackForm extends Model {
 
             [['name', 'email', 'text'], 'required'],
             ['email', 'email'],
-            ['phone', 'number', 'integerOnly'=>true, 'min'=>10],
+            ['phone', 'number', 'integerOnly'=>true],
+            ['phone', 'string', 'min'=>10],
 
         ];
 
     }
+
+    /**
+     * @inheritdoc
+     */
+
+    public function attributeLabels()
+    {
+        return [
+
+            "name" => Yii::t('main/app', 'Name'),
+            "email" => Yii::t('main/app', 'Email'),
+            "phone" => Yii::t('main/app', 'Phone'),
+            "text" => Yii::t('main/app', 'Text'),
+
+        ];
+    }
+
 
 }

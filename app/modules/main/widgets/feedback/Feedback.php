@@ -39,6 +39,18 @@ class Feedback extends Widget {
     public $tpl = "index";
 
     /**
+     * @var string селектор для ссылки по которой открывать виджет обратной связи в fancybox. Если не задан форма выводится на странице
+     */
+
+    public $fancySelector;
+
+    /**
+     * @var array параметры fancybox
+     * @link http://fancybox.net/api
+     */
+    public $fancyConfig = [];
+
+    /**
      * @var \app\modules\main\models\FeedbackForm модель формы
      */
 
@@ -68,6 +80,23 @@ class Feedback extends Widget {
 
     public function run() {
 
+
+        if($this->fancySelector) {
+
+            echo \newerton\fancybox\FancyBox::widget([
+                'target' => $this->fancySelector,
+                'config'=>array_merge([
+                    'href'=>'#'.$this->getId(),
+                    'autoDimensions'=>false,
+                    'autoSize'=>false,
+                    'width'=>560,
+                    'type'=>'inline',
+                ], $this->fancyConfig),
+            ]);
+
+        }
+
+
         $formOptions = array_merge([
             "action" => Url::toRoute($this->route),
             "enableClientValidation"=>true,
@@ -75,7 +104,7 @@ class Feedback extends Widget {
 
         ], $this->formOptions);
 
-        return $this->render($this->tpl, ["id"=>$this->getId(), "model"=>$this->model, "formOptions"=>$formOptions]);
+        return $this->render($this->tpl, ["id"=>$this->getId(), "model"=>$this->model, "formOptions"=>$formOptions, "hidden"=>!empty($this->fancySelector)]);
 
     }
 

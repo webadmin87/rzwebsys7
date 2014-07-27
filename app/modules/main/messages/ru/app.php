@@ -58,6 +58,10 @@ return [
     "Delete"=>"Удаление",
     "Constraint class"=>"Класс ограничения",
     "Create Permission"=>"Создать правило",
-    "Forbidden attributes"=>"Запрещенные к изменению атрибуты (с новой строки)"
-
+    "Forbidden attributes"=>"Запрещенные к изменению атрибуты (с новой строки)",
+    "Name" => "Имя",
+    "Phone" => "Телефон",
+    "Submit" => "Отправить",
+    "Message send" => "Сообщение успешно отправлено",
+    "Error during sending message" => "Ошибка отправки сообщения"
 ];

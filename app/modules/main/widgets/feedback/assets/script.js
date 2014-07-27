@@ -17,23 +17,30 @@
 
                 process = true;
 
-                var form = $(this);
+                var form = $(this),
 
-                var data = form.serialize();
+                    data = form.serialize(),
+
+                    okMessage = bl.find('.feedback-success'),
+
+                    errorMessage = bl.find('.feedback-error');
 
                 var error = function () {
-                    bl.find('.feedback-success').hide();
-                    bl.find('.feedback-error').show();
+                    okMessage.hide();
+                    errorMessage.show();
                 }
 
                 var success = function () {
-                    bl.find('.feedback-success').show();
-                    bl.find('.feedback-error').hide();
+                    okMessage.show();
+                    errorMessage.hide();
                     form.trigger('reset');
                     var data = form.yiiActiveForm('data');
                     data.validated = false;
+                    setTimeout(function(){
+                        okMessage.hide();
+                        errorMessage.hide();
+                    },5000);
                 }
-
 
                 var jqXhr = $.ajax({
                         url: url,

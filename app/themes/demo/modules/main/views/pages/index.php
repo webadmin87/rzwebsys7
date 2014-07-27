@@ -8,8 +8,6 @@ echo $model->text;
 
 echo \app\modules\main\widgets\gallery\Gallery::widget(["files"=>$model->getFiles('image')]);
 
-echo \app\modules\main\widgets\feedback\Feedback::widget();
-
 if($model->comments) {
 
     echo '<h3>'.Yii::t('main/app', 'Comments').'</h3>';
