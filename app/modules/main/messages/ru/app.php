@@ -63,5 +63,9 @@ return [
     "Phone" => "Телефон",
     "Submit" => "Отправить",
     "Message send" => "Сообщение успешно отправлено",
-    "Error during sending message" => "Ошибка отправки сообщения"
+    "Error during sending message" => "Ошибка отправки сообщения",
+    "Login" => "Аутентификация",
+    "Remember me" => "Запомнить меня",
+    "Enter" => "Вход",
+    "Password" => "Пароль",
 ];

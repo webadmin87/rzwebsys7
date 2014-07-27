@@ -5,12 +5,26 @@ use Yii;
 use yii\base\Model;
 
 /**
- * Login form
+ * Class LoginForm
+ * Модель формы логина
+ * @package app\modules\main\models
+ * @author Churkin Anton <webadmin87@gmail.com>
  */
 class LoginForm extends Model
 {
+    /**
+     * @var string имя пользователя
+     */
     public $username;
+
+    /**
+     * @var string пароль
+     */
     public $password;
+
+    /**
+     * @var bool запомнить меня
+     */
     public $rememberMe = true;
 
     private $_user = false;
@@ -71,4 +85,19 @@ class LoginForm extends Model
 
         return $this->_user;
     }
+
+    /**
+     * @inheritdoc
+     */
+
+    public function attributeLabels()
+    {
+        return [
+            "username" => Yii::t('main/app', 'Username'),
+            "password" => Yii::t('main/app', 'Password'),
+            "rememberMe" => Yii::t('main/app', 'Remember me'),
+        ];
+    }
+
+
 }

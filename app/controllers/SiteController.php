@@ -4,12 +4,15 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
-use app\modules\main\models\LoginForm;
 use yii\filters\VerbFilter;
 
 /**
- * Site controller
+ * Class SiteController
+ * Контроллер аутентификации и обработки ошибок
+ * @package app\controllers
+ * @author Churkin Anton <webadmin87@gmail.com>
  */
+
 class SiteController extends Controller
 {
     /**
@@ -50,6 +53,9 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
+            'login' => [
+                'class' => '\app\modules\main\actions\Login',
+            ],
         ];
     }
 
@@ -58,21 +64,10 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    public function actionLogin()
-    {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
-        }
-    }
+    /**
+     * Выход
+     * @return \yii\web\Response
+     */
 
     public function actionLogout()
     {
