@@ -6,6 +6,8 @@
 
             var bl = $(this);
 
+            var form = bl.find('form');
+
             var editor = bl.find('textarea');
 
             var blId = bl.attr("id");
@@ -29,11 +31,17 @@
                     $(document).off('pjax:end');
                 })
 
-                $.pjax.reload({container:'#'+id});
+                $.pjax.reload({container:'#'+id, timeout: false});
 
                 editor.val('');
 
                 bl.find(".comments-re-cancel").trigger('click');
+
+                form.yiiActiveForm('resetForm');
+
+                var data = form.yiiActiveForm('data');
+
+                data.validated = false;
 
             }
 
@@ -91,39 +99,39 @@
 
             // Обработчик добавления комментария
 
-            bl.find('.comments-add').on('click', function(e){
+            var process = false;
+
+            form.on('submit', function(e){
 
                 e.preventDefault();
 
-                var form = $(this).parents('form');
+                if(process)
+                    return;
+
+                process = true;
 
                 var action = form.attr('action');
 
-                var initValidate = function() {
+                var jqXhr = $.ajax({
+                                url: action,
+                                type: 'post',
+                                data: form.serialize(),
+                                headers: {},
+                                dataType: 'json',
+                                success: function (data, status, xhr) {
+                                    if(xhr.status == 201) {
+                                        success(data.id);
+                                    }
+                                    else
+                                        errors();
+                                },
+                                error: function() {
+                                    errors();
+                                }
+                });
 
-                    form.find("input,select,textarea").each(function(){
-                        $(this).trigger('blur');
-                    });
-
-                }
-
-                $.ajax({
-                    url: action,
-                    type: 'post',
-                    data: form.serialize(),
-                    headers: {},
-                    dataType: 'json',
-                    success: function (data, status, xhr) {
-                        if(xhr.status == 201) {
-                            success(data.id);
-                        }
-                        else
-                            errors();
-                    },
-                    error: function() {
-                        initValidate();
-                        errors();
-                    }
+                jqXhr.always(function(){
+                    process = false;
                 });
 
             })
