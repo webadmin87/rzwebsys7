@@ -2,6 +2,7 @@
 
 namespace app\modules\news\models\meta;
 
+use app\modules\news\models\NewsSection;
 use Yii;
 use common\db\MetaFields;
 
@@ -21,6 +22,18 @@ class NewsMeta extends MetaFields {
     protected function config()
     {
         return [
+
+            "sections" => [
+                "definition" => [
+                    "class" => \common\db\fields\ManyManyField::className(),
+                    "title" => Yii::t('news/app', 'News sections'),
+                    "data" => function(){
+                        $model = \Yii::createObject(NewsSection::className());
+                        return $model->getDataByParent();
+                    },
+                ],
+                "params" => [$this->owner, "sectionsIds", "sections"]
+            ],
 
 
             "title" => [

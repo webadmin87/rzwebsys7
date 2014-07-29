@@ -59,7 +59,7 @@ abstract class TActiveRecord extends ActiveRecord {
      * Возвращает массив для заполнения списка выбора родителя модели
      * @param int $parent_id
      * @param array $exclude массив id моделей ветки которых необходимо исключить из списка
-     * @param string $attr
+     * @param string $attr имя отображаемого атрибута
      * @return array
      */
 
@@ -121,6 +121,33 @@ abstract class TActiveRecord extends ActiveRecord {
             $arr[$m->id] = str_repeat("-", $m->level) . $m->$attr;
 
         }
+
+        return $arr;
+
+    }
+
+    /**
+     * Возвращает массив для заполнения списка выбора
+     * @param int $parent_id идентификатор родителя
+     * @param string $attr имя отображаемого атрибута
+     * @return array
+     */
+
+    public function getDataByParent($parent_id = self::ROOT_ID, $attr = "title") {
+
+        $arr = [];
+
+        $query = static::find();
+
+        $model = $query->andWhere(["id"=>$parent_id])->one();
+
+        if(!$model)
+            return $arr;
+
+        $models = $model->descendants()->published()->all();
+
+        foreach($models AS $m)
+            $arr[$m->id] = str_repeat("-", $m->level) . $m->$attr;
 
         return $arr;
 

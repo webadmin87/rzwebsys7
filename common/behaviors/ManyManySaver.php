@@ -1,0 +1,109 @@
+<?php
+
+namespace common\behaviors;
+
+use yii\base\Behavior;
+use yii\db\ActiveRecord;
+
+/**
+ * Class ManyManySaver
+ * Поведение для сохранения связанных через MANY MANY записей
+ * @package common\behaviors
+ * @author Churkin Anton <webadmin87@gmail.com>
+ */
+class ManyManySaver extends Behavior{
+
+    /**
+     * @var array массив имен связей для сохранения
+     */
+
+    public $names = [];
+
+    const ATTR_SUFF = "Ids";
+
+    /**
+     * @inheritdoc
+     */
+
+    public function events()
+    {
+        return [
+
+            ActiveRecord::EVENT_AFTER_INSERT => [$this, "afterSave"],
+            ActiveRecord::EVENT_AFTER_UPDATE => [$this, "afterSave"],
+
+        ];
+    }
+
+    /**
+     * Сохранение связей
+     */
+
+    public function afterSave() {
+
+        foreach($this->names AS $name) {
+
+            $attr = $this->getAttributeName($name);
+
+            if($this->owner->$attr !== null) {
+
+                $query = $this->owner->{"get".ucfirst($name)}();
+
+                $modelClass = $query->modelClass;
+
+                $related = $query->all();
+
+                foreach($related AS $rel) {
+
+                    $this->owner->unlink($name, $rel, true);
+
+                }
+
+                if(empty($this->owner->$attr))
+                    continue;
+
+                $newRelated = $modelClass::find()->where(["id"=>$this->owner->$attr])->all();
+
+                foreach ($newRelated as $newRel) {
+                    $this->owner->link($name, $newRel);
+                }
+
+
+            }
+
+
+        }
+
+    }
+
+    /**
+     * Возвращает массив идентификаторов связанных записей
+     * @param string $name имя связи
+     * @return array
+     */
+
+    public function getManyManyIds($name) {
+
+        $models = $this->owner->$name;
+
+        $ids = [];
+
+        foreach($models AS $model)
+            $ids[] = $model->id;
+
+        return $ids;
+    }
+
+    /**
+     * Возвращает имя атрибута хранящего идентификаторы привязываемы записей
+     * @param string $name имя звязи
+     * @return string
+     */
+
+    public function getAttributeName($name) {
+
+        return $name . static::ATTR_SUFF;
+
+    }
+
+}

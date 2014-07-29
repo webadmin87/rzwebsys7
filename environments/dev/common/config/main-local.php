@@ -7,6 +7,7 @@ return [
 			'username' => 'postgres',
 			'password' => 'xh48u56',
 			'charset' => 'utf8',
+            'enableSchemaCache'=>true,
         ],
         'mail' => [
             'class' => 'yii\swiftmailer\Mailer',

@@ -1,6 +1,6 @@
 <?php
 namespace common\db\fields;
-use Yii\widgets\ActiveForm;
+use yii\widgets\ActiveForm;
 /**
  * Class ListField
  * Списочное поле модели
@@ -8,7 +8,7 @@ use Yii\widgets\ActiveForm;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class ListField extends TextField {
+class ListField extends Field {
 
     /**
      * @var closure анонимная функция возвращающая данны для заполнения списка

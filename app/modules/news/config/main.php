@@ -17,6 +17,8 @@ return [
                             'items'=>[
                                 ['label' => Yii::t('news/app', 'News'), 'url' => ['/admin/news/news'],
                                     "permission"=>["listModels", ["model"=>Yii::createObject(models\News::className())]]],
+                                ['label' => Yii::t('news/app', 'News sections'), 'url' => ['/admin/news/news-section'],
+                                    "permission"=>["listModels", ["model"=>Yii::createObject(models\NewsSection::className())]]],
                             ]
                         ],
                     ];},
