@@ -75,7 +75,12 @@ class ManyManyField extends HasOneField {
 
         $options["multiple"] = true;
 
-        return $form->field($this->model, $this->attr)->dropDownList($this->getDataValue(), $options);
+        return $form->field($this->model, $this->attr)->widget(\dosamigos\multiselect\MultiSelect::className(),
+                [
+                    "data"=>$this->getDataValue(),
+                    "options" => ["multiple"=>true]
+                ]
+        );
 
     }
 

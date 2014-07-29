@@ -24,7 +24,8 @@
         "mihaildev/yii2-elfinder": "*",
         "creocoder/yii2-nested-set-behavior": "*",
 		"marciocamello/yii2-x-editable": "dev-master",
-		"newerton/yii2-fancybox": "dev-master"
+		"newerton/yii2-fancybox": "dev-master",
+		"2amigos/yii2-multi-select-widget": "*"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",
