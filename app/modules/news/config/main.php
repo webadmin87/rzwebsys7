@@ -51,9 +51,9 @@ return [
         'urlManager' => [
 
             'rules'=>[
-
-               'news/<code:[A-z0-9_-]+>'=>'news/news/index',
-
+               'news/<section:[A-z0-9_-]+>/<code:[A-z0-9_-]+>'=>'news/news/detail',
+               'news/<section:[A-z0-9_-]+>'=>'news/news/index',
+               'news'=>'news/news/index',
             ],
 
         ],

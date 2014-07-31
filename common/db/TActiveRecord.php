@@ -209,4 +209,21 @@ abstract class TActiveRecord extends ActiveRecord {
 
     }
 
+    /**
+     * Возвращает массив идентификаторов дочерних элементов и текущего элемента
+     * @return array
+     */
+
+    public function getFilterIds() {
+
+        $arr[] = $this->id;
+
+        $models = $this->descendants()->published()->all();
+
+        foreach($models As $model)
+            $arr[] = $model->id;
+
+        return $arr;
+    }
+
 }

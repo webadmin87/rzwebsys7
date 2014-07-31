@@ -2,6 +2,7 @@
 namespace app\modules\news\models;
 
 use Yii;
+use yii\data\ActiveDataProvider;
 use common\db\ActiveRecord;
 use common\components\Match;
 
@@ -87,5 +88,31 @@ class News extends ActiveRecord {
 
     }
 
+    /**
+     * Поиск новостей по категориям. Если идентификаторы категорий не заданы выбираются все элементы.
+     * @param null|array $ids массив идентификаторов категорий
+     * @return \yii\data\ActiveDataProvider провайдер данных
+     * @throws \yii\base\InvalidConfigException
+     */
+
+    public function searchBySection($ids = null) {
+
+        $table = static::tableName();
+
+        $relTable = NewsSection::tableName();
+
+        $query = static::find()->published();
+
+        if($ids)
+            $query->joinWith('sections', true)->where(["$relTable.id"=>$ids])->groupBy("$table.id");
+
+        $dataProvider = Yii::createObject([
+            'class' => ActiveDataProvider::className(),
+            "query" => $query,
+        ]);
+
+        return $dataProvider;
+
+    }
 
 }

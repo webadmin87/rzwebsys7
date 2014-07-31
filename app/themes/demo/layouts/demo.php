@@ -20,7 +20,7 @@ AppAsset::register($this);
 
     <?php
     echo newerton\fancybox\FancyBox::widget([
-        'target' => '.yii-gallery a',
+        'target' => '.yii-gallery a, .photogallery',
         'helpers' => true,
         'mouse' => true,
         'config' => [

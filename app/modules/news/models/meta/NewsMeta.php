@@ -27,6 +27,7 @@ class NewsMeta extends MetaFields {
                 "definition" => [
                     "class" => \common\db\fields\ManyManyField::className(),
                     "title" => Yii::t('news/app', 'News sections'),
+                    "isRequired" => true,
                     "data" => function(){
                         $model = \Yii::createObject(NewsSection::className());
                         return $model->getDataByParent();
@@ -51,6 +52,7 @@ class NewsMeta extends MetaFields {
                     "class" => \common\db\fields\CodeField::className(),
                     "title" => Yii::t('news/app', 'Code'),
                     "isRequired" => true,
+                    "showInGrid"=>false,
                 ],
                 "params" => [$this->owner, "code"]
             ],

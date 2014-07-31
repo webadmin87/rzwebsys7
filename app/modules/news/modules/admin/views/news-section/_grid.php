@@ -12,6 +12,11 @@ echo Grid::widget([
     'dataProvider' => $dataProvider,
     'model' => $searchModel,
     'tree' => true,
+    'userColumns' => [[
+        'class'=>\yii\grid\DataColumn::className(),
+        'header'=>Yii::t('news/app', 'Link'),
+        'value'=>function($model, $index, $widget){ return Yii::$app->urlManager->createUrl(['/news/news/index', 'section'=>$model->code]); }
+    ]],
 ]);
 
 ?>

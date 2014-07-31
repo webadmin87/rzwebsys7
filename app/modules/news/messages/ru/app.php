@@ -13,5 +13,6 @@ return [
     "News sections" => "Категории новостей",
     "News Sections" => "Категории новостей",
     "Create News Section" => "Создать категорию новостей",
+    "Link" => "Ссылка",
 
 ];
