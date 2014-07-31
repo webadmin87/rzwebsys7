@@ -8,6 +8,7 @@ use common\controllers\App;
 use app\modules\news\models\News;
 use app\modules\news\models\NewsSection;
 use yii\web\NotFoundHttpException;
+use \common\cache\TagDependency;
 /**
  * Class NewsController
  * Контроллер отображения новостей
@@ -51,32 +52,49 @@ class NewsController extends App {
 
     public function actionIndex($section = null) {
 
-        $model = Yii::createObject(['class'=>News::className(), 'scenario'=>ActiveRecord::SCENARIO_SEARCH]);
+        $cacheId = ["news-list", Yii::$app->request->url];
 
-        $sectionModel = null;
+        $res = Yii::$app->cache->get($cacheId);
 
-        $ids = null;
+        if(empty($res)) {
 
-        if($section) {
+            $dependency = Yii::createObject(TagDependency::className());
 
-            $sectionModel = NewsSection::find()->published()->andWhere(["code"=>$section])->one();
+            $model = Yii::createObject(['class' => News::className(), 'scenario' => ActiveRecord::SCENARIO_SEARCH]);
 
-            if(!$sectionModel)
-                throw new NotFoundHttpException;
+            $res["sectionModel"] = null;
 
-            $ids = $sectionModel->getFilterIds();
+            $ids = null;
 
-            $this->view->registerMetaTags($sectionModel);
+            if ($section) {
+
+                $res["sectionModel"] = NewsSection::find()->published()->andWhere(["code" => $section])->one();
+
+                if (!$res["sectionModel"])
+                    throw new NotFoundHttpException;
+
+                $ids = $res["sectionModel"]->getFilterIds();
+
+            }
+
+            $dataProvider = $model->searchBySection($ids);
+
+            $dataProvider->getSort()->defaultOrder = $this->orderBy;
+
+            $dataProvider->getPagination()->pageSize = $this->pageSize;
+
+            $dependency->setTagsFromModels($dataProvider->getModels());
+
+            $res["html"] = $this->renderPartial('index', ["dataProvider" => $dataProvider, "sectionModel" => $res["sectionModel"], "previewImageWidth" => $this->previewImageWidth]);
+
+            Yii::$app->cache->set($cacheId, $res, Yii::$app->params["cacheDuration"], $dependency);
 
         }
 
-        $dataProvider = $model->searchBySection($ids);
+        if($res["sectionModel"])
+            $this->view->registerMetaTags($res["sectionModel"]);
 
-        $dataProvider->getSort()->defaultOrder = $this->orderBy;
-
-        $dataProvider->getPagination()->pageSize = $this->pageSize;
-
-        return $this->render('index', ["dataProvider"=>$dataProvider, "sectionModel"=>$sectionModel, "previewImageWidth"=>$this->previewImageWidth]);
+        return $this->renderHtml($res["html"]);
 
     }
 

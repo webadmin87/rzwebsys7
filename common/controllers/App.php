@@ -52,4 +52,20 @@ class App extends Controller {
 
     }
 
+    /**
+     * Рендерит html код, оборачивая в layout
+     * @param string $output html код
+     * @return string
+     */
+
+    public function renderHtml($output)
+    {
+        $layoutFile = $this->findLayoutFile($this->getView());
+        if ($layoutFile !== false) {
+            return $this->getView()->renderFile($layoutFile, ['content' => $output], $this);
+        } else {
+            return $output;
+        }
+    }
+
 }

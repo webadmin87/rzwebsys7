@@ -165,6 +165,9 @@ abstract class ActiveRecord extends YiiRecord {
                 ],
                 'value'=>function() { return date("Y-m-d H:i:s"); },
             ],
+            'tagCache' => [
+                'class'=>\common\behaviors\TagCache::className(),
+            ],
         ];
 
         foreach($fields AS $field) {

@@ -12,8 +12,10 @@ $file = $model->getFirstFile('image');
 $url = Url::toRoute(['/news/news/detail', 'section'=>$model->sections[0]->code, 'code'=>$model->code]);
 ?>
 <h2><a href="<?=$url?>"><?=$model->title?></a></h2>
-<a href="<?=$url?>">
-    <img style="margin: 0 10px 5px 0" src="<?=Yii::$app->resizer->resize($file->getPath(), $previewImageWidth)?>" alt="" align="left" class="img-thumbnail" />
-</a>
+<?if($file):?>
+    <a href="<?=$url?>">
+        <img style="margin: 0 10px 5px 0" src="<?=Yii::$app->resizer->resize($file->getPath(), $previewImageWidth)?>" alt="" align="left" class="img-thumbnail" />
+    </a>
+<?endif;?>
 <p><?=$model->annotation?></p>
 <p class="date"><?=$model->date?></p>
