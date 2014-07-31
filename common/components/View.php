@@ -37,8 +37,11 @@ class View extends YiiView {
 
     public function registerMetaTags($model) {
 
+
         if($model->hasAttribute("metatitle"))
             $this->title = $model->metatitle;
+        elseif($model->hasAttribute("title"))
+            $this->title = $model->title;
 
         if($model->hasAttribute("keywords"))
             $this->registerMetaTag(["name"=>"keywords", "content"=>$model->keywords]);

@@ -22,6 +22,10 @@ class m140727_143455_create_news_table extends \yii\db\Migration
             'annotation'=>Schema::TYPE_TEXT,
             'text'=>Schema::TYPE_TEXT,
             'date'=>Schema::TYPE_DATE,
+            'comments'=>Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT false',
+            'metatitle'=>Schema::TYPE_TEXT,
+            'keywords'=>Schema::TYPE_TEXT,
+            'description'=>Schema::TYPE_TEXT,
         ]);
 
     }

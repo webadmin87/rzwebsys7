@@ -15,6 +15,8 @@ use common\db\MetaFields;
 
 class NewsMeta extends MetaFields {
 
+    const SEO_TAB = "seo";
+
     /**
      * @inheritdoc
      */
@@ -57,6 +59,15 @@ class NewsMeta extends MetaFields {
                 "params" => [$this->owner, "code"]
             ],
 
+            "comments" => [
+                "definition" => [
+                    "class" => \common\db\fields\CheckBoxField::className(),
+                    "title" => Yii::t('news/app', 'Comments'),
+                    "isRequired" => false,
+                ],
+                "params" => [$this->owner, "comments"]
+            ],
+
             "date" => [
                 "definition" => [
                     "class" => \common\db\fields\DateField::className(),
@@ -94,9 +105,53 @@ class NewsMeta extends MetaFields {
                 "params" => [$this->owner, "text"]
             ],
 
+            "metatitle" => [
+                "definition" => [
+                    "class" => \common\db\fields\TextField::className(),
+                    "title" => Yii::t('news/app', 'Meta title'),
+                    "isRequired" => false,
+                    "showInGrid"=>false,
+                    "tab"=>self::SEO_TAB,
+                ],
+                "params" => [$this->owner, "metatitle"]
+            ],
+
+            "keywords" => [
+                "definition" => [
+                    "class" => \common\db\fields\TextField::className(),
+                    "title" => Yii::t('news/app', 'Keywords'),
+                    "isRequired" => false,
+                    "showInGrid"=>false,
+                    "tab"=>self::SEO_TAB,
+                ],
+                "params" => [$this->owner, "keywords"]
+            ],
+
+            "description" => [
+                "definition" => [
+                    "class" => \common\db\fields\TextField::className(),
+                    "title" => Yii::t('news/app', 'Description'),
+                    "isRequired" => false,
+                    "showInGrid"=>false,
+                    "tab"=>self::SEO_TAB,
+                ],
+                "params" => [$this->owner, "description"]
+            ],
+
 
 
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+
+    public function tabs()
+    {
+        $tabs = parent::tabs();
+        $tabs[self::SEO_TAB]=Yii::t('news/app', "SEO");
+        return $tabs;
     }
 
 

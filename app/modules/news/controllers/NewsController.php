@@ -66,6 +66,8 @@ class NewsController extends App {
 
             $ids = $sectionModel->getFilterIds();
 
+            $this->view->registerMetaTags($sectionModel);
+
         }
 
         $dataProvider = $model->searchBySection($ids);
@@ -91,6 +93,8 @@ class NewsController extends App {
 
         if(!$model)
             throw new NotFoundHttpException;
+
+        $this->view->registerMetaTags($model);
 
         return $this->render('detail', ["model"=>$model, "detailImageWidth"=>$this->detailImageWidth]);
 

@@ -14,5 +14,9 @@ return [
     "News Sections" => "Категории новостей",
     "Create News Section" => "Создать категорию новостей",
     "Link" => "Ссылка",
+    "Comments" => "Комментарии",
+    "Meta title" => "Заголовок браузера",
+    "Keywords" => "Ключевые слова",
+    "Description" => "Описание",
 
 ];

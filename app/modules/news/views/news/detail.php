@@ -14,4 +14,14 @@ $file = $model->getFirstFile('image');
 <?endif;?>
 <p class="date"><?=Yii::$app->formatter->asDate($model->date)?></p>
 <?=$model->text?>
-<?=\app\modules\main\widgets\gallery\Gallery::widget(["files"=>$model->getFiles('image'), "skipFromStart"=>1, "rel"=>"news-item"]);
+<?=\app\modules\main\widgets\gallery\Gallery::widget(["files"=>$model->getFiles('image'), "skipFromStart"=>1, "rel"=>"news-item"]);?>
+
+<?
+if($model->comments) {
+
+    echo '<h3>'.Yii::t('main/app', 'Comments').'</h3>';
+
+    echo \app\modules\main\widgets\comments\Comments::widget(["modelClass"=>get_class($model), "itemId"=>$model->id]);
+
+}
+?>
