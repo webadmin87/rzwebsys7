@@ -68,4 +68,17 @@ class App extends Controller {
         }
     }
 
+    /**
+     * Возвращает идентификатор кеше для действия контроллера
+     * @param string $id базовый идентификатор кеша
+     * @return array
+     */
+
+    public function getActionCacheId($id) {
+
+        return [$id, Yii::$app->request->url];
+
+    }
+
+
 }

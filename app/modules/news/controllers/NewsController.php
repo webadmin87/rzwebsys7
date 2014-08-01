@@ -18,6 +18,8 @@ use \common\cache\TagDependency;
 
 class NewsController extends App {
 
+    const LIST_CACHE_ID = "news-list";
+
     /**
      * @var array сортировка новостей
      */
@@ -52,7 +54,7 @@ class NewsController extends App {
 
     public function actionIndex($section = null) {
 
-        $cacheId = ["news-list", Yii::$app->request->url];
+        $cacheId = $this->getActionCacheId(static::LIST_CACHE_ID);
 
         $res = Yii::$app->cache->get($cacheId);
 
