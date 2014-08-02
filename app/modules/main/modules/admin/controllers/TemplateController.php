@@ -4,14 +4,14 @@ namespace app\modules\main\modules\admin\controllers;
 
 use Yii;
 use app\modules\main\models\Template;
-use common\controllers\Admin;
+use common\controllers\Root;
 use yii\filters\VerbFilter;
 use common\actions\crud;
 
 /**
  * TemplateController implements the CRUD actions for Template model.
  */
-class TemplateController extends Admin
+class TemplateController extends Root
 {
 
     /**

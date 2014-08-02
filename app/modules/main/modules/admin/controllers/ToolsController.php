@@ -3,7 +3,7 @@ namespace app\modules\main\modules\admin\controllers;
 
 use Yii;
 use app\modules\main\models\User;
-use common\controllers\Admin;
+use common\controllers\Root;
 use yii\data\ActiveDataProvider;
 use yii\filters\ContentNegotiator;
 use yii\web\Response;
@@ -14,7 +14,7 @@ use yii\web\Controller;
  * @package app\modules\main\modules\admin\controllers
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class ToolsController extends Admin
+class ToolsController extends Root
 {
 
     /**

@@ -4,14 +4,14 @@ namespace app\modules\main\modules\admin\controllers;
 
 use Yii;
 use app\modules\main\models\Permission;
-use common\controllers\Admin;
+use common\controllers\Root;
 use yii\filters\VerbFilter;
 use common\actions\crud;
 
 /**
  * PermissionController implements the CRUD actions for Permission model.
  */
-class PermissionController extends Admin
+class PermissionController extends Root
 {
 
     /**

@@ -3,7 +3,7 @@ namespace app\modules\main\modules\admin\controllers;
 
 use Yii;
 use app\modules\main\models\Config;
-use common\controllers\Admin;
+use common\controllers\Root;
 use yii\base\Model;
 
 /**
@@ -11,7 +11,7 @@ use yii\base\Model;
  * Контроллер конфига
  * @package app\modules\admin\controllers
  */
-class ConfigController extends Admin
+class ConfigController extends Root
 {
 
     /**
