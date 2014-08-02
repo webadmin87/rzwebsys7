@@ -4,7 +4,7 @@ return [
 
     'controllerMap'       => [
         'migrate' => [
-            'migrationLookup' => ['@web/modules/main/migrations'],
+            'migrationLookup' => ['@webapp/modules/main/migrations'],
         ],
     ],
 
@@ -59,7 +59,7 @@ return [
 
                 'main/*'=>[
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@web/modules/main/messages',
+                    'basePath' => '@webapp/modules/main/messages',
                     'fileMap' => [
                             'main/app' => 'app.php',
                     ],

@@ -24,11 +24,14 @@ class InstallController extends Controller {
 
         echo Yii::t('main/app', 'Apply migrations...') . "\n";
 
-        $migrate = $controller = Yii::createObject([
-            "class"=>Yii::$app->controllerMap[self::MIGRATE_ID],
-            "db"=>Yii::$app->db,
-            "migrationPath"=>Yii::getAlias('@console/migrations'),
-        ], [self::MIGRATE_ID, Yii::$app]);
+        $migrate = Yii::createObject(
+            array_merge(
+                Yii::$app->controllerMap[self::MIGRATE_ID],
+                [
+                    "db"=>Yii::$app->db,
+                ]
+            ),
+        [self::MIGRATE_ID, Yii::$app]);
 
         $migrate->actionUp();
 

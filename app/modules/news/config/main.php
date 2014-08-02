@@ -4,7 +4,7 @@ return [
 
     'controllerMap'       => [
         'migrate' => [
-            'migrationLookup' => ['@web/modules/news/migrations'],
+            'migrationLookup' => ['@webapp/modules/news/migrations'],
         ],
     ],
 
@@ -43,7 +43,7 @@ return [
 
                 'news/*'=>[
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@web/modules/news/messages',
+                    'basePath' => '@webapp/modules/news/messages',
                     'fileMap' => [
                             'news/app' => 'app.php',
                     ],

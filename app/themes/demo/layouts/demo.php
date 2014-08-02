@@ -52,13 +52,13 @@ AppAsset::register($this);
     <div class="row">
         <div class="col-xs-3">
 
-            <? echo \app\modules\main\widgets\menu\Menu::widget(["options"=>["class"=>"nav nav-pills nav-stacked"], "parentId"=>5]);?>
+            <? echo \app\modules\main\widgets\menu\Menu::widget(["options"=>["class"=>"nav nav-pills nav-stacked"], "parentId"=>2]);?>
 
             <br />
 
             <div class="well">
                 <? echo \app\modules\main\widgets\includes\Includes::widget(
-                    ["code"=>"left",]
+                    ["code"=>"demo",]
                 );?>
             </div>
 
@@ -75,7 +75,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Churkin Anton <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Churkin Anton <?= date('Y') ?> <a href="" class="feedback"><?=Yii::t('main/app', 'Feedback')?></a></p>
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>

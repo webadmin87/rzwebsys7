@@ -22,6 +22,15 @@ class m140623_175657_create_includes_table extends \yii\db\Migration
             "file"=>Schema::TYPE_TEXT,
         ]);
 
+        $this->insert($this->tableName,[
+
+            'author_id'=>1,
+            'title'=>'Demo область',
+            'code'=>'demo',
+            'text'=>'Демонстрационная вкдючаемая оюласть',
+
+        ]);
+
     }
 
     public function down()

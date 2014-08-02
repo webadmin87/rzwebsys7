@@ -31,9 +31,30 @@ class m140621_141441_create_menu_table extends \yii\db\Migration
             'author_id'=>1,
             'root'=>1,
             'lft'=>1,
-            'rgt'=>2,
+            'rgt'=>6,
             'level'=>1,
 
+        ]);
+
+        $this->insert("{{%$this->tableName}}",[
+
+            'author_id'=>1,
+            'root'=>1,
+            'lft'=>2,
+            'rgt'=>5,
+            'level'=>2,
+            'title'=>'Главное меню',
+        ]);
+
+        $this->insert("{{%$this->tableName}}",[
+
+            'author_id'=>1,
+            'root'=>1,
+            'lft'=>3,
+            'rgt'=>4,
+            'level'=>3,
+            'title'=>'Главная',
+            'link'=>'/',
         ]);
 
     }
