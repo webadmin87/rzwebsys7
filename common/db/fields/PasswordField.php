@@ -16,15 +16,12 @@ class PasswordField extends TextField {
     const PASSWORD_LENGTH = 6;
 
     /**
-     * Формирование Html кода поля для вывода в форме
-     * @param ActiveForm $form объект форма
-     * @param array $options массив html атрибутов поля
-     * @return string
+     * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = []) {
+    public function form(ActiveForm $form, Array $options = [], $index = false) {
 
-        return $form->field($this->model, $this->attr)->passwordInput($options);
+        return $form->field($this->model, $this->getFormAttrName($index))->passwordInput($options);
 
     }
 

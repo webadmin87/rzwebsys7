@@ -33,6 +33,8 @@ return [
                                     "permission"=>["rootAccess"]],
                                 ['label' => Yii::t('main/app', 'Permission'), 'url' => ['/admin/main/permission'],
                                     "permission"=>["rootAccess"]],
+                                ['label' => Yii::t('main/app', 'Config'), 'url' => ['/admin/main/config'],
+                                    "permission"=>["rootAccess"]],
                             ]
                         ],
                     ];},

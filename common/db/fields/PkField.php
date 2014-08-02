@@ -19,6 +19,12 @@ class PkField extends  Field {
      * @inheritdoc
      */
 
+    public $showInTableInput = false;
+
+    /**
+     * @inheritdoc
+     */
+
     public function rules() {
 
         $rules = [[$this->attr, 'safe', 'on' => \common\db\ActiveRecord::SCENARIO_SEARCH]];

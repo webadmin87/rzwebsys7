@@ -26,15 +26,12 @@ class TextAreaField extends TextField {
     public $showInExtendedFilter = false;
 
     /**
-     * Формирование Html кода поля для вывода в форме
-     * @param ActiveForm $form объект форма
-     * @param array $options массив html атрибутов поля
-     * @return string
+     * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = []) {
+    public function form(ActiveForm $form, Array $options = [], $index = false) {
 
-        return $form->field($this->model, $this->attr)->textarea($options);
+        return $form->field($this->model, $this->getFormAttrName($index))->textarea($options);
 
     }
 

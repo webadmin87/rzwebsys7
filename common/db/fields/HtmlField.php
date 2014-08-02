@@ -31,7 +31,7 @@ class HtmlField extends TextAreaField {
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = []) {
+    public function form(ActiveForm $form, Array $options = [], $index=false) {
 
         $options = ArrayHelper::merge([
             'preset' => 'full',
@@ -40,7 +40,7 @@ class HtmlField extends TextAreaField {
 
         $ckeditorOptions = ElFinder::ckeditorOptions($this->fileManagerController, $options);
 
-        return $form->field($this->model, $this->attr)->widget(CKEditor::className(),[
+        return $form->field($this->model, $this->getFormAttrName($index))->widget(CKEditor::className(),[
             'editorOptions' => $ckeditorOptions,
         ]);;
 

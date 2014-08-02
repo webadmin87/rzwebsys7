@@ -20,10 +20,13 @@ class MarkItUpField extends TextAreaField {
 
     public $editorOptions = [];
 
+    /**
+     * @inheritdoc
+     */
 
-    public function form(ActiveForm $form, Array $options = []) {
+    public function form(ActiveForm $form, Array $options = [], $index = false) {
 
-        return $form->field($this->model, $this->attr)->widget(MarkItUp::className(),$this->editorOptions);
+        return $form->field($this->model, $this->getFormAttrName($index))->widget(MarkItUp::className(),$this->editorOptions);
 
     }
 

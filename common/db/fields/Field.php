@@ -65,6 +65,12 @@ class Field extends  Object {
     public $showInExtendedFilter = true;
 
     /**
+     * @var bool отображать поле при табличном вводе
+     */
+
+    public $showInTableInput = true;
+
+    /**
      * @var bool использоваь ли валидатор safe
      */
 
@@ -121,12 +127,30 @@ class Field extends  Object {
      * Формирование Html кода поля для вывода в форме
      * @param ActiveForm $form объект форма
      * @param array $options массив html атрибутов поля
+     * @param bool|int $index инднкс модели при табличном вводе
      * @return string
      */
 
-    public function form(ActiveForm $form, Array $options = []) {
+    public function form(ActiveForm $form, Array $options = [], $index = false) {
 
-        return $form->field($this->model, $this->attr)->textInput($options);
+        return $form->field($this->model, $this->getFormAttrName($index))->textInput($options);
+
+    }
+
+    /**
+     * Возвращает имя атрибута для поля формы
+     * @param bool|int $index индекс модели при табличном вводе
+     * @return string
+     */
+
+    protected function getFormAttrName($index) {
+
+        return ($index !== false)?"[$index]{$this->attr}":$this->attr;
+
+    }
+
+    public function tableForm(ActiveForm $form, $index, Array $options = [])
+    {
 
     }
 

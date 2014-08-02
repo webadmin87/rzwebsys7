@@ -65,11 +65,11 @@ class Html5FileField extends Field {
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = []) {
+    public function form(ActiveForm $form, Array $options = [], $index=false) {
 
         return Html5Widget::widget([
             "model"=>$this->model,
-            "attribute"=>$this->attr,
+            "attribute"=>$this->getFormAttrName($index),
             "maxFileSize"=>$this->model->getMaxFileSize(),
             "options"=>$options,
             "uploadUrl"=>Yii::$app->urlManager->createUrl([$this->route, "model"=>get_class($this->model), "attr"=>$this->attr]),

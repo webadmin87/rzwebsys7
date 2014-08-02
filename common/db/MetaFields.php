@@ -51,7 +51,7 @@ abstract class MetaFields extends Object
 
     /**
      * Возвращает массив объектов полей модели
-     * @return array
+     * @return \common\db\fields\Field[]
      */
 
     public function getFields()
@@ -82,7 +82,7 @@ abstract class MetaFields extends Object
     /**
      * Возвращает поля по коду вкладки
      * @param string $tab код вкладки
-     * @return array
+     * @return \common\db\fields\Field[]
      */
 
     public function getFieldsByTab($tab)

@@ -71,11 +71,11 @@ class ManyManyField extends HasOneField {
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = []) {
+    public function form(ActiveForm $form, Array $options = [], $index = false) {
 
         $options["multiple"] = true;
 
-        return $form->field($this->model, $this->attr)->widget(\dosamigos\multiselect\MultiSelect::className(),
+        return $form->field($this->model, $this->getFormAttrName($index))->widget(\dosamigos\multiselect\MultiSelect::className(),
                 [
                     "data"=>$this->getDataValue(),
                     "options" => ["multiple"=>true]

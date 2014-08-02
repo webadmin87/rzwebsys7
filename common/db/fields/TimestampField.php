@@ -18,6 +18,12 @@ class TimestampField extends TextField {
     /**
      * @inheritdoc
      */
+
+    public $showInTableInput = false;
+
+    /**
+     * @inheritdoc
+     */
     public $showInGrid = false;
 
 

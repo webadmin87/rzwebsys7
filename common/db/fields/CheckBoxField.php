@@ -14,15 +14,12 @@ use Yii;
 class CheckBoxField extends TextField {
 
     /**
-     * Формирование Html кода поля для вывода в форме
-     * @param ActiveForm $form объект форма
-     * @param array $options массив html атрибутов поля
-     * @return string
+     * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = []) {
+    public function form(ActiveForm $form, Array $options = [], $index=false) {
 
-        return $form->field($this->model, $this->attr)->checkbox($options);
+        return $form->field($this->model, $this->getFormAttrName($index))->checkbox($options);
 
     }
 

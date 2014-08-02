@@ -29,12 +29,12 @@ class DateField extends TextField {
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [])
+    public function form(ActiveForm $form, Array $options = [], $index=false)
     {
 
         $options = array_merge(["class"=>"form-control"], $options);
 
-        return $form->field($this->model, $this->attr)->widget(\yii\jui\DatePicker::className(), [
+        return $form->field($this->model, $this->getFormAttrName($index))->widget(\yii\jui\DatePicker::className(), [
             "options"=>$options,
         ]);
     }
