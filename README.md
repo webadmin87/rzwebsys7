@@ -4,9 +4,13 @@ RzWebSys7 - CMS на основе Yii2
 Структура системы
 -----------------
 1) app - web приложение
+
 2) console - консольное приложение
+
 3) common - ядро системы
+
 4) vendor - сторонние компоненты
+
 5) environments - настройки окружений
 
 Установка
@@ -14,11 +18,13 @@ RzWebSys7 - CMS на основе Yii2
 1) В файлах environments/dev/common/config/main-local.php и environments/prod/common/config/main-local.php
 прописываем настройки соединения с базой данных для окружения разработки и продакшена соответственно.
 
-2) Запускаем скрипт **./init** и выбираем нужное окружение для установки
+2) Устанавливаем зависимости через composer
 
-3) Запускаем **./yii install**
+3) Запускаем скрипт **./init** и выбираем нужное окружение для установки
 
-4) Наслаждаемся )
+4) Запускаем **./yii install**
+
+5) Наслаждаемся )
 
 Создание таблиц сущностей новых модулей.
 ---------------------------------------
@@ -28,8 +34,12 @@ RzWebSys7 - CMS на основе Yii2
 
 ```
 ./yii migrate/create --migrationPath=@webapp/modules/module_name/migrations --templateFile=@console/views/migrations/table.php migration_name
+```
+
+```
 ./yii migrate/create --migrationPath=@webapp/modules/module_name/migrations --templateFile=@console/views/migrations/table-tree.php migration_name
 ```
+
 где **module_name** - имя модуля для которого создается миграция, **migration_name** - имя миграции
 
 Пример применения миграций для конкретного модуля:
