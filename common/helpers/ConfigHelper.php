@@ -19,7 +19,7 @@ class ConfigHelper {
      * @return array
      */
 
-    public static function getModulesConfigs($modules, $path = "@app/modules", $configPath = "config/main.php") {
+    public static function getModulesConfigs($modules, $path = "@web/modules", $configPath = "config/main.php") {
 
         $config = [];
 

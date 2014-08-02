@@ -2,6 +2,12 @@
 use \app\modules\main\models;
 return [
 
+    'controllerMap'       => [
+        'migrate' => [
+            'migrationLookup' => ['@web/modules/main/migrations'],
+        ],
+    ],
+
     'modules' => [
 
         'main' => [
@@ -53,7 +59,7 @@ return [
 
                 'main/*'=>[
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@app/modules/main/messages',
+                    'basePath' => '@web/modules/main/messages',
                     'fileMap' => [
                             'main/app' => 'app.php',
                     ],

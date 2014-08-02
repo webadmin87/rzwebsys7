@@ -22,15 +22,23 @@ RzWebSys7 - CMS на основе Yii2
 
 Создание таблиц сущностей новых модулей.
 ---------------------------------------
-Осуществляется с помощью миграций. Миграции создаются на базе системных шаблонов.
+Осуществляется с помощью **миграций**. Миграции создаются на базе системных шаблонов.
 
 Примеры (таблица простой сущности, таблица древовидной сущности):
 
 ```
-./yii migrate/create --templateFile=@console/views/migrations/table.php migration_name
-
-./yii migrate/create --templateFile=@console/views/migrations/table-tree.php migration_name
+./yii migrate/create --migrationPath=@web/modules/module_name/migrations --templateFile=@console/views/migrations/table.php migration_name
+./yii migrate/create --migrationPath=@web/modules/module_name/migrations --templateFile=@console/views/migrations/table-tree.php migration_name
 ```
+где **module_name** - имя модуля для которого создается миграция, **migration_name** - имя миграции
+
+Пример применения миграций для конкретного модуля:
+
+```
+./yii migrate/up --applyPath=@web/modules/module_name/migrations
+```
+
+Без параметра **applyPath** применение миграций происходит для всех модулей сразу
 
 Создание моделей
 ----------------

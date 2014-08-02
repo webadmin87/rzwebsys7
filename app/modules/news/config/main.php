@@ -2,6 +2,12 @@
 use \app\modules\news\models;
 return [
 
+    'controllerMap'       => [
+        'migrate' => [
+            'migrationLookup' => ['@web/modules/news/migrations'],
+        ],
+    ],
+
     'modules' => [
 
         'news' => [
@@ -37,7 +43,7 @@ return [
 
                 'news/*'=>[
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@app/modules/news/messages',
+                    'basePath' => '@web/modules/news/messages',
                     'fileMap' => [
                             'news/app' => 'app.php',
                     ],
