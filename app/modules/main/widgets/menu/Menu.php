@@ -19,6 +19,11 @@ class Menu extends App {
     public $parentId;
 
     /**
+     * @var string символьный идентификатор родительского пункта меню
+     */
+    public $parentCode;
+
+    /**
      * @var string ссылка родительского пункта, если указана используем как корневой раздел.
      * Поиск по ссылке родитльского пункта осуществляется среди прямых потомков модели найденной по свойству $parentId
      */
@@ -61,9 +66,14 @@ class Menu extends App {
 
     protected function findModels() {
 
-        $parent = MenuModel::find()->published()->where(["id"=>$this->parentId])->one();
+        $parentQuery = MenuModel::find()->published();
 
-        if(!$parent)
+        if($this->parentId)
+            $parent = $parentQuery->where(["id"=>$this->parentId])->one();
+        elseif($this->parentCode)
+            $parent = $parentQuery->where(["code"=>$this->parentCode])->one();
+
+        if(empty($parent))
             return false;
 
         if(!empty($this->parentLink)) {

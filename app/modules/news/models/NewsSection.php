@@ -13,6 +13,8 @@ use common\db\TActiveRecord;
 
 class NewsSection extends TActiveRecord {
 
+    use \app\modules\main\components\PermissionTrait;
+
      /**
      * @inheritdoc
      */

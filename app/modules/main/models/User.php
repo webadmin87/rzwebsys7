@@ -24,6 +24,14 @@ use yii\web\IdentityInterface;
 class User extends ActiveRecord implements IdentityInterface
 {
 
+    use \app\modules\main\components\PermissionTrait;
+
+    const ROLE_ROOT = "root";
+
+    const ROLE_ADMIN = "admin";
+
+    CONST ROLE_USER = "user";
+
     /**
      * @var string пароль
      */

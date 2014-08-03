@@ -11,6 +11,12 @@ use common\db\ActiveRecord;
 class CodeField extends TextField {
 
     /**
+     * @var array параметры валтдатора уникальности
+     */
+
+    public $uniqueParams = [];
+
+    /**
      * @inheritdoc
      */
 
@@ -18,7 +24,7 @@ class CodeField extends TextField {
 
         $rules = parent::rules();
 
-        $rules[] = [$this->attr, 'unique', 'except'=>ActiveRecord::SCENARIO_SEARCH];
+        $rules[] = array_merge([$this->attr, 'unique', 'except'=>ActiveRecord::SCENARIO_SEARCH], $this->uniqueParams);
 
         $rules[] = [$this->attr, 'match', 'pattern'=>'/^[A-z0-9_-]+$/i'];
 

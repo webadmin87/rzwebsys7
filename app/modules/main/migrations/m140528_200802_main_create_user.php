@@ -2,12 +2,12 @@
 
 use yii\db\Schema;
 
-class m140528_200802_main_create_user extends \yii\db\Migration
+class m140528_200802_main_create_user extends \app\modules\main\db\Migration
 {
 
     public $tableName = "user";
 
-    public function up()
+    public function safeUp()
     {
 
         $this->createTable("{{%$this->tableName}}",[
@@ -30,7 +30,7 @@ class m140528_200802_main_create_user extends \yii\db\Migration
         $this->insert("{{%$this->tableName}}",[
 
             'author_id'=>1,
-            'username'=>'admin',
+            'username'=>'root',
             'auth_key'=>'PBBpK3K8_YDofSoP1AYWcGZAbISA0O2T',
             'password_hash'=>'$2y$13$Cmws6ebdDCt3kEEjF2dfqeA16WVAqiq9Vi53VGqdz6KiSCMYFJEjq',
             'email'=>'webadmin87@gmail.com',
@@ -39,12 +39,15 @@ class m140528_200802_main_create_user extends \yii\db\Migration
 
         ]);
 
+        $this->insertPermission('\app\modules\main\models\User', '\app\modules\main\rbac\ProfileConstraint');
+
     }
 
-    public function down()
+    public function safeDown()
     {
 
         $this->dropTable("{{%$this->tableName}}");
 
+        $this->deletePermission('\app\modules\main\models\User');
     }
 }

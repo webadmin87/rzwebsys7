@@ -14,6 +14,8 @@ use common\components\Match;
 
 class Includes extends ActiveRecord {
 
+    use \app\modules\main\components\PermissionTrait;
+
     /**
      * @var Includes[] массив включаемых областей
      */

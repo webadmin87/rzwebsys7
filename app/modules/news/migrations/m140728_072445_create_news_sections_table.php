@@ -2,12 +2,12 @@
 
 use yii\db\Schema;
 
-class m140728_072445_create_news_sections_table extends \yii\db\Migration
+class m140728_072445_create_news_sections_table extends \app\modules\main\db\Migration
 {
 
     public $tableName = "news_sections";
 
-    public function up()
+    public function safeUp()
     {
 
         $this->createTable("{{%$this->tableName}}",[
@@ -34,12 +34,16 @@ class m140728_072445_create_news_sections_table extends \yii\db\Migration
 
         ]);
 
+        $this->insertPermission('\app\modules\news\models\NewsSection');
+
     }
 
-    public function down()
+    public function safeDown()
     {
 
         $this->dropTable("{{%$this->tableName}}");
+
+        $this->deletePermission('\app\modules\news\models\NewsSection');
 
     }
 }

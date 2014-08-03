@@ -13,6 +13,8 @@ use common\db\TActiveRecord;
 
 class Menu extends TActiveRecord {
 
+    use \app\modules\main\components\PermissionTrait;
+
     const TARGET_SELF = "_self";
 
     const TARGET_BLANK = "_blank";

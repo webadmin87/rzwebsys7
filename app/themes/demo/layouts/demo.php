@@ -52,7 +52,7 @@ AppAsset::register($this);
     <div class="row">
         <div class="col-xs-3">
 
-            <? echo \app\modules\main\widgets\menu\Menu::widget(["options"=>["class"=>"nav nav-pills nav-stacked"], "parentId"=>2]);?>
+            <? echo \app\modules\main\widgets\menu\Menu::widget(["options"=>["class"=>"nav nav-pills nav-stacked"], "parentCode"=>"main"]);?>
 
             <br />
 

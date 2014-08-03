@@ -10,7 +10,7 @@ echo "<?php\n";
 
 use yii\db\Schema;
 
-class <?= $className ?> extends \yii\db\Migration
+class <?= $className ?> extends \app\modules\main\db\Migration
 {
 
     public $tableName;

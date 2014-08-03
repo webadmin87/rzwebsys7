@@ -15,6 +15,8 @@ use common\components\Match;
 
 class News extends ActiveRecord {
 
+    use \app\modules\main\components\PermissionTrait;
+
     /**
      * @var array массив идентификаторов связанных категорий
      */

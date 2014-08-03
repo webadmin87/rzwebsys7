@@ -2,12 +2,12 @@
 
 use yii\db\Schema;
 
-class m140623_175657_create_includes_table extends \yii\db\Migration
+class m140623_175657_create_includes_table extends \app\modules\main\db\Migration
 {
 
     public $tableName = "includes";
 
-    public function up()
+    public function safeUp()
     {
 
         $this->createTable("{{%$this->tableName}}",[
@@ -31,12 +31,16 @@ class m140623_175657_create_includes_table extends \yii\db\Migration
 
         ]);
 
+        $this->insertPermission('\app\modules\main\models\Includes');
+
     }
 
-    public function down()
+    public function safeDown()
     {
 
         $this->dropTable("{{%$this->tableName}}");
+
+        $this->deletePermission('\app\modules\main\models\Includes');
 
     }
 }

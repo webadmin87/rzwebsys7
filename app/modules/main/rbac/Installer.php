@@ -1,7 +1,10 @@
 <?php
+
 namespace app\modules\main\rbac;
+
 use Yii;
 use yii\base\Object;
+use \app\modules\main\models\User;
 
 /**
  * Class Installer
@@ -98,37 +101,42 @@ class Installer extends Object {
 
         // user role
 
-        $user = $auth->createRole('user');
+        $user = $auth->createRole(User::ROLE_USER);
         $auth->add($user);
-
-        // manager role
-
-        $manager = $auth->createRole('manager');
-        $auth->add($manager);
-        $auth->addChild($manager, $accessAdmin);
-        $auth->addChild($manager, $listModelsRule);
-        $auth->addChild($manager, $createModelRule);
-        $auth->addChild($manager, $readModelRule);
-        $auth->addChild($manager, $updateModelRule);
-        $auth->addChild($manager, $deleteModelRule);
 
         // admin role
 
-        $admin = $auth->createRole('admin');
+        $admin = $auth->createRole(User::ROLE_ADMIN);
+        $auth->add($admin);
+        $auth->addChild($admin, $accessAdmin);
+        $auth->addChild($admin, $listModelsRule);
+        $auth->addChild($admin, $createModelRule);
+        $auth->addChild($admin, $readModelRule);
+        $auth->addChild($admin, $updateModelRule);
+        $auth->addChild($admin, $deleteModelRule);
+
+        // admin role
+
+        /*$admin = $auth->createRole('admin');
         $auth->add($admin);
         $auth->addChild($admin, $manager);
         $auth->addChild($admin, $createModel);
         $auth->addChild($admin, $readModel);
         $auth->addChild($admin, $updateModel);
         $auth->addChild($admin, $deleteModel);
-        $auth->addChild($admin, $listModels);
+        $auth->addChild($admin, $listModels);*/
 
         // root role
 
-        $root = $auth->createRole('root');
+        $root = $auth->createRole(USER::ROLE_ROOT);
         $auth->add($root);
         $auth->addChild($root, $admin);
         $auth->addChild($root, $rootAccess);
+        $auth->addChild($root, $createModel);
+        $auth->addChild($root, $readModel);
+        $auth->addChild($root, $updateModel);
+        $auth->addChild($root, $deleteModel);
+        $auth->addChild($root, $listModels);
 
     }
 

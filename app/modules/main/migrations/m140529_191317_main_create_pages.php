@@ -2,12 +2,14 @@
 
 use yii\db\Schema;
 
-class m140529_191317_main_create_pages extends \yii\db\Migration
+class m140529_191317_main_create_pages extends \app\modules\main\db\Migration
 {
 
     public $tableName = "pages";
 
-    public function up()
+    public $permissionTable = "permission";
+
+    public function safeUp()
     {
 
         $this->createTable("{{%$this->tableName}}",[
@@ -55,12 +57,16 @@ class m140529_191317_main_create_pages extends \yii\db\Migration
             'text'=>'Главная страница',
         ]);
 
+        $this->insertPermission('\app\modules\main\models\Pages');
+
     }
 
-    public function down()
+    public function safeDown()
     {
 
         $this->dropTable("{{%$this->tableName}}");
+
+        $this->deletePermission('\app\modules\main\models\Pages');
 
     }
 }

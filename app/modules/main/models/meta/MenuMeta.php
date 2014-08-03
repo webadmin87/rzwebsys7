@@ -42,6 +42,16 @@ class MenuMeta extends MetaFields
                 "params" => [$this->owner, "title"]
             ],
 
+            "code" => [
+                "definition" => [
+                    "class" => \common\db\fields\CodeField::className(),
+                    "title" => Yii::t('main/app', 'Code'),
+                    "isRequired" => false,
+                    "editInGrid"=>true,
+                ],
+                "params" => [$this->owner, "code"]
+            ],
+
             "link" => [
                 "definition" => [
                     "class" => \common\db\fields\TextField::className(),

@@ -2,12 +2,12 @@
 
 use yii\db\Schema;
 
-class m140621_141441_create_menu_table extends \yii\db\Migration
+class m140621_141441_create_menu_table extends \app\modules\main\db\Migration
 {
 
     public $tableName = "menu";
 
-    public function up()
+    public function safeUp()
     {
 
         $this->createTable("{{%$this->tableName}}",[
@@ -21,6 +21,7 @@ class m140621_141441_create_menu_table extends \yii\db\Migration
             'rgt'=>Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
             'level'=>Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
             'title'=>Schema::TYPE_TEXT,
+            'code'=>Schema::TYPE_STRING,
             'link'=>Schema::TYPE_TEXT,
             'target'=>Schema::TYPE_STRING . " NOT NULL DEFAULT '_self'",
             'class'=>Schema::TYPE_STRING,
@@ -44,6 +45,7 @@ class m140621_141441_create_menu_table extends \yii\db\Migration
             'rgt'=>5,
             'level'=>2,
             'title'=>'Главное меню',
+            'code'=>'main',
         ]);
 
         $this->insert("{{%$this->tableName}}",[
@@ -57,12 +59,16 @@ class m140621_141441_create_menu_table extends \yii\db\Migration
             'link'=>'/',
         ]);
 
+        $this->insertPermission('\app\modules\main\models\Menu');
+
     }
 
-    public function down()
+    public function safeDown()
     {
 
         $this->dropTable("{{%$this->tableName}}");
+
+        $this->deletePermission('\app\modules\main\models\Menu');
 
     }
 }

@@ -2,7 +2,7 @@
 
 use yii\db\Schema;
 
-class m140701_182017_create_permission_table extends \yii\db\Migration
+class m140527_182017_create_permission_table extends \yii\db\Migration
 {
 
     public $tableName = "permission";
