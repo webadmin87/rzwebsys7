@@ -29,6 +29,17 @@ class NewsMeta extends MetaFields
     }
 
     /**
+     * Возвращает категории новостей для dropDown
+     * @return array
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function getSectionsList()
+    {
+        $model = \Yii::createObject(NewsSection::className());
+        return $model->getDataByParent();
+    }
+
+    /**
      * @inheritdoc
      */
 
@@ -41,10 +52,7 @@ class NewsMeta extends MetaFields
                     "class" => \common\db\fields\ManyManyField::className(),
                     "title" => Yii::t('news/app', 'News sections'),
                     "isRequired" => true,
-                    "data" => function () {
-                        $model = \Yii::createObject(NewsSection::className());
-                        return $model->getDataByParent();
-                    },
+                    "data" => [$this, "getSectionsList"],
                 ],
                 "params" => [$this->owner, "sectionsIds", "sections"]
             ],

@@ -13,7 +13,7 @@ class ListField extends Field
 {
 
     /**
-     * @var closure анонимная функция возвращающая данны для заполнения списка
+     * @var callable функция возвращающая данные для заполнения списка
      */
 
     public $data;
@@ -49,7 +49,7 @@ class ListField extends Field
 
             $func = $this->data;
 
-            $this->dataValue = is_callable($func) ? $func() : [];
+            $this->dataValue = is_callable($func) ? call_user_func($func) : [];
 
         }
 

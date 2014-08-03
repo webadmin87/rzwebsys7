@@ -26,9 +26,7 @@ class NewsSectionMeta extends MetaFields
                 "definition" => [
                     "class" => \common\db\fields\ParentListField::className(),
                     "title" => Yii::t('main/app', 'Parent'),
-                    "data" => function () {
-                        return $this->owner->getListTreeData();
-                    },
+                    "data" => [$this->owner, 'getListTreeData'],
                 ],
                 "params" => [$this->owner, "parent_id"]
             ],

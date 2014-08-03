@@ -108,15 +108,6 @@ abstract class MetaFields extends Object
     protected function defaultConfig()
     {
 
-        $authorsData = function () {
-
-            $authorQuery = Yii::createObject(\yii\db\Query::className());
-            $authorCommand = $authorQuery->select('id, username')->from('user')->createCommand();
-            $authors = $authorCommand->queryAll();
-            return ArrayHelper::map($authors, 'id', 'username');
-
-        };
-
         return [
 
             "id" => [
@@ -157,7 +148,7 @@ abstract class MetaFields extends Object
                     "class" => fields\HasOneField::className(),
                     "title" => Yii::t('core', 'Author'),
                     "showInForm" => true,
-                    "data" => $authorsData,
+                    "data" => [$this, "getAuthorsList"],
                     "gridAttr" => "username",
                 ],
                 "params" => [$this->owner, "author_id", "author"]
@@ -165,6 +156,19 @@ abstract class MetaFields extends Object
 
         ];
 
+    }
+
+    /**
+     * Возвращает список авторов
+     * @return array
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function getAuthorsList()
+    {
+        $authorQuery = Yii::createObject(\yii\db\Query::className());
+        $authorCommand = $authorQuery->select('id, username')->from('user')->createCommand();
+        $authors = $authorCommand->queryAll();
+        return ArrayHelper::map($authors, 'id', 'username');
     }
 
     /**

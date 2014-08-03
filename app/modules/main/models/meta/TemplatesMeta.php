@@ -46,9 +46,7 @@ class TemplatesMeta extends MetaFields
                     "title" => Yii::t('main/app', 'Condition type'),
                     "isRequired" => true,
                     "showInGrid" => false,
-                    "data" => function () {
-                        return $this->owner->getConds();
-                    },
+                    "data" =>[$this->owner, "getConds"],
                 ],
                 "params" => [$this->owner, "cond_type"]
             ],

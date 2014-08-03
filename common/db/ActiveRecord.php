@@ -5,6 +5,7 @@ use app\modules\main\models\User;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord as YiiRecord;
+use yii\db\Expression;
 
 /**
  * Class ActiveRecord
@@ -176,9 +177,7 @@ abstract class ActiveRecord extends YiiRecord
                     ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
                     ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
                 ],
-                'value' => function () {
-                    return date("Y-m-d H:i:s");
-                },
+                'value' => Yii::createObject(["class"=>Expression::className()],['NOW()']),
             ],
             'tagCache' => [
                 'class' => \common\behaviors\TagCache::className(),
