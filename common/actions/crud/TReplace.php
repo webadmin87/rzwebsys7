@@ -1,19 +1,20 @@
 <?php
 namespace common\actions\crud;
 
+use common\db\TActiveRecord;
 use Yii;
 use yii\helpers\Html;
-use yii\web\ForbiddenHttpException;
 use yii\web\BadRequestHttpException;
-use common\db\TActiveRecord;
+use yii\web\ForbiddenHttpException;
+
 /**
  * Class TReplace
  * Класс действия для перемещения древовидных моделей в иерархии
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class TReplace extends Base {
+class TReplace extends Base
+{
 
     /**
      * @var string имя параметра в запросе в котором передаются идентификаторы материалов при групповых операциях
@@ -31,11 +32,12 @@ class TReplace extends Base {
      * @inheritdoc
      */
 
-    public function run() {
+    public function run()
+    {
 
         $class = $this->modelClass;
 
-        if(Yii::$app->request->isGet) {
+        if (Yii::$app->request->isGet) {
 
             $ids = Yii::$app->request->get($this->groupIdsAttr, array());
 
@@ -43,31 +45,31 @@ class TReplace extends Base {
 
             $arr = $model->getListTreeData(TActiveRecord::ROOT_ID, $ids);
 
-            foreach($arr as $k=>$v)
-                echo Html::tag('option', $v, ["value"=>$k]);
+            foreach ($arr as $k => $v)
+                echo Html::tag('option', $v, ["value" => $k]);
 
             Yii::$app->end();
 
         }
 
-        if(Yii::$app->request->isPost) {
+        if (Yii::$app->request->isPost) {
 
-            $parent_id =  Yii::$app->request->post($this->parentIdAttr);
+            $parent_id = Yii::$app->request->post($this->parentIdAttr);
 
             $parentModel = $this->findModel($parent_id);
 
-            if(!$parentModel)
+            if (!$parentModel)
                 throw new BadRequestHttpException("Bad request");
 
             $ids = Yii::$app->request->post($this->groupIdsAttr, array());
 
-            if(!empty($ids)) {
+            if (!empty($ids)) {
 
-                $query = $class::find()->where(['id'=>$ids]);
+                $query = $class::find()->where(['id' => $ids]);
 
-                foreach($query->each() as $model) {
+                foreach ($query->each() as $model) {
 
-                    if(!Yii::$app->user->can('updateModel', array("model"=>$model)))
+                    if (!Yii::$app->user->can('updateModel', array("model" => $model)))
                         throw new ForbiddenHttpException('Forbidden');
 
                     $model->moveAsFirst($parentModel);
@@ -76,14 +78,13 @@ class TReplace extends Base {
 
             }
 
-
         }
 
-        if(!Yii::$app->request->isAjax) {
+        if (!Yii::$app->request->isAjax) {
 
             $returnUrl = Yii::$app->request->referrer;
 
-            if(empty($returnUrl))
+            if (empty($returnUrl))
                 $returnUrl = $this->defaultRedirectUrl;
 
             return $this->controller->redirect($returnUrl);
@@ -91,7 +92,5 @@ class TReplace extends Base {
         }
 
     }
-
-
 
 }

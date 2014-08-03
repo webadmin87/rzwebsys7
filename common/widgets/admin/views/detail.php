@@ -8,7 +8,6 @@ use yii\widgets\DetailView;
  * @var \yii\web\View $this
  */
 
-
 echo DetailView::widget([
     'model' => $model,
     'attributes' => $attributes,

@@ -9,8 +9,8 @@ use common\components\AssetBundle;
  * @package app\modules\main\widgets\feedback
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class FeedbackAsset extends AssetBundle {
+class FeedbackAsset extends AssetBundle
+{
 
     public $js = [
         'script.js',
@@ -24,9 +24,10 @@ class FeedbackAsset extends AssetBundle {
         'yii\web\JqueryAsset',
     ];
 
-    public function init() {
+    public function init()
+    {
 
-        $this->sourcePath = __DIR__."/assets";
+        $this->sourcePath = __DIR__ . "/assets";
         parent::init();
     }
 

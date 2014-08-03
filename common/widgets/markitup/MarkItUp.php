@@ -1,8 +1,8 @@
 <?php
 namespace common\widgets\markitup;
 
-use yii\widgets\InputWidget;
 use yii\helpers\Html;
+use yii\widgets\InputWidget;
 
 /**
  * Class MarkItUp
@@ -10,7 +10,8 @@ use yii\helpers\Html;
  * @package common\widgets\markitup
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class MarkItUp extends InputWidget{
+class MarkItUp extends InputWidget
+{
 
     /**
      * @var string идентификатор настроек
@@ -22,7 +23,6 @@ class MarkItUp extends InputWidget{
      * @var \yii\web\AssetBundle ассет скина
      */
 
-
     protected $_skinAsset;
 
     /**
@@ -32,24 +32,14 @@ class MarkItUp extends InputWidget{
     protected $_setAsset;
 
     /**
-     * Установка ассета скина
-     * @param \yii\web\AssetBundle $val
-     */
-
-    public function setSkinAsset($val) {
-
-        $this->_skinAsset = $val;
-
-    }
-
-    /**
      * Возвращает ассет скина
      * @return \yii\web\AssetBundle
      */
 
-    public function getSkinAsset() {
+    public function getSkinAsset()
+    {
 
-        if($this->_skinAsset === null) {
+        if ($this->_skinAsset === null) {
 
             $this->_skinAsset = \common\widgets\markitup\SkinSimpleAsset::className();
 
@@ -59,15 +49,15 @@ class MarkItUp extends InputWidget{
 
     }
 
-
     /**
-     * Установка ассета настроек
+     * Установка ассета скина
      * @param \yii\web\AssetBundle $val
      */
 
-    public function setSetAsset($val) {
+    public function setSkinAsset($val)
+    {
 
-        $this->_setAsset = $val;
+        $this->_skinAsset = $val;
 
     }
 
@@ -76,9 +66,10 @@ class MarkItUp extends InputWidget{
      * @return \yii\web\AssetBundle
      */
 
-    public function getSetAsset() {
+    public function getSetAsset()
+    {
 
-        if($this->_setAsset === null) {
+        if ($this->_setAsset === null) {
 
             $this->_setAsset = \common\widgets\markitup\SetBbCodeAsset::className();
 
@@ -89,10 +80,23 @@ class MarkItUp extends InputWidget{
     }
 
     /**
+     * Установка ассета настроек
+     * @param \yii\web\AssetBundle $val
+     */
+
+    public function setSetAsset($val)
+    {
+
+        $this->_setAsset = $val;
+
+    }
+
+    /**
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
         parent::init();
 
@@ -118,9 +122,10 @@ class MarkItUp extends InputWidget{
      * @inheritdoc
      */
 
-    public function run() {
+    public function run()
+    {
 
-        if($this->hasModel()) {
+        if ($this->hasModel()) {
 
             return Html::activeTextarea($this->model, $this->attribute, $this->options);
 
@@ -131,6 +136,5 @@ class MarkItUp extends InputWidget{
         }
 
     }
-
 
 }

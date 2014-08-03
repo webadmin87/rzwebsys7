@@ -1,9 +1,9 @@
 <?php
 namespace app\modules\main\models;
 
-use Yii;
-use common\db\ActiveRecord;
 use common\components\Match;
+use common\db\ActiveRecord;
+use Yii;
 
 /**
  * Class Template
@@ -11,29 +11,16 @@ use common\components\Match;
  * @package app\modules\main\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Template extends ActiveRecord {
-
-    /**
-     * @inheritdoc
-     */
-
-    public function rules() {
-
-        $rules = parent::rules();
-
-        $rules[] = ['sort', 'default', 'value'=>ActiveRecord::DEFAULT_SORT];
-
-        return $rules;
-
-    }
+class Template extends ActiveRecord
+{
 
     /**
      * Возвращает массив условий подклбчений шаблона
      * @return array
      */
 
-    public static function getConds() {
+    public static function getConds()
+    {
 
         return [
 
@@ -46,19 +33,35 @@ class Template extends ActiveRecord {
 
     }
 
-
     /**
      * @inheritdoc
      */
 
-    public static function tableName() {
+    public static function tableName()
+    {
         return "templates";
     }
 
     /**
      * @inheritdoc
      */
-    public function metaClass() {
+
+    public function rules()
+    {
+
+        $rules = parent::rules();
+
+        $rules[] = ['sort', 'default', 'value' => ActiveRecord::DEFAULT_SORT];
+
+        return $rules;
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function metaClass()
+    {
         return meta\TemplatesMeta::className();
     }
 
@@ -67,15 +70,16 @@ class Template extends ActiveRecord {
      * @return bool
      */
 
-    public function isSuitable() {
+    public function isSuitable()
+    {
 
-        if(empty($this->cond_type))
+        if (empty($this->cond_type))
             return true;
         else {
 
             $match = Match::getMatch($this->cond_type);
 
-            if($match)
+            if ($match)
                 return $match->test($this->cond);
             else
                 return false;

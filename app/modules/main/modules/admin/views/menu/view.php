@@ -1,11 +1,12 @@
 <?php
-use yii\helpers\Html;
-use common\widgets\admin\Detail;
 use common\widgets\admin\CrudLinks;
+use common\widgets\admin\Detail;
+use yii\helpers\Html;
+
 /**
-* @var yii\web\View $this
-* @var app\modules\main\models\Menu $model
-*/
+ * @var yii\web\View $this
+ * @var app\modules\main\models\Menu $model
+ */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Menus'), 'url' => ['index']];
@@ -13,13 +14,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
 
-    <h1><?=Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?=CrudLinks::widget(["action"=>CrudLinks::CRUD_VIEW, "model"=>$model])?>
+        <?= CrudLinks::widget(["action" => CrudLinks::CRUD_VIEW, "model" => $model]) ?>
     </p>
 
-    <?=Detail::widget([
+    <?= Detail::widget([
         'model' => $model,
     ]) ?>
 

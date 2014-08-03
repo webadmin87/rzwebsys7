@@ -1,9 +1,9 @@
 <?php
 namespace app\modules\main\models;
 
+use common\db\ActiveRecord;
 use Yii;
 use yii\base\NotSupportedException;
-use common\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
@@ -49,47 +49,9 @@ class User extends ActiveRecord implements IdentityInterface
      * @return string
      */
 
-    public static function tableName() {
-        return "user";
-    }
-
-
-    /**
-     * @inheritdoc
-     */
-
-    public function beforeSave($insert)
+    public static function tableName()
     {
-        if (parent::beforeSave($insert)) {
-
-            if(!empty($this->password)) {
-                $this->setPassword($this->password);
-                $this->generateAuthKey();
-            }
-
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * @inheritdoc
-     */
-
-    public function afterSave($insert, $changeAttributes) {
-
-        parent::afterSave($insert, $changeAttributes);
-
-        $auth = Yii::$app->authManager;
-
-        $auth->revokeAll($this->getId());
-
-        $role = $auth->getRole($this->role);
-
-        $auth->assign($role, $this->getId());
-
+        return "user";
     }
 
     /**
@@ -103,7 +65,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public static function findIdentityByAccessToken($token, $type=null)
+    public static function findIdentityByAccessToken($token, $type = null)
     {
         throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
     }
@@ -122,14 +84,14 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Finds user by password reset token
      *
-     * @param  string      $token password reset token
+     * @param  string $token password reset token
      * @return static|null
      */
     public static function findByPasswordResetToken($token)
     {
         $expire = \Yii::$app->params['user.passwordResetTokenExpire'];
         $parts = explode('_', $token);
-        $timestamp = (int) end($parts);
+        $timestamp = (int)end($parts);
         if ($timestamp + $expire < time()) {
             // token expired
             return null;
@@ -142,38 +104,41 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @inheritdoc
+     * Возвращает массив ролей пользователей
+     * @return array
      */
-    public function getId()
+
+    public static function getRolesNames()
     {
-        return $this->getPrimaryKey();
+
+        $roles = Yii::$app->authManager->getRoles();
+
+        $arr = array();
+
+        foreach ($roles AS $role)
+            $arr[$role->name] = $role->name;
+
+        return $arr;
+
     }
 
     /**
      * @inheritdoc
      */
-    public function getAuthKey()
-    {
-        return $this->auth_key;
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function validateAuthKey($authKey)
+    public function beforeSave($insert)
     {
-        return $this->getAuthKey() === $authKey;
-    }
+        if (parent::beforeSave($insert)) {
 
-    /**
-     * Validates password
-     *
-     * @param  string  $password password to validate
-     * @return boolean if password provided is valid for current user
-     */
-    public function validatePassword($password)
-    {
-        return Yii::$app->getSecurity()->validatePassword($password, $this->password_hash);
+            if (!empty($this->password)) {
+                $this->setPassword($this->password);
+                $this->generateAuthKey();
+            }
+
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -192,6 +157,60 @@ class User extends ActiveRecord implements IdentityInterface
     public function generateAuthKey()
     {
         $this->auth_key = Yii::$app->getSecurity()->generateRandomKey();
+    }
+
+    /**
+     * @inheritdoc
+     */
+
+    public function afterSave($insert, $changeAttributes)
+    {
+
+        parent::afterSave($insert, $changeAttributes);
+
+        $auth = Yii::$app->authManager;
+
+        $auth->revokeAll($this->getId());
+
+        $role = $auth->getRole($this->role);
+
+        $auth->assign($role, $this->getId());
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getId()
+    {
+        return $this->getPrimaryKey();
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function validateAuthKey($authKey)
+    {
+        return $this->getAuthKey() === $authKey;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getAuthKey()
+    {
+        return $this->auth_key;
+    }
+
+    /**
+     * Validates password
+     *
+     * @param  string $password password to validate
+     * @return boolean if password provided is valid for current user
+     */
+    public function validatePassword($password)
+    {
+        return Yii::$app->getSecurity()->validatePassword($password, $this->password_hash);
     }
 
     /**
@@ -223,8 +242,8 @@ class User extends ActiveRecord implements IdentityInterface
             ['username', 'unique'],
             ['username', 'string', 'min' => 2, 'max' => 255],
             ['email', 'unique'],
-            ['confirm_password', 'compare', 'skipOnEmpty'=>false, 'compareAttribute'=>'password'],
-            [['password', 'confirm_password'], 'required', 'on'=>['insert']],
+            ['confirm_password', 'compare', 'skipOnEmpty' => false, 'compareAttribute' => 'password'],
+            [['password', 'confirm_password'], 'required', 'on' => ['insert']],
         ];
 
         return array_merge($parentRule, $rule);
@@ -232,27 +251,10 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Возвращает массив ролей пользователей
-     * @return array
-     */
-
-    public static function getRolesNames() {
-
-        $roles = Yii::$app->authManager->getRoles();
-
-        $arr = array();
-
-        foreach($roles AS $role)
-            $arr[$role->name] = $role->name;
-
-        return $arr;
-
-    }
-
-    /**
      * @inheritdoc
      */
-    public function metaClass() {
+    public function metaClass()
+    {
         return meta\UserMeta::className();
     }
 

@@ -11,8 +11,8 @@ use yii\bootstrap\BootstrapPluginAsset;
  * @package common\widgets\admin
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Form extends Widget {
+class Form extends Widget
+{
 
     /**
      * Преффикс идентификатора виджета
@@ -42,7 +42,7 @@ class Form extends Widget {
      * @var array параметры \yii\widgets\ActiveForm по умолчанию
      */
 
-    protected $defaultFormOptions = ['enableAjaxValidation'=>'true'];
+    protected $defaultFormOptions = ['enableAjaxValidation' => 'true'];
 
     /**
      * @var string идентификатор виджета
@@ -50,29 +50,29 @@ class Form extends Widget {
 
     protected $id;
 
-    public function init() {
+    public function init()
+    {
 
-       $model = $this->model;
+        $model = $this->model;
 
-       $this->id = strtolower(self::FORM_ID_PREF.str_replace("\\", "-", $model::className()));
+        $this->id = strtolower(self::FORM_ID_PREF . str_replace("\\", "-", $model::className()));
 
-       BootstrapPluginAsset::register($this->view);
+        BootstrapPluginAsset::register($this->view);
 
     }
 
-    public function run() {
+    public function run()
+    {
 
         $formOptions = array_merge($this->defaultFormOptions, $this->formOptions);
 
         return $this->render($this->tpl, [
-            "model"=>$this->model,
-            "formOptions"=>$formOptions,
-            "id"=>$this->id,
+                "model" => $this->model,
+                "formOptions" => $formOptions,
+                "id" => $this->id,
             ]
         );
 
     }
-
-
 
 }

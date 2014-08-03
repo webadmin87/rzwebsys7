@@ -10,8 +10,8 @@ use yii\base\Widget;
  * @package common\widgets\admin
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Detail extends Widget {
+class Detail extends Widget
+{
 
     /**
      * Преффикс идентификатора виджета
@@ -31,7 +31,6 @@ class Detail extends Widget {
 
     public $tpl = "detail";
 
-
     /**
      * @var string идентификатор виджета
      */
@@ -42,11 +41,28 @@ class Detail extends Widget {
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
         $model = $this->model;
 
-        $this->id = strtolower(self::DETAIL_ID_PREF.str_replace("\\", "-", $model::className()));
+        $this->id = strtolower(self::DETAIL_ID_PREF . str_replace("\\", "-", $model::className()));
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+
+    public function run()
+    {
+
+        return $this->render($this->tpl, [
+                "model" => $this->model,
+                "attributes" => $this->getAttributes(),
+                "id" => $this->id,
+            ]
+        );
 
     }
 
@@ -55,15 +71,16 @@ class Detail extends Widget {
      * @return array
      */
 
-    protected function getAttributes() {
+    protected function getAttributes()
+    {
 
         $fields = $this->model->getMetaFields()->getFields();
 
-        foreach($fields AS $field) {
+        foreach ($fields AS $field) {
 
             $view = $field->view();
 
-            if($field->showInView AND $view)
+            if ($field->showInView AND $view)
                 $attrs[] = $view;
 
         }
@@ -71,21 +88,5 @@ class Detail extends Widget {
         return $attrs;
 
     }
-
-    /**
-     * @inheritdoc
-     */
-
-    public function run() {
-
-        return $this->render($this->tpl, [
-                "model"=>$this->model,
-                "attributes"=>$this->getAttributes(),
-                "id"=>$this->id,
-            ]
-        );
-
-    }
-
 
 }

@@ -30,38 +30,38 @@ use yii\data\ActiveDataProvider;
 use <?= ltrim($generator->modelClass, '\\') . (isset($modelAlias) ? " as $modelAlias" : "") ?>;
 
 /**
- * <?= $searchModelClass ?> represents the model behind the search form about `<?= $generator->modelClass ?>`.
- */
+* <?= $searchModelClass ?> represents the model behind the search form about `<?= $generator->modelClass ?>`.
+*/
 class <?= $searchModelClass ?> extends <?= isset($modelAlias) ? $modelAlias : $modelClass ?>
 
 {
-    public function rules()
-    {
-        return [
-            <?= implode(",\n            ", $rules) ?>,
-        ];
-    }
+public function rules()
+{
+return [
+<?= implode(",\n            ", $rules) ?>,
+];
+}
 
-    public function scenarios()
-    {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
-    }
+public function scenarios()
+{
+// bypass scenarios() implementation in the parent class
+return Model::scenarios();
+}
 
-    public function search($params)
-    {
-        $query = <?= isset($modelAlias) ? $modelAlias : $modelClass ?>::find();
+public function search($params)
+{
+$query = <?= isset($modelAlias) ? $modelAlias : $modelClass ?>::find();
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+$dataProvider = new ActiveDataProvider([
+'query' => $query,
+]);
 
-        if (!($this->load($params) && $this->validate())) {
-            return $dataProvider;
-        }
+if (!($this->load($params) && $this->validate())) {
+return $dataProvider;
+}
 
-        <?= implode("\n        ", $searchConditions) ?>
+<?= implode("\n        ", $searchConditions) ?>
 
-        return $dataProvider;
-    }
+return $dataProvider;
+}
 }

@@ -1,8 +1,8 @@
 <?php
 namespace common\widgets;
 
-use yii\base\Widget;
 use common\components\Match;
+use yii\base\Widget;
 
 /**
  * Class App
@@ -10,8 +10,8 @@ use common\components\Match;
  * @package common\widgets
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class App extends Widget {
+class App extends Widget
+{
 
     /**
      * @var int тип условия для отображения виджета
@@ -36,15 +36,16 @@ class App extends Widget {
      * @return bool
      */
 
-    public function isShow() {
+    public function isShow()
+    {
 
-        if(empty($this->showCondType))
+        if (empty($this->showCondType))
             return true;
         else {
 
             $match = Match::getMatch($this->showCondType);
 
-            if($match)
+            if ($match)
                 return $match->test($this->showCond);
             else
                 return false;

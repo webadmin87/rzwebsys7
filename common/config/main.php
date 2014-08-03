@@ -1,6 +1,6 @@
 <?php
 return [
-    'controllerMap'       => [
+    'controllerMap' => [
         'migrate' => [
             'class' => 'console\controllers\MigrateController'
         ],
@@ -33,13 +33,13 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'bbParser'=>[
+        'bbParser' => [
             "class" => \common\components\BBCodeParser::className()
         ],
-        'resizer'=>[
+        'resizer' => [
             "class" => \common\components\Resizer::className()
         ],
-        'view'=>[
+        'view' => [
             'class' => \common\components\View::className(),
         ],
     ],

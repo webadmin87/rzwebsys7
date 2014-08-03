@@ -6,4 +6,4 @@ use common\widgets\admin\Form;
  * @var app\modules\main\models\Pages $model модель
  */
 
-echo Form::widget(["model"=>$model]);
+echo Form::widget(["model" => $model]);

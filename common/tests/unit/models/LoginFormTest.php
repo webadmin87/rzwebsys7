@@ -2,21 +2,15 @@
 
 namespace common\tests\unit\models;
 
-use Yii;
-use frontend\tests\unit\TestCase;
 use common\models\User;
+use frontend\tests\unit\TestCase;
+use Yii;
 use yii\helpers\Security;
 
 class LoginFormTest extends TestCase
 {
 
     use \Codeception\Specify;
-
-    protected function tearDown()
-    {
-        Yii::$app->user->logout();
-        parent::tearDown();
-    }
 
     public function testLoginNoUser()
     {
@@ -29,6 +23,14 @@ class LoginFormTest extends TestCase
             expect('model should not login user', $model->login())->false();
             expect('user should not be logged in', Yii::$app->user->isGuest)->true();
         });
+    }
+
+    private function mockUser($user)
+    {
+        $loginForm = $this->getMock('common\models\LoginForm', ['getUser']);
+        $loginForm->expects($this->any())->method('getUser')->will($this->returnValue($user));
+
+        return $loginForm;
     }
 
     public function testLoginWrongPassword()
@@ -59,11 +61,9 @@ class LoginFormTest extends TestCase
         });
     }
 
-    private function mockUser($user)
+    protected function tearDown()
     {
-        $loginForm = $this->getMock('common\models\LoginForm', ['getUser']);
-        $loginForm->expects($this->any())->method('getUser')->will($this->returnValue($user));
-
-        return $loginForm;
+        Yii::$app->user->logout();
+        parent::tearDown();
     }
 }

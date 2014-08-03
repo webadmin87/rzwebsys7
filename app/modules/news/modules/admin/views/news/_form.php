@@ -2,7 +2,7 @@
 use common\widgets\admin\Form;
 
 /**
-* @var app\modules\news\models\News $model модель
-*/
+ * @var app\modules\news\models\News $model модель
+ */
 
-echo Form::widget(["model"=>$model]);
+echo Form::widget(["model" => $model]);

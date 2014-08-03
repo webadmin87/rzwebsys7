@@ -10,7 +10,8 @@ use yii\rbac\Rule;
  * @package app\modules\main\rbac
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class ReadRule extends Rule {
+class ReadRule extends Rule
+{
 
     public $name = 'canRead';
 
@@ -23,6 +24,5 @@ class ReadRule extends Rule {
 
         return $perm AND $perm->readModel($params['model']);
     }
-
 
 }

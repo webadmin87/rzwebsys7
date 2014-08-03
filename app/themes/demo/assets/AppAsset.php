@@ -9,7 +9,6 @@ use yii\web\AssetBundle;
  * @package app\themes\demo\assets
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
 class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';

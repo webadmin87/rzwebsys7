@@ -2,7 +2,7 @@
 
 namespace app\modules\news\modules\admin;
 
-use  common\core\AdminModule;
+use common\core\AdminModule;
 
 /**
  * Class Admin
@@ -10,8 +10,7 @@ use  common\core\AdminModule;
  * @package app\modules\news\modules\admin
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Admin extends AdminModule {
-
+class Admin extends AdminModule
+{
 
 }

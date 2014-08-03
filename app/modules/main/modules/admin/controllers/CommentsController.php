@@ -2,11 +2,11 @@
 
 namespace app\modules\main\modules\admin\controllers;
 
-use Yii;
 use app\modules\main\models\Comments;
-use common\controllers\Admin;
-use yii\filters\VerbFilter;
 use common\actions\crud;
+use common\controllers\Admin;
+use Yii;
+use yii\filters\VerbFilter;
 
 /**
  * CommentsController implements the CRUD actions for Comments model.
@@ -15,15 +15,15 @@ class CommentsController extends Admin
 {
 
     /**
-    * @var string идентификатор файла перевода
-    */
+     * @var string идентификатор файла перевода
+     */
 
     public $tFile = "main/app";
 
     /**
-    * Поведения
-    * @return array
-    */
+     * Поведения
+     * @return array
+     */
 
     public function behaviors()
     {
@@ -41,62 +41,63 @@ class CommentsController extends Admin
     }
 
     /**
-    * Действия
-    * @return array
-    */
-    public function actions() {
+     * Действия
+     * @return array
+     */
+    public function actions()
+    {
 
         $class = Comments::className();
 
         return [
 
-            'index'=>[
-                'class'=>crud\TAdmin::className(),
-                'modelClass'=>$class,
+            'index' => [
+                'class' => crud\TAdmin::className(),
+                'modelClass' => $class,
             ],
-            'create'=>[
-                'class'=>crud\TCreate::className(),
-                'modelClass'=>$class,
-                'extendedAttrs'=>['model', 'item_id'],
+            'create' => [
+                'class' => crud\TCreate::className(),
+                'modelClass' => $class,
+                'extendedAttrs' => ['model', 'item_id'],
             ],
-            'update'=>[
-                'class'=>crud\TUpdate::className(),
-                'modelClass'=>$class,
-            ],
-
-            'view'=>[
-                'class'=>crud\View::className(),
-                'modelClass'=>$class,
+            'update' => [
+                'class' => crud\TUpdate::className(),
+                'modelClass' => $class,
             ],
 
-            'delete'=>[
-                'class'=>crud\TDelete::className(),
-                'modelClass'=>$class,
+            'view' => [
+                'class' => crud\View::className(),
+                'modelClass' => $class,
             ],
 
-            'groupdelete'=>[
-                'class'=>crud\TGroupDelete::className(),
-                'modelClass'=>$class,
+            'delete' => [
+                'class' => crud\TDelete::className(),
+                'modelClass' => $class,
             ],
 
-            'up'=>[
-                'class'=>crud\TUp::className(),
-                'modelClass'=>$class,
+            'groupdelete' => [
+                'class' => crud\TGroupDelete::className(),
+                'modelClass' => $class,
             ],
 
-            'down'=>[
-                'class'=>crud\TDown::className(),
-                'modelClass'=>$class,
+            'up' => [
+                'class' => crud\TUp::className(),
+                'modelClass' => $class,
             ],
 
-            'replace'=>[
-                'class'=>crud\TReplace::className(),
-                'modelClass'=>$class,
+            'down' => [
+                'class' => crud\TDown::className(),
+                'modelClass' => $class,
             ],
 
-            'editable'=>[
-                'class'=>crud\XEditable::className(),
-                'modelClass'=>$class,
+            'replace' => [
+                'class' => crud\TReplace::className(),
+                'modelClass' => $class,
+            ],
+
+            'editable' => [
+                'class' => crud\XEditable::className(),
+                'modelClass' => $class,
             ],
 
         ];

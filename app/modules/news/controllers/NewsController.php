@@ -2,21 +2,22 @@
 
 namespace app\modules\news\controllers;
 
-use Yii;
-use common\db\ActiveRecord;
-use common\controllers\App;
 use app\modules\news\models\News;
 use app\modules\news\models\NewsSection;
+use common\cache\TagDependency;
+use common\controllers\App;
+use common\db\ActiveRecord;
+use Yii;
 use yii\web\NotFoundHttpException;
-use \common\cache\TagDependency;
+
 /**
  * Class NewsController
  * Контроллер отображения новостей
  * @package app\modules\news\controllers
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class NewsController extends App {
+class NewsController extends App
+{
 
     const LIST_CACHE_ID = "news-list";
 
@@ -24,7 +25,7 @@ class NewsController extends App {
      * @var array сортировка новостей
      */
 
-    public $orderBy = ["id"=>SORT_DESC];
+    public $orderBy = ["id" => SORT_DESC];
 
     /**
      * @var int количество новостей на странице
@@ -52,13 +53,14 @@ class NewsController extends App {
      * @throws \yii\web\NotFoundHttpException
      */
 
-    public function actionIndex($section = null) {
+    public function actionIndex($section = null)
+    {
 
         $cacheId = $this->getActionCacheId(static::LIST_CACHE_ID);
 
         $res = Yii::$app->cache->get($cacheId);
 
-        if(empty($res)) {
+        if (empty($res)) {
 
             $dependency = Yii::createObject(TagDependency::className());
 
@@ -93,7 +95,7 @@ class NewsController extends App {
 
         }
 
-        if($res["sectionModel"])
+        if ($res["sectionModel"])
             $this->view->registerMetaTags($res["sectionModel"]);
 
         return $this->renderHtml($res["html"]);
@@ -107,18 +109,18 @@ class NewsController extends App {
      * @throws \yii\web\NotFoundHttpException
      */
 
-    public function actionDetail($code) {
+    public function actionDetail($code)
+    {
 
-        $model = News::find()->published()->andWhere(["code"=>$code])->one();
+        $model = News::find()->published()->andWhere(["code" => $code])->one();
 
-        if(!$model)
+        if (!$model)
             throw new NotFoundHttpException;
 
         $this->view->registerMetaTags($model);
 
-        return $this->render('detail', ["model"=>$model, "detailImageWidth"=>$this->detailImageWidth]);
+        return $this->render('detail', ["model" => $model, "detailImageWidth" => $this->detailImageWidth]);
 
     }
-
 
 }

@@ -9,7 +9,8 @@ use common\components\AssetBundle;
  * @package common\widgets\markitup
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class MarkItUpAsset extends AssetBundle {
+class MarkItUpAsset extends AssetBundle
+{
 
     public $js = [
         'jquery.markitup.js',
@@ -19,14 +20,14 @@ class MarkItUpAsset extends AssetBundle {
         'jquery.markitup.min.js',
     ];
 
-
     public $depends = [
         'yii\web\JqueryAsset',
     ];
 
-    public function init() {
+    public function init()
+    {
 
-        $this->sourcePath = __DIR__."/assets/markitup";
+        $this->sourcePath = __DIR__ . "/assets/markitup";
 
         parent::init();
 

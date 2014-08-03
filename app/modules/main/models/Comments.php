@@ -1,10 +1,9 @@
 <?php
 namespace app\modules\main\models;
 
-use Yii;
 use common\db\ActiveRecord;
 use common\db\TActiveRecord;
-use common\components\Match;
+use Yii;
 
 /**
  * Class Comments
@@ -12,9 +11,8 @@ use common\components\Match;
  * @package app\modules\main\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Comments extends TActiveRecord {
-
+class Comments extends TActiveRecord
+{
 
     const VERIFY_CODE = "fcfd5a664144ae35c6eafca228de66e3";
 
@@ -28,12 +26,22 @@ class Comments extends TActiveRecord {
      * @inheritdoc
      */
 
-    public function rules() {
+    public static function tableName()
+    {
+        return "comments";
+    }
+
+    /**
+     * @inheritdoc
+     */
+
+    public function rules()
+    {
 
         $rules = parent::rules();
 
-        $rules[] = ['verifyCode', 'compare', 'skipOnEmpty'=>false, 'compareValue'=>self::VERIFY_CODE,
-            'when'=>function($model, $attribute){
+        $rules[] = ['verifyCode', 'compare', 'skipOnEmpty' => false, 'compareValue' => self::VERIFY_CODE,
+            'when' => function ($model, $attribute) {
                 return Yii::$app->user->isGuest;
             }];
 
@@ -45,11 +53,12 @@ class Comments extends TActiveRecord {
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
         parent::init();
 
-        if($this->isNewRecord AND $this->scenario == ActiveRecord::SCENARIO_INSERT AND !Yii::$app->user->isGuest) {
+        if ($this->isNewRecord AND $this->scenario == ActiveRecord::SCENARIO_INSERT AND !Yii::$app->user->isGuest) {
 
             $this->username = Yii::$app->user->identity->username;
             $this->email = Yii::$app->user->identity->email;
@@ -58,18 +67,11 @@ class Comments extends TActiveRecord {
 
     }
 
-     /**
-     * @inheritdoc
-     */
-
-    public static function tableName() {
-        return "comments";
-    }
-
     /**
      * @inheritdoc
      */
-    public function metaClass() {
+    public function metaClass()
+    {
         return meta\CommentsMeta::className();
     }
 

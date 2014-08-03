@@ -10,7 +10,8 @@ use yii\rbac\Rule;
  * @package app\modules\main\rbac
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class DeleteRule extends Rule {
+class DeleteRule extends Rule
+{
 
     public $name = 'canDelete';
 
@@ -23,6 +24,5 @@ class DeleteRule extends Rule {
 
         return $perm AND $perm->deleteModel($params['model']);
     }
-
 
 }

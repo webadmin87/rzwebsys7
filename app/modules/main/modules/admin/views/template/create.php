@@ -2,9 +2,9 @@
 use yii\helpers\Html;
 
 /**
-* @var \yii\web\View $this
-* @var app\modules\main\models\Template $model
-*/
+ * @var \yii\web\View $this
+ * @var app\modules\main\models\Template $model
+ */
 
 $this->title = \Yii::t($this->context->tFile, 'Create Template');
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Templates'), 'url' => ['index']];

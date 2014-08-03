@@ -8,8 +8,8 @@ use common\components\AssetBundle as BaseBundle;
  * @package common\widgets\html5uploader
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class AssetBundle extends BaseBundle {
+class AssetBundle extends BaseBundle
+{
 
     public $css = [
         'uploader.css',
@@ -22,21 +22,19 @@ class AssetBundle extends BaseBundle {
         'uploader.min.js',
     ];
 
-
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\jui\SortableAsset'
     ];
 
-    public function init() {
+    public function init()
+    {
 
-        $this->sourcePath = __DIR__."/assets";
+        $this->sourcePath = __DIR__ . "/assets";
 
         parent::init();
 
     }
-
-
 
 }

@@ -1,8 +1,8 @@
 <?php
 namespace app\modules\news\models;
 
-use Yii;
 use common\db\TActiveRecord;
+use Yii;
 
 /**
  * Class NewsSection
@@ -10,23 +10,25 @@ use common\db\TActiveRecord;
  * @package app\modules\news\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class NewsSection extends TActiveRecord {
+class NewsSection extends TActiveRecord
+{
 
     use \app\modules\main\components\PermissionTrait;
 
-     /**
+    /**
      * @inheritdoc
      */
 
-    public static function tableName() {
+    public static function tableName()
+    {
         return "news_sections";
     }
 
     /**
      * @inheritdoc
      */
-    public function metaClass() {
+    public function metaClass()
+    {
         return meta\NewsSectionMeta::className();
     }
 

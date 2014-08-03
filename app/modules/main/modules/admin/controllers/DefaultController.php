@@ -1,5 +1,6 @@
 <?php
 namespace app\modules\main\modules\admin\controllers;
+
 use common\controllers\Admin;
 
 /**
@@ -7,14 +8,14 @@ use common\controllers\Admin;
  * Контроллер шлавной страницы админки
  * @package app\modules\admin\controllers
  */
+class DefaultController extends Admin
+{
 
-class DefaultController extends Admin {
-
-    public function actionIndex() {
+    public function actionIndex()
+    {
 
         return $this->render('index');
 
     }
-
 
 }

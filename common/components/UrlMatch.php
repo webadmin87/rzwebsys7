@@ -9,8 +9,8 @@ use Yii;
  * @package common\components
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class UrlMatch extends Match {
+class UrlMatch extends Match
+{
 
     /**
      * Проверяет соответствие текущего url заданному значению
@@ -32,13 +32,12 @@ class UrlMatch extends Match {
 
             if (preg_match($pattern, $url)) // Совпадение url одному из шаблонов
             {
-               return true;
+                return true;
             }
         }
 
         return false;
 
     }
-
 
 }

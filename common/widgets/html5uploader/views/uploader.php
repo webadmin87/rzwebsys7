@@ -4,12 +4,12 @@
  * @var string $name имя поля ввода
  * @var array $options массив html атрибутов поля ввода
  * @var int $maxFileSize максимальный размер загружаемого файла
- * @var array $files  массив путей к файлам
+ * @var array $files массив путей к файлам
  * @var string $webroot алиас DOCUMENT ROOT
  */
 
-use yii\helpers\Html;
 use common\helpers\FileHelper;
+use yii\helpers\Html;
 
 
 echo Html::hiddenInput($name);
@@ -23,28 +23,30 @@ echo Html::fileInput($name, null, $options);
 
         <?
 
-        if(is_array($files)):
+        if (is_array($files)):
 
             $i = 0;
-            foreach($files AS $file):?>
+            foreach ($files AS $file):?>
 
                 <li>
-                    <div class="uploader-widget-name"><?=basename($file["file"])?></div>
+                    <div class="uploader-widget-name"><?= basename($file["file"]) ?></div>
                     <div class="uploader-widget-preview">
 
-                        <?if(FileHelper::isImage(Yii::getAlias($webroot.$file["file"]))):?>
+                        <? if (FileHelper::isImage(Yii::getAlias($webroot . $file["file"]))): ?>
 
-                            <img src="<?=$file["file"]?>" width="150" alt="" />
+                            <img src="<?= $file["file"] ?>" width="150" alt=""/>
 
-                        <?endif;?>
+                        <? endif; ?>
 
                     </div>
                     <div class="uploader-widget-progress progress-bar"></div>
 
-                    <input type="hidden" name="<?=$name?>[<?=$i?>][file]" value="<?=$file["file"]?>" class="uploader-file-name" />
-                    <input type="text" name="<?=$name?>[<?=$i?>][title]" value="<?=Html::encode( $file["title"] )?>" class="uploader-file-title" />
+                    <input type="hidden" name="<?= $name ?>[<?= $i ?>][file]" value="<?= $file["file"] ?>"
+                           class="uploader-file-name"/>
+                    <input type="text" name="<?= $name ?>[<?= $i ?>][title]" value="<?= Html::encode($file["title"]) ?>"
+                           class="uploader-file-title"/>
 
-                    <div><a href="#" class="uploader-file-remove"><?=Yii::t('core', 'remove')?></a></div>
+                    <div><a href="#" class="uploader-file-remove"><?= Yii::t('core', 'remove') ?></a></div>
 
                 </li>
 
@@ -59,4 +61,4 @@ echo Html::fileInput($name, null, $options);
     </ul>
 </div>
 
-<div class="alert alert-info"><?=Yii::t('core', 'Max uploaded file size')?> <?=$maxFileSize?>Mb</div>
+<div class="alert alert-info"><?= Yii::t('core', 'Max uploaded file size') ?> <?= $maxFileSize ?>Mb</div>

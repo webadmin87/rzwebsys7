@@ -9,7 +9,8 @@ namespace common\helpers;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class ConfigHelper {
+class ConfigHelper
+{
 
     /**
      * Возвращает конфигурацию модулей
@@ -19,24 +20,24 @@ class ConfigHelper {
      * @return array
      */
 
-    public static function getModulesConfigs($modules, $path = "@webapp/modules", $configPath = "config/main.php") {
+    public static function getModulesConfigs($modules, $path = "@webapp/modules", $configPath = "config/main.php")
+    {
 
         $config = [];
 
-       foreach($modules AS $code) {
+        foreach ($modules AS $code) {
 
-           $file = \Yii::getAlias("$path/$code/$configPath");
+            $file = \Yii::getAlias("$path/$code/$configPath");
 
-           if(is_file($file)) {
+            if (is_file($file)) {
 
-               $config = \yii\helpers\ArrayHelper::merge($config, require($file));
+                $config = \yii\helpers\ArrayHelper::merge($config, require($file));
 
-           }
+            }
 
-       }
+        }
         return $config;
 
     }
-
 
 }

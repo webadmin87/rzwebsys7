@@ -1,8 +1,8 @@
 <?php
 namespace app\modules\main\models\meta;
 
-use \Yii;
 use common\db\MetaFields;
+use Yii;
 
 /**
  * Class MenuMeta
@@ -10,7 +10,6 @@ use common\db\MetaFields;
  * @package app\modules\main\models\meta
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
 class MenuMeta extends MetaFields
 {
 
@@ -27,7 +26,9 @@ class MenuMeta extends MetaFields
                 "definition" => [
                     "class" => \common\db\fields\ParentListField::className(),
                     "title" => Yii::t('main/app', 'Parent'),
-                    "data" => function(){ return $this->owner->getListTreeData(); },
+                    "data" => function () {
+                        return $this->owner->getListTreeData();
+                    },
                 ],
                 "params" => [$this->owner, "parent_id"]
             ],
@@ -37,7 +38,7 @@ class MenuMeta extends MetaFields
                     "class" => \common\db\fields\TextField::className(),
                     "title" => Yii::t('main/app', 'Title'),
                     "isRequired" => true,
-                    "editInGrid"=>true,
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "title"]
             ],
@@ -47,7 +48,7 @@ class MenuMeta extends MetaFields
                     "class" => \common\db\fields\CodeField::className(),
                     "title" => Yii::t('main/app', 'Code'),
                     "isRequired" => false,
-                    "editInGrid"=>true,
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "code"]
             ],
@@ -57,7 +58,7 @@ class MenuMeta extends MetaFields
                     "class" => \common\db\fields\TextField::className(),
                     "title" => Yii::t('main/app', 'Link'),
                     "isRequired" => false,
-                    "editInGrid"=>true,
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "link"]
             ],
@@ -67,7 +68,7 @@ class MenuMeta extends MetaFields
                     "class" => \common\db\fields\TextField::className(),
                     "title" => Yii::t('main/app', 'Css class'),
                     "isRequired" => false,
-                    "showInGrid"=>false,
+                    "showInGrid" => false,
                 ],
                 "params" => [$this->owner, "class"]
             ],
@@ -77,13 +78,13 @@ class MenuMeta extends MetaFields
                     "class" => \common\db\fields\ListField::className(),
                     "title" => Yii::t('main/app', 'Target'),
                     "isRequired" => false,
-                    "showInGrid"=>false,
-                    "data"=>function(){ return $this->owner->targetsList(); },
+                    "showInGrid" => false,
+                    "data" => function () {
+                        return $this->owner->targetsList();
+                    },
                 ],
                 "params" => [$this->owner, "target"]
             ],
-
-
 
         ];
 

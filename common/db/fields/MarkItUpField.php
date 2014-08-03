@@ -1,9 +1,10 @@
 <?php
 
 namespace common\db\fields;
+
+use common\widgets\markitup\MarkItUp;
 use Yii;
 use yii\widgets\ActiveForm;
-use common\widgets\markitup\MarkItUp;
 
 /**
  * Class MarkItUpField
@@ -11,8 +12,8 @@ use common\widgets\markitup\MarkItUp;
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class MarkItUpField extends TextAreaField {
+class MarkItUpField extends TextAreaField
+{
 
     /**
      * @var array настройки редактора
@@ -24,16 +25,18 @@ class MarkItUpField extends TextAreaField {
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false) {
+    public function form(ActiveForm $form, Array $options = [], $index = false)
+    {
 
-        return $form->field($this->model, $this->getFormAttrName($index))->widget(MarkItUp::className(),$this->editorOptions);
+        return $form->field($this->model, $this->getFormAttrName($index))->widget(MarkItUp::className(), $this->editorOptions);
 
     }
 
     /**
      * @inheritdoc
      */
-    public function view() {
+    public function view()
+    {
 
         $view = parent::view();
 

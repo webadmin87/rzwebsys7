@@ -2,17 +2,18 @@
 
 namespace app\modules\main\controllers;
 
-use common\controllers\App;
 use app\modules\main\models\Pages;
+use common\controllers\App;
 use yii\web\NotFoundHttpException;
+
 /**
  * Class PagesController
  * Контроллер отображения текстовых страниц
  * @package app\modules\main\controllers
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class PagesController extends App {
+class PagesController extends App
+{
 
     const INDEX_CODE = "main";
 
@@ -23,21 +24,23 @@ class PagesController extends App {
      * @throws \yii\web\NotFoundHttpException
      */
 
-    public function actionIndex($code = self::INDEX_CODE) {
+    public function actionIndex($code = self::INDEX_CODE)
+    {
 
-        $model = Pages::find()->published()->where(["code"=>$code])->one();
+        $model = Pages::find()->published()->where(["code" => $code])->one();
 
-        if(!$model)
+        if (!$model)
             throw new NotFoundHttpException;
 
-        if($model->code != self::INDEX_CODE)
-            $this->view->breadCrumbs = $model->getBreadCrumbsItems($model->id, function($model){ return ['/main/pages/index', 'code'=>$model->code];});
+        if ($model->code != self::INDEX_CODE)
+            $this->view->breadCrumbs = $model->getBreadCrumbsItems($model->id, function ($model) {
+                return ['/main/pages/index', 'code' => $model->code];
+            });
 
         $this->view->registerMetaTags($model);
 
-        return $this->render('index', ["model"=>$model]);
+        return $this->render('index', ["model" => $model]);
 
     }
-
 
 }

@@ -10,8 +10,8 @@ use yii\web\Controller;
  * @package common\controllers
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class App extends Controller {
+class App extends Controller
+{
 
     /**
      * @var string класс модели шаблонов
@@ -23,9 +23,10 @@ class App extends Controller {
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
-        if(!Yii::$app->request->isAjax) {
+        if (!Yii::$app->request->isAjax) {
 
             $this->initLayout();
 
@@ -37,15 +38,16 @@ class App extends Controller {
      * Инициализирует шаблон
      */
 
-    public function initLayout() {
+    public function initLayout()
+    {
 
         $class = $this->templateClass;
 
-        $models = $class::find()->published()->orderBy(['sort'=>SORT_ASC])->all();
+        $models = $class::find()->published()->orderBy(['sort' => SORT_ASC])->all();
 
-        foreach($models As $model){
+        foreach ($models As $model) {
 
-            if($model->isSuitable())
+            if ($model->isSuitable())
                 $this->layout = $model->code;
 
         }
@@ -74,11 +76,11 @@ class App extends Controller {
      * @return array
      */
 
-    public function getActionCacheId($id) {
+    public function getActionCacheId($id)
+    {
 
         return [$id, Yii::$app->request->url];
 
     }
-
 
 }

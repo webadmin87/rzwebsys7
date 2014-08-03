@@ -11,8 +11,8 @@ use yii\bootstrap\Nav;
  * @package common\widgets\admin
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Menu extends Widget {
+class Menu extends Widget
+{
 
     /**
      * @var array html атрибуты для меню
@@ -39,27 +39,28 @@ class Menu extends Widget {
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
         $modules = Yii::$app->modules;
 
-        foreach($modules AS $code => $value) {
+        foreach ($modules AS $code => $value) {
 
-           $module = Yii::$app->getModule($code);
+            $module = Yii::$app->getModule($code);
 
-           if(is_object($module)) {
+            if (is_object($module)) {
 
-               $admin = $module->getModule($this->adminId);
+                $admin = $module->getModule($this->adminId);
 
-               if($admin AND is_callable($admin->menuItems)) {
+                if ($admin AND is_callable($admin->menuItems)) {
 
-                   $this->items = array_merge($this->items, call_user_func($admin->menuItems));
+                    $this->items = array_merge($this->items, call_user_func($admin->menuItems));
 
-                   $this->processAccess();
+                    $this->processAccess();
 
-               }
+                }
 
-           }
+            }
 
         }
 
@@ -69,29 +70,30 @@ class Menu extends Widget {
      * Ограничение прав доступа к пунктам меню
      */
 
-    public function processAccess() {
+    public function processAccess()
+    {
 
-        if(Yii::$app->user->can("rootAccess"))
+        if (Yii::$app->user->can("rootAccess"))
             return;
 
         $arr = [];
 
-        foreach($this->items AS $moduleItem) {
+        foreach ($this->items AS $moduleItem) {
 
-            if(empty($moduleItem["items"]))
+            if (empty($moduleItem["items"]))
                 continue;
 
-            foreach($moduleItem["items"] AS $k => $item) {
+            foreach ($moduleItem["items"] AS $k => $item) {
                 $permission = $item["permission"][0];
 
-                $params = isset($item["permission"][1])?$item["permission"][1]:[];
+                $params = isset($item["permission"][1]) ? $item["permission"][1] : [];
 
                 if (!isset($item["permission"]) OR !Yii::$app->user->can($permission, $params))
                     unset($moduleItem["items"][$k]);
 
             }
 
-            if(!empty($moduleItem["items"]))
+            if (!empty($moduleItem["items"]))
                 $arr[] = $moduleItem;
 
         }
@@ -104,19 +106,17 @@ class Menu extends Widget {
      * @inheritdoc
      */
 
-    public function run() {
-
+    public function run()
+    {
 
         return Nav::widget([
-            'route'=>Yii::$app->controller->uniqueId,
+            'route' => Yii::$app->controller->uniqueId,
             'items' => $this->items,
             'options' => array_merge([
-                'class'=>'nav nav-pills nav-stacked'
+                'class' => 'nav nav-pills nav-stacked'
             ], $this->options)
         ]);
 
-
     }
-
 
 }

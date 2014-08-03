@@ -1,7 +1,7 @@
 <?php
 namespace common\components;
 
-use yii\web\AssetBundle AS YiiBundle;
+use yii\web\AssetBundle as YiiBundle;
 
 /**
  * Class AssetBundle
@@ -9,7 +9,8 @@ use yii\web\AssetBundle AS YiiBundle;
  * @package common\components
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class AssetBundle extends YiiBundle {
+class AssetBundle extends YiiBundle
+{
 
     /**
      * @var array минифицированный js
@@ -28,12 +29,13 @@ class AssetBundle extends YiiBundle {
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
-        if(!YII_DEBUG AND !empty($this->jsMin))
+        if (!YII_DEBUG AND !empty($this->jsMin))
             $this->js = $this->jsMin;
 
-        if(!YII_DEBUG AND !empty($this->cssMin))
+        if (!YII_DEBUG AND !empty($this->cssMin))
             $this->css = $this->cssMin;
 
         parent::init();

@@ -2,8 +2,8 @@
 
 namespace app\modules\main\models\meta;
 
-use Yii;
 use common\db\MetaFields;
+use Yii;
 
 /**
  * Class PermissionMeta
@@ -11,8 +11,8 @@ use common\db\MetaFields;
  * @package app\modules\main\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class PermissionMeta extends MetaFields {
+class PermissionMeta extends MetaFields
+{
 
     /**
      * @inheritdoc
@@ -22,13 +22,12 @@ class PermissionMeta extends MetaFields {
     {
         return [
 
-
             "model" => [
                 "definition" => [
                     "class" => \common\db\fields\TextField::className(),
                     "title" => Yii::t('main/app', 'Model class'),
                     "isRequired" => true,
-                    "editInGrid"=>true,
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "model"]
             ],
@@ -38,8 +37,10 @@ class PermissionMeta extends MetaFields {
                     "class" => \common\db\fields\ListField::className(),
                     "title" => Yii::t('main/app', 'Role'),
                     "isRequired" => true,
-                    "data" => function() { return \app\modules\main\models\User::getRolesNames(); },
-                    "editInGrid"=>true,
+                    "data" => function () {
+                        return \app\modules\main\models\User::getRolesNames();
+                    },
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "role"]
             ],
@@ -48,7 +49,7 @@ class PermissionMeta extends MetaFields {
                 "definition" => [
                     "class" => \common\db\fields\CheckBoxField::className(),
                     "title" => Yii::t('main/app', 'Create'),
-                    "editInGrid"=>true,
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "create"]
             ],
@@ -57,7 +58,7 @@ class PermissionMeta extends MetaFields {
                 "definition" => [
                     "class" => \common\db\fields\CheckBoxField::className(),
                     "title" => Yii::t('main/app', 'Read'),
-                    "editInGrid"=>true,
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "read"]
             ],
@@ -66,7 +67,7 @@ class PermissionMeta extends MetaFields {
                 "definition" => [
                     "class" => \common\db\fields\CheckBoxField::className(),
                     "title" => Yii::t('main/app', 'Update'),
-                    "editInGrid"=>true,
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "update"]
             ],
@@ -75,7 +76,7 @@ class PermissionMeta extends MetaFields {
                 "definition" => [
                     "class" => \common\db\fields\CheckBoxField::className(),
                     "title" => Yii::t('main/app', 'Delete'),
-                    "editInGrid"=>true,
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "delete"]
             ],
@@ -84,7 +85,7 @@ class PermissionMeta extends MetaFields {
                 "definition" => [
                     "class" => \common\db\fields\TextField::className(),
                     "title" => Yii::t('main/app', 'Constraint class'),
-                    "editInGrid"=>true,
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "constraint"]
             ],
@@ -93,16 +94,12 @@ class PermissionMeta extends MetaFields {
                 "definition" => [
                     "class" => \common\db\fields\TextAreaField::className(),
                     "title" => Yii::t('main/app', 'Forbidden attributes'),
-                    "editInGrid"=>true,
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "forbidden_attrs"]
             ],
 
-
-
-
         ];
     }
-
 
 }

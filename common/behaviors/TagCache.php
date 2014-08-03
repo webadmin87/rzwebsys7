@@ -11,19 +11,35 @@ use yii\db\ActiveRecord;
  * @package common\behaviors
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class TagCache extends Behavior {
-
+class TagCache extends Behavior
+{
 
     const PREFFIX = "tag_cache_";
 
     /**
-     * Возвращает тег для класса
+     * Вызывается после изменения модели
+     */
+
+    public function afterUpdate()
+    {
+
+        $this->setItemTag();
+
+    }
+
+    /**
+     * Устанавливает тег экземпляра класса
      * @return string
      */
 
-    public function getClassTagName() {
+    public function setItemTag()
+    {
 
-        return static::PREFFIX . get_class($this->owner);
+        $key = $this->getItemTagName();
+
+        Yii::$app->cache->set($key, microtime(true));
+
+        return $key;
 
     }
 
@@ -32,9 +48,33 @@ class TagCache extends Behavior {
      * @return string
      */
 
-    public function getItemTagName() {
+    public function getItemTagName()
+    {
 
         return $this->getClassTagName() . "_" . $this->owner->id;
+
+    }
+
+    /**
+     * Возвращает тег для класса
+     * @return string
+     */
+
+    public function getClassTagName()
+    {
+
+        return static::PREFFIX . get_class($this->owner);
+
+    }
+
+    /**
+     * Вызывается после добавления или удаления модели
+     */
+
+    public function afterInsertOrDelete()
+    {
+
+        $this->setClassTag();
 
     }
 
@@ -43,7 +83,8 @@ class TagCache extends Behavior {
      * @return string
      */
 
-    public function setClassTag() {
+    public function setClassTag()
+    {
 
         $key = $this->getClassTagName();
 
@@ -54,46 +95,11 @@ class TagCache extends Behavior {
     }
 
     /**
-     * Устанавливает тег экземпляра класса
-     * @return string
-     */
-
-    public function setItemTag() {
-
-        $key = $this->getItemTagName();
-
-        Yii::$app->cache->set($key, microtime(true));
-
-        return $key;
-
-    }
-
-
-    /**
-     * Вызывается после изменения модели
-     */
-
-    public function afterUpdate() {
-
-        $this->setItemTag();
-
-    }
-
-    /**
-     * Вызывается после добавления или удаления модели
-     */
-
-    public function afterInsertOrDelete() {
-
-        $this->setClassTag();
-
-    }
-
-    /**
      * @inheritdoc
      */
 
-    public function events() {
+    public function events()
+    {
 
         return [
 
@@ -104,6 +110,5 @@ class TagCache extends Behavior {
         ];
 
     }
-
 
 }

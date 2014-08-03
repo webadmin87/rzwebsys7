@@ -1,8 +1,9 @@
 <?php
-use \app\modules\main\models;
+use app\modules\main\models;
+
 return [
 
-    'controllerMap'       => [
+    'controllerMap' => [
         'migrate' => [
             'migrationLookup' => ['@webapp/modules/main/migrations'],
         ],
@@ -11,39 +12,41 @@ return [
     'modules' => [
 
         'main' => [
-            'class'=>app\modules\main\Main::className(),
+            'class' => app\modules\main\Main::className(),
             'controllerNamespace' => 'app\modules\main\controllers',
-            'modules'=> [
-                'admin'=>[
-                    'class'=>app\modules\main\modules\admin\Admin::className(),
+            'modules' => [
+                'admin' => [
+                    'class' => app\modules\main\modules\admin\Admin::className(),
                     'controllerNamespace' => 'app\modules\main\modules\admin\controllers',
-                    'menuItems'=>function() { return [
-                        [
-                            'label'=>Yii::t('main/app', 'Main module'),
-                            'items'=>[
-                                ['label' => Yii::t('main/app', 'Pages'), 'url' => ['/admin/main/pages'],
-                                    "permission"=>["listModels", ["model"=>Yii::createObject(models\Pages::className())]]],
-                                ['label' => Yii::t('main/app', 'Menu'), 'url' => ['/admin/main/menu'],
-                                    "permission"=>["listModels", ["model"=>Yii::createObject(models\Menu::className())]]],
-                                ['label' => Yii::t('main/app', 'Users'), 'url' => ['/admin/main/user'],
-                                    "permission"=>["listModels", ["model"=>Yii::createObject(models\User::className())]]],
-                                ['label' => Yii::t('main/app', 'FileManager'), 'url' => ['/admin/main/file-manager'],
-                                    "permission"=>["fileManager",]],
-                                ['label' => Yii::t('main/app', 'Templates'), 'url' => ['/admin/main/template'],
-                                    "permission"=>["rootAccess"]],
-                                ['label' => Yii::t('main/app', 'Includes'), 'url' => ['/admin/main/includes'],
-                                    "permission"=>["listModels", ["model"=>Yii::createObject(models\Includes::className())]]],
-                                ['label' => Yii::t('main/app', 'Comments'), 'url' => ['/admin/main/comments'],
-                                    "permission"=>["listModels", ["model"=>Yii::createObject(models\Comments::className())]]],
-                                ['label' => Yii::t('main/app', 'Tools'), 'url' => ['/admin/main/tools'],
-                                    "permission"=>["rootAccess"]],
-                                ['label' => Yii::t('main/app', 'Permission'), 'url' => ['/admin/main/permission'],
-                                    "permission"=>["rootAccess"]],
-                                ['label' => Yii::t('main/app', 'Config'), 'url' => ['/admin/main/config'],
-                                    "permission"=>["rootAccess"]],
-                            ]
-                        ],
-                    ];},
+                    'menuItems' => function () {
+                        return [
+                            [
+                                'label' => Yii::t('main/app', 'Main module'),
+                                'items' => [
+                                    ['label' => Yii::t('main/app', 'Pages'), 'url' => ['/admin/main/pages'],
+                                        "permission" => ["listModels", ["model" => Yii::createObject(models\Pages::className())]]],
+                                    ['label' => Yii::t('main/app', 'Menu'), 'url' => ['/admin/main/menu'],
+                                        "permission" => ["listModels", ["model" => Yii::createObject(models\Menu::className())]]],
+                                    ['label' => Yii::t('main/app', 'Users'), 'url' => ['/admin/main/user'],
+                                        "permission" => ["listModels", ["model" => Yii::createObject(models\User::className())]]],
+                                    ['label' => Yii::t('main/app', 'FileManager'), 'url' => ['/admin/main/file-manager'],
+                                        "permission" => ["fileManager",]],
+                                    ['label' => Yii::t('main/app', 'Templates'), 'url' => ['/admin/main/template'],
+                                        "permission" => ["rootAccess"]],
+                                    ['label' => Yii::t('main/app', 'Includes'), 'url' => ['/admin/main/includes'],
+                                        "permission" => ["listModels", ["model" => Yii::createObject(models\Includes::className())]]],
+                                    ['label' => Yii::t('main/app', 'Comments'), 'url' => ['/admin/main/comments'],
+                                        "permission" => ["listModels", ["model" => Yii::createObject(models\Comments::className())]]],
+                                    ['label' => Yii::t('main/app', 'Tools'), 'url' => ['/admin/main/tools'],
+                                        "permission" => ["rootAccess"]],
+                                    ['label' => Yii::t('main/app', 'Permission'), 'url' => ['/admin/main/permission'],
+                                        "permission" => ["rootAccess"]],
+                                    ['label' => Yii::t('main/app', 'Config'), 'url' => ['/admin/main/config'],
+                                        "permission" => ["rootAccess"]],
+                                ]
+                            ],
+                        ];
+                    },
                 ]
             ],
 
@@ -53,15 +56,15 @@ return [
 
     'components' => [
 
-        'i18n'=>[
+        'i18n' => [
 
             'translations' => [
 
-                'main/*'=>[
+                'main/*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@webapp/modules/main/messages',
                     'fileMap' => [
-                            'main/app' => 'app.php',
+                        'main/app' => 'app.php',
                     ],
 
                 ],
@@ -72,9 +75,9 @@ return [
 
         'urlManager' => [
 
-            'rules'=>[
+            'rules' => [
 
-                'page/<code:[A-z0-9_-]+>'=>'main/pages/index',
+                'page/<code:[A-z0-9_-]+>' => 'main/pages/index',
 
             ],
 

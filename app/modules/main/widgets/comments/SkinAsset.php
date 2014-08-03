@@ -9,16 +9,17 @@ use common\components\AssetBundle;
  * @package app\modules\main\widgets\comments
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class SkinAsset extends AssetBundle {
+class SkinAsset extends AssetBundle
+{
 
     public $css = [
         'style.css',
     ];
 
-    public function init() {
+    public function init()
+    {
 
-        $this->sourcePath = __DIR__."/assets/skin";
+        $this->sourcePath = __DIR__ . "/assets/skin";
         parent::init();
 
     }

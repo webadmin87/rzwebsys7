@@ -16,7 +16,7 @@ use yii\widgets\Breadcrumbs;
 /**
 * @var yii\web\View $this
 * @var yii\data\ActiveDataProvider $dataProvider
-* @var <?=$generator->modelClass?> $searchModel
+* @var <?= $generator->modelClass ?> $searchModel
 * @var int $parent_id
 */
 
@@ -27,25 +27,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="user-index">
 
-    <h1><?echo '<?='?> Html::encode($this->title) ?></h1>
+    <h1><? echo '<?=' ?> Html::encode($this->title) ?></h1>
 
-    <?echo '<?='?>$this->render('_filter', ['model' => $searchModel]); ?>
+    <? echo '<?=' ?>$this->render('_filter', ['model' => $searchModel]); ?>
 
-    <hr />
+    <hr/>
 
     <p>
-        <?echo '<?='?>CrudLinks::widget(["action"=>CrudLinks::CRUD_LIST, "model"=>$searchModel, "urlParams"=>["parent_id"=>$parent_id]])?>
+        <? echo '<?=' ?>CrudLinks::widget(["action"=>CrudLinks::CRUD_LIST, "model"=>$searchModel,
+        "urlParams"=>["parent_id"=>$parent_id]])?>
     </p>
 
-    <?echo '<?='?> Breadcrumbs::widget([
-        'homeLink'=>[
-            "label"=>\Yii::t($this->context->tFile, 'Root'),
-            "url"=>["/".Yii::$app->controller->route]
-        ],
-        'links' => $searchModel->getBreadCrumbsItems($parent_id, function($model) { return ["/".Yii::$app->controller->route, "parent_id"=>$model->id]; }),
+    <? echo '<?=' ?> Breadcrumbs::widget([
+    'homeLink'=>[
+    "label"=>\Yii::t($this->context->tFile, 'Root'),
+    "url"=>["/".Yii::$app->controller->route]
+    ],
+    'links' => $searchModel->getBreadCrumbsItems($parent_id, function($model) { return
+    ["/".Yii::$app->controller->route, "parent_id"=>$model->id]; }),
     ]) ?>
 
-    <?echo '<?='?>$this->render('_grid', ['dataProvider' => $dataProvider, "searchModel"=>$searchModel]); ?>
+    <? echo '<?=' ?>$this->render('_grid', ['dataProvider' => $dataProvider, "searchModel"=>$searchModel]); ?>
 
 
 </div>

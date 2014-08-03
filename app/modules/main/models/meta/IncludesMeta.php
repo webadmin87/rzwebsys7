@@ -2,8 +2,8 @@
 
 namespace app\modules\main\models\meta;
 
-use Yii;
 use common\db\MetaFields;
+use Yii;
 
 /**
  * Class IncludesMeta
@@ -11,8 +11,8 @@ use common\db\MetaFields;
  * @package app\modules\main\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class IncludesMeta extends MetaFields {
+class IncludesMeta extends MetaFields
+{
 
     /**
      * @inheritdoc
@@ -21,7 +21,6 @@ class IncludesMeta extends MetaFields {
     protected function config()
     {
         return [
-
 
             "title" => [
                 "definition" => [
@@ -61,6 +60,5 @@ class IncludesMeta extends MetaFields {
 
         ];
     }
-
 
 }

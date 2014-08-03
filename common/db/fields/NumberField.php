@@ -7,15 +7,16 @@ namespace common\db\fields;
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class NumberField extends TextField {
-
+class NumberField extends TextField
+{
 
     /**
      * Правила валидации
      * @return array
      */
 
-    public function rules() {
+    public function rules()
+    {
 
         $rules = parent::rules();
 
@@ -24,6 +25,5 @@ class NumberField extends TextField {
         return $rules;
 
     }
-
 
 }

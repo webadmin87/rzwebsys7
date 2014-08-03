@@ -4,15 +4,14 @@ namespace common\db\fields;
 use common\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
-
 /**
  * Class HasOneField
  * Поле для связей Has One. Интерфейс привязки в форме в виде выпадающего списка.
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class HasOneField extends ListField {
+class HasOneField extends ListField
+{
 
     /**
      * @var string имя связи
@@ -26,7 +25,6 @@ class HasOneField extends ListField {
 
     public $gridAttr = "title";
 
-
     /**
      * Конструктор
      * @param ActiveRecord $model модель
@@ -34,24 +32,26 @@ class HasOneField extends ListField {
      * @param string $relation имя Has One связи
      */
 
-    public function __construct(ActiveRecord $model, $attr, $relation, $config=[]) {
+    public function __construct(ActiveRecord $model, $attr, $relation, $config = [])
+    {
 
         $this->relation = $relation;
 
-        parent::__construct( $model, $attr, $config );
+        parent::__construct($model, $attr, $config);
 
     }
 
     /**
      * @inheritdoc
      */
-    public function grid() {
+    public function grid()
+    {
 
         $grid = parent::grid();
 
-        $grid["value"] = function($model, $index, $widget){
+        $grid["value"] = function ($model, $index, $widget) {
 
-              return ArrayHelper::getValue($model, "{$this->relation}.{$this->gridAttr}", $model->{$this->attr});
+            return ArrayHelper::getValue($model, "{$this->relation}.{$this->gridAttr}", $model->{$this->attr});
 
         };
 
@@ -62,7 +62,8 @@ class HasOneField extends ListField {
     /**
      * @inheritdoc
      */
-    public function view() {
+    public function view()
+    {
 
         $view = parent::view();
 

@@ -9,18 +9,17 @@
 
 use yii\helpers\Html;
 
-echo  Html::beginTag('div', $options);
+echo Html::beginTag('div', $options);
 
-foreach($files AS $file) {
+foreach ($files AS $file) {
 
-    if(!$file->isImage())
+    if (!$file->isImage())
         continue;
 
     $src = Yii::$app->resizer->resize($file->getPath(), $width, $height);
 
-    echo Html::tag('div', Html::a(Html::img($src), $file->getRelPath(), ["rel"=>$rel]));
+    echo Html::tag('div', Html::a(Html::img($src), $file->getRelPath(), ["rel" => $rel]));
 
 }
-
 
 echo Html::endTag('div');

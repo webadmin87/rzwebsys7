@@ -1,7 +1,7 @@
 <?php
 namespace common\db;
 
-use yii\db\ActiveQuery AS YiiQuery;
+use yii\db\ActiveQuery as YiiQuery;
 
 /**
  * Class ActiveQuery
@@ -9,8 +9,8 @@ use yii\db\ActiveQuery AS YiiQuery;
  * @package common\db
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class ActiveQuery extends YiiQuery {
+class ActiveQuery extends YiiQuery
+{
 
     /**
      * Устанавливает ограничение по признаку активности

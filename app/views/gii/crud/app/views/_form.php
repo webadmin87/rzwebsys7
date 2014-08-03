@@ -8,7 +8,7 @@ echo "<?php\n";
 use common\widgets\admin\Form;
 
 /**
-* @var <?=$generator->modelClass?> $model модель
+* @var <?= $generator->modelClass ?> $model модель
 */
 
 echo Form::widget(["model"=>$model]);

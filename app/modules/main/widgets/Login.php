@@ -9,7 +9,8 @@ use yii\base\Widget;
  * @package app\modules\main\widgets
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Login extends Widget {
+class Login extends Widget
+{
 
     /**
      * @var \app\modules\main\models\LoginForm модель формы
@@ -33,11 +34,12 @@ class Login extends Widget {
      * @inheritdoc
      */
 
-    public function run() {
+    public function run()
+    {
 
-        $formOptions = array_merge(['id'=>$this->getId()], $this->formOptions);
+        $formOptions = array_merge(['id' => $this->getId()], $this->formOptions);
 
-        return $this->render($this->tpl, ["model"=>$this->model, "formOptions"=>$formOptions]);
+        return $this->render($this->tpl, ["model" => $this->model, "formOptions" => $formOptions]);
 
     }
 

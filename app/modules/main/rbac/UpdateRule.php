@@ -10,7 +10,8 @@ use yii\rbac\Rule;
  * @package app\modules\main\rbac
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class UpdateRule extends Rule {
+class UpdateRule extends Rule
+{
 
     public $name = 'canUpdate';
 
@@ -23,6 +24,5 @@ class UpdateRule extends Rule {
 
         return $perm AND $perm->updateModel($params['model']);
     }
-
 
 }

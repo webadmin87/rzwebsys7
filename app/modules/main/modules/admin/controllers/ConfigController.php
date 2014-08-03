@@ -1,9 +1,9 @@
 <?php
 namespace app\modules\main\modules\admin\controllers;
 
-use Yii;
 use app\modules\main\models\Config;
 use common\controllers\Root;
+use Yii;
 use yii\base\Model;
 
 /**
@@ -36,6 +36,5 @@ class ConfigController extends Root
         return $this->render('index', ['models' => $models]);
 
     }
-
 
 }

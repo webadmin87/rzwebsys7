@@ -7,4 +7,4 @@ use common\widgets\admin\ExtFilter;
  * @var app\modules\main\models\Pages $model
  */
 
-echo ExtFilter::widget(["model"=>$model]);
+echo ExtFilter::widget(["model" => $model]);

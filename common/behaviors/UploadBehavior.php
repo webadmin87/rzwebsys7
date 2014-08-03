@@ -2,12 +2,12 @@
 
 namespace common\behaviors;
 
+use common\core\File;
+use common\helpers\FileHelper;
 use Yii;
 use yii\base\Behavior;
-use yii\web\UploadedFile;
 use yii\db\ActiveRecord;
-use common\helpers\FileHelper;
-use common\core\File;
+use yii\web\UploadedFile;
 
 /**
  * Class UploadBehavior
@@ -15,7 +15,6 @@ use common\core\File;
  * @package common\behaviors
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
 abstract class UploadBehavior extends Behavior
 {
 
@@ -47,7 +46,6 @@ abstract class UploadBehavior extends Behavior
      */
 
     public $folderPerm = 0755;
-
 
     /**
      * @var int права доступа на создаваемые файлы
@@ -83,7 +81,8 @@ abstract class UploadBehavior extends Behavior
      * @inheritdoc
      */
 
-    public function  events() {
+    public function  events()
+    {
 
         return [
 
@@ -96,63 +95,6 @@ abstract class UploadBehavior extends Behavior
             ActiveRecord::EVENT_BEFORE_DELETE => "beforeDelete",
 
         ];
-
-    }
-
-    /**
-     * Возвращает путь к директории,
-     * в которой будут сохраняться файлы.
-     * @return string путь к директории, в которой сохраняем файлы
-     */
-    public function getSavePath()
-    {
-
-        return Yii::getAlias($this->folder) . DIRECTORY_SEPARATOR . $this->getModelFolderName() . DIRECTORY_SEPARATOR;
-    }
-
-
-    /**
-     * Возвращает путь к изображению для публикации на страничке
-     * @return type
-     */
-
-    public function getRelPath()
-    {
-
-        return str_replace(Yii::getAlias($this->webroot), '', $this->getSavePath());
-    }
-
-
-    /**
-     * Возвращает имя папки для сохранения файлов модели
-     * @return string
-     */
-
-    public function getModelFolderName()
-    {
-
-        $class = get_class($this->owner);
-
-        $class = trim($class, "\\");
-
-        $class = str_replace("\\", "_", $class);
-
-        return strtolower($class);
-
-    }
-
-    /**
-     * Проверяет существование папки для сохранения файлов модели. Если ее нет, то создает
-     */
-
-    protected function checkModelFolder()
-    {
-
-        $path = $this->getSavePath();
-
-        if (is_dir($path)) return;
-
-        mkdir($path, $this->folderPerm);
 
     }
 
@@ -173,7 +115,7 @@ abstract class UploadBehavior extends Behavior
 
         // Единичная загрузка. Удаляем старые файлы
 
-        if(empty($files) AND $file = UploadedFile::getInstanceByName($name)) {
+        if (empty($files) AND $file = UploadedFile::getInstanceByName($name)) {
 
             $this->deleteFiles();
 
@@ -197,7 +139,7 @@ abstract class UploadBehavior extends Behavior
 
                 chmod($savePath, $this->filePerm);
 
-                if(FileHelper::isImage($savePath)) {
+                if (FileHelper::isImage($savePath)) {
 
                     Yii::$app->resizer->resizeIfGreater($savePath, $this->maxWidth, $this->maxHeight);
 
@@ -207,11 +149,114 @@ abstract class UploadBehavior extends Behavior
 
         }
 
-
         return $fileNames;
 
     }
 
+    /**
+     * Проверяет существование папки для сохранения файлов модели. Если ее нет, то создает
+     */
+
+    protected function checkModelFolder()
+    {
+
+        $path = $this->getSavePath();
+
+        if (is_dir($path)) return;
+
+        mkdir($path, $this->folderPerm);
+
+    }
+
+    /**
+     * Возвращает путь к директории,
+     * в которой будут сохраняться файлы.
+     * @return string путь к директории, в которой сохраняем файлы
+     */
+    public function getSavePath()
+    {
+
+        return Yii::getAlias($this->folder) . DIRECTORY_SEPARATOR . $this->getModelFolderName() . DIRECTORY_SEPARATOR;
+    }
+
+    /**
+     * Возвращает имя папки для сохранения файлов модели
+     * @return string
+     */
+
+    public function getModelFolderName()
+    {
+
+        $class = get_class($this->owner);
+
+        $class = trim($class, "\\");
+
+        $class = str_replace("\\", "_", $class);
+
+        return strtolower($class);
+
+    }
+
+    /**
+     * Удаляет файлы перед сохранением
+     * @return bool
+     */
+
+    protected function deleteFiles()
+    {
+
+        if (!is_array($this->_value))
+            return false;
+
+        foreach ($this->_value AS $v) {
+
+            $path = Yii::getAlias($this->webroot) . $v["file"];
+
+            if (!$this->hasFile($v["file"]) AND is_file($path))
+                unlink($path);
+
+        }
+
+        return true;
+
+    }
+
+    /**
+     * Есть ли файл у модели
+     * @param $fileName путь к файлу относительно DOCUMENT ROOT
+     * @return bool
+     */
+
+    public function hasFile($fileName)
+    {
+
+        $attr = $this->attribute;
+
+        if (is_array($this->owner->$attr)) {
+
+            foreach ($this->owner->$attr AS $v) {
+
+                if ($v["file"] == $fileName)
+                    return true;
+
+            }
+
+        }
+
+        return false;
+
+    }
+
+    /**
+     * Возвращает путь к изображению для публикации на страничке
+     * @return type
+     */
+
+    public function getRelPath()
+    {
+
+        return str_replace(Yii::getAlias($this->webroot), '', $this->getSavePath());
+    }
 
     /**
      * Возвращает массив описывающий загруженные файлы
@@ -233,39 +278,9 @@ abstract class UploadBehavior extends Behavior
 
             ];
 
-
         }
 
-
         return $arr;
-
-    }
-
-    /**
-     * Устанавливает максимальный размер загружаемого файла
-     * @param int $val размер файла в мегабайтах
-     */
-
-    public function setMaxFileSize($val)
-    {
-
-        $this->maxFileSize = $val;
-
-    }
-
-    /**
-     * Возвращает максимальный размер загружаемого файла в мегабайтах. Значение ограничено настройками php.
-     * @return int
-     */
-
-    public function getMaxFileSize()
-    {
-
-        $phpMaxFileSize = (int)ini_get("upload_max_filesize");
-
-        $maxFileSize = ($this->maxFileSize <= $phpMaxFileSize) ? $this->maxFileSize : $phpMaxFileSize;
-
-        return $maxFileSize;
 
     }
 
@@ -302,6 +317,34 @@ abstract class UploadBehavior extends Behavior
     }
 
     /**
+     * Возвращает максимальный размер загружаемого файла в мегабайтах. Значение ограничено настройками php.
+     * @return int
+     */
+
+    public function getMaxFileSize()
+    {
+
+        $phpMaxFileSize = (int)ini_get("upload_max_filesize");
+
+        $maxFileSize = ($this->maxFileSize <= $phpMaxFileSize) ? $this->maxFileSize : $phpMaxFileSize;
+
+        return $maxFileSize;
+
+    }
+
+    /**
+     * Устанавливает максимальный размер загружаемого файла
+     * @param int $val размер файла в мегабайтах
+     */
+
+    public function setMaxFileSize($val)
+    {
+
+        $this->maxFileSize = $val;
+
+    }
+
+    /**
      * Разрешен ли файл к загрузке
      * @param $file UploadedFile
      * @return bool
@@ -310,43 +353,9 @@ abstract class UploadBehavior extends Behavior
     protected function isAllowedToUpload($file)
     {
 
-
         $ext = FileHelper::getExtension($file->name);
 
-
         return in_array($ext, $this->allowed);
-
-    }
-
-    /**
-     * Удаление файлов связанных с моделью
-     * @param string $attr атрибут
-     * @return bool
-     */
-
-    public function deleteAllFiles($attr = null)
-    {
-
-        if (empty($attr)) {
-            $attr = $this->attribute;
-        }
-
-        $files = $this->owner->$attr;
-
-        if (!is_array($files))
-            return false;
-
-        foreach ($files AS $file) {
-
-            $filePath = Yii::getAlias($this->webroot) . $file["file"];
-
-            if (is_file($filePath))
-                unlink($filePath);
-        }
-
-        $this->owner->$attr = null;
-
-        return true;
 
     }
 
@@ -383,7 +392,6 @@ abstract class UploadBehavior extends Behavior
 
     }
 
-
     /**
      * Возвращает массив имен файлов
      * @param string $attr атрибут
@@ -412,37 +420,8 @@ abstract class UploadBehavior extends Behavior
                 ], [$path]);
             }
 
-
         }
         return $arr;
-
-    }
-
-    /**
-     * Есть ли файл у модели
-     * @param $fileName путь к файлу относительно DOCUMENT ROOT
-     * @return bool
-     */
-
-    public function hasFile($fileName)
-    {
-
-        $attr = $this->attribute;
-
-        if (is_array($this->owner->$attr)) {
-
-            foreach ($this->owner->$attr AS $v) {
-
-                if ($v["file"] == $fileName)
-                    return true;
-
-
-            }
-
-
-        }
-
-        return false;
 
     }
 
@@ -462,7 +441,6 @@ abstract class UploadBehavior extends Behavior
         if (empty($this->owner->$attr)) {
             return 0;
         }
-
 
         return count($this->owner->$attr);
 
@@ -503,7 +481,6 @@ abstract class UploadBehavior extends Behavior
                 return true;
 
             }
-
 
         }
 
@@ -547,36 +524,44 @@ abstract class UploadBehavior extends Behavior
         return true;
     }
 
-
     /**
      * Перед удалением модели
      * @return bool
      */
 
-    public function beforeDelete() {
+    public function beforeDelete()
+    {
         $this->deleteAllFiles(); // удалили модель, удаляем и файл от неё
         return true;
     }
 
-
     /**
-     * Удаляет файлы перед сохранением
+     * Удаление файлов связанных с моделью
+     * @param string $attr атрибут
      * @return bool
      */
 
-    protected function deleteFiles() {
+    public function deleteAllFiles($attr = null)
+    {
 
-        if(!is_array($this->_value))
+        if (empty($attr)) {
+            $attr = $this->attribute;
+        }
+
+        $files = $this->owner->$attr;
+
+        if (!is_array($files))
             return false;
 
-        foreach($this->_value AS $v) {
+        foreach ($files AS $file) {
 
-            $path = Yii::getAlias($this->webroot) . $v["file"];
+            $filePath = Yii::getAlias($this->webroot) . $file["file"];
 
-            if(!$this->hasFile($v["file"]) AND is_file($path))
-                unlink($path);
-
+            if (is_file($filePath))
+                unlink($filePath);
         }
+
+        $this->owner->$attr = null;
 
         return true;
 
@@ -587,7 +572,5 @@ abstract class UploadBehavior extends Behavior
      */
 
     abstract function beforeSave();
-
-
 
 }

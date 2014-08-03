@@ -2,8 +2,8 @@
 
 namespace app\modules\main\models\meta;
 
-use Yii;
 use common\db\MetaFields;
+use Yii;
 
 /**
  * Class ConfigMeta
@@ -11,8 +11,8 @@ use common\db\MetaFields;
  * @package app\modules\main\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class ConfigMeta extends MetaFields {
+class ConfigMeta extends MetaFields
+{
 
     /**
      * @inheritdoc
@@ -30,7 +30,6 @@ class ConfigMeta extends MetaFields {
                 ],
                 "params" => [$this->owner, "title"]
             ],
-
 
             "key" => [
                 "definition" => [
@@ -50,8 +49,6 @@ class ConfigMeta extends MetaFields {
                 "params" => [$this->owner, "value"]
             ],
 
-
-
         ];
     }
 
@@ -61,7 +58,7 @@ class ConfigMeta extends MetaFields {
 
     protected function defaultConfig()
     {
-        $arr =  parent::defaultConfig();
+        $arr = parent::defaultConfig();
 
         $arr['active']['definition']['showInTableInput'] = false;
 
@@ -69,6 +66,5 @@ class ConfigMeta extends MetaFields {
 
         return $arr;
     }
-
 
 }

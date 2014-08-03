@@ -10,17 +10,19 @@ use yii\web\ForbiddenHttpException;
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class TUpdate extends Update {
+class TUpdate extends Update
+{
 
     /**
      * @inheritdoc
      */
 
-    public function run($id) {
+    public function run($id)
+    {
 
         $model = $this->findModel($id);
 
-        if(!Yii::$app->user->can('updateModel', array("model"=>$model)))
+        if (!Yii::$app->user->can('updateModel', array("model" => $model)))
             throw new ForbiddenHttpException('Forbidden');
 
         $model->setScenario($this->modelScenario);
@@ -35,7 +37,7 @@ class TUpdate extends Update {
 
         $load = $model->load(Yii::$app->request->post());
 
-        if($parentModel->id != $model->parent_id) {
+        if ($parentModel->id != $model->parent_id) {
             $parentModel = $this->findModel($model->parent_id);
         } else {
             $parentModel = null;
@@ -45,17 +47,16 @@ class TUpdate extends Update {
             return $this->performAjaxValidation($model);
         }
 
-        if($load && $parentModel)
+        if ($load && $parentModel)
             $res = $model->moveAsFirst($parentModel);
-        elseif($load)
+        elseif ($load)
             $res = $model->saveNode();
-
 
         if (!empty($res) && !$request->post($this->applyParam)) {
 
             $returnUrl = $request->post($this->redirectParam);
 
-            if(empty($returnUrl))
+            if (empty($returnUrl))
                 $returnUrl = $this->defaultRedirectUrl;
 
             return $this->controller->redirect($returnUrl);

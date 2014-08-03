@@ -9,8 +9,8 @@ use common\components\AssetBundle;
  * @package app\modules\main\widgets\comments
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class CommentsAsset extends AssetBundle {
+class CommentsAsset extends AssetBundle
+{
 
     public $js = [
         'script.js',
@@ -24,9 +24,10 @@ class CommentsAsset extends AssetBundle {
         'yii\web\JqueryAsset',
     ];
 
-    public function init() {
+    public function init()
+    {
 
-        $this->sourcePath = __DIR__."/assets/script";
+        $this->sourcePath = __DIR__ . "/assets/script";
         parent::init();
     }
 

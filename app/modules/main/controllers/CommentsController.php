@@ -10,8 +10,8 @@ use yii\rest\Controller;
  * @package app\modules\main\controllers
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class CommentsController extends Controller {
+class CommentsController extends Controller
+{
 
     /**
      * @var string имя класса модели
@@ -27,7 +27,7 @@ class CommentsController extends Controller {
     {
         return [
 
-              'add'  => ['post'],
+            'add' => ['post'],
 
         ];
     }
@@ -36,17 +36,18 @@ class CommentsController extends Controller {
      * @inheritdoc
      */
 
-    public function actions() {
+    public function actions()
+    {
 
-       return [
+        return [
 
-           "add"=>[
-               "class"=>\app\modules\main\actions\CommentAdd::className(),
-               "modelClass"=>$this->modelClass,
-           ],
+            "add" => [
+                "class" => \app\modules\main\actions\CommentAdd::className(),
+                "modelClass" => $this->modelClass,
+            ],
 
-       ];
+        ];
 
-   }
+    }
 
 }

@@ -4,6 +4,6 @@
  */
 $attrs = $model->getAttributes();
 ?>
-<?foreach($attrs AS $k => $v):?>
-    <p><strong><?=$model->getAttributeLabel($k)?>:</strong> <?=$v?></p>
-<?endforeach;?>
+<? foreach ($attrs AS $k => $v): ?>
+    <p><strong><?= $model->getAttributeLabel($k) ?>:</strong> <?= $v ?></p>
+<? endforeach; ?>

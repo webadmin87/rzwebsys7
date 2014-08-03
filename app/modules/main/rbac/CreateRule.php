@@ -10,7 +10,8 @@ use yii\rbac\Rule;
  * @package app\modules\main\rbac
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class CreateRule extends Rule {
+class CreateRule extends Rule
+{
 
     public $name = 'canCreate';
 
@@ -23,6 +24,5 @@ class CreateRule extends Rule {
 
         return $perm AND $perm->createModel();
     }
-
 
 }

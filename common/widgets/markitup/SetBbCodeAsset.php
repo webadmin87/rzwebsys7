@@ -9,7 +9,8 @@ use common\components\AssetBundle;
  * @package common\widgets\markitup
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class SetBbCodeAsset extends AssetBundle {
+class SetBbCodeAsset extends AssetBundle
+{
 
     public $css = [
         'style.css',
@@ -27,9 +28,10 @@ class SetBbCodeAsset extends AssetBundle {
         '\common\widgets\markitup\MarkItUpAsset',
     ];
 
-    public function init() {
+    public function init()
+    {
 
-        $this->sourcePath = __DIR__."/assets/sets/bbcode";
+        $this->sourcePath = __DIR__ . "/assets/sets/bbcode";
 
         parent::init();
 

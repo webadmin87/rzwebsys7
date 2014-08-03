@@ -9,7 +9,8 @@ namespace common\behaviors;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class SimpleUploadBehavior extends UploadBehavior {
+class SimpleUploadBehavior extends UploadBehavior
+{
 
     /**
      * Обработка загрузки файлов
@@ -20,17 +21,16 @@ class SimpleUploadBehavior extends UploadBehavior {
 
         $attr = $this->attribute;
 
-        $this->owner->$attr = is_array($this->owner->$attr)?$this->owner->$attr:array();
+        $this->owner->$attr = is_array($this->owner->$attr) ? $this->owner->$attr : array();
 
-        $fileNames = $this->getFilesArr( $this->uploadFiles($attr) );
+        $fileNames = $this->getFilesArr($this->uploadFiles($attr));
 
         $fileNames = array_merge($this->owner->$attr, $fileNames);
 
-        $this->owner->$attr = !empty($fileNames)?serialize($fileNames):'';
+        $this->owner->$attr = !empty($fileNames) ? serialize($fileNames) : '';
 
         return true;
 
     }
-
 
 }

@@ -2,8 +2,8 @@
 
 namespace common\widgets\html5uploader;
 
-use yii\widgets\InputWidget;
 use yii\helpers\Html;
+use yii\widgets\InputWidget;
 
 /**
  * Class Widget
@@ -11,10 +11,29 @@ use yii\helpers\Html;
  * @package common\widgets\html5uploader
  * @author Churkin Anton <webadmin87@gmail.com>
  */
+class Widget extends InputWidget
+{
 
-class Widget extends InputWidget {
+    /**
+     * @var string шаблон
+     */
 
+    public $tpl = "uploader";
+    /**
+     * @var string алиас DOCUMENT ROOT
+     */
 
+    public $webroot = "@webroot";
+    /**
+     * @var string url для загрузки файлов
+     */
+
+    public $uploadUrl;
+    /**
+     * @var int максимальный размер загружаемого файла
+     */
+
+    public $maxFileSize;
     /**
      * @var \yii\web\AssetBundle класса бандла ресурсов
      */
@@ -22,34 +41,11 @@ class Widget extends InputWidget {
     protected $assetClass;
 
     /**
-     * @var string шаблон
-     */
-
-    public $tpl = "uploader";
-
-    /**
-     * @var string алиас DOCUMENT ROOT
-     */
-
-    public $webroot = "@webroot";
-
-    /**
-     * @var string url для загрузки файлов
-     */
-
-    public $uploadUrl;
-
-    /**
-     * @var int максимальный размер загружаемого файла
-     */
-
-    public $maxFileSize;
-
-    /**
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
         $assetClass = $this->getAssetClass();
 
@@ -57,9 +53,39 @@ class Widget extends InputWidget {
 
         $this->name = Html::getInputName($this->model, $this->attribute);
 
-        $this->options = array_merge(["multiple"=>true, "id"=>$this->id], $this->options);
+        $this->options = array_merge(["multiple" => true, "id" => $this->id], $this->options);
 
         $this->registerScripts();
+
+    }
+
+    /**
+     * Возвращает класс модуля ресурсов
+     * @return string
+     */
+
+    public function getAssetClass()
+    {
+
+        if ($this->assetClass === null) {
+
+            $this->assetClass = AssetBundle::className();
+
+        }
+
+        return $this->assetClass;
+
+    }
+
+    /**
+     * Устанавливает класс модуля ресурсов
+     * @param string $class имя класса
+     */
+
+    public function setAssetClass($class)
+    {
+
+        $this->assetClass = $class;
 
     }
 
@@ -67,7 +93,8 @@ class Widget extends InputWidget {
      * Решистрирует javascript инициализации виджета
      */
 
-    protected function registerScripts() {
+    protected function registerScripts()
+    {
 
         // @TOFIX сделать ограничение на загружаемые расширения
 
@@ -108,46 +135,19 @@ class Widget extends InputWidget {
      * @inheritdoc
      */
 
-    public function run() {
+    public function run()
+    {
 
         $files = $this->model->{$this->attribute};
 
-        return $this->render($this->tpl,[
+        return $this->render($this->tpl, [
 
             "name" => $this->name,
             "options" => $this->options,
             "maxFileSize" => $this->model->getMaxFileSize(),
-            "files" =>$files,
-            "webroot"=>$this->webroot,
+            "files" => $files,
+            "webroot" => $this->webroot,
         ]);
-
-    }
-
-    /**
-     * Возвращает класс модуля ресурсов
-     * @return string
-     */
-
-    public function getAssetClass() {
-
-        if($this->assetClass === null) {
-
-            $this->assetClass = AssetBundle::className();
-
-        }
-
-        return $this->assetClass;
-
-    }
-
-    /**
-     * Устанавливает класс модуля ресурсов
-     * @param string $class имя класса
-     */
-
-    public function setAssetClass($class) {
-
-        $this->assetClass = $class;
 
     }
 

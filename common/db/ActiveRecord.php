@@ -1,10 +1,10 @@
 <?php
 namespace common\db;
 
-use Yii;
-use yii\db\ActiveRecord AS YiiRecord;
-use yii\data\ActiveDataProvider;
 use app\modules\main\models\User;
+use Yii;
+use yii\data\ActiveDataProvider;
+use yii\db\ActiveRecord as YiiRecord;
 
 /**
  * Class ActiveRecord
@@ -12,8 +12,8 @@ use app\modules\main\models\User;
  * @package common\db
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-abstract class ActiveRecord extends YiiRecord {
+abstract class ActiveRecord extends YiiRecord
+{
 
     /**
      * Сценарии валидации
@@ -35,7 +35,7 @@ abstract class ActiveRecord extends YiiRecord {
      * @var array значение сортировки по умолчанию
      */
 
-    protected $_defaultSearchOrder = ["id"=>SORT_DESC];
+    protected $_defaultSearchOrder = ["id" => SORT_DESC];
 
     /**
      * Базовые сценарии
@@ -53,9 +53,10 @@ abstract class ActiveRecord extends YiiRecord {
      * Устанавливаем активность по умолчанию при создании новой модели
      */
 
-    public function init() {
+    public function init()
+    {
 
-        if($this->scenario == self::SCENARIO_INSERT) {
+        if ($this->scenario == self::SCENARIO_INSERT) {
 
             $this->active = true;
 
@@ -68,13 +69,14 @@ abstract class ActiveRecord extends YiiRecord {
      * @return array
      *
      */
-    public function  scenarios() {
+    public function  scenarios()
+    {
 
         $scenarios = parent::scenarios();
 
-        foreach($this->_baseScenarios AS $scenario) {
+        foreach ($this->_baseScenarios AS $scenario) {
 
-            if(!isset($scenarios[$scenario])) {
+            if (!isset($scenarios[$scenario])) {
 
                 $scenarios[$scenario] = $scenarios[YiiRecord::SCENARIO_DEFAULT];
             }
@@ -86,38 +88,20 @@ abstract class ActiveRecord extends YiiRecord {
     }
 
     /**
-     * Возвращает объект с описанием полей модели
-     * @return MetaFields
-     */
-
-    public function getMetaFields() {
-
-        if($this->metaFields === null) {
-
-            $class = $this->metaClass();
-
-            $this->metaFields =  Yii::createObject($class, [$this]);
-
-        }
-
-        return $this->metaFields;
-
-    }
-
-    /**
      * Правила валидации Формируем из полей
      * @return array
      */
 
-    public function rules() {
+    public function rules()
+    {
 
         $fields = $this->getMetaFields()->getFields();
 
         $rules = [];
 
-        foreach($fields AS $field) {
+        foreach ($fields AS $field) {
 
-            if($field->rules())
+            if ($field->rules())
                 $rules = array_merge($rules, $field->rules());
 
         }
@@ -127,17 +111,45 @@ abstract class ActiveRecord extends YiiRecord {
     }
 
     /**
+     * Возвращает объект с описанием полей модели
+     * @return MetaFields
+     */
+
+    public function getMetaFields()
+    {
+
+        if ($this->metaFields === null) {
+
+            $class = $this->metaClass();
+
+            $this->metaFields = Yii::createObject($class, [$this]);
+
+        }
+
+        return $this->metaFields;
+
+    }
+
+    /**
+     * Возвращает имя класса содержащего описание полей модели
+     * @return string
+     */
+
+    public abstract function metaClass();
+
+    /**
      * Подписи атрибутов
      * @return array
      */
 
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
 
         $fields = $this->getMetaFields()->getFields();
 
         $labels = [];
 
-        foreach($fields AS $field) {
+        foreach ($fields AS $field) {
 
             $labels[$field->attr] = $field->title;
 
@@ -152,7 +164,8 @@ abstract class ActiveRecord extends YiiRecord {
      * @return array
      */
 
-    public function behaviors() {
+    public function behaviors()
+    {
 
         $fields = $this->getMetaFields()->getFields();
 
@@ -163,31 +176,24 @@ abstract class ActiveRecord extends YiiRecord {
                     ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
                     ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
                 ],
-                'value'=>function() { return date("Y-m-d H:i:s"); },
+                'value' => function () {
+                    return date("Y-m-d H:i:s");
+                },
             ],
             'tagCache' => [
-                'class'=>\common\behaviors\TagCache::className(),
+                'class' => \common\behaviors\TagCache::className(),
             ],
         ];
 
-        foreach($fields AS $field) {
+        foreach ($fields AS $field) {
 
-            if($field->behaviors())
+            if ($field->behaviors())
                 $behaviors = array_merge($behaviors, $field->behaviors());
 
         }
 
         return $behaviors;
 
-    }
-
-    /**
-     * @inheritdoc
-     * @return \common\db\ActiveQuery
-     */
-    public static function find()
-    {
-        return Yii::createObject(\common\db\ActiveQuery::className(), [get_called_class()]);
     }
 
     /**
@@ -198,11 +204,12 @@ abstract class ActiveRecord extends YiiRecord {
      * @return \yii\data\ActiveDataProvider
      */
 
-    public function search($params, $dataProviderConfig=[], $query = null) {
+    public function search($params, $dataProviderConfig = [], $query = null)
+    {
 
         $fields = $this->getMetaFields()->getFields();
 
-        $query = $query?$query:static::find();
+        $query = $query ? $query : static::find();
 
         $config = array_merge([
             'class' => ActiveDataProvider::className(),
@@ -217,12 +224,20 @@ abstract class ActiveRecord extends YiiRecord {
             return $dataProvider;
         }
 
-        foreach($fields AS $field)
+        foreach ($fields AS $field)
             $field->search($query);
-
 
         return $dataProvider;
 
+    }
+
+    /**
+     * @inheritdoc
+     * @return \common\db\ActiveQuery
+     */
+    public static function find()
+    {
+        return Yii::createObject(\common\db\ActiveQuery::className(), [get_called_class()]);
     }
 
     /**
@@ -233,11 +248,11 @@ abstract class ActiveRecord extends YiiRecord {
     {
         if (parent::beforeSave($insert)) {
 
-            if(empty($this->author_id)) {
+            if (empty($this->author_id)) {
 
                 $id = Yii::$app->user->id;
 
-                $this->author_id = $id?$id:0;
+                $this->author_id = $id ? $id : 0;
 
             }
             return true;
@@ -245,14 +260,6 @@ abstract class ActiveRecord extends YiiRecord {
             return false;
         }
     }
-
-
-    /**
-     * Возвращает имя класса содержащего описание полей модели
-     * @return string
-     */
-
-    public abstract function metaClass();
 
     /**
      * @return User возвращает автора модели
@@ -268,7 +275,8 @@ abstract class ActiveRecord extends YiiRecord {
      * @return \common\rbac\IPermission|null
      */
 
-    public function getPermission() {
+    public function getPermission()
+    {
 
         return null;
 

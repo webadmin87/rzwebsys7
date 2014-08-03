@@ -3,7 +3,6 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 
-
 /**
  * @var string $id идентификатор виджета
  * @var string $pjaxId идентификатор виджета PJAX
@@ -15,8 +14,8 @@ use yii\widgets\Pjax;
  */
 
 ?>
-<?Pjax::begin(["id"=>$pjaxId]);?>
-<?=Html::beginForm();?>
+<? Pjax::begin(["id" => $pjaxId]); ?>
+<?= Html::beginForm(); ?>
 <?
 echo GridView::widget([
     "id" => $id,
@@ -32,19 +31,19 @@ foreach ($groupButtons AS $button): ?>
     <? if (is_array($button)):
         $widget = Yii::createObject($button);
         ?>
-        <?$btnHtml .= $widget->run() . "\n";?>
+        <? $btnHtml .= $widget->run() . "\n"; ?>
     <? endif; ?>
 <? endforeach; ?>
 
-<?if($btnHtml):?>
+<? if ($btnHtml): ?>
     <div class="form-group form-inline">
 
         <span><?= Yii::t('core', 'Actions with selected') ?>:</span>
 
-        <?=$btnHtml?>
+        <?= $btnHtml ?>
 
     </div>
-<?endif;?>
+<? endif; ?>
 
-<?=Html::endForm();?>
-<?Pjax::end();?>
+<?= Html::endForm(); ?>
+<? Pjax::end(); ?>

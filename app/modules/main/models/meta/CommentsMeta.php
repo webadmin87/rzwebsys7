@@ -2,8 +2,8 @@
 
 namespace app\modules\main\models\meta;
 
-use Yii;
 use common\db\MetaFields;
+use Yii;
 
 /**
  * Class CommentsMeta
@@ -11,8 +11,8 @@ use common\db\MetaFields;
  * @package app\modules\main\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class CommentsMeta extends MetaFields {
+class CommentsMeta extends MetaFields
+{
 
     /**
      * @inheritdoc
@@ -21,7 +21,6 @@ class CommentsMeta extends MetaFields {
     protected function config()
     {
         return [
-
 
             "username" => [
                 "definition" => [
@@ -37,7 +36,7 @@ class CommentsMeta extends MetaFields {
                     "class" => \common\db\fields\EmailField::className(),
                     "title" => Yii::t('main/app', 'Email'),
                     "isRequired" => false,
-                    "showInGrid"=>false
+                    "showInGrid" => false
                 ],
                 "params" => [$this->owner, "email"]
             ],
@@ -47,7 +46,7 @@ class CommentsMeta extends MetaFields {
                     "class" => \common\db\fields\MarkItUpField::className(),
                     "title" => Yii::t('main/app', 'Comment'),
                     "isRequired" => true,
-                    "showInGrid"=>true,
+                    "showInGrid" => true,
                 ],
                 "params" => [$this->owner, "text"]
             ],
@@ -72,6 +71,5 @@ class CommentsMeta extends MetaFields {
 
         ];
     }
-
 
 }

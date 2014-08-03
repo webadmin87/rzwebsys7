@@ -2,12 +2,11 @@
 
 namespace app\modules\main\modules\admin\controllers;
 
-use Yii;
 use app\modules\main\models\User;
-use yii\filters\VerbFilter;
 use common\actions\crud;
 use common\controllers\Admin;
-
+use Yii;
+use yii\filters\VerbFilter;
 
 /**
  * Class UserController
@@ -48,43 +47,44 @@ class UserController extends Admin
      * Действия
      * @return array
      */
-    public function actions() {
+    public function actions()
+    {
 
         $class = User::className();
 
         return [
 
-            'index'=>[
-                'class'=>crud\Admin::className(),
-                'modelClass'=>$class,
+            'index' => [
+                'class' => crud\Admin::className(),
+                'modelClass' => $class,
             ],
-            'create'=>[
-                'class'=>crud\Create::className(),
-                'modelClass'=>$class,
+            'create' => [
+                'class' => crud\Create::className(),
+                'modelClass' => $class,
             ],
-            'update'=>[
-                'class'=>crud\Update::className(),
-                'modelClass'=>$class,
-            ],
-
-            'view'=>[
-                'class'=>crud\View::className(),
-                'modelClass'=>$class,
+            'update' => [
+                'class' => crud\Update::className(),
+                'modelClass' => $class,
             ],
 
-            'delete'=>[
-                'class'=>crud\Delete::className(),
-                'modelClass'=>$class,
+            'view' => [
+                'class' => crud\View::className(),
+                'modelClass' => $class,
             ],
 
-            'groupdelete'=>[
-                'class'=>crud\GroupDelete::className(),
-                'modelClass'=>$class,
+            'delete' => [
+                'class' => crud\Delete::className(),
+                'modelClass' => $class,
             ],
 
-            'editable'=>[
-                'class'=>crud\XEditable::className(),
-                'modelClass'=>$class,
+            'groupdelete' => [
+                'class' => crud\GroupDelete::className(),
+                'modelClass' => $class,
+            ],
+
+            'editable' => [
+                'class' => crud\XEditable::className(),
+                'modelClass' => $class,
             ],
 
         ];

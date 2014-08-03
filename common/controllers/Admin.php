@@ -9,8 +9,8 @@ use yii\web\Controller;
  * @package common\controllers
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Admin extends Controller {
+class Admin extends Controller
+{
 
     /**
      * @inheritdoc

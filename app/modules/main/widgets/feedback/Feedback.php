@@ -12,7 +12,8 @@ use yii\helpers\Url;
  * @package app\modules\main\widgets
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Feedback extends Widget {
+class Feedback extends Widget
+{
 
     /**
      * @var array маршрут отправки формы
@@ -60,7 +61,8 @@ class Feedback extends Widget {
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
         FeedbackAsset::register($this->view);
 
@@ -78,33 +80,32 @@ class Feedback extends Widget {
      * @inheritdoc
      */
 
-    public function run() {
+    public function run()
+    {
 
-
-        if($this->fancySelector) {
+        if ($this->fancySelector) {
 
             echo \newerton\fancybox\FancyBox::widget([
                 'target' => $this->fancySelector,
-                'config'=>array_merge([
-                    'href'=>'#'.$this->getId(),
-                    'autoDimensions'=>false,
-                    'autoSize'=>false,
-                    'width'=>560,
-                    'type'=>'inline',
+                'config' => array_merge([
+                    'href' => '#' . $this->getId(),
+                    'autoDimensions' => false,
+                    'autoSize' => false,
+                    'width' => 560,
+                    'type' => 'inline',
                 ], $this->fancyConfig),
             ]);
 
         }
 
-
         $formOptions = array_merge([
             "action" => Url::toRoute($this->route),
-            "enableClientValidation"=>true,
-            "validateOnSubmit"=>true,
+            "enableClientValidation" => true,
+            "validateOnSubmit" => true,
 
         ], $this->formOptions);
 
-        return $this->render($this->tpl, ["id"=>$this->getId(), "model"=>$this->model, "formOptions"=>$formOptions, "hidden"=>!empty($this->fancySelector)]);
+        return $this->render($this->tpl, ["id" => $this->getId(), "model" => $this->model, "formOptions" => $formOptions, "hidden" => !empty($this->fancySelector)]);
 
     }
 

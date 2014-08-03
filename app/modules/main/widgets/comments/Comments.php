@@ -1,12 +1,12 @@
 <?php
 namespace app\modules\main\widgets\comments;
-use Yii;
-use app\modules\main\models\Comments AS Model;
-use yii\base\Widget;
-use yii\data\ActiveDataProvider;
+
+use app\modules\main\models\Comments as Model;
 use common\db\ActiveRecord;
 use common\db\TActiveRecord;
-
+use Yii;
+use yii\base\Widget;
+use yii\data\ActiveDataProvider;
 
 /**
  * Class Comments
@@ -14,7 +14,8 @@ use common\db\TActiveRecord;
  * @package app\modules\main\widgets\comments
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Comments extends Widget {
+class Comments extends Widget
+{
 
     /**
      * @var string класс модели
@@ -31,7 +32,6 @@ class Comments extends Widget {
      */
 
     public $marginStep = 20;
-
 
     /**
      * @var int количество комментариев на одной странице. 0 - нет пагинации
@@ -94,24 +94,14 @@ class Comments extends Widget {
     protected $dataProvider;
 
     /**
-     * Установка ассета скина
-     * @param \yii\web\AssetBundle $val
-     */
-
-    public function setSkinAsset($val) {
-
-        $this->_skinAsset = $val;
-
-    }
-
-    /**
      * Возвращает ассет скина
      * @return \yii\web\AssetBundle
      */
 
-    public function getSkinAsset() {
+    public function getSkinAsset()
+    {
 
-        if($this->_skinAsset === null) {
+        if ($this->_skinAsset === null) {
 
             $this->_skinAsset = \app\modules\main\widgets\comments\SkinAsset::className();
 
@@ -122,23 +112,36 @@ class Comments extends Widget {
     }
 
     /**
+     * Установка ассета скина
+     * @param \yii\web\AssetBundle $val
+     */
+
+    public function setSkinAsset($val)
+    {
+
+        $this->_skinAsset = $val;
+
+    }
+
+    /**
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
         $skin = $this->skinAsset;
 
-        if($skin)
+        if ($skin)
             $skin::register($this->view);
 
         CommentsAsset::register($this->view);
 
         $parent = Model::findOne(TActiveRecord::ROOT_ID);
 
-        $query = $parent->descendants()->published()->andWhere(["model"=>$this->modelClass, "item_id"=>$this->itemId]);
+        $query = $parent->descendants()->published()->andWhere(["model" => $this->modelClass, "item_id" => $this->itemId]);
 
-        if(is_callable($this->queryModifier)) {
+        if (is_callable($this->queryModifier)) {
 
             $func = $this->queryModifier;
 
@@ -165,33 +168,31 @@ class Comments extends Widget {
      * @inheritdoc
      */
 
-    public function run() {
+    public function run()
+    {
 
-        $model = Yii::createObject(["class"=>Model::className(), "scenario"=>ActiveRecord::SCENARIO_INSERT]);
+        $model = Yii::createObject(["class" => Model::className(), "scenario" => ActiveRecord::SCENARIO_INSERT]);
 
         $model->model = $this->modelClass;
 
         $model->item_id = $this->itemId;
 
         $formOptions = array_merge([
-            "enableClientValidation"=>true,
-            "validateOnSubmit"=>true,
-            "action"=>Yii::$app->urlManager->createUrl($this->actionRoute)
+            "enableClientValidation" => true,
+            "validateOnSubmit" => true,
+            "action" => Yii::$app->urlManager->createUrl($this->actionRoute)
         ], $this->formOptions);
 
-        return $this->render($this->tpl,[
-            "model"=>$model,
-            "dataProvider"=>$this->dataProvider,
-            "marginStep"=>$this->marginStep,
-            "formOptions"=>$formOptions,
-            "editorClass"=>$this->editorClass,
-            "editorOptions"=>$this->editorOptions,
-            "id"=>$this->getId(),
+        return $this->render($this->tpl, [
+            "model" => $model,
+            "dataProvider" => $this->dataProvider,
+            "marginStep" => $this->marginStep,
+            "formOptions" => $formOptions,
+            "editorClass" => $this->editorClass,
+            "editorOptions" => $this->editorOptions,
+            "id" => $this->getId(),
         ]);
 
     }
-
-
-
 
 }

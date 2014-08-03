@@ -2,9 +2,9 @@
 use yii\helpers\Html;
 
 /**
-* @var \yii\web\View $this
-* @var app\modules\main\models\Includes $model
-*/
+ * @var \yii\web\View $this
+ * @var app\modules\main\models\Includes $model
+ */
 
 $this->title = \Yii::t($this->context->tFile, 'Create Includes');
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Includes'), 'url' => ['index']];

@@ -2,9 +2,9 @@
 
 namespace common\db;
 
+use common\db\fields;
 use Yii;
 use yii\base\Object;
-use common\db\fields;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -13,7 +13,6 @@ use yii\helpers\ArrayHelper;
  * @package common\db
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
 abstract class MetaFields extends Object
 {
 
@@ -40,42 +39,12 @@ abstract class MetaFields extends Object
      * @param ActiveRecord $owner
      */
 
-    public function __construct(ActiveRecord $owner, $params=array())
+    public function __construct(ActiveRecord $owner, $params = array())
     {
 
         $this->owner = $owner;
 
         parent::__construct($params);
-
-    }
-
-    /**
-     * Возвращает массив объектов полей модели
-     * @return \common\db\fields\Field[]
-     */
-
-    public function getFields()
-    {
-
-        if ($this->fields === null) {
-
-            $this->fields = [];
-
-            $config = ArrayHelper::merge($this->defaultConfig(), $this->config());
-
-            foreach ($config AS $config) {
-
-                if(!is_array($config))
-                    continue;
-
-                $this->fields[] = Yii::createObject($config["definition"], $config["params"]);
-
-            }
-
-
-        }
-
-        return $this->fields;
 
     }
 
@@ -103,13 +72,32 @@ abstract class MetaFields extends Object
     }
 
     /**
-     * Массив вкладок формы редактирования модели (key=>name)
-     * @return array
+     * Возвращает массив объектов полей модели
+     * @return \common\db\fields\Field[]
      */
 
-    public function tabs()
+    public function getFields()
     {
-        return [self::DEFAULT_TAB => Yii::t('core', 'Element')];
+
+        if ($this->fields === null) {
+
+            $this->fields = [];
+
+            $config = ArrayHelper::merge($this->defaultConfig(), $this->config());
+
+            foreach ($config AS $config) {
+
+                if (!is_array($config))
+                    continue;
+
+                $this->fields[] = Yii::createObject($config["definition"], $config["params"]);
+
+            }
+
+        }
+
+        return $this->fields;
+
     }
 
     /**
@@ -120,7 +108,7 @@ abstract class MetaFields extends Object
     protected function defaultConfig()
     {
 
-        $authorsData = function() {
+        $authorsData = function () {
 
             $authorQuery = Yii::createObject(\yii\db\Query::className());
             $authorCommand = $authorQuery->select('id, username')->from('user')->createCommand();
@@ -128,8 +116,6 @@ abstract class MetaFields extends Object
             return ArrayHelper::map($authors, 'id', 'username');
 
         };
-
-
 
         return [
 
@@ -148,7 +134,6 @@ abstract class MetaFields extends Object
                 ],
                 "params" => [$this->owner, "created_at"]
             ],
-
 
             "updated_at" => [
                 'definition' => [
@@ -173,7 +158,7 @@ abstract class MetaFields extends Object
                     "title" => Yii::t('core', 'Author'),
                     "showInForm" => true,
                     "data" => $authorsData,
-                    "gridAttr"=>"username",
+                    "gridAttr" => "username",
                 ],
                 "params" => [$this->owner, "author_id", "author"]
             ],
@@ -204,5 +189,14 @@ abstract class MetaFields extends Object
 
     abstract protected function config();
 
+    /**
+     * Массив вкладок формы редактирования модели (key=>name)
+     * @return array
+     */
+
+    public function tabs()
+    {
+        return [self::DEFAULT_TAB => Yii::t('core', 'Element')];
+    }
 
 }

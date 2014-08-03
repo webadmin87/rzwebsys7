@@ -8,7 +8,8 @@ namespace common\rbac;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-interface IPermission {
+interface IPermission
+{
 
     /**
      * Просмотр списка моделей
@@ -47,7 +48,6 @@ interface IPermission {
 
     public function updateModel($model);
 
-
     /**
      * Удаление
      * @param \common\db\ActiveRecord $model модель
@@ -62,7 +62,6 @@ interface IPermission {
      */
 
     public function applyConstraint($query);
-
 
     /**
      * Возвращает массив имен атрибутов запрещенных к редактировнаию

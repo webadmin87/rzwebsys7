@@ -1,8 +1,8 @@
 <?php
 namespace app\modules\main\widgets\elist;
 
-use Yii;
 use common\widgets\App;
+use Yii;
 
 /**
  * Class EList
@@ -10,8 +10,8 @@ use common\widgets\App;
  * @package app\modules\main\widgets\elist
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class EList extends App {
+class EList extends App
+{
 
     /**
      * @var string имя класса модели
@@ -28,7 +28,7 @@ class EList extends App {
      * @var array сортировка элементов
      */
 
-    public $order = ['id'=>'DESC'];
+    public $order = ['id' => 'DESC'];
 
     /**
      * @var callable функция возвращающая url модели. Принимает аргументом модель для которой необходимо создать url
@@ -61,16 +61,17 @@ class EList extends App {
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
-        if(!$this->isShow())
+        if (!$this->isShow())
             return false;
 
         $class = $this->modelClass;
 
         $query = $class::find()->published()->orderBy($this->order)->limit($this->limit);
 
-        if(is_callable($this->queryModify)) {
+        if (is_callable($this->queryModify)) {
 
             $func = $this->queryModify;
 
@@ -82,20 +83,20 @@ class EList extends App {
 
     }
 
-
     /**
      * @inheritdoc
      */
 
-    public function run() {
+    public function run()
+    {
 
-        if(!$this->isShow() OR empty($this->models))
+        if (!$this->isShow() OR empty($this->models))
             return false;
 
-        return $this->render($this->tpl,[
-            "models"=>$this->models,
-            "options"=>$this->options,
-            "urlCreate"=>$this->urlCreate,
+        return $this->render($this->tpl, [
+            "models" => $this->models,
+            "options" => $this->options,
+            "urlCreate" => $this->urlCreate,
         ]);
 
     }

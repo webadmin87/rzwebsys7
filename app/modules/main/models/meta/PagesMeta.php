@@ -1,8 +1,8 @@
 <?php
 namespace app\modules\main\models\meta;
 
-use \Yii;
 use common\db\MetaFields;
+use Yii;
 
 /**
  * Class PagesMeta
@@ -10,7 +10,6 @@ use common\db\MetaFields;
  * @package app\modules\main\models\meta
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
 class PagesMeta extends MetaFields
 {
 
@@ -40,7 +39,9 @@ class PagesMeta extends MetaFields
                 "definition" => [
                     "class" => \common\db\fields\ParentListField::className(),
                     "title" => Yii::t('main/app', 'Parent'),
-                    "data" => function(){ return $this->owner->getListTreeData(); },
+                    "data" => function () {
+                        return $this->owner->getListTreeData();
+                    },
                 ],
                 "params" => [$this->owner, "parent_id"]
             ],
@@ -77,8 +78,8 @@ class PagesMeta extends MetaFields
                     "class" => \common\db\fields\TextField::className(),
                     "title" => Yii::t('main/app', 'Meta title'),
                     "isRequired" => false,
-                    "showInGrid"=>false,
-                    "tab"=>self::SEO_TAB,
+                    "showInGrid" => false,
+                    "tab" => self::SEO_TAB,
                 ],
                 "params" => [$this->owner, "metatitle"]
             ],
@@ -88,8 +89,8 @@ class PagesMeta extends MetaFields
                     "class" => \common\db\fields\TextField::className(),
                     "title" => Yii::t('main/app', 'Keywords'),
                     "isRequired" => false,
-                    "showInGrid"=>false,
-                    "tab"=>self::SEO_TAB,
+                    "showInGrid" => false,
+                    "tab" => self::SEO_TAB,
                 ],
                 "params" => [$this->owner, "keywords"]
             ],
@@ -99,8 +100,8 @@ class PagesMeta extends MetaFields
                     "class" => \common\db\fields\TextField::className(),
                     "title" => Yii::t('main/app', 'Description'),
                     "isRequired" => false,
-                    "showInGrid"=>false,
-                    "tab"=>self::SEO_TAB,
+                    "showInGrid" => false,
+                    "tab" => self::SEO_TAB,
                 ],
                 "params" => [$this->owner, "description"]
             ],
@@ -110,11 +111,10 @@ class PagesMeta extends MetaFields
                     "class" => \common\db\fields\Html5ImageField::className(),
                     "title" => Yii::t('main/app', 'Image'),
                     "isRequired" => false,
-                    "tab"=>self::IMAGE_TAB,
+                    "tab" => self::IMAGE_TAB,
                 ],
                 "params" => [$this->owner, "image"]
             ],
-
 
         ];
 
@@ -127,10 +127,9 @@ class PagesMeta extends MetaFields
     public function tabs()
     {
         $tabs = parent::tabs();
-        $tabs[self::SEO_TAB]=Yii::t('main/app', "SEO");
-        $tabs[self::IMAGE_TAB]=Yii::t('main/app', "Image");
+        $tabs[self::SEO_TAB] = Yii::t('main/app', "SEO");
+        $tabs[self::IMAGE_TAB] = Yii::t('main/app', "Image");
         return $tabs;
     }
-
 
 }

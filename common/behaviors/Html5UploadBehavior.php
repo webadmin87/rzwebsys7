@@ -2,15 +2,15 @@
 namespace common\behaviors;
 
 use Yii;
-use yii\db\ActiveRecord;
+
 /**
  * Class Html5UploadBehavior
  * Поведение для загрузки файлов через html5 виджет через ajax
  * @package common\behaviors
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Html5UploadBehavior extends UploadBehavior {
+class Html5UploadBehavior extends UploadBehavior
+{
 
     /**
      * Перед сохранением модели серилизуем массив с описанием файлов
@@ -28,15 +28,14 @@ class Html5UploadBehavior extends UploadBehavior {
 
             $arr = $this->owner->$attr;
 
-            foreach($arr AS $k=>$v) {
+            foreach ($arr AS $k => $v) {
 
-                if(empty($v["file"]))
+                if (empty($v["file"]))
                     unset($arr[$k]);
 
             }
 
-
-            $this->owner->$attr = !empty($arr)?serialize($arr):"";
+            $this->owner->$attr = !empty($arr) ? serialize($arr) : "";
 
         } else {
             $this->owner->$attr = "";
@@ -44,7 +43,5 @@ class Html5UploadBehavior extends UploadBehavior {
 
         return true;
     }
-
-
 
 }

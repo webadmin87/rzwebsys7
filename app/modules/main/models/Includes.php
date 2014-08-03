@@ -1,9 +1,8 @@
 <?php
 namespace app\modules\main\models;
 
-use Yii;
 use common\db\ActiveRecord;
-use common\components\Match;
+use Yii;
 
 /**
  * Class Includes
@@ -11,8 +10,8 @@ use common\components\Match;
  * @package app\modules\main\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Includes extends ActiveRecord {
+class Includes extends ActiveRecord
+{
 
     use \app\modules\main\components\PermissionTrait;
 
@@ -22,19 +21,35 @@ class Includes extends ActiveRecord {
 
     protected static $models;
 
-     /**
+    /**
      * @inheritdoc
      */
 
-    public static function tableName() {
+    public static function tableName()
+    {
         return "includes";
     }
 
     /**
-     * @inheritdoc
+     * Возвращает включаемую область по символьному коду
+     * @param string $code символьный код включаемой области
+     * @return Includes|null
      */
-    public function metaClass() {
-        return meta\IncludesMeta::className();
+
+    public static function findByCode($code)
+    {
+
+        $models = static::findAllModels();
+
+        foreach ($models As $model) {
+
+            if ($model->code == $code)
+                return $model;
+
+        }
+
+        return null;
+
     }
 
     /**
@@ -43,9 +58,10 @@ class Includes extends ActiveRecord {
      * @return Includes[]
      */
 
-    public static function findAllModels() {
+    public static function findAllModels()
+    {
 
-        if(static::$models === null) {
+        if (static::$models === null) {
 
             static::$models = static::find()->published()->all();
 
@@ -56,24 +72,11 @@ class Includes extends ActiveRecord {
     }
 
     /**
-     * Возвращает включаемую область по символьному коду
-     * @param string $code символьный код включаемой области
-     * @return Includes|null
+     * @inheritdoc
      */
-
-    public static function findByCode($code) {
-
-        $models = static::findAllModels();
-
-        foreach($models As $model) {
-
-            if($model->code == $code)
-                return $model;
-
-        }
-
-        return null;
-
+    public function metaClass()
+    {
+        return meta\IncludesMeta::className();
     }
 
 }

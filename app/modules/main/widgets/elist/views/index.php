@@ -8,16 +8,16 @@
 use Yii;
 use yii\helpers\Html;
 
-echo Html::beginTag('ul', $options)."\n";
+echo Html::beginTag('ul', $options) . "\n";
 
 foreach ($models AS $model) {
 
     $link = "";
 
-    if(is_callable($urlCreate))
+    if (is_callable($urlCreate))
         $link = $urlCreate($model);
 
-    echo Html::tag('li', Html::a( $model->title, $link));
+    echo Html::tag('li', Html::a($model->title, $link));
 
 }
 

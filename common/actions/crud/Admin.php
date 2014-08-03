@@ -10,8 +10,8 @@ use yii\web\ForbiddenHttpException;
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Admin extends Base {
+class Admin extends Base
+{
 
     /**
      * @var string сценарий для валидации
@@ -48,12 +48,12 @@ class Admin extends Base {
      * @throws \yii\web\ForbiddenHttpException
      */
 
-    public function run() {
-
+    public function run()
+    {
 
         $searchModel = new $this->modelClass;
 
-        if(!Yii::$app->user->can('listModels', array("model"=>$searchModel)))
+        if (!Yii::$app->user->can('listModels', array("model" => $searchModel)))
             throw new ForbiddenHttpException('Forbidden');
 
         $searchModel->setScenario($this->modelScenario);
@@ -62,12 +62,12 @@ class Admin extends Base {
 
         $perm = $searchModel->getPermission();
 
-        if($perm)
+        if ($perm)
             $perm->applyConstraint($dataProvider->query);
 
         $dataProvider->getPagination()->pageSize = $this->pageSize;
 
-        if($this->orderBy)
+        if ($this->orderBy)
             $dataProvider->getSort()->defaultOrder = $this->orderBy;
 
         $params = [
@@ -75,11 +75,10 @@ class Admin extends Base {
             'searchModel' => $searchModel,
         ];
 
-        if(!Yii::$app->request->isAjax)
+        if (!Yii::$app->request->isAjax)
             return $this->render($this->tpl, $params);
         else
             return $this->renderPartial($this->tpl, $params);
-
 
     }
 

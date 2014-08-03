@@ -1,8 +1,8 @@
 <?php
 use app\assets\AdminAsset;
-use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Html;
 
 /**
  * @var \yii\web\View $this
@@ -32,7 +32,7 @@ AdminAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
         'innerContainerOptions' => [
-          //  'class'=>'container-fluid',
+            //  'class'=>'container-fluid',
         ],
     ]);
     $menuItems = [
@@ -42,7 +42,7 @@ AdminAsset::register($this);
         $menuItems[] = ['label' => Yii::t('core', 'Login'), 'url' => ['/site/login']];
     } else {
         $menuItems[] = [
-            'label' => Yii::t('core', 'Logout').' (' . Yii::$app->user->identity->username . ')',
+            'label' => Yii::t('core', 'Logout') . ' (' . Yii::$app->user->identity->username . ')',
             'url' => ['/site/logout'],
             'linkOptions' => ['data-method' => 'post']
         ];
@@ -55,13 +55,14 @@ AdminAsset::register($this);
     ?>
 
 
-        <?= $content ?>
+    <?= $content ?>
 
 </div>
 
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; Churkin Anton <?= date('Y') ?></p>
+
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>

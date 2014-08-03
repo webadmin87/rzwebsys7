@@ -1,8 +1,8 @@
 <?php
 namespace app\modules\main\widgets\treelist;
 
-use Yii;
 use common\widgets\App;
+use Yii;
 
 /**
  * Class TreeList
@@ -10,8 +10,8 @@ use common\widgets\App;
  * @package app\modules\main\widgets\treelist
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class TreeList extends App {
+class TreeList extends App
+{
 
     /**
      * @var string имя класса модели
@@ -50,7 +50,6 @@ class TreeList extends App {
 
     public $options = array();
 
-
     /**
      * @var array массив моделей
      */
@@ -66,25 +65,26 @@ class TreeList extends App {
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
-        if(!$this->isShow())
+        if (!$this->isShow())
             return false;
 
         $class = $this->modelClass;
 
-        $parent = $class::find()->published()->where(["id"=>$this->parentId])->one();
+        $parent = $class::find()->published()->where(["id" => $this->parentId])->one();
 
-        if(!$parent)
+        if (!$parent)
             return false;
 
         $this->parentLevel = $parent->level;
 
         $level = $parent->level + $this->level;
 
-        $query = $parent->descendants()->published()->andWhere("level <= :level", [":level"=>$level]);
+        $query = $parent->descendants()->published()->andWhere("level <= :level", [":level" => $level]);
 
-        if(is_callable($this->queryModify)) {
+        if (is_callable($this->queryModify)) {
 
             $func = $this->queryModify;
 
@@ -96,22 +96,22 @@ class TreeList extends App {
 
     }
 
-
     /**
      * @inheritdoc
      */
 
-    public function run() {
+    public function run()
+    {
 
-        if(!$this->isShow() OR empty($this->models))
+        if (!$this->isShow() OR empty($this->models))
             return false;
 
-        return $this->render($this->tpl,[
-            "models"=>$this->models,
-            "options"=>$this->options,
-            "parentLevel"=>$this->parentLevel,
-            "actClass"=>$this->actClass,
-            "urlCreate"=>$this->urlCreate,
+        return $this->render($this->tpl, [
+            "models" => $this->models,
+            "options" => $this->options,
+            "parentLevel" => $this->parentLevel,
+            "actClass" => $this->actClass,
+            "urlCreate" => $this->urlCreate,
         ]);
 
     }
@@ -122,25 +122,26 @@ class TreeList extends App {
      * @return bool
      */
 
-    public function isAct($url) {
+    public function isAct($url)
+    {
 
-        if(empty($url))
+        if (empty($url))
             return false;
 
         $request = Yii::$app->request;
 
         // Главная
 
-        if($url == "/") {
+        if ($url == "/") {
 
-            if(empty($request->pathInfo))
+            if (empty($request->pathInfo))
                 return true;
 
         } else {
 
-            $pathinfo = "/".$request->pathInfo."/";
+            $pathinfo = "/" . $request->pathInfo . "/";
 
-            if(strpos($pathinfo, $url) === 0)
+            if (strpos($pathinfo, $url) === 0)
                 return true;
 
         }
@@ -148,7 +149,5 @@ class TreeList extends App {
         return false;
 
     }
-
-
 
 }

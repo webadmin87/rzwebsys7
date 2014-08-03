@@ -2,9 +2,9 @@
 use yii\helpers\Html;
 
 /**
-* @var \yii\web\View $this
-* @var app\modules\main\models\Permission $model
-*/
+ * @var \yii\web\View $this
+ * @var app\modules\main\models\Permission $model
+ */
 
 $this->title = \Yii::t($this->context->tFile, 'Create Permission');
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Permissions'), 'url' => ['index']];

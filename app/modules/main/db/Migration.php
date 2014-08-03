@@ -2,8 +2,8 @@
 
 namespace app\modules\main\db;
 
-use yii\db\Migration AS Base;
 use app\modules\main\models\User;
+use yii\db\Migration as Base;
 
 /**
  * Class Migration
@@ -28,16 +28,15 @@ class Migration extends Base
     public function insertPermission($modelClass, $constraint = null, $role = User::ROLE_ADMIN)
     {
 
-        $this->insert($this->permissionTable,[
+        $this->insert($this->permissionTable, [
 
-            "role"=>$role,
-            "model"=>$modelClass,
-            "constraint"=>$constraint,
+            "role" => $role,
+            "model" => $modelClass,
+            "constraint" => $constraint,
             "read" => true,
-            "create"=>true,
-            "update"=>true,
-            "delete"=>true,
-
+            "create" => true,
+            "update" => true,
+            "delete" => true,
 
         ]);
 
@@ -48,11 +47,12 @@ class Migration extends Base
      * @param string $modelClass класс модели
      * @param string $role
      */
-    public function deletePermission($modelClass, $role = User::ROLE_ADMIN) {
+    public function deletePermission($modelClass, $role = User::ROLE_ADMIN)
+    {
 
         $this->delete($this->permissionTable, [
-            "role"=>$role,
-            "model"=>$modelClass,
+            "role" => $role,
+            "model" => $modelClass,
         ]);
 
     }

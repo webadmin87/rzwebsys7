@@ -10,7 +10,8 @@ use yii\base\Model;
  * @package app\modules\main\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class FeedbackForm extends Model {
+class FeedbackForm extends Model
+{
 
     /**
      * @var string имя
@@ -35,14 +36,15 @@ class FeedbackForm extends Model {
     /**
      * @return array
      */
-    public function rules() {
+    public function rules()
+    {
 
         return [
 
             [['name', 'email', 'text'], 'required'],
             ['email', 'email'],
-            ['phone', 'number', 'integerOnly'=>true],
-            ['phone', 'string', 'min'=>10],
+            ['phone', 'number', 'integerOnly' => true],
+            ['phone', 'string', 'min' => 10],
 
         ];
 
@@ -63,6 +65,5 @@ class FeedbackForm extends Model {
 
         ];
     }
-
 
 }

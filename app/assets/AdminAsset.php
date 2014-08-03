@@ -9,7 +9,6 @@ use yii\web\AssetBundle;
  * @package app\assets
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
 class AdminAsset extends AssetBundle
 {
     public $basePath = '@webroot';

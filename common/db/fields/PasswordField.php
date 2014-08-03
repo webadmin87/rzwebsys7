@@ -1,13 +1,16 @@
 <?php
 namespace common\db\fields;
+
 use Yii\widgets\ActiveForm;
+
 /**
  * Class PasswordField
  * Поле ввода пароля модели
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class PasswordField extends TextField {
+class PasswordField extends TextField
+{
 
     /**
      * Длина пароля
@@ -19,7 +22,8 @@ class PasswordField extends TextField {
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false) {
+    public function form(ActiveForm $form, Array $options = [], $index = false)
+    {
 
         return $form->field($this->model, $this->getFormAttrName($index))->passwordInput($options);
 
@@ -30,7 +34,8 @@ class PasswordField extends TextField {
      * @return array
      */
 
-    public function rules() {
+    public function rules()
+    {
 
         $rules = parent::rules();
 
@@ -39,6 +44,5 @@ class PasswordField extends TextField {
         return $rules;
 
     }
-
 
 }

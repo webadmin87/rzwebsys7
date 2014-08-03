@@ -8,7 +8,8 @@ namespace common\db\fields;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class ParentListField extends ListField {
+class ParentListField extends ListField
+{
 
     /**
      * @inheritdoc

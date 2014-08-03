@@ -1,24 +1,29 @@
 <?php
 namespace app\modules\main\models;
 
-use Yii;
 use common\db\ActiveRecord;
 use common\rbac\IPermission;
+use Yii;
+
 /**
  * Class Permission
  * Модель прав доступа
  * @package app\modules\main\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
+class Permission extends ActiveRecord implements IPermission
+{
 
-class Permission extends ActiveRecord implements IPermission {
+    /**
+     * @var Permission[]
+     */
 
+    protected static $_permissions = array();
     /**
      * @var \common\rbac\IConstraint объект ограничения доступа
      */
 
     protected $_constraintObject;
-
     /**
      * @var array массив атрибутов запрещенных к редактированию
      */
@@ -26,42 +31,19 @@ class Permission extends ActiveRecord implements IPermission {
     protected $_forbiddenAttrs;
 
     /**
-     * @var Permission[]
-     */
-
-    protected static $_permissions = array();
-
-    /**
-     * Возвращает объект ограничения доступа
-     * @return \common\rbac\IConstraint
-     * @throws \yii\base\InvalidConfigException
-     */
-
-    public function getConstraintObject() {
-
-        if($this->_constraintObject === null AND !empty($this->constraint)) {
-
-            $this->_constraintObject = Yii::createObject($this->constraint);
-
-        }
-
-        return $this->_constraintObject;
-
-    }
-
-    /**
      * Возвращает объект прав доступа для модели с заданным классом
      * @param string $class класс модели
      * @return Permission
      */
 
-    public static function findPermission($class) {
+    public static function findPermission($class)
+    {
 
-        if(substr($class,0,1) != '\\')
-            $class = '\\'.$class;
+        if (substr($class, 0, 1) != '\\')
+            $class = '\\' . $class;
 
-        if(!isset(self::$_permissions[$class])) {
-            self::$_permissions[$class] = static::find()->published()->where(["model"=>$class, "role"=>Yii::$app->user->identity->role])->one();
+        if (!isset(self::$_permissions[$class])) {
+            self::$_permissions[$class] = static::find()->published()->where(["model" => $class, "role" => Yii::$app->user->identity->role])->one();
         }
 
         return self::$_permissions[$class];
@@ -72,14 +54,16 @@ class Permission extends ActiveRecord implements IPermission {
      * @inheritdoc
      */
 
-    public static function tableName() {
+    public static function tableName()
+    {
         return "permission";
     }
 
     /**
      * @inheritdoc
      */
-    public function metaClass() {
+    public function metaClass()
+    {
         return meta\PermissionMeta::className();
     }
 
@@ -88,21 +72,22 @@ class Permission extends ActiveRecord implements IPermission {
      * @return bool
      */
 
-    public function createModel() {
+    public function createModel()
+    {
 
-        return (boolean) $this->create;
+        return (boolean)$this->create;
 
     }
-
 
     /**
      * Просмотр списка моделей
      * @return bool
      */
 
-    public function listModels() {
+    public function listModels()
+    {
 
-        return (boolean) $this->read;
+        return (boolean)$this->read;
 
     }
 
@@ -111,9 +96,10 @@ class Permission extends ActiveRecord implements IPermission {
      * @return bool
      */
 
-    public function deleteModels() {
+    public function deleteModels()
+    {
 
-        return (boolean) $this->delete;
+        return (boolean)$this->delete;
 
     }
 
@@ -122,9 +108,10 @@ class Permission extends ActiveRecord implements IPermission {
      * @return bool
      */
 
-    public function updateModels() {
+    public function updateModels()
+    {
 
-        return (boolean) $this->update;
+        return (boolean)$this->update;
 
     }
 
@@ -134,9 +121,10 @@ class Permission extends ActiveRecord implements IPermission {
      * @return bool
      */
 
-    public function readModel($model) {
+    public function readModel($model)
+    {
 
-        if(empty($this->read))
+        if (empty($this->read))
             return false;
 
         $constraint = $this->getConstraintObject();
@@ -146,23 +134,41 @@ class Permission extends ActiveRecord implements IPermission {
     }
 
     /**
+     * Возвращает объект ограничения доступа
+     * @return \common\rbac\IConstraint
+     * @throws \yii\base\InvalidConfigException
+     */
+
+    public function getConstraintObject()
+    {
+
+        if ($this->_constraintObject === null AND !empty($this->constraint)) {
+
+            $this->_constraintObject = Yii::createObject($this->constraint);
+
+        }
+
+        return $this->_constraintObject;
+
+    }
+
+    /**
      * Обновление
      * @param \common\db\ActiveRecord $model модель
      * @return bool
      */
 
-    public function updateModel($model) {
+    public function updateModel($model)
+    {
 
-        if(empty($this->update))
+        if (empty($this->update))
             return false;
 
         $constraint = $this->getConstraintObject();
 
         return $constraint === null OR $constraint->update($model);
 
-
     }
-
 
     /**
      * Удаление
@@ -170,15 +176,15 @@ class Permission extends ActiveRecord implements IPermission {
      * @return bool
      */
 
-    public function deleteModel($model) {
+    public function deleteModel($model)
+    {
 
-        if(empty($this->delete))
+        if (empty($this->delete))
             return false;
 
         $constraint = $this->getConstraintObject();
 
         return $constraint === null OR $constraint->delete($model);
-
 
     }
 
@@ -187,35 +193,49 @@ class Permission extends ActiveRecord implements IPermission {
      * @param \common\db\ActiveQuery $query запрос
      */
 
-    public function applyConstraint($query) {
-
+    public function applyConstraint($query)
+    {
 
         $constraint = $this->getConstraintObject();
 
-        if($constraint)
+        if ($constraint)
             $constraint->applyConstraint($query);
 
     }
 
+    /**
+     * Является ди атрибут запрещенным к редактированию
+     * @param string $attr атрибут
+     * @return bool
+     */
+
+    public function isAttributeForbidden($attr)
+    {
+
+        $arr = $this->getForbiddenAttrs();
+
+        return in_array($attr, $arr);
+    }
 
     /**
      * Возвращает массив имен атрибутов запрещенных к редактировнаию
      * @return array
      */
 
-    public function getForbiddenAttrs() {
+    public function getForbiddenAttrs()
+    {
 
-        if($this->_forbiddenAttrs === null) {
+        if ($this->_forbiddenAttrs === null) {
 
             $arr = [];
 
             $strs = explode("\n", $this->forbidden_attrs);
 
-            foreach($strs AS $str) {
+            foreach ($strs AS $str) {
 
                 $str = trim($str);
 
-                if(!empty($str))
+                if (!empty($str))
                     $arr[] = $str;
 
             }
@@ -229,25 +249,13 @@ class Permission extends ActiveRecord implements IPermission {
     }
 
     /**
-     * Является ди атрибут запрещенным к редактированию
-     * @param string $attr атрибут
-     * @return bool
-     */
-
-    public function isAttributeForbidden($attr) {
-
-        $arr = $this->getForbiddenAttrs();
-
-        return in_array($attr, $arr);
-    }
-
-    /**
      * Присутствуют ли в массиве атрибутов запрещенные к изменению
      * @param array $attrs массив атрибутов key=>value
      * @return bool
      */
 
-    public function hasForbiddenAttrs($attrs) {
+    public function hasForbiddenAttrs($attrs)
+    {
 
         $arr = $this->getForbiddenAttrs();
 
@@ -255,7 +263,7 @@ class Permission extends ActiveRecord implements IPermission {
 
         $inter = array_intersect($keys, $arr);
 
-        return count($inter)>0;
+        return count($inter) > 0;
     }
 
 }

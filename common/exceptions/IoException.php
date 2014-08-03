@@ -10,14 +10,15 @@ use yii\base\Exception;
  * @package common\exceptions
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class IoException extends Exception {
+class IoException extends Exception
+{
 
     /**
      * @inheritdoc
      */
 
-    public function getName() {
+    public function getName()
+    {
         return "Io Exception";
     }
 

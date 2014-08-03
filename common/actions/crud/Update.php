@@ -10,7 +10,8 @@ use yii\web\ForbiddenHttpException;
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Update extends Base {
+class Update extends Base
+{
 
     /**
      * @var string сценарий валидации
@@ -49,11 +50,12 @@ class Update extends Base {
      * @throws \yii\web\ForbiddenHttpException
      */
 
-    public function run($id) {
+    public function run($id)
+    {
 
         $model = $this->findModel($id);
 
-        if(!Yii::$app->user->can('updateModel', array("model"=>$model)))
+        if (!Yii::$app->user->can('updateModel', array("model" => $model)))
             throw new ForbiddenHttpException('Forbidden');
 
         $model->setScenario($this->modelScenario);
@@ -72,7 +74,7 @@ class Update extends Base {
 
             $returnUrl = $request->post($this->redirectParam);
 
-            if(empty($returnUrl))
+            if (empty($returnUrl))
                 $returnUrl = $this->defaultRedirectUrl;
 
             return $this->controller->redirect($returnUrl);
@@ -84,14 +86,5 @@ class Update extends Base {
         }
 
     }
-
-
-
-
-
-
-
-
-
 
 }

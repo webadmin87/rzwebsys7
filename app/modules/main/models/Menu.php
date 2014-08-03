@@ -1,8 +1,8 @@
 <?php
 namespace app\modules\main\models;
 
-use Yii;
 use common\db\TActiveRecord;
+use Yii;
 
 /**
  * Class Menu
@@ -10,8 +10,8 @@ use common\db\TActiveRecord;
  * @package app\modules\main\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Menu extends TActiveRecord {
+class Menu extends TActiveRecord
+{
 
     use \app\modules\main\components\PermissionTrait;
 
@@ -24,7 +24,8 @@ class Menu extends TActiveRecord {
      * @return array
      */
 
-    public static function targetsList() {
+    public static function targetsList()
+    {
 
         return [
 
@@ -39,14 +40,16 @@ class Menu extends TActiveRecord {
      * @inheritdoc
      */
 
-    public static function tableName() {
+    public static function tableName()
+    {
         return "menu";
     }
 
     /**
      * @inheritdoc
      */
-    public function metaClass() {
+    public function metaClass()
+    {
         return meta\MenuMeta::className();
     }
 
@@ -55,25 +58,26 @@ class Menu extends TActiveRecord {
      * @return bool
      */
 
-    public function isAct() {
+    public function isAct()
+    {
 
-        if(empty($this->link))
+        if (empty($this->link))
             return false;
 
         $request = Yii::$app->request;
 
         // Главная
 
-        if($this->link == "/") {
+        if ($this->link == "/") {
 
-            if(empty($request->pathinfo))
+            if (empty($request->pathinfo))
                 return true;
 
         } else {
 
-            $pathinfo = "/".$request->pathinfo."/";
+            $pathinfo = "/" . $request->pathinfo . "/";
 
-            if(strpos($pathinfo, $this->link) === 0)
+            if (strpos($pathinfo, $this->link) === 0)
                 return true;
 
         }

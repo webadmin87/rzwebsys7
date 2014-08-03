@@ -10,32 +10,32 @@ use yii\web\ForbiddenHttpException;
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class TDelete extends Delete {
-
+class TDelete extends Delete
+{
 
     /**
      * @inheritdoc
      */
 
-    public function run($id) {
+    public function run($id)
+    {
 
-        if(Yii::$app->request->isPost) {
+        if (Yii::$app->request->isPost) {
 
             $model = $this->findModel($id);
 
-            if(!Yii::$app->user->can('deleteModel', array("model"=>$model)))
+            if (!Yii::$app->user->can('deleteModel', array("model" => $model)))
                 throw new ForbiddenHttpException('Forbidden');
 
             $model->deleteNode();
 
         }
 
-        if(!Yii::$app->request->isAjax) {
+        if (!Yii::$app->request->isAjax) {
 
             $returnUrl = Yii::$app->request->referrer;
 
-            if(empty($returnUrl))
+            if (empty($returnUrl))
                 $returnUrl = $this->defaultRedirectUrl;
 
             return $this->controller->redirect($returnUrl);
@@ -43,7 +43,5 @@ class TDelete extends Delete {
         }
 
     }
-
-
 
 }

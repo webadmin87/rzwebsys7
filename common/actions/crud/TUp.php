@@ -10,8 +10,8 @@ use yii\web\ForbiddenHttpException;
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class TUp extends Base {
+class TUp extends Base
+{
 
     /**
      * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
@@ -23,24 +23,24 @@ class TUp extends Base {
      * @inheritdoc
      */
 
-    public function run($id) {
+    public function run($id)
+    {
 
         $model = $this->findModel($id);
 
-         if(!Yii::$app->user->can('updateModel', array("model"=>$model)))
-              throw new ForbiddenHttpException('Forbidden');
+        if (!Yii::$app->user->can('updateModel', array("model" => $model)))
+            throw new ForbiddenHttpException('Forbidden');
 
-         $prevModel = $model->prev()->one();
+        $prevModel = $model->prev()->one();
 
-         if($prevModel)
-             $model->moveBefore($prevModel);
+        if ($prevModel)
+            $model->moveBefore($prevModel);
 
-
-        if(!Yii::$app->request->isAjax) {
+        if (!Yii::$app->request->isAjax) {
 
             $returnUrl = Yii::$app->request->referrer;
 
-            if(empty($returnUrl))
+            if (empty($returnUrl))
                 $returnUrl = $this->defaultRedirectUrl;
 
             return $this->controller->redirect($returnUrl);
@@ -48,7 +48,5 @@ class TUp extends Base {
         }
 
     }
-
-
 
 }

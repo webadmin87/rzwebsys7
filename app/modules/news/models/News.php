@@ -1,10 +1,9 @@
 <?php
 namespace app\modules\news\models;
 
+use common\db\ActiveRecord;
 use Yii;
 use yii\data\ActiveDataProvider;
-use common\db\ActiveRecord;
-use common\components\Match;
 
 /**
  * Class News
@@ -12,8 +11,8 @@ use common\components\Match;
  * @package app\modules\news\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class News extends ActiveRecord {
+class News extends ActiveRecord
+{
 
     use \app\modules\main\components\PermissionTrait;
 
@@ -21,7 +20,7 @@ class News extends ActiveRecord {
      * @var array массив идентификаторов связанных категорий
      */
 
-    protected  $_sectionsIds;
+    protected $_sectionsIds;
 
     /**
      * Получение идентификаторов связанных категорий
@@ -30,7 +29,7 @@ class News extends ActiveRecord {
     public function getSectionsIds()
     {
 
-        if($this->_sectionsIds === null) {
+        if ($this->_sectionsIds === null) {
 
             $this->_sectionsIds = $this->getManyManyIds("sections");
         }
@@ -47,35 +46,26 @@ class News extends ActiveRecord {
         $this->_sectionsIds = $sectionsIds;
     }
 
-
     /**
      * @inheritdoc
      */
 
     public function behaviors()
     {
-        $arr =  parent::behaviors();
+        $arr = parent::behaviors();
 
         $arr["manyManySaver"] = [
-            'class'=>\common\behaviors\ManyManySaver::className(),
-            'names'=>['sections'],
+            'class' => \common\behaviors\ManyManySaver::className(),
+            'names' => ['sections'],
         ];
         return $arr;
     }
 
-
     /**
      * @inheritdoc
      */
-
-    public static function tableName() {
-        return "news";
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function metaClass() {
+    public function metaClass()
+    {
         return meta\NewsMeta::className();
     }
 
@@ -84,9 +74,10 @@ class News extends ActiveRecord {
      * @return \yii\db\ActiveQueryInterface
      */
 
-    public function getSections() {
+    public function getSections()
+    {
 
-        return $this->hasMany(NewsSection::className(), ['id'=>'section_id'])->viaTable('news_to_sections', ['news_id'=>'id']);
+        return $this->hasMany(NewsSection::className(), ['id' => 'section_id'])->viaTable('news_to_sections', ['news_id' => 'id']);
 
     }
 
@@ -97,7 +88,8 @@ class News extends ActiveRecord {
      * @throws \yii\base\InvalidConfigException
      */
 
-    public function searchBySection($ids = null) {
+    public function searchBySection($ids = null)
+    {
 
         $table = static::tableName();
 
@@ -105,8 +97,8 @@ class News extends ActiveRecord {
 
         $query = static::find()->published();
 
-        if($ids)
-            $query->joinWith('sections', true)->where(["$relTable.id"=>$ids])->groupBy("$table.id");
+        if ($ids)
+            $query->joinWith('sections', true)->where(["$relTable.id" => $ids])->groupBy("$table.id");
 
         $dataProvider = Yii::createObject([
             'class' => ActiveDataProvider::className(),
@@ -115,6 +107,15 @@ class News extends ActiveRecord {
 
         return $dataProvider;
 
+    }
+
+    /**
+     * @inheritdoc
+     */
+
+    public static function tableName()
+    {
+        return "news";
     }
 
 }

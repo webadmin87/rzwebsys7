@@ -5,15 +5,14 @@ use Yii;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 
-
 /**
  * Class View
  * Класс действия просмотра модели
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class View extends Base {
+class View extends Base
+{
 
     /**
      * @var string путь к шаблону для отображения
@@ -29,19 +28,19 @@ class View extends Base {
      * @throws \yii\web\ForbiddenHttpException
      */
 
-    public function run($id) {
+    public function run($id)
+    {
 
         $model = $this->findModel($id);
 
-        if(!$model)
+        if (!$model)
             throw new NotFoundHttpException('Not found');
 
-        if(!Yii::$app->user->can('readModel', array("model"=>$model)))
+        if (!Yii::$app->user->can('readModel', array("model" => $model)))
             throw new ForbiddenHttpException('Forbidden');
 
-        return $this->render($this->tpl, ["model"=>$model]);
+        return $this->render($this->tpl, ["model" => $model]);
 
     }
-
 
 }

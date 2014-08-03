@@ -1,19 +1,37 @@
 <?php
 namespace common\db\fields;
 
+use common\db\ActiveQuery;
 use common\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
-use common\db\ActiveQuery;
+
 /**
  * Class ManyManyField
  * Поле для связей Many Many
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
+class ManyManyField extends HasOneField
+{
 
-class ManyManyField extends HasOneField {
+    /**
+     * @inheritdoc
+     */
+    public function grid()
+    {
 
+        $grid = parent::grid();
+
+        $grid["value"] = function ($model, $index, $widget) {
+
+            return $this->getStringValue($model);
+
+        };
+
+        return $grid;
+
+    }
 
     /**
      * Возвращает строковое представление связанных моделей для отображения в гриде и при детальном просмотре
@@ -21,13 +39,14 @@ class ManyManyField extends HasOneField {
      * @return string
      */
 
-    protected function getStringValue($model) {
+    protected function getStringValue($model)
+    {
 
-        $relatedAll  = $model->{$this->relation};
+        $relatedAll = $model->{$this->relation};
 
         $arr = [];
 
-        foreach($relatedAll AS $related) {
+        foreach ($relatedAll AS $related) {
 
             $arr[] = ArrayHelper::getValue($related, $this->gridAttr);
 
@@ -40,24 +59,8 @@ class ManyManyField extends HasOneField {
     /**
      * @inheritdoc
      */
-    public function grid() {
-
-        $grid = parent::grid();
-
-        $grid["value"] = function($model, $index, $widget){
-
-              return $this->getStringValue($model);
-
-        };
-
-        return $grid;
-
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function view() {
+    public function view()
+    {
 
         $view = parent::view();
 
@@ -71,20 +74,21 @@ class ManyManyField extends HasOneField {
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false) {
+    public function form(ActiveForm $form, Array $options = [], $index = false)
+    {
 
         $data = $this->getDataValue();
 
-        if(empty($data))
+        if (empty($data))
             return false;
 
         $options["multiple"] = true;
 
         return $form->field($this->model, $this->getFormAttrName($index))->widget(\dosamigos\multiselect\MultiSelect::className(),
-                [
-                    "data"=>$data,
-                    "options" => ["multiple"=>true]
-                ]
+            [
+                "data" => $data,
+                "options" => ["multiple" => true]
+            ]
         );
 
     }
@@ -93,7 +97,8 @@ class ManyManyField extends HasOneField {
      * @inheritdoc
      */
 
-    public function xEditable() {
+    public function xEditable()
+    {
         return false;
     }
 
@@ -101,18 +106,19 @@ class ManyManyField extends HasOneField {
      * @inheritdoc
      */
 
-    public function search(ActiveQuery $query) {
+    public function search(ActiveQuery $query)
+    {
 
         $table = $this->model->tableName();
 
-        $relatedClass = $this->model->{"get".ucfirst($this->relation)}()->modelClass;
+        $relatedClass = $this->model->{"get" . ucfirst($this->relation)}()->modelClass;
 
         $tableRelated = $relatedClass::tableName();
 
-        if($this->search)
+        if ($this->search)
             $query->
             joinWith($this->relation, true)->
-            andFilterWhere(["$tableRelated.id"=>$this->model->{$this->attr}])->
+            andFilterWhere(["$tableRelated.id" => $this->model->{$this->attr}])->
             groupBy("$table.id");
 
     }

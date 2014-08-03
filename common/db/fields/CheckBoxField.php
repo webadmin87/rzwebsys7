@@ -1,8 +1,9 @@
 <?php
 namespace common\db\fields;
+
 use common\db\ActiveRecord;
-use Yii\widgets\ActiveForm;
 use Yii;
+use Yii\widgets\ActiveForm;
 
 /**
  * Class CheckBoxField
@@ -10,14 +11,15 @@ use Yii;
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class CheckBoxField extends TextField {
+class CheckBoxField extends TextField
+{
 
     /**
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index=false) {
+    public function form(ActiveForm $form, Array $options = [], $index = false)
+    {
 
         return $form->field($this->model, $this->getFormAttrName($index))->checkbox($options);
 
@@ -27,12 +29,13 @@ class CheckBoxField extends TextField {
      * Конфигурация поля для грида (GridView)
      * @return array
      */
-    public function grid() {
+    public function grid()
+    {
 
         $grid = parent::grid();
 
-        $grid['value']=function ($model, $index, $widget) {
-            return $model->{$this->attr}?Yii::t('core', 'Yes'):Yii::t('core', 'No');
+        $grid['value'] = function ($model, $index, $widget) {
+            return $model->{$this->attr} ? Yii::t('core', 'Yes') : Yii::t('core', 'No');
         };
 
         return $grid;
@@ -43,11 +46,12 @@ class CheckBoxField extends TextField {
      * Конфигурация полядля детального просмотра
      * @return array
      */
-    public function view() {
+    public function view()
+    {
 
         $view = parent::view();
 
-        $view['value']=($this->model->{$this->attr})?Yii::t('core', 'Yes'):Yii::t('core', 'No');
+        $view['value'] = ($this->model->{$this->attr}) ? Yii::t('core', 'Yes') : Yii::t('core', 'No');
 
         return $view;
 
@@ -57,11 +61,12 @@ class CheckBoxField extends TextField {
      * @inheritdoc
      */
 
-    public function extendedFilterForm(ActiveForm $form , Array $options = []) {
+    public function extendedFilterForm(ActiveForm $form, Array $options = [])
+    {
 
         $data = $this->defaultGridFilter();
 
-        if(!isset($options['prompt']))
+        if (!isset($options['prompt']))
             $options['prompt'] = '';
 
         return $form->field($this->model, $this->attr)->dropDownList($data, $options);
@@ -72,12 +77,13 @@ class CheckBoxField extends TextField {
      * @inheritdoc
      */
 
-    protected function defaultGridFilter() {
+    protected function defaultGridFilter()
+    {
 
         return [
 
-            1=>Yii::t('core', 'Yes'),
-            0=>Yii::t('core', 'No'),
+            1 => Yii::t('core', 'Yes'),
+            0 => Yii::t('core', 'No'),
 
         ];
 
@@ -87,7 +93,8 @@ class CheckBoxField extends TextField {
      * @inheritdoc
      */
 
-    public function xEditable() {
+    public function xEditable()
+    {
 
         return [
 
@@ -95,7 +102,7 @@ class CheckBoxField extends TextField {
             'url' => $this->getEditableUrl(),
             'dataType' => 'select',
             'format' => 'raw',
-            'editable' => [ 'source' => $this->defaultGridFilter() ],
+            'editable' => ['source' => $this->defaultGridFilter()],
         ];
 
     }
@@ -104,11 +111,12 @@ class CheckBoxField extends TextField {
      * @inheritdoc
      */
 
-    public function rules() {
+    public function rules()
+    {
 
         $rules = parent::rules();
 
-        $rules[] = [$this->attr, 'default', 'value'=>0, 'except'=>ActiveRecord::SCENARIO_SEARCH];
+        $rules[] = [$this->attr, 'default', 'value' => 0, 'except' => ActiveRecord::SCENARIO_SEARCH];
 
         return $rules;
 

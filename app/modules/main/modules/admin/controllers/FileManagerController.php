@@ -10,8 +10,8 @@ use common\controllers\Admin;
  * @package app\modules\admin\modules\main\controllers
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class FileManagerController extends Admin {
+class FileManagerController extends Admin
+{
 
     /**
      * @var string идентификатор файла перевода
@@ -24,11 +24,11 @@ class FileManagerController extends Admin {
      * @return string
      */
 
-    public function actionIndex() {
+    public function actionIndex()
+    {
 
         return $this->render('index');
 
     }
-
 
 }

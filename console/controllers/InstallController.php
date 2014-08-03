@@ -1,4 +1,5 @@
 <?php
+
 namespace console\controllers;
 
 use Yii;
@@ -11,7 +12,8 @@ use yii\console\Controller;
  * @package console\controllers
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class InstallController extends Controller {
+class InstallController extends Controller
+{
 
     const MIGRATE_ID = "migrate";
 
@@ -19,8 +21,8 @@ class InstallController extends Controller {
      * Установка системы
      * @return int
      */
-
-    public function actionIndex() {
+    public function actionIndex()
+    {
 
         echo Yii::t('main/app', 'Apply migrations...') . "\n";
 
@@ -47,8 +49,8 @@ class InstallController extends Controller {
      * Установка ролей
      * @throws \yii\base\InvalidConfigException
      */
-
-    protected function actionRoles() {
+    protected function actionRoles()
+    {
 
         echo Yii::t('main/app', 'Installing roles...') . "\n";
 

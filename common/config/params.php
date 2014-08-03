@@ -5,5 +5,5 @@ return [
     'mailFrom' => 'admin@example.com',
     'user.passwordResetTokenExpire' => 3600,
     'cacheDuration' => '7200',
-    'enabledModules'=>['main', 'news'],
+    'enabledModules' => ['main', 'news'],
 ];

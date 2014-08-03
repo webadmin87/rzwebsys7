@@ -1,8 +1,8 @@
 <?php
 namespace app\modules\main\widgets\menu;
 
+use app\modules\main\models\Menu as MenuModel;
 use common\widgets\App;
-use app\modules\main\models\Menu AS MenuModel;
 
 /**
  * Class Menu
@@ -10,8 +10,8 @@ use app\modules\main\models\Menu AS MenuModel;
  * @package app\modules\main\widgets\menu
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Menu extends App {
+class Menu extends App
+{
 
     /**
      * @var int идентификатор родительского пункта меню
@@ -33,7 +33,7 @@ class Menu extends App {
     /**
      * @var int уровень вложенности
      */
-    public $level=1;
+    public $level = 1;
 
     /**
      * @var array html - атрибуты корневого тега ul меню
@@ -60,27 +60,43 @@ class Menu extends App {
     protected $parentLevel;
 
     /**
+     * @inheritdoc
+     * Инициализация
+     */
+
+    public function init()
+    {
+
+        if (!$this->isShow())
+            return false;
+
+        $this->findModels();
+
+    }
+
+    /**
      * Поиск моделей меню
      * @return bool
      */
 
-    protected function findModels() {
+    protected function findModels()
+    {
 
         $parentQuery = MenuModel::find()->published();
 
-        if($this->parentId)
-            $parent = $parentQuery->where(["id"=>$this->parentId])->one();
-        elseif($this->parentCode)
-            $parent = $parentQuery->where(["code"=>$this->parentCode])->one();
+        if ($this->parentId)
+            $parent = $parentQuery->where(["id" => $this->parentId])->one();
+        elseif ($this->parentCode)
+            $parent = $parentQuery->where(["code" => $this->parentCode])->one();
 
-        if(empty($parent))
+        if (empty($parent))
             return false;
 
-        if(!empty($this->parentLink)) {
+        if (!empty($this->parentLink)) {
 
-            $parent = $parent->children()->published()->where(["link"=>$this->parentLink])->one();
+            $parent = $parent->children()->published()->where(["link" => $this->parentLink])->one();
 
-            if(!$parent)
+            if (!$parent)
                 return false;
 
         }
@@ -89,23 +105,9 @@ class Menu extends App {
 
         $level = $parent->level + $this->level;
 
-        $this->models = $parent->descendants()->published()->andWhere("level <= :level", [":level"=>$level])->all();
+        $this->models = $parent->descendants()->published()->andWhere("level <= :level", [":level" => $level])->all();
 
         return true;
-
-    }
-
-    /**
-     * @inheritdoc
-     * Инициализация
-     */
-
-    public function init() {
-
-        if(!$this->isShow())
-            return false;
-
-        $this->findModels();
 
     }
 
@@ -114,16 +116,17 @@ class Menu extends App {
      * Запуск виджета
      */
 
-    public function run() {
+    public function run()
+    {
 
-        if(!$this->isShow() OR empty($this->models))
+        if (!$this->isShow() OR empty($this->models))
             return false;
 
         return $this->render($this->tpl, [
-            "models"=>$this->models,
-            "parentLevel"=>$this->parentLevel,
-            "options"=>$this->options,
-            "actClass"=>$this->actClass,
+            "models" => $this->models,
+            "parentLevel" => $this->parentLevel,
+            "options" => $this->options,
+            "actClass" => $this->actClass,
         ]);
 
     }

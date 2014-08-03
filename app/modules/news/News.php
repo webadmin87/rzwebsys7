@@ -10,7 +10,7 @@ use yii\base\Module;
  * @package app\modules\news
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class News extends Module {
-
+class News extends Module
+{
 
 }

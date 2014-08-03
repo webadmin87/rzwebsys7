@@ -2,9 +2,9 @@
 use yii\helpers\Html;
 
 /**
-* @var \yii\web\View $this
-* @var app\modules\main\models\Menu $model
-*/
+ * @var \yii\web\View $this
+ * @var app\modules\main\models\Menu $model
+ */
 
 $this->title = \Yii::t($this->context->tFile, 'Create Menu');
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Menus'), 'url' => ['index']];

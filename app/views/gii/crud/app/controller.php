@@ -1,6 +1,5 @@
 <?php
 
-use yii\db\ActiveRecordInterface;
 use yii\helpers\StringHelper;
 
 /**
@@ -24,89 +23,89 @@ namespace <?= StringHelper::dirname(ltrim($generator->controllerClass, '\\')) ?>
 use Yii;
 use <?= ltrim($generator->modelClass, '\\') ?>;
 <?php if (!empty($generator->searchModelClass)): ?>
-use <?= ltrim($generator->searchModelClass, '\\') . (isset($searchModelAlias) ? " as $searchModelAlias" : "") ?>;
+    use <?= ltrim($generator->searchModelClass, '\\') . (isset($searchModelAlias) ? " as $searchModelAlias" : "") ?>;
 <?php endif; ?>
 use <?= ltrim($generator->baseControllerClass, '\\') ?>;
 use yii\filters\VerbFilter;
 use common\actions\crud;
 
 /**
- * <?= $controllerClass ?> implements the CRUD actions for <?= $modelClass ?> model.
- */
+* <?= $controllerClass ?> implements the CRUD actions for <?= $modelClass ?> model.
+*/
 class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->baseControllerClass) . "\n" ?>
 {
 
-    /**
-    * @var string идентификатор файла перевода
-    */
+/**
+* @var string идентификатор файла перевода
+*/
 
-    public $tFile = "moduleCode/app";
+public $tFile = "moduleCode/app";
 
-    /**
-    * Поведения
-    * @return array
-    */
+/**
+* Поведения
+* @return array
+*/
 
-    public function behaviors()
-    {
-        $beh = parent::behaviors();
+public function behaviors()
+{
+$beh = parent::behaviors();
 
-        $beh['verbs'] = [
-            'class' => VerbFilter::className(),
-            'actions' => [
-                'delete' => ['post'],
-                'groupdelete' => ['post'],
-            ],
-        ];
+$beh['verbs'] = [
+'class' => VerbFilter::className(),
+'actions' => [
+'delete' => ['post'],
+'groupdelete' => ['post'],
+],
+];
 
-        return $beh;
-    }
+return $beh;
+}
 
-    /**
-    * Действия
-    * @return array
-    */
-    public function actions() {
+/**
+* Действия
+* @return array
+*/
+public function actions() {
 
-        $class = <?= $modelClass ?>::className();
+$class = <?= $modelClass ?>::className();
 
-        return [
+return [
 
-            'index'=>[
-                'class'=>crud\Admin::className(),
-                'modelClass'=>$class,
-            ],
-            'create'=>[
-                'class'=>crud\Create::className(),
-                'modelClass'=>$class,
-            ],
-            'update'=>[
-                'class'=>crud\Update::className(),
-                'modelClass'=>$class,
-            ],
+'index'=>[
+'class'=>crud\Admin::className(),
+'modelClass'=>$class,
+],
+'create'=>[
+'class'=>crud\Create::className(),
+'modelClass'=>$class,
+],
+'update'=>[
+'class'=>crud\Update::className(),
+'modelClass'=>$class,
+],
 
-            'view'=>[
-                'class'=>crud\View::className(),
-                'modelClass'=>$class,
-            ],
+'view'=>[
+'class'=>crud\View::className(),
+'modelClass'=>$class,
+],
 
-            'delete'=>[
-                'class'=>crud\Delete::className(),
-                'modelClass'=>$class,
-            ],
+'delete'=>[
+'class'=>crud\Delete::className(),
+'modelClass'=>$class,
+],
 
-            'groupdelete'=>[
-                'class'=>crud\GroupDelete::className(),
-                'modelClass'=>$class,
-            ],
+'groupdelete'=>[
+'class'=>crud\GroupDelete::className(),
+'modelClass'=>$class,
+],
 
-            'editable'=>[
-                'class'=>crud\XEditable::className(),
-                'modelClass'=>$class,
-            ],
+'editable'=>[
+'class'=>crud\XEditable::className(),
+'modelClass'=>$class,
+],
 
-        ];
+];
 
-    }
+}
 
 }

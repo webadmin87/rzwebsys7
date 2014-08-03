@@ -1,14 +1,16 @@
 <?php
 namespace common\db\fields;
+
 use yii\widgets\ActiveForm;
+
 /**
  * Class ListField
  * Списочное поле модели
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class ListField extends Field {
+class ListField extends Field
+{
 
     /**
      * @var closure анонимная функция возвращающая данны для заполнения списка
@@ -25,35 +27,13 @@ class ListField extends Field {
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index=false) {
+    public function form(ActiveForm $form, Array $options = [], $index = false)
+    {
 
-        if(!isset($options['prompt']))
+        if (!isset($options['prompt']))
             $options['prompt'] = '';
 
         return $form->field($this->model, $this->getFormAttrName($index))->dropDownList($this->getDataValue(), $options);
-
-    }
-
-    /**
-     * @inheritdoc
-     */
-
-    public function extendedFilterForm(ActiveForm $form , Array $options = []) {
-
-        if(!isset($options['prompt']))
-            $options['prompt'] = '';
-
-        return parent::extendedFilterForm($form, $options);
-
-    }
-
-    /**
-     * @inheritdoc
-     */
-
-    protected function defaultGridFilter() {
-
-        return $this->getDataValue();
 
     }
 
@@ -62,13 +42,14 @@ class ListField extends Field {
      * @return array
      */
 
-    public function getDataValue() {
+    public function getDataValue()
+    {
 
-        if($this->dataValue === null) {
+        if ($this->dataValue === null) {
 
             $func = $this->data;
 
-            $this->dataValue = is_callable($func)?$func():[];
+            $this->dataValue = is_callable($func) ? $func() : [];
 
         }
 
@@ -79,7 +60,22 @@ class ListField extends Field {
      * @inheritdoc
      */
 
-    public function xEditable() {
+    public function extendedFilterForm(ActiveForm $form, Array $options = [])
+    {
+
+        if (!isset($options['prompt']))
+            $options['prompt'] = '';
+
+        return parent::extendedFilterForm($form, $options);
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+
+    public function xEditable()
+    {
 
         return [
 
@@ -87,8 +83,19 @@ class ListField extends Field {
             'url' => $this->getEditableUrl(),
             'dataType' => 'select',
             'format' => 'raw',
-            'editable' => [ 'source' => $this->defaultGridFilter() ],
+            'editable' => ['source' => $this->defaultGridFilter()],
         ];
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+
+    protected function defaultGridFilter()
+    {
+
+        return $this->getDataValue();
 
     }
 

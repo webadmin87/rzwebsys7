@@ -9,8 +9,8 @@ use Yii;
  * @package common\components
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class PhpMatch extends Match {
+class PhpMatch extends Match
+{
 
     /**
      * Проверяет истинность php выражения
@@ -23,6 +23,5 @@ class PhpMatch extends Match {
         return eval($value);
 
     }
-
 
 }

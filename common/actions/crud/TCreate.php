@@ -1,10 +1,10 @@
 <?php
 namespace common\actions\crud;
 
-use Yii;
-use yii\web\ForbiddenHttpException;
-use yii\web\BadRequestHttpException;
 use common\db\TActiveRecord;
+use Yii;
+use yii\web\BadRequestHttpException;
+use yii\web\ForbiddenHttpException;
 
 /**
  * Class TCreate
@@ -12,8 +12,8 @@ use common\db\TActiveRecord;
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class TCreate extends Create {
+class TCreate extends Create
+{
 
     /**
      * @var array массив атрибутов значения которых должны наследоваться от родительской модели
@@ -29,29 +29,30 @@ class TCreate extends Create {
      * @throws BadRequestHttpException
      */
 
-    public function run($parent_id) {
+    public function run($parent_id)
+    {
 
         $class = $this->modelClass;
 
-        $model = Yii::createObject(["class"=>$this->modelClass, 'scenario'=>$this->modelScenario]);
+        $model = Yii::createObject(["class" => $this->modelClass, 'scenario' => $this->modelScenario]);
 
         $model->parent_id = $parent_id;
 
-        if(!Yii::$app->user->can('createModel', array("model"=>$model)))
+        if (!Yii::$app->user->can('createModel', array("model" => $model)))
             throw new ForbiddenHttpException('Forbidden');
 
         $this->checkForbiddenAttrs($model);
 
         $request = Yii::$app->request;
 
-        $parentModel = $class::find()->where(["id"=>$model->parent_id])->one();
+        $parentModel = $class::find()->where(["id" => $model->parent_id])->one();
 
-        if(!$parentModel)
+        if (!$parentModel)
             throw new BadRequestHttpException('Bad Request');
 
-        if($parentModel->id != TActiveRecord::ROOT_ID AND !empty($this->extendedAttrs)) {
+        if ($parentModel->id != TActiveRecord::ROOT_ID AND !empty($this->extendedAttrs)) {
 
-            foreach($this->extendedAttrs AS $attr)
+            foreach ($this->extendedAttrs AS $attr)
                 $model->$attr = $parentModel->$attr;
 
         }
@@ -68,10 +69,10 @@ class TCreate extends Create {
 
             $returnUrl = $request->post($this->redirectParam);
 
-            if(empty($returnUrl))
+            if (empty($returnUrl))
                 $returnUrl = $this->defaultRedirectUrl;
 
-            if($request->post($this->applyParam))
+            if ($request->post($this->applyParam))
                 return $this->controller->redirect([$this->updateUrl, 'id' => $model->id, $this->redirectParam => $returnUrl]);
             else {
                 return $this->controller->redirect($returnUrl);
@@ -86,6 +87,5 @@ class TCreate extends Create {
         }
 
     }
-
 
 }

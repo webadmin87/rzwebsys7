@@ -10,8 +10,8 @@ use yii\helpers\Html;
  * @package common\widgets\admin
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class ReplaceInTreeButton extends ActionButton {
+class ReplaceInTreeButton extends ActionButton
+{
 
     /**
      * @var string текст на кнопке OK
@@ -29,24 +29,43 @@ class ReplaceInTreeButton extends ActionButton {
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
-        if(!$this->visible)
+        if (!$this->visible)
             return "";
 
-        if(empty($this->optionsOk["id"]))
+        if (empty($this->optionsOk["id"]))
             $this->optionsOk["id"] = static::ID_PREF . uniqid(rand());
 
         parent::init();
 
     }
 
+    /**
+     * @inheritdoc
+     */
+
+    public function run()
+    {
+
+        if (!$this->visible)
+            return "";
+
+        $str = Html::button($this->label, $this->options);
+
+        $str .= "<span style='display: none;'>&nbsp;" . Html::dropDownList("parents", null, [], ["class" => "form-control"]) . "&nbsp;" . Html::button($this->labelOk, $this->optionsOk) . "</span>";
+
+        return $str;
+
+    }
 
     /**
      * Регистрируем обработчика клика по кнопке
      */
 
-    protected function registerJs() {
+    protected function registerJs()
+    {
 
         $this->view->registerJs("
 
@@ -100,25 +119,6 @@ class ReplaceInTreeButton extends ActionButton {
 
              ");
 
-
     }
-
-    /**
-     * @inheritdoc
-     */
-
-    public function run() {
-
-        if(!$this->visible)
-            return "";
-
-        $str =  Html::button($this->label, $this->options);
-
-        $str .= "<span style='display: none;'>&nbsp;".Html::dropDownList("parents", null, [], ["class"=>"form-control"])."&nbsp;".Html::button($this->labelOk, $this->optionsOk)."</span>";
-
-        return $str;
-
-    }
-
 
 }

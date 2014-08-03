@@ -1,13 +1,13 @@
 <?php
 namespace app\modules\main\modules\admin\controllers;
 
-use Yii;
 use app\modules\main\models\User;
 use common\controllers\Root;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\ContentNegotiator;
 use yii\web\Response;
-use yii\web\Controller;
+
 /**
  * Class ToolsController
  * Контроллер различных административный действий
@@ -29,7 +29,7 @@ class ToolsController extends Root
             'formats' => [
                 'application/json' => Response::FORMAT_JSON,
             ],
-            'except'=>['index'],
+            'except' => ['index'],
         ];
 
         return $beh;
@@ -79,7 +79,7 @@ class ToolsController extends Root
 
         }
 
-        return ["page" => $pager->page+1, "pagesNum" => $pager->pageCount];
+        return ["page" => $pager->page + 1, "pagesNum" => $pager->pageCount];
 
     }
 
@@ -88,7 +88,8 @@ class ToolsController extends Root
      * @return array
      */
 
-    public function actionClearCache() {
+    public function actionClearCache()
+    {
 
         Yii::$app->cache->flush();
 

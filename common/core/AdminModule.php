@@ -9,8 +9,8 @@ use yii\base\Module;
  * @package common\core
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class AdminModule extends Module {
+class AdminModule extends Module
+{
 
     /**
      * @var closure анонимная функция возвращающая меню для админки.

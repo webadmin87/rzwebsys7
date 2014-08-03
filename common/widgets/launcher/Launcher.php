@@ -11,7 +11,8 @@ use yii\base\Widget;
  * @package common\widgets\launcher
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Launcher extends Widget {
+class Launcher extends Widget
+{
 
     /**
      * @var string текст ссылки
@@ -35,7 +36,8 @@ class Launcher extends Widget {
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
         AssetBundle::register($this->view);
 
@@ -47,12 +49,11 @@ class Launcher extends Widget {
      * @inheritdoc
      */
 
-    public function run() {
+    public function run()
+    {
 
-        return $this->render($this->tpl, ["id"=>$this->getId(), "label"=>$this->label]);
+        return $this->render($this->tpl, ["id" => $this->getId(), "label" => $this->label]);
 
     }
-
-
 
 }

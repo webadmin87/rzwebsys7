@@ -10,7 +10,8 @@ use yii\base\Action;
  * @package app\modules\main\actions
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Login extends Action {
+class Login extends Action
+{
 
     /**
      * @var string url для редиректа после удачного логина
@@ -27,7 +28,8 @@ class Login extends Action {
      * @inheritdoc
      */
 
-    public function run() {
+    public function run()
+    {
 
         if (!\Yii::$app->user->isGuest) {
             return $this->controller->goHome();
@@ -37,7 +39,7 @@ class Login extends Action {
 
         if ($model->load(\Yii::$app->request->post()) && $model->login()) {
 
-            if($this->returnUrl)
+            if ($this->returnUrl)
                 return $this->controller->redirect($this->returnUrl);
             else
                 return $this->controller->goBack();
@@ -49,6 +51,5 @@ class Login extends Action {
         }
 
     }
-
 
 }

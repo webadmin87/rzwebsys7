@@ -2,8 +2,8 @@
 
 namespace app\modules\main\models\meta;
 
-use Yii;
 use common\db\MetaFields;
+use Yii;
 
 /**
  * Class TemplatesMeta
@@ -11,8 +11,8 @@ use common\db\MetaFields;
  * @package app\modules\main\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class TemplatesMeta extends MetaFields {
+class TemplatesMeta extends MetaFields
+{
 
     /**
      * @inheritdoc
@@ -21,7 +21,6 @@ class TemplatesMeta extends MetaFields {
     protected function config()
     {
         return [
-
 
             "title" => [
                 "definition" => [
@@ -46,8 +45,10 @@ class TemplatesMeta extends MetaFields {
                     "class" => \common\db\fields\ListField::className(),
                     "title" => Yii::t('main/app', 'Condition type'),
                     "isRequired" => true,
-                    "showInGrid"=>false,
-                    "data" => function() { return $this->owner->getConds(); },
+                    "showInGrid" => false,
+                    "data" => function () {
+                        return $this->owner->getConds();
+                    },
                 ],
                 "params" => [$this->owner, "cond_type"]
             ],
@@ -57,7 +58,7 @@ class TemplatesMeta extends MetaFields {
                     "class" => \common\db\fields\CodeField::className(),
                     "title" => Yii::t('main/app', 'Condition'),
                     "isRequired" => false,
-                    "showInGrid"=>false,
+                    "showInGrid" => false,
                 ],
                 "params" => [$this->owner, "cond"]
             ],
@@ -83,6 +84,5 @@ class TemplatesMeta extends MetaFields {
 
         ];
     }
-
 
 }

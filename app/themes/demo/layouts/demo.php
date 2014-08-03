@@ -43,7 +43,8 @@ AppAsset::register($this);
 
 <div id="top">
     <div class="container">
-        <h1><?=Yii::$app->name?></h1>
+        <h1><?= Yii::$app->name ?></h1>
+
         <p>CMS powered by Yii Framework 2</p>
     </div>
 </div>
@@ -52,18 +53,18 @@ AppAsset::register($this);
     <div class="row">
         <div class="col-xs-3">
 
-            <? echo \app\modules\main\widgets\menu\Menu::widget(["options"=>["class"=>"nav nav-pills nav-stacked"], "parentCode"=>"main"]);?>
+            <? echo \app\modules\main\widgets\menu\Menu::widget(["options" => ["class" => "nav nav-pills nav-stacked"], "parentCode" => "main"]); ?>
 
-            <br />
+            <br/>
 
             <div class="well">
                 <? echo \app\modules\main\widgets\includes\Includes::widget(
-                    ["code"=>"demo",]
+                    ["code" => "demo",]
                 );?>
             </div>
 
         </div>
-        <div  class="col-xs-9">
+        <div class="col-xs-9">
             <? echo Breadcrumbs::widget([
                 'links' => $this->breadCrumbs,
             ]);?>
@@ -75,11 +76,14 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Churkin Anton <?= date('Y') ?> <a href="" class="feedback"><?=Yii::t('main/app', 'Feedback')?></a></p>
+        <p class="pull-left">&copy; Churkin Anton <?= date('Y') ?> <a href=""
+                                                                      class="feedback"><?= Yii::t('main/app', 'Feedback') ?></a>
+        </p>
+
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
-<?php echo \app\modules\main\widgets\feedback\Feedback::widget(["fancySelector"=>".feedback"]); ?>
+<?php echo \app\modules\main\widgets\feedback\Feedback::widget(["fancySelector" => ".feedback"]); ?>
 <?php $this->endBody() ?>
 </body>
 </html>

@@ -16,9 +16,11 @@ echo Grid::widget([
     'model' => $searchModel,
     'tree' => true,
     'userColumns' => [[
-          'class'=>\yii\grid\DataColumn::className(),
-          'header'=>Yii::t('main/app', 'Link'),
-          'value'=>function($model, $index, $widget){ return Yii::$app->urlManager->createUrl(['/main/pages/index', 'code'=>$model->code]); }
+        'class' => \yii\grid\DataColumn::className(),
+        'header' => Yii::t('main/app', 'Link'),
+        'value' => function ($model, $index, $widget) {
+            return Yii::$app->urlManager->createUrl(['/main/pages/index', 'code' => $model->code]);
+        }
     ]],
 ]);
 

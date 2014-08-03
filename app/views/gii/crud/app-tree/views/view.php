@@ -15,7 +15,7 @@ use common\widgets\admin\Detail;
 use common\widgets\admin\CrudLinks;
 /**
 * @var yii\web\View $this
-* @var <?=$generator->modelClass?> $model
+* @var <?= $generator->modelClass ?> $model
 */
 
 $this->title = $model->id;
@@ -24,14 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
 
-    <h1><?echo '<?='?>Html::encode($this->title) ?></h1>
+    <h1><? echo '<?=' ?>Html::encode($this->title) ?></h1>
 
     <p>
-        <?echo '<?='?>CrudLinks::widget(["action"=>CrudLinks::CRUD_VIEW, "model"=>$model])?>
+        <? echo '<?=' ?>CrudLinks::widget(["action"=>CrudLinks::CRUD_VIEW, "model"=>$model])?>
     </p>
 
-    <?echo '<?='?>Detail::widget([
-        'model' => $model,
+    <? echo '<?=' ?>Detail::widget([
+    'model' => $model,
     ]) ?>
 
 </div>

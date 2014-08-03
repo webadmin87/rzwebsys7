@@ -1,22 +1,24 @@
 <?php
 namespace app\modules\main\modules\admin\controllers;
-use Yii;
+
 use common\controllers\Admin;
+use Yii;
 
 /**
  * Class UploadController
  * Контроллер загрузки файлов
  * @package app\modules\admin\controllers
  */
-
-class UploadController extends Admin {
+class UploadController extends Admin
+{
 
     /**
      * @inheritdoc
      * Отключаем csrf валидацию
      */
 
-    public function beforeAction($action) {
+    public function beforeAction($action)
+    {
 
         Yii::$app->request->enableCsrfValidation = false;
 
@@ -28,17 +30,17 @@ class UploadController extends Admin {
      * @inheritdoc
      */
 
-    public function actions() {
+    public function actions()
+    {
 
         return [
 
-            "index"=>[
+            "index" => [
                 "class" => \common\actions\Upload::className(),
             ]
 
         ];
 
     }
-
 
 }

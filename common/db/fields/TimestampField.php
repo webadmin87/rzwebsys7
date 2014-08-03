@@ -8,7 +8,8 @@ namespace common\db\fields;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class TimestampField extends TextField {
+class TimestampField extends TextField
+{
 
     /**
      * @inheritdoc
@@ -26,7 +27,6 @@ class TimestampField extends TextField {
      */
     public $showInGrid = false;
 
-
     /**
      * @inheritdoc
      */
@@ -35,11 +35,12 @@ class TimestampField extends TextField {
     /**
      * @inheritdoc
      */
-    public function grid() {
+    public function grid()
+    {
 
         $grid = parent::grid();
 
-        $grid["attribute"] =  $grid["attribute"];
+        $grid["attribute"] = $grid["attribute"];
 
         $grid["format"] = "datetime";
 
@@ -50,7 +51,8 @@ class TimestampField extends TextField {
     /**
      * @inheritdoc
      */
-    public function view() {
+    public function view()
+    {
 
         $view = parent::view();
 
@@ -59,6 +61,5 @@ class TimestampField extends TextField {
         return $view;
 
     }
-
 
 }

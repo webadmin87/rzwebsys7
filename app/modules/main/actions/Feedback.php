@@ -10,7 +10,8 @@ use yii\rest\Action;
  * @package app\modules\main\actions
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Feedback extends Action {
+class Feedback extends Action
+{
 
     use \app\modules\main\components\MailerTrait;
 
@@ -22,7 +23,8 @@ class Feedback extends Action {
      * @throws \yii\base\InvalidConfigException
      */
 
-    public function run() {
+    public function run()
+    {
 
         $class = $this->modelClass;
 
@@ -34,15 +36,15 @@ class Feedback extends Action {
 
         $load = $model->load($request->post());
 
-        if($load AND $model->validate()) {
+        if ($load AND $model->validate()) {
 
-            $res = Yii::$app->mail->compose($this->letter, ["model"=>$model])
+            $res = Yii::$app->mail->compose($this->letter, ["model" => $model])
                 ->setFrom($this->mailFrom)
                 ->setTo($this->mailTo)
                 ->setSubject($this->subject)
                 ->send();
 
-            if($res)
+            if ($res)
                 $response->setStatusCode(201);
 
         }
@@ -50,6 +52,5 @@ class Feedback extends Action {
         return $model;
 
     }
-
 
 }

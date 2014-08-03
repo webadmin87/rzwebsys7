@@ -1,21 +1,24 @@
 <?php
 namespace app\modules\main\components;
-use \app\modules\main\models\Permission;
+
+use app\modules\main\models\Permission;
+
 /**
  * Class PermissionTrait
  * Предоставляет функциональность по проверке прав доступа
  * @package app\modules\main\components
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-trait PermissionTrait {
+trait PermissionTrait
+{
 
     /**
      * Возвращает модель правил доступа
      * @return Permission
      */
 
-    public function getPermission() {
+    public function getPermission()
+    {
 
         return Permission::findPermission(get_class($this));
 
@@ -27,11 +30,12 @@ trait PermissionTrait {
      * @return bool
      */
 
-    public function hasCanDelete($models) {
+    public function hasCanDelete($models)
+    {
 
-        foreach($models AS $model) {
+        foreach ($models AS $model) {
 
-            if(Yii::$app->user->can('deleteModel', array("model"=>$model)))
+            if (Yii::$app->user->can('deleteModel', array("model" => $model)))
                 return true;
         }
 
@@ -45,17 +49,17 @@ trait PermissionTrait {
      * @return bool
      */
 
-    public function hasCanUpdate($models) {
+    public function hasCanUpdate($models)
+    {
 
-        foreach($models AS $model) {
+        foreach ($models AS $model) {
 
-            if(Yii::$app->user->can('updateModel', array("model"=>$model)))
+            if (Yii::$app->user->can('updateModel', array("model" => $model)))
                 return true;
         }
 
         return false;
 
     }
-
 
 }

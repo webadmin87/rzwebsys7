@@ -1,8 +1,8 @@
 <?php
 namespace app\modules\main\models\meta;
 
-use \Yii;
 use common\db\MetaFields;
+use Yii;
 
 /**
  * Class UserMeta
@@ -10,7 +10,6 @@ use common\db\MetaFields;
  * @package app\modules\main\models\meta
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
 class UserMeta extends MetaFields
 {
 
@@ -23,13 +22,14 @@ class UserMeta extends MetaFields
 
         return [
 
-
             "role" => [
                 "definition" => [
                     "class" => \common\db\fields\ListField::className(),
                     "title" => Yii::t('main/app', 'Role'),
                     "isRequired" => true,
-                    "data" => function() { return $this->owner->getRolesNames(); },
+                    "data" => function () {
+                        return $this->owner->getRolesNames();
+                    },
                 ],
                 "params" => [$this->owner, "role"]
             ],
@@ -64,7 +64,6 @@ class UserMeta extends MetaFields
                 ],
                 "params" => [$this->owner, "confirm_password"]
             ],
-
 
             "email" => [
                 "definition" => [
@@ -101,7 +100,6 @@ class UserMeta extends MetaFields
                 ],
                 "params" => [$this->owner, "text"]
             ],
-
 
         ];
 

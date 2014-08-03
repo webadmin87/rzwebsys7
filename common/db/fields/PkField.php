@@ -7,7 +7,8 @@ namespace common\db\fields;
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class PkField extends  Field {
+class PkField extends Field
+{
 
     /**
      * @inheritdoc
@@ -25,7 +26,8 @@ class PkField extends  Field {
      * @inheritdoc
      */
 
-    public function rules() {
+    public function rules()
+    {
 
         $rules = [[$this->attr, 'safe', 'on' => \common\db\ActiveRecord::SCENARIO_SEARCH]];
 

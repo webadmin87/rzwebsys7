@@ -10,8 +10,8 @@ use yii\web\ForbiddenHttpException;
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Delete extends Base {
+class Delete extends Base
+{
 
     /**
      * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
@@ -25,24 +25,25 @@ class Delete extends Base {
      * @throws \yii\web\ForbiddenHttpException
      */
 
-    public function run($id) {
+    public function run($id)
+    {
 
-        if(Yii::$app->request->isPost) {
+        if (Yii::$app->request->isPost) {
 
             $model = $this->findModel($id);
 
-            if(!Yii::$app->user->can('deleteModel', array("model"=>$model)))
+            if (!Yii::$app->user->can('deleteModel', array("model" => $model)))
                 throw new ForbiddenHttpException('Forbidden');
 
             $model->delete();
 
         }
 
-        if(!Yii::$app->request->isAjax) {
+        if (!Yii::$app->request->isAjax) {
 
             $returnUrl = Yii::$app->request->referrer;
 
-            if(empty($returnUrl))
+            if (empty($returnUrl))
                 $returnUrl = $this->defaultRedirectUrl;
 
             return $this->controller->redirect($returnUrl);
@@ -50,7 +51,5 @@ class Delete extends Base {
         }
 
     }
-
-
 
 }

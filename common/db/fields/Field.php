@@ -1,11 +1,11 @@
 <?php
 namespace common\db\fields;
 
+use common\db\ActiveQuery;
+use common\db\ActiveRecord;
 use Yii;
 use Yii\base\Object;
 use Yii\widgets\ActiveForm;
-use common\db\ActiveRecord;
-use common\db\ActiveQuery;
 
 /**
  * Class TextField
@@ -13,8 +13,8 @@ use common\db\ActiveQuery;
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Field extends  Object {
-
+class Field extends Object
+{
 
     /**
      * @var \common\db\ActiveRecord модель
@@ -57,7 +57,6 @@ class Field extends  Object {
      * @var bool отображать в фильтре грида
      */
     public $showInFilter = true;
-
 
     /**
      * @var bool отображать в расширенном фильре
@@ -105,7 +104,6 @@ class Field extends  Object {
      */
     protected $gridFilter;
 
-
     /**
      * Конструктор
      * @param ActiveRecord $model модель
@@ -113,13 +111,33 @@ class Field extends  Object {
      * @param array $config массив значений атрибутов
      */
 
-    public function __construct(ActiveRecord $model, $attr, $config=[]) {
+    public function __construct(ActiveRecord $model, $attr, $config = [])
+    {
 
         $this->model = $model;
 
         $this->attr = $attr;
 
-        parent::__construct( $config );
+        parent::__construct($config);
+
+    }
+
+    public function tableForm(ActiveForm $form, $index, Array $options = [])
+    {
+
+    }
+
+    /**
+     * Формирование Html кода поля для вывода в расширенном фильтре
+     * @param ActiveForm $form объект форма
+     * @param array $options массив html атрибутов поля
+     * @return string
+     */
+
+    public function extendedFilterForm(ActiveForm $form, Array $options = [])
+    {
+
+        return $this->form($form, $options);
 
     }
 
@@ -131,7 +149,8 @@ class Field extends  Object {
      * @return string
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false) {
+    public function form(ActiveForm $form, Array $options = [], $index = false)
+    {
 
         return $form->field($this->model, $this->getFormAttrName($index))->textInput($options);
 
@@ -143,28 +162,10 @@ class Field extends  Object {
      * @return string
      */
 
-    protected function getFormAttrName($index) {
-
-        return ($index !== false)?"[$index]{$this->attr}":$this->attr;
-
-    }
-
-    public function tableForm(ActiveForm $form, $index, Array $options = [])
+    protected function getFormAttrName($index)
     {
 
-    }
-
-
-    /**
-     * Формирование Html кода поля для вывода в расширенном фильтре
-     * @param ActiveForm $form объект форма
-     * @param array $options массив html атрибутов поля
-     * @return string
-     */
-
-    public function extendedFilterForm(ActiveForm $form , Array $options = []) {
-
-        return $this->form($form, $options);
+        return ($index !== false) ? "[$index]{$this->attr}" : $this->attr;
 
     }
 
@@ -172,14 +173,15 @@ class Field extends  Object {
      * Конфигурация поля для грида (GridView)
      * @return array
      */
-    public function grid() {
+    public function grid()
+    {
 
-        $grid = ['attribute'=>$this->attr];
+        $grid = ['attribute' => $this->attr];
 
-        if($this->showInFilter)
+        if ($this->showInFilter)
             $grid['filter'] = $this->getGridFilter();
 
-        if($this->editInGrid) {
+        if ($this->editInGrid) {
 
             $grid = array_merge($grid, $this->xEditable());
 
@@ -189,7 +191,47 @@ class Field extends  Object {
 
     }
 
-    public function xEditable() {
+    /**
+     * Возвращает значение фильтра для грида
+     * @return mixed
+     */
+
+    public function getGridFilter()
+    {
+
+        if ($this->gridFilter !== null) {
+            return $this->gridFilter;
+        } else {
+            return $this->defaultGridFilter();
+        }
+
+    }
+
+    /**
+     * @param $value mixed установка значения фильтра
+     */
+
+    public function setGridFilter($value)
+    {
+
+        $this->gridFilter = $value;
+
+    }
+
+    /**
+     * Возвращает значение фильтра для по умолчанию
+     * @return mixed
+     */
+
+    protected function defaultGridFilter()
+    {
+
+        return true;
+
+    }
+
+    public function xEditable()
+    {
 
         return [
 
@@ -205,56 +247,21 @@ class Field extends  Object {
      * @return string
      */
 
-    public function getEditableUrl() {
+    public function getEditableUrl()
+    {
 
-        return Yii::$app->urlManager->createUrl(Yii::$app->controller->uniqueId."/".$this->editableAction);
-
-    }
-
-    /**
-     * Возвращает значение фильтра для грида
-     * @return mixed
-     */
-
-    public function getGridFilter() {
-
-        if($this->gridFilter !== null) {
-            return $this->gridFilter;
-        } else {
-            return $this->defaultGridFilter();
-        }
+        return Yii::$app->urlManager->createUrl(Yii::$app->controller->uniqueId . "/" . $this->editableAction);
 
     }
-
-    /**
-     * @param $value mixed установка значения фильтра
-     */
-
-    public function setGridFilter($value) {
-
-        $this->gridFilter = $value;
-
-    }
-
-    /**
-     * Возвращает значение фильтра для по умолчанию
-     * @return mixed
-     */
-
-    protected function defaultGridFilter() {
-
-        return true;
-
-    }
-
 
     /**
      * Конфигурация полядля детального просмотра
      * @return array
      */
-    public function view() {
+    public function view()
+    {
 
-        $view = ['attribute'=>$this->attr];
+        $view = ['attribute' => $this->attr];
 
         return $view;
 
@@ -265,16 +272,16 @@ class Field extends  Object {
      * @return array
      */
 
-    public function rules() {
+    public function rules()
+    {
 
         $rules = [];
 
-        if($this->isSafe)
+        if ($this->isSafe)
             $rules[] = [$this->attr, 'safe'];
 
-        if($this->isRequired)
-            $rules[] = [$this->attr, 'required', 'except'=>ActiveRecord::SCENARIO_SEARCH];
-
+        if ($this->isRequired)
+            $rules[] = [$this->attr, 'required', 'except' => ActiveRecord::SCENARIO_SEARCH];
 
         return $rules;
 
@@ -285,7 +292,8 @@ class Field extends  Object {
      * @return array
      */
 
-    public function behaviors() {
+    public function behaviors()
+    {
 
         return [];
 
@@ -296,12 +304,12 @@ class Field extends  Object {
      * @param ActiveQuery $query запрос
      */
 
-    public function search(ActiveQuery $query) {
+    public function search(ActiveQuery $query)
+    {
 
-       if($this->search)
-            $query->andFilterWhere([$this->attr=>$this->model->{$this->attr}]);
+        if ($this->search)
+            $query->andFilterWhere([$this->attr => $this->model->{$this->attr}]);
 
     }
-
 
 }

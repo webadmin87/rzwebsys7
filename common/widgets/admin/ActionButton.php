@@ -1,5 +1,6 @@
 <?php
 namespace common\widgets\admin;
+
 use Yii;
 use yii\base\Widget;
 use yii\helpers\Html;
@@ -10,8 +11,8 @@ use yii\helpers\Html;
  * @package common\widgets\admin
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class ActionButton extends Widget {
+class ActionButton extends Widget
+{
 
     /**
      * Преффикс идентификатора видета
@@ -53,25 +54,26 @@ class ActionButton extends Widget {
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
-        if(!$this->visible)
+        if (!$this->visible)
             return;
 
         $this->url = Yii::$app->urlManager->createUrl($this->route);
 
-        if(empty($this->options["id"]))
+        if (empty($this->options["id"]))
             $this->options["id"] = static::ID_PREF . uniqid(rand());
 
         $this->registerJs();
     }
 
-
     /**
      * Регистрируем обработчика клика по кнопке
      */
 
-    protected function registerJs() {
+    protected function registerJs()
+    {
 
         $message = Yii::t('core', 'Are you shure?');
 
@@ -93,22 +95,20 @@ class ActionButton extends Widget {
 
              ");
 
-
     }
 
     /**
      * @inheritdoc
      */
 
-    public function run() {
+    public function run()
+    {
 
-        if(!$this->visible)
+        if (!$this->visible)
             return "";
 
-        return  Html::button($this->label, $this->options);
+        return Html::button($this->label, $this->options);
 
     }
-
-
 
 }

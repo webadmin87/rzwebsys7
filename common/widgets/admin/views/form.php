@@ -1,7 +1,7 @@
 <?php
 
-use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /**
  * @var \common\db\ActiveRecord $model модель
@@ -27,7 +27,7 @@ $this->registerJs("
 
 <? $form = ActiveForm::begin($formOptions); ?>
 
-<? echo $form->errorSummary($model);?>
+<? echo $form->errorSummary($model); ?>
 
     <ul id="<?= $tabId ?>" class="nav nav-tabs">
         <?
@@ -46,7 +46,7 @@ $this->registerJs("
             <div class="<? if ($i == 0): ?>active <? endif; ?>tab-pane" id="<?= $key ?>">
 
                 <? foreach ($meta->getFieldsByTab($key) AS $field):
-                    if($perm AND $perm->isAttributeForbidden($field->attr))
+                    if ($perm AND $perm->isAttributeForbidden($field->attr))
                         continue;
                     ?>
                     <?= $field->form($form); ?>
@@ -61,7 +61,7 @@ $this->registerJs("
 
 <?= Html::hiddenInput('apply', 0) ?>
 
-<?$returnUrl = Yii::$app->request->get('returnUrl', Yii::$app->request->post('returnUrl', Yii::$app->request->referrer));?>
+<? $returnUrl = Yii::$app->request->get('returnUrl', Yii::$app->request->post('returnUrl', Yii::$app->request->referrer)); ?>
 
 <?= Html::hiddenInput('returnUrl', $returnUrl) ?>
 

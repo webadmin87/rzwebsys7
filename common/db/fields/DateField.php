@@ -1,5 +1,6 @@
 <?php
 namespace common\db\fields;
+
 use Yii\widgets\ActiveForm;
 
 /**
@@ -8,18 +9,19 @@ use Yii\widgets\ActiveForm;
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class DateField extends TextField {
-
+class DateField extends TextField
+{
 
     /**
      * @inheritdoc
      */
 
-    public function rules() {
+    public function rules()
+    {
 
         $rules = parent::rules();
 
-        $rules[] = [$this->attr, 'date', 'format'=>'Y-m-d'];
+        $rules[] = [$this->attr, 'date', 'format' => 'Y-m-d'];
 
         return $rules;
 
@@ -29,15 +31,14 @@ class DateField extends TextField {
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index=false)
+    public function form(ActiveForm $form, Array $options = [], $index = false)
     {
 
-        $options = array_merge(["class"=>"form-control"], $options);
+        $options = array_merge(["class" => "form-control"], $options);
 
         return $form->field($this->model, $this->getFormAttrName($index))->widget(\yii\jui\DatePicker::className(), [
-            "options"=>$options,
+            "options" => $options,
         ]);
     }
-
 
 }

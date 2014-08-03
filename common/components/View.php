@@ -1,7 +1,7 @@
 <?php
 namespace common\components;
 
-use yii\web\View AS YiiView;
+use yii\web\View as YiiView;
 
 /**
  * Class View
@@ -9,7 +9,8 @@ use yii\web\View AS YiiView;
  * @package common\components
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class View extends YiiView {
+class View extends YiiView
+{
 
     /**
      * @var array массив хлебных крошек для виджета yii\widgets\Breadcrumbs
@@ -24,7 +25,8 @@ class View extends YiiView {
      * @link http://www.yiiframework.com/doc-2.0/yii-widgets-breadcrumbs.html
      */
 
-    public function addBreadCrumb($item) {
+    public function addBreadCrumb($item)
+    {
 
         $this->breadCrumbs = array_merge($this->breadCrumbs, $item);
 
@@ -35,22 +37,20 @@ class View extends YiiView {
      * @param \common\db\ActiveRecord $model
      */
 
-    public function registerMetaTags($model) {
+    public function registerMetaTags($model)
+    {
 
-
-        if($model->hasAttribute("metatitle"))
+        if ($model->hasAttribute("metatitle"))
             $this->title = $model->metatitle;
-        elseif($model->hasAttribute("title"))
+        elseif ($model->hasAttribute("title"))
             $this->title = $model->title;
 
-        if($model->hasAttribute("keywords"))
-            $this->registerMetaTag(["name"=>"keywords", "content"=>$model->keywords]);
+        if ($model->hasAttribute("keywords"))
+            $this->registerMetaTag(["name" => "keywords", "content" => $model->keywords]);
 
-        if($model->hasAttribute("description"))
-            $this->registerMetaTag(["name"=>"description", "content"=>$model->description]);
+        if ($model->hasAttribute("description"))
+            $this->registerMetaTag(["name" => "description", "content" => $model->description]);
 
     }
-
-
 
 }

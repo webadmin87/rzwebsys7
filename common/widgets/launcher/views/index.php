@@ -6,7 +6,7 @@ use yii\helpers\Html;
  * @var string label текст ссылки
  */
 
-echo Html::beginTag('div', ["id"=>$id]);
+echo Html::beginTag('div', ["id" => $id]);
 
 ?>
 
@@ -17,6 +17,6 @@ echo Html::beginTag('div', ["id"=>$id]);
         </div>
     </div>
 
-    <a class="btn btn-primary launcher-btn"><?=$label?></a>
+    <a class="btn btn-primary launcher-btn"><?= $label ?></a>
 <?
 echo Html::endTag('div');

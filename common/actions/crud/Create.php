@@ -10,8 +10,8 @@ use yii\web\ForbiddenHttpException;
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Create extends Base {
+class Create extends Base
+{
 
     /**
      * @var array атрибуты по умолчанию
@@ -30,7 +30,6 @@ class Create extends Base {
      */
 
     public $applyParam = "apply";
-
 
     /**
      * @var string имя параметра запроса содержащего url для редиректа в случае успешного обновления
@@ -62,11 +61,12 @@ class Create extends Base {
      * @throws ForbiddenHttpException
      */
 
-    public function run() {
+    public function run()
+    {
 
-        $model = Yii::createObject(["class"=>$this->modelClass, 'scenario'=>$this->modelScenario]);
+        $model = Yii::createObject(["class" => $this->modelClass, 'scenario' => $this->modelScenario]);
 
-        if(!Yii::$app->user->can('createModel', array("model"=>$model)))
+        if (!Yii::$app->user->can('createModel', array("model" => $model)))
             throw new ForbiddenHttpException('Forbidden');
 
         $this->checkForbiddenAttrs($model);
@@ -83,13 +83,12 @@ class Create extends Base {
 
         if ($load && $model->save()) {
 
-
             $returnUrl = $request->post($this->redirectParam);
 
-            if(empty($returnUrl))
+            if (empty($returnUrl))
                 $returnUrl = $this->defaultRedirectUrl;
 
-            if($request->post($this->applyParam))
+            if ($request->post($this->applyParam))
                 return $this->controller->redirect([$this->updateUrl, 'id' => $model->id, $this->redirectParam => $returnUrl]);
             else {
                 return $this->controller->redirect($returnUrl);
@@ -104,6 +103,5 @@ class Create extends Base {
         }
 
     }
-
 
 }

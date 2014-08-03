@@ -57,7 +57,8 @@ class TableInput extends Widget
      * @return string
      */
 
-    protected function renderLine($model, $index) {
+    protected function renderLine($model, $index)
+    {
 
         $html = Html::beginTag('tr');
 
@@ -65,9 +66,9 @@ class TableInput extends Widget
 
         $fields = $meta->getFields();
 
-        foreach($fields AS $field) {
+        foreach ($fields AS $field) {
 
-            if(!$field->showInTableInput)
+            if (!$field->showInTableInput)
                 continue;
 
             $html .= Html::beginTag('td');

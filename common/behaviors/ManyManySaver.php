@@ -11,15 +11,15 @@ use yii\db\ActiveRecord;
  * @package common\behaviors
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class ManyManySaver extends Behavior{
+class ManyManySaver extends Behavior
+{
 
+    const ATTR_SUFF = "Ids";
     /**
      * @var array массив имен связей для сохранения
      */
 
     public $names = [];
-
-    const ATTR_SUFF = "Ids";
 
     /**
      * @inheritdoc
@@ -39,40 +39,52 @@ class ManyManySaver extends Behavior{
      * Сохранение связей
      */
 
-    public function afterSave() {
+    public function afterSave()
+    {
 
-        foreach($this->names AS $name) {
+        foreach ($this->names AS $name) {
 
             $attr = $this->getAttributeName($name);
 
-            if($this->owner->$attr !== null) {
+            if ($this->owner->$attr !== null) {
 
-                $query = $this->owner->{"get".ucfirst($name)}();
+                $query = $this->owner->{"get" . ucfirst($name)}();
 
                 $modelClass = $query->modelClass;
 
                 $related = $query->all();
 
-                foreach($related AS $rel) {
+                foreach ($related AS $rel) {
 
                     $this->owner->unlink($name, $rel, true);
 
                 }
 
-                if(empty($this->owner->$attr))
+                if (empty($this->owner->$attr))
                     continue;
 
-                $newRelated = $modelClass::find()->where(["id"=>$this->owner->$attr])->all();
+                $newRelated = $modelClass::find()->where(["id" => $this->owner->$attr])->all();
 
                 foreach ($newRelated as $newRel) {
                     $this->owner->link($name, $newRel);
                 }
 
-
             }
 
-
         }
+
+    }
+
+    /**
+     * Возвращает имя атрибута хранящего идентификаторы привязываемы записей
+     * @param string $name имя звязи
+     * @return string
+     */
+
+    public function getAttributeName($name)
+    {
+
+        return $name . static::ATTR_SUFF;
 
     }
 
@@ -82,28 +94,17 @@ class ManyManySaver extends Behavior{
      * @return array
      */
 
-    public function getManyManyIds($name) {
+    public function getManyManyIds($name)
+    {
 
         $models = $this->owner->$name;
 
         $ids = [];
 
-        foreach($models AS $model)
+        foreach ($models AS $model)
             $ids[] = $model->id;
 
         return $ids;
-    }
-
-    /**
-     * Возвращает имя атрибута хранящего идентификаторы привязываемы записей
-     * @param string $name имя звязи
-     * @return string
-     */
-
-    public function getAttributeName($name) {
-
-        return $name . static::ATTR_SUFF;
-
     }
 
 }

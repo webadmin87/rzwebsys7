@@ -1,10 +1,11 @@
 <?php
 
 namespace common\db\fields;
-use yii\widgets\ActiveForm;
+
 use mihaildev\ckeditor\CKEditor;
 use mihaildev\elfinder\ElFinder;
 use yii\helpers\ArrayHelper;
+use yii\widgets\ActiveForm;
 
 /**
  * Class HtmlField
@@ -12,8 +13,8 @@ use yii\helpers\ArrayHelper;
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class HtmlField extends TextAreaField {
+class HtmlField extends TextAreaField
+{
 
     /**
      * @var array настройки редактора
@@ -31,7 +32,8 @@ class HtmlField extends TextAreaField {
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index=false) {
+    public function form(ActiveForm $form, Array $options = [], $index = false)
+    {
 
         $options = ArrayHelper::merge([
             'preset' => 'full',
@@ -40,11 +42,10 @@ class HtmlField extends TextAreaField {
 
         $ckeditorOptions = ElFinder::ckeditorOptions($this->fileManagerController, $options);
 
-        return $form->field($this->model, $this->getFormAttrName($index))->widget(CKEditor::className(),[
+        return $form->field($this->model, $this->getFormAttrName($index))->widget(CKEditor::className(), [
             'editorOptions' => $ckeditorOptions,
         ]);;
 
     }
-
 
 }

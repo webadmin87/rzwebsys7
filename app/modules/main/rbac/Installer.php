@@ -2,9 +2,9 @@
 
 namespace app\modules\main\rbac;
 
+use app\modules\main\models\User;
 use Yii;
 use yii\base\Object;
-use \app\modules\main\models\User;
 
 /**
  * Class Installer
@@ -12,13 +12,15 @@ use \app\modules\main\models\User;
  * @package app\modules\main\rbac
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Installer extends Object {
+class Installer extends Object
+{
 
     /**
      * Установка ролей
      */
 
-    public function install() {
+    public function install()
+    {
 
         $auth = Yii::$app->authManager;
 

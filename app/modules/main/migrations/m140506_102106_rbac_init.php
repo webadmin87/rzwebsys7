@@ -6,19 +6,6 @@ use yii\rbac\DbManager;
 
 class m140506_102106_rbac_init extends \yii\db\Migration
 {
-    /**
-     * @throws yii\base\InvalidConfigException
-     * @return DbManager
-     */
-    protected function getAuthManager()
-    {
-        $authManager = Yii::$app->getAuthManager();
-        if (!$authManager instanceof DbManager) {
-            throw new InvalidConfigException('You should configure "authManager" component to use database before executing this migration.');
-        }
-        return $authManager;
-    }
-
     public function up()
     {
         $authManager = $this->getAuthManager();
@@ -64,6 +51,19 @@ class m140506_102106_rbac_init extends \yii\db\Migration
             'PRIMARY KEY (item_name, user_id)',
             'FOREIGN KEY (item_name) REFERENCES ' . $authManager->itemTable . ' (name) ON DELETE CASCADE ON UPDATE CASCADE',
         ], $tableOptions);
+    }
+
+    /**
+     * @throws yii\base\InvalidConfigException
+     * @return DbManager
+     */
+    protected function getAuthManager()
+    {
+        $authManager = Yii::$app->getAuthManager();
+        if (!$authManager instanceof DbManager) {
+            throw new InvalidConfigException('You should configure "authManager" component to use database before executing this migration.');
+        }
+        return $authManager;
     }
 
     public function down()

@@ -1,7 +1,7 @@
 <?php
 namespace common\widgets;
 
-use yii\widgets\ListView As YiiList;
+use yii\widgets\ListView as YiiList;
 
 /**
  * Class ListView
@@ -9,7 +9,8 @@ use yii\widgets\ListView As YiiList;
  * @package common\widgets
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class ListView extends YiiList {
+class ListView extends YiiList
+{
 
     /**
      * @inheritdoc
@@ -17,12 +18,11 @@ class ListView extends YiiList {
 
     public function renderPager()
     {
-        if($this->dataProvider->getPagination()->pageSize == 0)
+        if ($this->dataProvider->getPagination()->pageSize == 0)
             return '';
 
         return parent::renderPager();
 
     }
-
 
 }

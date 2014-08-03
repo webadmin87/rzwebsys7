@@ -1,14 +1,16 @@
 <?php
 namespace common\db\fields;
+
 use yii\widgets\ActiveForm;
+
 /**
  * Class TextAreaField
  * Поле текстовой области модели
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class TextAreaField extends TextField {
+class TextAreaField extends TextField
+{
 
     /**
      * @var bool отображать в гриде
@@ -29,7 +31,8 @@ class TextAreaField extends TextField {
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false) {
+    public function form(ActiveForm $form, Array $options = [], $index = false)
+    {
 
         return $form->field($this->model, $this->getFormAttrName($index))->textarea($options);
 
@@ -38,7 +41,8 @@ class TextAreaField extends TextField {
     /**
      * @inheritdoc
      */
-    public function view() {
+    public function view()
+    {
 
         $view = parent::view();
 

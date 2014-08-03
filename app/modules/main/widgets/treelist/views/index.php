@@ -10,7 +10,7 @@
 use Yii;
 use yii\helpers\Html;
 
-echo Html::beginTag('ul', $options)."\n";
+echo Html::beginTag('ul', $options) . "\n";
 
 foreach ($models AS $model) {
 
@@ -20,11 +20,9 @@ foreach ($models AS $model) {
 
         if ($model->level == $level) {
             echo "</li>\n";
-        }
-        elseif ($model->level > $level) {
+        } elseif ($model->level > $level) {
             echo "<ul>\n";
-        }
-        else {
+        } else {
             echo str_repeat("</li>\n</ul>\n", $level - $model->level);
             echo "</li>\n";
         }
@@ -32,16 +30,15 @@ foreach ($models AS $model) {
 
     $link = "";
 
-    if(is_callable($urlCreate))
+    if (is_callable($urlCreate))
         $link = $urlCreate($model);
 
     $o = [];
 
-    if($this->context->isAct($link))
-        Html::addCssClass($o,$actClass);
+    if ($this->context->isAct($link))
+        Html::addCssClass($o, $actClass);
 
-    echo Html::beginTag('li', $o) . Html::a( $model->title, $link);
-
+    echo Html::beginTag('li', $o) . Html::a($model->title, $link);
 
     $level = $model->level;
 

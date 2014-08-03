@@ -3,7 +3,7 @@
 \Yii::$container->set(\yii\widgets\Pjax::className(), ["timeout" => false]);
 \Yii::$container->set(\mcms\xeditable\XEditableAsset::className(), ["publishOptions" => ['forceCopy' => false]]);
 \Yii::$container->set(\mcms\xeditable\XEditableColumn::className(), ['editable' => null]);
-\Yii::$container->set(\yii\jui\DatePicker::className(), ['language' => "ru", "clientOptions"=>["dateFormat"=>"yy-mm-dd"]]);
+\Yii::$container->set(\yii\jui\DatePicker::className(), ['language' => "ru", "clientOptions" => ["dateFormat" => "yy-mm-dd"]]);
 
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
@@ -14,13 +14,13 @@ $params = array_merge(
 
 return [
     'id' => 'app',
-    'name'=>'RzWebSys7',
+    'name' => 'RzWebSys7',
     'basePath' => dirname(__DIR__),
     'language' => 'ru-RU',
     'controllerNamespace' => 'app\controllers',
     'bootstrap' => ['log'],
-    'defaultRoute'=>'main/pages/index',
-    'homeUrl'=>'/',
+    'defaultRoute' => 'main/pages/index',
+    'homeUrl' => '/',
     'controllerMap' => [
         'elfinder' => [
             'class' => mihaildev\elfinder\Controller::className(),
@@ -48,16 +48,16 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'suffix'=>'/',
-            'rules'=>[
+            'suffix' => '/',
+            'rules' => [
 
                 // Правила для админки
 
-                'admin/<module:\w+>/<controller:[A-z0-9_-]+>/<action:[A-z0-9_-]+>/<id:\d+>'=>'<module>/admin/<controller>/<action>',
-                'admin/<module:\w+>/<controller:[A-z0-9_-]+>/<action:[A-z0-9_-]+>'=>'<module>/admin/<controller>/<action>',
-                'admin/<module:\w+>/<controller:[A-z0-9_-]+>'=>'<module>/admin/<controller>',
-                'admin/<module:\w+>'=>'<module>/admin',
-                'admin'=>'main/admin',
+                'admin/<module:\w+>/<controller:[A-z0-9_-]+>/<action:[A-z0-9_-]+>/<id:\d+>' => '<module>/admin/<controller>/<action>',
+                'admin/<module:\w+>/<controller:[A-z0-9_-]+>/<action:[A-z0-9_-]+>' => '<module>/admin/<controller>/<action>',
+                'admin/<module:\w+>/<controller:[A-z0-9_-]+>' => '<module>/admin/<controller>',
+                'admin/<module:\w+>' => '<module>/admin',
+                'admin' => 'main/admin',
             ]
         ],
         'user' => [

@@ -1,7 +1,7 @@
 <?php
 namespace app\modules\main\widgets\gallery;
 
-use common\components\AssetBundle AS BaseBundle;
+use common\components\AssetBundle as BaseBundle;
 
 /**
  * Class AssetBundle
@@ -9,16 +9,17 @@ use common\components\AssetBundle AS BaseBundle;
  * @package app\modules\main\widgets\gallery
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class AssetBundle extends BaseBundle {
+class AssetBundle extends BaseBundle
+{
 
     public $css = [
         'styles.css',
     ];
 
-    public function init() {
+    public function init()
+    {
 
-        $this->sourcePath = __DIR__."/assets";
+        $this->sourcePath = __DIR__ . "/assets";
         parent::init();
 
     }

@@ -9,7 +9,8 @@ use common\components\AssetBundle as BaseBundle;
  * @package common\widgets\launcher
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class AssetBundle extends BaseBundle {
+class AssetBundle extends BaseBundle
+{
 
     public $js = [
         'starter.js',
@@ -22,7 +23,7 @@ class AssetBundle extends BaseBundle {
     ];
 
     public $publishOptions = [
-        "forceCopy"=>true
+        "forceCopy" => true
     ];
 
     public $depends = [
@@ -30,14 +31,13 @@ class AssetBundle extends BaseBundle {
         'yii\bootstrap\BootstrapAsset',
     ];
 
-    public function init() {
+    public function init()
+    {
 
-        $this->sourcePath = __DIR__."/assets";
+        $this->sourcePath = __DIR__ . "/assets";
 
         parent::init();
 
     }
-
-
 
 }

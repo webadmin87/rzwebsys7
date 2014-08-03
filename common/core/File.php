@@ -2,10 +2,10 @@
 
 namespace common\core;
 
-use Yii;
-use yii\base\Object;
 use common\exceptions\IoException;
 use common\helpers\FileHelper;
+use Yii;
+use yii\base\Object;
 
 /**
  * Class File
@@ -13,8 +13,8 @@ use common\helpers\FileHelper;
  * @package common\core
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class File extends Object {
+class File extends Object
+{
 
     /**
      * @var string пояснение к файлу
@@ -41,10 +41,11 @@ class File extends Object {
      * @throws \common\exceptions\IoException
      */
 
-    public function __construct($path, $config=[]) {
+    public function __construct($path, $config = [])
+    {
 
-        if(!is_file($path))
-            throw new IoException(Yii::t('core', 'File {file} does not exists.', ["{file}"=>$path]));
+        if (!is_file($path))
+            throw new IoException(Yii::t('core', 'File {file} does not exists.', ["{file}" => $path]));
 
         $this->path = $path;
 
@@ -57,7 +58,8 @@ class File extends Object {
      * @return string
      */
 
-    public function getPath() {
+    public function getPath()
+    {
 
         return $this->path;
 
@@ -68,20 +70,10 @@ class File extends Object {
      * @return string
      */
 
-    public function getRelPath() {
+    public function getRelPath()
+    {
 
         return str_replace(Yii::getAlias($this->webroot), '', $this->path);
-
-    }
-
-    /**
-     * Возвращает размер файла в байтах
-     * @return int
-     */
-
-    public function getSize() {
-
-        return filesize($this->path);
 
     }
 
@@ -90,18 +82,31 @@ class File extends Object {
      * @return string
      */
 
-    public function getHumanSize() {
+    public function getHumanSize()
+    {
 
         $size = $this->getSize();
 
-        if($size<1024)
+        if ($size < 1024)
             return $size . "b";
-        elseif($size < 1024*1024)
-            return round( $size/1024 ) . "Kb";
-        elseif($size < 1024*1024*1024)
-            return round( $size/1024/1024, 1 ) . "Mb";
+        elseif ($size < 1024 * 1024)
+            return round($size / 1024) . "Kb";
+        elseif ($size < 1024 * 1024 * 1024)
+            return round($size / 1024 / 1024, 1) . "Mb";
         else
-            return round( $size/1024/1024/1024, 1 ) . "Gb";
+            return round($size / 1024 / 1024 / 1024, 1) . "Gb";
+
+    }
+
+    /**
+     * Возвращает размер файла в байтах
+     * @return int
+     */
+
+    public function getSize()
+    {
+
+        return filesize($this->path);
 
     }
 
@@ -110,7 +115,8 @@ class File extends Object {
      * @return string
      */
 
-    public function getMimeType() {
+    public function getMimeType()
+    {
 
         return FileHelper::getMimeType($this->path);
 
@@ -121,7 +127,8 @@ class File extends Object {
      * @return string
      */
 
-    public function getName() {
+    public function getName()
+    {
 
         return basename($this->path);
 
@@ -132,7 +139,8 @@ class File extends Object {
      * @return string
      */
 
-    public function getExt() {
+    public function getExt()
+    {
 
         return FileHelper::getExtension($this->path);
 
@@ -143,7 +151,8 @@ class File extends Object {
      * @return bool
      */
 
-    public function delete() {
+    public function delete()
+    {
 
         return unlink($this->path);
 
@@ -155,9 +164,10 @@ class File extends Object {
      * @return bool|\common\core\File
      */
 
-    public function copyTo($dest) {
+    public function copyTo($dest)
+    {
 
-        if(copy($this->path, $dest)) {
+        if (copy($this->path, $dest)) {
 
             $class = get_class($this);
 
@@ -176,11 +186,11 @@ class File extends Object {
      * @return bool
      */
 
-    public function isImage() {
+    public function isImage()
+    {
 
         return FileHelper::isImage($this->path);
 
     }
-
 
 }

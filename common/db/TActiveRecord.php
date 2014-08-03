@@ -1,10 +1,8 @@
 <?php
 namespace common\db;
 
-use Yii;
 use common\behaviors\NestedSet;
-use yii\bootstrap\ActiveForm;
-
+use Yii;
 
 /**
  * Class TActiveRecord
@@ -12,8 +10,8 @@ use yii\bootstrap\ActiveForm;
  * @package common\db
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-abstract class TActiveRecord extends ActiveRecord {
+abstract class TActiveRecord extends ActiveRecord
+{
 
     /**
      * Идентификатор корневой записи
@@ -31,17 +29,88 @@ abstract class TActiveRecord extends ActiveRecord {
      * @inheritdoc
      */
 
-    public function behaviors() {
+    public function behaviors()
+    {
 
         $behaviors = parent::behaviors();
 
         $behaviors["nestedSets"] = [
 
-            "class"=>NestedSet::className(),
+            "class" => NestedSet::className(),
 
         ];
 
         return $behaviors;
+
+    }
+
+    /**
+     * Возвращает массив для заполнения списка выбора родителя модели
+     * @param int $parent_id
+     * @param array $exclude массив id моделей ветки которых необходимо исключить из списка
+     * @param string $attr имя отображаемого атрибута
+     * @return array
+     */
+
+    public function getListTreeData($parent_id = self::ROOT_ID, $exclude = [], $attr = "title")
+    {
+
+        $arr = [self::ROOT_ID => Yii::t('core', 'Root')];
+
+        $query = static::find();
+
+        if ($perm = $this->getPermission()) {
+
+            $perm->applyConstraint($query);
+
+        }
+
+        $model = $query->andWhere(["id" => $parent_id])->one();
+
+        if (!$model) {
+
+            return $arr;
+
+        }
+
+        $models = $model->descendants()->published()->all();
+
+        $descendants = [];
+
+        if (!$this->isNewRecord) {
+
+            $descendants = $this->descendants()->all();
+
+            $descendants[] = $this;
+
+        }
+
+        if (!empty($exclude)) {
+
+            $exModels = static::find()->where(["id" => $exclude])->all();
+
+            foreach ($exModels AS $exModel) {
+
+                $descendants[] = $exModel;
+
+                $exDescendants = $exModel->descendants()->all();
+
+                $descendants = array_merge($descendants, $exDescendants);
+
+            }
+
+        }
+
+        foreach ($models AS $m) {
+
+            if ($this->inArray($descendants, $m))
+                continue;
+
+            $arr[$m->id] = str_repeat("-", $m->level) . $m->$attr;
+
+        }
+
+        return $arr;
 
     }
 
@@ -54,75 +123,23 @@ abstract class TActiveRecord extends ActiveRecord {
         return Yii::createObject(\common\db\TActiveQuery::className(), [get_called_class()]);
     }
 
-
     /**
-     * Возвращает массив для заполнения списка выбора родителя модели
-     * @param int $parent_id
-     * @param array $exclude массив id моделей ветки которых необходимо исключить из списка
-     * @param string $attr имя отображаемого атрибута
-     * @return array
+     * Содердится ли в массиве $models модель $model
+     * @param ActiveRecord[] $models
+     * @param ActiveRecord $model
+     * @return bool
      */
 
-    public function getListTreeData($parent_id = self::ROOT_ID, $exclude = [], $attr = "title") {
+    public function inArray($models, $model)
+    {
 
-        $arr = [self::ROOT_ID=>Yii::t('core', 'Root')];
+        foreach ($models AS $m) {
 
-        $query = static::find();
-
-        if($perm = $this->getPermission()) {
-
-            $perm->applyConstraint($query);
-
+            if ($m->id == $model->id)
+                return true;
         }
 
-        $model = $query->andWhere(["id"=>$parent_id])->one();
-
-        if(!$model) {
-
-            return $arr;
-
-        }
-
-        $models = $model->descendants()->published()->all();
-
-        $descendants = [];
-
-        if(!$this->isNewRecord) {
-
-            $descendants = $this->descendants()->all();
-
-            $descendants[] = $this;
-
-        }
-
-
-        if(!empty($exclude)) {
-
-            $exModels = static::find()->where(["id"=>$exclude])->all();
-
-            foreach($exModels AS $exModel) {
-
-                $descendants[] = $exModel;
-
-                $exDescendants = $exModel->descendants()->all();
-
-                $descendants = array_merge($descendants, $exDescendants);
-
-            }
-
-
-        }
-
-        foreach($models AS $m) {
-
-            if($this->inArray($descendants, $m))
-                continue;
-
-            $arr[$m->id] = str_repeat("-", $m->level) . $m->$attr;
-
-        }
-
-        return $arr;
+        return false;
 
     }
 
@@ -133,42 +150,24 @@ abstract class TActiveRecord extends ActiveRecord {
      * @return array
      */
 
-    public function getDataByParent($parent_id = self::ROOT_ID, $attr = "title") {
+    public function getDataByParent($parent_id = self::ROOT_ID, $attr = "title")
+    {
 
         $arr = [];
 
         $query = static::find();
 
-        $model = $query->andWhere(["id"=>$parent_id])->one();
+        $model = $query->andWhere(["id" => $parent_id])->one();
 
-        if(!$model)
+        if (!$model)
             return $arr;
 
         $models = $model->descendants()->published()->all();
 
-        foreach($models AS $m)
+        foreach ($models AS $m)
             $arr[$m->id] = str_repeat("-", $m->level) . $m->$attr;
 
         return $arr;
-
-    }
-
-    /**
-     * Содердится ли в массиве $models модель $model
-     * @param ActiveRecord[] $models
-     * @param ActiveRecord $model
-     * @return bool
-     */
-
-    public function inArray($models, $model) {
-
-        foreach($models AS $m) {
-
-            if($m->id == $model->id)
-                return true;
-        }
-
-        return false;
 
     }
 
@@ -180,9 +179,10 @@ abstract class TActiveRecord extends ActiveRecord {
      * @return array
      */
 
-    public function getBreadCrumbsItems($id, $route, $attr = "title") {
+    public function getBreadCrumbsItems($id, $route, $attr = "title")
+    {
 
-        $model = static::find()->where(["id"=>$id])->one();
+        $model = static::find()->where(["id" => $id])->one();
 
         $models = $model->ancestors()->all();
 
@@ -190,20 +190,19 @@ abstract class TActiveRecord extends ActiveRecord {
 
         $arr = [];
 
-        foreach($models AS $model) {
+        foreach ($models AS $model) {
 
-            if(empty($model->$attr))
+            if (empty($model->$attr))
                 continue;
 
             $arr[] = [
 
-                "url"=>call_user_func($route, $model),
-                "label"=>$model->$attr,
+                "url" => call_user_func($route, $model),
+                "label" => $model->$attr,
 
             ];
 
         }
-
 
         return $arr;
 
@@ -214,13 +213,14 @@ abstract class TActiveRecord extends ActiveRecord {
      * @return array
      */
 
-    public function getFilterIds() {
+    public function getFilterIds()
+    {
 
         $arr[] = $this->id;
 
         $models = $this->descendants()->published()->all();
 
-        foreach($models As $model)
+        foreach ($models As $model)
             $arr[] = $model->id;
 
         return $arr;

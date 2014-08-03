@@ -2,8 +2,8 @@
 
 namespace app\modules\news\models\meta;
 
-use Yii;
 use common\db\MetaFields;
+use Yii;
 
 /**
  * Class NewsSectionMeta
@@ -11,7 +11,8 @@ use common\db\MetaFields;
  * @package app\modules\news\models\meta
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class NewsSectionMeta extends MetaFields {
+class NewsSectionMeta extends MetaFields
+{
 
     /**
      * @inheritdoc
@@ -25,7 +26,9 @@ class NewsSectionMeta extends MetaFields {
                 "definition" => [
                     "class" => \common\db\fields\ParentListField::className(),
                     "title" => Yii::t('main/app', 'Parent'),
-                    "data" => function(){ return $this->owner->getListTreeData(); },
+                    "data" => function () {
+                        return $this->owner->getListTreeData();
+                    },
                 ],
                 "params" => [$this->owner, "parent_id"]
             ],
@@ -35,7 +38,7 @@ class NewsSectionMeta extends MetaFields {
                     "class" => \common\db\fields\TextField::className(),
                     "title" => Yii::t('news/app', 'Title'),
                     "isRequired" => true,
-                    "editInGrid"=>true,
+                    "editInGrid" => true,
                 ],
                 "params" => [$this->owner, "title"]
             ],
@@ -51,6 +54,5 @@ class NewsSectionMeta extends MetaFields {
 
         ];
     }
-
 
 }

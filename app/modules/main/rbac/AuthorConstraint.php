@@ -1,9 +1,9 @@
 <?php
 namespace app\modules\main\rbac;
 
+use common\rbac\IConstraint;
 use Yii;
 use yii\base\Object;
-use common\rbac\IConstraint;
 
 /**
  * Class AuthorConstraint
@@ -11,22 +11,8 @@ use common\rbac\IConstraint;
  * @package app\modules\main\rbac
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class AuthorConstraint extends Object implements IConstraint {
-
-    /**
-     * Проверяет моднль на соответствие условию
-     * @param \common\db\ActiveQuery $model
-     * @return bool
-     */
-
-    public function testModel($model) {
-
-        $userId = Yii::$app->user->id;
-
-        return $model->author_id == $userId;
-
-    }
-
+class AuthorConstraint extends Object implements IConstraint
+{
 
     /**
      * Устанавливает ограничение на критерий запроса
@@ -37,7 +23,7 @@ class AuthorConstraint extends Object implements IConstraint {
     {
         $userId = Yii::$app->user->id;
 
-        $query->andWhere(['author_id'=>$userId]);
+        $query->andWhere(['author_id' => $userId]);
     }
 
     /**
@@ -48,6 +34,21 @@ class AuthorConstraint extends Object implements IConstraint {
     public function read($model)
     {
         return $this->testModel($model);
+    }
+
+    /**
+     * Проверяет моднль на соответствие условию
+     * @param \common\db\ActiveQuery $model
+     * @return bool
+     */
+
+    public function testModel($model)
+    {
+
+        $userId = Yii::$app->user->id;
+
+        return $model->author_id == $userId;
+
     }
 
     /**
@@ -69,6 +70,5 @@ class AuthorConstraint extends Object implements IConstraint {
     {
         return $this->testModel($model);
     }
-
 
 }

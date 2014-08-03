@@ -5,16 +5,16 @@
  * @var \app\modules\news\models\NewsSection|null $sectionModel модель категории
  */
 ?>
-<h1><?=$sectionModel?$sectionModel->title:Yii::t('news/app', 'News')?></h1>
+    <h1><?= $sectionModel ? $sectionModel->title : Yii::t('news/app', 'News') ?></h1>
 <?
 echo \yii\widgets\ListView::widget([
-    "dataProvider"=>$dataProvider,
-    "itemView"=>"_item",
-    'summary'=>'',
-    "viewParams"=>[
-        "previewImageWidth"=>$previewImageWidth,
+    "dataProvider" => $dataProvider,
+    "itemView" => "_item",
+    'summary' => '',
+    "viewParams" => [
+        "previewImageWidth" => $previewImageWidth,
     ],
-    "itemOptions"=>[
-        'class'=>'clearfix'
+    "itemOptions" => [
+        'class' => 'clearfix'
     ],
 ]);

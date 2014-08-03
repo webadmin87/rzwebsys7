@@ -2,11 +2,11 @@
 
 namespace app\modules\main\modules\admin\controllers;
 
-use Yii;
 use app\modules\main\models\Permission;
-use common\controllers\Root;
-use yii\filters\VerbFilter;
 use common\actions\crud;
+use common\controllers\Root;
+use Yii;
+use yii\filters\VerbFilter;
 
 /**
  * PermissionController implements the CRUD actions for Permission model.
@@ -15,15 +15,15 @@ class PermissionController extends Root
 {
 
     /**
-    * @var string идентификатор файла перевода
-    */
+     * @var string идентификатор файла перевода
+     */
 
     public $tFile = "main/app";
 
     /**
-    * Поведения
-    * @return array
-    */
+     * Поведения
+     * @return array
+     */
 
     public function behaviors()
     {
@@ -41,46 +41,47 @@ class PermissionController extends Root
     }
 
     /**
-    * Действия
-    * @return array
-    */
-    public function actions() {
+     * Действия
+     * @return array
+     */
+    public function actions()
+    {
 
         $class = Permission::className();
 
         return [
 
-            'index'=>[
-                'class'=>crud\Admin::className(),
-                'modelClass'=>$class,
+            'index' => [
+                'class' => crud\Admin::className(),
+                'modelClass' => $class,
             ],
-            'create'=>[
-                'class'=>crud\Create::className(),
-                'modelClass'=>$class,
+            'create' => [
+                'class' => crud\Create::className(),
+                'modelClass' => $class,
             ],
-            'update'=>[
-                'class'=>crud\Update::className(),
-                'modelClass'=>$class,
-            ],
-
-            'view'=>[
-                'class'=>crud\View::className(),
-                'modelClass'=>$class,
+            'update' => [
+                'class' => crud\Update::className(),
+                'modelClass' => $class,
             ],
 
-            'delete'=>[
-                'class'=>crud\Delete::className(),
-                'modelClass'=>$class,
+            'view' => [
+                'class' => crud\View::className(),
+                'modelClass' => $class,
             ],
 
-            'groupdelete'=>[
-                'class'=>crud\GroupDelete::className(),
-                'modelClass'=>$class,
+            'delete' => [
+                'class' => crud\Delete::className(),
+                'modelClass' => $class,
             ],
 
-            'editable'=>[
-                'class'=>crud\XEditable::className(),
-                'modelClass'=>$class,
+            'groupdelete' => [
+                'class' => crud\GroupDelete::className(),
+                'modelClass' => $class,
+            ],
+
+            'editable' => [
+                'class' => crud\XEditable::className(),
+                'modelClass' => $class,
             ],
 
         ];

@@ -4,15 +4,14 @@ namespace common\widgets\admin;
 use Yii;
 use yii\base\Widget;
 
-
 /**
  * Class ExtFilter
  * Форма расширенного фильтра модели для админки. Формируется на основе \common\db\MetaFields модели
  * @package common\widgets\admin
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class ExtFilter extends Widget {
+class ExtFilter extends Widget
+{
 
     /**
      * Преффикс идентификатора виджета
@@ -69,13 +68,14 @@ class ExtFilter extends Widget {
      * @inheritdoc
      */
 
-    public function init() {
+    public function init()
+    {
 
-       $model = $this->model;
+        $model = $this->model;
 
-       $this->id = strtolower(self::FORM_ID_PREF.str_replace("\\", "-", $model::className()));
+        $this->id = strtolower(self::FORM_ID_PREF . str_replace("\\", "-", $model::className()));
 
-       $this->loadFields();
+        $this->loadFields();
 
     }
 
@@ -83,13 +83,14 @@ class ExtFilter extends Widget {
      * Формирует массив полей выводимых в фильтре
      */
 
-    protected function loadFields() {
+    protected function loadFields()
+    {
 
         $fields = $this->model->getMetaFields()->getFields();
 
-        foreach($fields AS $field) {
+        foreach ($fields AS $field) {
 
-            if($field->showInExtendedFilter)
+            if ($field->showInExtendedFilter)
                 $this->fields[] = $field;
 
         }
@@ -100,21 +101,20 @@ class ExtFilter extends Widget {
      * @inheritdoc
      */
 
-    public function run() {
+    public function run()
+    {
 
         $formOptions = array_merge($this->defaultFormOptions, $this->formOptions);
 
         return $this->render($this->tpl, [
-            "model"=>$this->model,
-            "formOptions"=>$formOptions,
-            "id"=>$this->id,
-            "cols"=>$this->cols,
-            "fields"=>$this->fields,
+                "model" => $this->model,
+                "formOptions" => $formOptions,
+                "id" => $this->id,
+                "cols" => $this->cols,
+                "fields" => $this->fields,
             ]
         );
 
     }
-
-
 
 }

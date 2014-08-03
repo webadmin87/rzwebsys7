@@ -12,12 +12,12 @@ use common\widgets\admin\Grid;
 /**
 * @var yii\web\View $this
 * @var yii\data\ActiveDataProvider $dataProvider
-* @var <?=$generator->modelClass?> $searchModel
+* @var <?= $generator->modelClass ?> $searchModel
 */
 
 echo Grid::widget([
-    'dataProvider' => $dataProvider,
-    'model' => $searchModel,
+'dataProvider' => $dataProvider,
+'model' => $searchModel,
 ]);
 
 ?>

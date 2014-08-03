@@ -2,9 +2,9 @@
 use yii\helpers\Html;
 
 /**
-* @var \yii\web\View $this
-* @var app\modules\news\models\News $model
-*/
+ * @var \yii\web\View $this
+ * @var app\modules\news\models\News $model
+ */
 
 $this->title = \Yii::t($this->context->tFile, 'Create News');
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'News'), 'url' => ['index']];

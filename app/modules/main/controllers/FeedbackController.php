@@ -10,9 +10,8 @@ use yii\rest\Controller;
  * @package app\modules\main\controllers
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class FeedbackController extends Controller {
-
+class FeedbackController extends Controller
+{
 
     /**
      * @inheritdoc
@@ -22,7 +21,7 @@ class FeedbackController extends Controller {
     {
         return [
 
-              'send'  => ['post'],
+            'send' => ['post'],
 
         ];
     }
@@ -31,17 +30,18 @@ class FeedbackController extends Controller {
      * @inheritdoc
      */
 
-    public function actions() {
+    public function actions()
+    {
 
-       return [
+        return [
 
-           "send"=>[
-               "class"=>\app\modules\main\actions\Feedback::className(),
-               "modelClass"=>\app\modules\main\models\FeedbackForm::className(),
-           ],
+            "send" => [
+                "class" => \app\modules\main\actions\Feedback::className(),
+                "modelClass" => \app\modules\main\models\FeedbackForm::className(),
+            ],
 
-       ];
+        ];
 
-   }
+    }
 
 }

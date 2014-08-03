@@ -1,14 +1,16 @@
 <?php
 namespace app\modules\main\components;
+
 use Yii;
+
 /**
  * Trait BaseMailer
  * Трейт устанавливающий свойства для отправки писем
  * @package app\modules\main\components
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-trait MailerTrait {
+trait MailerTrait
+{
 
     /**
      * @var string кому отправлять
@@ -33,9 +35,10 @@ trait MailerTrait {
      * @return string
      */
 
-    public function getSubject() {
+    public function getSubject()
+    {
 
-        if($this->subject === null) {
+        if ($this->subject === null) {
             $this->subject = Yii::t('app/main', 'Email from site');
         }
 
@@ -46,7 +49,8 @@ trait MailerTrait {
      * @param string $val устанавливает тему письма
      */
 
-    public function setSubject($val) {
+    public function setSubject($val)
+    {
         $this->subject = $val;
     }
 
@@ -55,9 +59,10 @@ trait MailerTrait {
      * @return string
      */
 
-    public function getMailTo() {
+    public function getMailTo()
+    {
 
-        if($this->_mailTo === null) {
+        if ($this->_mailTo === null) {
             $this->_mailTo = Yii::$app->params["adminEmail"];
         }
 
@@ -69,7 +74,8 @@ trait MailerTrait {
      * @param string $val
      */
 
-    public function setMailTo($val) {
+    public function setMailTo($val)
+    {
         $this->_mailTo = $val;
     }
 
@@ -78,9 +84,10 @@ trait MailerTrait {
      * @return string
      */
 
-    public function getMailFrom() {
+    public function getMailFrom()
+    {
 
-        if($this->_mailFrom === null) {
+        if ($this->_mailFrom === null) {
             $this->_mailFrom = Yii::$app->params["mailFrom"];
         }
 
@@ -92,9 +99,9 @@ trait MailerTrait {
      * @param string $val
      */
 
-    public function setMailFrom($val) {
+    public function setMailFrom($val)
+    {
         $this->_mailFrom = $val;
     }
-
 
 }

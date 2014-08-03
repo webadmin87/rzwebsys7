@@ -10,10 +10,10 @@ use yii\widgets\ActiveForm;
 ?>
 
 <?php $form = ActiveForm::begin($formOptions); ?>
-    <?= $form->field($model, 'username') ?>
-    <?= $form->field($model, 'password')->passwordInput() ?>
-    <?= $form->field($model, 'rememberMe')->checkbox() ?>
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('main/app', 'Enter'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-    </div>
+<?= $form->field($model, 'username') ?>
+<?= $form->field($model, 'password')->passwordInput() ?>
+<?= $form->field($model, 'rememberMe')->checkbox() ?>
+<div class="form-group">
+    <?= Html::submitButton(Yii::t('main/app', 'Enter'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+</div>
 <?php ActiveForm::end(); ?>

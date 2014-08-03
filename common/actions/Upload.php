@@ -5,15 +5,14 @@ use Yii;
 use yii\base\Action;
 use yii\helpers\Html;
 
-
 /**
  * Class Upload
  * Действие загрузки файлов
  * @package common\actions
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Upload extends Action {
+class Upload extends Action
+{
 
     /**
      * Загружает файлы
@@ -22,14 +21,14 @@ class Upload extends Action {
      * @return string
      */
 
-
-    public function run($model, $attr) {
+    public function run($model, $attr)
+    {
 
         $item = Yii::createObject($model);
 
         $item->validate();
 
-        if($errors = $item->getErrors($attr)) {
+        if ($errors = $item->getErrors($attr)) {
 
             $body = implode("\n", $errors);
 
@@ -49,8 +48,6 @@ class Upload extends Action {
 
         return $res;
 
-
     }
-
 
 }

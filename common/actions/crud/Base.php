@@ -3,10 +3,10 @@ namespace common\actions\crud;
 
 use Yii;
 use yii\base\Action;
-use yii\widgets\ActiveForm;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
-use yii\web\ForbiddenHttpException;
+use yii\widgets\ActiveForm;
 
 /**
  * Class Base
@@ -14,9 +14,8 @@ use yii\web\ForbiddenHttpException;
  * @package common\actions\crud
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Base extends Action {
-
+class Base extends Action
+{
 
     /**
      * @var string имя класса модели
@@ -48,7 +47,8 @@ class Base extends Action {
      * @return array
      */
 
-    protected function performAjaxValidation($model) {
+    protected function performAjaxValidation($model)
+    {
 
         Yii::$app->response->format = Response::FORMAT_JSON;
         return ActiveForm::validate($model);
@@ -74,7 +74,8 @@ class Base extends Action {
      * @return string
      */
 
-    protected function render($view, $params = []) {
+    protected function render($view, $params = [])
+    {
 
         $params = array_merge($params, $this->viewParams);
 
@@ -89,7 +90,8 @@ class Base extends Action {
      * @return string
      */
 
-    protected function renderPartial($view, $params = []) {
+    protected function renderPartial($view, $params = [])
+    {
 
         $params = array_merge($params, $this->viewParams);
 
@@ -103,13 +105,14 @@ class Base extends Action {
      * @throws \yii\web\ForbiddenHttpException
      */
 
-    protected function checkForbiddenAttrs($model) {
+    protected function checkForbiddenAttrs($model)
+    {
 
-        $attrs = Yii::$app->request->post($model->formName(),[]);
+        $attrs = Yii::$app->request->post($model->formName(), []);
 
         $perm = $model->getPermission();
 
-        if($perm AND $perm->hasForbiddenAttrs($attrs))
+        if ($perm AND $perm->hasForbiddenAttrs($attrs))
             throw new ForbiddenHttpException('Forbidden');
 
     }

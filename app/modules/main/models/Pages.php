@@ -1,8 +1,8 @@
 <?php
 namespace app\modules\main\models;
 
-use Yii;
 use common\db\TActiveRecord;
+use Yii;
 
 /**
  * Class Pages
@@ -10,8 +10,8 @@ use common\db\TActiveRecord;
  * @package app\modules\main\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-
-class Pages extends TActiveRecord {
+class Pages extends TActiveRecord
+{
 
     use \app\modules\main\components\PermissionTrait;
 
@@ -19,14 +19,16 @@ class Pages extends TActiveRecord {
      * @inheritdoc
      */
 
-    public static function tableName() {
+    public static function tableName()
+    {
         return "pages";
     }
 
     /**
      * @inheritdoc
      */
-    public function metaClass() {
+    public function metaClass()
+    {
         return meta\PagesMeta::className();
     }
 

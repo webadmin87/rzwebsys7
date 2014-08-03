@@ -8,39 +8,39 @@ namespace common\rbac;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-interface IConstraint {
+interface IConstraint
+{
 
-	/**
-	 * Устанавливает ограничение на критерий запроса
-	 * @param \common\db\ActiveQuery $query запрос
-	 * @return mixed
-	 */
+    /**
+     * Устанавливает ограничение на критерий запроса
+     * @param \common\db\ActiveQuery $query запрос
+     * @return mixed
+     */
 
-	public function applyConstraint($query);
+    public function applyConstraint($query);
 
-	/**
-	 * Проверка возможности чтения модели
-	 * @param \common\db\ActiveRecord $model
-	 * @return boolean
-	 */
+    /**
+     * Проверка возможности чтения модели
+     * @param \common\db\ActiveRecord $model
+     * @return boolean
+     */
 
-	public function read($model);
+    public function read($model);
 
-	/**
-	 * Проверка возможности изменения модели
-	 * @param \common\db\ActiveRecord $model
-	 * @return boolean
-	 */
+    /**
+     * Проверка возможности изменения модели
+     * @param \common\db\ActiveRecord $model
+     * @return boolean
+     */
 
-	public function update($model);
+    public function update($model);
 
-	/**
-	 * Проверка возможности удаления модели
-	 * @param \common\db\ActiveRecord $model
-	 * @return boolean
-	 */
+    /**
+     * Проверка возможности удаления модели
+     * @param \common\db\ActiveRecord $model
+     * @return boolean
+     */
 
-	public function delete($model);
-
+    public function delete($model);
 
 }
