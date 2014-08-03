@@ -1,3 +1,3 @@
 <div class="alert alert-info">
-    Новая версия системы управления. Уже скоро )
+    <?=Yii::t('main/app', 'Welcome to CMS! For navigate use left side menu')?>
 </div>

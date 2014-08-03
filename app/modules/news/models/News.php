@@ -82,6 +82,15 @@ class News extends ActiveRecord
     }
 
     /**
+     * @inheritdoc
+     * @return \app\modules\news\db\NewsQuery
+     */
+    public static function find()
+    {
+        return Yii::createObject(\app\modules\news\db\NewsQuery::className(), [get_called_class()]);
+    }
+
+    /**
      * Поиск новостей по категориям. Если идентификаторы категорий не заданы выбираются все элементы.
      * @param null|array $ids массив идентификаторов категорий
      * @return \yii\data\ActiveDataProvider провайдер данных
@@ -91,14 +100,7 @@ class News extends ActiveRecord
     public function searchBySection($ids = null)
     {
 
-        $table = static::tableName();
-
-        $relTable = NewsSection::tableName();
-
-        $query = static::find()->published();
-
-        if ($ids)
-            $query->joinWith('sections', true)->where(["$relTable.id" => $ids])->groupBy("$table.id");
+        $query = $this->find()->bySections($ids);
 
         $dataProvider = Yii::createObject([
             'class' => ActiveDataProvider::className(),
