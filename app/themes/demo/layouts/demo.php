@@ -53,13 +53,20 @@ AppAsset::register($this);
     <div class="row">
         <div class="col-xs-3">
 
-            <? echo \app\modules\main\widgets\menu\Menu::widget(["options" => ["class" => "nav nav-pills nav-stacked"], "parentCode" => "main"]); ?>
+            <? echo \app\modules\main\widgets\menu\Menu::widget(
+                [
+                    "options" => ["class" => "nav nav-pills nav-stacked"],
+                    "parentCode" => Yii::$app->getModule('main')->blocksProvider->getMenu('left', 'main'),
+                ]
+            ); ?>
 
             <br/>
 
             <div class="well">
                 <? echo \app\modules\main\widgets\includes\Includes::widget(
-                    ["code" => "demo",]
+                    [
+                        "code" => Yii::$app->getModule('main')->blocksProvider->getArea('left', 'demo'),
+                    ]
                 );?>
             </div>
 

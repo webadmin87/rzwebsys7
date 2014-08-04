@@ -14,6 +14,15 @@ return [
         'main' => [
             'class' => app\modules\main\Main::className(),
             'controllerNamespace' => 'app\modules\main\controllers',
+            'components' => [
+                'treeFinder' => [
+                    'class'=>\common\components\TreeFinder::className(),
+                ],
+
+                'blocksProvider' => [
+                    'class'=>\app\modules\main\components\BlocksProvider::className(),
+                ],
+            ],
             'modules' => [
                 'admin' => [
                     'class' => app\modules\main\modules\admin\Admin::className(),
