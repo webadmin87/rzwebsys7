@@ -38,6 +38,7 @@ class HtmlField extends TextAreaField
         $options = ArrayHelper::merge([
             'preset' => 'full',
             'inline' => false,
+            'allowedContent' => true,
         ], $this->editorOptions);
 
         $ckeditorOptions = ElFinder::ckeditorOptions($this->fileManagerController, $options);
