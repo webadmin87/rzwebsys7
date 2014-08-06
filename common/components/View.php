@@ -17,7 +17,34 @@ class View extends YiiView
      * @link http://www.yiiframework.com/doc-2.0/yii-widgets-breadcrumbs.html
      */
 
-    public $breadCrumbs = [];
+    protected $_breadCrumbs = [];
+
+    /**
+     * Устанавливает массив хлебных крошек
+     * @param array $breadCrumbs
+     */
+    public function setBreadCrumbs($breadCrumbs)
+    {
+        $this->_breadCrumbs = $breadCrumbs;
+    }
+
+    /**
+     * Получает массив хлебных крошек
+     * @param bool $markLast отмечать ли активный элемент (удаляется url)
+     * @return array
+     */
+    public function getBreadCrumbs($markLast = true)
+    {
+
+        $num = count($this->_breadCrumbs);
+
+        if($markLast AND $num > 0)
+            unset($this->_breadCrumbs[$num-1]["url"]);
+
+        return $this->_breadCrumbs;
+    }
+
+
 
     /**
      * Добавляет элементы к хлебным крошкам
@@ -40,7 +67,7 @@ class View extends YiiView
     public function addBreadCrumb($item)
     {
 
-       $this->addBreadCrumbs([$item]);
+        $this->addBreadCrumbs([$item]);
 
     }
 
