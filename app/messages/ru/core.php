@@ -28,4 +28,6 @@ return [
     "Search" => "Поиск",
     "Root" => "Корень",
     "Are you shure?" => "Вы уверены",
+	"Coordinates select" => "Выбор координат",
+	"Input address and press Enter" => "Введите адрес и нажмите Enter",
 ];
