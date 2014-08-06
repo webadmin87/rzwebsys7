@@ -47,9 +47,10 @@ class App extends Controller
 
         foreach ($models As $model) {
 
-            if ($model->isSuitable())
+            if ($model->isSuitable()) {
                 $this->layout = $model->code;
-
+                return;
+            }
         }
 
     }
