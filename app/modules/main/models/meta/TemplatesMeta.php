@@ -53,7 +53,7 @@ class TemplatesMeta extends MetaFields
 
             "cond" => [
                 "definition" => [
-                    "class" => \common\db\fields\CodeField::className(),
+                    "class" => \common\db\fields\TextField::className(),
                     "title" => Yii::t('main/app', 'Condition'),
                     "isRequired" => false,
                     "showInGrid" => false,

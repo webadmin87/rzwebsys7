@@ -8,6 +8,7 @@ use common\cache\TagDependency;
 use common\controllers\App;
 use common\db\ActiveRecord;
 use Yii;
+use yii\helpers\Url;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -95,8 +96,23 @@ class NewsController extends App
 
         }
 
-        if ($res["sectionModel"])
+
+        if ($res["sectionModel"]) {
             $this->view->registerMetaTags($res["sectionModel"]);
+
+            $crumbs = $res["sectionModel"]->getBreadCrumbsItems($res["sectionModel"]->id, function ($model) {
+                return ['/news/news/index', 'section' => $model->code];
+            });
+
+            $this->view->addBreadCrumbs($crumbs);
+        } else {
+            $this->view->addBreadCrumb(
+                [
+                    "label"=>Yii::t('news/app', 'News'),
+                    "url"=>Url::toRoute(["/news/news/index"])
+                ]
+            );
+        }
 
         return $this->renderHtml($res["html"]);
 
@@ -105,17 +121,31 @@ class NewsController extends App
     /**
      * Отображение детальной новости
      * @param string $code символьный идентификатор новости
+     * @param string $section символьный идентификатор категории новости
      * @return string
      * @throws \yii\web\NotFoundHttpException
      */
 
-    public function actionDetail($code)
+    public function actionDetail($code, $section)
     {
 
         $model = News::find()->published()->andWhere(["code" => $code])->one();
 
         if (!$model)
             throw new NotFoundHttpException;
+
+        $sectionModel = NewsSection::find()->published()->andWhere(["code" => $section])->one();
+
+        $this->view->addBreadCrumbs(
+            $sectionModel->getBreadCrumbsItems($sectionModel, function ($model) {
+                return ['/news/news/index', 'section' => $model->code];
+            })
+        );
+
+        $this->view->addBreadCrumb([
+            "label"=>$model->title,
+            "url"=>Url::toRoute(["/news/news/detail", "code"=>$code, "section"=>$section]),
+        ]);
 
         $this->view->registerMetaTags($model);
 

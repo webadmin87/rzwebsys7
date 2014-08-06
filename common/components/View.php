@@ -20,15 +20,27 @@ class View extends YiiView
     public $breadCrumbs = [];
 
     /**
+     * Добавляет элементы к хлебным крошкам
+     * @param array $items масив элементов хлебных крошек
+     */
+
+    public function addBreadCrumbs($items)
+    {
+
+        $this->breadCrumbs = array_merge($this->breadCrumbs, $items);
+
+    }
+
+    /**
      * Добавляет элемент к хлебным крошкам
-     * @param array $item
+     * @param array $item элемент хлебной крошки
      * @link http://www.yiiframework.com/doc-2.0/yii-widgets-breadcrumbs.html
      */
 
     public function addBreadCrumb($item)
     {
 
-        $this->breadCrumbs = array_merge($this->breadCrumbs, $item);
+       $this->addBreadCrumbs([$item]);
 
     }
 

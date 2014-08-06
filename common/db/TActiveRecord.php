@@ -173,16 +173,19 @@ abstract class TActiveRecord extends ActiveRecord
 
     /**
      * Возвращает массив для хлебных крошек
-     * @param int $id идентификатор модели до которой строить хлебные крошки
+     * @param int|TActiveRecord $modelArg модель или ее идентификатор
      * @param callable $route функция возвращающая маршрут/url. Принимает в себя параметром экземпляр модели
      * @param string $attr имя атрибута для label
      * @return array
      */
 
-    public function getBreadCrumbsItems($id, $route, $attr = "title")
+    public function getBreadCrumbsItems($modelArg, $route, $attr = "title")
     {
 
-        $model = static::find()->where(["id" => $id])->one();
+        if(is_object($modelArg))
+            $model = $modelArg;
+        else
+            $model = static::find()->where(["id" => $modelArg])->one();
 
         $models = $model->ancestors()->all();
 
