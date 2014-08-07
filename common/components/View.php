@@ -54,7 +54,7 @@ class View extends YiiView
     public function addBreadCrumbs($items)
     {
 
-        $this->breadCrumbs = array_merge($this->breadCrumbs, $items);
+        $this->breadCrumbs = array_merge($this->getBreadCrumbs(false), $items);
 
     }
 
