@@ -22,7 +22,8 @@
         "creocoder/yii2-nested-set-behavior": "*",
 		"marciocamello/yii2-x-editable": "dev-master",
 		"newerton/yii2-fancybox": "dev-master",
-		"2amigos/yii2-multi-select-widget": "*"
+		"2amigos/yii2-multi-select-widget": "*",
+		"yiisoft/yii2-apidoc": "*"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",
