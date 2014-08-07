@@ -10,7 +10,9 @@ if (!YII_ENV_TEST) {
         'class' => 'yii\gii\Module',
         'allowedIPs' => ['127.0.0.1', '192.168.56.1'],
         'generators'=>[
-
+			'appmodule'=>[
+				'class'=>\app\gii\generators\appmodule\Generator::className(),
+			],
             'crud'=>[
                 'class' => 'yii\gii\generators\crud\Generator',
                 "templates"=>[
