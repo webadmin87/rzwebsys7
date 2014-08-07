@@ -15,6 +15,11 @@ return [
             'class' => app\modules\main\Main::className(),
             'controllerNamespace' => 'app\modules\main\controllers',
             'components' => [
+
+				'config' => [
+					'class'=>\app\modules\main\components\Config::className(),
+				],
+
                 'treeFinder' => [
                     'class'=>\common\components\TreeFinder::className(),
                 ],
