@@ -72,3 +72,19 @@ RzWebSys7 - CMS на основе Yii2
 Рекомендации
 ------------
 Модули ресурсов (AssetBundle) необходимо наследовать от **\common\components\AssetBundle**
+
+Генерация документации
+----------------------
+Для генерации документации воспользуйтесь следующими командами
+
+```
+vendor/bin/apidoc api app ./docs/app
+```
+
+```
+vendor/bin/apidoc api common ./docs/common
+```
+
+```
+vendor/bin/apidoc api console ./docs/console
+```
