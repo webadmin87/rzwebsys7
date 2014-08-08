@@ -1,7 +1,6 @@
 <?php
 namespace common\db\fields;
 
-use common\db\ActiveRecord;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
@@ -41,7 +40,7 @@ class ListField extends Field
     public function form(ActiveForm $form, Array $options = [], $index = false)
     {
 
-		$options = array_merge(["class" => "form-control", "prompt"=>""], $options);
+		$options = ArrayHelper::merge(["class" => "form-control", "prompt"=>""], $this->options, $options);
 
 		$widgetOptions = ArrayHelper::merge(["data"=>$this->getDataValue(), "options"=>$options], $this->widgetOptions);
 

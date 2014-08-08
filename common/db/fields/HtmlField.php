@@ -35,15 +35,18 @@ class HtmlField extends TextAreaField
     public function form(ActiveForm $form, Array $options = [], $index = false)
     {
 
-        $options = ArrayHelper::merge([
+		$options = ArrayHelper::merge($this->options, $options);
+
+        $editorOptions = ArrayHelper::merge([
             'preset' => 'full',
             'inline' => false,
             'allowedContent' => true,
         ], $this->editorOptions);
 
-        $ckeditorOptions = ElFinder::ckeditorOptions($this->fileManagerController, $options);
+        $ckeditorOptions = ElFinder::ckeditorOptions($this->fileManagerController, $editorOptions);
 
         return $form->field($this->model, $this->getFormAttrName($index))->widget(CKEditor::className(), [
+			'options'=> $options,
             'editorOptions' => $ckeditorOptions,
         ]);;
 

@@ -2,6 +2,7 @@
 
 namespace common\db\fields;
 
+use yii\helpers\ArrayHelper;
 use common\widgets\markitup\MarkItUp;
 use Yii;
 use yii\widgets\ActiveForm;
@@ -28,7 +29,14 @@ class MarkItUpField extends TextAreaField
     public function form(ActiveForm $form, Array $options = [], $index = false)
     {
 
-        return $form->field($this->model, $this->getFormAttrName($index))->widget(MarkItUp::className(), $this->editorOptions);
+		$options = ArrayHelper::merge($this->options, $options);
+
+		if(empty($this->editorOptions["options"]))
+			$this->editorOptions["options"] = [];
+
+		$editorOptions = ArrayHelper::merge($options, $this->editorOptions);
+
+        return $form->field($this->model, $this->getFormAttrName($index))->widget(MarkItUp::className(), $editorOptions);
 
     }
 

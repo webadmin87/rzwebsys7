@@ -29,7 +29,7 @@ class YaMapField extends TextField
     public function form(ActiveForm $form, Array $options = [], $index = false)
     {
 
-		$options = array_merge(["class" => "form-control"], $options);
+		$options = ArrayHelper::merge(["class" => "form-control"], $this->options, $options);
 
 		$widgetOptions = $this->widgetOptions;
 

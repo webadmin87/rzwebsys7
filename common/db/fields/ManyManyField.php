@@ -82,12 +82,12 @@ class ManyManyField extends HasOneField
         if (empty($data))
             return false;
 
-        $options["multiple"] = true;
+		$options = ArrayHelper::merge($this->options, $options, ["multiple"=>true]);
 
         return $form->field($this->model, $this->getFormAttrName($index))->widget(\dosamigos\multiselect\MultiSelect::className(),
             [
                 "data" => $data,
-                "options" => ["multiple" => true]
+                "options" => $options,
             ]
         );
 

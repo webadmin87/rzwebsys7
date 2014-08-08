@@ -1,6 +1,7 @@
 <?php
 namespace common\db\fields;
 
+use yii\helpers\ArrayHelper;
 use Yii\widgets\ActiveForm;
 
 /**
@@ -24,6 +25,8 @@ class PasswordField extends TextField
 
     public function form(ActiveForm $form, Array $options = [], $index = false)
     {
+
+		$options = ArrayHelper::merge($this->options, $options);
 
         return $form->field($this->model, $this->getFormAttrName($index))->passwordInput($options);
 

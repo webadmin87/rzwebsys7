@@ -1,6 +1,7 @@
 <?php
 namespace common\db\fields;
 
+use yii\helpers\ArrayHelper;
 use common\db\ActiveQuery;
 use common\db\ActiveRecord;
 use Yii;
@@ -99,6 +100,11 @@ class Field extends Object
 
     public $editableAction = "editable";
 
+	/**
+	 * @var array массив html атрибут поля формы
+	 */
+	public $options = [];
+
     /**
      * @var mixed значение фильтра грида установленное
      */
@@ -122,11 +128,6 @@ class Field extends Object
 
     }
 
-    public function tableForm(ActiveForm $form, $index, Array $options = [])
-    {
-
-    }
-
     /**
      * Формирование Html кода поля для вывода в расширенном фильтре
      * @param ActiveForm $form объект форма
@@ -136,6 +137,8 @@ class Field extends Object
 
     public function extendedFilterForm(ActiveForm $form, Array $options = [])
     {
+
+		$options = ArrayHelper::merge($this->options, $options);
 
         return $this->form($form, $options);
 

@@ -1,6 +1,7 @@
 <?php
 namespace common\db\fields;
 
+use yii\helpers\ArrayHelper;
 use common\widgets\html5uploader\Widget as Html5Widget;
 use Yii;
 use Yii\widgets\ActiveForm;
@@ -65,6 +66,8 @@ class Html5FileField extends Field
 
     public function form(ActiveForm $form, Array $options = [], $index = false)
     {
+
+		$options = ArrayHelper::merge($this->options, $options);
 
         return Html5Widget::widget([
             "model" => $this->model,

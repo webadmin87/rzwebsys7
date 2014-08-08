@@ -1,6 +1,7 @@
 <?php
 namespace common\db\fields;
 
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 
 /**
@@ -33,6 +34,8 @@ class TextAreaField extends TextField
 
     public function form(ActiveForm $form, Array $options = [], $index = false)
     {
+
+		$options = ArrayHelper::merge($this->options, $options);
 
         return $form->field($this->model, $this->getFormAttrName($index))->textarea($options);
 
