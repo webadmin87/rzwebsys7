@@ -5,6 +5,12 @@ echo "<?php\n";
 ?>
 return [
 
+	'controllerMap' => [
+		'migrate' => [
+			'migrationLookup' => ['@webapp/modules/<?=$generator->moduleID?>/migrations'],
+		],
+	],
+
     'modules' => [
 
         '<?=$generator->moduleID?>' => [
