@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use yii\web\JsExpression;
 /**
  * @var \common\db\ActiveRecord $model модель
  * @var \yii\web\View $this
@@ -67,9 +67,16 @@ $this->registerJs("
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('core', 'Save'), ['class' => 'btn btn-success']) ?>
-        <?= Html::submitButton(Yii::t('core', 'Apply'), ['class' => 'btn btn-primary', 'onClick' => '$("input[name=\'apply\']").val(1)']) ?>
-        <?= Html::submitButton(Yii::t('core', 'Cancel'), ['class' => 'btn btn-default', 'onClick' => "window.location.href='$returnUrl'"]) ?>
+        <?= Html::submitButton(Yii::t('core', 'Apply'), ['class' => 'btn btn-primary form-apply']) ?>
+        <?= Html::button(Yii::t('core', 'Cancel'), ['class' => 'btn btn-default form-cancel']) ?>
 
     </div>
+
+<?php
+$this->registerJs("
+	$('.form-apply').on('click', function(e){ $(\"input[name='apply']\").val(1);});
+	$('.form-cancel').on('click', function(e){ e.preventDefault(); window.location.href='$returnUrl'; });
+");
+?>
 
 <? ActiveForm::end(); ?>

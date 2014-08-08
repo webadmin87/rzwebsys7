@@ -45,27 +45,28 @@ class TCreate extends Create
 
         $request = Yii::$app->request;
 
-        $parentModel = $class::find()->where(["id" => $model->parent_id])->one();
+		$model->attributes = $this->defaultAttrs;
 
-        if (!$parentModel)
-            throw new BadRequestHttpException('Bad Request');
+		$load = $model->load($request->post());
 
-        if ($parentModel->id != TActiveRecord::ROOT_ID AND !empty($this->extendedAttrs)) {
+        $parentModel = $class::find()->where(["id" => (int) $model->parent_id])->one();
 
-            foreach ($this->extendedAttrs AS $attr)
-                $model->$attr = $parentModel->$attr;
+        if ($parentModel AND $parentModel->id != TActiveRecord::ROOT_ID AND !empty($this->extendedAttrs)) {
+
+            foreach ($this->extendedAttrs AS $attr) {
+
+				if(empty($model->attr))
+					$model->$attr = $parentModel->$attr;
+
+			}
 
         }
-
-        $model->attributes = $this->defaultAttrs;
-
-        $load = $model->load($request->post());
 
         if ($load && $request->post($this->validateParam)) {
             return $this->performAjaxValidation($model);
         }
 
-        if ($load && $model->appendTo($parentModel)) {
+        if ($load && $model->validate() && $parentModel && $model->appendTo($parentModel)) {
 
             $returnUrl = $request->post($this->redirectParam);
 

@@ -20,6 +20,8 @@ class TUpdate extends Update
     public function run($id)
     {
 
+		$class = $this->modelClass;
+
         $model = $this->findModel($id);
 
         if (!Yii::$app->user->can('updateModel', array("model" => $model)))
@@ -37,15 +39,15 @@ class TUpdate extends Update
 
         $load = $model->load(Yii::$app->request->post());
 
-        if ($parentModel->id != $model->parent_id) {
-            $parentModel = $this->findModel($model->parent_id);
-        } else {
-            $parentModel = null;
-        }
-
         if ($load && $request->post($this->validateParam)) {
             return $this->performAjaxValidation($model);
         }
+
+		if ($parentModel->id != (int) $model->parent_id) {
+			$parentModel = $class::find()->where(["id" => (int) $model->parent_id])->one();
+		} else {
+			$parentModel = null;
+		}
 
         if ($load && $parentModel)
             $res = $model->moveAsFirst($parentModel);

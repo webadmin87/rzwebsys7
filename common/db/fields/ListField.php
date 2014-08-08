@@ -1,11 +1,13 @@
 <?php
 namespace common\db\fields;
 
+use common\db\ActiveRecord;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class ListField
- * Списочное поле модели
+ * Списочное поле модели. Поддерживает возможность создания зависимых списков.
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
@@ -15,8 +17,17 @@ class ListField extends Field
     /**
      * @var callable функция возвращающая данные для заполнения списка
      */
-
     public $data;
+
+	/**
+	 * @var bool значения выпадающего списка - числовые
+	 */
+	public $numeric = false;
+
+	/**
+	 * @var array настройки виджета \common\widgets\DependDropDown
+	 */
+	public $widgetOptions = [];
 
     /**
      * @var array данные для заполнения списка (key=>value)
@@ -30,10 +41,11 @@ class ListField extends Field
     public function form(ActiveForm $form, Array $options = [], $index = false)
     {
 
-        if (!isset($options['prompt']))
-            $options['prompt'] = '';
+		$options = array_merge(["class" => "form-control", "prompt"=>""], $options);
 
-        return $form->field($this->model, $this->getFormAttrName($index))->dropDownList($this->getDataValue(), $options);
+		$widgetOptions = ArrayHelper::merge(["data"=>$this->getDataValue(), "options"=>$options], $this->widgetOptions);
+
+		return $form->field($this->model, $this->getFormAttrName($index))->widget(\common\widgets\DependDropDown::className(), $widgetOptions);
 
     }
 
@@ -98,5 +110,24 @@ class ListField extends Field
         return $this->getDataValue();
 
     }
+
+	/**
+	 * @inheritdoc
+	 */
+
+	public function rules()
+	{
+		$rules = parent::rules();
+
+		if($this->numeric) {
+
+			$rules[] = [$this->attr, 'default', 'value'=>0];
+
+		}
+
+		return $rules;
+
+	}
+
 
 }
