@@ -35,77 +35,76 @@ use common\actions\crud;
 class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->baseControllerClass) . "\n" ?>
 {
 
-/**
-* @var string идентификатор файла перевода
-*/
+    /**
+    * @var string идентификатор файла перевода
+    */
+    public $tFile = "moduleCode/app";
 
-public $tFile = "moduleCode/app";
+    /**
+    * Поведения
+    * @return array
+    */
+    public function behaviors()
+    {
+        $beh = parent::behaviors();
 
-/**
-* Поведения
-* @return array
-*/
+        $beh['verbs'] = [
+            'class' => VerbFilter::className(),
+            'actions' => [
+                'delete' => ['post'],
+                'groupdelete' => ['post'],
+            ],
+        ];
 
-public function behaviors()
-{
-$beh = parent::behaviors();
+        return $beh;
+    }
 
-$beh['verbs'] = [
-'class' => VerbFilter::className(),
-'actions' => [
-'delete' => ['post'],
-'groupdelete' => ['post'],
-],
-];
+    /**
+    * Действия
+    * @return array
+    */
+    public function actions()
+    {
 
-return $beh;
-}
+        $class = <?= $modelClass ?>::className();
 
-/**
-* Действия
-* @return array
-*/
-public function actions() {
+        return [
 
-$class = <?= $modelClass ?>::className();
+            'index'=>[
+                'class'=>crud\Admin::className(),
+                'modelClass'=>$class,
+            ],
+            'create'=>[
+                'class'=>crud\Create::className(),
+                'modelClass'=>$class,
+            ],
+            'update'=>[
+                'class'=>crud\Update::className(),
+                'modelClass'=>$class,
+            ],
 
-return [
+            'view'=>[
+                'class'=>crud\View::className(),
+                'modelClass'=>$class,
+            ],
 
-'index'=>[
-'class'=>crud\Admin::className(),
-'modelClass'=>$class,
-],
-'create'=>[
-'class'=>crud\Create::className(),
-'modelClass'=>$class,
-],
-'update'=>[
-'class'=>crud\Update::className(),
-'modelClass'=>$class,
-],
+            'delete'=>[
+                'class'=>crud\Delete::className(),
+                'modelClass'=>$class,
+            ],
 
-'view'=>[
-'class'=>crud\View::className(),
-'modelClass'=>$class,
-],
+            'groupdelete'=>[
+                'class'=>crud\GroupDelete::className(),
+                'modelClass'=>$class,
+            ],
 
-'delete'=>[
-'class'=>crud\Delete::className(),
-'modelClass'=>$class,
-],
+            'editable'=>[
+                'class'=>crud\XEditable::className(),
+                'modelClass'=>$class,
+            ],
 
-'groupdelete'=>[
-'class'=>crud\GroupDelete::className(),
-'modelClass'=>$class,
-],
+        ];
 
-'editable'=>[
-'class'=>crud\XEditable::className(),
-'modelClass'=>$class,
-],
-
-];
-
-}
+    }
 
 }
