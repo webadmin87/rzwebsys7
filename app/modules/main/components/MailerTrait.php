@@ -28,7 +28,7 @@ trait MailerTrait
      * @var string тема письма
      */
 
-    protected $subject;
+    protected $_subject;
 
     /**
      * Возвращает тему письма
@@ -38,11 +38,11 @@ trait MailerTrait
     public function getSubject()
     {
 
-        if ($this->subject === null) {
-            $this->subject = Yii::t('app/main', 'Email from site');
+        if ($this->_subject === null) {
+            $this->_subject = Yii::t('app/main', 'Email from site');
         }
 
-        return $this->subject;
+        return $this->_subject;
     }
 
     /**
@@ -51,7 +51,7 @@ trait MailerTrait
 
     public function setSubject($val)
     {
-        $this->subject = $val;
+        $this->_subject = $val;
     }
 
     /**
