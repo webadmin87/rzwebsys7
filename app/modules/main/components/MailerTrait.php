@@ -39,7 +39,7 @@ trait MailerTrait
     {
 
         if ($this->_subject === null) {
-            $this->_subject = Yii::t('app/main', 'Email from site');
+            $this->_subject = Yii::t('main/app', 'Email from site');
         }
 
         return $this->_subject;
