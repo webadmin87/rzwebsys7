@@ -72,5 +72,6 @@ return [
     "Value" => "Значение",
     "Config" => "Настройки",
     "Feedback" => "Обратная связь",
+    "Email from site"=>"Сообщение с сайта",
     "Welcome to CMS! For navigate use left side menu" => "Добро пожаловать в систему управления! Для навигации используйте меню в левой колонке",
 ];
