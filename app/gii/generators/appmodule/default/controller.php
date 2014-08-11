@@ -13,7 +13,7 @@ namespace <?= $generator->getControllerNamespace() ?>;
 
 use common\controllers\App;
 
-class DefaultController extends Controller
+class DefaultController extends App
 {
     public function actionIndex()
     {
