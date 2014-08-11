@@ -129,7 +129,7 @@ class Html5FileField extends Field
     protected function renderFilesGridView($files)
     {
 
-        return $this->renderFilesGridView($files);
+        return $this->renderFilesView($files);
 
     }
 
@@ -141,9 +141,13 @@ class Html5FileField extends Field
 
         $view = parent::view();
 
-        $view["value"] = $this->renderFilesView($this->model->{$this->attr});
+		if (is_array($this->model->{$this->attr})) {
 
-        $view["format"] = "html";
+			$view["value"] = $this->renderFilesView($this->model->{$this->attr});
+
+			$view["format"] = "html";
+
+		}
 
         return $view;
 
