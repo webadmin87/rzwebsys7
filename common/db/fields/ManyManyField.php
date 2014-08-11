@@ -70,6 +70,16 @@ class ManyManyField extends HasOneField
 
     }
 
+	/**
+	 * @inheritdoc
+	 */
+	public function extendedFilterForm(ActiveForm $form, Array $options = [])
+	{
+
+		return $this->form($form, $options);
+
+	}
+
     /**
      * @inheritdoc
      */

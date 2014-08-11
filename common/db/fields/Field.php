@@ -138,8 +138,6 @@ class Field extends Object
     public function extendedFilterForm(ActiveForm $form, Array $options = [])
     {
 
-		$options = ArrayHelper::merge($this->options, $options);
-
         return $this->form($form, $options);
 
     }
@@ -154,6 +152,8 @@ class Field extends Object
 
     public function form(ActiveForm $form, Array $options = [], $index = false)
     {
+
+		$options = ArrayHelper::merge($this->options, $options);
 
         return $form->field($this->model, $this->getFormAttrName($index))->textInput($options);
 
