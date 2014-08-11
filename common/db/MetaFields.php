@@ -122,6 +122,7 @@ abstract class MetaFields extends Object
                 'definition' => [
                     "class" => fields\TimestampField::className(),
                     "title" => Yii::t('core', 'Created'),
+					"showInExtendedFilter"=>false,
                 ],
                 "params" => [$this->owner, "created_at"]
             ],
@@ -130,6 +131,7 @@ abstract class MetaFields extends Object
                 'definition' => [
                     "class" => fields\TimestampField::className(),
                     "title" => Yii::t('core', 'Updated'),
+					"showInExtendedFilter"=>false,
                 ],
                 "params" => [$this->owner, "updated_at"]
             ],

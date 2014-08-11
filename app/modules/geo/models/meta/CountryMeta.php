@@ -13,25 +13,25 @@ use common\db\MetaFields;
  */
 class CountryMeta extends MetaFields
 {
-    /**
-     * @inheritdoc
-     */
+	/**
+	 * @inheritdoc
+	 */
 
-    protected function config()
-    {
-        return [
+	protected function config()
+	{
+		return [
 
-            "title" => [
-                "definition" => [
-                    "class" => \common\db\fields\TextField::className(),
-                    "title" => Yii::t('geo/app', 'Title'),
-                    "isRequired" => true,
-                    "editInGrid" => true,
-                ],
-                "params" => [$this->owner, "title"]
-            ],
+			"title" => [
+				"definition" => [
+					"class" => \common\db\fields\TextField::className(),
+					"title" => Yii::t('geo/app', 'Title'),
+					"isRequired" => true,
+					"editInGrid" => true,
+				],
+				"params" => [$this->owner, "title"]
+			],
 
-        ];
-    }
+		];
+	}
 
 }

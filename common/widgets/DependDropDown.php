@@ -86,7 +86,7 @@ class DependDropDown extends InputWidget
 					return;
 				}
 
-				inp.attr('disabled', false);
+				inp.attr('disabled', false),
 
 				$.get('$url', {'{$this->serverAttr}': val}, function(data){
 
@@ -97,7 +97,7 @@ class DependDropDown extends InputWidget
 
 			});
 
-		");
+		", \yii\web\View::POS_END);
 
 		if($this->triggerChange) {
 
@@ -105,7 +105,7 @@ class DependDropDown extends InputWidget
 
 				$('#{$this->options["id"]}').trigger('change');
 
-			");
+			", \yii\web\View::POS_READY);
 
 		}
 

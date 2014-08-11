@@ -13,32 +13,33 @@ use common\db\ActiveRecord;
 class Np extends ActiveRecord
 {
 
-    use \app\modules\main\components\PermissionTrait;
+	use \app\modules\main\components\PermissionTrait;
 
 	/**
-     * @inheritdoc
-     */
+	 * @inheritdoc
+	 */
 
-    public static function tableName()
-    {
-        return "geo_np";
-    }
+	public static function tableName()
+	{
+		return "geo_np";
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function metaClass()
-    {
-        return meta\NpMeta::className();
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function metaClass()
+	{
+		return meta\NpMeta::className();
+	}
 
 	/**
 	 * Связь с районом
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getRajon() {
+	public function getRajon()
+	{
 
-		return $this->hasOne(Rajon::className(), ["id"=>"rajon_id"]);
+		return $this->hasOne(Rajon::className(), ["id" => "rajon_id"]);
 
 	}
 

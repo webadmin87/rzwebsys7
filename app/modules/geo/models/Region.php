@@ -13,32 +13,33 @@ use common\db\ActiveRecord;
 class Region extends ActiveRecord
 {
 
-    use \app\modules\main\components\PermissionTrait;
+	use \app\modules\main\components\PermissionTrait;
 
 	/**
-     * @inheritdoc
-     */
+	 * @inheritdoc
+	 */
 
-    public static function tableName()
-    {
-        return "geo_region";
-    }
+	public static function tableName()
+	{
+		return "geo_region";
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function metaClass()
-    {
-        return meta\RegionMeta::className();
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function metaClass()
+	{
+		return meta\RegionMeta::className();
+	}
 
 	/**
 	 * Связь с районами
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getRajons() {
+	public function getRajons()
+	{
 
-		return $this->hasMany(Rajon::className(), ["region_id"=>"id"])->published();
+		return $this->hasMany(Rajon::className(), ["region_id" => "id"])->published();
 
 	}
 
@@ -46,9 +47,10 @@ class Region extends ActiveRecord
 	 * Связь со страной
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getCountry() {
+	public function getCountry()
+	{
 
-		return $this->hasOne(Country::className(), ["id"=>"country_id"]);
+		return $this->hasOne(Country::className(), ["id" => "country_id"]);
 
 	}
 

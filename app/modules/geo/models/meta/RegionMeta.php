@@ -13,13 +13,13 @@ use common\db\MetaFields;
  */
 class RegionMeta extends MetaFields
 {
-    /**
-     * @inheritdoc
-     */
+	/**
+	 * @inheritdoc
+	 */
 
-    protected function config()
-    {
-        return [
+	protected function config()
+	{
+		return [
 
 			"country_id" => [
 				"definition" => [
@@ -39,15 +39,15 @@ class RegionMeta extends MetaFields
 				"params" => [$this->owner, "clean_title"]
 			],
 
-            "title" => [
-                "definition" => [
-                    "class" => \common\db\fields\TextField::className(),
-                    "title" => Yii::t('geo/app', 'Title'),
-                    "isRequired" => true,
-                    "editInGrid" => true,
-                ],
-                "params" => [$this->owner, "title"]
-            ],
+			"title" => [
+				"definition" => [
+					"class" => \common\db\fields\TextField::className(),
+					"title" => Yii::t('geo/app', 'Title'),
+					"isRequired" => true,
+					"editInGrid" => true,
+				],
+				"params" => [$this->owner, "title"]
+			],
 
 			"title2" => [
 				"definition" => [
@@ -86,6 +86,6 @@ class RegionMeta extends MetaFields
 			],
 
 		];
-    }
+	}
 
 }

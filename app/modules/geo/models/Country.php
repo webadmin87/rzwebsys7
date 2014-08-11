@@ -12,32 +12,33 @@ use common\db\ActiveRecord;
 class Country extends ActiveRecord
 {
 
-    use \app\modules\main\components\PermissionTrait;
+	use \app\modules\main\components\PermissionTrait;
 
 	/**
-     * @inheritdoc
-     */
+	 * @inheritdoc
+	 */
 
-    public static function tableName()
-    {
-        return "geo_countrys";
-    }
+	public static function tableName()
+	{
+		return "geo_countrys";
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function metaClass()
-    {
-        return meta\CountryMeta::className();
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function metaClass()
+	{
+		return meta\CountryMeta::className();
+	}
 
 	/**
 	 * Связь с регионами
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getRegions() {
+	public function getRegions()
+	{
 
-		return $this->hasMany(Region::className(), ["country_id"=>"id"])->published();
+		return $this->hasMany(Region::className(), ["country_id" => "id"])->published();
 
 	}
 

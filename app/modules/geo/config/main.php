@@ -7,35 +7,35 @@ return [
 		],
 	],
 
-    'modules' => [
+	'modules' => [
 
-        'geo' => [
-            'class' => 'app\modules\geo\Geo',
-            'controllerNamespace' => 'app\modules\geo\controllers',
-        ],
+		'geo' => [
+			'class' => 'app\modules\geo\Geo',
+			'controllerNamespace' => 'app\modules\geo\controllers',
+		],
 
-    ],
+	],
 
-    'components' => [
+	'components' => [
 
-        'i18n' => [
+		'i18n' => [
 
-            'translations' => [
+			'translations' => [
 
-                'geo/*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@webapp/modules/geo/messages',
-                    'fileMap' => [
-                        'geo/app' => 'app.php',
-                    ],
+				'geo/*' => [
+					'class' => 'yii\i18n\PhpMessageSource',
+					'basePath' => '@webapp/modules/geo/messages',
+					'fileMap' => [
+						'geo/app' => 'app.php',
+					],
 
-                ],
+				],
 
-            ],
+			],
 
-        ],
+		],
 
 
-    ],
+	],
 
 ];

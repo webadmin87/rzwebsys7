@@ -25,17 +25,17 @@ class ListController extends Controller
 	 * @throws \yii\base\ExitException
 	 */
 	public function actionRegions($id)
-    {
+	{
 
-		$all = Region::find()->published()->where(["country_id"=>$id])->orderBy(["title"=>SORT_ASC])->all();
+		$all = Region::find()->published()->where(["country_id" => $id])->orderBy(["title" => SORT_ASC])->all();
 
-		$o = ["prompt"=>""];
+		$o = ["prompt" => ""];
 
 		echo Html::renderSelectOptions(null, ArrayHelper::map($all, "id", "title"), $o);
 
 		Yii::$app->end();
 
-    }
+	}
 
 	/**
 	 * Рендерит html районов для dropdown
@@ -45,9 +45,9 @@ class ListController extends Controller
 	public function actionRajons($id)
 	{
 
-		$all = Rajon::find()->published()->where(["region_id"=>$id])->orderBy(["title"=>SORT_ASC])->all();
+		$all = Rajon::find()->published()->where(["region_id" => $id])->orderBy(["title" => SORT_ASC])->all();
 
-		$o = ["prompt"=>""];
+		$o = ["prompt" => ""];
 
 		echo Html::renderSelectOptions(null, ArrayHelper::map($all, "id", "title"), $o);
 
@@ -63,9 +63,9 @@ class ListController extends Controller
 	public function actionNps($id)
 	{
 
-		$all = Np::find()->published()->where(["rajon_id"=>$id])->orderBy(["title"=>SORT_ASC])->all();
+		$all = Np::find()->published()->where(["rajon_id" => $id])->orderBy(["title" => SORT_ASC])->all();
 
-		$o = ["prompt"=>""];
+		$o = ["prompt" => ""];
 
 		echo Html::renderSelectOptions(null, ArrayHelper::map($all, "id", "title"), $o);
 
