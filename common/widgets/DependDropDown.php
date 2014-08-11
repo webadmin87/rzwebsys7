@@ -75,18 +75,23 @@ class DependDropDown extends InputWidget
 			$('#{$this->options["id"]}').on('change', function(){
 
 				var val = $(this).val();
+				$(this).prev().val(val);
 				var inp = $('$dependSelector');
+				var hidden = inp.prev();
 
 				if(!val) {
 					inp.html('');
-					inp.trigger('change');
+					hidden.val('');
+					inp.trigger('change').attr('disabled', true);
 					return;
 				}
+
+				inp.attr('disabled', false);
 
 				$.get('$url', {'{$this->serverAttr}': val}, function(data){
 
 					inp.html(data);
-					inp.val(inp.prev().val()).trigger('change');
+					inp.val(hidden.val()).trigger('change');
 
 				});
 
