@@ -3,6 +3,7 @@
 namespace common\widgets\html5uploader;
 
 use yii\helpers\Html;
+use yii\helpers\Json;
 use yii\widgets\InputWidget;
 
 /**
@@ -17,33 +18,36 @@ class Widget extends InputWidget
     /**
      * @var string шаблон
      */
-
     public $tpl = "uploader";
-    /**
+
+	/**
      * @var string алиас DOCUMENT ROOT
      */
-
     public $webroot = "@webroot";
-    /**
+
+	/**
      * @var string url для загрузки файлов
      */
-
     public $uploadUrl;
+
     /**
      * @var int максимальный размер загружаемого файла
      */
-
     public $maxFileSize;
-    /**
+
+	/**
+	 * @var array расширения доступные для загрузки
+	 */
+	public $allowedExt = ["jpg", "jpeg", "gif", "png", "pdf", "doc", "docx", "xsl", "xslx", "odt", "ppt", "zip", "rar", "gz", "tar", "swf", "csv"];
+
+	/**
      * @var \yii\web\AssetBundle класса бандла ресурсов
      */
-
     protected $assetClass;
 
     /**
      * @inheritdoc
      */
-
     public function init()
     {
 
@@ -98,9 +102,14 @@ class Widget extends InputWidget
 
         // @TOFIX сделать ограничение на загружаемые расширения
 
-        $this->view->registerJs("
+		$params = [
+			'uploadUrl' => $this->uploadUrl,
+			'maxFileSize' => $this->maxFileSize,
+			'allowedExt' => $this->allowedExt,
+		];
 
-            $('#{$this->id}').html5Uploader({uploadUrl: '{$this->uploadUrl}', maxFileSize: '{$this->maxFileSize}'});
+        $this->view->registerJs("
+            $('#{$this->id}').html5Uploader(".Json::encode($params).");
 
             $('.uploader-widget-files-list').sortable({
                 update: function( event, ui ) {
@@ -108,25 +117,18 @@ class Widget extends InputWidget
                     ui.item.parents('ul').find('li').each(function(){
 
                         var li = $(this);
-
                         var i = li.index();
-
 
                         li.find('input').each(function(){
 
                             var name = $(this).attr('name');
-
                             name = name.replace(/\\[\\d+\\]/, '['+i+']');
-
                             $(this).attr('name', name);
 
                         });
-
                     });
-
                 }
             });
-
         ");
 
     }

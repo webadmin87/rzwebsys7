@@ -137,7 +137,7 @@
     /**
      * Виджет html5 загрузки файлов
      * @param input jQuery обертка инпута с файлом
-     * @param params объект параметров {uploadUrl: ''}
+     * @param params объект параметров {uploadUrl: '/upload.php', maxFileSize: 2, allowedExt: ["jpg", "jpeg", "gif"]}
      */
 
 

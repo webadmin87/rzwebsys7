@@ -17,43 +17,41 @@ class Html5ImageField extends Html5FileField
     /**
      * Размер по умолчанию для превью изображений в гриде и при детальном просмотре
      */
-
     const DEFAULT_SIZE = 120;
 
     /**
      * @var int ширина изображения при детальном просмотре
      */
-
     public $viewWidth = self::DEFAULT_SIZE;
 
     /**
      * @var int высота изображения при детальном просмотре
      */
-
     public $viewHeight = self::DEFAULT_SIZE;
 
     /**
      * @var int ширина изображения в гриде
      */
-
     public $gridWidth = self::DEFAULT_SIZE;
 
     /**
      * @var int высота изображения в гриде
      */
-
     public $gridHeight = self::DEFAULT_SIZE;
+
+	/**
+	 * @var array массив расширений доступных к загрузке
+	 */
+	public $allowedExt = ["jpg", "jpeg", "gif", "png"];
 
     /**
      * @var array html атрибуты превью изображений
      */
-
     public $imageOptions = [];
 
     /**
      * @inheritdoc
      */
-
     protected function renderFilesView($files)
     {
 
@@ -78,7 +76,6 @@ class Html5ImageField extends Html5FileField
      * @param int $height высота изображения
      * @return string
      */
-
     protected function renderImageTag($path, $width, $height)
     {
 
@@ -97,7 +94,6 @@ class Html5ImageField extends Html5FileField
     /**
      * @inheritdoc
      */
-
     protected function renderFilesGridView($files)
     {
 

@@ -18,28 +18,36 @@ class Html5FileField extends Field
     /**
      * Преффикс поведений
      */
-
     const BEHAVIOR_PREF = "file";
+
     /**
      * @inheritdoc
      */
-
     public $showInExtendedFilter = false;
+
     /**
      * @var string маршруд для загрузки файлов
      */
-
     public $route = "main/admin/upload";
+
     /**
      * @var string алиас DOCUMENT ROOT
      */
-
     public $webroot = "@webroot";
+
+	/**
+	 * @var array массив расширений доступных к загрузке
+	 */
+	public $allowedExt;
+
+	/**
+	 * @var array параметры виджета
+	 */
+	public $widgetOptions = [];
 
     /**
      * @inheritdoc
      */
-
     public function behaviors()
     {
 
@@ -69,13 +77,18 @@ class Html5FileField extends Field
 
 		$options = ArrayHelper::merge($this->options, $options);
 
-        return Html5Widget::widget([
-            "model" => $this->model,
-            "attribute" => $this->getFormAttrName($index),
-            "maxFileSize" => $this->model->getMaxFileSize(),
-            "options" => $options,
-            "uploadUrl" => Yii::$app->urlManager->createUrl([$this->route, "model" => get_class($this->model), "attr" => $this->attr]),
-        ]);
+		$default = [
+			"maxFileSize" => $this->model->getMaxFileSize(),
+			"options" => $options,
+			"uploadUrl" => Yii::$app->urlManager->createUrl([$this->route, "model" => get_class($this->model), "attr" => $this->attr]),
+		];
+
+		if($this->allowedExt)
+			$default["allowedExt"] = $this->allowedExt;
+
+		$widgetOptions = ArrayHelper::merge($default, $this->widgetOptions);
+
+        return $form->field($this->model, $this->getFormAttrName($index))->widget(Html5Widget::className(), $widgetOptions);
 
     }
 
