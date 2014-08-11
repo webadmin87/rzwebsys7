@@ -79,6 +79,7 @@ class DependDropDown extends InputWidget
 
 				if(!val) {
 					inp.html('');
+					inp.trigger('change');
 					return;
 				}
 
