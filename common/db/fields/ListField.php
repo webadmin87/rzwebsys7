@@ -31,7 +31,7 @@ class ListField extends Field
     /**
      * @var array данные для заполнения списка (key=>value)
      */
-    protected $dataValue;
+    protected $_dataValue;
 
     /**
      * @inheritdoc
@@ -56,15 +56,15 @@ class ListField extends Field
     public function getDataValue()
     {
 
-        if ($this->dataValue === null) {
+        if ($this->_dataValue === null) {
 
             $func = $this->data;
 
-            $this->dataValue = is_callable($func) ? call_user_func($func) : [];
+            $this->_dataValue = is_callable($func) ? call_user_func($func) : [];
 
         }
 
-        return $this->dataValue;
+        return $this->_dataValue;
     }
 
     /**
@@ -111,6 +111,38 @@ class ListField extends Field
 		}
 
 		return $rules;
+
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function grid()
+	{
+
+		$grid = parent::grid();
+
+		$grid["value"] = function ($model, $index, $widget) {
+
+			return ArrayHelper::getValue($this->getDataValue(), $model->{$this->attr});
+
+		};
+
+		return $grid;
+
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function view()
+	{
+
+		$view = parent::view();
+
+		$view["value"] = ArrayHelper::getValue($this->getDataValue(), $this->model->{$this->attr});
+
+		return $view;
 
 	}
 
