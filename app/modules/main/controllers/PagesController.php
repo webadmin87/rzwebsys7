@@ -34,7 +34,7 @@ class PagesController extends App
 
         if ($model->code != self::INDEX_CODE)
             $this->view->breadCrumbs = $model->getBreadCrumbsItems($model->id, function ($model) {
-                return ['/main/pages/index', 'code' => $model->code];
+                return ['/main/pages/index', 'model' => $model];
             });
 
         $this->view->registerMetaTags($model);
