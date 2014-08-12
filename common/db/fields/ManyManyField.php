@@ -21,7 +21,7 @@ class ManyManyField extends HasOneField
     public function grid()
     {
 
-        $grid = parent::grid();
+        $grid = $this->defaultGrid();
 
         $grid["value"] = function ($model, $index, $widget) {
 
@@ -62,7 +62,7 @@ class ManyManyField extends HasOneField
     public function view()
     {
 
-        $view = parent::view();
+        $view = $this->defaultView();
 
         $view["value"] = $this->getStringValue($this->model);
 

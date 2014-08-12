@@ -172,6 +172,27 @@ class Field extends Object
 
     }
 
+	/**
+	 * Конфигурация грида по умолчанию
+	 * @return array
+	 */
+	protected function defaultGrid() {
+
+		$grid = ['attribute' => $this->attr];
+
+		if ($this->showInFilter)
+			$grid['filter'] = $this->getGridFilter();
+
+		if ($this->editInGrid) {
+
+			$grid = array_merge($grid, $this->xEditable());
+
+		}
+
+		return $grid;
+
+	}
+
     /**
      * Конфигурация поля для грида (GridView)
      * @return array
@@ -179,18 +200,7 @@ class Field extends Object
     public function grid()
     {
 
-        $grid = ['attribute' => $this->attr];
-
-        if ($this->showInFilter)
-            $grid['filter'] = $this->getGridFilter();
-
-        if ($this->editInGrid) {
-
-            $grid = array_merge($grid, $this->xEditable());
-
-        }
-
-        return $grid;
+    	return $this->defaultGrid();
 
     }
 
@@ -257,6 +267,18 @@ class Field extends Object
 
     }
 
+	/**
+	 * Конфигурация детального просмотра по умолчанию
+	 * @return array
+	 */
+	protected function defaultView() {
+
+		$view = ['attribute' => $this->attr];
+
+		return $view;
+
+	}
+
     /**
      * Конфигурация полядля детального просмотра
      * @return array
@@ -264,9 +286,7 @@ class Field extends Object
     public function view()
     {
 
-        $view = ['attribute' => $this->attr];
-
-        return $view;
+        return $this->defaultView();
 
     }
 

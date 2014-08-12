@@ -120,11 +120,16 @@ class ListField extends Field
 	public function grid()
 	{
 
-		$grid = parent::grid();
+		$grid = $this->defaultGrid();
 
 		$grid["value"] = function ($model, $index, $widget) {
 
-			return ArrayHelper::getValue($this->getDataValue(), $model->{$this->attr});
+			$value = $model->{$this->attr};
+
+			if(is_string($value) OR is_int($value))
+				return ArrayHelper::getValue($this->getDataValue(), $value, $value);
+			else
+				return $value;
 
 		};
 
@@ -138,9 +143,12 @@ class ListField extends Field
 	public function view()
 	{
 
-		$view = parent::view();
+		$view = $this->defaultView();
 
-		$view["value"] = ArrayHelper::getValue($this->getDataValue(), $this->model->{$this->attr});
+		$value = $this->model->{$this->attr};
+
+		if(is_string($value) OR is_int($value))
+			$view["value"] = ArrayHelper::getValue($this->getDataValue(), $value, $value);
 
 		return $view;
 
