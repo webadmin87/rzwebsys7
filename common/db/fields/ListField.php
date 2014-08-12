@@ -71,20 +71,6 @@ class ListField extends Field
      * @inheritdoc
      */
 
-    public function extendedFilterForm(ActiveForm $form, Array $options = [])
-    {
-
-        if (!isset($options['prompt']))
-            $options['prompt'] = '';
-
-        return parent::extendedFilterForm($form, $options);
-
-    }
-
-    /**
-     * @inheritdoc
-     */
-
     public function xEditable()
     {
 
