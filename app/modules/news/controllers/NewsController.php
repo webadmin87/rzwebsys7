@@ -88,6 +88,8 @@ class NewsController extends App
 
             $dataProvider->getPagination()->pageSize = $this->pageSize;
 
+			$dependency->addTag($model->setClassTag());
+
             $dependency->setTagsFromModels($dataProvider->getModels());
 
             $res["html"] = $this->renderPartial('index', ["dataProvider" => $dataProvider, "sectionModel" => $res["sectionModel"], "previewImageWidth" => $this->previewImageWidth]);

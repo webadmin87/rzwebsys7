@@ -281,4 +281,22 @@ abstract class ActiveRecord extends YiiRecord
 
     }
 
+	/**
+	 * Изменилась ли активность модели
+	 * @return bool
+	 */
+	public function hasChangeActive() {
+
+		$oldArr = $this->oldAttributes;
+
+		$new = (int) $this->active;
+
+		$old = (int) $oldArr["active"];
+
+		if($new != $old)
+			return true;
+
+		return false;
+	}
+
 }

@@ -20,7 +20,11 @@ class ActiveQuery extends YiiQuery
 
     public function published($state = true)
     {
-        $this->andWhere(['active' => $state]);
+		$class = $this->modelClass;
+
+		$table = $class::tableName();
+
+        $this->andWhere(["{{%$table}}.{{%active}}" => $state]);
         return $this;
     }
 

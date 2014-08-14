@@ -74,8 +74,6 @@ class TagDependency extends Dependency
 
         }
 
-        if (!empty($model))
-            $this->addTag($model->setClassTag());
 
     }
 

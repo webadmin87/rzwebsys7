@@ -9,10 +9,16 @@ use yii\db\ActiveRecord;
  * Class TagCache
  * Поведение тегированного кеширования
  * @package common\behaviors
+ * @property \common\db\ActiveRecord $owner
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 class TagCache extends Behavior
 {
+
+	/**
+	 * @var string атрибут хранящий признак активности элемента
+	 */
+	public $activeAttribute = "active";
 
     const PREFFIX = "tag_cache_";
 
@@ -20,10 +26,15 @@ class TagCache extends Behavior
      * Вызывается после изменения модели
      */
 
-    public function afterUpdate()
+    public function beforeUpdate()
     {
 
         $this->setItemTag();
+
+		if($this->owner->hasChangeActive())
+		{
+			$this->setClassTag();
+		}
 
     }
 
@@ -103,7 +114,7 @@ class TagCache extends Behavior
 
         return [
 
-            ActiveRecord::EVENT_AFTER_UPDATE => [$this, "afterUpdate"],
+            ActiveRecord::EVENT_BEFORE_UPDATE => [$this, "beforeUpdate"],
             ActiveRecord::EVENT_AFTER_DELETE => [$this, "afterInsertOrDelete"],
             ActiveRecord::EVENT_AFTER_INSERT => [$this, "afterInsertOrDelete"],
 
