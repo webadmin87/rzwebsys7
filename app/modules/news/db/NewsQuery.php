@@ -30,7 +30,7 @@ class NewsQuery extends ActiveQuery
         $this->published();
 
         if ($ids)
-            $this->joinWith('sections', true)->where(["$relTable.id" => $ids])->groupBy("$table.id");
+            $this->joinWith('sections', true)->andWhere(["$relTable.id" => $ids])->groupBy("$table.id");
 
         return $this;
 
