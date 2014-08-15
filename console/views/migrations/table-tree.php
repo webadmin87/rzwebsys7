@@ -15,7 +15,7 @@ class <?= $className ?> extends \app\modules\main\db\Migration
 
     public $tableName;
 
-    public function up()
+    public function safeUp()
     {
 
         $this->createTable("{{%$this->tableName}}",[
@@ -42,7 +42,7 @@ class <?= $className ?> extends \app\modules\main\db\Migration
 
     }
 
-    public function down()
+    public function safeDown()
     {
 
         $this->dropTable("{{%$this->tableName}}");
