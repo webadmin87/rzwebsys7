@@ -258,4 +258,17 @@ class User extends ActiveRecord implements IdentityInterface
         return meta\UserMeta::className();
     }
 
+	/**
+	 * @inheritdoc
+	 */
+	public function fields()
+	{
+		$arr =  parent::fields();
+
+		$disabled = ["auth_key", "password_hash", "password_reset_token"];
+
+		return array_diff($arr, $disabled);
+
+	}
+
 }
