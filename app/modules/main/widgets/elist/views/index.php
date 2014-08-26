@@ -5,7 +5,6 @@
  * @var closure $urlCreate функция для содания url
  */
 
-use Yii;
 use yii\helpers\Html;
 
 echo Html::beginTag('ul', $options) . "\n";
