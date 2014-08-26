@@ -1,12 +1,6 @@
 <?php
 return [
 
-	'controllerMap' => [
-		'migrate' => [
-			'migrationLookup' => ['@webapp/modules/geo/migrations'],
-		],
-	],
-
 	'modules' => [
 
 		'geo' => [
