@@ -65,7 +65,8 @@ class Banner extends ActiveRecord
 	{
 		if(parent::beforeSave($insert)) {
 
-			$this->sort = self::DEFAULT_SORT;
+			if(empty($this->sort))
+				$this->sort = self::DEFAULT_SORT;
 
 			return true;
 
