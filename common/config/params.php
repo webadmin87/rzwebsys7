@@ -6,5 +6,5 @@ return [
     'user.passwordResetTokenExpire' => 3600,
     'cacheDuration' => '7200',
     // Главный модуль (main) должен подключаться последним, воизбежании проблем с роутингом
-    'enabledModules' => ['news', 'main'],
+    'enabledModules' => ['news', 'banners', 'main'],
 ];
