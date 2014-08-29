@@ -38,6 +38,9 @@ class SingleBanner extends App
 
 			$models = $place->getBanners()->published()->all();
 
+			if(empty($models))
+				return false;
+
 			$i  = rand(0, count($models)-1);
 
 			$this->model = $models[$i];
