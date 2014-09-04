@@ -14,7 +14,8 @@ foreach($models AS $model) {
 
 	$renderer = \app\modules\banners\components\AbstractRenderer::getRenderer($model);
 
-	echo $renderer->render();
+	if($renderer)
+		echo $renderer->render();
 
 	echo Html::endTag('li');
 

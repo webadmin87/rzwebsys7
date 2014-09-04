@@ -37,6 +37,11 @@ return [
     ],
     'components' => [
 
+		'request' => [
+			'enableCookieValidation' => true,
+			'cookieValidationKey' => '8e64a4f9bc126eaf21593bc08522b6eb',
+		],
+
         'assetManager' => [
             'bundles' => [
                 'yii\web\JqueryAsset' => [
