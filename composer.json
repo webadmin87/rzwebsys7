@@ -23,7 +23,8 @@
 		"marciocamello/yii2-x-editable": "dev-master",
 		"newerton/yii2-fancybox": "dev-master",
 		"2amigos/yii2-multi-select-widget": "*",
-		"yiisoft/yii2-apidoc": "*"
+		"yiisoft/yii2-apidoc": "*",
+		"yiisoft/yii2-sphinx": "*"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

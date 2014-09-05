@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cdacbe3a02f82dd1824e74a42b79c0f0",
+    "hash": "eb995cd5b08c7d9b9611967a49553861",
     "packages": [
         {
             "name": "2amigos/yii2-multi-select-widget",
@@ -1150,6 +1150,51 @@
                 "yii2"
             ],
             "time": "2014-06-23 01:46:25"
+        },
+        {
+            "name": "yiisoft/yii2-sphinx",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-sphinx.git",
+                "reference": "63bcebb28bd7b69da53384188af14a2051cdbc56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-sphinx/zipball/63bcebb28bd7b69da53384188af14a2051cdbc56",
+                "reference": "63bcebb28bd7b69da53384188af14a2051cdbc56",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "ext-pdo_mysql": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yii\\sphinx\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com"
+                }
+            ],
+            "description": "Sphinx full text search engine extension for the Yii framework",
+            "keywords": [
+                "active-record",
+                "fulltext",
+                "search",
+                "sphinx",
+                "yii2"
+            ],
+            "time": "2014-09-03 18:42:09"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
