@@ -50,6 +50,18 @@ abstract class ActiveRecord extends YiiRecord
     protected $metaFields;
 
     /**
+     * Возвращает имя сущности
+     * @return string
+     */
+    public static function getEntityName()
+    {
+
+        return get_called_class();
+
+    }
+
+
+    /**
      * @inheritdoc
      * Устанавливаем активность по умолчанию при создании новой модели
      */

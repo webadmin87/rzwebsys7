@@ -5,6 +5,7 @@
  * @var array $options массив html атрибутов корневого Ul
  * @var string $actClass имя класса активного пункта меню
  * @var closure $urlCreate функция для содания url
+ * @var string $labelAttr имя выводимого атрибута
  */
 
 use Yii;
@@ -38,7 +39,7 @@ foreach ($models AS $model) {
     if ($this->context->isAct($link))
         Html::addCssClass($o, $actClass);
 
-    echo Html::beginTag('li', $o) . Html::a($model->title, $link);
+    echo Html::beginTag('li', $o) . Html::a($model->$labelAttr, $link);
 
     $level = $model->level;
 

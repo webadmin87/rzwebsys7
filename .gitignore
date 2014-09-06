@@ -31,3 +31,6 @@ phpunit.phar
 
 # generated documents dir
 /docs
+
+# sitemap
+/app/web/sitemap.xml

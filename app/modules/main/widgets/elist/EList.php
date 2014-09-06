@@ -49,7 +49,12 @@ class EList extends App
     /**
      * @var array массив моделей
      */
-    protected $models;
+    public $models;
+
+    /**
+     * @var string имя выводимого атрибута
+     */
+    public $labelAttr = "title";
 
     /**
      * @var int глубина родительского раздела
@@ -67,20 +72,23 @@ class EList extends App
         if (!$this->isShow())
             return false;
 
-        $class = $this->modelClass;
+        if($this->models === null) {
 
-        $query = $class::find()->published()->orderBy($this->order)->limit($this->limit);
+            $class = $this->modelClass;
 
-        if (is_callable($this->queryModify)) {
+            $query = $class::find()->published()->orderBy($this->order)->limit($this->limit);
 
-            $func = $this->queryModify;
+            if (is_callable($this->queryModify)) {
 
-            $func($query);
+                $func = $this->queryModify;
+
+                $func($query);
+
+            }
+
+            $this->models = $query->all();
 
         }
-
-        $this->models = $query->all();
-
     }
 
     /**
@@ -97,6 +105,7 @@ class EList extends App
             "models" => $this->models,
             "options" => $this->options,
             "urlCreate" => $this->urlCreate,
+            "labelAttr"=>$this->labelAttr,
         ]);
 
     }

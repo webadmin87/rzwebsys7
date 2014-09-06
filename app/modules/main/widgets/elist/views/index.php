@@ -3,6 +3,7 @@
  * @var array $models массив моделей меню
  * @var array $options массив html атрибутов корневого Ul
  * @var closure $urlCreate функция для содания url
+ * @var string $labelAttr имя выводимого атрибута
  */
 
 use yii\helpers\Html;
@@ -16,7 +17,7 @@ foreach ($models AS $model) {
     if (is_callable($urlCreate))
         $link = $urlCreate($model);
 
-    echo Html::tag('li', Html::a($model->title, $link));
+    echo Html::tag('li', Html::a($model->$labelAttr, $link));
 
 }
 

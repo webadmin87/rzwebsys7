@@ -16,6 +16,22 @@ return [
             'controllerNamespace' => 'app\modules\main\controllers',
             'components' => [
 
+                'sitemap'=>[
+
+                    "class"=>\app\modules\main\sitemap\Sitemap::className(),
+                    "definition"=>[
+                        [
+
+                            'class'=>'app\modules\main\models\Pages',
+                            'urlCreate'=>function($model){
+                                return Yii::$app->urlManager->createUrl(['/main/pages/index', 'model'=>$model]);
+                            }
+
+                        ],
+                    ],
+
+                ],
+
 				'config' => [
 					'class'=>\app\modules\main\components\Config::className(),
 				],

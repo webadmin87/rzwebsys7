@@ -14,5 +14,8 @@ return [
             'viewPath' => '@common/mail',
             'useFileTransport' => true,
         ],
+        'urlManager'=>[
+            'baseUrl'=>'http://rzwebsys7.local',
+        ],
     ],
 ];

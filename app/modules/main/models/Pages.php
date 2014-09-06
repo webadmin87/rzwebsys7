@@ -16,6 +16,11 @@ class Pages extends TActiveRecord
     use \app\modules\main\components\PermissionTrait;
 
     /**
+     * Символьный код главной страницы
+     */
+    const INDEX_CODE = "main";
+
+    /**
      * @inheritdoc
      */
 

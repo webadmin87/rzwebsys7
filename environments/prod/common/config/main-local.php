@@ -13,5 +13,8 @@ return [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',
         ],
+        'urlManager'=>[
+            'baseUrl'=>'http://rzwebsys7.local',
+        ],
     ],
 ];

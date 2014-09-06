@@ -50,10 +50,17 @@ class TreeList extends App
 
     public $options = array();
 
+
+
     /**
      * @var array массив моделей
      */
-    protected $models;
+    public $models;
+
+    /**
+     * @var string имя выводимого атрибута
+     */
+    public $labelAttr = "title";
 
     /**
      * @var int глубина родительского раздела
@@ -71,28 +78,31 @@ class TreeList extends App
         if (!$this->isShow())
             return false;
 
-        $class = $this->modelClass;
+        if($this->models === null) {
+            $class = $this->modelClass;
 
-        $parent = $class::find()->published()->where(["id" => $this->parentId])->one();
+            $parent = $class::find()->published()->where(["id" => $this->parentId])->one();
 
-        if (!$parent)
-            return false;
+            if (!$parent)
+                return false;
 
-        $this->parentLevel = $parent->level;
+            $this->parentLevel = $parent->level;
 
-        $level = $parent->level + $this->level;
+            $level = $parent->level + $this->level;
 
-        $query = $parent->descendants()->published()->andWhere("level <= :level", [":level" => $level]);
+            $query = $parent->descendants()->published()->andWhere("level <= :level", [":level" => $level]);
 
-        if (is_callable($this->queryModify)) {
+            if (is_callable($this->queryModify)) {
 
-            $func = $this->queryModify;
+                $func = $this->queryModify;
 
-            $func($query);
+                $func($query);
+
+            }
+
+            $this->models = $query->all();
 
         }
-
-        $this->models = $query->all();
 
     }
 
@@ -112,6 +122,7 @@ class TreeList extends App
             "parentLevel" => $this->parentLevel,
             "actClass" => $this->actClass,
             "urlCreate" => $this->urlCreate,
+            "labelAttr" => $this->labelAttr,
         ]);
 
     }

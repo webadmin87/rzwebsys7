@@ -50,21 +50,6 @@ return [
             ],
         ],
 
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'suffix' => '/',
-            'rules' => [
-
-                // Правила для админки
-
-                'admin/<module:\w+>/<controller:[A-z0-9_-]+>/<action:[A-z0-9_-]+>/<id:\d+>' => '<module>/admin/<controller>/<action>',
-                'admin/<module:\w+>/<controller:[A-z0-9_-]+>/<action:[A-z0-9_-]+>' => '<module>/admin/<controller>/<action>',
-                'admin/<module:\w+>/<controller:[A-z0-9_-]+>' => '<module>/admin/<controller>',
-                'admin/<module:\w+>' => '<module>/admin',
-                'admin' => 'main/admin',
-            ]
-        ],
         'user' => [
             'identityClass' => 'app\modules\main\models\User',
             'enableAutoLogin' => true,

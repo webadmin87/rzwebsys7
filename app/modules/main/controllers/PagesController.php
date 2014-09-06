@@ -15,8 +15,6 @@ use yii\web\NotFoundHttpException;
 class PagesController extends App
 {
 
-    const INDEX_CODE = "main";
-
     /**
      * Отображение текстовой страницы
      * @param string $code символьный код страницы
@@ -24,7 +22,7 @@ class PagesController extends App
      * @throws \yii\web\NotFoundHttpException
      */
 
-    public function actionIndex($code = self::INDEX_CODE)
+    public function actionIndex($code = Pages::INDEX_CODE)
     {
 
         $model = Pages::find()->published()->where(["code" => $code])->one();

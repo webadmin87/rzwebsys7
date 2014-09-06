@@ -35,26 +35,31 @@ class PageUrlRule extends UrlRule
 	{
 		if ($route === $this->route AND isset($params["model"]) AND $params["model"] instanceof Pages) {
 
-			$url = [];
+            if($params["model"]->code != Pages::INDEX_CODE) {
 
-			$ancestors = $params["model"]->ancestors()->all();
+                $url = [];
 
-			foreach ($ancestors as $model) {
+                $ancestors = $params["model"]->ancestors()->all();
 
-				if($model->isRoot())
-					continue;
+                foreach ($ancestors as $model) {
 
-				$url[] = $model->code;
+                    if ($model->isRoot())
+                        continue;
 
-			}
+                    $url[] = $model->code;
 
-			$url[] = $params["model"]->code;
+                }
 
-			unset($params["model"]);
+                $url[] = $params["model"]->code;
 
-			$str = implode("/", $url);
+                $str = implode("/", $url);
+            } else {
+                $str = "";
+            }
 
-			if ($str !== '') {
+            unset($params["model"]);
+
+            if ($str !== '') {
 				$str .= ($this->suffix === null ? $manager->suffix : $this->suffix);
 			}
 

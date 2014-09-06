@@ -9,6 +9,22 @@ return [
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'components' => [
 
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'suffix' => '/',
+            'rules' => [
+
+                // Правила для админки
+
+                'admin/<module:\w+>/<controller:[A-z0-9_-]+>/<action:[A-z0-9_-]+>/<id:\d+>' => '<module>/admin/<controller>/<action>',
+                'admin/<module:\w+>/<controller:[A-z0-9_-]+>/<action:[A-z0-9_-]+>' => '<module>/admin/<controller>/<action>',
+                'admin/<module:\w+>/<controller:[A-z0-9_-]+>' => '<module>/admin/<controller>',
+                'admin/<module:\w+>' => '<module>/admin',
+                'admin' => 'main/admin',
+            ]
+        ],
+
         'mail' => [
             'class' => 'yii\swiftmailer\Mailer',
         ],
