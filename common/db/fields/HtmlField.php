@@ -41,6 +41,7 @@ class HtmlField extends TextAreaField
             'preset' => 'full',
             'inline' => false,
             'allowedContent' => true,
+            'autoParagraph' => false,
         ], $this->editorOptions);
 
         $ckeditorOptions = ElFinder::ckeditorOptions($this->fileManagerController, $editorOptions);
