@@ -30,7 +30,7 @@ class PagesController extends App
         if (!$model)
             throw new NotFoundHttpException;
 
-        if ($model->code != self::INDEX_CODE)
+        if ($model->code != Pages::INDEX_CODE)
             $this->view->breadCrumbs = $model->getBreadCrumbsItems($model->id, function ($model) {
                 return ['/main/pages/index', 'model' => $model];
             });
