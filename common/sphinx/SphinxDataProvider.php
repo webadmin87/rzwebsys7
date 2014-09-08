@@ -72,7 +72,8 @@ class SphinxDataProvider extends ActiveDataProvider
 
 		$ids = $this->prepareSphinxQuery();
 
-		$query->orderBy([$this->getOrderByExpression($ids)]);
+		if(!empty($ids))
+			$query->orderBy([$this->getOrderByExpression($ids)]);
 
 		$query->where(["id"=>$ids]);
 
