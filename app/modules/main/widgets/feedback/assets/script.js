@@ -8,7 +8,7 @@
 
             var process = false;
 
-            bl.form.on('submit', function(){
+            bl.find('form').on('submit', function(){
 
                 return false;
 
