@@ -179,6 +179,7 @@ class Comments extends Widget
 
         $formOptions = array_merge([
             "enableClientValidation" => true,
+            "enableAjaxValidation" => false,
             "validateOnSubmit" => true,
             "action" => Yii::$app->urlManager->createUrl($this->actionRoute)
         ], $this->formOptions);
