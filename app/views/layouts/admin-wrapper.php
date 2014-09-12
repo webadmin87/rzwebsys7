@@ -61,9 +61,9 @@ AdminAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Churkin Anton <?= date('Y') ?></p>
+        <p class="pull-left">Разработка - <a href="http://www.rzncenter.ru">Рязанский интернет-центр</a></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">&copy; Churkin Anton <?= date('Y') ?> | <?= Yii::powered() ?></p>
     </div>
 </footer>
 
