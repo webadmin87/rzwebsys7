@@ -8,7 +8,13 @@
 
             var process = false;
 
-            bl.find('form').on('submit', function (e) {
+            bl.form.on('submit', function(){
+
+                return false;
+
+            });
+
+            bl.find('form').on('beforeSubmit', function (e) {
 
                 e.preventDefault();
 

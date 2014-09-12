@@ -101,7 +101,14 @@
 
             var process = false;
 
-            form.on('submit', function(e){
+
+            form.on('submit', function(){
+
+                return false;
+
+            });
+
+            form.on('beforeSubmit', function(e){
 
                 e.preventDefault();
 

@@ -101,6 +101,7 @@ class Feedback extends Widget
         $formOptions = array_merge([
             "action" => Url::toRoute($this->route),
             "enableClientValidation" => true,
+            "enableAjaxValidation" => false,
             "validateOnSubmit" => true,
 
         ], $this->formOptions);
