@@ -10,6 +10,15 @@
 
             bl.find('form').on('submit', function(){
 
+				// @tofix убрать костыль после обновления фреймворка
+				var form = $(this);
+
+				var data = form.data('yiiActiveForm');
+
+				data.settings.beforeSubmit = function() { form.trigger('beforeSubmit'); }
+
+				// конец костыля
+
                 return false;
 
             });
