@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7f9d27b6decffe010f4ca702a50252ee",
+    "hash": "d6a089402876c81ab8df32a0d3a08827",
     "packages": [
         {
             "name": "2amigos/yii2-multi-select-widget",
@@ -1050,16 +1050,16 @@
         },
         {
             "name": "yiisoft/yii2-imagine",
-            "version": "dev-master",
+            "version": "2.0.0-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-imagine.git",
-                "reference": "572a6f08a4de15703e528614d1c6610bae27f9b1"
+                "reference": "13e5a92cd6e2b1eedf63a3c556d3471b8d490713"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-imagine/zipball/572a6f08a4de15703e528614d1c6610bae27f9b1",
-                "reference": "572a6f08a4de15703e528614d1c6610bae27f9b1",
+                "url": "https://api.github.com/repos/yiisoft/yii2-imagine/zipball/13e5a92cd6e2b1eedf63a3c556d3471b8d490713",
+                "reference": "13e5a92cd6e2b1eedf63a3c556d3471b8d490713",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1079,9 @@
             "authors": [
                 {
                     "name": "Antonio Ramirez",
-                    "email": "amigo.cobos@gmail.com"
+                    "email": "amigo.cobos@gmail.com",
+                    "homepage": "http://www.ramirezcobos.com",
+                    "role": "Founder and development"
                 }
             ],
             "description": "The Imagine integration for the Yii framework",
@@ -1089,7 +1091,7 @@
                 "imagine",
                 "yii2"
             ],
-            "time": "2014-07-29 22:40:46"
+            "time": "2014-04-13 21:58:59"
         },
         {
             "name": "yiisoft/yii2-jui",
@@ -1136,16 +1138,16 @@
         },
         {
             "name": "yiisoft/yii2-sphinx",
-            "version": "dev-master",
+            "version": "2.0.0-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-sphinx.git",
-                "reference": "7f0d5b8c1b74c18ad8077103c4e6e2dbc6a39eee"
+                "reference": "f8477e8815021e2340540a5e522369d04150e008"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-sphinx/zipball/7f0d5b8c1b74c18ad8077103c4e6e2dbc6a39eee",
-                "reference": "7f0d5b8c1b74c18ad8077103c4e6e2dbc6a39eee",
+                "url": "https://api.github.com/repos/yiisoft/yii2-sphinx/zipball/f8477e8815021e2340540a5e522369d04150e008",
+                "reference": "f8477e8815021e2340540a5e522369d04150e008",
                 "shasum": ""
             },
             "require": {
@@ -1166,7 +1168,8 @@
             "authors": [
                 {
                     "name": "Paul Klimov",
-                    "email": "klimov.paul@gmail.com"
+                    "email": "klimov.paul@gmail.com",
+                    "role": "Core framework development"
                 }
             ],
             "description": "Sphinx full text search engine extension for the Yii framework",
@@ -1177,20 +1180,20 @@
                 "sphinx",
                 "yii2"
             ],
-            "time": "2014-09-07 11:47:21"
+            "time": "2014-04-13 21:58:59"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
-            "version": "dev-master",
+            "version": "2.0.0-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-swiftmailer.git",
-                "reference": "5f50b47f0787ed6eb08ff0cda825a202d24dc392"
+                "reference": "b14069c5d67ec19a36c83340de5c4b8df5acf3e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/5f50b47f0787ed6eb08ff0cda825a202d24dc392",
-                "reference": "5f50b47f0787ed6eb08ff0cda825a202d24dc392",
+                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/b14069c5d67ec19a36c83340de5c4b8df5acf3e2",
+                "reference": "b14069c5d67ec19a36c83340de5c4b8df5acf3e2",
                 "shasum": ""
             },
             "require": {
@@ -1210,7 +1213,8 @@
             "authors": [
                 {
                     "name": "Paul Klimov",
-                    "email": "klimov.paul@gmail.com"
+                    "email": "klimov.paul@gmail.com",
+                    "role": "Core framework development"
                 }
             ],
             "description": "The SwiftMailer integration for the Yii framework",
@@ -1222,7 +1226,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2014-07-29 22:40:46"
+            "time": "2014-04-13 21:58:59"
         }
     ],
     "packages-dev": [
@@ -1261,16 +1265,16 @@
         },
         {
             "name": "yiisoft/yii2-codeception",
-            "version": "dev-master",
+            "version": "2.0.0-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-codeception.git",
-                "reference": "9b2a01ff4798c683d1c85f74b9969cf68f7c482b"
+                "reference": "11af1a8575c3f19979a26fe78b04f012d70f8433"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-codeception/zipball/9b2a01ff4798c683d1c85f74b9969cf68f7c482b",
-                "reference": "9b2a01ff4798c683d1c85f74b9969cf68f7c482b",
+                "url": "https://api.github.com/repos/yiisoft/yii2-codeception/zipball/11af1a8575c3f19979a26fe78b04f012d70f8433",
+                "reference": "11af1a8575c3f19979a26fe78b04f012d70f8433",
                 "shasum": ""
             },
             "require": {
@@ -1297,7 +1301,7 @@
                 "codeception",
                 "yii2"
             ],
-            "time": "2014-09-12 10:42:54"
+            "time": "2014-04-13 21:58:59"
         },
         {
             "name": "yiisoft/yii2-debug",

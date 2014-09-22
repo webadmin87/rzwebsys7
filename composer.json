@@ -13,23 +13,23 @@
 	"require": {
 		"php": ">=5.4.0",
 		"yiisoft/yii2": "2.0.0-beta",
-		"yiisoft/yii2-bootstrap": "*",
-		"yiisoft/yii2-swiftmailer": "*",
-        "yiisoft/yii2-imagine": "*",
-        "yiisoft/yii2-jui": "*",
+		"yiisoft/yii2-bootstrap": "2.0.0-beta",
+		"yiisoft/yii2-swiftmailer": "2.0.0-beta",
+        "yiisoft/yii2-imagine": "2.0.0-beta",
+        "yiisoft/yii2-jui": "2.0.0-beta",
         "mihaildev/yii2-ckeditor": "*",
         "mihaildev/yii2-elfinder": "*",
         "creocoder/yii2-nested-set-behavior": "*",
 		"marciocamello/yii2-x-editable": "dev-master",
 		"newerton/yii2-fancybox": "dev-master",
 		"2amigos/yii2-multi-select-widget": "*",
-		"yiisoft/yii2-apidoc": "*",
-		"yiisoft/yii2-sphinx": "*"
+		"yiisoft/yii2-apidoc": "2.0.0-beta",
+		"yiisoft/yii2-sphinx": "2.0.0-beta"
 	},
 	"require-dev": {
-		"yiisoft/yii2-codeception": "*",
+		"yiisoft/yii2-codeception": "2.0.0-beta",
 		"yiisoft/yii2-debug": "2.0.0-beta",
-		"yiisoft/yii2-gii": "*"
+		"yiisoft/yii2-gii": "2.0.0-beta"
 	},
 	"suggest": {
 		"codeception/codeception": "Codeception, 1.8.*@dev is currently works well with Yii.",
