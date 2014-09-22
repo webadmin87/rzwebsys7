@@ -79,7 +79,7 @@ class Html5ImageField extends Html5FileField
     protected function renderImageTag($path, $width, $height)
     {
 
-        if (!FileHelper::isImage($path))
+        if (!is_file($path) OR !FileHelper::isImage($path))
             return "";
 
         $options = array_merge([
