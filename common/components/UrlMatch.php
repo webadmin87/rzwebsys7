@@ -22,7 +22,7 @@ class UrlMatch extends Match
 
         $condArr = explode(",", $value);
 
-        $url = Yii::$app->request->url;
+        $url = "/" . Yii::$app->request->pathInfo;
 
         foreach ($condArr AS $cond) {
 
