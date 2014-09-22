@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "eb995cd5b08c7d9b9611967a49553861",
+    "hash": "7f9d27b6decffe010f4ca702a50252ee",
     "packages": [
         {
             "name": "2amigos/yii2-multi-select-widget",
@@ -1301,16 +1301,16 @@
         },
         {
             "name": "yiisoft/yii2-debug",
-            "version": "dev-master",
+            "version": "2.0.0-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "d653a52d38d2abdd3dca2edb170949308e87147e"
+                "reference": "003604bda8516794b16a0e00bd134e1ce9b7b6dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/d653a52d38d2abdd3dca2edb170949308e87147e",
-                "reference": "d653a52d38d2abdd3dca2edb170949308e87147e",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/003604bda8516794b16a0e00bd134e1ce9b7b6dc",
+                "reference": "003604bda8516794b16a0e00bd134e1ce9b7b6dc",
                 "shasum": ""
             },
             "require": {
@@ -1330,7 +1330,9 @@
             "authors": [
                 {
                     "name": "Qiang Xue",
-                    "email": "qiang.xue@gmail.com"
+                    "email": "qiang.xue@gmail.com",
+                    "homepage": "http://www.yiiframework.com/",
+                    "role": "Founder and project lead"
                 }
             ],
             "description": "The debugger extension for the Yii framework",
@@ -1339,7 +1341,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2014-09-19 03:25:38"
+            "time": "2014-04-13 21:58:59"
         },
         {
             "name": "yiisoft/yii2-gii",
