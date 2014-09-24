@@ -23,10 +23,11 @@ class m140923_092729_create_goods_table extends \app\modules\main\db\Migration
 			'item_id'=>Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
 			'item_class'=>Schema::TYPE_STRING . ' NOT NULL',
 			'attrs'=>Schema::TYPE_TEXT,
-			'link'=>Schema::TYPE_TEXT,
         ]);
 
 		$this->addForeignKey("shop_goods_order_id_fk", $this->tableName, "order_id", "shop_orders", "id", "CASCADE", "CASCADE");
+
+		$this->insertPermission('\app\modules\shop\models\Good');
 
     }
 
@@ -34,6 +35,8 @@ class m140923_092729_create_goods_table extends \app\modules\main\db\Migration
     {
 
         $this->dropTable("{{%$this->tableName}}");
+
+		$this->deletePermission('\app\modules\shop\models\Good');
 
     }
 }

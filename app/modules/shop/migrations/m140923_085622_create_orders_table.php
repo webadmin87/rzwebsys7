@@ -14,6 +14,7 @@ class m140923_085622_create_orders_table extends \app\modules\main\db\Migration
             'id'=>Schema::TYPE_PK,
             'active'=>Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT true',
             'author_id'=>Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
+            'status_id'=>Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
             'created_at'=>Schema::TYPE_TIMESTAMP . ' NOT NULL DEFAULT now()',
             'updated_at'=>Schema::TYPE_TIMESTAMP . ' NOT NULL DEFAULT now()',
 			'name'=>Schema::TYPE_STRING . ' NOT NULL',
@@ -28,12 +29,16 @@ class m140923_085622_create_orders_table extends \app\modules\main\db\Migration
 			'delivery_price'=>Schema::TYPE_MONEY . ' DEFAULT 0',
         ]);
 
+		$this->insertPermission('\app\modules\shop\models\Order');
+
     }
 
     public function safeDown()
     {
 
         $this->dropTable("{{%$this->tableName}}");
+
+		$this->deletePermission('\app\modules\shop\models\Order');
 
     }
 }

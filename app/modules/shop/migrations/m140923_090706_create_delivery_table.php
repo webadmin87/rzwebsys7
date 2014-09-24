@@ -17,11 +17,16 @@ class m140923_090706_create_delivery_table extends \app\modules\main\db\Migratio
             'created_at'=>Schema::TYPE_TIMESTAMP . ' NOT NULL DEFAULT now()',
             'updated_at'=>Schema::TYPE_TIMESTAMP . ' NOT NULL DEFAULT now()',
 			'title'=>Schema::TYPE_STRING . ' NOT NULL',
+			'text'=>Schema::TYPE_TEXT,
 			'price'=>Schema::TYPE_MONEY . ' DEFAULT 0',
 			'free_limit'=>Schema::TYPE_INTEGER . ' DEFAULT 0',
 			'class'=>Schema::TYPE_STRING,
 			'constraint_class'=>Schema::TYPE_STRING,
         ]);
+
+		$this->insert($this->tableName, ["title"=>"Самовывоз"]);
+
+		$this->insertPermission('\app\modules\shop\models\Delivery');
 
     }
 
@@ -29,6 +34,8 @@ class m140923_090706_create_delivery_table extends \app\modules\main\db\Migratio
     {
 
         $this->dropTable("{{%$this->tableName}}");
+
+		$this->deletePermission('\app\modules\shop\models\Delivery');
 
     }
 }

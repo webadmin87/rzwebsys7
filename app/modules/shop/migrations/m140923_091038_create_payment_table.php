@@ -17,9 +17,14 @@ class m140923_091038_create_payment_table extends \app\modules\main\db\Migration
             'created_at'=>Schema::TYPE_TIMESTAMP . ' NOT NULL DEFAULT now()',
             'updated_at'=>Schema::TYPE_TIMESTAMP . ' NOT NULL DEFAULT now()',
 			'title'=>Schema::TYPE_STRING . ' NOT NULL',
+			'text'=>Schema::TYPE_TEXT,
 			'html'=>Schema::TYPE_TEXT,
 			'constraint_class'=>Schema::TYPE_STRING,
         ]);
+
+		$this->insert($this->tableName, ["title"=>"Оплата наличными"]);
+
+		$this->insertPermission('\app\modules\shop\models\Payment');
 
     }
 
@@ -27,6 +32,8 @@ class m140923_091038_create_payment_table extends \app\modules\main\db\Migration
     {
 
         $this->dropTable("{{%$this->tableName}}");
+
+		$this->deletePermission('\app\modules\shop\models\Payment');
 
     }
 }
