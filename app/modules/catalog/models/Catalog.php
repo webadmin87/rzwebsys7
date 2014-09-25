@@ -77,7 +77,7 @@ class Catalog extends ActiveRecord
     public function getSections()
     {
 
-        return $this->hasMany(CatalogSection::className(), ['id' => 'section_id'])->viaTable('news_to_sections', ['news_id' => 'id']);
+        return $this->hasMany(CatalogSection::className(), ['id' => 'section_id'])->viaTable('catalog_catalog_to_sections', ['catalog_id' => 'id']);
 
     }
 
