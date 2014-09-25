@@ -38,14 +38,6 @@ class PaymentMeta extends MetaFields
 				"params" => [$this->owner, "text"]
 			],
 
-			"text" => [
-				"definition" => [
-					"class" => \common\db\fields\HtmlField::className(),
-					"title" => Yii::t('shop/app', 'Text'),
-				],
-				"params" => [$this->owner, "text"]
-			],
-
 			"html" => [
 				"definition" => [
 					"class" => \common\db\fields\TextAreaField::className(),
@@ -58,6 +50,7 @@ class PaymentMeta extends MetaFields
 				"definition" => [
 					"class" => \common\db\fields\TextField::className(),
 					"title" => Yii::t('shop/app', 'Constraint class'),
+					"showInGrid"=>false,
 				],
 				"params" => [$this->owner, "constraint_class"]
 			],

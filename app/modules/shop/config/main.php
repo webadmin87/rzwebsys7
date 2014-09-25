@@ -1,4 +1,5 @@
 <?php
+use app\modules\shop\models;
 return [
 
 	'controllerMap' => [
@@ -20,7 +21,24 @@ return [
 							return [
 								[
 									'label' => Yii::t('shop/app', 'Shop module'),
-									'items' => []
+
+									'items' => [
+
+										['label' => Yii::t('shop/app', 'Orders'), 'url' => ['/admin/shop/order'],
+											"permission" => ["listModels", ["model" => Yii::createObject(models\Order::className())]]],
+
+										['label' => Yii::t('shop/app', 'Goods'), 'url' => ['/admin/shop/good'],
+											"permission" => ["listModels", ["model" => Yii::createObject(models\Good::className())]]],
+
+										['label' => Yii::t('shop/app', 'Statuses'), 'url' => ['/admin/shop/status'],
+											"permission" => ["listModels", ["model" => Yii::createObject(models\Status::className())]]],
+
+										['label' => Yii::t('shop/app', 'Payments'), 'url' => ['/admin/shop/payment'],
+											"permission" => ["listModels", ["model" => Yii::createObject(models\Payment::className())]]],
+
+										['label' => Yii::t('shop/app', 'Deliveries'), 'url' => ['/admin/shop/delivery'],
+											"permission" => ["listModels", ["model" => Yii::createObject(models\Delivery::className())]]],
+									],
 								],
 							];
 						},

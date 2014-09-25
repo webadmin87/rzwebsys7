@@ -58,6 +58,7 @@ class DeliveryMeta extends MetaFields
 				"definition" => [
 					"class" => \common\db\fields\TextField::className(),
 					"title" => Yii::t('shop/app', 'Class'),
+					"showInGrid"=>false,
 				],
 				"params" => [$this->owner, "class"]
 			],
@@ -66,6 +67,7 @@ class DeliveryMeta extends MetaFields
 				"definition" => [
 					"class" => \common\db\fields\TextField::className(),
 					"title" => Yii::t('shop/app', 'Constraint class'),
+					"showInGrid"=>false,
 				],
 				"params" => [$this->owner, "constraint_class"]
 			],

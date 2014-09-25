@@ -26,7 +26,7 @@ class OrderMeta extends MetaFields
             "name" => [
                 "definition" => [
                     "class" => \common\db\fields\TextField::className(),
-                    "title" => Yii::t('shop/app', 'Title'),
+                    "title" => Yii::t('shop/app', 'Name'),
                     "isRequired" => true,
                     "editInGrid" => true,
                 ],

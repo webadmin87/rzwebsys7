@@ -32,7 +32,7 @@ class StatusMeta extends MetaFields
 
 			"text" => [
 				"definition" => [
-					"class" => \common\db\fields\TextField::className(),
+					"class" => \common\db\fields\TextareaField::className(),
 					"title" => Yii::t('shop/app', 'Text'),
 				],
 				"params" => [$this->owner, "text"]
@@ -40,10 +40,10 @@ class StatusMeta extends MetaFields
 
 			"tpl" => [
 				"definition" => [
-					"class" => \common\db\fields\TextField::className(),
+					"class" => \common\db\fields\TextareaField::className(),
 					"title" => Yii::t('shop/app', 'Letter tpl'),
 				],
-				"params" => [$this->owner, "text"]
+				"params" => [$this->owner, "tpl"]
 			],
 
         ];

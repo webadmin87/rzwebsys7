@@ -77,6 +77,7 @@ class GoodMeta extends MetaFields
 				"definition" => [
 					"class" => \common\db\fields\HiddenField::className(),
 					"title" => Yii::t('shop/app', 'Attributes'),
+					"showInGrid"=>false,
 				],
 				"params" => [$this->owner, "attrs"]
 			],
