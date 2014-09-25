@@ -18,7 +18,7 @@
         "yiisoft/yii2-imagine": "2.0.0-beta",
         "yiisoft/yii2-jui": "2.0.0-beta",
         "mihaildev/yii2-ckeditor": "*",
-        "mihaildev/yii2-elfinder": "*",
+        "mihaildev/yii2-elfinder": "dev-1.0.1.fix",
         "creocoder/yii2-nested-set-behavior": "*",
 		"marciocamello/yii2-x-editable": "dev-master",
 		"newerton/yii2-fancybox": "dev-master",
@@ -45,6 +45,12 @@
 	"config": {
 		"process-timeout": 1800
 	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url":  "https://github.com/webadmin87/yii2-elfinder.git"
+		}
+	],
 	"extra": {
 		"writable": [
 

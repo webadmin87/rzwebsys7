@@ -2,6 +2,7 @@
 namespace common\db\fields;
 
 use yii\helpers\ArrayHelper;
+use yii\widgets\ActiveForm;
 
 /**
  * Class HiddenField

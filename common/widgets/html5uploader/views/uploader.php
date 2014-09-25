@@ -32,7 +32,7 @@ echo Html::fileInput($name, null, $options);
                     <div class="uploader-widget-name"><?= basename($file["file"]) ?></div>
                     <div class="uploader-widget-preview">
 
-                        <? if (FileHelper::isImage(Yii::getAlias($webroot . $file["file"]))): ?>
+                        <? if (is_file(Yii::getAlias($webroot . $file["file"])) AND FileHelper::isImage(Yii::getAlias($webroot . $file["file"]))): ?>
 
                             <img src="<?= $file["file"] ?>" width="150" alt=""/>
 

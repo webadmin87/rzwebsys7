@@ -6,6 +6,7 @@ use yii\base\Component;
 use common\db\TActiveQuery;
 use yii\base\InvalidConfigException;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /**
  * Class Sitemap
@@ -21,7 +22,7 @@ class Sitemap extends Component
      * [
      *  [
      *      "class"=>"app\modules\main\models\Pages",
-     *      "entityUrl"=>"/pages/",
+     *      "entityRoute"=>"main/pages/index",
      *      "labelAttr"=>"title",
      *      "scopes" => ["active"],
      *      "urlCreate" => function($model){ ... }
@@ -86,8 +87,8 @@ class Sitemap extends Component
             $arr['header'] = $item["class"]::getEntityName();
             $arr['labelAttr'] = $labelAttr;
             $arr['urlCreate'] = $item["urlCreate"];
-            if(!empty($item["entityUrl"]))
-                $arr['entityUrl'] = $item["entityUrl"];
+            if(!empty($item["entityRoute"]))
+                $arr['entityUrl'] = Url::toRoute($item["entityRoute"]);
             $arr['items'] = [];
 
             foreach($iterator AS $model) {

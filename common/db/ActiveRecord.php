@@ -56,7 +56,7 @@ abstract class ActiveRecord extends YiiRecord
     public static function getEntityName()
     {
 
-        return get_called_class();
+        return static::formName();
 
     }
 

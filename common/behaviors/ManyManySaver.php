@@ -42,6 +42,8 @@ class ManyManySaver extends Behavior
     public function afterSave()
     {
 
+		$this->owner->setIsNewRecord(false);
+
         foreach ($this->names AS $name) {
 
             $attr = $this->getAttributeName($name);
