@@ -24,7 +24,7 @@ class m140923_090706_create_delivery_table extends \app\modules\main\db\Migratio
 			'constraint_class'=>Schema::TYPE_STRING,
         ]);
 
-		$this->insert($this->tableName, ["title"=>"Самовывоз"]);
+		$this->insert($this->tableName, ["title"=>"Самовывоз", "author_id"=>1]);
 
 		$this->insertPermission('\app\modules\shop\models\Delivery');
 

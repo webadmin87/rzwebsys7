@@ -22,7 +22,7 @@ class m140923_091038_create_payment_table extends \app\modules\main\db\Migration
 			'constraint_class'=>Schema::TYPE_STRING,
         ]);
 
-		$this->insert($this->tableName, ["title"=>"Оплата наличными"]);
+		$this->insert($this->tableName, ["title"=>"Оплата наличными", "author_id"=>1]);
 
 		$this->insertPermission('\app\modules\shop\models\Payment');
 
