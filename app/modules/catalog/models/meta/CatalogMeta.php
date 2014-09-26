@@ -144,6 +144,7 @@ class CatalogMeta extends MetaFields
 					"title" => Yii::t('catalog/app', 'Producer'),
 					"isRequired" => false,
 					"showInGrid" => false,
+					"data"=>[$this, "getProducersList"],
 				],
 				"params" => [$this->owner, "producer_id", "producer"],
 			],

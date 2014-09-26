@@ -12,6 +12,7 @@ use yii\helpers\Url;
 $file = $model->getFirstFile('image');
 $url = Url::toRoute(['/catalog/catalog/detail', 'section' => $model->sections[0]->code, 'code' => $model->code]);
 ?>
+
 <h2><a href="<?= $url ?>"><?= $model->title ?></a></h2>
 <? if ($file): ?>
     <a href="<?= $url ?>">
@@ -20,4 +21,4 @@ $url = Url::toRoute(['/catalog/catalog/detail', 'section' => $model->sections[0]
     </a>
 <? endif; ?>
 <p><?= $model->annotation ?></p>
-<p class="date"><?= $model->date ?></p>
+<p class="price"><?=Yii::$app->formatter->asNumber($model->price) ?> р.</p>

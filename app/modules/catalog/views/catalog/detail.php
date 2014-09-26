@@ -13,7 +13,7 @@ $file = $model->getFirstFile('image');
              alt="" align="left" class="img-thumbnail"/>
     </a>
 <? endif; ?>
-    <p class="date"><?= Yii::$app->formatter->asDate($model->date) ?></p>
+    <p class="date"><?= Yii::$app->formatter->asNumber($model->price) ?> р.</p>
 <?= $model->text ?>
 <?= \app\modules\main\widgets\gallery\Gallery::widget(["files" => $model->getFiles('image'), "skipFromStart" => 1, "rel" => "news-item"]); ?>
 

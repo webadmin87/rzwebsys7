@@ -92,11 +92,18 @@ class CatalogController extends App
 
             $dependency->setTagsFromModels($dataProvider->getModels());
 
-            $res["html"] = $this->renderPartial('index', ["dataProvider" => $dataProvider, "sectionModel" => $res["sectionModel"], "previewImageWidth" => $this->previewImageWidth]);
+            $res["html"] = $this->renderPartial('_grid', ["dataProvider" => $dataProvider, "previewImageWidth" => $this->previewImageWidth]);
 
             Yii::$app->cache->set($cacheId, $res, Yii::$app->params["cacheDuration"], $dependency);
 
         }
+
+		$this->view->addBreadCrumb(
+			[
+				"label"=>Yii::t('catalog/app', 'Catalog'),
+				"url"=>Url::toRoute(["/catalog/catalog/index"])
+			]
+		);
 
 
         if ($res["sectionModel"]) {
@@ -107,16 +114,9 @@ class CatalogController extends App
             });
 
             $this->view->addBreadCrumbs($crumbs);
-        } else {
-            $this->view->addBreadCrumb(
-                [
-                    "label"=>Yii::t('catalog/app', 'Catalog'),
-                    "url"=>Url::toRoute(["/catalog/catalog/index"])
-                ]
-            );
         }
 
-        return $this->renderHtml($res["html"]);
+        return $this->render("index",["sectionModel" => $res["sectionModel"], "html"=>$res["html"]]);
 
     }
 
