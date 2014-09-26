@@ -46,6 +46,14 @@ class GoodMeta extends MetaFields
 				"params" => [$this->owner, "price"]
 			],
 
+			"discount" => [
+				"definition" => [
+					"class" => \common\db\fields\NumberField::className(),
+					"title" => Yii::t('shop/app', 'Discount'),
+				],
+				"params" => [$this->owner, "discount"]
+			],
+
 			"qty" => [
 				"definition" => [
 					"class" => \common\db\fields\NumberField::className(),

@@ -37,6 +37,6 @@ return [
 	"Class"=>"Класс",
 	"Create Delivery"=>"Создать вариант доставки",
 	"Update Delivery"=>"Изменить вариант доставки",
-
+	"Discount"=>"Скидка",
 
 ];

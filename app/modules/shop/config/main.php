@@ -12,6 +12,14 @@ return [
 
         'shop' => [
             'class' => 'app\modules\shop\Shop',
+			'components'=>[
+				'basket'=>[
+					'class'=>\app\modules\shop\components\Basket::className(),
+					'orderManager' => [
+						'class'=>\app\modules\shop\components\OrderManager::className(),
+					]
+				],
+			],
             'controllerNamespace' => 'app\modules\shop\controllers',
 				'modules' => [
 					'admin' => [

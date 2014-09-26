@@ -19,6 +19,7 @@ class m140923_092729_create_goods_table extends \app\modules\main\db\Migration
 			'order_id'=>Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
 			'title'=>Schema::TYPE_STRING,
 			'price'=>Schema::TYPE_MONEY . ' NOT NULL DEFAULT 0',
+			'discount'=>Schema::TYPE_FLOAT . ' DEFAULT 0',
 			'qty'=>Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 1',
 			'item_id'=>Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
 			'item_class'=>Schema::TYPE_STRING . ' NOT NULL',

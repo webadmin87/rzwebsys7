@@ -15,6 +15,20 @@ class Good extends ActiveRecord
     use \app\modules\main\components\PermissionTrait;
 
 	/**
+	 * @inheritdoc
+	 */
+	public function behaviors()
+	{
+		$parent = parent::behaviors();
+
+		$parent['attrsSerializer'] = [
+			'class'=>\common\behaviors\ArraySerializer::className(),
+			'attribute'=>'attrs',
+		];
+	}
+
+
+	/**
      * @inheritdoc
      */
 
@@ -38,6 +52,19 @@ class Good extends ActiveRecord
 	public function getOrder()
 	{
 		return $this->hasOne(Order::className(), ["id"=>"order_id"]);
+	}
+
+
+	/**
+	 * Возвращает окончательную цену товара с учетом скидок
+	 * @return float
+	 */
+	public function getFinalPrice()
+	{
+
+		$price = (double) $this->price - ( (double) $this->price * (double) $this->discount )/100;
+
+		return $price;
 	}
 
 }
