@@ -23,7 +23,7 @@ class YaMapInputAsset extends AssetBundle
 
     public $depends = [
 		'common\components\uiboot\ThemeAsset',
-		'yii\jui\DialogAsset',
+		'yii\jui\JuiAsset',
 		'common\widgets\yamap\YaMapApiAsset',
     ];
 
