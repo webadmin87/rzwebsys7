@@ -18,7 +18,7 @@ class DeleteRule extends Rule
     /**
      * @inheritdoc
      */
-    public function execute(/*$user, */$item, $params)
+    public function execute($user, $item, $params)
     {
         $perm = $params['model']->getPermission();
 

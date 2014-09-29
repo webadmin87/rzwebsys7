@@ -19,20 +19,28 @@
 return [
     'Development' => [
         'path' => 'dev',
-        'writable' => [
-            // handled by composer.json already
+        'setWritable' => [
+            'app/runtime',
+            'app/web/assets',
         ],
-        'executable' => [
+        'setExecutable' => [
             'yii',
+        ],
+        'setCookieValidationKey' => [
+            'app/config/main-local.php',
         ],
     ],
     'Production' => [
         'path' => 'prod',
-        'writable' => [
-            // handled by composer.json already
+        'setWritable' => [
+            'app/runtime',
+            'app/web/assets',
         ],
-        'executable' => [
+        'setExecutable' => [
             'yii',
+        ],
+        'setCookieValidationKey' => [
+            'app/config/main-local.php',
         ],
     ],
 ];

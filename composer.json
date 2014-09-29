@@ -12,54 +12,33 @@
 	"minimum-stability": "dev",
 	"require": {
 		"php": ">=5.4.0",
-		"yiisoft/yii2": "2.0.0-beta",
-		"yiisoft/yii2-bootstrap": "2.0.0-beta",
-		"yiisoft/yii2-swiftmailer": "2.0.0-beta",
-        "yiisoft/yii2-imagine": "2.0.0-beta",
-        "yiisoft/yii2-jui": "2.0.0-beta",
+		"yiisoft/yii2": "2.0.0-rc",
+		"yiisoft/yii2-bootstrap": "2.0.0-rc",
+		"yiisoft/yii2-swiftmailer": "2.0.0-rc",
+        "yiisoft/yii2-imagine": "2.0.0-rc",
+        "yiisoft/yii2-jui": "2.0.0-rc",
         "mihaildev/yii2-ckeditor": "*",
-        "mihaildev/yii2-elfinder": "dev-1.0.1.fix",
+        "mihaildev/yii2-elfinder": "*",
         "creocoder/yii2-nested-set-behavior": "*",
 		"marciocamello/yii2-x-editable": "dev-master",
 		"newerton/yii2-fancybox": "dev-master",
 		"2amigos/yii2-multi-select-widget": "*",
-		"yiisoft/yii2-apidoc": "2.0.0-beta",
-		"yiisoft/yii2-sphinx": "2.0.0-beta"
+		"yiisoft/yii2-sphinx": "2.0.0-rc"
 	},
 	"require-dev": {
-		"yiisoft/yii2-codeception": "2.0.0-beta",
-		"yiisoft/yii2-debug": "2.0.0-beta",
-		"yiisoft/yii2-gii": "2.0.0-beta"
-	},
-	"suggest": {
-		"codeception/codeception": "Codeception, 1.8.*@dev is currently works well with Yii.",
-		"codeception/specify": "BDD style code blocks for PHPUnit and Codeception",
-		"codeception/verify": "BDD Assertions for PHPUnit and Codeception",
-		"yiisoft/yii2-faker": "Fixtures generator for Yii2 based on Faker lib"
-	},
-	"scripts": {
-		"post-create-project-cmd": [
-			"yii\\composer\\Installer::setPermission"
-		]
+		"yiisoft/yii2-codeception": "2.0.0-rc",
+		"yiisoft/yii2-debug": "2.0.0-rc",
+		"yiisoft/yii2-gii": "2.0.0-rc",
+		"yiisoft/yii2-faker": "2.0.0-rc"
 	},
 	"config": {
 		"process-timeout": 1800
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url":  "https://github.com/webadmin87/yii2-elfinder.git"
-		}
-	],
 	"extra": {
-		"writable": [
-
-			"console/runtime",
-			"console/migrations",
-
-			"app/runtime",
-			"app/web/assets"
-		]
+	  "asset-installer-paths": {
+		"npm-asset-library": "vendor/npm",
+		"bower-asset-library": "vendor/bower"
+	  }
 	},
     "autoload": {
         "psr-0": {

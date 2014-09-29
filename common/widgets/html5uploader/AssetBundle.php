@@ -25,7 +25,7 @@ class AssetBundle extends BaseBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'yii\jui\SortableAsset'
+        'yii\jui\JuiAsset'
     ];
 
     public function init()

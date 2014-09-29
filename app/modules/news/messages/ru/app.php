@@ -18,5 +18,6 @@ return [
     "Meta title" => "Заголовок браузера",
     "Keywords" => "Ключевые слова",
     "Description" => "Описание",
-
+    "Update News" => "Изменить новость",
+    "Update News Section" => "Изменить категорию новостей",
 ];

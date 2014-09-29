@@ -28,8 +28,8 @@ return [
             'disabledCommands' => ['netmount'], //отключение ненужных команд https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#commands
             'roots' => [
                 [
-					/*'baseUrl'=>'@web',
-					'basePath'=>'@webroot',*/
+					'baseUrl'=>'@web',
+					'basePath'=>'@webroot',
                     'path' => 'userfiles',
                     'name' => Yii::t('core', 'Userfiles'),
                 ],
@@ -38,9 +38,9 @@ return [
         ],
     ],
     'components' => [
+
 		'request' => [
 			'enableCookieValidation' => true,
-			'cookieValidationKey' => '8e64a4f9bc126eaf21593bc08522b6eb',
 		],
 
         'assetManager' => [
