@@ -160,13 +160,26 @@
         if (this.form.length == 0)
             throw new Error('Виджет должен находится в форме');
 
-        if(!this.form.get(0).uploadQueue)
-            this.form.get(0).uploadQueue = []; // Очередь загрузки
+        var formElem = this.form.get(0);
+
+        if(!formElem.uploadQueue)
+            formElem.uploadQueue = {}; // Очередь загрузки
+
+        if(!formElem.uploadValidators)
+            formElem.uploadValidators = {}; // Валидаторы файлов для каждой очереди
 
         this.inputName = this.input.attr("name");
 
-        this.input.removeAttr("name");
+        formElem.uploadQueue[this.inputName] = [];
 
+        formElem.uploadValidators[this.inputName] = new FileValidator({
+
+            size: this.params.maxFileSize,
+            ext: this.params.allowedExt
+
+        });
+
+        this.input.removeAttr("name");
 
         this.dropBox = input.next('.uploader-widget-drop-box');
 
@@ -176,17 +189,68 @@
 
     }
 
+    UploaderWidget.prototype.submitForm = function(form) {
+
+        if(!this.hasInQueue(form)) {
+            console.log(form);
+            $(form).find("[type='submit']").attr("disabled", false);
+            $(form).submit();
+        }
+
+    }
+
+    UploaderWidget.prototype.hasInQueue = function(form) {
+
+        for(var k in form.uploadQueue) {
+
+            if(form.uploadQueue[k].length > 0)
+                return true;
+
+        }
+
+        return false;
+
+    }
+
+    UploaderWidget.prototype.validateFiles = function(form) {
+
+        for(var k in form.uploadQueue) {
+
+            var validator = form.uploadValidators[k];
+
+            var queue = form.uploadQueue[k];
+
+            for (var i = 0; i < queue.length; i++) {
+
+                var li = queue[i];
+
+                var file = li.get(0).file
+
+                if(!validator.validateExt(file)) {
+
+                    alert("Недопустипый тип файла "+file.name);
+                    return false;
+
+                }
+
+                if(!validator.validateSize(file)) {
+
+                    alert("Недопустипый размер файла "+file.name);
+                    return false;
+
+                }
+
+            }
+
+        }
+
+        return true;
+
+    }
 
     UploaderWidget.prototype.bindEvents = function () {
 
         var self = this;
-
-        var validator = new FileValidator({
-
-            size: self.params.maxFileSize,
-            ext: self.params.allowedExt
-
-        });
 
         // Добавление файлов при выборе через Input
 
@@ -217,55 +281,39 @@
             }
         });
 
-        // Загрузка файлов перед отправкой формы
+        var submit = this.form.find("[type='submit']");
 
-        this.form.off('submit');
+        submit.off('click');
 
-        this.form.on('submit', function (e) {
+        submit.on('click', function(){
 
-            // Если очередь пуста, отправляем форму
+            var form = $(this).parents('form');
 
-            if(this.uploadQueue.length == 0) {
+            if(self.hasInQueue(form[0])) {
 
-                $(this).off('submit');
+                if( self.validateFiles(form[0]))
+                    form.trigger('uploader.submit');
 
-                $(this).submit();
-
-                return true;
+                return false;
 
             }
+
+            return true;
+
+        });
+
+        // Загрузка файлов перед отправкой формы
+
+        this.form.on('uploader.submit', function (e) {
 
             var formSelf = this;
 
             var uploadedFiles = 0;
 
-            var length = this.uploadQueue.length;
+            var length = this.uploadQueue[self.inputName].length;
 
-            // Валидация
-
-            for (var i = 0; i < length; i++) {
-
-                var li = formSelf.uploadQueue[i];
-
-                var file = li.get(0).file
-
-                if(!validator.validateExt(file)) {
-
-                    alert("Недопустипый тип файла "+file.name);
-                    return false;
-
-                }
-
-                if(!validator.validateSize(file)) {
-
-                    alert("Недопустипый размер файла "+file.name);
-                    return false;
-
-                }
-
-            }
-
-            $(this).find("[type='submit']").attr("disabled", true); // Делаем неактивными кнопки отправки
+            if(length>0)
+                $(this).find("[type='submit']").attr("disabled", true); // Делаем неактивными кнопки отправки
 
             // Загрузка
 
@@ -273,7 +321,7 @@
 
                 (function (i) {
 
-                    var li = formSelf.uploadQueue[i];
+                    var li = formSelf.uploadQueue[self.inputName][i];
 
                     var file = li.get(0).file
 
@@ -305,11 +353,9 @@
 
                             self.removeFromQueue(li.get(0));
 
-                            if(uploadedFiles == length) // Все файлы загруженвы, отправляем форму
-                                $(formSelf).trigger('submit');
-
-                            if(i+1 == length) // Последняя итерация завершена
-                                $(formSelf).find("input[type='submit']").attr("disabled", false);
+                            if(uploadedFiles == length) { // Все файлы загруженвы, отправляем форму
+                                self.submitForm(formSelf);
+                            }
 
                         },
 
@@ -317,8 +363,7 @@
 
                             alert(this.responseText);
 
-                            if(i+1 == length) // Последняя итерация завершена
-                                $(formSelf).find("[type='submit']").attr("disabled", false);;
+                            $(formSelf).find("[type='submit']").attr("disabled", false);
 
                         }
 
@@ -352,10 +397,7 @@
 
     UploaderWidget.prototype.removeFromQueue = function(elem) {
 
-        if(!this.form.get(0).uploadQueue)
-            return;
-
-        var q = this.form.get(0).uploadQueue;
+        var q = this.form.get(0).uploadQueue[this.inputName];
 
         for(var k in q) {
             if(q[k].get(0) == elem)
@@ -376,7 +418,7 @@
 
             var li = $('<li/>').appendTo(self.filesList);
 
-            self.form.get(0).uploadQueue.push(li); // Добавляем файл в единую очередь
+            self.form.get(0).uploadQueue[self.inputName].push(li); // Добавляем файл в единую очередь
 
             var i = li.index();
 
