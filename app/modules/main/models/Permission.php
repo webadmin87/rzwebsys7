@@ -86,6 +86,18 @@ class Permission extends ActiveRecord implements IPermission
     }
 
     /**
+     * Создание моделей
+     * @return bool
+     */
+
+    public function createModels()
+    {
+
+        return (boolean)$this->create;
+
+    }
+
+    /**
      * Просмотр списка моделей
      * @return bool
      */

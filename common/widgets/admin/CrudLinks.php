@@ -78,7 +78,7 @@ class CrudLinks extends Widget
                     'label' => Yii::t('core', 'Create'),
                     'url' => array_merge(['create'], $this->urlParams),
                     'options' => ['class' => 'btn btn-success'],
-                    'permission' => 'createModel',
+                    'permission' => 'createModels',
                 ]
 
             ],
