@@ -54,6 +54,10 @@ class Installer extends Object
         $listModels->description = 'list models';
         $auth->add($listModels);
 
+        $createModels = $auth->createPermission('createModels');
+        $createModels->description = 'create models';
+        $auth->add($createModels);
+
         // rules
 
         $createRule = new \app\modules\main\rbac\CreateRule;
@@ -101,6 +105,15 @@ class Installer extends Object
         $auth->add($listModelsRule);
         $auth->addChild($listModelsRule, $listModels);
 
+        $createsRule = new \app\modules\main\rbac\CreatesRule;
+        $auth->add($createsRule);
+
+        $createModelsRule = $auth->createPermission('createModelsRule');
+        $createModelsRule->description = 'create models';
+        $createModelsRule->ruleName = $createsRule->name;
+        $auth->add($createModelsRule);
+        $auth->addChild($createModelsRule, $createModels);
+
         // user role
 
         $user = $auth->createRole(User::ROLE_USER);
@@ -112,6 +125,7 @@ class Installer extends Object
         $auth->add($admin);
         $auth->addChild($admin, $accessAdmin);
         $auth->addChild($admin, $listModelsRule);
+        $auth->addChild($admin, $createModelsRule);
         $auth->addChild($admin, $createModelRule);
         $auth->addChild($admin, $readModelRule);
         $auth->addChild($admin, $updateModelRule);
@@ -139,6 +153,7 @@ class Installer extends Object
         $auth->addChild($root, $updateModel);
         $auth->addChild($root, $deleteModel);
         $auth->addChild($root, $listModels);
+        $auth->addChild($root, $createModels);
 
     }
 
