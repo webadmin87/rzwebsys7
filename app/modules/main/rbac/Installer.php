@@ -123,6 +123,7 @@ class Installer extends Object
 
         $admin = $auth->createRole(User::ROLE_ADMIN);
         $auth->add($admin);
+        $auth->addChild($admin, $user);
         $auth->addChild($admin, $accessAdmin);
         $auth->addChild($admin, $listModelsRule);
         $auth->addChild($admin, $createModelsRule);
@@ -130,17 +131,6 @@ class Installer extends Object
         $auth->addChild($admin, $readModelRule);
         $auth->addChild($admin, $updateModelRule);
         $auth->addChild($admin, $deleteModelRule);
-
-        // admin role
-
-        /*$admin = $auth->createRole('admin');
-        $auth->add($admin);
-        $auth->addChild($admin, $manager);
-        $auth->addChild($admin, $createModel);
-        $auth->addChild($admin, $readModel);
-        $auth->addChild($admin, $updateModel);
-        $auth->addChild($admin, $deleteModel);
-        $auth->addChild($admin, $listModels);*/
 
         // root role
 
@@ -156,5 +146,27 @@ class Installer extends Object
         $auth->addChild($root, $createModels);
 
     }
+
+    /**
+     * Связывание ролей с пользователями
+     */
+    public function assign()
+    {
+
+        $auth = Yii::$app->authManager;
+
+        $iterator = User::find()->each();
+
+        foreach($iterator AS $model) {
+
+            $r = $model->role;
+
+            if ($r)
+                $auth->assign($auth->getRole($r), $model->id);
+
+        }
+
+    }
+
 
 }

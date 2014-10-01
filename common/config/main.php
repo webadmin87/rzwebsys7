@@ -9,6 +9,9 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'components' => [
+        'rbacInstaller'=>[
+            'class'=>\app\modules\main\rbac\Installer::className()
+        ],
         'formatter'=>[
             'currencyCode'=>'руб'
         ],

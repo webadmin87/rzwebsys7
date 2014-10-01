@@ -55,22 +55,11 @@ class ToolsController extends Root
     public function actionRbac()
     {
 
-        $installer = Yii::createObject(\app\modules\main\rbac\Installer::className());
+        $installer = Yii::$app->rbacInstaller;
 
         $installer->install();
 
-        $auth = Yii::$app->authManager;
-
-        $query = User::find();
-
-        foreach ($query->each() AS $model) {
-
-            $r = $model->role;
-
-            if ($r)
-                $auth->assign($auth->getRole($r), $model->id);
-
-        }
+        $installer->assign();
 
         return ["page" => 1, "pagesNum" => 1];
 

@@ -81,7 +81,7 @@ class Create extends Base
             return $this->performAjaxValidation($model);
         }
 
-        if (!Yii::$app->user->can('createModel', array("model" => $model)))
+        if ($load && !Yii::$app->user->can('createModel', array("model" => $model)))
             throw new ForbiddenHttpException('Forbidden');
 
         if ($load && $model->save()) {

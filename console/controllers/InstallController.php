@@ -54,22 +54,11 @@ class InstallController extends Controller
 
         echo Yii::t('main/app', 'Installing roles...') . "\n";
 
-        $installer = Yii::createObject(\app\modules\main\rbac\Installer::className());
+        $installer = Yii::$app->rbacInstaller;
 
         $installer->install();
 
-        $auth = Yii::$app->authManager;
-
-        $iterator = User::find()->each();
-
-        foreach($iterator AS $model) {
-
-            $r = $model->role;
-
-            if ($r)
-                $auth->assign($auth->getRole($r), $model->id);
-
-        }
+        $installer->assign();
 
         return 0;
 
