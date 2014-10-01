@@ -1,5 +1,6 @@
 <?php
 return [
+    'language' => 'ru-RU',
     'controllerMap' => [
         'migrate' => [
             'class' => 'console\controllers\MigrateController'
@@ -8,7 +9,9 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'components' => [
-
+        'formatter'=>[
+            'currencyCode'=>'руб'
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

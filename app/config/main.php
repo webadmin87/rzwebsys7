@@ -16,7 +16,6 @@ return [
     'id' => 'app',
     'name' => 'RzWebSys7',
     'basePath' => dirname(__DIR__),
-    'language' => 'ru-RU',
     'controllerNamespace' => 'app\controllers',
     'bootstrap' => ['log'],
     'defaultRoute' => 'main/pages/index',

@@ -21,4 +21,4 @@ $url = Url::toRoute(['/catalog/catalog/detail', 'section' => $model->sections[0]
     </a>
 <? endif; ?>
 <p><?= $model->annotation ?></p>
-<p class="price"><?=Yii::$app->formatter->asNumber($model->price) ?> р.</p>
+<p class="price"><?=Yii::$app->formatter->asDecimal($model->price, 0) ?> <?=Yii::$app->formatter->currencyCode?></p>
