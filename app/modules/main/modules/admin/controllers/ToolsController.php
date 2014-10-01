@@ -61,16 +61,9 @@ class ToolsController extends Root
 
         $auth = Yii::$app->authManager;
 
-        $config = array_merge([
-            'class' => ActiveDataProvider::className(),
-            "query" => User::find(),
-        ]);
+        $query = User::find();
 
-        $dataProvider = Yii::createObject($config);
-
-        $pager = $dataProvider->getPagination();
-
-        foreach ($dataProvider->getModels() AS $model) {
+        foreach ($query->each() AS $model) {
 
             $r = $model->role;
 
@@ -79,7 +72,7 @@ class ToolsController extends Root
 
         }
 
-        return ["page" => $pager->page + 1, "pagesNum" => $pager->pageCount];
+        return ["page" => 1, "pagesNum" => 1];
 
     }
 

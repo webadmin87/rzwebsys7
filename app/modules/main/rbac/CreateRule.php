@@ -22,7 +22,7 @@ class CreateRule extends Rule
     {
         $perm = $params['model']->getPermission();
 
-        return $perm AND $perm->createModel();
+        return $perm AND $perm->createModel($params['model']);
     }
 
 }

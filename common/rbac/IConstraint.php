@@ -20,6 +20,14 @@ interface IConstraint
     public function applyConstraint($query);
 
     /**
+     * Проверка возможности создания модели
+     * @param \common\db\ActiveRecord $model
+     * @return boolean
+     */
+
+    public function create($model);
+
+    /**
      * Проверка возможности чтения модели
      * @param \common\db\ActiveRecord $model
      * @return boolean

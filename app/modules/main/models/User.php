@@ -5,7 +5,8 @@ use common\db\ActiveRecord;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\web\IdentityInterface;
-use yii\helpers\Security;
+use yii\helpers\ArrayHelper;
+
 /**
  * Модель пользователей
  *
@@ -104,6 +105,56 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Возвращает массив ролей, которые может создавать пользователь
+     * @return array
+     */
+    public function getPermittedRoles()
+    {
+
+        $roles =  Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
+
+        $all = [];
+
+        foreach($roles AS $role) {
+            $all[] = $role;
+            $all = array_merge($all, $this->getRoleDescendant($role));
+        }
+
+        return $all;
+
+    }
+
+    /**
+     * Возвращает все роли - потомки переданной роли
+     * @param \yii\rbac\Role $role роль
+     * @return array
+     */
+    public function getRoleDescendant(\yii\rbac\Role $role)
+    {
+
+        $arr = [];
+
+        $children = Yii::$app->authManager->getChildren($role->name);
+
+        foreach($children AS $child) {
+
+            if($child instanceof \yii\rbac\Role) {
+
+                $arr[] = $child;
+
+                $arr = array_merge($arr, $this->getRoleDescendant($child));
+
+            }
+
+        }
+
+        return $arr;
+
+    }
+
+
+
+    /**
      * Возвращает массив ролей пользователей
      * @return array
      */
@@ -111,12 +162,12 @@ class User extends ActiveRecord implements IdentityInterface
     public static function getRolesNames()
     {
 
-        $roles = Yii::$app->authManager->getRoles();
+        if(Yii::$app->user->isGuest)
+            return [];
 
-        $arr = array();
+        $roles = Yii::$app->user->identity->getPermittedRoles();
 
-        foreach ($roles AS $role)
-            $arr[$role->name] = $role->name;
+        $arr = ArrayHelper::map($roles, "name", "name");
 
         return $arr;
 

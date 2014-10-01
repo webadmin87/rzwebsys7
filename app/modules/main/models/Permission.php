@@ -69,13 +69,19 @@ class Permission extends ActiveRecord implements IPermission
 
     /**
      * Создание модели
+     * @param \common\db\ActiveRecord $model модель
      * @return bool
      */
 
-    public function createModel()
+    public function createModel($model)
     {
 
-        return (boolean)$this->create;
+        if(empty($this->create))
+            return false;
+
+        $constraint = $this->getConstraintObject();
+
+        return $constraint === null OR $constraint->create($model);
 
     }
 

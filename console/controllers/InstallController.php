@@ -49,7 +49,7 @@ class InstallController extends Controller
      * Установка ролей
      * @throws \yii\base\InvalidConfigException
      */
-    protected function actionRoles()
+    public function actionRoles()
     {
 
         echo Yii::t('main/app', 'Installing roles...') . "\n";

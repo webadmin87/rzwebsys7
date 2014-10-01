@@ -27,6 +27,16 @@ class AuthorConstraint extends Object implements IConstraint
     }
 
     /**
+     * Проверка возможности создания модели
+     * @param \common\db\ActiveRecord $model
+     * @return boolean
+     */
+    public function create($model)
+    {
+        return true;
+    }
+
+    /**
      * Проверка возможности чтения модели
      * @param \common\db\ActiveRecord $model
      * @return boolean

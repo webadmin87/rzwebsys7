@@ -70,6 +70,9 @@ class Update extends Base
             return $this->performAjaxValidation($model);
         }
 
+        if (!Yii::$app->user->can('updateModel', array("model" => $model)))
+            throw new ForbiddenHttpException('Forbidden');
+
         if ($load && $model->save() && !$request->post($this->applyParam)) {
 
             $returnUrl = $request->post($this->redirectParam);
