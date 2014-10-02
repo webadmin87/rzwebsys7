@@ -118,7 +118,7 @@ class ManyManyField extends HasOneField
         if ($this->search)
             $query->
             joinWith($this->relation, true)->
-            andFilterWhere(["$tableRelated.id" => $this->model->{$this->attr}])->
+            andFilterWhere(["{{%$tableRelated}}.{{%id}}" => $this->model->{$this->attr}])->
             groupBy("$table.id");
 
     }

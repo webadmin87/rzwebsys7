@@ -330,8 +330,12 @@ class Field extends Object
     public function search(ActiveQuery $query)
     {
 
+        $table = $this->model->tableName();
+
+        $attr = $this->attr;
+
         if ($this->search)
-            $query->andFilterWhere([$this->attr => $this->model->{$this->attr}]);
+            $query->andFilterWhere(["{{%$table}}.{{%$attr}}" => $this->model->{$this->attr}]);
 
     }
 

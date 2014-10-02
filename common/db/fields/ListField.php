@@ -3,6 +3,7 @@ namespace common\db\fields;
 
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
+use common\db\ActiveRecord;
 
 /**
  * Class ListField
@@ -106,7 +107,7 @@ class ListField extends Field
 
 		if($this->numeric) {
 
-			$rules[] = [$this->attr, 'default', 'value'=>0];
+			$rules[] = [$this->attr, 'default', 'value'=>0, 'except'=>[ActiveRecord::SCENARIO_SEARCH]];
 
 		}
 
