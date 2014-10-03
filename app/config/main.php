@@ -18,7 +18,7 @@ return [
     'controllerMap' => [
         'elfinder' => [
             'class' => mihaildev\elfinder\Controller::className(),
-            'access' => ['root'],
+            'access' => ['fileManager'],
             'disabledCommands' => ['netmount'], //отключение ненужных команд https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#commands
             'roots' => [
                 [

@@ -26,6 +26,10 @@ class Installer extends Object
 
         $auth->removeAll();
 
+        $fileManager = $auth->createPermission('fileManager');
+        $fileManager->description = 'access to filemanager';
+        $auth->add($fileManager);
+
         $accessAdmin = $auth->createPermission('accessAdmin');
         $accessAdmin->description = 'access to admin panel';
         $auth->add($accessAdmin);
@@ -124,6 +128,7 @@ class Installer extends Object
         $admin = $auth->createRole(User::ROLE_ADMIN);
         $auth->add($admin);
         $auth->addChild($admin, $user);
+        $auth->addChild($admin, $fileManager);
         $auth->addChild($admin, $accessAdmin);
         $auth->addChild($admin, $listModelsRule);
         $auth->addChild($admin, $createModelsRule);
