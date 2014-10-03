@@ -8,7 +8,6 @@
  * @var string $labelAttr имя выводимого атрибута
  */
 
-use Yii;
 use yii\helpers\Html;
 
 echo Html::beginTag('ul', $options) . "\n";
