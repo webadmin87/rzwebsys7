@@ -21,7 +21,7 @@ class DateField extends TextField
 
         $rules = parent::rules();
 
-        $rules[] = [$this->attr, 'date', 'format' => 'Y-m-d'];
+        $rules[] = [$this->attr, 'date', 'format' => 'yyyy-MM-dd'];
 
         return $rules;
 
