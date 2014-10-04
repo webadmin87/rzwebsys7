@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\codeception\common\_support;
+namespace tests\codeception\app\_support;
 
-use tests\codeception\common\fixtures\UserFixture;
+use tests\codeception\app\fixtures\UserFixture;
 use Codeception\Module;
 use yii\test\FixtureTrait;
 

@@ -1,6 +1,6 @@
 <?php
-use tests\codeception\frontend\AcceptanceTester;
-use tests\codeception\common\_pages\LoginPage;
+use tests\codeception\app\AcceptanceTester;
+use tests\codeception\app\_pages\LoginPage;
 
 $I = new AcceptanceTester($scenario);
 $I->wantTo('ensure login page works');
@@ -20,7 +20,7 @@ $I->expectTo('see validations errors');
 $I->see('Incorrect username or password.', '.help-block');
 
 $I->amGoingTo('try to login with correct credentials');
-$loginPage->login('erau', 'password_0');
+$loginPage->login('root', 'xh48u56');
 $I->expectTo('see that user is logged');
 $I->seeLink('Logout (erau)');
 $I->dontSeeLink('Login');

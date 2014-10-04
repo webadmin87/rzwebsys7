@@ -5,7 +5,7 @@
 return [
     'components' => [
         'db' => [
-            'dsn' => 'mysql:host=localhost;dbname=rzwebsys7_advanced_tests',
+            'dsn' => 'pgsql:host=127.0.0.1;port=5432;dbname=rzwebsys7_advanced_tests',
         ],
         'mailer' => [
             'useFileTransport' => true,

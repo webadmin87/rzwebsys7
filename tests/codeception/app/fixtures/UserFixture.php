@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\codeception\common\fixtures;
+namespace tests\codeception\app\fixtures;
 
 use yii\test\ActiveFixture;
 
@@ -9,5 +9,5 @@ use yii\test\ActiveFixture;
  */
 class UserFixture extends ActiveFixture
 {
-    public $modelClass = 'common\models\User';
+    public $modelClass = 'app\modules\main\models\User';
 }

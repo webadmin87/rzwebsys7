@@ -1,4 +1,4 @@
-namespace: tests\codeception\frontend
+namespace: tests\codeception\app
 actor: Tester
 paths:
     tests: .
