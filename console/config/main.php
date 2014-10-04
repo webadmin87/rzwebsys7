@@ -12,6 +12,11 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'console\controllers',
     'modules' => [],
+    'controllerMap' => [
+        'fixture' => [
+            'class' => 'yii\faker\FixtureController',
+        ],
+    ],
     'components' => [
         'log' => [
             'targets' => [

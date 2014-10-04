@@ -67,7 +67,7 @@ class LoginFormTest extends DbTestCase
     {
 
         $model = new LoginForm([
-            'username' => 'bayer.hudson',
+            'username' => 'naumov.vil',
             'password' => 'password_0',
         ]);
 
@@ -86,7 +86,7 @@ class LoginFormTest extends DbTestCase
         return [
             'user' => [
                 'class' => UserFixture::className(),
-                'dataFile' => '@tests/codeception/app/unit/fixtures/data/models/user.php'
+                'dataFile' => '@tests/codeception/app/fixtures/data/user.php'
             ],
         ];
     }

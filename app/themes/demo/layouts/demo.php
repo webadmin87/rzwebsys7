@@ -53,6 +53,12 @@ AppAsset::register($this);
     <div class="row">
         <div class="col-xs-3">
 
+            <?if(!Yii::$app->user->isGuest):?>
+                <p>
+                    <?=Html::a(Yii::t('core', 'Logout') . ' (' . Yii::$app->user->identity->username . ')', ['/site/logout'], ['class'=>"btn btn-default"])?>
+                </p>
+            <?endif;?>
+
             <? echo \app\modules\main\widgets\menu\Menu::widget(
                 [
                     "options" => ["class" => "nav nav-pills nav-stacked"],

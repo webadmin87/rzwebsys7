@@ -116,3 +116,12 @@ vendor/bin/apidoc api common ./docs/common
 ```
 vendor/bin/apidoc api console ./docs/console
 ```
+
+Тестирование
+------------
+
+Пример генерации фикстур сущностей по шаблону:
+
+```
+./yii fixture/generate-all --templatePath='@tests/codeception/common/templates/fixtures' --fixtureDataPath='@tests/codeception/app/fixtures/data'
+```
