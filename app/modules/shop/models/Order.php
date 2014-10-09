@@ -115,7 +115,33 @@ class Order extends ActiveRecord
 	public function addNewGood(Good $good)
 	{
 
-		$this->_goods[] = $good;
+		$model = $this->hasGood($good);
+
+		if(!$model)
+			$this->_goods[] = $good;
+		else {
+			$model->qty = $good->qty;
+		}
+
+
+	}
+
+	/**
+	 * Содержит ли заказ данный товар
+	 * @param Good $good модель товара
+	 * @return Good|bool
+	 */
+	public function hasGood(Good $good)
+	{
+
+		foreach($this->getNewGoods() AS $model) {
+
+			if($model->item_id == $good->id AND $model->item_class == $good->item_class)
+				return $model;
+
+		}
+
+		return false;
 
 	}
 
@@ -160,7 +186,7 @@ class Order extends ActiveRecord
 	 * @inheritdoc
 	 * Сохраняет добавленные к заказу товары
 	 */
-	public function afterSave($insert)
+	public function afterSave($insert, $changedAttributes)
 	{
 
 		$this->owner->setIsNewRecord(false);
@@ -173,7 +199,7 @@ class Order extends ActiveRecord
 
 		$this->_goods = [];
 
-		return parent::afterSave($insert);
+		return parent::afterSave($insert, $changedAttributes);
 	}
 
 	/**
@@ -183,7 +209,7 @@ class Order extends ActiveRecord
 	{
 		$arr = parent::fields();
 
-		$arr = array_merge($arr, ["allGoods"]);
+		$arr = array_merge($arr, ["allGoods", "totalPrice"]);
 
 		return $arr;
 

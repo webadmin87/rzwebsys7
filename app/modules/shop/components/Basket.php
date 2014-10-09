@@ -1,7 +1,7 @@
 <?php
 namespace app\modules\shop\components;
 
-use yii\base\Component;
+use yii\di\ServiceLocator;
 use app\modules\shop\models\Good;
 use Yii;
 use yii\base\ErrorException;
@@ -10,16 +10,12 @@ use yii\helpers\ArrayHelper;
 /**
  * Class Basket
  * Корзина. Сохраняет и получает заказ из сессии
+ * @property \app\modules\shop\components\OrderManager $orderManager компонент получения текущего заказа
  * @package app\modules\shop\components
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Basket extends Component
+class Basket extends ServiceLocator
 {
-
-	/**
-	 * @var \app\modules\shop\components\OrderManager компонент получения текущего заказа
-	 */
-	public $orderManager;
 
 	/**
 	 * @var array массив атрибутов моделей, которые необходимо сохранять в заказе.
@@ -63,6 +59,21 @@ class Basket extends Component
 		$order->addNewGood($good);
 
 		$this->orderManager->saveOrder($order);
+
+	}
+
+	/**
+	 * Обновляет количество добавленного в корзину товара
+	 * @param int $id идентификатор товара
+	 * @param string $class класс модели товара
+	 * @param int $qty количество
+	 */
+	public function updateNewQty($id, $class, $qty)
+	{
+
+		$this->removeNew($id, $class);
+
+		$this->add($id, $class, $qty);
 
 	}
 

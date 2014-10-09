@@ -15,6 +15,7 @@ $file = $model->getFirstFile('image');
 <? endif; ?>
     <p class="date"><?= Yii::$app->formatter->asDecimal($model->price, 0) ?> <?=Yii::$app->formatter->currencyCode?></p>
 <?= $model->text ?>
+<?= \app\modules\shop\widgets\ToBasket::widget(["model"=>$model])?>
 <?= \app\modules\main\widgets\gallery\Gallery::widget(["files" => $model->getFiles('image'), "skipFromStart" => 1, "rel" => "news-item"]); ?>
 
 <?

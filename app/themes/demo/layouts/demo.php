@@ -11,7 +11,7 @@ AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html ng-app="shopModule" lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,6 +58,8 @@ AppAsset::register($this);
                     <?=Html::a(Yii::t('core', 'Logout') . ' (' . Yii::$app->user->identity->username . ')', ['/site/logout'], ['class'=>"btn btn-default"])?>
                 </p>
             <?endif;?>
+
+            <?=\app\modules\shop\widgets\BasketInfo::widget();?>
 
             <? echo \app\modules\main\widgets\menu\Menu::widget(
                 [

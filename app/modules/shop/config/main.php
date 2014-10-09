@@ -15,8 +15,10 @@ return [
 			'components'=>[
 				'basket'=>[
 					'class'=>\app\modules\shop\components\Basket::className(),
-					'orderManager' => [
-						'class'=>\app\modules\shop\components\OrderManager::className(),
+					'components'=> [
+						'orderManager' => [
+							'class'=>\app\modules\shop\components\OrderManager::className(),
+						],
 					]
 				],
 			],

@@ -35,6 +35,9 @@ return [
 
 		'request' => [
 			'enableCookieValidation' => true,
+            'parsers'=>[
+                'application/json' => 'yii\web\JsonParser',
+            ],
 		],
 
         'assetManager' => [

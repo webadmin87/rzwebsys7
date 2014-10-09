@@ -4,6 +4,9 @@ namespace app\modules\catalog\models;
 use common\db\ActiveRecord;
 use Yii;
 use yii\data\ActiveDataProvider;
+use app\modules\shop\components\IShopItem;
+use app\modules\shop\components\ShopItemTrait;
+
 
 /**
  * Class Catalog
@@ -11,10 +14,11 @@ use yii\data\ActiveDataProvider;
  * @package app\modules\catalog\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Catalog extends ActiveRecord
+class Catalog extends ActiveRecord implements IShopItem
 {
 
     use \app\modules\main\components\PermissionTrait;
+    use ShopItemTrait;
 
     /**
      * @var array массив идентификаторов связанных категорий

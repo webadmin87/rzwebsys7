@@ -11,6 +11,11 @@ interface IShopItem
 {
 
 	/**
+	 * @return int идентификатор товара
+	 */
+	public function getId();
+
+	/**
 	 * @return int цена товара
 	 */
 	public function getPrice();

@@ -18,6 +18,9 @@ class BasketRestController extends Controller
 	 */
 	protected $basket;
 
+	/**
+	 * @inheritdoc
+	 */
 	public function init()
 	{
 		$this->basket = $this->module->basket;
@@ -29,31 +32,49 @@ class BasketRestController extends Controller
 
 	/**
 	 * Добавление товара в корзину
-	 * @param int $id идентификатор элемента добавляемого в корзину
-	 * @param string $class класс элемента каталога
-	 * @param int $qty количество
 	 * @throws \yii\base\ErrorException
 	 */
-	public function actionAdd($id, $class, $qty = 1)
+	public function actionAdd()
 	{
 
-		$this->basket->add($id, $class, $qty);
+		$r = Yii::$app->request;
+
+		$this->basket->add($r->post("id"), $r->post("class"), $r->post("qty", 1));
 
 		Yii::$app->response->statusCode = 201;
 
+		return $this->basket->getStat();
 	}
+
+	/**
+	 * Изменение количества товара в корзине
+	 * @param int $id идентификатор элемента
+	 * @param string $class класс элемента каталога
+	 * @return \app\modules\shop\models\Order
+	 */
+	public function actionUpdate($id, $class)
+	{
+
+		$r = Yii::$app->request;
+
+		$this->basket->updateNewQty($id, $class, $r->post("qty"));
+
+		return $this->basket->getOrder();
+
+	}
+
 
 	/**
 	 * Удаление товара из корзины
 	 * @param int $id идентификатор элемента добавляемого в корзину
 	 * @param string $class класс элемента каталога
+	 * @return \app\modules\shop\models\Order
 	 */
 	public function actionDelete($id, $class)
 	{
 		$res = $this->basket->removeNew($id, $class);
 
-		if($res)
-			Yii::$app->response->statusCode = 204;
+		return $this->basket->getOrder();
 
 	}
 
@@ -86,7 +107,8 @@ class BasketRestController extends Controller
 		return [
 
 			'add'=>['post'],
-			'delete'=>['delete']
+			'delete'=>['delete'],
+			'update'=>['put'],
 
 		];
 
