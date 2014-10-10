@@ -84,7 +84,7 @@ class OrderMeta extends MetaFields
 			"comment" => [
 				"definition" => [
 					"class" => \common\db\fields\TextAreaField::className(),
-					"title" => Yii::t('shop/app', 'Address'),
+					"title" => Yii::t('shop/app', 'Comment'),
 					"showInGrid" => false,
 				],
 				"params" => [$this->owner, "comment"]

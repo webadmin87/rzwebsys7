@@ -1,4 +1,4 @@
-(function(angular){
+(function(angular, $){
 
     var module = angular.module('shopModule', []);
 
@@ -189,7 +189,30 @@
         }
 
 
+        /**
+         * Проверяет что в форме валидны все атрибуты кроме указанных в массиве attrs
+         * @param FormController form
+         * @param Array attrs
+         * @returns {boolean}
+         */
+        this.validExcept = function(form, attrs) {
+
+            for(var k in form) {
+
+                if(k.match(/^\$/))
+                    continue;
+
+                if(!$.inArray(k, attrs) && k.$invalid)
+                    return false;
+
+            }
+
+            return true;
+
+        }
+
+
 
     }]);
 
-})(angular);
+})(angular, jQuery);

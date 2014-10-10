@@ -81,6 +81,15 @@ class GoodMeta extends MetaFields
 				"params" => [$this->owner, "item_class"]
 			],
 
+			"link" => [
+				"definition" => [
+					"class" => \common\db\fields\TextField::className(),
+					"title" => Yii::t('shop/app', 'Link'),
+					"showInGrid"=>false,
+				],
+				"params" => [$this->owner, "link"]
+			],
+
 			"attrs" => [
 				"definition" => [
 					"class" => \common\db\fields\HiddenField::className(),

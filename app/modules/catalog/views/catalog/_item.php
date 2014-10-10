@@ -10,7 +10,7 @@ use yii\helpers\Url;
  * @link http://www.yiiframework.com/doc-2.0/yii-widgets-listview.html#$itemView-detail
  */
 $file = $model->getFirstFile('image');
-$url = Url::toRoute(['/catalog/catalog/detail', 'section' => $model->sections[0]->code, 'code' => $model->code]);
+$url = Url::toRoute($model->getLink());
 ?>
 
 <h2><a href="<?= $url ?>"><?= $model->title ?></a></h2>

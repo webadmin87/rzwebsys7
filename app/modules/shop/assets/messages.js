@@ -8,7 +8,8 @@
     module.value('shopMessages', {
         addedToCart:"Товар успешно добавлен в корзину",
         toCart: "В корзину",
-        inCart: "В корзине"
+        inCart: "В корзине",
+        fieldError: "Значение поля задано неверно"
     });
 
 })(angular);

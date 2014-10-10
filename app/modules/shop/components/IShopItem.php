@@ -30,4 +30,9 @@ interface IShopItem
 	 */
 	public function getTitle();
 
+	/**
+	 * @return string возвращает ссылку на страницу с товаром
+	 */
+	public function getLink();
+
 }

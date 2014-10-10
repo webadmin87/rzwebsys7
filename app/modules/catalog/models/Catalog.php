@@ -140,4 +140,14 @@ class Catalog extends ActiveRecord implements IShopItem
 		return $this->hasOne(Producer::className(), ["id"=>"producer_id"]);
 	}
 
+    /**
+     * Возвращает ссылку на карточку товара
+     * @return array|string
+     */
+    public function getLink()
+    {
+        return ['/catalog/catalog/detail', 'section' => $this->sections[0]->code, 'code' => $this->code];
+
+    }
+
 }

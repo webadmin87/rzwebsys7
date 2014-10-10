@@ -6,6 +6,7 @@ use app\modules\shop\models\Good;
 use Yii;
 use yii\base\ErrorException;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
 /**
  * Class Basket
@@ -125,6 +126,7 @@ class Basket extends ServiceLocator
 		$good->title = $model->getTitle();
 		$good->price = $model->getPrice();
 		$good->discount = $model->getDiscount();
+		$good->link = Url::toRoute($model->getLink());
 
 		$arr = [];
 

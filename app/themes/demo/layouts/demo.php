@@ -55,11 +55,11 @@ AppAsset::register($this);
 
             <?if(!Yii::$app->user->isGuest):?>
                 <p>
-                    <?=Html::a(Yii::t('core', 'Logout') . ' (' . Yii::$app->user->identity->username . ')', ['/site/logout'], ['class'=>"btn btn-default"])?>
+                    <?=Html::a(Yii::t('core', 'Logout') . ' (' . Yii::$app->user->identity->username . ')', ['/site/logout'], ['class'=>"btn btn-link"])?>
                 </p>
             <?endif;?>
 
-            <?=\app\modules\shop\widgets\BasketInfo::widget();?>
+            <div class="well"><?=\app\modules\shop\widgets\BasketInfo::widget();?></div>
 
             <? echo \app\modules\main\widgets\menu\Menu::widget(
                 [

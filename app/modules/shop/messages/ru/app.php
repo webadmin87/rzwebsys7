@@ -41,6 +41,10 @@ return [
 	"Basket"=>"Корзина",
 	"Total price"=>"Общая стоимость",
 	"Qty"=>"Количество",
+	"Your basket is empty"=>"Ваша корзина пуста",
+	"Process order" => "Оформить заказ",
+	"Confirm order" => "Подтвердить заказ",
+	"Client info" => "Клиент",
 
 
 ];

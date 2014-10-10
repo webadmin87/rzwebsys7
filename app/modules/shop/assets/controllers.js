@@ -26,6 +26,41 @@
 
         }
 
+        $scope.readOnly = false;
+
+    }]);
+
+    /**
+     * Контроллер оформления заказа
+     */
+    module.controller('ProcessOrderCtrl', ["$scope", "shopBasket", "shopMessages", function($scope, shopBasket, shopMessages){
+
+        $scope.order = shopBasket.getOrder();
+
+        $scope.messages = shopMessages;
+
+        $scope.readOnly = true;
+
+        $scope.deliveryEnabled = false;
+
+        $scope.paymentEnabled = false;
+
+        $scope.$watch('order', function(newVal){
+
+            if(shopBasket.validExcept($scope.client, ['Order[delivery_id]','Order[payment_id]'])) {
+
+                $scope.deliveryEnabled = true;
+
+            }
+
+            if(shopBasket.validExcept($scope.client, ['Order[payment_id]'])) {
+
+                $scope.paymentEnabled = true;
+
+            }
+
+
+        }, true);
 
     }]);
 

@@ -13,6 +13,22 @@ class BasketController extends App
 {
 
     /**
+     * @var \app\modules\shop\components\Basket
+     */
+    protected $basket;
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        $this->basket = $this->module->basket;
+
+        parent::init();
+
+    }
+
+    /**
      * Вывод страницы с содержимым заказа
      * @return string
      */
@@ -21,6 +37,16 @@ class BasketController extends App
 
         return $this->render('index');
 
+
+    }
+
+
+    public function actionProcess()
+    {
+
+        $order = $this->basket->getOrder();
+
+        return $this->render('process', ["order"=>$order]);
 
     }
 
