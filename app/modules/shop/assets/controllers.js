@@ -41,26 +41,29 @@
 
         $scope.readOnly = true;
 
-        $scope.deliveryEnabled = false;
+        $scope.deliveries = shopBasket.getDeliveries();
 
-        $scope.paymentEnabled = false;
+        $scope.payments = shopBasket.getPayments();
 
-        $scope.$watch('order', function(newVal){
 
-            if(shopBasket.validExcept($scope.client, ['Order[delivery_id]','Order[payment_id]'])) {
+        this.syncOrder = function() {
 
-                $scope.deliveryEnabled = true;
+            shopBasket.syncOrder();
+
+        }
+
+        /*$scope.$watch('order.delivery_id', function(newVal, oldVal){
+
+            if(newVal != oldVal) {
+
+                console.log(newVal, oldVal)
+
+
 
             }
 
-            if(shopBasket.validExcept($scope.client, ['Order[payment_id]'])) {
 
-                $scope.paymentEnabled = true;
-
-            }
-
-
-        }, true);
+        });*/
 
     }]);
 

@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\shop\models;
 
+use Yii;
 use common\db\ActiveRecord;
 
 /**
@@ -44,6 +45,58 @@ class Order extends ActiveRecord
 	{
 		return $this->hasMany(Good::className(), ["order_id"=>"id"]);
 	}
+
+    /**
+     * Связь со способом доставки
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDelivery()
+    {
+        return $this->hasOne(Delivery::className(), ["id"=>"delivery_id"]);
+    }
+
+    /**
+     * Связь со способом оплаты
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPayment()
+    {
+        return $this->hasOne(Payment::className(), ["id"=>"payment_id"]);
+    }
+
+    /**
+     * Расчет стоимости доставки
+     * @return float
+     */
+    public function calcDeliveryPrice()
+    {
+
+        $delivery = $this->getDelivery()->one();
+
+        if($delivery) {
+
+
+            if(!empty($delivery->class)) {
+
+                $calc = Yii::createObject($delivery->class);
+
+                $this->delivery_price = $calc->calc($this, $delivery);
+
+            } elseif(!empty($delivery->free_limit) AND $this->getGoodsPrice()>=$delivery->free_limit) {
+
+                $this->delivery_price = 0;
+
+            } else {
+
+                $this->delivery_price = $delivery->price;
+
+            }
+
+        }
+
+        return $this->delivery_price;
+
+    }
 
 	/**
 	 * Возвращает все товары, уже сохраненные и новые
@@ -215,5 +268,26 @@ class Order extends ActiveRecord
 
 	}
 
+    /**
+     * Массив способов доставки
+     * @return Delivery[]
+     */
+    public function getDeliveries()
+    {
+
+        return Delivery::find()->published()->all();
+
+    }
+
+    /**
+     * Массив способов оплаты
+     * @return Payment[]
+     */
+    public function getPayments()
+    {
+
+        return Payment::find()->published()->all();
+
+    }
 
 }

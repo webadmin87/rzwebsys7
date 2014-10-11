@@ -2,6 +2,7 @@
 namespace app\modules\shop\controllers;
 
 use common\controllers\App;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class BasketController
@@ -46,7 +47,11 @@ class BasketController extends App
 
         $order = $this->basket->getOrder();
 
-        return $this->render('process', ["order"=>$order]);
+        $deliveries = ArrayHelper::map($order->getDeliveries(), "id", "title");
+
+        $payments = ArrayHelper::map($order->getPayments(), "id", "title");
+
+        return $this->render('process', ["order"=>$order, "deliveries"=>$deliveries, "payments"=>$payments]);
 
     }
 

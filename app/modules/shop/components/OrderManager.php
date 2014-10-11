@@ -45,6 +45,8 @@ class OrderManager extends Component
 
 		}
 
+        $this->_order->clearErrors();
+
 		return $this->_order;
 
 	}

@@ -45,6 +45,7 @@ return [
 	"Process order" => "Оформить заказ",
 	"Confirm order" => "Подтвердить заказ",
 	"Client info" => "Клиент",
+    "Delivery price"=>"Стоимость доставки",
 
 
 ];

@@ -1,6 +1,8 @@
 <?php
 /**
  * @var \app\modules\shop\models\Order $order модель заказа
+ * @var array $deliveries массив способов доставки id=>title
+ * @var array $payments массив способов оплаты id=>title
  */
 ?>
 
@@ -12,6 +14,6 @@
 
     <h2><?=Yii::t('shop/app', 'Client info')?></h2>
 
-    <?=$this->render('_form', ["order"=>$order])?>
+    <?=$this->render('_form', ["order"=>$order, "deliveries"=>$deliveries, "payments"=>$payments])?>
 
 </div>

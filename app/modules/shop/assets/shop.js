@@ -12,7 +12,10 @@
         del: '/shop/basket-rest/delete/',
         update: '/shop/basket-rest/update/',
         stat: '/shop/basket-rest/stat/',
-        order: '/shop/basket-rest/order/'
+        order: '/shop/basket-rest/order/',
+        setOrder: '/shop/basket-rest/set-order/',
+        payments: '/shop/basket-rest/payments/',
+        deliveries: '/shop/basket-rest/deliveries/'
 
     });
 
@@ -190,27 +193,68 @@
 
 
         /**
-         * Проверяет что в форме валидны все атрибуты кроме указанных в массиве attrs
-         * @param FormController form
-         * @param Array attrs
-         * @returns {boolean}
+         * Синхронизация заказа с сервером
          */
-        this.validExcept = function(form, attrs) {
+        this.syncOrder = function() {
 
-            for(var k in form) {
 
-                if(k.match(/^\$/))
-                    continue;
+            $http.put(urlMapping.setOrder, {'Order': this.getOrder()}).success(function(data){
 
-                if(!$.inArray(k, attrs) && k.$invalid)
-                    return false;
+                self.setOrder(data);
 
-            }
+            });
 
-            return true;
 
         }
 
+        /**
+         * Получает данные с сервера если объект является путым {}
+         * @param string url
+         * @param object obj
+         */
+
+        this.loadIfNotEmpty = function(url, obj) {
+
+            if(angular.equals(obj, {})) {
+
+                $http.get(url).success(function(data){
+
+                    angular.extend(obj, data);
+
+                });
+
+            }
+
+        }
+
+
+        var deliveries = {};
+
+        /**
+         * Получение способов доставки
+         * @returns {{}}
+         */
+        this.getDeliveries = function() {
+
+            this.loadIfNotEmpty(urlMapping.deliveries, deliveries);
+
+            return deliveries;
+
+        }
+
+        var payments = {};
+
+        /**
+         * Получение способов оплаты
+         * @returns {{}}
+         */
+        this.getPayments = function() {
+
+            this.loadIfNotEmpty(urlMapping.payments, payments);
+
+            return payments;
+
+        }
 
 
     }]);

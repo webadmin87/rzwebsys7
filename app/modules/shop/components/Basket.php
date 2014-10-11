@@ -171,4 +171,26 @@ class Basket extends ServiceLocator
 
 	}
 
+    /**
+     * Установка свойств заказа
+     * @param array $data
+     * @return \app\modules\shop\models\Order
+     */
+    public function setOrder($data)
+    {
+
+        $order = $this->getOrder();
+
+        if($order->load($data)) {
+
+            $order->calcDeliveryPrice();
+
+            $this->orderManager->saveOrder($order);
+
+        }
+
+        return $order;
+
+    }
+
 }

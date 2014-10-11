@@ -3,6 +3,7 @@ namespace app\modules\shop\controllers;
 
 use yii\rest\Controller;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class BasketRestController
@@ -99,6 +100,39 @@ class BasketRestController extends Controller
 		return $this->basket->getStat();
 	}
 
+    /**
+     * Установка значений свойств заказа
+     * @return \app\modules\shop\models\Order
+     */
+    public function actionSetOrder()
+    {
+
+        return $this->basket->setOrder(Yii::$app->request->post());
+
+    }
+
+    /**
+     * Способы доставки
+     * @return array
+     */
+    public function actionDeliveries()
+    {
+
+        return ArrayHelper::map($this->basket->getOrder()->getDeliveries(), "id", "title");
+
+    }
+
+    /**
+     * Способы оплаты
+     * @return array
+     */
+    public function actionPayments()
+    {
+
+        return ArrayHelper::map($this->basket->getOrder()->getPayments(), "id", "title");
+
+    }
+
 	/**
 	 * @inheritdoc
 	 */
@@ -107,6 +141,7 @@ class BasketRestController extends Controller
 		return [
 
 			'add'=>['post'],
+            'set-order'=>['put'],
 			'delete'=>['delete'],
 			'update'=>['put'],
 
