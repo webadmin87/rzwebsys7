@@ -95,7 +95,9 @@
 
         var order = {};
 
-        var hasOrderLoaded = false;
+        // Был ли получен заказ с сервера
+
+        this.hasOrderLoaded = false;
 
         /**
          * Получение заказа
@@ -105,13 +107,13 @@
 
         this.getOrder = function(refresh) {
 
-            if(!hasOrderLoaded || refresh) {
+            if(!this.hasOrderLoaded || refresh) {
 
                 $http.get(urlMapping.order).success(function(data){
 
                     angular.extend(order, data);
 
-                    hasOrderLoaded = true;
+                    self.hasOrderLoaded = true;
 
                 });
 
@@ -211,9 +213,10 @@
          * Получает данные с сервера если объект является путым {}
          * @param string url
          * @param object obj
+         * @param function callback
          */
 
-        this.loadIfNotEmpty = function(url, obj) {
+        this.loadIfNotEmpty = function(url, obj, callback) {
 
             if(angular.equals(obj, {})) {
 
@@ -221,12 +224,31 @@
 
                     angular.extend(obj, data);
 
+                    if(callback)
+                        callback(data);
+
                 });
 
             }
 
         }
 
+        /**
+         * Получение первого свойства объекта
+         * @param obj
+         * @returns {*}
+         */
+        this.getFirstKey = function(obj) {
+
+            for(var k in obj) {
+
+                return k;
+                break;
+            }
+
+            return null;
+
+        }
 
         var deliveries = {};
 
@@ -236,7 +258,15 @@
          */
         this.getDeliveries = function() {
 
-            this.loadIfNotEmpty(urlMapping.deliveries, deliveries);
+            this.loadIfNotEmpty(urlMapping.deliveries, deliveries, function(data){
+
+                var o = self.getOrder();
+
+                if(!o.delivery_id) {
+                    o.delivery_id = self.getFirstKey(data);
+                    self.syncOrder();
+                }
+            });
 
             return deliveries;
 
@@ -250,7 +280,14 @@
          */
         this.getPayments = function() {
 
-            this.loadIfNotEmpty(urlMapping.payments, payments);
+            this.loadIfNotEmpty(urlMapping.payments, payments, function(data){
+
+                var o = self.getOrder();
+
+                if(!o.payment_id)
+                    o.payment_id = self.getFirstKey(data);
+
+            });
 
             return payments;
 

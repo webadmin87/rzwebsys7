@@ -41,29 +41,19 @@
 
         $scope.readOnly = true;
 
-        $scope.deliveries = shopBasket.getDeliveries();
+        $scope.shopBasket = shopBasket;
 
-        $scope.payments = shopBasket.getPayments();
+        $scope.$watch('shopBasket.hasOrderLoaded', function(newVal){
 
+            if(newVal) {
 
-        this.syncOrder = function() {
+                $scope.deliveries = shopBasket.getDeliveries();
 
-            shopBasket.syncOrder();
-
-        }
-
-        /*$scope.$watch('order.delivery_id', function(newVal, oldVal){
-
-            if(newVal != oldVal) {
-
-                console.log(newVal, oldVal)
-
-
+                $scope.payments = shopBasket.getPayments();
 
             }
 
-
-        });*/
+        });
 
     }]);
 
