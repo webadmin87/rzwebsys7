@@ -63,13 +63,14 @@ class DeliveryMeta extends MetaFields
 				"params" => [$this->owner, "class"]
 			],
 
-			"constraint_class" => [
+			"sort" => [
 				"definition" => [
-					"class" => \common\db\fields\TextField::className(),
-					"title" => Yii::t('shop/app', 'Constraint class'),
-					"showInGrid"=>false,
+					"class" => \common\db\fields\NumberField::className(),
+					"title" => Yii::t('shop/app', 'Sort'),
+					"showInGrid"=>true,
+                    "editInGrid"=>true,
 				],
-				"params" => [$this->owner, "constraint_class"]
+				"params" => [$this->owner, "sort"]
 			],
 
         ];

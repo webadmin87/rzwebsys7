@@ -14,6 +14,11 @@ class Delivery extends ActiveRecord
 
     use \app\modules\main\components\PermissionTrait;
 
+    /**
+     * @var float расчитанная стоимость доставки
+     */
+    protected $_deliveryPrice;
+
 	/**
      * @inheritdoc
      */
@@ -59,5 +64,49 @@ class Delivery extends ActiveRecord
 		return $this->hasMany(Good::className(), ["order_id"=>"id"])->published();
 
 	}
+
+    /**
+     * Расчет стоимости доставки
+     * @param Order $order заказа
+     * @param bool $refresh перерасчитать, если уже расчитано
+     * @return float
+     */
+    public function getDeliveryPrice($order, $refresh=false)
+    {
+
+        if($this->_deliveryPrice === null OR $refresh) {
+
+            if(!empty($this->class)) {
+
+                $calc = Yii::createObject($this->class);
+
+                $this->_deliveryPrice = $calc->calc($order, $this);
+
+            } elseif(!empty($this->free_limit) AND $this->getGoodsPrice()>=$this->free_limit) {
+
+                $this->_deliveryPrice = 0;
+
+            } else {
+
+                $this->_deliveryPrice = $this->price;
+
+            }
+
+        }
+
+        return $this->_deliveryPrice;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        $parent = parent::rules();
+
+        $parent[] = ['sort', 'default', 'value'=>500];
+
+        return $parent;
+    }
 
 }

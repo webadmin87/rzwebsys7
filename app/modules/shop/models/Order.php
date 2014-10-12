@@ -75,22 +75,7 @@ class Order extends ActiveRecord
 
         if($delivery) {
 
-
-            if(!empty($delivery->class)) {
-
-                $calc = Yii::createObject($delivery->class);
-
-                $this->delivery_price = $calc->calc($this, $delivery);
-
-            } elseif(!empty($delivery->free_limit) AND $this->getGoodsPrice()>=$delivery->free_limit) {
-
-                $this->delivery_price = 0;
-
-            } else {
-
-                $this->delivery_price = $delivery->price;
-
-            }
+            $this->delivery_price = $delivery->getDeliveryPrice($this);
 
         }
 
@@ -262,7 +247,7 @@ class Order extends ActiveRecord
 	{
 		$arr = parent::fields();
 
-		$arr = array_merge($arr, ["allGoods", "totalPrice"]);
+		$arr = array_merge($arr, ["allGoods", "totalPrice", "payments", "deliveries"]);
 
 		return $arr;
 
@@ -275,7 +260,7 @@ class Order extends ActiveRecord
     public function getDeliveries()
     {
 
-        return Delivery::find()->published()->all();
+        return Delivery::find()->published()->orderBy(['sort'=>SORT_ASC])->all();
 
     }
 
@@ -286,7 +271,7 @@ class Order extends ActiveRecord
     public function getPayments()
     {
 
-        return Payment::find()->published()->all();
+        return Payment::find()->published()->orderBy(['sort'=>SORT_ASC])->all();
 
     }
 

@@ -30,6 +30,14 @@ class StatusMeta extends MetaFields
                 "params" => [$this->owner, "title"]
             ],
 
+            "default" => [
+                "definition" => [
+                    "class" => \common\db\fields\CheckBoxField::className(),
+                    "title" => Yii::t('shop/app', 'Default'),
+                ],
+                "params" => [$this->owner, "default"]
+            ],
+
 			"text" => [
 				"definition" => [
 					"class" => \common\db\fields\TextareaField::className(),

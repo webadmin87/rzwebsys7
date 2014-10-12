@@ -118,7 +118,7 @@ class BasketRestController extends Controller
     public function actionDeliveries()
     {
 
-        return ArrayHelper::map($this->basket->getOrder()->getDeliveries(), "id", "title");
+        return $this->basket->getOrder()->getDeliveries();
 
     }
 
@@ -129,7 +129,7 @@ class BasketRestController extends Controller
     public function actionPayments()
     {
 
-        return ArrayHelper::map($this->basket->getOrder()->getPayments(), "id", "title");
+        return $this->basket->getOrder()->getPayments();
 
     }
 

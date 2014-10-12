@@ -21,7 +21,7 @@ class m140923_090706_create_delivery_table extends \app\modules\main\db\Migratio
 			'price'=>Schema::TYPE_MONEY . ' DEFAULT 0',
 			'free_limit'=>Schema::TYPE_INTEGER . ' DEFAULT 0',
 			'class'=>Schema::TYPE_STRING,
-			'constraint_class'=>Schema::TYPE_STRING,
+			'sort'=>Schema::TYPE_INTEGER . ' DEFAULT 500',
         ]);
 
 		$this->insert($this->tableName, ["title"=>"Самовывоз", "author_id"=>1]);

@@ -250,7 +250,6 @@
 
         }
 
-        var deliveries = {};
 
         /**
          * Получение способов доставки
@@ -258,21 +257,17 @@
          */
         this.getDeliveries = function() {
 
-            this.loadIfNotEmpty(urlMapping.deliveries, deliveries, function(data){
+            var o = self.getOrder();
 
-                var o = self.getOrder();
+            if(!o.delivery_id && o.deliveries.length > 0) {
+                o.delivery_id = o.deliveries[0].id;
+                self.syncOrder();
+            }
 
-                if(!o.delivery_id) {
-                    o.delivery_id = self.getFirstKey(data);
-                    self.syncOrder();
-                }
-            });
 
-            return deliveries;
+            return o.deliveries;
 
         }
-
-        var payments = {};
 
         /**
          * Получение способов оплаты
@@ -280,16 +275,14 @@
          */
         this.getPayments = function() {
 
-            this.loadIfNotEmpty(urlMapping.payments, payments, function(data){
 
-                var o = self.getOrder();
+            var o = self.getOrder();
 
-                if(!o.payment_id)
-                    o.payment_id = self.getFirstKey(data);
+            if(!o.payment_id && o.payments.length > 0)
+                o.payment_id = o.payments[0].id;
 
-            });
 
-            return payments;
+            return o.payments;
 
         }
 

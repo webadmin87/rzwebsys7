@@ -19,7 +19,7 @@ class m140923_091038_create_payment_table extends \app\modules\main\db\Migration
 			'title'=>Schema::TYPE_STRING . ' NOT NULL',
 			'text'=>Schema::TYPE_TEXT,
 			'html'=>Schema::TYPE_TEXT,
-			'constraint_class'=>Schema::TYPE_STRING,
+			'sort'=>Schema::TYPE_INTEGER . ' DEFAULT 500',
         ]);
 
 		$this->insert($this->tableName, ["title"=>"Оплата наличными", "author_id"=>1]);

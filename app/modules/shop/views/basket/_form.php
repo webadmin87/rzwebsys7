@@ -49,11 +49,11 @@ $form = \yii\widgets\ActiveForm::begin(["options" => ["name" => "client", "noval
 
             echo $form->field($order, "delivery_id", ["hintOptions" => ["ng-show" => "client['Order[delivery_id]'].\$dirty && client['Order[delivery_id]'].\$invalid"]])
                 ->hint("{{messages.fieldError}}")
-                ->dropDownList([], ["ng-options"=>"key as value for (key , value) in deliveries", "ng-model" => "order.delivery_id", "ng-change"=>"shopBasket.syncOrder()", "required" => true]);
+                ->dropDownList([], ["ng-options"=>"value.id as value.title for value in deliveries", "ng-model" => "order.delivery_id", "ng-change"=>"shopBasket.syncOrder()", "required" => true]);
 
 			echo $form->field($order, "payment_id", ["hintOptions" => ["ng-show" => "client['Order[payment_id]'].\$dirty && client['Order[payment_id]'].\$invalid"]])
 				->hint("{{messages.fieldError}}")
-				->dropDownList([], ["ng-options"=>"key as value for (key , value) in payments", "ng-model" => "order.payment_id", "required" => true]);
+				->dropDownList([], ["ng-options"=>"value.id as value.title for value in payments", "ng-model" => "order.payment_id", "required" => true]);
 
 			?>
 		</div>

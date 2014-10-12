@@ -46,14 +46,15 @@ class PaymentMeta extends MetaFields
 				"params" => [$this->owner, "html"]
 			],
 
-			"constraint_class" => [
-				"definition" => [
-					"class" => \common\db\fields\TextField::className(),
-					"title" => Yii::t('shop/app', 'Constraint class'),
-					"showInGrid"=>false,
-				],
-				"params" => [$this->owner, "constraint_class"]
-			],
+            "sort" => [
+                "definition" => [
+                    "class" => \common\db\fields\NumberField::className(),
+                    "title" => Yii::t('shop/app', 'Sort'),
+                    "showInGrid"=>true,
+                    "editInGrid"=>true,
+                ],
+                "params" => [$this->owner, "sort"]
+            ],
 
         ];
     }

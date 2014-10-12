@@ -31,5 +31,16 @@ class Payment extends ActiveRecord
         return meta\PaymentMeta::className();
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        $parent = parent::rules();
+
+        $parent[] = ['sort', 'default', 'value'=>500];
+
+        return $parent;
+    }
 
 }
