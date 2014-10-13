@@ -183,6 +183,8 @@ class Basket extends ServiceLocator
 
         if($order->load($data)) {
 
+			$order->reloadRelated();
+
             $order->calcDeliveryPrice();
 
             $this->orderManager->saveOrder($order);

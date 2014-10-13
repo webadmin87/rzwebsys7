@@ -15,10 +15,25 @@ class Order extends ActiveRecord
 
     use \app\modules\main\components\PermissionTrait;
 
+	const SCENARIO_CONFIRM = "confirm";
+
 	/**
-	 * @var Goods[] массив новых товаров добавленных к заказу
+	 * @var Good[] массив новых товаров добавленных к заказу
 	 */
 	protected $_goods = [];
+
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		$arr = parent::rules();
+
+		$arr[] = ['allGoods', 'required', 'on'=>[self::SCENARIO_CONFIRM]];
+
+		return $arr;
+	}
+
 
 	/**
      * @inheritdoc
@@ -71,11 +86,9 @@ class Order extends ActiveRecord
     public function calcDeliveryPrice()
     {
 
-        $delivery = $this->getDelivery()->one();
+        if($this->delivery) {
 
-        if($delivery) {
-
-            $this->delivery_price = $delivery->getDeliveryPrice($this);
+            $this->delivery_price = $this->delivery->getDeliveryPrice($this);
 
         }
 
@@ -274,5 +287,17 @@ class Order extends ActiveRecord
         return Payment::find()->published()->orderBy(['sort'=>SORT_ASC])->all();
 
     }
+
+	/**
+	 * Получение заново связанных объектов
+	 */
+	public function reloadRelated()
+	{
+
+		$this->populateRelation('delivery',  $this->getDelivery()->one());
+
+		$this->populateRelation('payment',  $this->getPayment()->one());
+
+	}
 
 }

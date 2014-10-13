@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 <h1><?=Yii::t('shop/app', 'Basket')?></h1>
 
-<div ng-controller="OrderListCtrl as ctrl">
+<div ng-controller="OrderListCtrl as ctrl" ng-cloak>
 
     <?=$this->render('_order')?>
 

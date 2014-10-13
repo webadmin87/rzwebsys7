@@ -11,6 +11,8 @@ use yii\helpers\Html;
 
 $form = \yii\widgets\ActiveForm::begin(["options" => ["name" => "client", "novalidate" => true], "enableClientValidation" => false, "enableAjaxValidation" => false]);
 
+$validator = Yii::createObject('\yii\validators\EmailValidator');
+
 ?>
 
 	<div class="row">
@@ -24,7 +26,7 @@ $form = \yii\widgets\ActiveForm::begin(["options" => ["name" => "client", "noval
 
 			echo $form->field($order, "email", ["hintOptions" => ["ng-show" => "client['Order[email]'].\$dirty && client['Order[email]'].\$invalid"]])
 				->hint("{{messages.fieldError}}")
-				->input("email", ["ng-model" => "order.email", "required" => true]);
+				->input("email", ["ng-model" => "order.email", "required" => true, "ng-pattern"=>$validator->pattern]);
 
 			echo $form->field($order, "phone", ["hintOptions" => ["ng-show" => "client['Order[phone]'].\$dirty && client['Order[phone]'].\$invalid"]])
 				->hint("{{messages.fieldError}}")
@@ -51,16 +53,21 @@ $form = \yii\widgets\ActiveForm::begin(["options" => ["name" => "client", "noval
                 ->hint("{{messages.fieldError}}")
                 ->dropDownList([], ["ng-options"=>"value.id as value.title for value in deliveries", "ng-model" => "order.delivery_id", "ng-change"=>"shopBasket.syncOrder()", "required" => true]);
 
+			?>
+			<div class="alert alert-info" ng-show="deliveryDescription">{{deliveryDescription}}</div>
+			<?php
 			echo $form->field($order, "payment_id", ["hintOptions" => ["ng-show" => "client['Order[payment_id]'].\$dirty && client['Order[payment_id]'].\$invalid"]])
 				->hint("{{messages.fieldError}}")
-				->dropDownList([], ["ng-options"=>"value.id as value.title for value in payments", "ng-model" => "order.payment_id", "required" => true]);
+				->dropDownList([], ["ng-options"=>"value.id as value.title for value in payments", "ng-model" => "order.payment_id", "ng-change"=>"shopBasket.syncOrder()", "required" => true]);
 
 			?>
+			<div class="alert alert-info" ng-show="paymentDescription">{{paymentDescription}}</div>
+
 		</div>
 	</div>
 
 <?php
 
-echo Html::button(Yii::t('shop/app', 'Confirm order'), ["ng-disabled" => "!client.\$valid", "class" => "btn btn-primary"]);
+echo Html::button(Yii::t('shop/app', 'Confirm order'), ["ng-disabled" => "!client.\$valid || order.allGoods.length==0", "ng-click"=>"ctrl.confirmOrder()", "class" => "btn btn-primary"]);
 
 $form->end();

@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\shop\controllers;
 
+use app\modules\shop\models\Order;
 use yii\rest\Controller;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -134,12 +135,36 @@ class BasketRestController extends Controller
     }
 
 	/**
+	 * Подтверждение заказа. Заказ сохраняется в БД
+	 * @return \app\modules\shop\models\Order
+	 */
+	public function actionConfirm()
+	{
+
+		$this->basket->setOrder(Yii::$app->request->post());
+
+		$order = $this->basket->getOrder();
+
+		$order->setScenario(Order::SCENARIO_CONFIRM);
+
+		$res = $order->save();
+
+		if($res) {
+			$this->basket->orderManager->removeOrder();
+			Yii::$app->response->statusCode = 201;
+		}
+
+		return $order;
+
+	}
+
+	/**
 	 * @inheritdoc
 	 */
 	public function verbs() {
 
 		return [
-
+			'confirm'=>['post'],
 			'add'=>['post'],
             'set-order'=>['put'],
 			'delete'=>['delete'],

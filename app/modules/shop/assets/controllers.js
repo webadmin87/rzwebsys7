@@ -43,6 +43,7 @@
 
         $scope.shopBasket = shopBasket;
 
+
         $scope.$watch('shopBasket.hasOrderLoaded', function(newVal){
 
             if(newVal) {
@@ -51,9 +52,37 @@
 
                 $scope.payments = shopBasket.getPayments();
 
+                $scope.$watch('order.delivery_id', function(newVal){
+
+                    var d =shopBasket.findObject($scope.deliveries, 'id', newVal);
+
+                    if(d)
+                        $scope.deliveryDescription = d.text;
+
+                });
+
+                $scope.$watch('order.payment_id', function(newVal){
+
+                    var p = shopBasket.findObject($scope.payments, 'id', newVal);
+
+                    if(p)
+                        $scope.paymentDescription = p.text;
+
+                });
+
             }
 
         });
+
+        this.confirmOrder = function() {
+
+            shopBasket.confirmOrder(function(){
+                $scope.success = true;
+            }, function(){
+                $scope.success = false;
+            });
+
+        }
 
     }]);
 

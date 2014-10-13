@@ -8,12 +8,21 @@
 
 <h1><?=Yii::t('shop/app', 'Process order')?></h1>
 
-<div ng-controller="ProcessOrderCtrl as ctrl">
+<div ng-controller="ProcessOrderCtrl as ctrl" ng-cloak>
 
     <?=$this->render('_order')?>
 
-    <h2><?=Yii::t('shop/app', 'Client info')?></h2>
+    <div class="alert alert-success" ng-show="success == true">Заказ успешно оформлен</div>
 
-    <?=$this->render('_form', ["order"=>$order, "deliveries"=>$deliveries, "payments"=>$payments])?>
+    <div class="alert alert-danger" ng-show="success == false"><?=Yii::t('shop/app', 'Order error')?></div>
+
+    <div ng-hide="success">
+
+        <h2><?=Yii::t('shop/app', 'Client info')?></h2>
+
+
+        <?=$this->render('_form', ["order"=>$order, "deliveries"=>$deliveries, "payments"=>$payments])?>
+
+    </div>
 
 </div>

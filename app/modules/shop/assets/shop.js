@@ -15,7 +15,8 @@
         order: '/shop/basket-rest/order/',
         setOrder: '/shop/basket-rest/set-order/',
         payments: '/shop/basket-rest/payments/',
-        deliveries: '/shop/basket-rest/deliveries/'
+        deliveries: '/shop/basket-rest/deliveries/',
+        confirm: '/shop/basket-rest/confirm/'
 
     });
 
@@ -250,6 +251,39 @@
 
         }
 
+        /**
+         * Поиск объекта в массиве по значению атрибута
+         * @param array arr массив
+         * @param string key ключ
+         * @param mixed value значение
+         * @returns {*}
+         */
+        this.findObject = function(arr, key, value) {
+
+            for(var i in arr) {
+
+                if(arr[i][key] == value) {
+
+                    return arr[i];
+
+                }
+
+            }
+
+            return null;
+
+        }
+
+        /**
+         * Удаляет все свойства объекта
+         * @param obj
+         */
+        this.clearObject = function(obj) {
+
+            for(var k in obj)
+                delete obj[k];
+
+        }
 
         /**
          * Получение способов доставки
@@ -286,6 +320,39 @@
 
         }
 
+        /**
+         * Подтверждение заказа
+         */
+        this.confirmOrder = function(okCallback, errorCallback) {
+
+
+            var error = function(data) {
+
+                errorCallback(data);
+
+            }
+
+            var success = function(data) {
+
+                okCallback(data);
+
+                self.setStat({count:0, summ: 0});
+
+                self.clearObject(order);
+
+            }
+
+
+            $http.post(urlMapping.confirm, {'Order': this.getOrder()}).success(function(data, status){
+
+                if(status == 201)
+                    success(data)
+                else
+                    error(data);
+
+            }).error(error);
+
+        }
 
     }]);
 

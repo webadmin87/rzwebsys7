@@ -62,5 +62,14 @@ class OrderManager extends Component
 
 	}
 
+	/**
+	 * Удаляем объект заказа из сессии
+	 */
+	public function removeOrder() {
+
+		Yii::$app->session->remove($this->sessionKey);
+
+	}
+
 
 }

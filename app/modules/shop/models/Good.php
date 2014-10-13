@@ -25,6 +25,8 @@ class Good extends ActiveRecord
 			'class'=>\common\behaviors\ArraySerializer::className(),
 			'attribute'=>'attrs',
 		];
+
+		return $parent;
 	}
 
 
