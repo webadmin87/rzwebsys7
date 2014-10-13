@@ -79,6 +79,15 @@ class Order extends ActiveRecord
         return $this->hasOne(Payment::className(), ["id"=>"payment_id"]);
     }
 
+	/**
+	 * Связь со статусами
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getStatus()
+	{
+		return $this->hasOne(Status::className(), ["id"=>"status_id"]);
+	}
+
     /**
      * Расчет стоимости доставки
      * @return float
@@ -299,5 +308,21 @@ class Order extends ActiveRecord
 		$this->populateRelation('payment',  $this->getPayment()->one());
 
 	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function  scenarios()
+	{
+		$parent = parent::scenarios();
+
+		$arr = array_diff($parent[self::SCENARIO_CONFIRM], ["allGoods"]);
+
+		$parent[self::SCENARIO_CONFIRM] = array_merge($arr, ["!allGoods"]);
+
+		return $parent;
+
+	}
+
 
 }

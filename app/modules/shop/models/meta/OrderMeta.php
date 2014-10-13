@@ -6,6 +6,7 @@ use common\db\MetaFields;
 use yii\helpers\ArrayHelper;
 use app\modules\shop\models\Delivery;
 use app\modules\shop\models\Payment;
+use app\modules\shop\models\Status;
 
 /**
  * Class OrderMeta
@@ -22,6 +23,18 @@ class OrderMeta extends MetaFields
     protected function config()
     {
         return [
+
+			"status_id" => [
+				"definition" => [
+					"class" => \common\db\fields\HasOneField::className(),
+					"title" => Yii::t('shop/app', 'Status'),
+					"isRequired" => true,
+					"showInGrid" => true,
+					"editInGrid" => true,
+					"data"=>[$this, "getStatusList"],
+				],
+				"params" => [$this->owner, "status_id", "status"]
+			],
 
             "name" => [
                 "definition" => [
@@ -131,7 +144,7 @@ class OrderMeta extends MetaFields
 	public function getDeliveryList()
 	{
 
-		$models = Delivery::find()->published()->orderBy(["title"=>SORT_ASC])->all();
+		$models = Delivery::find()->published()->orderBy(["sort"=>SORT_ASC])->all();
 
 		return ArrayHelper::map($models, "id", "title");
 
@@ -145,7 +158,20 @@ class OrderMeta extends MetaFields
 	public function getPaymentList()
 	{
 
-		$models = Payment::find()->published()->orderBy(["title"=>SORT_ASC])->all();
+		$models = Payment::find()->published()->orderBy(["sort"=>SORT_ASC])->all();
+
+		return ArrayHelper::map($models, "id", "title");
+
+	}
+
+	/**
+	 * Возвращает список статусов для выпадающего списка
+	 * @return array
+	 */
+	public function getStatusList()
+	{
+
+		$models = Status::find()->published()->orderBy(["title"=>SORT_ASC])->all();
 
 		return ArrayHelper::map($models, "id", "title");
 

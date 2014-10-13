@@ -3,6 +3,7 @@ namespace app\modules\shop\components;
 
 use yii\base\Component;
 use app\modules\shop\models\Order;
+use app\modules\shop\models\Status;
 use Yii;
 /**
  * Class OrderManager
@@ -40,6 +41,12 @@ class OrderManager extends Component
 			if(!$this->_order) {
 
 				$this->_order = Yii::createObject(Order::className());
+
+				$status = Status::find()->byDefault()->one();
+
+				if($status)
+					$this->_order->status_id = $status->id;
+
 
 			}
 

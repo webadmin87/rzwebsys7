@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\shop\models;
 
+use Yii;
 use common\db\ActiveRecord;
 
 /**
@@ -31,5 +32,13 @@ class Status extends ActiveRecord
         return meta\StatusMeta::className();
     }
 
+    /**
+     * @inheritdoc
+     * @return \app\modules\shop\db\StatusQuery
+     */
+    public static  function find()
+    {
+        return Yii::createObject(\app\modules\shop\db\StatusQuery::className(), [get_called_class()]);
+    }
 
 }
