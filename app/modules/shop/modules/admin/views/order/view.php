@@ -23,4 +23,10 @@ $this->params['breadcrumbs'][] = $this->title;
     'model' => $model,
     ]) ?>
 
+    <h2><?=Yii::t('shop/app', 'Order items')?></h2>
+
+    <?=$this->render("_order", ["order"=>$model])?>
+
+    <?=Html::a(Yii::t('shop/app', 'Manage order'), ['/shop/admin/good/index', 'Good'=>['order_id'=>$model->id]], ["class"=>"btn btn-default", "target"=>"_blank"])?>
+
 </div>

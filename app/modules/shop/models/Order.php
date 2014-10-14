@@ -25,6 +25,21 @@ class Order extends ActiveRecord
 	/**
 	 * @inheritdoc
 	 */
+	public function init() {
+
+		parent::init();
+
+		if($this->scenario == self::SCENARIO_CONFIRM) {
+
+			$this->active = true;
+
+		}
+
+	}
+
+	/**
+	 * @inheritdoc
+	 */
 	public function rules()
 	{
 		$arr = parent::rules();
@@ -241,6 +256,24 @@ class Order extends ActiveRecord
 		$this->unlink("goods", $good, true);
 
 	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function beforeSave($insert)
+	{
+		if(parent::beforeSave($insert)) {
+
+			$this->calcDeliveryPrice();
+
+			return true;
+
+		}
+
+		return false;
+
+	}
+
 
 	/**
 	 * @inheritdoc

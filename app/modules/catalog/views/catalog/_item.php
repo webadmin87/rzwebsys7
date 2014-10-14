@@ -21,4 +21,4 @@ $url = Url::toRoute($model->getLink());
     </a>
 <? endif; ?>
 <p><?= $model->annotation ?></p>
-<p class="price"><?=Yii::$app->formatter->asDecimal($model->price, 0) ?> <?=Yii::$app->formatter->currencyCode?></p>
+<p class="price"><?=Yii::$app->formatter->asCurrency($model->price) ?></p>

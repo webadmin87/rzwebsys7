@@ -74,9 +74,10 @@ class GoodMeta extends MetaFields
 
 			"item_class" => [
 				"definition" => [
-					"class" => \common\db\fields\TextField::className(),
+					"class" => \common\db\fields\ListField::className(),
 					"title" => Yii::t('shop/app', 'Item class'),
 					"isRequired" => true,
+					'data'=>[Yii::$app->getModule('shop'), 'getModelNames'],
 				],
 				"params" => [$this->owner, "item_class"]
 			],
@@ -92,9 +93,8 @@ class GoodMeta extends MetaFields
 
 			"attrs" => [
 				"definition" => [
-					"class" => \common\db\fields\HiddenField::className(),
+					"class" => \app\modules\shop\db\fields\GoodAttrsField::className(),
 					"title" => Yii::t('shop/app', 'Attributes'),
-					"showInGrid"=>false,
 				],
 				"params" => [$this->owner, "attrs"]
 			],

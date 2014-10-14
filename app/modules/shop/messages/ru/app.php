@@ -21,7 +21,7 @@ return [
 	"Quantity"=>"Количество",
 	"Order ID"=>"ID заказа",
 	"Item ID"=>"Идентификатор товара",
-	"Item class"=>"Класс товара",
+	"Item class"=>"Тип товара",
 	"Price"=>"Цена",
 	"Create Good"=>"Добавить товар",
 	"Update Good"=>"Ищменить товар",
@@ -52,7 +52,11 @@ return [
 	"Default"=>"По умолчанию",
 	"Your order {number} on site {site}"=>"Ваш заказ {number} на сайте {site}",
 	"New order {number} on site {site}"=>"Новый заказ {number} на сайте {site}",
-	"Order success" => "Вашему заказу присвоен номер {{orderId}}. Наш менеджер скоро свяжется с вами."
-
-
+	"Order success" => "Вашему заказу присвоен номер {{orderId}}. Наш менеджер скоро свяжется с вами.",
+	"Order items" => "Состав заказа",
+	"Link" => "Ссылка",
+	"Attributes"=>"Атрибуты",
+	"Manage order"=>"Упрвление заказом",
+	"Comment"=>"Комментарий",
+	"Tpl name"=>"Имя шаблона",
 ];

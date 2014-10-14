@@ -69,4 +69,17 @@ class Good extends ActiveRecord
 		return $price;
 	}
 
+	/**
+	 * @inheritdoc
+	 */
+	public function fields()
+	{
+		$arr = parent::fields();
+
+		$arr = array_merge($arr, ["finalPrice"]);
+
+		return $arr;
+
+	}
+
 }

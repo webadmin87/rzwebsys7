@@ -40,7 +40,7 @@ class OrderManager extends Component
 
 			if(!$this->_order) {
 
-				$this->_order = Yii::createObject(Order::className());
+				$this->_order = Yii::createObject(["class"=>Order::className(), "scenario"=>Order::SCENARIO_CONFIRM]);
 
 				$status = Status::find()->byDefault()->one();
 

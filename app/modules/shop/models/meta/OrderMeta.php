@@ -130,6 +130,7 @@ class OrderMeta extends MetaFields
 					"class" => \common\db\fields\NumberField::className(),
 					"title" => Yii::t('shop/app', 'Delivery price'),
 					"showInGrid" => false,
+					"showInForm" => false,
 				],
 				"params" => [$this->owner, "delivery_price"]
 			],

@@ -12,12 +12,16 @@ return [
 
         'shop' => [
             'class' => 'app\modules\shop\Shop',
+			'modelClasses'=>['app\modules\catalog\models\Catalog'],
 			'components'=>[
 				'orderLetters'=>\app\modules\shop\components\OrderLetters::className(),
 				'clientNotifier'=>\app\modules\shop\components\ClientNotifier::className(),
 				'adminNotifier'=>\app\modules\shop\components\AdminNotifier::className(),
 				'basket'=>[
 					'class'=>\app\modules\shop\components\Basket::className(),
+					'attributesToSave'=>[
+						'app\modules\catalog\models\Catalog'=>['producer_id'=>'producer.title']
+					],
 					'components'=> [
 						'orderManager' => [
 							'class'=>\app\modules\shop\components\OrderManager::className(),
