@@ -150,6 +150,7 @@ class BasketRestController extends Controller
 		$res = $order->save();
 
 		if($res) {
+			Yii::$app->getModule('shop')->adminNotifier->notify($order);
 			$this->basket->orderManager->removeOrder();
 			Yii::$app->response->statusCode = 201;
 		}

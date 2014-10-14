@@ -180,7 +180,7 @@ class Order extends ActiveRecord
 		if(!$model)
 			$this->_goods[] = $good;
 		else {
-			$model->qty = $good->qty;
+			$model->qty += $good->qty;
 		}
 
 
@@ -196,7 +196,7 @@ class Order extends ActiveRecord
 
 		foreach($this->getNewGoods() AS $model) {
 
-			if($model->item_id == $good->id AND $model->item_class == $good->item_class)
+			if($model->item_id == $good->item_id AND $model->item_class == $good->item_class)
 				return $model;
 
 		}
@@ -244,12 +244,10 @@ class Order extends ActiveRecord
 
 	/**
 	 * @inheritdoc
-	 * Сохраняет добавленные к заказу товары
+	 * Сохраняет добавленные к заказу товары. Отправляет уведомление пользователю, если статус заказа изменился.
 	 */
 	public function afterSave($insert, $changedAttributes)
 	{
-
-		$this->owner->setIsNewRecord(false);
 
 		foreach($this->_goods AS $k => $good) {
 
@@ -258,6 +256,14 @@ class Order extends ActiveRecord
 		}
 
 		$this->_goods = [];
+
+		// Отправляем уведомление клиенту при изменении статуса заказа
+
+		if(in_array("status_id", array_keys($changedAttributes)) AND $changedAttributes["status_id"] != $this->status_id) {
+
+			Yii::$app->getModule('shop')->clientNotifier->notify($this);
+
+		}
 
 		return parent::afterSave($insert, $changedAttributes);
 	}

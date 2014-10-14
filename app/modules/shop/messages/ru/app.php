@@ -50,6 +50,9 @@ return [
 	"Order error"=>"Возникла ошибка при оформлении заказа",
 	"Status"=>"Статус",
 	"Default"=>"По умолчанию",
+	"Your order {number} on site {site}"=>"Ваш заказ {number} на сайте {site}",
+	"New order {number} on site {site}"=>"Новый заказ {number} на сайте {site}",
+	"Order success" => "Вашему заказу присвоен номер {{orderId}}. Наш менеджер скоро свяжется с вами."
 
 
 ];

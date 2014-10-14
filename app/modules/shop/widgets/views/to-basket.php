@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $class = get_class($model);
 
 ?>
-<div ng-controller="ToBasketCtrl">
+<div ng-controller="ToBasketCtrl" ng-cloak>
 
     <div class="input-group" shop-to-basket item-id="<?=$model->getId()?>" class-name="<?=$class?>">
         <?=Html::textInput("qty", null, ["ng-model"=>"qty", "class"=>"form-control"]);?>

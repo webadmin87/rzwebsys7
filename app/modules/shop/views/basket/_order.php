@@ -1,4 +1,4 @@
-<table class="table" ng-show="order.allGoods.length>0">
+<table class="table table-striped" ng-show="order.allGoods.length>0">
     <tr><th><?=Yii::t('shop/app', 'Title')?></th><th><?=Yii::t('shop/app', 'Qty')?></th><th><?=Yii::t('shop/app', 'Price')?></th><th><?=Yii::t('shop/app', 'Total price')?></th><th></th></tr>
     <tr ng-repeat="model in order.allGoods">
         <td><a href="{{model.link}}">{{model.title}}</a></td>

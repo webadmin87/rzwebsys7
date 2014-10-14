@@ -18,16 +18,15 @@ class m140924_110805_create_status_table extends \app\modules\main\db\Migration
             'updated_at'=>Schema::TYPE_TIMESTAMP . ' NOT NULL DEFAULT now()',
 			'title'=>Schema::TYPE_STRING . ' NOT NULL',
 			'text'=>Schema::TYPE_TEXT,
-			'tpl'=>Schema::TYPE_TEXT,
+			'tpl'=>Schema::TYPE_STRING,
             'default'=>Schema::TYPE_BOOLEAN . ' DEFAULT false',
         ]);
 
 		$stats = [
 
-			["title"=>"Новый", "tpl"=>"Вашему заказу присвоен номер {id}. Наш менеджер скоро свяжеться с вами для подтверждения заказа.", "default"=>true, "author_id"=>1],
-			["title"=>"В обработке", "tpl"=>"Ваш заказ {id} поступил в обработку.", "author_id"=>1],
-			["title"=>"Выполнен", "tpl"=>"Ваш заказ {id} выполнен.", "author_id"=>1],
-			["title"=>"Отменен", "tpl"=>"Ваш заказ {id} отменен.", "author_id"=>1],
+			["title"=>"Новый", "tpl"=>"new", "default"=>true, "author_id"=>1],
+			["title"=>"Готов", "tpl"=>"ready", "author_id"=>1],
+			["title"=>"Отменен", "tpl"=>"cancel", "author_id"=>1],
 
 		];
 

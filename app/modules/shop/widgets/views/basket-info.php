@@ -5,7 +5,7 @@
 
 use yii\helpers\Html;
 ?>
-<div ng-controller="BasketInfoCtrl">
+<div ng-controller="BasketInfoCtrl" ng-cloak>
     <p class="basket-count">Товаров в корзине: <span>{{stat.count}}</span></p>
     <p class="basket-summ">На сумму: <span>{{stat.summ | currency}}</span></p>
     <?=Html::a(Yii::t('shop/app', 'Basket'), $url, ['class'=>"btn btn-default"])?>

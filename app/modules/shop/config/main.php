@@ -13,6 +13,9 @@ return [
         'shop' => [
             'class' => 'app\modules\shop\Shop',
 			'components'=>[
+				'orderLetters'=>\app\modules\shop\components\OrderLetters::className(),
+				'clientNotifier'=>\app\modules\shop\components\ClientNotifier::className(),
+				'adminNotifier'=>\app\modules\shop\components\AdminNotifier::className(),
 				'basket'=>[
 					'class'=>\app\modules\shop\components\Basket::className(),
 					'components'=> [

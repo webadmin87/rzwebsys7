@@ -8,6 +8,6 @@ use yii\helpers\Html;
 
     <?=$this->render('_order')?>
 
-    <?=Html::a(Yii::t('shop/app', 'Process order'), '/shop/basket/process', ['class'=>'btn btn-primary'])?>
+    <?=Html::a(Yii::t('shop/app', 'Process order'), '/shop/basket/process', ['class'=>'btn btn-primary', 'ng-show'=>'order.allGoods.length>0'])?>
 
 </div>

@@ -12,7 +12,7 @@
 
     <?=$this->render('_order')?>
 
-    <div class="alert alert-success" ng-show="success == true">Заказ успешно оформлен</div>
+    <div class="alert alert-success" ng-show="success == true"><?=Yii::t('shop/app', 'Order success')?></div>
 
     <div class="alert alert-danger" ng-show="success == false"><?=Yii::t('shop/app', 'Order error')?></div>
 

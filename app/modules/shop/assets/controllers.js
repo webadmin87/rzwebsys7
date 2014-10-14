@@ -76,8 +76,9 @@
 
         this.confirmOrder = function() {
 
-            shopBasket.confirmOrder(function(){
+            shopBasket.confirmOrder(function(data){
                 $scope.success = true;
+                $scope.orderId = data.id;
             }, function(){
                 $scope.success = false;
             });

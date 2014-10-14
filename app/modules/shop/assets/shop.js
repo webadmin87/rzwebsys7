@@ -330,6 +330,8 @@
 
                 errorCallback(data);
 
+                self.getOrder(true);
+
             }
 
             var success = function(data) {

@@ -22,7 +22,7 @@ class StatusQuery extends ActiveQuery
 
         $table = $class::tableName();
 
-        return $this->andWhere(["{{%$table}},{{%default}}"=>true]);
+        return $this->andWhere(["{{%$table}}.{{%default}}"=>true]);
     }
 
 }
