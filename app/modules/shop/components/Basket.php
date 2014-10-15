@@ -123,7 +123,7 @@ class Basket extends ServiceLocator
 
 		$good->item_id = $model->id;
 		$good->item_class = $class;
-		$good->title = $model->getTitle();
+		$good->title = $model->getShopTitle();
 		$good->price = $model->getPrice();
 		$good->discount = $model->getDiscount();
 		$good->link = Url::toRoute($model->getLink());

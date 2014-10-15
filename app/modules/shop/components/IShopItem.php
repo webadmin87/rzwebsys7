@@ -28,7 +28,7 @@ interface IShopItem
 	/**
 	 * @return string наименование товара
 	 */
-	public function getTitle();
+	public function getShopTitle();
 
 	/**
 	 * @return string возвращает ссылку на страницу с товаром

@@ -37,7 +37,7 @@ trait ShopItemTrait
     /**
      * @return string наименование товара
      */
-    public function getTitle()
+    public function getShopTitle()
     {
         return $this->title;
     }
