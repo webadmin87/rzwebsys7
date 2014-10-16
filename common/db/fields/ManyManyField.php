@@ -18,7 +18,7 @@ class ManyManyField extends HasOneField
     /**
      * @inheritdoc
      */
-    public function grid()
+    protected function grid()
     {
 
         $grid = $this->defaultGrid();
@@ -59,7 +59,7 @@ class ManyManyField extends HasOneField
     /**
      * @inheritdoc
      */
-    public function view()
+    protected function view()
     {
 
         $view = $this->defaultView();
@@ -74,7 +74,7 @@ class ManyManyField extends HasOneField
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false)
+    public function getForm(ActiveForm $form, Array $options = [], $index = false)
     {
 
         $data = $this->getDataValue();

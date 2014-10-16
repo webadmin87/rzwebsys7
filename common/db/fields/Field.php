@@ -106,6 +106,16 @@ class Field extends Object
 	public $options = [];
 
     /**
+     * @var array опции по умолчанию при отображении в гриде
+     */
+    public $gridOptions = [];
+
+    /**
+     * @var array опции по умолчанию при детальном просмотре
+     */
+    public $viewOptions = [];
+
+    /**
      * @var mixed значение фильтра грида установленное
      */
     protected $gridFilter;
@@ -138,7 +148,7 @@ class Field extends Object
     public function extendedFilterForm(ActiveForm $form, Array $options = [])
     {
 
-        return $this->form($form, $options);
+        return $this->getForm($form, $options);
 
     }
 
@@ -150,7 +160,7 @@ class Field extends Object
      * @return string
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false)
+    public function getForm(ActiveForm $form, Array $options = [], $index = false)
     {
 
 		$options = ArrayHelper::merge($this->options, $options);
@@ -197,11 +207,20 @@ class Field extends Object
      * Конфигурация поля для грида (GridView)
      * @return array
      */
-    public function grid()
+    protected function grid()
     {
 
     	return $this->defaultGrid();
 
+    }
+
+    /**
+     * Результурующая конфигурация поля грида (GridView)
+     * @return array
+     */
+    public function getGrid()
+    {
+        return ArrayHelper::merge($this->gridOptions, $this->grid());
     }
 
     /**
@@ -280,13 +299,24 @@ class Field extends Object
 	}
 
     /**
-     * Конфигурация полядля детального просмотра
+     * Конфигурация поля для детального просмотра
      * @return array
      */
-    public function view()
+    protected function view()
     {
 
         return $this->defaultView();
+
+    }
+
+    /**
+     * Результирующая конфигурация поля для детального просмотра
+     * @return array
+     */
+    public function getView()
+    {
+
+        return ArrayHelper::merge($this->viewOptions, $this->view());
 
     }
 

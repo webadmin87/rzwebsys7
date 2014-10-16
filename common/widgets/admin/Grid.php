@@ -139,7 +139,7 @@ class Grid extends Widget
 
         foreach ($fields AS $field) {
 
-            $grid = $field->grid();
+            $grid = $field->getGrid();
 
             if ($field->showInGrid AND $grid)
                 $columns[] = $grid;

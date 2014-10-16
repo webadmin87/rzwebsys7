@@ -35,7 +35,7 @@ class TimestampField extends TextField
     /**
      * @inheritdoc
      */
-    public function grid()
+    protected function grid()
     {
 
         $grid = parent::grid();
@@ -51,7 +51,7 @@ class TimestampField extends TextField
     /**
      * @inheritdoc
      */
-    public function view()
+    protected function view()
     {
 
         $view = parent::view();

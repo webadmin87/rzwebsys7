@@ -24,6 +24,12 @@ class OrderMeta extends MetaFields
     {
         return [
 
+			'created_at' => [
+				'definition' => [
+					"showInGrid" => true,
+				]
+			],
+
 			"status_id" => [
 				"definition" => [
 					"class" => \common\db\fields\HasOneField::className(),
@@ -133,6 +139,22 @@ class OrderMeta extends MetaFields
 					"showInForm" => false,
 				],
 				"params" => [$this->owner, "delivery_price"]
+			],
+
+			"totalPrice" => [
+
+				"definition" => [
+					"class" => \common\db\fields\Field::className(),
+					"title" => Yii::t('shop/app', 'Total price'),
+					"showInGrid" => true,
+					"showInForm" => false,
+					"isSafe"=>false,
+					"gridOptions"=>[
+						'format'=>'currency'
+					],
+				],
+				"params" => [$this->owner, "totalPrice"]
+
 			],
 
         ];

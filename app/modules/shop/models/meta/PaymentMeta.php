@@ -38,13 +38,13 @@ class PaymentMeta extends MetaFields
 				"params" => [$this->owner, "text"]
 			],
 
-			"html" => [
+			/*"html" => [
 				"definition" => [
 					"class" => \common\db\fields\TextAreaField::className(),
 					"title" => Yii::t('shop/app', 'Result html'),
 				],
 				"params" => [$this->owner, "html"]
-			],
+			],*/
 
             "sort" => [
                 "definition" => [
