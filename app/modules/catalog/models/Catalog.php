@@ -95,34 +95,6 @@ class Catalog extends ActiveRecord implements IShopItem
     }
 
     /**
-     * Поиск элементов по категориям. Если идентификаторы категорий не заданы выбираются все элементы.
-     * @param null|array $ids массив идентификаторов категорий
-	 * @param array $filter дополнительный фильтр для выборки
-     * @return \yii\data\ActiveDataProvider провайдер данных
-     * @throws \yii\base\InvalidConfigException
-     */
-
-    public function searchBySection($ids = null, $filter = [])
-    {
-
-        $query = $this->find()->bySections($ids);
-
-		if(!empty($filter)) {
-
-			$query->andFilterWhere($filter);
-
-		}
-
-        $dataProvider = Yii::createObject([
-            'class' => ActiveDataProvider::className(),
-            "query" => $query,
-        ]);
-
-        return $dataProvider;
-
-    }
-
-    /**
      * @inheritdoc
      */
 

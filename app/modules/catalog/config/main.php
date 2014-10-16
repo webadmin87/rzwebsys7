@@ -12,6 +12,9 @@ return [
     'modules' => [
 
         'catalog' => [
+            'components'=>[
+                'filterProvider'=>'app\modules\catalog\components\FilterProvider',
+            ],
             'class' => app\modules\catalog\Catalog::className(),
             'controllerNamespace' => 'app\modules\catalog\controllers',
             'modules' => [
