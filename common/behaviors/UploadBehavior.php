@@ -386,7 +386,7 @@ abstract class UploadBehavior extends Behavior
         return Yii::createObject([
 
             "class" => File::className(),
-            "title" => $file["file"],
+            "title" => $file['title'],
 
         ], [$path]);
 
@@ -416,7 +416,7 @@ abstract class UploadBehavior extends Behavior
             if (is_file($path)) {
                 $arr[] = Yii::createObject([
                     "class" => File::className(),
-                    "title" => $file["file"],
+                    "title" => $file['title'],
                 ], [$path]);
             }
 
