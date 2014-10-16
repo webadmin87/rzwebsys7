@@ -18,7 +18,7 @@ foreach ($files AS $file) {
 
     $src = Yii::$app->resizer->resize($file->getPath(), $width, $height);
 
-    echo Html::tag('div', Html::a(Html::img($src), $file->getRelPath(), ["rel" => $rel]));
+    echo Html::tag('div', Html::a(Html::img($src), $file->getRelPath(), ["rel" => $rel, 'title' => Html::encode($file->title)]));
 
 }
 
