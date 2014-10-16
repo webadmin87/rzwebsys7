@@ -26,7 +26,7 @@ class YaMapField extends TextField
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false)
+    public function getForm(ActiveForm $form, Array $options = [], $index = false)
     {
 
 		$options = ArrayHelper::merge(["class" => "form-control"], $this->options, $options);

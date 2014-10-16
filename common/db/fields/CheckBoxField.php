@@ -4,6 +4,7 @@ namespace common\db\fields;
 use common\db\ActiveRecord;
 use Yii;
 use Yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class CheckBoxField
@@ -18,8 +19,10 @@ class CheckBoxField extends TextField
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false)
+    public function getForm(ActiveForm $form, Array $options = [], $index = false)
     {
+
+        $options = ArrayHelper::merge($this->options, $options);
 
         return $form->field($this->model, $this->getFormAttrName($index))->checkbox($options);
 
@@ -29,7 +32,7 @@ class CheckBoxField extends TextField
      * Конфигурация поля для грида (GridView)
      * @return array
      */
-    public function grid()
+    protected function grid()
     {
 
         $grid = parent::grid();
@@ -46,7 +49,7 @@ class CheckBoxField extends TextField
      * Конфигурация полядля детального просмотра
      * @return array
      */
-    public function view()
+    protected function view()
     {
 
         $view = parent::view();

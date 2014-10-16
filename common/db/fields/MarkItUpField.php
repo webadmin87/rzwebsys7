@@ -26,7 +26,7 @@ class MarkItUpField extends TextAreaField
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false)
+    public function getForm(ActiveForm $form, Array $options = [], $index = false)
     {
 
 		$options = ArrayHelper::merge($this->options, $options);
@@ -43,7 +43,7 @@ class MarkItUpField extends TextAreaField
     /**
      * @inheritdoc
      */
-    public function view()
+    protected function view()
     {
 
         $view = parent::view();

@@ -78,7 +78,7 @@ class Detail extends Widget
 
         foreach ($fields AS $field) {
 
-            $view = $field->view();
+            $view = $field->getView();
 
             if ($field->showInView AND $view)
                 $attrs[] = $view;

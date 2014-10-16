@@ -72,7 +72,7 @@ class Html5FileField extends Field
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false)
+    public function getForm(ActiveForm $form, Array $options = [], $index = false)
     {
 
 		$options = ArrayHelper::merge($this->options, $options);
@@ -95,7 +95,7 @@ class Html5FileField extends Field
     /**
      * @inheritdoc
      */
-    public function grid()
+    protected function grid()
     {
 
         $grid = parent::grid();
@@ -136,7 +136,7 @@ class Html5FileField extends Field
     /**
      * @inheritdoc
      */
-    public function view()
+    protected function view()
     {
 
         $view = parent::view();

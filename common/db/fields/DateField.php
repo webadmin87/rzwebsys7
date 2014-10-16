@@ -2,6 +2,7 @@
 namespace common\db\fields;
 
 use Yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class DateField
@@ -31,10 +32,10 @@ class DateField extends TextField
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false)
+    public function getForm(ActiveForm $form, Array $options = [], $index = false)
     {
 
-        $options = array_merge(["class" => "form-control"], $options);
+        $options = ArrayHelper::merge(["class" => "form-control"], $this->options, $options);
 
         return $form->field($this->model, $this->getFormAttrName($index))->widget(\yii\jui\DatePicker::className(), [
             "options" => $options,

@@ -38,7 +38,7 @@ class ListField extends Field
      * @inheritdoc
      */
 
-    public function form(ActiveForm $form, Array $options = [], $index = false)
+    public function getForm(ActiveForm $form, Array $options = [], $index = false)
     {
 
 		$options = ArrayHelper::merge(["class" => "form-control", "prompt"=>""], $this->options, $options);
@@ -118,7 +118,7 @@ class ListField extends Field
 	/**
 	 * @inheritdoc
 	 */
-	public function grid()
+	protected function grid()
 	{
 
 		$grid = $this->defaultGrid();
@@ -141,7 +141,7 @@ class ListField extends Field
 	/**
 	 * @inheritdoc
 	 */
-	public function view()
+	protected function view()
 	{
 
 		$view = $this->defaultView();

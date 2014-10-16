@@ -44,7 +44,7 @@ class HasOneField extends ListField
     /**
      * @inheritdoc
      */
-    public function grid()
+    protected function grid()
     {
 
         $grid = $this->defaultGrid();
@@ -62,7 +62,7 @@ class HasOneField extends ListField
     /**
      * @inheritdoc
      */
-    public function view()
+    protected function view()
     {
 
         $view = $this->defaultView();
