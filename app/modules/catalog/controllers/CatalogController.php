@@ -78,6 +78,8 @@ class CatalogController extends App
                 if (!$res["sectionModel"])
                     throw new NotFoundHttpException;
 
+                $dependency->addTag($res["sectionModel"]->setItemTag());
+
                 $model->sectionsIds = $res["sectionModel"]->getFilterIds();
 
             }
