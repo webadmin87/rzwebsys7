@@ -86,7 +86,7 @@
 
         this.add = function(id, className, qty) {
 
-            $http.post(urlMapping.add, {id: id, class: className, qty: qty}).success(function(data){
+            $http.post(urlMapping.add, {id: id, 'class': className, qty: qty}).success(function(data){
                 basketNotifier.addNotify();
                 self.setStat(data);
             });
@@ -166,7 +166,7 @@
          */
         this.del = function(id, className) {
 
-            $http.delete(urlMapping.del, {params:{id: id, class: className}}).success(function(data){
+            $http.delete(urlMapping.del, {params:{id: id, 'class': className}}).success(function(data){
 
                 self.setOrder(data);
 
@@ -184,7 +184,7 @@
          */
         this.update = function(id, className, qty) {
 
-            $http.put(urlMapping.update, {qty: qty}, {params:{id: id, class: className}}).success(function(data){
+            $http.put(urlMapping.update, {qty: qty}, {params:{id: id, 'class': className}}).success(function(data){
 
                 self.setOrder(data);
 
@@ -200,13 +200,11 @@
          */
         this.syncOrder = function() {
 
-
             $http.put(urlMapping.setOrder, {'Order': this.getOrder()}).success(function(data){
 
                 self.setOrder(data);
 
             });
-
 
         }
 
