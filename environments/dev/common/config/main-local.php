@@ -15,7 +15,7 @@ return [
             'useFileTransport' => true,
         ],
         'urlManager'=>[
-            'baseUrl'=>'http://rzwebsys7.local',
+            'baseUrl'=>'http://rzwebsys7.dev',
         ],
     ],
 ];
