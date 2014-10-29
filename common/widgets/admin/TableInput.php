@@ -73,7 +73,7 @@ class TableInput extends Widget
 
             $html .= Html::beginTag('td');
 
-            $html .= $field->form($this->form, [], $index);
+            $html .= $field->getForm($this->form, [], $index);
 
             $html .= Html::endTag('td');
 
