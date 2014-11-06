@@ -15,10 +15,17 @@ foreach($elements AS $elem) {
 
     echo Html::tag('h2', $h);
 
-    if($elem["items"][0] instanceof TActiveRecord)
-        echo \app\modules\main\widgets\treelist\TreeList::widget(["labelAttr"=>$elem["labelAttr"], "models"=>$elem["items"], "urlCreate"=>$elem["urlCreate"]]);
-    else
-        echo \app\modules\main\widgets\elist\EList::widget(["labelAttr"=>$elem["labelAttr"], "models"=>$elem["items"], "urlCreate"=>$elem["urlCreate"]]);
+    echo Html::beginTag('ul');
+
+    foreach($elem["items"] AS $item) {
+
+        $a = Html::a($item["label"], $item["url"]);
+
+        echo Html::tag('li', $a);
+
+    }
+
+    echo Html::endTag('ul');
 
 
 }
