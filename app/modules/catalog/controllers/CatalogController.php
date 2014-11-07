@@ -61,34 +61,36 @@ class CatalogController extends App
 
         $res = Yii::$app->cache->get($cacheId);
 
+        $model = Yii::createObject(['class' => Catalog::className(), 'scenario' => ActiveRecord::SCENARIO_SEARCH]);
+
+        $model->load(Yii::$app->request->get());
+
         if (empty($res)) {
 
             $dependency = Yii::createObject(TagDependency::className());
 
-            $model = Yii::createObject(['class' => Catalog::className(), 'scenario' => ActiveRecord::SCENARIO_SEARCH]);
-
             $res["sectionModel"] = null;
 
-            $ids = null;
-
-            if ($section) {
+            if (empty($model->sectionsIds) AND $section) {
 
                 $res["sectionModel"] = CatalogSection::find()->published()->andWhere(["code" => $section])->one();
 
                 if (!$res["sectionModel"])
                     throw new NotFoundHttpException;
 
-                $ids = $res["sectionModel"]->getFilterIds();
+                $dependency->addTag($res["sectionModel"]->setItemTag());
+
+                $model->sectionsIds = $res["sectionModel"]->getFilterIds();
 
             }
 
-            $dataProvider = $model->searchBySection($ids);
+            $dataProvider = \Yii::$app->getModule('catalog')->filterProvider->getDataProvider($model);
 
             $dataProvider->getSort()->defaultOrder = $this->orderBy;
 
             $dataProvider->getPagination()->pageSize = $this->pageSize;
 
-			$dependency->addTag($model->setClassTag());
+            $dependency->addTag($model->setClassTag());
 
             $dependency->setTagsFromModels($dataProvider->getModels());
 
@@ -98,12 +100,12 @@ class CatalogController extends App
 
         }
 
-		$this->view->addBreadCrumb(
-			[
-				"label"=>Yii::t('catalog/app', 'Catalog'),
-				"url"=>Url::toRoute(["/catalog/catalog/index"])
-			]
-		);
+        $this->view->addBreadCrumb(
+            [
+                "label"=>Yii::t('catalog/app', 'Catalog'),
+                "url"=>Url::toRoute(["/catalog/catalog/index"])
+            ]
+        );
 
 
         if ($res["sectionModel"]) {
@@ -116,7 +118,7 @@ class CatalogController extends App
             $this->view->addBreadCrumbs($crumbs);
         }
 
-        return $this->render("index",["sectionModel" => $res["sectionModel"], "html"=>$res["html"]]);
+        return $this->render("index",["sectionModel" => $res["sectionModel"], "model"=>$model, "html"=>$res["html"]]);
 
     }
 

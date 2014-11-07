@@ -26,6 +26,7 @@ class Sitemap extends Component
      *      "labelAttr"=>"title",
      *      "scopes" => ["active"],
      *      "urlCreate" => function($model){ ... }
+     *      "doAdd" => function($model){ ... }
      *  ],
      *  ...
      * ]
@@ -85,18 +86,21 @@ class Sitemap extends Component
 
             $arr = [];
             $arr['header'] = $item["class"]::getEntityName();
-            $arr['labelAttr'] = $labelAttr;
-            $arr['urlCreate'] = $item["urlCreate"];
             if(!empty($item["entityRoute"]))
                 $arr['entityUrl'] = Url::toRoute($item["entityRoute"]);
             $arr['items'] = [];
 
             foreach($iterator AS $model) {
 
-                if(empty($model->$labelAttr))
+                if(empty($model->$labelAttr) OR (!empty($item["doAdd"]) AND !call_user_func($item["doAdd"], $model)))
                     continue;
 
-                $arr['items'][] = $model;
+                $arr['items'][] = [
+                    "label"=>$model->$labelAttr,
+                    "url"=> Html::encode(call_user_func($item["urlCreate"],$model)),
+                    "date"=>$model->updated_at,
+
+                ];
 
             }
 
@@ -148,25 +152,9 @@ class Sitemap extends Component
 
         foreach($elements AS $element) {
 
-            foreach($element["items"] AS $model) {
+            foreach($element["items"] AS $item) {
 
-                $url = $doc->createElement('url');
-
-                $urlset->appendChild($url);
-
-                $loc = $doc->createElement("loc", Html::encode(call_user_func($element["urlCreate"],$model)));
-
-                $url->appendChild($loc);
-
-                $priority = $doc->createElement("priority", '0.5');
-
-                $url->appendChild($priority);
-
-                $date = new \DateTime($model->updated_at);
-
-                $lastmod = $doc->createElement("lastmod", $date->format("Y-m-d"));
-
-                $url->appendChild($lastmod);
+                $this->addItem($doc, $item);
 
                 $all++;
 
@@ -179,6 +167,37 @@ class Sitemap extends Component
         return $all;
 
     }
+
+    /**
+     * Добавляет элемент в карту сайта
+     * @param \DOMDocument $doc
+     * @param array $params массив параметров. должен содержать ключи url, date
+     */
+    protected function  addItem($doc, $params)
+    {
+
+        $urlset = $doc->getElementsByTagName('urlset')->item(0);
+
+        $url = $doc->createElement('url');
+
+        $urlset->appendChild($url);
+
+        $loc = $doc->createElement("loc", $params["url"]);
+
+        $url->appendChild($loc);
+
+        $priority = $doc->createElement("priority", '0.5');
+
+        $url->appendChild($priority);
+
+        $date = new \DateTime($params["date"]);
+
+        $lastmod = $doc->createElement("lastmod", $date->format("Y-m-d"));
+
+        $url->appendChild($lastmod);
+
+    }
+
 
 
 }

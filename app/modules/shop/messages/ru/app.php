@@ -56,7 +56,7 @@ return [
 	"Order items" => "Состав заказа",
 	"Link" => "Ссылка",
 	"Attributes"=>"Атрибуты",
-	"Manage order"=>"Упрвление заказом",
+	"Manage order"=>"Управление заказом",
 	"Comment"=>"Комментарий",
 	"Tpl name"=>"Имя шаблона",
 ];

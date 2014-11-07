@@ -4,6 +4,7 @@ namespace app\modules\main\components;
 
 use yii\web\UrlRule;
 use \app\modules\main\models\Pages;
+use common\db\TActiveRecord;
 
 /**
  * Class PageUrlRule
@@ -85,17 +86,16 @@ class PageUrlRule extends UrlRule
 
 		$sections = explode("/", $pathInfo);
 
+        $parent = Pages::findOne(TActiveRecord::ROOT_ID);
+
 		foreach($sections AS $section) {
 
-			if(!isset($model))
-				$model = Pages::find()->published()->andWhere(["code"=>$section])->one();
-			else {
-				$model = $model->children()->published()->andWhere(["code" => $section])->one();
-			}
+			$model = $parent->children()->published()->andWhere(["code" => $section])->one();
 
 			if(!$model)
 				return false;
-
+            else
+                $parent = $model;
 		}
 
 		if(!empty($model)) {
