@@ -10,8 +10,8 @@ use yii\helpers\ArrayHelper;
  * @package common\db\fields
  * @author Chernyavsky Denis <panopticum87@gmail.com>
  */
-
-class RadioListField extends ListField {
+class RadioListField extends ListField
+{
 
 	/**
 	 * @inheritdoc

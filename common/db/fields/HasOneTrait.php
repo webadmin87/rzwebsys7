@@ -7,7 +7,8 @@ namespace common\db\fields;
  * @package common\db\fields
  * @author Chernyavsky Denis <panopticum87@gmail.com>
  */
-trait HasOneTrait {
+trait HasOneTrait
+{
 
 	/**
 	 * @var string имя связи
