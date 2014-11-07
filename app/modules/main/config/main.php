@@ -16,6 +16,8 @@ return [
             'controllerNamespace' => 'app\modules\main\controllers',
             'components' => [
 
+                'sphinxUrlService'=>\app\modules\main\components\SphinxUrlService::className(),
+
                 'sitemap'=>[
 
                     "class"=>\app\modules\main\sitemap\Sitemap::className(),
