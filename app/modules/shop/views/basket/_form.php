@@ -15,7 +15,7 @@ $validator = Yii::createObject('\yii\validators\EmailValidator');
 
 ?>
 
-	<div class="row">
+	<div class="row clearfix">
 
 		<div class="col-sm-6">
 
