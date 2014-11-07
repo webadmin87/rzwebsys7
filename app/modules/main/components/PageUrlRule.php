@@ -81,7 +81,7 @@ class PageUrlRule extends UrlRule
 	{
 		$pathInfo = trim($request->getPathInfo(),'/');
 
-		if(empty($pathInfo))
+		if(empty($pathInfo) OR $pathInfo == Pages::INDEX_CODE)
 			return false;
 
 		$sections = explode("/", $pathInfo);
