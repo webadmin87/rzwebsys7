@@ -5,11 +5,11 @@ use common\db\ActiveRecord;
 
 /**
  * Class HasOneField
- * Поле для связей Has One. Интерфейс привязки в форме в виде выпадающего списка.
+ * Поле для связей Has One. Интерфейс привязки в форме в виде radio button.
  * @package common\db\fields
- * @author Churkin Anton <webadmin87@gmail.com>
+ * @author Chernyavsky Denis <panopticum87@gmail.com>
  */
-class HasOneField extends ListField
+class HasOneRadioField extends RadioListField
 {
     use HasOneTrait;
 
