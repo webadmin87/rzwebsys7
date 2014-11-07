@@ -14,7 +14,7 @@ return [
             'viewPath' => '@common/mail',
         ],
         'urlManager'=>[
-            'baseUrl'=>'http://rzwebsys7.local',
+            'baseUrl'=>'http://rzwebsys7.dev',
         ],
     ],
 ];
