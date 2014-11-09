@@ -1,6 +1,8 @@
 <?php
 namespace common\db\fields;
 
+use yii\helpers\ArrayHelper;
+
 /**
  * Class HasOneTrait
  * Поле для связей Has One.
