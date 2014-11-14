@@ -259,7 +259,7 @@ class Grid extends Widget
     {
 
         if ($this->groupButtons !== null) {
-            return $this->$groupButtons;
+            return $this->groupButtons;
         } else {
             return $this->defaultGroupButtons();
         }
