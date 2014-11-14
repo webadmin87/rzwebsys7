@@ -146,9 +146,9 @@ class Grid extends Widget
 
         }
 
-        $columns = array_merge($columns, $this->userColumns);
+        $columns = ArrayHelper::merge($columns, $this->userColumns);
 
-        $columns[] = array_merge($this->getDefaultRowButtons(), $this->rowButtons);
+        $columns[] = ArrayHelper::merge($this->getDefaultRowButtons(), $this->rowButtons);
 
         return $columns;
 
