@@ -172,18 +172,14 @@ class Grid extends Widget
 
             'up' => function ($url, $model) use ($js) {
 
-                $perm = $model->getPermission();
-
-                if (!$perm)
+                if (Yii::$app->user->can('updateModel', ['model'=>$model]))
                     return Html::tag('a', Html::tag('span', '', ['class' => 'glyphicon glyphicon-arrow-up']), ['data-pjax' => 0, 'onClick' => $js($url), 'href' => '#', 'title' => Yii::t('core', 'Up')]);
 
             },
 
             'down' => function ($url, $model) use ($js) {
 
-                $perm = $model->getPermission();
-
-                if (!$perm)
+                if (Yii::$app->user->can('updateModel', ['model'=>$model]))
                     return Html::tag('a', Html::tag('span', '', ['class' => 'glyphicon glyphicon-arrow-down']), ['data-pjax' => 0, 'onClick' => $js($url), 'href' => '#', 'title' => Yii::t('core', 'Down')]);
 
             },
@@ -192,9 +188,7 @@ class Grid extends Widget
 
                 $url = Yii::$app->urlManager->createUrl([Yii::$app->controller->route, "parent_id" => $model->id]);
 
-                $perm = $model->getPermission();
-
-                if (!$perm OR $perm->readModel($model))
+                if (Yii::$app->user->can('readModel', ['model'=>$model]))
                     return Html::tag('a', Html::tag('span', '', ['class' => 'glyphicon glyphicon-open']), ['data-pjax' => 0, 'href' => $url, 'title' => Yii::t('core', 'Enter')]);
 
             },
@@ -204,27 +198,21 @@ class Grid extends Widget
 
             'view' => function ($url, $model) use ($js) {
 
-                $perm = $model->getPermission();
-
-                if (!$perm OR $perm->readModel($model))
+                if (Yii::$app->user->can('readModel', ['model'=>$model]))
                     return Html::tag('a', Html::tag('span', '', ['class' => 'glyphicon glyphicon-eye-open']), ['data-pjax' => 0, 'href' => $url, 'title' => Yii::t('core', 'View')]);
 
             },
 
             'update' => function ($url, $model) use ($js) {
 
-                $perm = $model->getPermission();
-
-                if (!$perm OR $perm->updateModel($model))
+                if (Yii::$app->user->can('updateModel', ['model'=>$model]))
                     return Html::tag('a', Html::tag('span', '', ['class' => 'glyphicon glyphicon-pencil']), ['data-pjax' => 0, 'href' => $url, 'title' => Yii::t('core', 'Update')]);
 
             },
 
             'delete' => function ($url, $model) use ($js) {
 
-                $perm = $model->getPermission();
-
-                if (!$perm OR $perm->deleteModel($model))
+                if (Yii::$app->user->can('deleteModel', ['model'=>$model]))
                     return Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-trash']), $url, ['data-pjax' => 0, 'data-method' => 'post', 'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'), 'title' => Yii::t('core', 'Delete')]);
 
             },
@@ -252,7 +240,7 @@ class Grid extends Widget
 
     /**
      * Возвращает массив кнопок групповых операций
-     * @return array
+     * @return arr
      */
 
     public function getGroupButtons()
