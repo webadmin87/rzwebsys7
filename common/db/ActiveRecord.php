@@ -50,6 +50,11 @@ abstract class ActiveRecord extends YiiRecord
     protected $metaFields;
 
     /**
+     * @var array массив сценариев при которых инициалихируются начальные значения
+     */
+    protected $initScenarios = [self::SCENARIO_INSERT];
+
+    /**
      * Возвращает имя сущности
      * @return string
      */
@@ -69,9 +74,27 @@ abstract class ActiveRecord extends YiiRecord
     public function init()
     {
 
-        if ($this->scenario == self::SCENARIO_INSERT) {
+        if (in_array($this->scenario, $this->initScenarios)) {
 
-            $this->active = true;
+            $this->initValues();
+
+        }
+
+    }
+
+    /**
+     * Инициализация начальных значений
+     */
+    public function initValues()
+    {
+
+        $fields = $this->getMetaFields()->getFields();
+
+        foreach ($fields AS $field) {
+
+            $attr = $field->attr;
+
+            $this->$attr = $field->initValue;
 
         }
 

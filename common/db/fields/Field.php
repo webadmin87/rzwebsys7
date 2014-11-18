@@ -34,6 +34,11 @@ class Field extends Object
     public $title;
 
     /**
+     * @var mixed значение присваевоемое полю при создании модели с сценарием \common\db\ActiveRecord::SCENARIO_SEARCH
+     */
+    public $initValue;
+
+    /**
      * @var string вкладка формы на которой должно быть расположено поле
      */
 

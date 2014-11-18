@@ -141,6 +141,7 @@ abstract class MetaFields extends Object
                     "class" => fields\CheckBoxField::className(),
                     "title" => Yii::t('core', 'Active'),
                     "editInGrid" => true,
+                    "initValue" => true,
                 ],
                 "params" => [$this->owner, "active"]
             ],
