@@ -290,7 +290,7 @@ class User extends ActiveRecord implements IdentityInterface
 
         $rule = [
 
-            ['username', 'unique'],
+            ['username', 'unique', 'except'=>ActiveRecord::SCENARIO_SEARCH],
             ['username', 'string', 'min' => 2, 'max' => 255],
             ['email', 'unique'],
             ['confirm_password', 'compare', 'skipOnEmpty' => false, 'compareAttribute' => 'password'],
