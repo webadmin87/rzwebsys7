@@ -14,6 +14,11 @@ class HasOneField extends ListField
     use HasOneTrait;
 
     /**
+     * @var bool значение поля числовое
+     */
+    public $numeric = true;
+
+    /**
      * Конструктор
      * @param ActiveRecord $model модель
      * @param string $attr атрибут
