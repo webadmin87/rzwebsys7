@@ -51,7 +51,7 @@ class Rajon extends ActiveRecord
 	public function getRegion()
 	{
 
-		return $this->hasOne(Country::className(), ["id" => "region_id"]);
+		return $this->hasOne(Region::className(), ["id" => "region_id"]);
 
 	}
 

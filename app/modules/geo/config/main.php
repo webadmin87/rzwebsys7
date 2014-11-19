@@ -6,6 +6,9 @@ return [
 		'geo' => [
 			'class' => 'app\modules\geo\Geo',
 			'controllerNamespace' => 'app\modules\geo\controllers',
+            'components'=>[
+                'suggestsFinder' => \app\modules\geo\components\SuggestsFinder::className(),
+            ],
 		],
 
 	],
