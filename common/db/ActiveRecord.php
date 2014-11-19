@@ -94,7 +94,8 @@ abstract class ActiveRecord extends YiiRecord
 
             $attr = $field->attr;
 
-            $this->$attr = $field->initValue;
+            if($field->initValue !== null)
+                $this->$attr = $field->initValue;
 
         }
 
