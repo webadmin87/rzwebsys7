@@ -105,7 +105,7 @@ class ListField extends Field
 	{
 		$rules = parent::rules();
 
-		if($this->numeric) {
+		if($this->numeric AND $this->defaultValue === null) {
 
 			$rules[] = [$this->attr, 'default', 'value'=>0, 'except'=>[ActiveRecord::SCENARIO_SEARCH]];
 

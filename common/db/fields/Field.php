@@ -39,6 +39,11 @@ class Field extends Object
     public $initValue;
 
     /**
+     * @var mixed значение поля присваевоемое модели перед сохранением, в случае если текущий атрибут не задан
+     */
+    public $defaultValue;
+
+    /**
      * @var string вкладка формы на которой должно быть расположено поле
      */
 
@@ -340,6 +345,10 @@ class Field extends Object
 
         if ($this->isRequired)
             $rules[] = [$this->attr, 'required', 'except' => ActiveRecord::SCENARIO_SEARCH];
+
+        if($this->defaultValue !== null)
+            $rules[] = [$this->attr, 'default', 'value'=>$this->defaultValue, 'except'=>[ActiveRecord::SCENARIO_SEARCH]];
+
 
         return $rules;
 
