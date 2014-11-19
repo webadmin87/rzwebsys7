@@ -26,6 +26,11 @@ class AutoComplete extends Base
     public $visibleValue;
 
     /**
+     * @var bool синхронизировать значение скрытого поле с полем автокомплита при вводе текста
+     */
+    public $liveSync = false;
+
+    /**
      * @var array html атрибуты поля автокомплита.
      */
     public $visibleOptions = [];
@@ -65,6 +70,20 @@ class AutoComplete extends Base
                         $('#{$this->options["id"]}').val('');
 
             }");
+
+        }
+
+        if($this->liveSync) {
+
+            $this->view->registerJs("
+
+                $('#{$this->visibleOptions["id"]}').on('keyup', function(){
+
+                    $('#{$this->options["id"]}').val($(this).val());
+
+                });
+
+            ");
 
         }
 
