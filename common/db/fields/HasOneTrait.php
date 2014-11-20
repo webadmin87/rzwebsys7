@@ -27,7 +27,7 @@ trait HasOneTrait
 	/**
 	 * @inheritdoc
 	 */
-	protected function grid()
+	public function getGrid()
 	{
 
 		$grid = $this->defaultGrid();
@@ -45,12 +45,12 @@ trait HasOneTrait
 	/**
 	 * @inheritdoc
 	 */
-	protected function view()
+	public function getView()
 	{
 
 		$view = $this->defaultView();
 
-		$view["value"] = ArrayHelper::getValue($this->model, "{$this->relation}.{$this->gridAttr}", $this->model->{$this->attr});
+		$view["value"] = ArrayHelper::getValue($this->model, "{$this->relation}.{$this->gridAttr}");
 
 		return $view;
 
