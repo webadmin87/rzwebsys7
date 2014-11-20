@@ -34,7 +34,7 @@ trait HasOneTrait
 
 		$grid["value"] = function ($model, $index, $widget) {
 
-			return ArrayHelper::getValue($model, "{$this->relation}.{$this->gridAttr}", $model->{$this->attr});
+			return ArrayHelper::getValue($model, "{$this->relation}.{$this->gridAttr}");
 
 		};
 
