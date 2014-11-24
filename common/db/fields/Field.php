@@ -228,9 +228,9 @@ class Field extends Object
      * Результурующая конфигурация поля грида (GridView)
      * @return array
      */
-    public function getGrid()
+    public final function getGrid()
     {
-        return ArrayHelper::merge($this->gridOptions, $this->grid());
+        return ArrayHelper::merge($this->grid(), $this->gridOptions);
     }
 
     /**
@@ -323,10 +323,10 @@ class Field extends Object
      * Результирующая конфигурация поля для детального просмотра
      * @return array
      */
-    public function getView()
+    public final function getView()
     {
 
-        return ArrayHelper::merge($this->viewOptions, $this->view());
+        return ArrayHelper::merge($this->view(), $this->viewOptions);
 
     }
 

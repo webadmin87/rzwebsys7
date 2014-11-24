@@ -27,7 +27,7 @@ trait HasOneTrait
 	/**
 	 * @inheritdoc
 	 */
-	public function getGrid()
+	protected function grid()
 	{
 
 		$grid = $this->defaultGrid();
@@ -45,7 +45,7 @@ trait HasOneTrait
 	/**
 	 * @inheritdoc
 	 */
-	public function getView()
+	protected function view()
 	{
 
 		$view = $this->defaultView();
