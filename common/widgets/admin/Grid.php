@@ -5,6 +5,7 @@ use Yii;
 use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /**
  * Class Grid
@@ -65,6 +66,11 @@ class Grid extends Widget
      * @var array кнопки групповых операций
      */
 
+    /**
+     * @var string базовая часть маршрута к действиям
+     */
+    protected  $_baseRoute;
+
     protected $groupButtons;
     /**
      * @var string идентификатор виджета
@@ -76,6 +82,29 @@ class Grid extends Widget
      */
 
     protected $pjaxId;
+
+    /**
+     * @return string
+     */
+    public function getBaseRoute()
+    {
+
+        if($this->_baseRoute === null)
+            $this->_baseRoute = "/" . $this->view->context->uniqueId;
+
+        return $this->_baseRoute;
+    }
+
+    /**
+     * @param string $baseRoute
+     */
+    public function setBaseRoute($baseRoute)
+    {
+        $this->_baseRoute = $baseRoute;
+    }
+
+
+
 
     public function init()
     {
@@ -172,12 +201,16 @@ class Grid extends Widget
 
             'up' => function ($url, $model) use ($js) {
 
+                $url = Url::toRoute([$this->baseRoute . '/up', 'id'=>$model->id]);
+
                 if (Yii::$app->user->can('updateModel', ['model'=>$model]))
                     return Html::tag('a', Html::tag('span', '', ['class' => 'glyphicon glyphicon-arrow-up']), ['data-pjax' => 0, 'onClick' => $js($url), 'href' => '#', 'title' => Yii::t('core', 'Up')]);
 
             },
 
             'down' => function ($url, $model) use ($js) {
+
+                $url = Url::toRoute([$this->baseRoute . '/down', 'id'=>$model->id]);
 
                 if (Yii::$app->user->can('updateModel', ['model'=>$model]))
                     return Html::tag('a', Html::tag('span', '', ['class' => 'glyphicon glyphicon-arrow-down']), ['data-pjax' => 0, 'onClick' => $js($url), 'href' => '#', 'title' => Yii::t('core', 'Down')]);
@@ -186,7 +219,7 @@ class Grid extends Widget
 
             'enter' => function ($url, $model) {
 
-                $url = Yii::$app->urlManager->createUrl([Yii::$app->controller->route, "parent_id" => $model->id]);
+                $url = Url::toRoute(["/".Yii::$app->controller->route, "parent_id" => $model->id]);
 
                 if (Yii::$app->user->can('readModel', ['model'=>$model]))
                     return Html::tag('a', Html::tag('span', '', ['class' => 'glyphicon glyphicon-open']), ['data-pjax' => 0, 'href' => $url, 'title' => Yii::t('core', 'Enter')]);
@@ -198,6 +231,8 @@ class Grid extends Widget
 
             'view' => function ($url, $model) use ($js) {
 
+                $url = Url::toRoute([$this->baseRoute . '/view', 'id'=>$model->id]);
+
                 if (Yii::$app->user->can('readModel', ['model'=>$model]))
                     return Html::tag('a', Html::tag('span', '', ['class' => 'glyphicon glyphicon-eye-open']), ['data-pjax' => 0, 'href' => $url, 'title' => Yii::t('core', 'View')]);
 
@@ -205,12 +240,16 @@ class Grid extends Widget
 
             'update' => function ($url, $model) use ($js) {
 
+                $url = Url::toRoute([$this->baseRoute . '/update', 'id'=>$model->id]);
+
                 if (Yii::$app->user->can('updateModel', ['model'=>$model]))
                     return Html::tag('a', Html::tag('span', '', ['class' => 'glyphicon glyphicon-pencil']), ['data-pjax' => 0, 'href' => $url, 'title' => Yii::t('core', 'Update')]);
 
             },
 
             'delete' => function ($url, $model) use ($js) {
+
+                $url = Url::toRoute([$this->baseRoute . '/delete', 'id'=>$model->id]);
 
                 if (Yii::$app->user->can('deleteModel', ['model'=>$model]))
                     return Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-trash']), $url, ['data-pjax' => 0, 'data-method' => 'post', 'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'), 'title' => Yii::t('core', 'Delete')]);
@@ -292,7 +331,7 @@ class Grid extends Widget
                     'id' => 'group-delete',
                     'class' => 'btn btn-danger',
                 ],
-                "route" => $this->view->context->uniqueId . "/groupdelete",
+                "route" => $this->baseRoute . "/groupdelete",
             ],
 
         ];
@@ -312,7 +351,7 @@ class Grid extends Widget
                     'id' => 'group-replace-ok',
                     'class' => 'btn btn-primary',
                 ],
-                "route" => $this->view->context->uniqueId . "/replace",
+                "route" => $this->baseRoute . "/replace",
 
             ];
 
