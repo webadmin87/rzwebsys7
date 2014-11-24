@@ -198,7 +198,7 @@ class Field extends Object
 	 */
 	protected function defaultGrid() {
 
-		$grid = ['attribute' => $this->attr];
+		$grid = ['attribute' => $this->attr, 'label'=>$this->title];
 
 		if ($this->showInFilter)
 			$grid['filter'] = $this->getGridFilter();
@@ -302,7 +302,7 @@ class Field extends Object
 	 */
 	protected function defaultView() {
 
-		$view = ['attribute' => $this->attr];
+		$view = ['attribute' => $this->attr, 'label'=>$this->title];
 
 		return $view;
 
