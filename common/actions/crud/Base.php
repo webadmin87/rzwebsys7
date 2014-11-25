@@ -42,6 +42,12 @@ class Base extends Action
     public $viewParams = [];
 
     /**
+     * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
+     */
+
+    public $defaultRedirectUrl = ["/main/admin"];
+
+    /**
      * Ajax валидация модели
      * @param \yii\db\ActiveRecord $model
      * @return array
@@ -114,6 +120,22 @@ class Base extends Action
 
         if ($perm AND $perm->hasForbiddenAttrs($attrs))
             throw new ForbiddenHttpException('Forbidden');
+
+    }
+
+    /**
+     * Возвращание на предыдущую страницу
+     * @return \yii\web\Response
+     */
+    protected function goBack()
+    {
+
+        $returnUrl = Yii::$app->request->referrer;
+
+        if (empty($returnUrl))
+            $returnUrl = $this->defaultRedirectUrl;
+
+        return $this->controller->redirect($returnUrl);
 
     }
 

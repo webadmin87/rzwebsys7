@@ -14,15 +14,10 @@ class Delete extends Base
 {
 
     /**
-     * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
-     */
-
-    public $defaultRedirectUrl = "/admin/";
-
-    /**
      * Запуск действия удаления модели
      * @param integer $id идентификатор модели
      * @throws \yii\web\ForbiddenHttpException
+     * @return void|\yii\web\Response
      */
 
     public function run($id)
@@ -39,16 +34,8 @@ class Delete extends Base
 
         }
 
-        if (!Yii::$app->request->isAjax) {
-
-            $returnUrl = Yii::$app->request->referrer;
-
-            if (empty($returnUrl))
-                $returnUrl = $this->defaultRedirectUrl;
-
-            return $this->controller->redirect($returnUrl);
-
-        }
+        if (!Yii::$app->request->isAjax)
+            return $this->goBack();
 
     }
 

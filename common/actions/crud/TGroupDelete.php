@@ -39,16 +39,8 @@ class TGroupDelete extends GroupDelete
 
         }
 
-        if (!Yii::$app->request->isAjax) {
-
-            $returnUrl = Yii::$app->request->referrer;
-
-            if (empty($returnUrl))
-                $returnUrl = $this->defaultRedirectUrl;
-
-            return $this->controller->redirect($returnUrl);
-
-        }
+        if (!Yii::$app->request->isAjax)
+            return $this->goBack();
 
     }
 

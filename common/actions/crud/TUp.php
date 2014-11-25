@@ -14,12 +14,6 @@ class TUp extends Base
 {
 
     /**
-     * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
-     */
-
-    public $defaultRedirectUrl = "/admin/";
-
-    /**
      * @inheritdoc
      */
 
@@ -36,16 +30,8 @@ class TUp extends Base
         if ($prevModel)
             $model->moveBefore($prevModel);
 
-        if (!Yii::$app->request->isAjax) {
-
-            $returnUrl = Yii::$app->request->referrer;
-
-            if (empty($returnUrl))
-                $returnUrl = $this->defaultRedirectUrl;
-
-            return $this->controller->redirect($returnUrl);
-
-        }
+        if (!Yii::$app->request->isAjax)
+            return $this->goBack();
 
     }
 

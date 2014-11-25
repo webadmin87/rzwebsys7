@@ -38,12 +38,6 @@ class Create extends Base
     public $redirectParam = "returnUrl";
 
     /**
-     * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
-     */
-
-    public $defaultRedirectUrl = "/admin/";
-
-    /**
      * @var string адрес для редиректа в случае нажатия кнопки применить
      */
 

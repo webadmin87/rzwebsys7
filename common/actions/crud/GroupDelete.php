@@ -26,12 +26,6 @@ class GroupDelete extends Base
     public $modelScenario = 'search';
 
     /**
-     * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
-     */
-
-    public $defaultRedirectUrl = "/admin/";
-
-    /**
      * Запуск группового удалнеия моделей
      * @throws \yii\web\ForbiddenHttpException
      */
@@ -58,16 +52,8 @@ class GroupDelete extends Base
 
         }
 
-        if (!Yii::$app->request->isAjax) {
-
-            $returnUrl = Yii::$app->request->referrer;
-
-            if (empty($returnUrl))
-                $returnUrl = $this->defaultRedirectUrl;
-
-            return $this->controller->redirect($returnUrl);
-
-        }
+        if (!Yii::$app->request->isAjax)
+            return $this->goBack();
 
     }
 
