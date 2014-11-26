@@ -31,8 +31,9 @@ class AdminUserConstraint extends Object implements IConstraint
      */
     public function applyConstraint($query)
     {
-
-        $query->andWhere(['role'=>$this->getPermittedRoles()]);
+        $cls = $query->modelClass;
+        $table = $cls::tableName();
+        $query->andWhere(["{{%$table}}.{{%role}}"=>$this->getPermittedRoles()]);
     }
 
     /**

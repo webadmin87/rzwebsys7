@@ -22,8 +22,9 @@ class AuthorConstraint extends Object implements IConstraint
     public function applyConstraint($query)
     {
         $userId = Yii::$app->user->id;
-
-        $query->andWhere(['author_id' => $userId]);
+        $cls = $query->modelClass;
+        $table = $cls::tableName();
+        $query->andWhere(["{{%$table}}.{{%author_id}}" => $userId]);
     }
 
     /**
