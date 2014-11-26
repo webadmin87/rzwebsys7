@@ -2,6 +2,7 @@
 namespace common\actions\crud;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\web\ForbiddenHttpException;
 
 /**
@@ -43,6 +44,11 @@ class Admin extends Base
     public $orderBy;
 
     /**
+     * @var array значения атрибутов используемые по умолчанию в фильтре моделей
+     */
+    public $defaultSearchAttrs;
+
+    /**
      * Запуск действия вывода списка моделей
      * @return string
      * @throws \yii\web\ForbiddenHttpException
@@ -58,7 +64,12 @@ class Admin extends Base
 
         $searchModel->setScenario($this->modelScenario);
 
-        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams(), $this->dataProviderConfig);
+        $params = Yii::$app->request->getQueryParams();
+
+        if(!empty($this->defaultSearchAttrs))
+            $params = ArrayHelper::merge([$searchModel->formName()=>$this->defaultSearchAttrs], $params);
+
+        $dataProvider = $searchModel->search($params, $this->dataProviderConfig);
 
         $perm = $searchModel->getPermission();
 
