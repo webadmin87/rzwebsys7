@@ -167,7 +167,7 @@ class Installer extends Object
 
         // root role
 
-        $root = $auth->createRole(USER::ROLE_ROOT);
+        $root = $auth->createRole(User::ROLE_ROOT);
         $auth->add($root);
         $auth->addChild($root, $admin);
         $auth->addChild($root, $rootAccess);
