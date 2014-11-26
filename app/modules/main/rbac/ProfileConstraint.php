@@ -22,8 +22,9 @@ class ProfileConstraint extends Object implements IConstraint
     public function applyConstraint($query)
     {
         $userId = Yii::$app->user->id;
-
-        $query->andWhere(['id' => $userId]);
+        $cls = $query->modelClass;
+        $table = $cls::tableName();
+        $query->andWhere(["{{%$table}}.{{%id}}" => $userId]);
     }
 
     /**
