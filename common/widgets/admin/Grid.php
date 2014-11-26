@@ -10,6 +10,9 @@ use yii\helpers\Url;
 /**
  * Class Grid
  * Грид для админки. Формируется на основе \common\db\MetaFields модели
+ * @property array $rowButtons кнопки действий строк грида
+ * @property array $groupButtons кнопки групповых операций
+ * @property string $baseRoute базовая часть маршрута для формировнаия url действий
  * @package common\widgets\admin
  * @author Churkin Anton <webadmin87@gmail.com>
  */
@@ -44,7 +47,7 @@ class Grid extends Widget
      * @var array кнопки строк грида
      */
 
-    public $rowButtons = [];
+    protected $_rowButtons;
 
     /**
      * @var array дополнительные пользовательские колонки
@@ -62,16 +65,17 @@ class Grid extends Widget
      */
 
     public $tpl = "grid";
-    /**
-     * @var array кнопки групповых операций
-     */
 
     /**
      * @var string базовая часть маршрута к действиям
      */
     protected  $_baseRoute;
 
-    protected $groupButtons;
+    /**
+     * @var array кнопки групповых операций
+     */
+    protected $_groupButtons;
+
     /**
      * @var string идентификатор виджета
      */
@@ -101,6 +105,28 @@ class Grid extends Widget
     public function setBaseRoute($baseRoute)
     {
         $this->_baseRoute = $baseRoute;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRowButtons()
+    {
+        if($this->_rowButtons === null) {
+
+            $this->_rowButtons = $this->defaultRowButtons();
+
+        }
+
+        return $this->_rowButtons;
+    }
+
+    /**
+     * @param array $rowButtons
+     */
+    public function setRowButtons($rowButtons)
+    {
+        $this->_rowButtons = ArrayHelper::merge($this->defaultRowButtons(), $rowButtons);
     }
 
 
@@ -177,7 +203,7 @@ class Grid extends Widget
 
         $columns = ArrayHelper::merge($columns, $this->userColumns);
 
-        $columns[] = ArrayHelper::merge($this->getDefaultRowButtons(), $this->rowButtons);
+        $columns[] = $this->getRowButtons();
 
         return $columns;
 
@@ -188,7 +214,7 @@ class Grid extends Widget
      * @return array
      */
 
-    public function getDefaultRowButtons()
+    public function defaultRowButtons()
     {
 
         $js = function ($u) {
@@ -285,11 +311,13 @@ class Grid extends Widget
     public function getGroupButtons()
     {
 
-        if ($this->groupButtons !== null) {
-            return $this->groupButtons;
-        } else {
-            return $this->defaultGroupButtons();
+        if ($this->_groupButtons === null) {
+
+            $this->_groupButtons = $this->defaultGroupButtons();
+
         }
+
+        return $this->_groupButtons;
 
     }
 
@@ -307,7 +335,7 @@ class Grid extends Widget
     public function setGroupButtons(Array $buttons)
     {
 
-        $this->groupButtons = ArrayHelper::merge($this->defaultGroupButtons(), $buttons);
+        $this->_groupButtons = ArrayHelper::merge($this->defaultGroupButtons(), $buttons);
 
     }
 
@@ -319,14 +347,14 @@ class Grid extends Widget
     protected function defaultGroupButtons()
     {
 
-        $perm = $this->model->getPermission();
+        $model = $this->model;
 
         $arr = [
 
             "delete" => [
                 "class" => \common\widgets\admin\ActionButton::className(),
                 "label" => Yii::t('core', 'Delete'),
-                "visible" => !$perm OR $perm->deleteModels(),
+                "visible" => Yii::$app->user->can('deleteModels', ['model'=>$model]),
                 "options" => [
                     'id' => 'group-delete',
                     'class' => 'btn btn-danger',
@@ -341,7 +369,7 @@ class Grid extends Widget
             $arr["replace"] = [
 
                 "class" => \common\widgets\admin\ReplaceInTreeButton::className(),
-                "visible" => !$perm OR $perm->updateModels(),
+                "visible" =>  Yii::$app->user->can('updateModels', ['model'=>$model]),
                 "label" => Yii::t('core', 'Replace'),
                 "options" => [
                     'id' => 'group-replace',

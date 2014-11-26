@@ -5,15 +5,15 @@ namespace app\modules\main\rbac;
 use yii\rbac\Rule;
 
 /**
- * Class CreatesRule
- * Проверка прав на создание моделей
+ * Class UpdatesRule
+ * Проверка прав на изменение моделей
  * @package app\modules\main\rbac
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class CreatesRule extends Rule
+class UpdatesRule extends Rule
 {
 
-    public $name = 'canCreates';
+    public $name = 'canUpdates';
 
     /**
      * @inheritdoc
@@ -22,7 +22,7 @@ class CreatesRule extends Rule
     {
         $perm = $params['model']->getPermission();
 
-        return $perm AND $perm->createModels();
+        return $perm AND $perm->updateModels();
     }
 
 }

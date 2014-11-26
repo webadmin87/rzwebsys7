@@ -62,6 +62,14 @@ class Installer extends Object
         $createModels->description = 'create models';
         $auth->add($createModels);
 
+        $deleteModels = $auth->createPermission('deleteModels');
+        $deleteModels->description = 'delete models';
+        $auth->add($deleteModels);
+
+        $updateModels = $auth->createPermission('updateModels');
+        $updateModels->description = 'update models';
+        $auth->add($updateModels);
+
         // rules
 
         $createRule = new \app\modules\main\rbac\CreateRule;
@@ -118,6 +126,24 @@ class Installer extends Object
         $auth->add($createModelsRule);
         $auth->addChild($createModelsRule, $createModels);
 
+        $deletesRule = new \app\modules\main\rbac\DeletesRule;
+        $auth->add($deletesRule);
+
+        $deleteModelsRule = $auth->createPermission('deleteModelsRule');
+        $deleteModelsRule->description = 'delete models';
+        $deleteModelsRule->ruleName = $deletesRule->name;
+        $auth->add($deleteModelsRule);
+        $auth->addChild($deleteModelsRule, $deleteModels);
+
+        $updatesRule = new \app\modules\main\rbac\UpdatesRule;
+        $auth->add($updatesRule);
+
+        $updateModelsRule = $auth->createPermission('updateModelsRule');
+        $updateModelsRule->description = 'update models';
+        $updateModelsRule->ruleName = $updatesRule->name;
+        $auth->add($updateModelsRule);
+        $auth->addChild($updateModelsRule, $updateModels);
+
         // user role
 
         $user = $auth->createRole(User::ROLE_USER);
@@ -136,6 +162,8 @@ class Installer extends Object
         $auth->addChild($admin, $readModelRule);
         $auth->addChild($admin, $updateModelRule);
         $auth->addChild($admin, $deleteModelRule);
+        $auth->addChild($admin, $deleteModelsRule);
+        $auth->addChild($admin, $updateModelsRule);
 
         // root role
 
@@ -149,6 +177,8 @@ class Installer extends Object
         $auth->addChild($root, $deleteModel);
         $auth->addChild($root, $listModels);
         $auth->addChild($root, $createModels);
+        $auth->addChild($root, $deleteModels);
+        $auth->addChild($root, $updateModels);
 
     }
 

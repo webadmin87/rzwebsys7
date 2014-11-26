@@ -5,15 +5,15 @@ namespace app\modules\main\rbac;
 use yii\rbac\Rule;
 
 /**
- * Class CreatesRule
- * Проверка прав на создание моделей
+ * Class DeletesRule
+ * Проверка прав на удаление моделей
  * @package app\modules\main\rbac
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class CreatesRule extends Rule
+class DeletesRule extends Rule
 {
 
-    public $name = 'canCreates';
+    public $name = 'canDeletes';
 
     /**
      * @inheritdoc
@@ -22,7 +22,7 @@ class CreatesRule extends Rule
     {
         $perm = $params['model']->getPermission();
 
-        return $perm AND $perm->createModels();
+        return $perm AND $perm->deleteModels();
     }
 
 }
