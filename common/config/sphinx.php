@@ -124,7 +124,7 @@ path =<?=$conf["path"]?>/<?=$conf['preffix']?>PagesIndex
 
 # Источник каталога
 
-source <?=$conf['preffix']?>CatalogSource : itdom62ParentSource
+source <?=$conf['preffix']?>CatalogSource : <?=$conf['preffix']?>ParentSource
 {
 	# запрос на получения данных
 	sql_query		= \
