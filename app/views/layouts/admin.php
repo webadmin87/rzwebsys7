@@ -21,8 +21,11 @@ use yii\widgets\Breadcrumbs;
     <div class="row">
 
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-            <?
-            echo Menu::widget();
+            <?php
+            if ($this->beginCache("adminMenu", ['variations' => [Yii::$app->user->identity->role]])) {
+                echo Menu::widget();
+                $this->endCache();
+            }
             ?>
         </div>
 
