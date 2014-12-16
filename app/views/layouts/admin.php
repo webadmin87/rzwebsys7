@@ -23,7 +23,7 @@ use yii\widgets\Breadcrumbs;
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
             <?php
             if ($this->beginCache("adminMenu", ['variations' => [Yii::$app->user->identity->role]])) {
-                echo Menu::widget();
+                echo Menu::widget(['options'=>['id'=>'left-admin-menu']]);
                 $this->endCache();
             }
             ?>
