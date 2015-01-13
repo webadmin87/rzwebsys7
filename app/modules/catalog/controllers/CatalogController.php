@@ -3,6 +3,7 @@
 namespace app\modules\catalog\controllers;
 
 use app\modules\catalog\models\Catalog;
+use app\modules\catalog\models\CatalogSearch;
 use app\modules\catalog\models\CatalogSection;
 use common\cache\TagDependency;
 use common\controllers\App;
@@ -61,9 +62,11 @@ class CatalogController extends App
 
         $res = Yii::$app->cache->get($cacheId);
 
-        $model = Yii::createObject(['class' => Catalog::className(), 'scenario' => ActiveRecord::SCENARIO_SEARCH]);
+        $model = Yii::createObject(['class' => Catalog::className()]);
 
-        $model->load(Yii::$app->request->get());
+        $searchModel = Yii::createObject(['class' => CatalogSearch::className(), 'scenario' => ActiveRecord::SCENARIO_SEARCH]);
+
+        $searchModel->load(Yii::$app->request->get());
 
         if (empty($res)) {
 
@@ -71,7 +74,7 @@ class CatalogController extends App
 
             $res["sectionModel"] = null;
 
-            if (empty($model->sectionsIds) AND $section) {
+            if (empty($searchModel->sectionsIds) AND $section) {
 
                 $res["sectionModel"] = CatalogSection::find()->published()->andWhere(["code" => $section])->one();
 
@@ -80,11 +83,11 @@ class CatalogController extends App
 
                 $dependency->addTag($res["sectionModel"]->setItemTag());
 
-                $model->sectionsIds = $res["sectionModel"]->getFilterIds();
+                $searchModel->sectionsIds = $res["sectionModel"]->getFilterIds();
 
             }
 
-            $dataProvider = \Yii::$app->getModule('catalog')->filterProvider->getDataProvider($model);
+            $dataProvider = $searchModel->search();
 
             $dataProvider->getSort()->defaultOrder = $this->orderBy;
 
