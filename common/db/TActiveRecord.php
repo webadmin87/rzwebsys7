@@ -37,7 +37,7 @@ abstract class TActiveRecord extends ActiveRecord
         $behaviors["nestedSets"] = [
 
             "class" => NestedSet::className(),
-
+            "depthAttribute" => "level",
         ];
 
         return $behaviors;

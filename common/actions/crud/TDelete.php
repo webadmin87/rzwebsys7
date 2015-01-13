@@ -27,7 +27,7 @@ class TDelete extends Delete
             if (!Yii::$app->user->can('deleteModel', array("model" => $model)))
                 throw new ForbiddenHttpException('Forbidden');
 
-            $model->deleteNode();
+            $model->deleteWithDescendants();
 
         }
 

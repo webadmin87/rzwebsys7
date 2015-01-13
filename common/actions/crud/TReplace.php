@@ -72,7 +72,7 @@ class TReplace extends Base
                     if (!Yii::$app->user->can('updateModel', array("model" => $model)))
                         throw new ForbiddenHttpException('Forbidden');
 
-                    $model->moveAsFirst($parentModel);
+                    $model->prependTo($parentModel);
 
                 }
 

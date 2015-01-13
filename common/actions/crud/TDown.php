@@ -28,7 +28,7 @@ class TDown extends Base
         $nextModel = $model->next()->one();
 
         if ($nextModel)
-            $model->moveAfter($nextModel);
+            $model->insertAfter($nextModel);
 
         if (!Yii::$app->request->isAjax)
             return $this->goBack();

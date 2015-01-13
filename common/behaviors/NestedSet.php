@@ -8,7 +8,7 @@ namespace common\behaviors;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class NestedSet extends \creocoder\behaviors\NestedSet
+class NestedSet extends \creocoder\nestedsets\NestedSetsBehavior
 {
 
     /**

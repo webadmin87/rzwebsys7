@@ -50,7 +50,7 @@ class TUpdate extends Update
 		}
 
         if ($load && $parentModel)
-            $res = $model->moveAsFirst($parentModel);
+            $res = $model->prependTo($parentModel);
         elseif ($load)
             $res = $model->saveNode();
 

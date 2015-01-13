@@ -1,7 +1,7 @@
 <?php
 namespace common\db;
 
-use creocoder\behaviors\NestedSetQuery;
+use creocoder\nestedsets\NestedSetsQueryBehavior;
 
 /**
  * Class TActiveQuery
@@ -20,7 +20,7 @@ class TActiveQuery extends ActiveQuery
     {
         return [
             [
-                'class' => NestedSetQuery::className(),
+                'class' => NestedSetsQueryBehavior::className(),
             ],
         ];
     }

@@ -28,7 +28,7 @@ class TUp extends Base
         $prevModel = $model->prev()->one();
 
         if ($prevModel)
-            $model->moveBefore($prevModel);
+            $model->insertBefore($prevModel);
 
         if (!Yii::$app->request->isAjax)
             return $this->goBack();
