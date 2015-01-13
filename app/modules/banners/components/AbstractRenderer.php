@@ -37,16 +37,7 @@ abstract class AbstractRenderer extends Object
 	 */
 	public static function getRenderer(\app\modules\banners\models\Banner $model) {
 
-		$file = $model->getFirstFile('image');
-
-		if(!$file)
-			return null;
-
-		if($file->isImage())
-			return Yii::createObject(ImageRenderer::className(), [$model]);
-		else
-			return Yii::createObject(FlashRenderer::className(), [$model]);
-
+		return Yii::$app->getModule('banners')->rendererFactory->createRenderer($model);
 	}
 
 	/**

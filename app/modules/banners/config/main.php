@@ -14,7 +14,10 @@ return [
         'banners' => [
             'class' => 'app\modules\banners\Banners',
             'controllerNamespace' => 'app\modules\banners\controllers',
-				'modules' => [
+            'components'=>[
+                'rendererFactory'=>\app\modules\banners\components\RendererFactory::className(),
+            ],
+			'modules' => [
 					'admin' => [
 						'class' => 'app\modules\banners\modules\admin\Admin',
 						'controllerNamespace' => 'app\modules\banners\modules\admin\controllers',
