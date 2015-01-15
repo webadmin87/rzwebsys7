@@ -93,7 +93,7 @@ class CatalogController extends App
 
             $dataProvider->getPagination()->pageSize = $this->pageSize;
 
-            $dependency->addTag($model->setClassTag());
+            $dependency->addTag($model->setClassTagSafe());
 
             $dependency->setTagsFromModels($dataProvider->getModels());
 
