@@ -70,7 +70,7 @@ class TagDependency extends Dependency
 
         foreach ($models AS $model) {
 
-            $this->addTag($model->setItemTag());
+            $this->addTag($model->setItemTagSafe());
 
         }
 

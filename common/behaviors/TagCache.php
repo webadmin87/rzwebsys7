@@ -15,10 +15,10 @@ use yii\db\ActiveRecord;
 class TagCache extends Behavior
 {
 
-	/**
-	 * @var string атрибут хранящий признак активности элемента
-	 */
-	public $activeAttribute = "active";
+    /**
+     * @var string атрибут хранящий признак активности элемента
+     */
+    public $activeAttribute = "active";
 
     const PREFFIX = "tag_cache_";
 
@@ -31,10 +31,10 @@ class TagCache extends Behavior
 
         $this->setItemTag();
 
-		if($this->owner->hasChangeActive())
-		{
-			$this->setClassTag();
-		}
+        if($this->owner->hasChangeActive())
+        {
+            $this->setClassTag();
+        }
 
     }
 
@@ -53,6 +53,27 @@ class TagCache extends Behavior
         return $key;
 
     }
+
+    /**
+     * Устанавливает тег экземпляра класса если он еще не установлен
+     * @return string
+     */
+    public function setItemTagSafe()
+    {
+
+        $key = $this->getItemTagName();
+
+        $val = Yii::$app->cache->get($key);
+
+        if($val === false) {
+
+            Yii::$app->cache->set($key, microtime(true));
+
+        }
+
+        return $key;
+    }
+
 
     /**
      * Возвращает тег экземпляра класса
@@ -100,6 +121,28 @@ class TagCache extends Behavior
         $key = $this->getClassTagName();
 
         Yii::$app->cache->set($key, microtime(true));
+
+        return $key;
+
+    }
+
+    /**
+     * Устанавливает тег класса, если он еще не установлен
+     * @return string
+     */
+
+    public function setClassTagSafe()
+    {
+
+        $key = $this->getClassTagName();
+
+        $val = Yii::$app->cache->get($key);
+
+        if($val === false) {
+
+            Yii::$app->cache->set($key, microtime(true));
+
+        }
 
         return $key;
 
