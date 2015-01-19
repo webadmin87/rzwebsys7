@@ -52,7 +52,7 @@ class TUpdate extends Update
         if ($load && $parentModel)
             $res = $model->prependTo($parentModel);
         elseif ($load)
-            $res = $model->saveNode();
+            $res = $model->save();
 
         if (!empty($res) && !$request->post($this->applyParam)) {
 
