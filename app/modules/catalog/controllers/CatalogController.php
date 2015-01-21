@@ -121,7 +121,7 @@ class CatalogController extends App
             $this->view->addBreadCrumbs($crumbs);
         }
 
-        return $this->render("index",["sectionModel" => $res["sectionModel"], "model"=>$model, "html"=>$res["html"]]);
+        return $this->render("index",["sectionModel" => $res["sectionModel"], "model"=>$model, "searchModel"=>$searchModel, "html"=>$res["html"]]);
 
     }
 
