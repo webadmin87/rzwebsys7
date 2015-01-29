@@ -3,6 +3,7 @@ namespace common\widgets\admin;
 
 use Yii;
 use yii\base\Widget;
+use yii\bootstrap\Collapse;
 use yii\bootstrap\Nav;
 
 /**
@@ -41,6 +42,10 @@ class Menu extends Widget
 
     public function init()
     {
+
+        if (!isset($this->options['id'])) {
+            $this->options['id'] = $this->getId();
+        }
 
         $modules = Yii::$app->modules;
 
@@ -103,18 +108,51 @@ class Menu extends Widget
     }
 
     /**
+     * Dозвращает массив данных для виджета \yii\bootstrap\Collapse
+     * @return array
+     */
+    public function getCollapseArray()
+    {
+
+        $items = $this->items;
+
+        $i=0;
+
+        foreach($items AS & $item) {
+
+            if(isset($item["items"])) {
+                $item['content'] = Nav::widget([
+                    'route' => Yii::$app->controller->uniqueId,
+                    "items" => $item["items"],
+                    "options" => [
+                        "id" => $this->options['id'] . "-nav-" . $i,
+                    ],
+                ]);
+                unset($item["items"]);
+            } else {
+                $item['content'] = "";
+            }
+
+            $i++;
+
+        }
+
+        return $items;
+
+    }
+
+    /**
      * @inheritdoc
      */
 
     public function run()
     {
 
-        return Nav::widget([
-            'route' => Yii::$app->controller->uniqueId,
-            'items' => $this->items,
-            'options' => array_merge([
-                'class' => 'nav nav-pills nav-stacked'
-            ], $this->options)
+        return Collapse::widget([
+
+            'items' => $this->getCollapseArray(),
+            'options' => $this->options
+
         ]);
 
     }
