@@ -14,6 +14,11 @@ class HasOneField extends ListField
     use HasOneTrait;
 
     /**
+     * @inheritdoc
+     */
+    public $numeric = true;
+
+    /**
      * Конструктор
      * @param ActiveRecord $model модель
      * @param string $attr атрибут
