@@ -42,11 +42,8 @@ class XEditable extends Base
 
             $model->{$request->post('name')} = $request->post('value');
 
-            if ($model instanceof TActiveRecord) {
-                return $model->saveNode();
-            } else {
-                return $model->save();
-            }
+            return $model->save();
+
         }
 
         return false;
