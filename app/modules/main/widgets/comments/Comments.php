@@ -139,7 +139,7 @@ class Comments extends Widget
 
         $parent = Model::findOne(TActiveRecord::ROOT_ID);
 
-        $query = $parent->descendants()->published()->andWhere(["model" => $this->modelClass, "item_id" => $this->itemId]);
+        $query = $parent->children()->published()->andWhere(["model" => $this->modelClass, "item_id" => $this->itemId]);
 
         if (is_callable($this->queryModifier)) {
 

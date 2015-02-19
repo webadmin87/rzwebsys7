@@ -27,7 +27,7 @@ class TreeFinder extends Object
         if(!empty($model->$attr))
             return $model->$attr;
 
-        $models = $model->ancestors()->all();
+        $models = $model->parents()->all();
 
         $models = array_reverse($models);
 

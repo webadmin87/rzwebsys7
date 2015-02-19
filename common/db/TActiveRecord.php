@@ -73,13 +73,13 @@ abstract class TActiveRecord extends ActiveRecord
 
         }
 
-        $models = $model->descendants()->published()->all();
+        $models = $model->children()->published()->all();
 
         $descendants = [];
 
         if (!$this->isNewRecord) {
 
-            $descendants = $this->descendants()->all();
+            $descendants = $this->children()->all();
 
             $descendants[] = $this;
 
@@ -93,7 +93,7 @@ abstract class TActiveRecord extends ActiveRecord
 
                 $descendants[] = $exModel;
 
-                $exDescendants = $exModel->descendants()->all();
+                $exDescendants = $exModel->children()->all();
 
                 $descendants = array_merge($descendants, $exDescendants);
 
@@ -162,7 +162,7 @@ abstract class TActiveRecord extends ActiveRecord
         if (!$model)
             return $arr;
 
-        $models = $model->descendants()->published()->all();
+        $models = $model->children()->published()->all();
 
         foreach ($models AS $m)
             $arr[$m->id] = str_repeat("-", $m->level) . $m->$attr;
@@ -187,7 +187,7 @@ abstract class TActiveRecord extends ActiveRecord
         else
             $model = static::find()->where(["id" => $modelArg])->one();
 
-        $models = $model->ancestors()->all();
+        $models = $model->parents()->all();
 
         $models[] = $model;
 
@@ -221,7 +221,7 @@ abstract class TActiveRecord extends ActiveRecord
 
         $arr[] = $this->id;
 
-        $models = $this->descendants()->published()->all();
+        $models = $this->children()->published()->all();
 
         foreach ($models As $model)
             $arr[] = $model->id;

@@ -40,7 +40,7 @@ class PageUrlRule extends UrlRule
 
                 $url = [];
 
-                $ancestors = $params["model"]->ancestors()->all();
+                $ancestors = $params["model"]->parents()->all();
 
                 foreach ($ancestors as $model) {
 

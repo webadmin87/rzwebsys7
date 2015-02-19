@@ -33,7 +33,7 @@ class TGroupDelete extends GroupDelete
                 if (!Yii::$app->user->can('deleteModel', array("model" => $model)))
                     throw new ForbiddenHttpException('Forbidden');
 
-                $model->deleteWithDescendants();
+                $model->deleteWithChildren();
 
             }
 

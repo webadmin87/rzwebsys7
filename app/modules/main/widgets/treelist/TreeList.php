@@ -90,7 +90,7 @@ class TreeList extends App
 
             $level = $parent->level + $this->level;
 
-            $query = $parent->descendants()->published()->andWhere("level <= :level", [":level" => $level]);
+            $query = $parent->children()->published()->andWhere("level <= :level", [":level" => $level]);
 
             if (is_callable($this->queryModify)) {
 

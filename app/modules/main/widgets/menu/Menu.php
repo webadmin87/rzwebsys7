@@ -105,7 +105,7 @@ class Menu extends App
 
         $level = $parent->level + $this->level;
 
-        $this->models = $parent->descendants()->published()->andWhere("level <= :level", [":level" => $level])->all();
+        $this->models = $parent->children()->published()->andWhere("level <= :level", [":level" => $level])->all();
 
         return true;
 
