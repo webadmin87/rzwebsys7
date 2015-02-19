@@ -22,7 +22,7 @@ class IncludeGroup extends ActiveRecord
 
     use \app\modules\main\components\PermissionTrait;
 
-    protected $_includesSorted = false;
+    protected $_includesMap;
 
     protected $_includesIdsStr;
 
@@ -152,12 +152,10 @@ class IncludeGroup extends ActiveRecord
     {
         $val = parent::__get($name);
 
-        if($name == "includes" AND is_array($val) AND !$this->_includesSorted) {
+        if($name == "includes" AND !empty($val)) {
 
             $this->sortIncludes($val, $this->id);
 
-            $this->_includesSorted = true;
-            
         }
 
         return $val;
@@ -200,11 +198,17 @@ class IncludeGroup extends ActiveRecord
     public function getIncludesMap($id)
     {
 
-        $query = new Query();
+        if($this->_includesMap === null) {
 
-        $rows = $query->select(["id", "include_id"])->from("groups_to_includes")->andWhere(["group_id"=>$id])->orderBy(["id"=>SORT_ASC])->all();
+            $query = new Query();
 
-        return ArrayHelper::map($rows, "id", "include_id");
+            $rows = $query->select(["id", "include_id"])->from("groups_to_includes")->andWhere(["group_id" => $id])->orderBy(["id" => SORT_ASC])->all();
+
+            $this->_includesMap = ArrayHelper::map($rows, "id", "include_id");
+
+        }
+
+        return $this->_includesMap;
 
     }
 
