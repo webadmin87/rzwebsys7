@@ -67,6 +67,20 @@ class ManyManySaver extends Behavior
 
                 $newRelated = $modelClass::find()->where(["id" => $this->owner->$attr])->all();
 
+                usort($newRelated, function($val1, $val2) use ($attr){
+
+                    $key1 = array_search($val1->id, $this->owner->$attr);
+                    $key2 = array_search($val2->id, $this->owner->$attr);
+
+                    if($key1>$key2)
+                        return 1;
+                    elseif($key1<$key2)
+                        return -1;
+                    else
+                        return 0;
+
+                });
+
                 foreach ($newRelated as $newRel) {
                     $this->owner->link($name, $newRel);
                 }

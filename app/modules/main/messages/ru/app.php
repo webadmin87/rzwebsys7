@@ -81,4 +81,7 @@ return [
     "Start action"=>"Выполнить действие",
     "Welcome to CMS! For navigate use left side menu" => "Добро пожаловать в систему управления! Для навигации используйте меню в левой колонке",
     "Search results: {term}" => "Результаты поиска: {term}",
+    "Include Groups" => "Группы включаемых областей",
+    "Create Include Group" => "Создать группу",
+    "Update Include Group" => "Изменить группу",
 ];

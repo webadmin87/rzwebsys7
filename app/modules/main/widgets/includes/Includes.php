@@ -24,7 +24,7 @@ class Includes extends App
      * @var \app\modules\main\models\Includes $model модель включаемой области
      */
 
-    protected $model;
+    public  $model;
 
     public function init()
     {
@@ -32,7 +32,8 @@ class Includes extends App
         if (!$this->isShow())
             return false;
 
-        $this->model = Model::findByCode($this->code);
+        if($this->model === null)
+            $this->model = Model::findByCode($this->code);
 
     }
 

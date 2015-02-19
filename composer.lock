@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c41c5538ee91c4d03f40a25c07c65c36",
+    "hash": "5eec4ec3932277fdab486d0e3060aa32",
     "packages": [
         {
             "name": "2amigos/yii2-multi-select-widget",
@@ -93,16 +93,16 @@
         },
         {
             "name": "bower-asset/bootstrap",
-            "version": "v3.3.1",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "9a7e365c2c4360335d25246dac11afb1f577210a"
+                "reference": "bcf7dd38b5ab180256e2e4fb5da0369551b3f082"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/9a7e365c2c4360335d25246dac11afb1f577210a",
-                "reference": "9a7e365c2c4360335d25246dac11afb1f577210a",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/bcf7dd38b5ab180256e2e4fb5da0369551b3f082",
+                "reference": "bcf7dd38b5ab180256e2e4fb5da0369551b3f082",
                 "shasum": ""
             },
             "require": {
@@ -187,16 +187,16 @@
         },
         {
             "name": "bower-asset/jquery-ui",
-            "version": "1.11.2",
+            "version": "1.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/components/jqueryui.git",
-                "reference": "396781474d936959061271505f506b78398fe6a2"
+                "reference": "7e2d6bec1c729925d9ad7c0c9ab4b561174efa99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/components/jqueryui/zipball/396781474d936959061271505f506b78398fe6a2",
-                "reference": "396781474d936959061271505f506b78398fe6a2",
+                "url": "https://api.github.com/repos/components/jqueryui/zipball/7e2d6bec1c729925d9ad7c0c9ab4b561174efa99",
+                "reference": "7e2d6bec1c729925d9ad7c0c9ab4b561174efa99",
                 "shasum": ""
             },
             "require": {
@@ -212,16 +212,16 @@
         },
         {
             "name": "bower-asset/jquery.inputmask",
-            "version": "3.1.55",
+            "version": "3.1.61",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RobinHerbots/jquery.inputmask.git",
-                "reference": "d90a0d180495635e8dd97a770e7ab8b3c4ee6d53"
+                "reference": "f2c086411d2557fc485c47afb3cecfa6c1de9ee2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/d90a0d180495635e8dd97a770e7ab8b3c4ee6d53",
-                "reference": "d90a0d180495635e8dd97a770e7ab8b3c4ee6d53",
+                "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/f2c086411d2557fc485c47afb3cecfa6c1de9ee2",
+                "reference": "f2c086411d2557fc485c47afb3cecfa6c1de9ee2",
                 "shasum": ""
             },
             "require": {
@@ -257,7 +257,7 @@
                 "form",
                 "input",
                 "inputmask",
-                "jQuery",
+                "jquery",
                 "mask",
                 "plugins"
             ]
@@ -287,6 +287,34 @@
                     "Gruntfile.js",
                     "node_modules",
                     "package.json"
+                ]
+            }
+        },
+        {
+            "name": "bower-asset/select2",
+            "version": "3.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/select2/select2.git",
+                "reference": "6633cda9061d9fc65075dd140c63f9a6adbcbd72"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/select2/select2/zipball/6633cda9061d9fc65075dd140c63f9a6adbcbd72",
+                "reference": "6633cda9061d9fc65075dd140c63f9a6adbcbd72",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.7.1"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "select2.js",
+                    "select2.css",
+                    "select2.png",
+                    "select2x2.png",
+                    "select2-spinner.gif"
                 ]
             }
         },
@@ -378,26 +406,26 @@
             "time": "2014-12-18 00:45:32"
         },
         {
-            "name": "creocoder/yii2-nested-set-behavior",
+            "name": "creocoder/yii2-nested-sets",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/creocoder/yii2-nested-set-behavior.git",
-                "reference": "579a497145cec9dfa70ee334abb8b1bca0466c4c"
+                "url": "https://github.com/creocoder/yii2-nested-sets.git",
+                "reference": "8adc99497fb71a2c73495bb1bb894a7d6bd2cabf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/creocoder/yii2-nested-set-behavior/zipball/579a497145cec9dfa70ee334abb8b1bca0466c4c",
-                "reference": "579a497145cec9dfa70ee334abb8b1bca0466c4c",
+                "url": "https://api.github.com/repos/creocoder/yii2-nested-sets/zipball/8adc99497fb71a2c73495bb1bb894a7d6bd2cabf",
+                "reference": "8adc99497fb71a2c73495bb1bb894a7d6bd2cabf",
                 "shasum": ""
             },
             "require": {
-                "yiisoft/yii2": "*"
+                "yiisoft/yii2": "~2.0.0"
             },
             "type": "yii2-extension",
             "autoload": {
                 "psr-4": {
-                    "creocoder\\nestedsets\\": ""
+                    "creocoder\\nestedsets\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -415,7 +443,7 @@
                 "nested sets",
                 "yii2"
             ],
-            "time": "2015-01-01 06:10:10"
+            "time": "2015-02-14 12:14:49"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -619,12 +647,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MihailDev/yii2-elfinder.git",
-                "reference": "2abb7f1d26d58ed01127416f68402624ff6bf1f5"
+                "reference": "053803569f275072b64f4984972e3cc3c87efe49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MihailDev/yii2-elfinder/zipball/2abb7f1d26d58ed01127416f68402624ff6bf1f5",
-                "reference": "2abb7f1d26d58ed01127416f68402624ff6bf1f5",
+                "url": "https://api.github.com/repos/MihailDev/yii2-elfinder/zipball/053803569f275072b64f4984972e3cc3c87efe49",
+                "reference": "053803569f275072b64f4984972e3cc3c87efe49",
                 "shasum": ""
             },
             "require": {
@@ -655,7 +683,7 @@
                 "filemanager",
                 "yii"
             ],
-            "time": "2014-11-28 23:44:46"
+            "time": "2015-01-28 13:20:54"
         },
         {
             "name": "newerton/fancy-box",
@@ -780,12 +808,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "e29c7b692bae6610b137670d6749151fd6e41608"
+                "reference": "db95cfa68a8bc91d1c54f75c416f481c9a8bd100"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/e29c7b692bae6610b137670d6749151fd6e41608",
-                "reference": "e29c7b692bae6610b137670d6749151fd6e41608",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/db95cfa68a8bc91d1c54f75c416f481c9a8bd100",
+                "reference": "db95cfa68a8bc91d1c54f75c416f481c9a8bd100",
                 "shasum": ""
             },
             "require": {
@@ -824,7 +852,52 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2014-12-05 14:17:46"
+            "time": "2015-01-18 13:49:36"
+        },
+        {
+            "name": "vova07/yii2-select2-widget",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vova07/yii2-select2-widget.git",
+                "reference": "9c7af864c8f797307156fcbf69fd7533975f2d05"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vova07/yii2-select2-widget/zipball/9c7af864c8f797307156fcbf69fd7533975f2d05",
+                "reference": "9c7af864c8f797307156fcbf69fd7533975f2d05",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/select2": "3.*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "vova07\\select2\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Crudu Vasile",
+                    "email": "bazillio07@yandex.ru"
+                }
+            ],
+            "description": "The select2 widget for Yii framework.",
+            "keywords": [
+                "select",
+                "select 2",
+                "select2",
+                "widget",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2015-01-26 09:31:57"
         },
         {
             "name": "yiisoft/yii2",
@@ -1338,12 +1411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "1dc843aaf1b6032a78082145cc2abe41f0ce0ec2"
+                "reference": "af7c4de347b37ba7071fef510bb2c520d72cc837"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/1dc843aaf1b6032a78082145cc2abe41f0ce0ec2",
-                "reference": "1dc843aaf1b6032a78082145cc2abe41f0ce0ec2",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/af7c4de347b37ba7071fef510bb2c520d72cc837",
+                "reference": "af7c4de347b37ba7071fef510bb2c520d72cc837",
                 "shasum": ""
             },
             "require": {
@@ -1382,7 +1455,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-01-12 09:54:32"
+            "time": "2015-02-19 08:03:53"
         },
         {
             "name": "mikevanriel/text-to-latex",
@@ -1528,12 +1601,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "fd0ac2007401505fb596fdfb859ec4e103d69e55"
+                "reference": "ff902a0beb121a13a4d3c604bd6778a25aeae07a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/fd0ac2007401505fb596fdfb859ec4e103d69e55",
-                "reference": "fd0ac2007401505fb596fdfb859ec4e103d69e55",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/ff902a0beb121a13a4d3c604bd6778a25aeae07a",
+                "reference": "ff902a0beb121a13a4d3c604bd6778a25aeae07a",
                 "shasum": ""
             },
             "require": {
@@ -1569,7 +1642,7 @@
                     "email": "mike.vanriel@naenius.com"
                 }
             ],
-            "time": "2014-09-02 14:26:20"
+            "time": "2015-02-12 12:17:11"
         },
         {
             "name": "phpspec/php-diff",
@@ -1611,12 +1684,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "a78d6504ff5d4367497785ab2ade91db3a9fbe11"
+                "reference": "1af1529b49a6e065ae6802e70192aba35d79b7d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/a78d6504ff5d4367497785ab2ade91db3a9fbe11",
-                "reference": "a78d6504ff5d4367497785ab2ade91db3a9fbe11",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/1af1529b49a6e065ae6802e70192aba35d79b7d8",
+                "reference": "1af1529b49a6e065ae6802e70192aba35d79b7d8",
                 "shasum": ""
             },
             "type": "library",
@@ -1646,7 +1719,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2014-01-18 15:33:09"
+            "time": "2015-02-05 09:32:11"
         },
         {
             "name": "yiisoft/yii2-apidoc",

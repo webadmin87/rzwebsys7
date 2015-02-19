@@ -16,6 +16,8 @@ return [
             'controllerNamespace' => 'app\modules\main\controllers',
             'components' => [
 
+                'tagsConverter'=>\common\components\TagsConverter::className(),
+
                 'sphinxUrlService'=>\app\modules\main\components\SphinxUrlService::className(),
 
                 'sitemap'=>[
@@ -67,6 +69,8 @@ return [
                                         "permission" => ["rootAccess"]],
                                     ['label' => Yii::t('main/app', 'Includes'), 'url' => ['/admin/main/includes'],
                                         "permission" => ["listModels", ["model" => Yii::createObject(models\Includes::className())]]],
+                                    ['label' => Yii::t('main/app', 'Include Groups'), 'url' => ['/admin/main/include-group'],
+                                        "permission" => ["listModels", ["model" => Yii::createObject(models\IncludeGroup::className())]]],
                                     ['label' => Yii::t('main/app', 'Comments'), 'url' => ['/admin/main/comments'],
                                         "permission" => ["listModels", ["model" => Yii::createObject(models\Comments::className())]]],
                                     ['label' => Yii::t('main/app', 'Tools'), 'url' => ['/admin/main/tools'],
