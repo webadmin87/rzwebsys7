@@ -18,5 +18,12 @@ return [
 	"Self"=>"Текущее окно",
 	"Target"=>"Открывать ссылку",
 	"Sort"=>"Сортировка",
+    "Condition"=>"Условие",
+    "Condition type"=>"Тип условия",
+    "No condition" => "Без условия",
+    "Url condition" => "Url адрес",
+    "Php condition" => "Php выражение",
+    "Route condition" => "Маршрут",
+    "Update Banner" => "Изменит баннер",
 
 ];

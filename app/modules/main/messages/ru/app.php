@@ -23,6 +23,7 @@ return [
     "No condition" => "Без условия",
     "Url condition" => "Url адрес",
     "Php condition" => "Php выражение",
+    "Route condition" => "Маршрут",
     "Create Template" => "Создать шаблон",
     "Link" => "Ссылка",
     "Comments" => "Комментарии",

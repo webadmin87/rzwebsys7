@@ -56,6 +56,9 @@ class IncludeGroup extends ActiveRecord
             'class' => \common\behaviors\ManyManySaver::className(),
             'names' => ['includes'],
         ];
+
+        $arr["matchSuitable"] = \common\behaviors\MatchSuitable::className();
+
         return $arr;
     }
 
@@ -119,29 +122,6 @@ class IncludeGroup extends ActiveRecord
 
         return $this->hasMany(Includes::className(), ['id' => 'include_id'])
             ->viaTable('groups_to_includes', ['group_id' => 'id']);
-
-    }
-
-
-    /**
-     * Подключать ли данную группу
-     * @return bool
-     */
-
-    public function isSuitable()
-    {
-
-        if (empty($this->cond_type))
-            return true;
-        else {
-
-            $match = Match::getMatch($this->cond_type);
-
-            if ($match)
-                return $match->test($this->cond);
-            else
-                return false;
-        }
 
     }
 

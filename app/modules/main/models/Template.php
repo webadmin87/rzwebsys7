@@ -46,6 +46,20 @@ class Template extends ActiveRecord
      * @inheritdoc
      */
 
+    public function behaviors()
+    {
+        $arr = parent::behaviors();
+
+        $arr["matchSuitable"] = \common\behaviors\MatchSuitable::className();
+
+        return $arr;
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+
     public function rules()
     {
 
@@ -63,28 +77,6 @@ class Template extends ActiveRecord
     public function metaClass()
     {
         return meta\TemplatesMeta::className();
-    }
-
-    /**
-     * Подключать ли данный шаблон
-     * @return bool
-     */
-
-    public function isSuitable()
-    {
-
-        if (empty($this->cond_type))
-            return true;
-        else {
-
-            $match = Match::getMatch($this->cond_type);
-
-            if ($match)
-                return $match->test($this->cond);
-            else
-                return false;
-        }
-
     }
 
 }

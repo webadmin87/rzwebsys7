@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\banners\models;
 
+use common\components\Match;
 use Yii;
 use common\db\ActiveRecord;
 
@@ -30,7 +31,41 @@ class Banner extends ActiveRecord
 
 	}
 
-	/**
+    /**
+     * Возвращает массив условий подклбчений шаблона
+     * @return array
+     */
+
+    public static function getConds()
+    {
+
+        return [
+
+            Match::COND_NO => Yii::t("banners/app", "No condition"),
+            Match::COND_URL => Yii::t("banners/app", "Url condition"),
+            Match::COND_PHP => Yii::t("banners/app", "Php condition"),
+            Match::COND_ROUTE => Yii::t("banners/app", "Route condition"),
+
+        ];
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+
+    public function behaviors()
+    {
+        $arr = parent::behaviors();
+
+        $arr["matchSuitable"] = \common\behaviors\MatchSuitable::className();
+
+        return $arr;
+
+    }
+
+
+    /**
      * @inheritdoc
      */
 

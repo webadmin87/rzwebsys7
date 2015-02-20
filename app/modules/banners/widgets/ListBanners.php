@@ -48,6 +48,14 @@ class ListBanners extends App
 
 			$this->models = $place->getBanners()->published()->orderBy(["sort"=>SORT_ASC])->all();
 
+            foreach($this->models AS $k => $banner) {
+
+                if(!$banner->isSuitable()) {
+                    unset($this->models[$k]);
+                }
+
+            }
+
 		}
 
 	}

@@ -57,6 +57,27 @@ class BannerMeta extends MetaFields
 				"params" => [$this->owner, "place_id", "place"]
 			],
 
+            "cond_type" => [
+                "definition" => [
+                    "class" => \common\db\fields\ListField::className(),
+                    "title" => Yii::t('banners/app', 'Condition type'),
+                    "isRequired" => true,
+                    "showInGrid" => false,
+                    "data" =>[$this->owner, "getConds"],
+                ],
+                "params" => [$this->owner, "cond_type"]
+            ],
+
+            "cond" => [
+                "definition" => [
+                    "class" => \common\db\fields\TextField::className(),
+                    "title" => Yii::t('banners/app', 'Condition'),
+                    "isRequired" => false,
+                    "showInGrid" => false,
+                ],
+                "params" => [$this->owner, "cond"]
+            ],
+
 			"image" => [
 				"definition" => [
 					"class" => \common\db\fields\Html5FileField::className(),
