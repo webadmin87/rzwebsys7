@@ -28,7 +28,7 @@ class TAdmin extends Admin
 
         $searchModel->setScenario($this->modelScenario);
 
-        $query = $parentModel->children();
+        $query = $parentModel->children(1);
 
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams(), $this->dataProviderConfig, $query);
 
