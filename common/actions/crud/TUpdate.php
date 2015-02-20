@@ -33,7 +33,7 @@ class TUpdate extends Update
 
         $request = Yii::$app->request;
 
-        $parentModel = $model->parent()->one();
+        $parentModel = $model->parents(1)->one();
 
         $model->parent_id = $parentModel->id;
 
