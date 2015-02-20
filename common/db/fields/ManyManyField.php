@@ -32,7 +32,7 @@ class ManyManyField extends HasOneField
 
         return $form->field($this->model, $this->getFormAttrName($index))->widget(\dosamigos\multiselect\MultiSelect::className(),
             [
-                "items" => $data,
+                "data" => $data,
                 "options" => $options,
             ]
         );
