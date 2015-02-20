@@ -5,6 +5,7 @@ namespace console\controllers;
 use Yii;
 use app\modules\main\models\User;
 use yii\console\Controller;
+use yii\helpers\Console;
 
 /**
  * Class InstallController
@@ -24,7 +25,28 @@ class InstallController extends Controller
     public function actionIndex()
     {
 
-        echo Yii::t('main/app', 'Apply migrations...') . "\n";
+        $this->stdout(Yii::t('main/app', "Start installing")."...\n", Console::BOLD);
+
+        $this->actionMigrate();
+
+        $this->actionRoles();
+
+        $this->actionPassword();
+
+        $this->stdout(Yii::t('main/app', "Install complete")."!\n", Console::BOLD);
+
+        return 0;
+
+    }
+
+    /**
+     * Применение миграций
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function actionMigrate()
+    {
+
+        $this->stdout(Yii::t('main/app', "Apply migrations")."...\n");
 
         $migrate = Yii::createObject(
             array_merge(
@@ -33,13 +55,9 @@ class InstallController extends Controller
                     "db"=>Yii::$app->db,
                 ]
             ),
-        [self::MIGRATE_ID, Yii::$app]);
+            [self::MIGRATE_ID, Yii::$app]);
 
         $migrate->actionUp();
-
-        $this->actionRoles();
-
-        echo Yii::t('main/app', 'Install complete!') . "\n";
 
         return 0;
 
@@ -52,7 +70,7 @@ class InstallController extends Controller
     public function actionRoles()
     {
 
-        echo Yii::t('main/app', 'Installing roles...') . "\n";
+        $this->stdout(Yii::t('main/app', "Installing roles")."...\n");
 
         $installer = Yii::$app->rbacInstaller;
 
@@ -63,5 +81,44 @@ class InstallController extends Controller
         return 0;
 
     }
+
+    /**
+     * Задание пароля суперпользователя
+     */
+    public function actionPassword()
+    {
+        do {
+            $pass = $this->prompt(Yii::t('main/app', 'Input root password:'), ["required" => true]);
+
+            $confPass = $this->prompt(Yii::t('main/app', 'Confirm root password:'), ["required" => true]);
+
+            $user = User::findOne(["username" => "root"]);
+
+            $user->password = $pass;
+
+            $user->confirm_password = $confPass;
+
+            $res = $user->save();
+
+            if(!$res) {
+
+                foreach($user->getErrors() AS $errorArr) {
+
+                    foreach($errorArr AS $error)
+                        $this->stdout($error."\n", Console::FG_RED);
+
+                }
+
+
+            }
+
+        } while (!$res);
+
+        return 0;
+
+    }
+
+
+
 
 }

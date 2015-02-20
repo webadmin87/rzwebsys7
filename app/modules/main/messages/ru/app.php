@@ -85,4 +85,11 @@ return [
     "Include Groups" => "Группы включаемых областей",
     "Create Include Group" => "Создать группу",
     "Update Include Group" => "Изменить группу",
+    "Input root password:" => "Введите пароль пользователя root:",
+    "Confirm root password:" => "Подтвердите пароль пользователя root:",
+    "Start installing" => "Начало установки",
+    "Install complete" => "Установка завершена",
+    "Apply migrations" => "Применение миграций",
+    "Installing roles" => "Установка ролей",
+
 ];
