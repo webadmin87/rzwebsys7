@@ -79,7 +79,7 @@ class View extends YiiView
     public function registerMetaTags($model)
     {
 
-        if ($model->hasAttribute("metatitle"))
+        if ($model->hasAttribute("metatitle") AND !empty($model->metatitle))
             $this->title = $model->metatitle;
         elseif ($model->hasAttribute("title"))
             $this->title = $model->title;
