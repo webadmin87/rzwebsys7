@@ -16,16 +16,6 @@ class RadioListField extends ListField
 	/**
 	 * @inheritdoc
 	 */
-
-	public function getForm(ActiveForm $form, Array $options = [], $index = false)
-	{
-
-		$options = ArrayHelper::merge($this->options, $options);
-
-		$widgetOptions = ArrayHelper::merge($options, $this->widgetOptions);
-
-		return $form->field($this->model, $this->getFormAttrName($index))->radioList($this->getDataValue(), $widgetOptions);
-
-	}
+	public $inputClass = "\\common\\inputs\\RadioListInput";
 
 }

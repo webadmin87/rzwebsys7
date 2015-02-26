@@ -15,29 +15,93 @@ use yii\widgets\ActiveForm;
 class ManyManyField extends HasOneField
 {
 
-    use ManyManyTrait;
+    public $inputClass = "\\common\\inputs\\MultiSelectInput";
 
     /**
-     * @inheritdoc
+     * Отображение в гриде
      */
-    public function getForm(ActiveForm $form, Array $options = [], $index = false)
+    protected function grid()
     {
 
-        $data = $this->getDataValue();
+        $grid = $this->defaultGrid();
 
-        if (empty($data))
-            return false;
+        $grid["value"] = function ($model, $index, $widget) {
 
-		$options = ArrayHelper::merge($this->options, $options, ["multiple"=>true]);
+            return $this->getStringValue($model);
 
-        return $form->field($this->model, $this->getFormAttrName($index))->widget(\dosamigos\multiselect\MultiSelect::className(),
-            [
-                "data" => $data,
-                "options" => $options,
-            ]
-        );
+        };
+
+        return $grid;
 
     }
+
+    /**
+     * Возвращает строковое представление связанных моделей для отображения в гриде и при детальном просмотре
+     * @param ActiveRecord $model
+     * @return string
+     */
+
+    protected function getStringValue($model)
+    {
+
+        $relatedAll = $model->{$this->relation};
+
+        $arr = [];
+
+        foreach ($relatedAll AS $related) {
+
+            $arr[] = ArrayHelper::getValue($related, $this->gridAttr);
+
+        }
+
+        return implode(",", $arr);
+
+    }
+
+    /**
+     * Отображение при детальном просмотре
+     */
+    protected function view()
+    {
+
+        $view = $this->defaultView();
+
+        $view["value"] = $this->getStringValue($this->model);
+
+        return $view;
+
+    }
+
+    /**
+     * Редактирование в гриде
+     */
+
+    public function xEditable()
+    {
+        return false;
+    }
+
+    /**
+     * Поиск
+     * @param ActiveQuery $query
+     */
+    public function search(ActiveQuery $query)
+    {
+
+        $table = $this->model->tableName();
+
+        $relatedClass = $this->model->{"get" . ucfirst($this->relation)}()->modelClass;
+
+        $tableRelated = $relatedClass::tableName();
+
+        if ($this->search)
+            $query->
+            joinWith($this->relation, true)->
+            andFilterWhere(["{{%$tableRelated}}.{{%id}}" => $this->model->{$this->attr}])->
+            groupBy("$table.id");
+
+    }
+
 
 
 }

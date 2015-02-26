@@ -18,15 +18,7 @@ class CheckBoxField extends TextField
     /**
      * @inheritdoc
      */
-
-    public function getForm(ActiveForm $form, Array $options = [], $index = false)
-    {
-
-        $options = ArrayHelper::merge($this->options, $options);
-
-        return $form->field($this->model, $this->getFormAttrName($index))->checkbox($options);
-
-    }
+    public $inputClass = "\\common\\inputs\\CheckBoxInput";
 
     /**
      * Конфигурация поля для грида (GridView)

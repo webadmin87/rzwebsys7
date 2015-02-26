@@ -69,7 +69,7 @@ abstract class UploadBehavior extends Behavior
      * @var int максимальный размер файла в мегабайтах
      */
 
-    protected $maxFileSize = 50;
+    protected $_maxFileSize = 50;
 
     /**
      * @var array предыдущее значение атрибута модели хранящего информацию о прицепленных файлах. Устанавливается в afterFind.
@@ -326,7 +326,7 @@ abstract class UploadBehavior extends Behavior
 
         $phpMaxFileSize = (int)ini_get("upload_max_filesize");
 
-        $maxFileSize = ($this->maxFileSize <= $phpMaxFileSize) ? $this->maxFileSize : $phpMaxFileSize;
+        $maxFileSize = ($this->_maxFileSize <= $phpMaxFileSize) ? $this->_maxFileSize : $phpMaxFileSize;
 
         return $maxFileSize;
 
@@ -340,7 +340,7 @@ abstract class UploadBehavior extends Behavior
     public function setMaxFileSize($val)
     {
 
-        $this->maxFileSize = $val;
+        $this->_maxFileSize = $val;
 
     }
 

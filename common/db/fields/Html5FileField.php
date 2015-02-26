@@ -1,10 +1,7 @@
 <?php
 namespace common\db\fields;
 
-use yii\helpers\ArrayHelper;
-use common\widgets\html5uploader\Widget as Html5Widget;
 use Yii;
-use Yii\widgets\ActiveForm;
 
 /**
  * Class Html5FileField
@@ -25,25 +22,16 @@ class Html5FileField extends Field
      */
     public $showInExtendedFilter = false;
 
-    /**
-     * @var string маршруд для загрузки файлов
-     */
-    public $route = "main/admin/upload";
 
     /**
      * @var string алиас DOCUMENT ROOT
      */
     public $webroot = "@webroot";
 
-	/**
-	 * @var array массив расширений доступных к загрузке
-	 */
-	public $allowedExt;
-
-	/**
-	 * @var array параметры виджета
-	 */
-	public $widgetOptions = [];
+    /**
+     * @inheritdoc
+     */
+	public $inputClass = "\\common\\inputs\\Html5FileInput";
 
     /**
      * @inheritdoc
@@ -65,30 +53,6 @@ class Html5FileField extends Field
             ],
 
         ]);
-
-    }
-
-    /**
-     * @inheritdoc
-     */
-
-    public function getForm(ActiveForm $form, Array $options = [], $index = false)
-    {
-
-		$options = ArrayHelper::merge($this->options, $options);
-
-		$default = [
-			"maxFileSize" => $this->model->getMaxFileSize(),
-			"options" => $options,
-			"uploadUrl" => Yii::$app->urlManager->createUrl([$this->route, "model" => get_class($this->model), "attr" => $this->attr]),
-		];
-
-		if($this->allowedExt)
-			$default["allowedExt"] = $this->allowedExt;
-
-		$widgetOptions = ArrayHelper::merge($default, $this->widgetOptions);
-
-        return $form->field($this->model, $this->getFormAttrName($index))->widget(Html5Widget::className(), $widgetOptions);
 
     }
 

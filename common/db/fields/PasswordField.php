@@ -14,23 +14,15 @@ class PasswordField extends TextField
 {
 
     /**
+     * @inheritdoc
+     */
+    public $inputClass = "\\common\\inputs\\PasswordInput";
+
+    /**
      * Длина пароля
      */
 
-    const PASSWORD_LENGTH = 6;
-
-    /**
-     * @inheritdoc
-     */
-
-    public function getForm(ActiveForm $form, Array $options = [], $index = false)
-    {
-
-		$options = ArrayHelper::merge($this->options, $options);
-
-        return $form->field($this->model, $this->getFormAttrName($index))->passwordInput($options);
-
-    }
+    public $passwordLength = 6;
 
     /**
      * Правила валидации
@@ -42,7 +34,7 @@ class PasswordField extends TextField
 
         $rules = parent::rules();
 
-        $rules[] = [$this->attr, 'string', 'min' => self::PASSWORD_LENGTH];
+        $rules[] = [$this->attr, 'string', 'min' => $this->passwordLength];
 
         return $rules;
 

@@ -2,7 +2,9 @@
 
 namespace common\widgets\html5uploader;
 
+use yii\base\InvalidConfigException;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\helpers\Json;
 use yii\widgets\InputWidget;
 
@@ -26,9 +28,9 @@ class Widget extends InputWidget
     public $webroot = "@webroot";
 
 	/**
-     * @var string url для загрузки файлов
+     * @var string маршрут для загрузки файлов
      */
-    public $uploadUrl;
+    public $uploadRoute;
 
     /**
      * @var int максимальный размер загружаемого файла
@@ -51,13 +53,19 @@ class Widget extends InputWidget
     public function init()
     {
 
+        parent::init();
+
+        if (!$this->hasModel()) {
+            throw new InvalidConfigException("'Model' and 'attribute' properties must be specified.");
+        }
+
         $assetClass = $this->getAssetClass();
 
         $assetClass::register($this->view);
 
         $this->name = Html::getInputName($this->model, $this->attribute);
 
-        $this->options = array_merge(["multiple" => true, "id" => $this->id], $this->options);
+        $this->options = array_merge(["multiple" => true], $this->options);
 
         $this->registerScripts();
 
@@ -100,16 +108,14 @@ class Widget extends InputWidget
     protected function registerScripts()
     {
 
-        // @TOFIX сделать ограничение на загружаемые расширения
-
 		$params = [
-			'uploadUrl' => $this->uploadUrl,
+			'uploadUrl' => Url::toRoute([$this->uploadRoute, "model" => get_class($this->model), "attr" => $this->attribute]),
 			'maxFileSize' => $this->maxFileSize,
 			'allowedExt' => $this->allowedExt,
 		];
 
         $this->view->registerJs("
-            $('#{$this->id}').html5Uploader(".Json::encode($params).");
+            $('#{$this->options["id"]}').html5Uploader(".Json::encode($params).");
 
             $('.uploader-widget-files-list').sortable({
                 update: function( event, ui ) {
@@ -146,7 +152,7 @@ class Widget extends InputWidget
 
             "name" => $this->name,
             "options" => $this->options,
-            "maxFileSize" => $this->model->getMaxFileSize(),
+            "maxFileSize" => $this->maxFileSize,
             "files" => $files,
             "webroot" => $this->webroot,
         ]);

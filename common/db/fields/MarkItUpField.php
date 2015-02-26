@@ -17,28 +17,9 @@ class MarkItUpField extends TextAreaField
 {
 
     /**
-     * @var array настройки редактора
-     */
-
-    public $editorOptions = [];
-
-    /**
      * @inheritdoc
      */
-
-    public function getForm(ActiveForm $form, Array $options = [], $index = false)
-    {
-
-		$options = ArrayHelper::merge($this->options, $options);
-
-		if(empty($this->editorOptions["options"]))
-			$this->editorOptions["options"] = [];
-
-		$editorOptions = ArrayHelper::merge($options, $this->editorOptions);
-
-        return $form->field($this->model, $this->getFormAttrName($index))->widget(MarkItUp::className(), $editorOptions);
-
-    }
+    public $inputClass = "\\common\\inputs\\MarkItUpInput";
 
     /**
      * @inheritdoc

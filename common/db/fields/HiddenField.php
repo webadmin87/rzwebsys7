@@ -31,12 +31,5 @@ class HiddenField extends Field
     /**
      * @inheritdoc
      */
-	public function form(ActiveForm $form, Array $options = [], $index = false)
-	{
-
-		$options = ArrayHelper::merge($this->options, $options);
-
-		return $form->field($this->model, $this->getFormAttrName($index))->hiddenInput($options);
-
-	}
+	public $inputClass = "\\common\\inputs\\HiddenInput";
 }

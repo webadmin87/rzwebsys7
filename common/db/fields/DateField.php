@@ -1,9 +1,6 @@
 <?php
 namespace common\db\fields;
 
-use Yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
-
 /**
  * Class DateField
  * Поле ввода даты
@@ -14,32 +11,28 @@ class DateField extends TextField
 {
 
     /**
+     * @var string формат даты
+     */
+    public $dateFormat = 'yyyy-MM-dd';
+
+    /**
      * @inheritdoc
      */
+    public $inputClass = "\\common\\inputs\\DateInput";
 
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
 
         $rules = parent::rules();
 
-        $rules[] = [$this->attr, 'date', 'format' => 'yyyy-MM-dd'];
+        $rules[] = [$this->attr, 'date', 'format' => $this->dateFormat];
 
         return $rules;
 
-    }
-
-    /**
-     * @inheritdoc
-     */
-
-    public function getForm(ActiveForm $form, Array $options = [], $index = false)
-    {
-
-        $options = ArrayHelper::merge(["class" => "form-control"], $this->options, $options);
-
-        return $form->field($this->model, $this->getFormAttrName($index))->widget(\yii\jui\DatePicker::className(), [
-            "options" => $options,
-        ]);
     }
 
 }

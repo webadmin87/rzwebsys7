@@ -40,9 +40,11 @@ class Html5ImageField extends Html5FileField
     public $gridHeight = self::DEFAULT_SIZE;
 
 	/**
-	 * @var array массив расширений доступных к загрузке
+	 * @inheritdoc
 	 */
-	public $allowedExt = ["jpg", "jpeg", "gif", "png"];
+	public $widgetOptions = [
+        "allowedExt" => ["jpg", "jpeg", "gif", "png"]
+    ];
 
     /**
      * @var array html атрибуты превью изображений

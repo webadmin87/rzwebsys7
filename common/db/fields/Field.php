@@ -126,6 +126,26 @@ class Field extends Object
     public $viewOptions = [];
 
     /**
+     * @var array параметры виджета поля ввода
+     */
+    public $widgetOptions = [];
+
+    /**
+     * @var callable функция возвращающая данные ассоциированные с полем
+     */
+    public $data;
+
+    /**
+     * @var string|array имя класс, либо конфигурация компонента который рендерит поле ввыода формы
+     */
+    public $inputClass = "\\common\\inputs\\TextInput";
+
+    /**
+     * @var array данные ассоциированные с полем (key=>value)
+     */
+    protected $_dataValue;
+
+    /**
      * @var mixed значение фильтра грида установленное
      */
     protected $gridFilter;
@@ -173,9 +193,15 @@ class Field extends Object
     public function getForm(ActiveForm $form, Array $options = [], $index = false)
     {
 
-		$options = ArrayHelper::merge($this->options, $options);
+        $inputClass = is_array($this->inputClass)?$this->inputClass:["class"=>$this->inputClass];
 
-        return $form->field($this->model, $this->getFormAttrName($index))->textInput($options);
+		$input = Yii::createObject(ArrayHelper::merge([
+            "modelField"=>$this,
+            "options"=>$this->options,
+            "widgetOptions"=>$this->widgetOptions,
+        ], $inputClass));
+
+        return $input->renderInput($form, $options, $index);
 
     }
 
@@ -364,6 +390,25 @@ class Field extends Object
 
         return [];
 
+    }
+
+    /**
+     * Возвращает массив данных ассоциированных с полем
+     * @return array
+     */
+
+    public function getDataValue()
+    {
+
+        if ($this->_dataValue === null) {
+
+            $func = $this->data;
+
+            $this->_dataValue = is_callable($func) ? call_user_func($func) : [];
+
+        }
+
+        return $this->_dataValue;
     }
 
     /**

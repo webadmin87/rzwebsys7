@@ -14,59 +14,15 @@ use common\db\ActiveRecord;
 class ListField extends Field
 {
 
-    /**
-     * @var callable функция возвращающая данные для заполнения списка
-     */
-    public $data;
-
 	/**
 	 * @var bool значения выпадающего списка - числовые
 	 */
 	public $numeric = false;
 
-	/**
-	 * @var array настройки виджета \common\widgets\DependDropDown
-	 */
-	public $widgetOptions = [];
-
-    /**
-     * @var array данные для заполнения списка (key=>value)
-     */
-    protected $_dataValue;
-
     /**
      * @inheritdoc
      */
-
-    public function getForm(ActiveForm $form, Array $options = [], $index = false)
-    {
-
-		$options = ArrayHelper::merge(["class" => "form-control", "prompt"=>""], $this->options, $options);
-
-		$widgetOptions = ArrayHelper::merge(["data"=>$this->getDataValue(), "options"=>$options], $this->widgetOptions);
-
-		return $form->field($this->model, $this->getFormAttrName($index))->widget(\common\widgets\DependDropDown::className(), $widgetOptions);
-
-    }
-
-    /**
-     * Возвращает массив данных для заполнения списка
-     * @return array
-     */
-
-    public function getDataValue()
-    {
-
-        if ($this->_dataValue === null) {
-
-            $func = $this->data;
-
-            $this->_dataValue = is_callable($func) ? call_user_func($func) : [];
-
-        }
-
-        return $this->_dataValue;
-    }
+    public $inputClass = "\\common\\inputs\\DropDownInput";
 
     /**
      * @inheritdoc
