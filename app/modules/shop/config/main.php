@@ -38,7 +38,7 @@ return [
 							return [
 								[
 									'label' => Yii::t('shop/app', 'Shop module'),
-
+                                    'icon' => 'glyphicon glyphicon-shopping-cart',
 									'items' => [
 
 										['label' => Yii::t('shop/app', 'Orders'), 'url' => ['/admin/shop/order'],

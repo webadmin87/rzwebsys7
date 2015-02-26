@@ -56,8 +56,9 @@ return [
                         return [
                             [
                                 'label' => Yii::t('main/app', 'Main module'),
+                                'icon' => 'glyphicon glyphicon-home',
                                 'items' => [
-                                    ['label' => Yii::t('main/app', 'Pages'), 'url' => ['/admin/main/pages'],
+                                    ['label' => Yii::t('main/app', 'Pages'),  'url' => ['/admin/main/pages'],
                                         "permission" => ["listModels", ["model" => Yii::createObject(models\Pages::className())]]],
                                     ['label' => Yii::t('main/app', 'Menu'), 'url' => ['/admin/main/menu'],
                                         "permission" => ["listModels", ["model" => Yii::createObject(models\Menu::className())]]],

@@ -25,6 +25,7 @@ return [
 							return [
 								[
 									'label' => Yii::t('banners/app', 'Banners module'),
+                                    'icon' => 'glyphicon glyphicon-picture',
 									'items' => [
 
 										['label' => Yii::t('banners/app', 'Banners'), 'url' => ['/admin/banners/banner'],

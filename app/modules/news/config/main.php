@@ -22,6 +22,7 @@ return [
                         return [
                             [
                                 'label' => Yii::t('news/app', 'News module'),
+                                'icon' => 'glyphicon glyphicon-align-justify',
                                 'items' => [
                                     ['label' => Yii::t('news/app', 'News'), 'url' => ['/admin/news/news'],
                                         "permission" => ["listModels", ["model" => Yii::createObject(models\News::className())]]],

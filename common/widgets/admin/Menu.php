@@ -5,6 +5,7 @@ use Yii;
 use yii\base\Widget;
 use yii\bootstrap\Collapse;
 use yii\bootstrap\Nav;
+use yii\helpers\Html;
 
 /**
  * Class Menu
@@ -133,6 +134,9 @@ class Menu extends Widget
                 $item['content'] = "";
             }
 
+            if(isset($item['icon']))
+                $item["label"] = Html::tag('span', '', ['class'=>$item['icon']]) . $item['label'];
+
             $i++;
 
         }
@@ -151,8 +155,8 @@ class Menu extends Widget
         return Collapse::widget([
 
             'items' => $this->getCollapseArray(),
-            'options' => $this->options
-
+            'options' => $this->options,
+            'encodeLabels'=>false,
         ]);
 
     }

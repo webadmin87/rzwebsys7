@@ -22,6 +22,7 @@ return [
                         return [
                             [
                                 'label' => Yii::t('catalog/app', 'Catalog module'),
+                                'icon' => 'glyphicon glyphicon-folder-open',
                                 'items' => [
                                     ['label' => Yii::t('catalog/app', 'Catalogs'), 'url' => ['/admin/catalog/catalog'],
                                         "permission" => ["listModels", ["model" => Yii::createObject(models\Catalog::className())]]],
