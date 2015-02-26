@@ -61,4 +61,4 @@ echo Html::fileInput($name, null, $options);
     </ul>
 </div>
 
-<div class="alert alert-info"><?= Yii::t('core', 'Max uploaded file size') ?> <?= $maxFileSize ?>Mb</div>
+<div class="alert alert-info"><?= Yii::t('core', 'Max uploaded file size {n} Mb', ["n"=>$maxFileSize]) ?></div>
