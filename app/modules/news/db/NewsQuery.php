@@ -15,10 +15,11 @@ class NewsQuery extends ActiveQuery
 
     /**
      * Поиск по категории
-     * @param array $ids массив идентификаторов категорий новостей
+     * @param array $values массив значений атрибута
+     * @param string $attr имя атрибута категорий по которому происходит фильтрация
      * @return $this
      */
-    public function bySections($ids)
+    public function bySections($values, $attr="id")
     {
 
         $class = $this->modelClass;
@@ -29,8 +30,8 @@ class NewsQuery extends ActiveQuery
 
         $this->published();
 
-        if ($ids)
-            $this->joinWith('sections', true)->andWhere(["$relTable.id" => $ids])->groupBy("$table.id");
+        if ($values)
+            $this->joinWith('sections', true)->andWhere(["{{%$relTable}}.{{%$attr}}" => $values])->groupBy("{{%$table}}.{{%id}}");
 
         return $this;
 
