@@ -91,5 +91,9 @@ return [
     "Install complete" => "Установка завершена",
     "Apply migrations" => "Применение миграций",
     "Installing roles" => "Установка ролей",
+    "Create Config" => "Создать настройку",
+    "Update Config" => "Изменить настройку",
+    "Save" => "Сохранить",
+    "Attention! Any not careful changes in this section may break your site!"=>"Внимание! Любые не осторожные изменения в данном разделе могут привести к неработоспособности вашего сайта!"
 
 ];

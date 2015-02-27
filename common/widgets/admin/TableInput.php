@@ -32,6 +32,24 @@ class TableInput extends Widget
     public $tableOptions = [];
 
     /**
+     * @var array массив ссылок отображаемых для каждой записи виджета
+     *
+     * Пример:
+     *
+     * [
+     *
+     *      [
+     *          "label"=>"Label",
+     *          "url"=>function($index, $model) {},
+     *          "options"=>["data-method"=>"post"],
+     *      ],
+     *
+     * ]
+     *
+     */
+    public $rowLinks = [];
+
+    /**
      * @inheritdoc
      */
     public function run()
@@ -49,6 +67,40 @@ class TableInput extends Widget
 
         return $html;
     }
+
+
+    /**
+     * Есть ли ссылки действий
+     * @return bool
+     */
+    public function hasRowLinks()
+    {
+        return !empty($this->rowLinks);
+    }
+
+    /**
+     * Рендерит ссылки для модели
+     * @param int $index порядновый номер модели
+     * @param ActiveRecord $model модель
+     * @return string
+     */
+    protected function renderLinks($index, $model)
+    {
+
+        $html = "";
+
+        foreach($this->rowLinks AS $link) {
+
+            $url = call_user_func($link['url'], $index, $model);
+
+            $html .= Html::a($link['label'], $url, $link['options']);
+
+        }
+
+        return $html;
+
+    }
+
 
     /**
      * Возвращает строку формы
@@ -74,6 +126,16 @@ class TableInput extends Widget
             $html .= Html::beginTag('td');
 
             $html .= $field->getForm($this->form, [], $index);
+
+            $html .= Html::endTag('td');
+
+        }
+
+        if($this->hasRowLinks()) {
+
+            $html .= Html::beginTag('td');
+
+            $html .= $this->renderLinks($index, $model);
 
             $html .= Html::endTag('td');
 

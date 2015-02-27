@@ -97,3 +97,7 @@ a.desc:after {
 #left-admin-menu .glyphicon {
     margin-right: 15px;
 }
+
+.table-action td:last-child {
+    vertical-align: middle;
+}
