@@ -148,10 +148,17 @@ class Widget extends InputWidget
 
         $files = $this->model->{$this->attribute};
 
+        $hiddenOptions = ["id"=>$this->options["id"]];
+
+        $options = $this->options;
+
+        unset($options["id"]);
+
         return $this->render($this->tpl, [
 
             "name" => $this->name,
-            "options" => $this->options,
+            "options" => $options,
+            "hiddenOptions" => $hiddenOptions,
             "maxFileSize" => $this->maxFileSize,
             "files" => $files,
             "webroot" => $this->webroot,

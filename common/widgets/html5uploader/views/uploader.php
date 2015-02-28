@@ -3,6 +3,7 @@
 /**
  * @var string $name имя поля ввода
  * @var array $options массив html атрибутов поля ввода
+ * @var array $hiddenOptions массив html атрибутов скрытого поля
  * @var int $maxFileSize максимальный размер загружаемого файла
  * @var array $files массив путей к файлам
  * @var string $webroot алиас DOCUMENT ROOT
@@ -12,9 +13,9 @@ use common\helpers\FileHelper;
 use yii\helpers\Html;
 
 
-echo Html::hiddenInput($name, !empty($files)?1:null, $options);
+echo Html::hiddenInput($name, !empty($files)?1:null, $hiddenOptions);
 
-echo Html::fileInput($name, null);
+echo Html::fileInput($name, null, $options);
 
 ?>
 
