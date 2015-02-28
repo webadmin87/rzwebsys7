@@ -115,7 +115,7 @@ class Widget extends InputWidget
 		];
 
         $this->view->registerJs("
-            $('#{$this->options["id"]}').html5Uploader(".Json::encode($params).");
+            $('#{$this->options["id"]}').next().html5Uploader(".Json::encode($params).");
 
             $('.uploader-widget-files-list').sortable({
                 update: function( event, ui ) {

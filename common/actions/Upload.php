@@ -26,18 +26,6 @@ class Upload extends Action
 
         $item = Yii::createObject($model);
 
-        $item->validate();
-
-        if ($errors = $item->getErrors($attr)) {
-
-            $body = implode("\n", $errors);
-
-            Yii::$app->getResponse()->setStatusCode(403);
-
-            return $body;
-
-        }
-
         $name = Html::getInputName($item, $attr);
 
         $files = $item->uploadFiles($name);

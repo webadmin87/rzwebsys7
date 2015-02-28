@@ -384,9 +384,17 @@
 
             var li = $(this).parents('li');
 
+            var ul = $(this).parents('ul');
+
             self.removeFromQueue(li.get(0));
 
             li.remove();
+
+            if(ul.find('li').length==0) {
+
+                self.input.prev().val("");
+
+            }
 
             e.preventDefault();
 
@@ -404,7 +412,6 @@
                 q.splice(k,1);
 
         }
-
 
     }
 
@@ -460,6 +467,13 @@
             $('<div><a href="#" class="uploader-file-remove">удалить</a></div>').appendTo(li);
 
         });
+
+        if(files.length>0) {
+
+            this.input.prev().val(1);
+
+        }
+
 
     }
 

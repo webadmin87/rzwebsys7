@@ -12,9 +12,9 @@ use common\helpers\FileHelper;
 use yii\helpers\Html;
 
 
-echo Html::hiddenInput($name);
+echo Html::hiddenInput($name, !empty($files)?1:null, $options);
 
-echo Html::fileInput($name, null, $options);
+echo Html::fileInput($name, null);
 
 ?>
 
