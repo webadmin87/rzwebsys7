@@ -28,7 +28,7 @@
 
 Apache настроен таким образом, что DOCUMENT_ROOT для виртуального хоста указывает на папку **app/web** 
 
-Для начала неоходимо установть плагин **fxp/composer-asset-plugin:1.0.0-beta2** для composer. Для этого выполняем следующую комаду:
+Для начала неоходимо установть плагин **fxp/composer-asset-plugin:1.0.0** для composer. Для этого выполняем следующую комаду:
 
 `composer.phar global require "fxp/composer-asset-plugin:1.0.0-beta2"`
 
