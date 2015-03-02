@@ -111,6 +111,14 @@ class TagCache extends Behavior
     }
 
     /**
+     * Перед удалением
+     */
+    public function beforeDelete()
+    {
+        $this->setItemTag();
+    }
+
+    /**
      * Устанавливает тег класса
      * @return string
      */
@@ -158,6 +166,7 @@ class TagCache extends Behavior
         return [
 
             ActiveRecord::EVENT_BEFORE_UPDATE => [$this, "beforeUpdate"],
+            ActiveRecord::EVENT_BEFORE_DELETE => [$this, "beforeDelete"],
             ActiveRecord::EVENT_AFTER_DELETE => [$this, "afterInsertOrDelete"],
             ActiveRecord::EVENT_AFTER_INSERT => [$this, "afterInsertOrDelete"],
 
