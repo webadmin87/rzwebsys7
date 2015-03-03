@@ -3,7 +3,7 @@
 namespace tests\codeception\app\unit\models;
 
 use Yii;
-use tests\codeception\common\unit\DbTestCase;
+use tests\codeception\app\unit\DbTestCase;
 use Codeception\Specify;
 use app\modules\main\models\LoginForm;
 use tests\codeception\common\fixtures\UserFixture;
