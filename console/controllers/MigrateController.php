@@ -227,9 +227,14 @@ class MigrateController extends Controller
      */
     public function actionDown($limit = 1)
     {
-        $limit = (int)$limit;
-        if ($limit < 1) {
-            throw new Exception("The step argument must be greater than 0.");
+
+        if ($limit === 'all') {
+            $limit = null;
+        } else {
+            $limit = (int) $limit;
+            if ($limit < 1) {
+                throw new Exception("The step argument must be greater than 0.");
+            }
         }
 
         $migrations = $this->getMigrationHistory($limit);
@@ -276,9 +281,14 @@ class MigrateController extends Controller
      */
     public function actionRedo($limit = 1)
     {
-        $limit = (int)$limit;
-        if ($limit < 1) {
-            throw new Exception("The step argument must be greater than 0.");
+
+        if ($limit === 'all') {
+            $limit = null;
+        } else {
+            $limit = (int) $limit;
+            if ($limit < 1) {
+                throw new Exception("The step argument must be greater than 0.");
+            }
         }
 
         $migrations = $this->getMigrationHistory($limit);
@@ -440,13 +450,21 @@ class MigrateController extends Controller
      * yii migrate/history 5   # showing the last 5 migrations
      * yii migrate/history 0   # showing the whole history
      * ~~~
-     *
+     * @throws Exception
      * @param integer $limit the maximum number of migrations to be displayed.
      * If it is 0, the whole migration history will be displayed.
      */
     public function actionHistory($limit = 10)
     {
-        $limit      = (int)$limit;
+
+        if ($limit === 'all') {
+            $limit = null;
+        } else {
+            $limit = (int) $limit;
+            if ($limit < 1) {
+                throw new Exception("The step argument must be greater than 0.");
+            }
+        }
         $migrations = $this->getMigrationHistory($limit);
         if (empty($migrations)) {
             echo "No migration has been done before.\n";
@@ -480,7 +498,16 @@ class MigrateController extends Controller
      */
     public function actionNew($limit = 10)
     {
-        $limit      = (int)$limit;
+
+        if ($limit === 'all') {
+            $limit = null;
+        } else {
+            $limit = (int) $limit;
+            if ($limit < 1) {
+                throw new Exception("The step argument must be greater than 0.");
+            }
+        }
+
         $migrations = $this->getNewMigrations();
         if (empty($migrations)) {
             echo "No new migrations found. Your system is up-to-date.\n";
