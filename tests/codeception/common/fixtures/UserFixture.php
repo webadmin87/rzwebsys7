@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\codeception\app\fixtures;
+namespace tests\codeception\common\fixtures;
 
 use yii\test\ActiveFixture;
 

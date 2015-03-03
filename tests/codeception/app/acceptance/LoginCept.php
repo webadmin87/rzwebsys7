@@ -6,7 +6,7 @@ $I = new AcceptanceTester($scenario);
 $I->wantTo('ensure login page works');
 
 $loginPage = LoginPage::openBy($I);
-
+//print($loginPage->getUrl()."----");exit;
 $I->amGoingTo('submit login form with no data');
 $loginPage->login('', '');
 $I->expectTo('see validations errors');
@@ -22,7 +22,7 @@ $I->see('Incorrect username or password.', '.help-block');
 $I->amGoingTo('try to login with correct credentials');
 $loginPage->login('naumov.vil', 'password_0');
 $I->expectTo('see that user is logged');
-$I->seeLink('Выход (naumov.vil)');
+$I->seeLink('Выход');
 /** Uncomment if using WebDriver
  * $I->click('Logout (erau)');
  * $I->dontSeeLink('Logout (erau)');
