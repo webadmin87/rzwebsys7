@@ -12,7 +12,7 @@ return [
         'role' => 'root',
     ],
     [
-        'username' => 'fsuhanov',
+        'username' => 'root',
         'email' => 'safonov.yaroslav@yandex.ru',
         'auth_key' => 'Nd1akODSn4ijzvH4WU7htMStv7l2-lj5',
         'password_hash' => '$2y$13$H8RFbqsLZv2A/wa9w40Elues.ZlZx1GzTFyN5o5v9qMkdFk7mZ3ym',
