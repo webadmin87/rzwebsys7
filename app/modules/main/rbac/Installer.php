@@ -196,9 +196,10 @@ class Installer extends Object
 
             $r = $model->role;
 
-            if ($r)
+            if ($r) {
+                $auth->revokeAll($model->id);
                 $auth->assign($auth->getRole($r), $model->id);
-
+            }
         }
 
     }

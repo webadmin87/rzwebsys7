@@ -70,6 +70,40 @@ class PageCrudTest extends DbTestCase
     }
 
     /**
+     * Тест изменения текстовой страницы
+     */
+    public function testUpdatePage()
+    {
+
+        $model = Pages::findOne(["code"=>Pages::INDEX_CODE]);
+
+        $route = "/main/admin/pages/update";
+
+        $_SERVER["REQUEST_URI"] = Url::toRoute([$route, "id"=>$model->id]);
+
+        $page = [
+
+            'Pages'=>[
+                'title'=>'Main-updated',
+                'code'=>Pages::INDEX_CODE,
+            ]
+        ];
+
+        Yii::$app->request->setRawBody(http_build_query($page));
+
+        Yii::$app->runAction($route, ["id"=>$model->id]);
+
+        $model->refresh();
+
+        $this->specify('page must be updated', function () use ($model) {
+
+            expect("model title changed", $model->title=='Main-updated' )->true();
+
+        });
+
+    }
+
+    /**
      * @inheritdoc
      */
     public function fixtures()
