@@ -6,9 +6,7 @@ use common\db\TActiveRecord;
 use tests\codeception\common\fixtures\UserFixture;
 use tests\codeception\common\fixtures\PagesFixture;
 use Yii;
-use app\modules\main\models\User;
-use Codeception\Specify;
-use tests\codeception\app\unit\DbTestCase;
+use tests\codeception\app\unit\CrudTestCase;
 use app\modules\main\modules\admin;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
@@ -19,23 +17,47 @@ use yii\helpers\Url;
  * @package tests\codeception\app\unit\actions
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class PageCrudTest extends DbTestCase
+class PageCrudTest extends CrudTestCase
 {
 
-    use Specify;
+    public $indexRoute = "/main/admin/pages/index";
 
-    public function setUp()
+    public $createRoute = "/main/admin/pages/create";
+
+    public $updateRoute = "/main/admin/pages/update";
+
+    public $deleteRoute = "/main/admin/pages/delete";
+
+    public $groupDeleteRoute = "/main/admin/pages/groupdelete";
+
+    public $viewRoute = "/main/admin/pages/view";
+
+    public $upRoute = "/main/admin/pages/up";
+
+    public $downRoute = "/main/admin/pages/down";
+
+    public $replaceRoute = "/main/admin/pages/replace";
+
+    /**
+     * Тест списка моделей
+     */
+    public function testAdminPage()
     {
-        parent::setUp();
-        Yii::$app->user->login(User::findByUsername('root'));
+
+        $route = $this->indexRoute;
+
+        $this->getRequest($route);
+
+        $res = Yii::$app->runAction($route);
+
+        $this->specify('action result is text', function () use ($res) {
+
+            $this->assertTrue(strlen($res)>0);
+
+        });
 
     }
 
-    protected function tearDown()
-    {
-        Yii::$app->user->logout();
-        parent::tearDown();
-    }
 
     /**
      * Тест создания текстовой страницы
@@ -43,11 +65,9 @@ class PageCrudTest extends DbTestCase
     public function testCreatePage()
     {
 
-        $route = "/main/admin/pages/create";
+        $route = $this->createRoute;
 
-        $_SERVER["REQUEST_URI"] = Url::toRoute([$route, "parent_id"=>TActiveRecord::ROOT_ID]);
-
-        $_SERVER['REQUEST_METHOD'] = "POST";
+        $this->postRequest([$route, "parent_id"=>TActiveRecord::ROOT_ID]);
 
         $_POST = [
 
@@ -63,7 +83,7 @@ class PageCrudTest extends DbTestCase
 
         $this->specify('page must be created', function () use ($model, $res) {
 
-            expect("model exists in databese",!empty($model))->true();
+            expect("model exists in database",!empty($model))->true();
             expect("action return object", is_object($res))->true();
 
         });
@@ -78,16 +98,16 @@ class PageCrudTest extends DbTestCase
 
         $model = Pages::findOne(["code"=>Pages::INDEX_CODE]);
 
-        $route = "/main/admin/pages/update";
+        $route = $this->updateRoute;
 
-        $_SERVER["REQUEST_URI"] = Url::toRoute([$route, "id"=>$model->id]);
+        $this->postRequest([$route, "id"=>$model->id]);
 
-        $_SERVER['REQUEST_METHOD'] = "POST";
+        $newTitle = 'Main-updated';
 
         $_POST = [
 
             'Pages'=>[
-                'title'=>'Main-updated',
+                'title'=>$newTitle,
                 'code'=>Pages::INDEX_CODE,
             ]
         ];
@@ -96,9 +116,9 @@ class PageCrudTest extends DbTestCase
 
         $model->refresh();
 
-        $this->specify('page must be updated', function () use ($model) {
+        $this->specify('page must be updated', function () use ($model, $newTitle) {
 
-            $this->assertTrue($model->title=='Main-updated');
+            $this->assertTrue($model->title==$newTitle);
 
         });
 
@@ -112,11 +132,9 @@ class PageCrudTest extends DbTestCase
 
         $model = Pages::findOne(["code"=>"test"]);
 
-        $route = "/main/admin/pages/delete";
+        $route = $this->deleteRoute;
 
-        $_SERVER["REQUEST_URI"] = Url::toRoute([$route, "id"=>$model->id]);
-
-        $_SERVER['REQUEST_METHOD'] = "POST";
+        $this->postRequest([$route, "id"=>$model->id]);
 
         Yii::$app->runAction($route, ["id"=>$model->id]);
 
@@ -138,11 +156,9 @@ class PageCrudTest extends DbTestCase
 
         $models = Pages::findOne(TActiveRecord::ROOT_ID)->children()->all();
 
-        $route = "/main/admin/pages/groupdelete";
+        $route = $this->groupDeleteRoute;
 
-        $_SERVER["REQUEST_URI"] = Url::toRoute($route);
-
-        $_SERVER['REQUEST_METHOD'] = "POST";
+        $this->postRequest($route);
 
         $_POST = [
             "selection"=>array_keys(ArrayHelper::map($models, "id", "id")),
@@ -161,6 +177,28 @@ class PageCrudTest extends DbTestCase
     }
 
     /**
+     * Тест просмотра текстовой страницы
+     */
+    public function testViewPage()
+    {
+
+        $model = Pages::findOne(["code" => "main"]);
+
+        $route = $this->viewRoute;
+
+        $this->getRequest([$route, "id"=>$model->id]);
+
+        $res = Yii::$app->runAction($route, ["id" => $model->id]);
+
+        $this->specify('action result is text', function () use ($res) {
+
+            $this->assertTrue(strlen($res)>0);
+
+        });
+
+    }
+
+    /**
      * Тест перемещения вверх текстовой страницы
      */
     public function testUpPage()
@@ -168,9 +206,9 @@ class PageCrudTest extends DbTestCase
 
         $model = Pages::findOne(["code" => "test"]);
 
-        $route = "/main/admin/pages/up";
+        $route = $this->upRoute;
 
-        $_SERVER["REQUEST_URI"] = Url::toRoute([$route, "id" => $model->id]);
+        $this->getRequest([$route, "id"=>$model->id]);
 
         Yii::$app->runAction($route, ["id" => $model->id]);
 
@@ -194,9 +232,9 @@ class PageCrudTest extends DbTestCase
 
         $model = Pages::findOne(["code" => "main"]);
 
-        $route = "/main/admin/pages/down";
+        $route = $this->downRoute;
 
-        $_SERVER["REQUEST_URI"] = Url::toRoute([$route, "id" => $model->id]);
+        $this->getRequest([$route, "id"=>$model->id]);
 
         Yii::$app->runAction($route, ["id" => $model->id]);
 
@@ -213,28 +251,6 @@ class PageCrudTest extends DbTestCase
     }
 
     /**
-     * Тест просмотра текстовой страницы
-     */
-    public function testViewPage()
-    {
-
-        $model = Pages::findOne(["code" => "main"]);
-
-        $route = "/main/admin/pages/view";
-
-        $_SERVER["REQUEST_URI"] = Url::toRoute([$route, "id" => $model->id]);
-
-        $res = Yii::$app->runAction($route, ["id" => $model->id]);
-
-        $this->specify('action result is text', function () use ($res) {
-
-            $this->assertTrue(strlen($res)>0);
-
-        });
-
-    }
-
-    /**
      * Тест перемещения текстовой страницы
      */
     public function testReplacePage()
@@ -244,11 +260,9 @@ class PageCrudTest extends DbTestCase
 
         $parentModel = Pages::findOne(["code"=>"main"]);
 
-        $route = "/main/admin/pages/replace";
+        $route = $this->replaceRoute;
 
-        $_SERVER["REQUEST_URI"] = Url::toRoute($route);
-
-        $_SERVER['REQUEST_METHOD'] = "POST";
+        $this->postRequest($route);
 
         $_POST = [
 

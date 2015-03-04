@@ -10,6 +10,7 @@ return [
         'created_at' => '2014-10-04 18:09:12',
         'updated_at' => '2014-10-04 18:09:12',
         'role' => 'root',
+        'author_id'=>1,
     ],
     [
         'username' => 'root',
@@ -20,5 +21,6 @@ return [
         'created_at' => '2014-10-04 18:09:13',
         'updated_at' => '2014-10-04 18:09:13',
         'role' => 'root',
+        'author_id'=>1,
     ],
 ];
