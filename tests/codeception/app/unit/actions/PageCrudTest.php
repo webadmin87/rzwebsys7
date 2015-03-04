@@ -10,6 +10,7 @@ use app\modules\main\models\User;
 use Codeception\Specify;
 use tests\codeception\app\unit\DbTestCase;
 use app\modules\main\modules\admin;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 /**
@@ -97,7 +98,7 @@ class PageCrudTest extends DbTestCase
 
         $this->specify('page must be updated', function () use ($model) {
 
-            expect("model title changed", $model->title=='Main-updated' )->true();
+            $this->assertTrue($model->title=='Main-updated');
 
         });
 
@@ -123,7 +124,37 @@ class PageCrudTest extends DbTestCase
 
         $this->specify('page does not exists', function () use ($model) {
 
-            expect("page is null", $model===null )->true();
+            $this->assertTrue($model===null);
+
+        });
+
+    }
+
+    /**
+     * Тест группового удаления текстовых страниц
+     */
+    public function testGroupDeletePage()
+    {
+
+        $models = Pages::findOne(TActiveRecord::ROOT_ID)->children()->all();
+
+        $route = "/main/admin/pages/groupdelete";
+
+        $_SERVER["REQUEST_URI"] = Url::toRoute($route);
+
+        $_SERVER['REQUEST_METHOD'] = "POST";
+
+        $_POST = [
+            "selection"=>array_keys(ArrayHelper::map($models, "id", "id")),
+        ];
+
+        Yii::$app->runAction($route);
+
+        $count =  Pages::findOne(TActiveRecord::ROOT_ID)->children()->orderBy(null)->count();
+
+        $this->specify('root model has no children', function () use ($count) {
+
+            $this->assertTrue($count==0);
 
         });
 
@@ -149,7 +180,7 @@ class PageCrudTest extends DbTestCase
 
         $this->specify('previous model does not exists', function () use ($prev) {
 
-            expect("previous model is null", $prev === null)->true();
+            $this->assertTrue($prev === null);
 
         });
 
@@ -175,7 +206,7 @@ class PageCrudTest extends DbTestCase
 
         $this->specify('next model does not exists', function () use ($next) {
 
-            expect("next model is null", $next === null)->true();
+            $this->assertTrue($next === null);
 
         });
 
@@ -197,7 +228,7 @@ class PageCrudTest extends DbTestCase
 
         $this->specify('action result is text', function () use ($res) {
 
-            expect("result length is greater then 0", strlen($res)>0)->true();
+            $this->assertTrue(strlen($res)>0);
 
         });
 
@@ -233,7 +264,7 @@ class PageCrudTest extends DbTestCase
 
         $this->specify('parent of model has changed', function () use ($parentModel, $newParent) {
 
-            expect("parent is main page", $parentModel->id==$newParent->id )->true();
+            $this->assertTrue($parentModel->id==$newParent->id);
 
         });
 
