@@ -174,5 +174,5 @@ vendor/bin/apidoc api console ./docs/console
 Пример генерации фикстур сущностей по шаблону:
 
 ```
-./yii fixture/generate-all --templatePath='@tests/codeception/common/templates/fixtures' --fixtureDataPath='@tests/codeception/app/fixtures/data'
+./yii fixture/generate-all --templatePath='@tests/codeception/common/templates/fixtures' --fixtureDataPath='@tests/codeception/common/fixtures/data'
 ```
