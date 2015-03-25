@@ -82,7 +82,7 @@ class Delivery extends ActiveRecord
 
                 $this->_deliveryPrice = $calc->calc($order, $this);
 
-            } elseif(!empty($this->free_limit) AND $this->getGoodsPrice()>=$this->free_limit) {
+            } elseif(!empty($this->free_limit) AND $order->getGoodsPrice()>=$this->free_limit) {
 
                 $this->_deliveryPrice = 0;
 

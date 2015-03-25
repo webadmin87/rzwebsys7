@@ -18,3 +18,8 @@
     height: 60px;
     padding-top: 20px;
 }
+
+.required label:after {
+    content: " *";
+    color: #ab2b1e;
+}

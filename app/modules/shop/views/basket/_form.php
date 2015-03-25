@@ -30,20 +30,20 @@ $validator = Yii::createObject('\yii\validators\EmailValidator');
 
 			echo $form->field($order, "phone", ["hintOptions" => ["ng-show" => "client['Order[phone]'].\$dirty && client['Order[phone]'].\$invalid"]])
 				->hint("{{messages.fieldError}}")
-				->textInput(["ng-model" => "order.phone", "required" => true]);
+				->textInput(["ng-model" => "order.phone"]);
 
 			echo $form->field($order, "city", ["hintOptions" => ["ng-show" => "client['Order[city]'].\$dirty && client['Order[city]'].\$invalid"]])
 				->hint("{{messages.fieldError}}")
 				->textInput(["ng-model" => "order.city", "required" => true]);
 
 
-			echo $form->field($order, "comment")->textarea(["ng-model" => "order.comment", "required" => true]);
+			echo $form->field($order, "comment")->textarea(["ng-model" => "order.comment"]);
 
 			?>
 		</div>
 		<div class="col-sm-6">
 			<?php
-			echo $form->field($order, "index")->textInput(["ng-model" => "order.index", "required" => true]);
+			echo $form->field($order, "index")->textInput(["ng-model" => "order.index"]);
 
 			echo $form->field($order, "address", ["hintOptions" => ["ng-show" => "client['Order[address]'].\$dirty && client['Order[address]'].\$invalid"]])
 				->hint("{{messages.fieldError}}")
