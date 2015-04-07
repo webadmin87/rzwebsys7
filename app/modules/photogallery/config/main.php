@@ -62,8 +62,8 @@ return [
 
             'rules' => [
 
-                'photogallery/<code:[A-z0-9_-]+>' => 'photogallery/gallery/detail',
-                'photogallery' => 'photogallery/gallery/index',
+                'photogallery/<code:[A-z0-9_-]+>' => 'photogallery/default/detail',
+                'photogallery' => 'photogallery/default/index',
 
             ],
 

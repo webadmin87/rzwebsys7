@@ -2,6 +2,8 @@
 namespace app\modules\photogallery\models;
 
 use common\db\ActiveRecord;
+use Yii;
+use yii\data\ActiveDataProvider;
 
 /**
  * Class Gallery
@@ -31,5 +33,23 @@ class Gallery extends ActiveRecord
         return meta\GalleryMeta::className();
     }
 
+    /**
+     * Возвращает провайдер данных для отображения списка фотогалерей в публичной части
+     * @return \yii\data\ActiveDataProvider
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function publicSearch()
+    {
+
+        $query = $this->find()->published();
+
+        $dataProvider = Yii::createObject([
+            'class' => ActiveDataProvider::className(),
+            "query" => $query,
+        ]);
+
+        return $dataProvider;
+
+    }
 
 }
