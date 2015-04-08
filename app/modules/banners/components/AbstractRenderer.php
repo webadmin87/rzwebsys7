@@ -42,8 +42,9 @@ abstract class AbstractRenderer extends Object
 
 	/**
 	 * Рендер баннера
+     * @param bool $renderLink рендерить ли ссылку
 	 * @return string
 	 */
-	public abstract function render();
+	public abstract function render($renderLink);
 
 }
