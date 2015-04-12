@@ -15,6 +15,8 @@
 
                 $scope.qty = 1;
 
+                $scope.attrs = {};
+
                 $scope.label = shopMessages.toCart;
 
                 $scope.order = shopBasket.getOrder();
@@ -31,7 +33,7 @@
 
                 $scope.addToCart = function() {
 
-                    shopBasket.add(attrs.itemId, attrs.className, $scope.qty);
+                    shopBasket.add(attrs.itemId, attrs.className, $scope.qty, $scope.attrs);
 
                     $scope.label = shopMessages.inCart;
 

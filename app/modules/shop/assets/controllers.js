@@ -16,13 +16,13 @@
 
         this.del = function(model) {
 
-            shopBasket.del(model.item_id, model.item_class);
+            shopBasket.del(model.item_key);
 
         }
 
         this.update = function(model) {
 
-            shopBasket.update(model.item_id, model.item_class, model.qty);
+            shopBasket.update(model.item_key, model.qty);
 
         }
 
