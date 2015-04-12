@@ -50,7 +50,7 @@ class BasketRestController extends Controller
 
 	/**
 	 * Изменение количества товара в корзине
-	 * @param int $key ключ (идентификатор) элемента в корзине
+	 * @param string $key ключ (идентификатор) элемента в корзине
 	 * @return \app\modules\shop\models\Order
 	 */
 	public function actionUpdate($key)
@@ -67,7 +67,7 @@ class BasketRestController extends Controller
 
 	/**
 	 * Удаление товара из корзины
-	 * @param int $key ключ (идентификатор) элемента в корзине
+	 * @param string $key ключ (идентификатор) элемента в корзине
 	 * @return \app\modules\shop\models\Order
 	 */
 	public function actionDelete($key)
