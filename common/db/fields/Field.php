@@ -323,7 +323,7 @@ class Field extends Object
 
         return [
 
-            'class' => \mcms\xeditable\XEditableColumn::className(),
+            'class' => \common\xeditable\XEditableColumn::className(),
             'url' => $this->getEditableUrl(),
             'format' => 'raw',
         ];
