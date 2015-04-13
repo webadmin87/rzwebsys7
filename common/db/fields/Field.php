@@ -141,6 +141,11 @@ class Field extends Object
     public $inputClass = "\\common\\inputs\\TextInput";
 
     /**
+     * @var string шаблон для поля
+     */
+    public $formTemplate = '<div class="row"><div class="co-xs-12 col-md-7 col-lg-5">{input}</div></div>';
+
+    /**
      * @var array данные ассоциированные с полем (key=>value)
      */
     protected $_dataValue;
@@ -202,6 +207,21 @@ class Field extends Object
         ], $inputClass));
 
         return $input->renderInput($form, $options, $index);
+
+    }
+
+    /**
+     * Формирует html код поля формы обернутый в шаблон
+     * @param ActiveForm $form объект форма
+     * @param array $options массив html атрибутов поля
+     * @param bool|int $index инднкс модели при табличном вводе
+     * @return string
+     */
+    public function getWrappedForm(ActiveForm $form, Array $options = [], $index = false)
+    {
+        $html = $this->getForm($form, $options, $index);
+
+        return str_replace("{input}", $html, $this->formTemplate);
 
     }
 
