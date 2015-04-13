@@ -11,6 +11,11 @@ class NumberField extends TextField
 {
 
     /**
+     * @inheritdoc
+     */
+    public $inputClass = "\\common\\inputs\\NumberInput";
+
+    /**
      * Правила валидации
      * @return array
      */
@@ -23,6 +28,34 @@ class NumberField extends TextField
         $rules[] = [$this->attr, 'number'];
 
         return $rules;
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function grid()
+    {
+
+        $grid = $this->defaultGrid();
+
+        $grid["format"] = "decimal";
+
+        return $grid;
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function view()
+    {
+
+        $view = $this->defaultView();
+
+        $view['format'] = 'decimal';
+
+        return $view;
 
     }
 

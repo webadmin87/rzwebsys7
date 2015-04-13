@@ -13,9 +13,10 @@ class ImageRenderer extends AbstractRenderer
 {
 	/**
 	 * Рендер баннера
+     * @param bool $renderLink рендерить ли ссылку
 	 * @return string|null
 	 */
-	public function render()
+	public function render($renderLink=true)
 	{
 
 		$file = $this->model->getFirstFile('image');
@@ -25,7 +26,7 @@ class ImageRenderer extends AbstractRenderer
 
 		$img = Html::img($file->getRelPath(), ["width"=>$this->model->width, "height"=>$this->model->height]);
 
-		if($this->model->link)
+		if($this->model->link AND $renderLink)
 			return Html::a($img, $this->model->link, ["target"=>$this->model->target]);
 		else
 			return $img;

@@ -25,9 +25,10 @@ class FlashRenderer extends AbstractRenderer
 
 	/**
 	 * Рендер баннера
+     * @param bool $renderLink рендерить ли ссылку
 	 * @return string
 	 */
-	public function render()
+	public function render($renderLink=true)
 	{
 
 		$file = $this->model->getFirstFile('image');
@@ -53,7 +54,7 @@ class FlashRenderer extends AbstractRenderer
 
 		$bl = Html::tag('div', '', ["id"=>$id]);
 
-		if(!$this->model->link)
+		if(!$this->model->link OR !$renderLink)
 			return $bl;
 		else {
 

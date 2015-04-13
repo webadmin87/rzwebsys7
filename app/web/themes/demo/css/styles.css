@@ -23,3 +23,21 @@
     content: " *";
     color: #ab2b1e;
 }
+
+.gallery-item {
+    height: 280px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.gallery-item h2 {
+    line-height: 33px;
+    height: 33px;
+    overflow: hidden;
+}
+
+.pagination.clear {
+    display: block;
+    clear: both;
+    padding-top: 20px;
+}

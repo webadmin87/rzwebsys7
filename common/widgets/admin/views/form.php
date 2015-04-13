@@ -49,7 +49,7 @@ $this->registerJs("
                     if ($perm AND $perm->isAttributeForbidden($field->attr))
                         continue;
                     ?>
-                    <?= $field->getForm($form); ?>
+                    <?= $field->getWrappedForm($form); ?>
                 <? endforeach; ?>
 
             </div>
