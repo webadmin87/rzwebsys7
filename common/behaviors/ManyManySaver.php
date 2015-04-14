@@ -113,9 +113,14 @@ class ManyManySaver extends Behavior
     public function getManyManyIds($name)
     {
 
-        $models = $this->owner->$name;
-
         $ids = [];
+
+        $pk = $this->owner->getPrimaryKey();
+
+        if(empty($pk))
+            return $ids;
+
+        $models = $this->owner->$name;
 
         foreach ($models AS $model)
             $ids[] = $model->id;
