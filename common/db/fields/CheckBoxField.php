@@ -4,7 +4,6 @@ namespace common\db\fields;
 use common\db\ActiveRecord;
 use Yii;
 use Yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
 
 /**
  * Class CheckBoxField
@@ -12,7 +11,7 @@ use yii\helpers\ArrayHelper;
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class CheckBoxField extends TextField
+class CheckBoxField extends Field
 {
 
     /**

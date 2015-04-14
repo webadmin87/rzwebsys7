@@ -8,7 +8,7 @@ namespace common\db\fields;
  * @author Churkin Anton <webadmin87@gmail.com>
  */
 
-class TimestampField extends TextField
+class TimestampField extends Field
 {
 
     /**
