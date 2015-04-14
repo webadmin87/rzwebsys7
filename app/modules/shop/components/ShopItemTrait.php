@@ -20,6 +20,20 @@ trait ShopItemTrait
     }
 
     /**
+     * @param array $attrs дополнительные аттрибуты для формирования ключа
+     * @return string ключ (идентификатор) товара в корзине
+     */
+    public function getShopKey($attrs = [])
+    {
+        $shopKey = $attrs;
+        $shopKey['id'] = $this->getId();
+        $shopKey['class'] = get_class($this);
+        $shopKey = json_encode($shopKey);
+
+        return md5($shopKey);
+    }
+
+    /**
      * @return int цена товара
      */
     public function getPrice() {

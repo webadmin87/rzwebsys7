@@ -16,6 +16,12 @@ interface IShopItem
 	public function getId();
 
 	/**
+	 * @param array $attrs - дополнительные аттрибуты для формирования уникального идентификатора заказанного товара в корзине
+	 * @return string  ключ (идентификатор) товара для работы в корзине
+	 */
+	public function getShopKey($attrs = []);
+
+	/**
 	 * @return int цена товара
 	 */
 	public function getPrice();

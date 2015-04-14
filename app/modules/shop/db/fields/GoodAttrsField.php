@@ -58,8 +58,7 @@ class GoodAttrsField extends Field
 
         $html .= Html::beginTag('table', ['class'=>'table']);
 
-        foreach($value AS $k=>$v)
-        {
+        foreach($value AS $k=>$v) {
 
             $label = !empty($o)?$o->getAttributeLabel($k):$k;
 

@@ -6,6 +6,16 @@ use common\db\ActiveRecord;
 /**
  * Class Good
  * Модель заказанного товара
+ * @property int item_id идентификатор заказанного товара
+ * @property string item_class класс заказанного товара
+ * @property string item_key ключ (идентификатор) товара - формируется из идентификатора, имени класса и дополнительных аттрибутов товара
+ * @property int qty количество заказанных изделий
+ * @property string title название
+ * @property int price стоимость
+ * @property int discount скидка
+ * @property string link ссылка на карточку товара
+ * @property array attrs дополнительные атрибуты для сохранения
+
  * @package app\modules\shop\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
@@ -79,6 +89,28 @@ class Good extends ActiveRecord
 		$arr = array_merge($arr, ["finalPrice"]);
 
 		return $arr;
+
+	}
+
+	public function beforeSave($insert){
+
+		if (parent::beforeSave($insert)) {
+
+			if ( $insert and empty($this->item_key) ) {
+				$class = $this->item_class;
+
+				if(class_exists($class)) {
+					$model = $class::findOne($this->item_id);
+					$this->item_key = $model->getShopKey();
+				}
+
+			}
+
+			return true;
+		}
+		else {
+			return false;
+		}
 
 	}
 
