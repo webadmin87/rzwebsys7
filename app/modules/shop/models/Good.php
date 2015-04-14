@@ -92,4 +92,26 @@ class Good extends ActiveRecord
 
 	}
 
+	public function beforeSave($insert){
+
+		if (parent::beforeSave($insert)) {
+
+			if ( $insert and empty($this->item_key) ) {
+				$class = $this->item_class;
+
+				if(class_exists($class)) {
+					$model = $class::findOne($this->item_id);
+					$this->item_key = $model->getShopKey();
+				}
+
+			}
+
+			return true;
+		}
+		else {
+			return false;
+		}
+
+	}
+
 }
