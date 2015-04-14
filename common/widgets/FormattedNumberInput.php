@@ -50,11 +50,11 @@ class FormattedNumberInput extends InputWidget
 
         $this->view->registerJs("
 
-            (function() {
+            ;(function() {
 
                 $('#{$this->options["id"]}').number( true, {$this->decimals}, '{$this->decimalSep}', '{$this->thousandSep}' );
 
-                $('#{$this->options["id"]}').on('keyup', function(){
+                $('#{$this->options["id"]}').on('blur', function(){
 
                     $('#{$this->hiddenId}').val($(this).val());
 
