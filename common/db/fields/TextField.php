@@ -37,7 +37,7 @@ class TextField extends Field
         $attr = $this->attr;
 
         if ($this->search)
-            $query->andFilterWhere(["~*", "{{%$table}}.{{%$attr}}", $this->model->{$this->attr}]);
+            $query->andFilterWhere(["~*", "{{%$table}}.{{%$attr}}", preg_quote($this->model->{$this->attr})]);
 
     }
 
