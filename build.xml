@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="rzwebsys7" default="deploy" basedir=".">
+
+    <property name="deploy.dir" value="/path/to/application"/>
+    <property name="ssh.host" value="hostname"/>
+    <property name="ssh.username" value="username"/>
+
+    <target name="deploy">
+
+        <echo msg="Deploy application..."/>
+
+        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; git pull origin master; ./init --env=Production --overwrite=1; ./yii migrate --interactive=0; cat /dev/null > composer.lock; composer.phar update; rm -rf app/runtime/cache;'"/>
+
+    </target>
+
+</project>
