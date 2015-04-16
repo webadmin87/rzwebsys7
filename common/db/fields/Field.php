@@ -153,7 +153,7 @@ class Field extends Object
     /**
      * @var mixed значение фильтра грида установленное
      */
-    protected $gridFilter;
+    protected $_gridFilter;
 
     /**
      * Конструктор
@@ -287,8 +287,8 @@ class Field extends Object
     public function getGridFilter()
     {
 
-        if ($this->gridFilter !== null) {
-            return $this->gridFilter;
+        if ($this->_gridFilter !== null) {
+            return $this->_gridFilter;
         } else {
             return $this->defaultGridFilter();
         }
@@ -302,7 +302,7 @@ class Field extends Object
     public function setGridFilter($value)
     {
 
-        $this->gridFilter = $value;
+        $this->_gridFilter = $value;
 
     }
 

@@ -56,6 +56,19 @@ class CommentsMeta extends MetaFields
                     "class" => \common\db\fields\TextField::className(),
                     "title" => Yii::t('main/app', 'Model class'),
                     "isRequired" => true,
+                    "gridFilter" => $this->owner->getClasses(),
+                    "gridOptions"=>[
+                        "value"=>function($model) {
+
+                            $cls = $model->model;
+
+                            if(class_exists($cls))
+                                return $cls::getEntityName();
+                            else
+                                return $cls;
+
+                        },
+                    ],
                 ],
                 "params" => [$this->owner, "model"]
             ],
