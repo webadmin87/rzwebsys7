@@ -41,4 +41,9 @@ interface IShopItem
 	 */
 	public function getLink();
 
+	/**
+	 * @return mixed
+	 */
+	public function getShopAttributes();
+
 }
