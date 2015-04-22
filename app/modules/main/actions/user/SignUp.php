@@ -3,8 +3,6 @@ namespace app\modules\main\actions\user;
 
 use Yii;
 use common\actions\crud\Base;
-use yii\web\Response;
-use yii\widgets\ActiveForm;
 
 /**
  * Class SignUp

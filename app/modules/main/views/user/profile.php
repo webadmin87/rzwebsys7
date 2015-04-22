@@ -1,4 +1,7 @@
 <?php
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
 /**
  * @var \common\components\View $this
  * @var \app\modules\main\models\User $model модель пользователя
@@ -6,9 +9,6 @@
 
 $this->title = Yii::t('main/app', 'User Profile');
 $this->params['breadcrumbs'][] = $this->title;
-
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 
 echo Html::tag('h1', $this->title.' '.$model->username);
 

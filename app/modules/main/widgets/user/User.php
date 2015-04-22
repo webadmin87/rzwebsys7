@@ -18,16 +18,6 @@ class User extends App
 	public $signInRoute = ['/main/user/sign-in'];
 
 	/**
-	 * @var string класс модели формы авторизации
-	 */
-	public $signInForm = '\app\modules\main\models\SignInForm';
-
-	/**
-	 * @var array параметры формы авторизации \yii\widgets\ActiveForm
-	 */
-	public $signInFormOptions = [];
-
-	/**
 	 * @var array маршрут выхода
 	 */
 	public $signOutRoute = ['/main/user/sign-out'];
