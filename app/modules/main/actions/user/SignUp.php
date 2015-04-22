@@ -14,6 +14,9 @@ use yii\widgets\ActiveForm;
  */
 class SignUp extends Base
 {
+	use \app\modules\main\components\MailerTrait;
+
+	public $letter = "@app/modules/main/letters/sign-up.php";
 
 	/**
 	 * @var string имя класса модели
@@ -65,7 +68,11 @@ class SignUp extends Base
 		}
 
 		if ($load && $model->save()) {
+
 			Yii::$app->user->login($model);
+
+			$this->sendNotify($model, $request->post('password'));
+
 			return $this->controller->redirect($this->returnUrl);
 
 		} else {
@@ -76,6 +83,15 @@ class SignUp extends Base
 
 		}
 
+	}
+
+	protected function sendNotify($model, $password)
+	{
+		Yii::$app->mail->compose($this->letter, ["model" => $model, 'password' => $password])
+			->setFrom($this->mailFrom)
+			->setTo($model->email)
+			->setSubject($this->subject)
+			->send();
 	}
 
 }

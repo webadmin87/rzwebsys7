@@ -100,5 +100,6 @@ return [
     'User SignIn As' => 'Вы вошли как',
     'User SignOut' => 'Выход',
     'User SignUp' => 'Регистрация',
+    'User SignUp Letter Header' => 'Благодарим за регистрацию на сайте.',
     'User Profile' => 'Профиль',
 ];
