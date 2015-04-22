@@ -53,12 +53,7 @@ AppAsset::register($this);
     <div class="row">
         <div class="col-xs-3">
 
-            <?if(!Yii::$app->user->isGuest):?>
-                <p>
-                    <?=Html::a(Yii::t('core', 'Logout') . ' (' . Yii::$app->user->identity->username . ')', ['/site/logout'], ['class'=>"btn btn-link"])?>
-                </p>
-            <?endif;?>
-
+            <div class="well"><?=\app\modules\main\widgets\user\User::widget();?></div>
             <div class="well"><?=\app\modules\shop\widgets\BasketInfo::widget();?></div>
 
             <? echo \app\modules\main\widgets\menu\Menu::widget(

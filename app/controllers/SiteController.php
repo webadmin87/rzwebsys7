@@ -34,12 +34,6 @@ class SiteController extends Controller
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
         ];
     }
 
@@ -53,7 +47,7 @@ class SiteController extends Controller
                 'class' => 'yii\web\ErrorAction',
             ],
             'login' => [
-                'class' => '\app\modules\main\actions\Login',
+                'class' => '\app\modules\main\actions\user\SignIn',
             ],
         ];
     }

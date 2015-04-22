@@ -114,6 +114,9 @@ return [
 
             'rules' => [
 
+                'user/<action:[A-z0-9_-]+>' => 'main/user/<action>',
+                'user' => 'main/user/profile',
+
 				['class' => '\app\modules\main\components\PageUrlRule'],
                 //'page/<code:[A-z0-9_-]+>' => 'main/pages/index',
 
