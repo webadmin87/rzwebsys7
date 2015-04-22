@@ -102,4 +102,5 @@ return [
     'User SignUp' => 'Регистрация',
     'User SignUp Letter Header' => 'Благодарим за регистрацию на сайте.',
     'User Profile' => 'Профиль',
+    'User Forgot' => 'Восстановление пароля',
 ];

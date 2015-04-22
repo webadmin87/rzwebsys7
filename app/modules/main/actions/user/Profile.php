@@ -2,7 +2,10 @@
 namespace app\modules\main\actions\user;
 
 use Yii;
-use common\actions\crud\Base;
+use yii\base\Action;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
+use yii\web\NotFoundHttpException;
 
 /**
  * Class Profile
@@ -10,18 +13,8 @@ use common\actions\crud\Base;
  * @package app\modules\main\controllers
  * @author Chernyavsky Denis <panopticum87@gmail.com>
  */
-class Profile extends Base
+class Profile extends Action
 {
-
-	/**
-	 * @var string имя класса модели
-	 */
-	public $modelClass = '\app\modules\main\models\User';
-
-	/**
-	 * @var array дефолтовые аттрибуты
-	 */
-	public $defaultAttrs = [];
 
 	/**
 	 * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
@@ -29,9 +22,9 @@ class Profile extends Base
 	public $returnUrl = ['/user/profile/'];
 
 	/**
-	 * @var string сценарий для валидации
+	 * @var string название параметра запроса, который служит признаком ajax валидации
 	 */
-	public $modelScenario = 'update';
+	public $validateParam = "ajax";
 
 	/**
 	 * @var string шаблон
@@ -43,16 +36,25 @@ class Profile extends Base
 
 		$model = Yii::$app->user->identity;
 
+		if (!$model) {
+			throw new NotFoundHttpException('Not found');
+		}
+
+		$modelRole = $model->role;
+		$modelAuthorId = $model->author_id;
+
 		$request = Yii::$app->request;
 
 		$load = $model->load($request->post());
+
+		$model->role = $modelRole;
+		$model->author_id = $modelAuthorId;
 
 		if ($load && $request->post($this->validateParam)) {
 			return $this->performAjaxValidation($model);
 		}
 
 		if ($load && $model->save()) {
-			Yii::$app->user->login($model);
 			return $this->controller->redirect($this->returnUrl);
 
 		} else {
@@ -63,5 +65,16 @@ class Profile extends Base
 
 		}
 
+	}
+
+	/**
+	 * Ajax валидация модели
+	 * @param \yii\db\ActiveRecord $model
+	 * @return array
+	 */
+	protected function performAjaxValidation($model)
+	{
+		Yii::$app->response->format = Response::FORMAT_JSON;
+		return ActiveForm::validate($model);
 	}
 }

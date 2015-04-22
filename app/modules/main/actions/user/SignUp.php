@@ -2,7 +2,9 @@
 namespace app\modules\main\actions\user;
 
 use Yii;
-use common\actions\crud\Base;
+use yii\base\Action;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 /**
  * Class SignUp
@@ -10,11 +12,8 @@ use common\actions\crud\Base;
  * @package app\modules\main\controllers
  * @author Chernyavsky Denis <panopticum87@gmail.com>
  */
-class SignUp extends Base
+class SignUp extends Action
 {
-	use \app\modules\main\components\MailerTrait;
-
-	public $letter = "@app/modules/main/letters/sign-up.php";
 
 	/**
 	 * @var string имя класса модели
@@ -22,12 +21,19 @@ class SignUp extends Base
 	public $modelClass = '\app\modules\main\models\User';
 
 	/**
-	 * @var array дефолтовые аттрибуты
+	 * @var int идентификатор автора для нового пользователя;
 	 */
-	public $defaultAttrs = [
-		'role' => 'user',
-		'author_id' => 1,
-	];
+	public $defaultAuthorId = 1;
+
+	/**
+	 * @var string идентификатор автора для нового пользователя;
+	 */
+	public $defaultRole = \app\modules\main\models\User::ROLE_USER;
+
+	/**
+	 * @var array дефолтовые атрибуты
+	 */
+	public $defaultAttrs = [];
 
 	/**
 	 * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
@@ -43,6 +49,16 @@ class SignUp extends Base
 	 * @var string шаблон
 	 */
 	public $tpl = "sign-up";
+
+	/**
+	 * @var string имя компонента для уведомления пользователя
+	 */
+	public $notifierClass = '\app\modules\main\components\SignUpMailNotifier';
+
+	/**
+	 * @var string название параметра запроса, который служит признаком ajax валидации
+	 */
+	public $validateParam = "ajax";
 
 	public function run()
 	{
@@ -61,6 +77,9 @@ class SignUp extends Base
 
 		$load = $model->load($request->post());
 
+		$model->role = $this->defaultRole;
+		$model->author_id = $this->defaultAuthorId;
+
 		if ($load && $request->post($this->validateParam)) {
 			return $this->performAjaxValidation($model);
 		}
@@ -69,7 +88,9 @@ class SignUp extends Base
 
 			Yii::$app->user->login($model);
 
-			$this->sendNotify($model, $request->post('password'));
+			$notifierClass = $this->notifierClass;
+			$notifier = Yii::CreateObject($notifierClass::className());
+			$notifier->send($model, $request->post('User')['password']);
 
 			return $this->controller->redirect($this->returnUrl);
 
@@ -83,13 +104,15 @@ class SignUp extends Base
 
 	}
 
-	protected function sendNotify($model, $password)
+	/**
+	 * Ajax валидация модели
+	 * @param \yii\db\ActiveRecord $model
+	 * @return array
+	 */
+	protected function performAjaxValidation($model)
 	{
-		Yii::$app->mail->compose($this->letter, ["model" => $model, 'password' => $password])
-			->setFrom($this->mailFrom)
-			->setTo($model->email)
-			->setSubject($this->subject)
-			->send();
+		Yii::$app->response->format = Response::FORMAT_JSON;
+		return ActiveForm::validate($model);
 	}
 
 }
