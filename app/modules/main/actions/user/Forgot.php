@@ -61,7 +61,7 @@ class Forgot extends Action {
 				$notifier->send($model, $password);
 			}
 
-			Yii::$app->session->addFlash('password_changed');
+			Yii::$app->session->setFlash('password_changed', Yii::t('main/app', 'Password Changed'));
 
 			$this->controller->refresh();
 

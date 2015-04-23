@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 echo Html::tag('h1', $this->title);
 
 if(Yii::$app->session->hasFlash('password_changed'))
-	echo Html::tag('div', Yii::t('main/app', 'Password Changed'), ['class' => 'feedback-success alert alert-success']);
+	echo Html::tag('div', Yii::$app->session->getFlash('password_changed'), ['class' => 'feedback-success alert alert-success']);
 
 echo Html::beginTag('div', ['class' => 'row']);
 
