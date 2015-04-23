@@ -21,7 +21,7 @@ class SignUpMailNotifier extends Object {
 		Yii::$app->mail->compose($this->letter, ["model" => $model, 'password' => $password])
 			->setFrom($this->mailFrom)
 			->setTo($model->email)
-			->setSubject($this->subject)
+			->setSubject(Yii::t('main/app', 'User SignUp Letter Subject'))
 			->send();
 	}
 

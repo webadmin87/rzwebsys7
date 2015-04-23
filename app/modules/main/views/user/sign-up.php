@@ -26,6 +26,8 @@ echo $form->field($model, 'email')->textInput();
 
 echo $form->field($model, 'name')->textInput();
 
+echo \common\widgets\JsCaptcha::widget(["model" => $model, "attribute" => "verifyCode", "value" => $model::VERIFY_CODE]);
+
 echo Html::submitButton('Отправить', ['class' => 'btn btn-primary']);
 
 ActiveForm::end();

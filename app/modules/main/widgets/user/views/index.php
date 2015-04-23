@@ -9,5 +9,5 @@ if ( Yii::$app->user->isGuest ) {
 } else {
 	echo Yii::t('main/app', 'User SignIn As').' '.Html::tag('strong', Yii::$app->user->identity->username);
 	echo Html::tag('br');
-	echo Html::a(Yii::t('main/app', 'User Profile'), $profileRoute) .' | '. Html::a(Yii::t('main/app', 'User SignOut'), $signOutRoute);
+	echo Html::a(Yii::t('main/app', 'User Profile'), $profileRoute) .' | '. Html::a(Yii::t('main/app', 'User SignOut'), $signOutRoute, ['data' => ['method' => 'post']]);
 }

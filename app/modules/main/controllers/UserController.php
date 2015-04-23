@@ -5,6 +5,7 @@ namespace app\modules\main\controllers;
 use Yii;
 use common\controllers\App;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 /**
  * Class UserController
@@ -18,22 +19,31 @@ class UserController extends App {
 	 */
 	public function behaviors()
 	{
-		return [
-			'access' => [
-				'class' => AccessControl::className(),
-				'rules' => [
-					[
-						'actions' => ['sign-in', 'sign-up', 'error'],
-						'allow' => true,
-					],
-					[
-						'actions' => ['sign-out', 'profile'],
-						'allow' => true,
-						'roles' => ['@'],
-					],
+		$behaviors = parent::behaviors();
+
+		$behaviors['access'] = [
+			'class' => AccessControl::className(),
+			'rules' => [
+				[
+					'actions' => ['sign-in', 'sign-up', 'error'],
+					'allow' => true,
+				],
+				[
+					'actions' => ['sign-out', 'profile'],
+					'allow' => true,
+					'roles' => ['@'],
 				],
 			],
 		];
+
+		$behaviors['verbs'] = [
+			'class' => VerbFilter::className(),
+			'actions' => [
+				'sign-out' => ['post'],
+			],
+		];
+
+		return $behaviors;
 	}
 
 	/**
@@ -51,7 +61,6 @@ class UserController extends App {
 			'sign-up' => [
 				'class' => '\app\modules\main\actions\user\SignUp',
 			],
-
 			'profile' => [
 				'class' => '\app\modules\main\actions\user\Profile',
 			],

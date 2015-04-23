@@ -51,9 +51,11 @@ class SignUp extends Action
 	public $tpl = "sign-up";
 
 	/**
-	 * @var string имя компонента для уведомления пользователя
+	 * @var array компоненты для уведомления пользователя
 	 */
-	public $notifierClass = '\app\modules\main\components\SignUpMailNotifier';
+	public $notifiers = [
+		'\app\modules\main\components\SignUpMailNotifier',
+	];
 
 	/**
 	 * @var string название параметра запроса, который служит признаком ajax валидации
@@ -88,9 +90,10 @@ class SignUp extends Action
 
 			Yii::$app->user->login($model);
 
-			$notifierClass = $this->notifierClass;
-			$notifier = Yii::CreateObject($notifierClass::className());
-			$notifier->send($model, $request->post('User')['password']);
+			foreach ($this->notifiers as $notifierClass) {
+				$notifier = Yii::CreateObject($notifierClass::className());
+				$notifier->send($model, $request->post('User')['password']);
+			}
 
 			return $this->controller->redirect($this->returnUrl);
 

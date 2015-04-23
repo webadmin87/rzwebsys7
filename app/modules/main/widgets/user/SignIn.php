@@ -1,15 +1,15 @@
 <?php
-namespace app\modules\main\widgets;
+namespace app\modules\main\widgets\user;
 
 use yii\base\Widget;
 
 /**
- * Class Login
+ * Class SignIn
  * Виджет формы логина
  * @package app\modules\main\widgets
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Login extends Widget
+class SignIn extends Widget
 {
 
     /**
@@ -28,7 +28,7 @@ class Login extends Widget
      * @var string шаблон
      */
 
-    public $tpl = "login";
+    public $tpl = "sign-in";
 
     /**
      * @inheritdoc
