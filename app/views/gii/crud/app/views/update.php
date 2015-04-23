@@ -18,7 +18,7 @@ use yii\helpers\Html;
 * @var <?= $generator->modelClass ?> $model
 */
 
-$this->title = \Yii::t($this->context->tFile, 'Update <?= Inflector::camel2words(StringHelper::basename($generator->modelClass)) ?>').': ' . $model->id;
+$this->title = \Yii::t($this->context->tFile, 'Update <?= Inflector::camel2words(StringHelper::basename($generator->modelClass)) ?>').': ' . $model->getItemLabel();
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, <?= $generator->generateString(Inflector::pluralize(Inflector::camel2words(StringHelper::basename($generator->modelClass)))) ?>), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = \Yii::t('core', 'Update');

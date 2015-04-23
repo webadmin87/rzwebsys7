@@ -12,6 +12,13 @@ echo Grid::widget([
     'dataProvider' => $dataProvider,
     'model' => $searchModel,
     'tree' => true,
+    'userColumns' => [[
+        'class' => \yii\grid\DataColumn::className(),
+        'header' => Yii::t('main/app', 'Comments'),
+        'value' => function ($model, $index, $widget) {
+            return $model->childrenCount;
+        }
+    ]],
 ]);
 
 ?>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="rzwebsys7" default="fullDeploy" basedir=".">
+
+    <property name="deploy.dir" value="/path/to/application" />
+    <property name="ssh.host" value="hostname"/>
+    <property name="ssh.username" value="username"/>
+
+    <property name="deploy.cachedir" value="app/runtime/cache" />
+    <property name="deploy.logdir" value="app/runtime/log" />
+    <property name="deploy.logfile" value="${deploy.logdir}/deploy.log" />
+    <property name="deploy.composerLog" value="${deploy.logdir}/composer.log" />
+
+    <target name="fullDeploy" depends="fastDeploy" description="Full deploy">
+
+        <echo msg="Full deploy..."/>
+
+        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; composer.phar install >> ${deploy.composerLog};'"/>
+
+    </target>
+
+    <target name="fastDeploy" description="Deploy without vendors update">
+
+        <echo msg="Deploy without vendors update..."/>
+
+        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; mkdir -p ${deploy.logdir};  git pull origin master >> ${deploy.logfile}; ./init --env=Production --overwrite=1; ./yii migrate --interactive=0 >> ${deploy.logfile}; rm -rf ${deploy.cachedir};'" />
+    </target>
+
+</project>

@@ -7,7 +7,7 @@ use yii\helpers\Html;
 * @var app\modules\photogallery\models\Gallery $model
 */
 
-$this->title = \Yii::t($this->context->tFile, 'Update Gallery').': ' . $model->id;
+$this->title = \Yii::t($this->context->tFile, 'Update Gallery').': ' . $model->getItemLabel();
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Galleries'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = \Yii::t('core', 'Update');

@@ -8,7 +8,7 @@ use yii\helpers\Html;
  * @var app\modules\main\models\Menu $model
  */
 
-$this->title = $model->id;
+$this->title = $model->getItemLabel();
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Menus'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

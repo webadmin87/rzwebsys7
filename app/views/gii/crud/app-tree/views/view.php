@@ -18,7 +18,7 @@ use common\widgets\admin\CrudLinks;
 * @var <?= $generator->modelClass ?> $model
 */
 
-$this->title = $model->id;
+$this->title = $model->getItemLabel();
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, <?= $generator->generateString(Inflector::pluralize(Inflector::camel2words(StringHelper::basename($generator->modelClass)))) ?>), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

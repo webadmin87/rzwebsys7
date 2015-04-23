@@ -335,4 +335,23 @@ abstract class ActiveRecord extends YiiRecord
 		return false;
 	}
 
+    /**
+     * Возвращает название элемента сущности
+     * @return string
+     */
+    public function getItemLabel()
+    {
+
+        $res = [];
+
+        if($this->hasAttribute("id") AND $this->id)
+            $res[]=$this->id;
+
+        if($this->hasAttribute("title") AND $this->title)
+            $res[]=$this->title;
+
+        return implode(" - ", $res);
+
+    }
+
 }

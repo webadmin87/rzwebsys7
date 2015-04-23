@@ -4,6 +4,8 @@ namespace app\modules\main\models;
 use common\db\ActiveRecord;
 use common\db\TActiveRecord;
 use Yii;
+use yii\db\Query;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class Comments
@@ -73,6 +75,38 @@ class Comments extends TActiveRecord
     public function metaClass()
     {
         return meta\CommentsMeta::className();
+    }
+
+    /**
+     * Возвращает количество вложенных комментариев
+     * @return int
+     */
+    public function getChildrenCount() {
+
+        return $this->children()->orderBy(false)->count();
+
+    }
+
+    /**
+     * Возвращает массив классов моделей для которых существую комментарии
+     * @return array
+     */
+    public function getClasses()
+    {
+
+        $res = (new Query())->select("model")->from(static::tableName())->where([">", "level", TActiveRecord::ROOT_ID])->groupBy("model")->all();
+
+        return ArrayHelper::map($res, "model", function($data){
+
+            $cls = $data["model"];
+
+            if(class_exists($cls))
+                return $cls::getEntityName();
+            else
+                return false;
+
+        });
+
     }
 
 }

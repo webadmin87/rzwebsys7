@@ -8,7 +8,7 @@ use yii\helpers\Html;
  * @var app\modules\news\models\NewsSection $model
  */
 
-$this->title = $model->id;
+$this->title = $model->getItemLabel();
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'News Sections'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

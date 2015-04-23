@@ -24,7 +24,7 @@ class SuggestsFinder extends Component
     public function streetSuggests($term, $limit = 50)
     {
 
-        $streets = Street::find()->with(['region', 'rajon'])->published()->andWhere(['like', 'title', $term])->limit($limit)->all();
+        $streets = Street::find()->with(['region', 'rajon'])->published()->andWhere(['~*', 'title', $term])->limit($limit)->all();
 
         $arr = [];
 
