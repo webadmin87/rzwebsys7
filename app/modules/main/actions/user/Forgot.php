@@ -63,9 +63,7 @@ class Forgot extends Action {
 
 			Yii::$app->session->addFlash('password_changed');
 
-			foreach ($model->attributes as $name => $value) {
-				$model->$name = null;
-			}
+//			$this->controller->refresh();
 
 		}
 

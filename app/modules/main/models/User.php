@@ -31,7 +31,9 @@ class User extends ActiveRecord implements IdentityInterface
 
     const ROLE_ADMIN = "admin";
 
-    CONST ROLE_USER = "user";
+    const ROLE_USER = "user";
+
+    const SCENARIO_REGISTER = "register";
 
     const VERIFY_CODE = "d58e3582afa99040e27b92b13c8f2280";
 
@@ -49,6 +51,17 @@ class User extends ActiveRecord implements IdentityInterface
      * @var string подтверждение пароля
      */
     public $confirm_password;
+
+    /**
+     * Cценарии модели
+     * @var array
+     */
+    protected $_modelScenarios = [self::SCENARIO_REGISTER];
+
+    /**
+     * @var array массив сценариев при которых инициалихируются начальные значения
+     */
+    protected $initScenarios = [self::SCENARIO_INSERT, self::SCENARIO_REGISTER];
 
     /**
      * Возвращает имя таблицы
@@ -282,6 +295,26 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
+    public function  scenarios()
+    {
+
+        $scenarios = parent::scenarios();
+
+        foreach ($this->_modelScenarios AS $scenario) {
+
+            if (!isset($scenarios[$scenario])) {
+                $scenarios[$scenario] = $scenarios[YiiRecord::SCENARIO_DEFAULT];
+            }
+
+        }
+
+        return $scenarios;
+
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
 
@@ -293,12 +326,8 @@ class User extends ActiveRecord implements IdentityInterface
             ['username', 'string', 'min' => 2, 'max' => 255],
             ['email', 'unique'],
             ['confirm_password', 'compare', 'skipOnEmpty' => false, 'compareAttribute' => 'password'],
-            [['password', 'confirm_password'], 'required', 'on' => ['insert']],
-            ['verifyCode', 'compare', 'skipOnEmpty' => false, 'compareValue' => self::VERIFY_CODE,
-                'when' => function ($model, $attribute) {
-                    return Yii::$app->user->isGuest;
-                }
-            ]
+            [['password', 'confirm_password'], 'required', 'on' => ['insert', 'register']],
+            ['verifyCode', 'compare', 'skipOnEmpty' => false, 'compareValue' => self::VERIFY_CODE, 'on' => ['register']]
         ];
 
         return array_merge($parentRule, $rule);

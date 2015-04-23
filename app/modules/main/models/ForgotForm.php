@@ -52,9 +52,6 @@ class ForgotForm extends Model{
 	{
 		if ($this->_user === false) {
 			$this->_user = User::findOne(['username' => $this->username, 'email' => $this->email, 'active' => true]);
-			if ($this->_user) {
-				$this->_user->verifyCode = User::VERIFY_CODE;
-			}
 		}
 
 		return $this->_user;
