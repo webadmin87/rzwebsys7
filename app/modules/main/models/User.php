@@ -33,23 +33,27 @@ class User extends ActiveRecord implements IdentityInterface
 
     CONST ROLE_USER = "user";
 
+    const VERIFY_CODE = "d58e3582afa99040e27b92b13c8f2280";
+
+    /**
+     * @var string значение капчи
+     */
+    public $verifyCode;
+
     /**
      * @var string пароль
      */
-
     public $password;
 
     /**
      * @var string подтверждение пароля
      */
-
     public $confirm_password;
 
     /**
      * Возвращает имя таблицы
      * @return string
      */
-
     public static function tableName()
     {
         return "user";
@@ -152,13 +156,10 @@ class User extends ActiveRecord implements IdentityInterface
 
     }
 
-
-
     /**
      * Возвращает массив ролей пользователей
      * @return array
      */
-
     public static function getRolesNames()
     {
 
@@ -176,7 +177,6 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
-
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
@@ -213,7 +213,6 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
-
     public function afterSave($insert, $changeAttributes)
     {
 
@@ -295,6 +294,11 @@ class User extends ActiveRecord implements IdentityInterface
             ['email', 'unique'],
             ['confirm_password', 'compare', 'skipOnEmpty' => false, 'compareAttribute' => 'password'],
             [['password', 'confirm_password'], 'required', 'on' => ['insert']],
+            ['verifyCode', 'compare', 'skipOnEmpty' => false, 'compareValue' => self::VERIFY_CODE,
+                'when' => function ($model, $attribute) {
+                    return Yii::$app->user->isGuest;
+                }
+            ]
         ];
 
         return array_merge($parentRule, $rule);

@@ -94,6 +94,14 @@ return [
     "Create Config" => "Создать настройку",
     "Update Config" => "Изменить настройку",
     "Save" => "Сохранить",
-    "Attention! Any not careful changes in this section may break your site!"=>"Внимание! Любые не осторожные изменения в данном разделе могут привести к неработоспособности вашего сайта!"
+    "Attention! Any not careful changes in this section may break your site!"=>"Внимание! Любые не осторожные изменения в данном разделе могут привести к неработоспособности вашего сайта!",
 
+    'User SignIn' => 'Вход',
+    'User SignIn As' => 'Вы вошли как',
+    'User SignOut' => 'Выход',
+    'User SignUp' => 'Регистрация',
+    'User SignUp Letter Subject' => 'Регистрация на сайте',
+    'User SignUp Letter Header' => 'Благодарим за регистрацию на нашем сайте.',
+    'User Profile' => 'Профиль',
+    'User Forgot' => 'Восстановление пароля',
 ];
