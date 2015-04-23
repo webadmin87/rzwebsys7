@@ -53,12 +53,6 @@ class User extends ActiveRecord implements IdentityInterface
     public $confirm_password;
 
     /**
-     * Cценарии модели
-     * @var array
-     */
-    protected $_modelScenarios = [self::SCENARIO_REGISTER];
-
-    /**
      * @var array массив сценариев при которых инициалихируются начальные значения
      */
     protected $initScenarios = [self::SCENARIO_INSERT, self::SCENARIO_REGISTER];
@@ -295,26 +289,6 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public function  scenarios()
-    {
-
-        $scenarios = parent::scenarios();
-
-        foreach ($this->_modelScenarios AS $scenario) {
-
-            if (!isset($scenarios[$scenario])) {
-                $scenarios[$scenario] = $scenarios[YiiRecord::SCENARIO_DEFAULT];
-            }
-
-        }
-
-        return $scenarios;
-
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
 
@@ -327,7 +301,7 @@ class User extends ActiveRecord implements IdentityInterface
             ['email', 'unique'],
             ['confirm_password', 'compare', 'skipOnEmpty' => false, 'compareAttribute' => 'password'],
             [['password', 'confirm_password'], 'required', 'on' => ['insert', 'register']],
-            ['verifyCode', 'compare', 'skipOnEmpty' => false, 'compareValue' => self::VERIFY_CODE, 'on' => ['register']]
+            ['verifyCode', 'compare', 'skipOnEmpty' => false, 'compareValue' => self::VERIFY_CODE, 'on' => [self::SCENARIO_REGISTER]]
         ];
 
         return array_merge($parentRule, $rule);

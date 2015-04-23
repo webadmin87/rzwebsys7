@@ -15,6 +15,10 @@ echo Html::tag('h1', $this->title);
 if(Yii::$app->session->hasFlash('password_changed'))
 	echo Html::tag('div', Yii::t('main/app', 'Password Changed'), ['class' => 'feedback-success alert alert-success']);
 
+echo Html::beginTag('div', ['class' => 'row']);
+
+echo Html::beginTag('div', ['class' => 'col-lg-5']);
+
 $form = ActiveForm::begin([
 	'enableAjaxValidation' => true,
 ]);
@@ -26,3 +30,7 @@ echo $form->field($model, 'email')->textInput();
 echo Html::submitButton(Yii::t('main/app', 'Submit'), ['class' => 'btn btn-primary']);
 
 ActiveForm::end();
+
+echo Html::endTag('div');
+
+echo Html::endTag('div');
