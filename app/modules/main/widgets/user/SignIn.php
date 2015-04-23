@@ -15,25 +15,21 @@ class SignIn extends Widget
     /**
      * @var \app\modules\main\models\LoginForm модель формы
      */
-
     public $model;
 
     /**
      * @var array параметры формы
      */
-
     public $formOptions = [];
 
     /**
      * @var string шаблон
      */
-
     public $tpl = "sign-in";
 
     /**
      * @inheritdoc
      */
-
     public function run()
     {
 

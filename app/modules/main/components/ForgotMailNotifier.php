@@ -6,23 +6,23 @@ use Yii;
 use yii\base\Object;
 
 /**
- * Class SignUpMailNotifier
+ * Class ForgotMailNotifier
  * @package app\modules\main\components
  * @author Chernyavsky Denis <panopticum87@gmail.com>
  */
-class SignUpMailNotifier extends Object {
+class ForgotMailNotifier extends Object {
 
 	use \app\modules\main\components\MailerTrait;
 
 	/**
 	 * @var сообщение для темы письма
 	 */
-	public $subjectMessage = 'User SignUp Letter Subject';
+	public $subjectMessage = 'User Forgot Letter Subject';
 
 	/**
 	 * @var string шаблон письма
 	 */
-	public $letter = "@app/modules/main/letters/sign-up.php";
+	public $letter = "@app/modules/main/letters/forgot.php";
 
 	public function send($model, $password)
 	{
