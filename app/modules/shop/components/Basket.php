@@ -38,10 +38,11 @@ class Basket extends ServiceLocator
 	 * @param int $id идентификтор элемента каталога
 	 * @param string $class класс элемента каталога
 	 * @param int $qty количество
+	 * @param array $attrs дополнительные атрибуты для сохранения, передаваемые клиентом
 	 * @throws ErrorException
 	 * @throws \yii\base\InvalidConfigException
 	 */
-	public function add($id, $class, $qty = 1)
+	public function add($id, $class, $qty = 1, $attrs = [])
 	{
 
 		$model = $class::findOne($id);
@@ -53,7 +54,7 @@ class Basket extends ServiceLocator
 
 		$good->qty = $qty;
 
-		$this->configureGood($good, $model);
+		$this->configureGood($good, $model, $attrs);
 
 		$order = $this->getOrder();
 
@@ -65,30 +66,36 @@ class Basket extends ServiceLocator
 
 	/**
 	 * Обновляет количество добавленного в корзину товара
-	 * @param int $id идентификатор товара
-	 * @param string $class класс модели товара
+	 * @param string $itemKey ключ (идентификатор) товара
 	 * @param int $qty количество
+	 * @return bool
 	 */
-	public function updateNewQty($id, $class, $qty)
+	public function updateNewQty($itemKey, $qty)
 	{
 
-		$this->removeNew($id, $class);
+		$order = $this->getOrder();
 
-		$this->add($id, $class, $qty);
+		$res = $order->updateNewGood($itemKey, $qty);
+
+		if($res) {
+			$this->orderManager->saveOrder($order);
+			return true;
+		} else {
+			return false;
+		}
 
 	}
 
 	/**
 	 * Удаляет новый товар из заказа
-	 * @param int $itemId идентификатор элемента каталога
-	 * @param string $itemClass класс элемента каталога
+	 * @param string $itemKey ключ (идентификатор) товара
 	 * @return bool
 	 */
-	public function removeNew($itemId, $itemClass)
+	public function removeNew($itemKey)
 	{
 		$order = $this->getOrder();
 
-		$res = $order->removeNewGood($itemId, $itemClass);
+		$res = $order->removeNewGood($itemKey);
 
 		if($res) {
 			$this->orderManager->saveOrder($order);
@@ -115,13 +122,15 @@ class Basket extends ServiceLocator
 	 * Установка свойств модели заказанного товара из модели товара
 	 * @param Good $good заказанный товар
 	 * @param IShopItem $model товар
+	 * @param array $attrs дополнительные аттрибуты заказанного товара
 	 */
-	protected function configureGood(Good $good, IShopItem $model)
+	protected function configureGood(Good $good, IShopItem $model, $attrs = [])
 	{
 
 		$class = get_class($model);
 
 		$good->item_id = $model->id;
+		$good->item_key = $model->getShopKey($attrs);
 		$good->item_class = $class;
 		$good->title = $model->getShopTitle();
 		$good->price = $model->getPrice();
@@ -138,7 +147,10 @@ class Basket extends ServiceLocator
 
 			}
 
+		}
 
+		foreach ($attrs as $key => $value) {
+			$arr[$key] = $value;
 		}
 
 		$good->attrs = $arr;

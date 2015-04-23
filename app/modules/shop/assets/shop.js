@@ -82,11 +82,12 @@
          * @param int id идентификатор товара
          * @param string className класс товара
          * @param int qty количество
+         * @param int attr дополнительные аттрибуты для сохранения
          */
 
-        this.add = function(id, className, qty) {
+        this.add = function(id, className, qty, attrs) {
 
-            $http.post(urlMapping.add, {id: id, 'class': className, qty: qty}).success(function(data){
+            $http.post(urlMapping.add, {id: id, 'class': className, qty: qty, attrs: attrs}).success(function(data){
                 basketNotifier.addNotify();
                 self.setStat(data);
             });
@@ -161,12 +162,11 @@
 
         /**
          * Удаление элемента из заказа
-         * @param int id идентификатор элемента
-         * @param string className класс элемента
+         * @param string key ключ (идентификатор) элемента
          */
-        this.del = function(id, className) {
+        this.del = function(key) {
 
-            $http.delete(urlMapping.del, {params:{id: id, 'class': className}}).success(function(data){
+            $http.delete(urlMapping.del, {params:{key: key}}).success(function(data){
 
                 self.setOrder(data);
 
@@ -178,13 +178,12 @@
 
         /**
          * Изменение количества
-         * @param int id идентификатор элемента
-         * @param string className класс элемента
+         * @param string key ключ (идентификатор) элемента
          * @param int qty количество
          */
-        this.update = function(id, className, qty) {
+        this.update = function(key, qty) {
 
-            $http.put(urlMapping.update, {qty: qty}, {params:{id: id, 'class': className}}).success(function(data){
+            $http.put(urlMapping.update, {qty: qty}, {params:{key: key}}).success(function(data){
 
                 self.setOrder(data);
 
