@@ -15,5 +15,6 @@ use yii\widgets\ActiveForm;
 <?= $form->field($model, 'rememberMe')->checkbox() ?>
 <div class="form-group">
     <?= Html::submitButton(Yii::t('main/app', 'Enter'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+    <?= Html::a(Yii::t('main/app', 'User Forgot'), ['/main/user/forgot'], ['class' => 'btn btn-warning']) ?>
 </div>
 <?php ActiveForm::end(); ?>

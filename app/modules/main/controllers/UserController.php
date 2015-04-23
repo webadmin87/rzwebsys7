@@ -25,7 +25,7 @@ class UserController extends App {
 			'class' => AccessControl::className(),
 			'rules' => [
 				[
-					'actions' => ['sign-in', 'sign-up', 'error'],
+					'actions' => ['sign-in', 'sign-up', 'forgot', 'error'],
 					'allow' => true,
 				],
 				[
@@ -64,6 +64,9 @@ class UserController extends App {
 			'profile' => [
 				'class' => '\app\modules\main\actions\user\Profile',
 			],
+			'forgot' => [
+				'class' => '\app\modules\main\actions\user\Forgot',
+			]
 		];
 	}
 

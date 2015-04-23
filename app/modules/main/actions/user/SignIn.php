@@ -16,7 +16,6 @@ class SignIn extends Action
     /**
      * @var string url для редиректа после удачного логина
      */
-
     public $returnUrl;
 
     /**
