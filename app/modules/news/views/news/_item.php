@@ -20,4 +20,4 @@ $url = Url::toRoute(['/news/news/detail', 'section' => $model->sections[0]->code
     </a>
 <? endif; ?>
 <p><?= $model->annotation ?></p>
-<p class="date"><?= $model->date ?></p>
+<p class="date"><?= Yii::$app->formatter->asDate($model->date) ?></p>

@@ -1,39 +1,35 @@
 <?php
-namespace app\modules\main\widgets;
+namespace app\modules\main\widgets\user;
 
 use yii\base\Widget;
 
 /**
- * Class Login
+ * Class SignIn
  * Виджет формы логина
  * @package app\modules\main\widgets
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Login extends Widget
+class SignIn extends Widget
 {
 
     /**
      * @var \app\modules\main\models\LoginForm модель формы
      */
-
     public $model;
 
     /**
      * @var array параметры формы
      */
-
     public $formOptions = [];
 
     /**
      * @var string шаблон
      */
-
-    public $tpl = "login";
+    public $tpl = "sign-in";
 
     /**
      * @inheritdoc
      */
-
     public function run()
     {
 

@@ -7,7 +7,7 @@ namespace common\db\fields;
  * @package common\db\fields
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class DateField extends TextField
+class DateField extends Field
 {
 
     /**
@@ -30,6 +30,8 @@ class DateField extends TextField
         $rules = parent::rules();
 
         $rules[] = [$this->attr, 'date', 'format' => $this->dateFormat];
+
+        $rules[] = [$this->attr, 'filter', 'filter' => 'trim'];
 
         return $rules;
 

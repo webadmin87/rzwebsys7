@@ -120,4 +120,13 @@ class News extends ActiveRecord
         return "news";
     }
 
+    /**
+     * @inheritdoc
+     */
+    public static function getEntityName()
+    {
+        return Yii::t('news/app', 'News');
+    }
+
+
 }

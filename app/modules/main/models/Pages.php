@@ -37,4 +37,13 @@ class Pages extends TActiveRecord
         return meta\PagesMeta::className();
     }
 
+    /**
+     * @inheritdoc
+     */
+    public static function getEntityName()
+    {
+        return Yii::t('main/app', 'Pages');
+    }
+
+
 }

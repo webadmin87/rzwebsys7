@@ -1,28 +1,27 @@
 <?php
-namespace app\modules\main\actions;
+namespace app\modules\main\actions\user;
 
 use app\modules\main\models\LoginForm;
 use yii\base\Action;
 
 /**
- * Class Login
+ * Class SignIn
  * Действие входа в систему
- * @package app\modules\main\actions
+ * @package app\modules\main\actions\user
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class Login extends Action
+class SignIn extends Action
 {
 
     /**
      * @var string url для редиректа после удачного логина
      */
-
     public $returnUrl;
 
     /**
      * @var string шаблон
      */
-    public $tpl = "login";
+    public $tpl = "sign-in";
 
     /**
      * @inheritdoc

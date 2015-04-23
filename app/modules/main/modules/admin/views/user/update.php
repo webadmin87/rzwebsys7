@@ -7,7 +7,7 @@ use yii\helpers\Html;
  * @var \app\modules\main\models\User $model
  */
 
-$this->title = \Yii::t($this->context->tFile, 'Update User') . ': ' . $model->id;
+$this->title = \Yii::t($this->context->tFile, 'Update User') . ': ' . $model->getItemLabel();
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = \Yii::t('core', 'Update');

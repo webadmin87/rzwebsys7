@@ -7,7 +7,7 @@ use common\widgets\admin\CrudLinks;
 * @var app\modules\banners\models\Place $model
 */
 
-$this->title = $model->id;
+$this->title = $model->getItemLabel();
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Places'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

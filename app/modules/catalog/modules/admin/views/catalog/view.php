@@ -8,7 +8,7 @@ use yii\helpers\Html;
  * @var app\modules\catalog\models\Catalog $model
  */
 
-$this->title = $model->id;
+$this->title = $model->getItemLabel();
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Catalog'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

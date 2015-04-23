@@ -7,7 +7,7 @@ use yii\helpers\Html;
 * @var app\modules\banners\models\Banner $model
 */
 
-$this->title = \Yii::t($this->context->tFile, 'Update Banner').': ' . $model->id;
+$this->title = \Yii::t($this->context->tFile, 'Update Banner').': ' . $model->getItemLabel();
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Banners'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = \Yii::t('core', 'Update');

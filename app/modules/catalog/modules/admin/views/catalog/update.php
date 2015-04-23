@@ -7,7 +7,7 @@ use yii\helpers\Html;
  * @var app\modules\catalog\models\Catalog $model
  */
 
-$this->title = \Yii::t($this->context->tFile, 'Update Catalog') . ': ' . $model->id;
+$this->title = \Yii::t($this->context->tFile, 'Update Catalog') . ': ' . $model->getItemLabel();
 $this->params['breadcrumbs'][] = ['label' => \Yii::t($this->context->tFile, 'Catalog'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = \Yii::t('core', 'Update');
