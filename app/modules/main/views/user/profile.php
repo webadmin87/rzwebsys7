@@ -12,20 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 echo Html::tag('h1', $this->title.' '.$model->username);
 
-$form = ActiveForm::begin([
-	'enableAjaxValidation' => true,
+echo \yii\widgets\DetailView::widget([
+	'model' => $model,
+	'attributes' => [
+		'username',
+		'email',
+		'name',
+	],
 ]);
-
-echo $form->field($model, 'username')->textInput();
-
-echo $form->field($model, 'password')->passwordInput();
-
-echo $form->field($model, 'confirm_password')->passwordInput();
-
-echo $form->field($model, 'email')->textInput();
-
-echo $form->field($model, 'name')->textInput();
-
-echo Html::submitButton('Отправить', ['class' => 'btn btn-primary']);
-
-ActiveForm::end();
