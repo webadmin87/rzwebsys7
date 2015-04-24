@@ -38,7 +38,7 @@ class SignUp extends Action
 	/**
 	 * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
 	 */
-	public $returnUrl = ['/user/profile/'];
+	public $returnUrl = ['/user/view/'];
 
 	/**
 	 * @var string сценарий для валидации
