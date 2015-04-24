@@ -17,7 +17,7 @@ class View extends Action
 	/**
 	 * @var string шаблон
 	 */
-	public $tpl = "profile";
+	public $tpl = "view";
 
 	public function run()
 	{
