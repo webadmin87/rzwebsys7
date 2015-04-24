@@ -28,9 +28,14 @@ class User extends App
 	public $signUpRoute = ['/main/user/sign-up'];
 
 	/**
-	 * @var array маршрут профиля
+	 * @var array маршрут просмотра профиля
 	 */
-	public $profileRoute = ['/main/user/profile/'];
+	public $viewRoute = ['/main/user/view/'];
+
+	/**
+	 * @var array маршрут редактирования профиля
+	 */
+	public $updateRoute = ['/main/user/update/'];
 
 	/**
 	 * @var string селектор для ссылки по которой открывать виджет обратной связи в fancybox. Если не задан форма выводится на странице
@@ -44,7 +49,8 @@ class User extends App
 			'signInRoute' => $this->signInRoute,
 			'signOutRoute' => $this->signOutRoute,
 			'signUpRoute' => $this->signUpRoute,
-			'profileRoute' => $this->profileRoute,
+			'viewRoute' => $this->viewRoute,
+			'updateRoute' => $this->updateRoute,
 		]);
 	}
 }

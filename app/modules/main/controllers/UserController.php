@@ -29,7 +29,7 @@ class UserController extends App {
 					'allow' => true,
 				],
 				[
-					'actions' => ['sign-out', 'profile'],
+					'actions' => ['sign-out', 'update', 'view'],
 					'allow' => true,
 					'roles' => ['@'],
 				],
@@ -61,8 +61,11 @@ class UserController extends App {
 			'sign-up' => [
 				'class' => '\app\modules\main\actions\user\SignUp',
 			],
-			'profile' => [
-				'class' => '\app\modules\main\actions\user\Profile',
+			'view' => [
+				'class' => '\app\modules\main\actions\user\View',
+			],
+			'update' => [
+				'class' => '\app\modules\main\actions\user\Update',
 			],
 			'forgot' => [
 				'class' => '\app\modules\main\actions\user\Forgot',
