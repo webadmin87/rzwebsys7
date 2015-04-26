@@ -35,4 +35,28 @@ interface IShopItem
 	 */
 	public function getLink();
 
+	/**
+	 * @return array массив атрибутов моделей, которые необходимо сохранять при заказе
+	 *
+	 * Должен иметь следующий вид:
+	 *
+	 * [
+	 * 		"articul"=>"articul",
+	 * 		"producer"=>"producer.title",
+	 * ]
+	 */
+	public function getShopModelAttributes();
+
+	/**
+	 * @return array массив названий атрибутов, которые могут быть переданы клиентом при заказе
+	 *
+	 * Должен иметь следующий вид:
+	 *
+	 * [
+	 * 		"color",
+	 * 		"size",
+	 * ]
+	 */
+	public function getShopClientAttributes();
+
 }

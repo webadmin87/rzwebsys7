@@ -47,7 +47,6 @@ class OrderManager extends Component
 				if($status)
 					$this->_order->status_id = $status->id;
 
-
 			}
 
 		}

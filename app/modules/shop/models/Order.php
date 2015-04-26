@@ -211,7 +211,7 @@ class Order extends ActiveRecord
 
 		foreach($this->getNewGoods() AS $model) {
 
-			if($model->item_id == $good->item_id AND $model->item_class == $good->item_class)
+			if($model->item_key == $good->item_key)
 				return $model;
 
 		}
@@ -221,17 +221,41 @@ class Order extends ActiveRecord
 	}
 
 	/**
-	 * Удаляет новый товар из заказа
-	 * @param int $itemId идентификатор элемента каталога
-	 * @param string $itemClass класс элемента каталога
+	 * Изменяет количество нового товара в заказе
+	 * @param string $itemKey ключ (идентификатор) элемента каталога
+	 * @param $qty количество заказываемого товара
 	 * @return bool
 	 */
-	public function removeNewGood($itemId, $itemClass)
+	public function updateNewGood($itemKey, $qty)
 	{
 
 		foreach($this->_goods AS $k => $good) {
 
-			if($good->item_id == $itemId AND $good->item_class == $itemClass) {
+			if($good->item_key == $itemKey) {
+
+				$this->_goods[$k]->qty = $qty;
+
+				return true;
+
+			}
+
+		}
+
+		return false;
+
+	}
+
+	/**
+	 * Удаляет новый товар из заказа
+	 * @param string $itemKey ключ (идентификатор) элемента каталога
+	 * @return bool
+	 */
+	public function removeNewGood($itemKey)
+	{
+
+		foreach($this->_goods AS $k => $good) {
+
+			if($good->item_key == $itemKey) {
 
 				unset($this->_goods[$k]);
 
