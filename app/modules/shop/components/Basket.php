@@ -5,7 +5,6 @@ use yii\di\ServiceLocator;
 use app\modules\shop\models\Good;
 use Yii;
 use yii\base\ErrorException;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 /**
@@ -17,21 +16,6 @@ use yii\helpers\Url;
  */
 class Basket extends ServiceLocator
 {
-
-	/**
-	 * @var array массив атрибутов моделей, которые необходимо сохранять в заказе.
-	 *
-	 * Должен иметь следующий вид:
-	 *
-	 * [
-	 * 		'app\modules\catalog\models\Catalog' => [
-	 *
-	 * 			"articul"=>"articul",
-	 * 			"color"=>"color.title",
-	 * 		]
-	 * ]
-	 */
-	public $attributesToSave = [];
 
 	/**
 	 * Добавление элемента каталога в корзину
@@ -130,30 +114,14 @@ class Basket extends ServiceLocator
 		$class = get_class($model);
 
 		$good->item_id = $model->id;
-		$good->item_key = $model->getShopKey($attrs);
 		$good->item_class = $class;
 		$good->title = $model->getShopTitle();
 		$good->price = $model->getPrice();
 		$good->discount = $model->getDiscount();
 		$good->link = Url::toRoute($model->getLink());
-
-		$arr = [];
-
-		if(!empty($this->attributesToSave[$class])) {
-
-			foreach($this->attributesToSave[$class] AS $k=>$v) {
-
-				$arr[$k]= ArrayHelper::getValue($model, $v);
-
-			}
-
-		}
-
-		foreach ($attrs as $key => $value) {
-			$arr[$key] = $value;
-		}
-
-		$good->attrs = $arr;
+		$good->setModelAttributes();
+		$good->setClientAttributes($attrs);
+		$good->item_key = $good->generateKey();
 
 	}
 
