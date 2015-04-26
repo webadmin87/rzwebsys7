@@ -48,18 +48,13 @@ trait ShopItemTrait
      * Должен иметь следующий вид:
      *
      * [
-     * 		'app\modules\catalog\models\Catalog' => [
-     *
-     * 			"articul"=>"articul",
-     * 			"producer"=>"producer.title",
-     * 		]
+     * 		"articul"=>"articul",
+     * 		"producer"=>"producer.title",
      * ]
      */
     public function getShopModelAttributes()
     {
-        return [
-            "producer"=>"producer.title",
-        ];
+        return [];
     }
 
     /**
@@ -68,15 +63,13 @@ trait ShopItemTrait
      * Должен иметь следующий вид:
      *
      * [
-     * 		'app\modules\catalog\models\Catalog' => [
-     * 			"color",
-     * 			"size",
-     * 		]
+ * 			"color",
+ * 			"size",
      * ]
      */
     public function getShopClientAttributes()
     {
-        return ['color'];
+        return [];
     }
 
 
