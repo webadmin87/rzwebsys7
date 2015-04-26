@@ -20,20 +20,6 @@ trait ShopItemTrait
     }
 
     /**
-     * @param array $attrs дополнительные аттрибуты для формирования ключа
-     * @return string ключ (идентификатор) товара в корзине
-     */
-    public function getShopKey($attrs = [])
-    {
-        $shopKey = $attrs;
-        $shopKey['id'] = $this->getId();
-        $shopKey['class'] = get_class($this);
-        $shopKey = json_encode($shopKey);
-
-        return md5($shopKey);
-    }
-
-    /**
      * @return int цена товара
      */
     public function getPrice() {
@@ -54,6 +40,36 @@ trait ShopItemTrait
     public function getShopTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @return array массив атрибутов моделей, которые необходимо сохранять при заказе
+     *
+     * Должен иметь следующий вид:
+     *
+     * [
+     * 		"articul"=>"articul",
+     * 		"producer"=>"producer.title",
+     * ]
+     */
+    public function getShopModelAttributes()
+    {
+        return [];
+    }
+
+    /**
+     * @return array массив названий атрибутов, которые могут быть переданы клиентом при заказе
+     *
+     * Должен иметь следующий вид:
+     *
+     * [
+ * 			"color",
+ * 			"size",
+     * ]
+     */
+    public function getShopClientAttributes()
+    {
+        return [];
     }
 
 

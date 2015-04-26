@@ -99,6 +99,13 @@ class GoodMeta extends MetaFields
 				"params" => [$this->owner, "attrs"]
 			],
 
+	        "client_attrs" => [
+		        "definition" => [
+			        "class" => \app\modules\shop\db\fields\GoodAttrsField::className(),
+			        "title" => Yii::t('shop/app', 'Client Attributes'),
+		        ],
+		        "params" => [$this->owner, "client_attrs"]
+	        ],
 
 		];
     }

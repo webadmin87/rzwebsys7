@@ -31,7 +31,6 @@ class BasketRestController extends Controller
 
 	}
 
-
 	/**
 	 * Добавление товара в корзину
 	 * @throws \yii\base\ErrorException
@@ -64,7 +63,6 @@ class BasketRestController extends Controller
 
 	}
 
-
 	/**
 	 * Удаление товара из корзины
 	 * @param string $key ключ (идентификатор) элемента в корзине
@@ -77,7 +75,6 @@ class BasketRestController extends Controller
 		return $this->basket->getOrder();
 
 	}
-
 
 	/**
 	 * Заказ
@@ -168,7 +165,6 @@ class BasketRestController extends Controller
             'set-order'=>['put'],
 			'delete'=>['delete'],
 			'update'=>['put'],
-
 		];
 
 	}
