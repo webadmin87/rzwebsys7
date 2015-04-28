@@ -129,15 +129,7 @@ abstract class MetaFields extends Object
                         "fromAttr"=>"createdAtFrom",
                         "toAttr"=>"createdAtTo",
                     ],
-                    "queryModifier"=>function($q, $f) {
-
-                        $table = $f->model->tableName();
-                        $attr = $f->attr;
-                        $toDate = $f->model->createdAtTo?$f->model->createdAtTo. " 23:59:59":$f->model->createdAtTo;
-                        $q->andFilterWhere([">=", "{{%$table}}.{{%$attr}}", $f->model->createdAtFrom]);
-                        $q->andFilterWhere(["<=", "{{%$table}}.{{%$attr}}", $toDate]);
-
-                    }
+                    "queryModifier"=>[$this, "createdAtQueryModifier"],
                 ],
                 "params" => [$this->owner, "created_at"]
             ],
@@ -174,6 +166,20 @@ abstract class MetaFields extends Object
 
         ];
 
+    }
+
+    /**
+     * Поиск по диапазону дат создания
+     * @param \yii\db\ActiveQuery $q
+     * @param \common\db\fields\Field $f
+     */
+    public function createdAtQueryModifier($q, $f)
+    {
+        $table = $f->model->tableName();
+        $attr = $f->attr;
+        $toDate = $f->model->createdAtTo?$f->model->createdAtTo. " 23:59:59":$f->model->createdAtTo;
+        $q->andFilterWhere([">=", "{{%$table}}.{{%$attr}}", $f->model->createdAtFrom]);
+        $q->andFilterWhere(["<=", "{{%$table}}.{{%$attr}}", $toDate]);
     }
 
     /**
