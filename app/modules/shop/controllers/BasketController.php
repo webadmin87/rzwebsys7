@@ -38,9 +38,7 @@ class BasketController extends App
 
         return $this->render('index');
 
-
     }
-
 
     public function actionProcess()
     {

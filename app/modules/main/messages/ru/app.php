@@ -103,5 +103,11 @@ return [
     'User SignUp Letter Subject' => 'Регистрация на сайте',
     'User SignUp Letter Header' => 'Благодарим за регистрацию на нашем сайте.',
     'User Profile' => 'Профиль',
+    'User Profile Edit' => 'Редактировать профиль',
     'User Forgot' => 'Восстановление пароля',
+    'User Forgot Not Found' => 'Пользователь с указанными данными не найден',
+    'User Forgot Letter Subject' => 'Запрос смены пароля',
+    'User Forgot Letter Header' => 'Для вашей учетной записи был изменен пароль:',
+    'New Password' => 'Новый пароль',
+    'Password Changed' => 'Пароль успешно изменен. Новый пароль отправлен на Вашу электронную почту.'
 ];

@@ -31,7 +31,6 @@ class BasketRestController extends Controller
 
 	}
 
-
 	/**
 	 * Добавление товара в корзину
 	 * @throws \yii\base\ErrorException
@@ -41,7 +40,7 @@ class BasketRestController extends Controller
 
 		$r = Yii::$app->request;
 
-		$this->basket->add($r->post("id"), $r->post("class"), $r->post("qty", 1));
+		$this->basket->add($r->post("id"), $r->post("class"), $r->post("qty", 1), $r->post('attrs', []));
 
 		Yii::$app->response->statusCode = 201;
 
@@ -50,36 +49,32 @@ class BasketRestController extends Controller
 
 	/**
 	 * Изменение количества товара в корзине
-	 * @param int $id идентификатор элемента
-	 * @param string $class класс элемента каталога
+	 * @param string $key ключ (идентификатор) элемента в корзине
 	 * @return \app\modules\shop\models\Order
 	 */
-	public function actionUpdate($id, $class)
+	public function actionUpdate($key)
 	{
 
 		$r = Yii::$app->request;
 
-		$this->basket->updateNewQty($id, $class, $r->post("qty"));
+		$this->basket->updateNewQty($key, $r->post("qty"));
 
 		return $this->basket->getOrder();
 
 	}
-
 
 	/**
 	 * Удаление товара из корзины
-	 * @param int $id идентификатор элемента добавляемого в корзину
-	 * @param string $class класс элемента каталога
+	 * @param string $key ключ (идентификатор) элемента в корзине
 	 * @return \app\modules\shop\models\Order
 	 */
-	public function actionDelete($id, $class)
+	public function actionDelete($key)
 	{
-		$res = $this->basket->removeNew($id, $class);
+		$res = $this->basket->removeNew($key);
 
 		return $this->basket->getOrder();
 
 	}
-
 
 	/**
 	 * Заказ
@@ -170,7 +165,6 @@ class BasketRestController extends Controller
             'set-order'=>['put'],
 			'delete'=>['delete'],
 			'update'=>['put'],
-
 		];
 
 	}

@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
  * @var \app\modules\main\models\User $model модель пользователя
  */
 
-$this->title = Yii::t('main/app', 'User Profile');
+$this->title = Yii::t('main/app', 'User Profile Edit');
 $this->params['breadcrumbs'][] = $this->title;
 
 echo Html::tag('h1', $this->title.' '.$model->username);

@@ -8,18 +8,18 @@ use yii\widgets\ActiveForm;
 use yii\web\NotFoundHttpException;
 
 /**
- * Class Profile
+ * Class Update
  * Действие вывода профиля пользователя
  * @package app\modules\main\controllers
  * @author Chernyavsky Denis <panopticum87@gmail.com>
  */
-class Profile extends Action
+class Update extends Action
 {
 
 	/**
 	 * @var string url для редиректа по умолчанию, используется в отсутствие $redirectParam в запросе
 	 */
-	public $returnUrl = ['/user/profile/'];
+	public $returnUrl = ['/user/view/'];
 
 	/**
 	 * @var string название параметра запроса, который служит признаком ajax валидации
@@ -29,7 +29,7 @@ class Profile extends Action
 	/**
 	 * @var string шаблон
 	 */
-	public $tpl = "profile";
+	public $tpl = "update";
 
 	public function run()
 	{

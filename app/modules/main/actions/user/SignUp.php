@@ -43,7 +43,7 @@ class SignUp extends Action
 	/**
 	 * @var string сценарий для валидации
 	 */
-	public $modelScenario = 'insert';
+	public $modelScenario = 'register';
 
 	/**
 	 * @var string шаблон
