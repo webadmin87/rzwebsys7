@@ -122,7 +122,22 @@ abstract class MetaFields extends Object
                 'definition' => [
                     "class" => fields\TimestampField::className(),
                     "title" => Yii::t('core', 'Created'),
-					"showInExtendedFilter"=>false,
+                    "showInGrid"=>true,
+                    "showInFilter"=>false,
+					"filterInputClass"=>[
+                        "class"=>\common\inputs\DateRangeInput::className(),
+                        "fromAttr"=>"createdAtFrom",
+                        "toAttr"=>"createdAtTo",
+                    ],
+                    "queryModifier"=>function($q, $f) {
+
+                        $table = $f->model->tableName();
+                        $attr = $f->attr;
+                        $toDate = $f->model->createdAtTo?$f->model->createdAtTo. " 23:59:59":$f->model->createdAtTo;
+                        $q->andFilterWhere([">=", "{{%$table}}.{{%$attr}}", $f->model->createdAtFrom]);
+                        $q->andFilterWhere(["<=", "{{%$table}}.{{%$attr}}", $toDate]);
+
+                    }
                 ],
                 "params" => [$this->owner, "created_at"]
             ],

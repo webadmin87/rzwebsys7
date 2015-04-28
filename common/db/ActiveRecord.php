@@ -16,6 +16,8 @@ use yii\db\Expression;
 abstract class ActiveRecord extends YiiRecord
 {
 
+    use CreatedAtSearchTrait;
+
     /**
      * Сценарии валидации
      */
@@ -134,7 +136,9 @@ abstract class ActiveRecord extends YiiRecord
 
         $fields = $this->getMetaFields()->getFields();
 
-        $rules = [];
+        $rules = [
+            [["createdAtFrom", "createdAtTo"], "safe"],
+        ];
 
         foreach ($fields AS $field) {
 
@@ -184,7 +188,12 @@ abstract class ActiveRecord extends YiiRecord
 
         $fields = $this->getMetaFields()->getFields();
 
-        $labels = [];
+        $labels = [
+
+            "createdAtFrom"=>Yii::t('core', 'Created from'),
+            "createdAtTo"=>Yii::t('core', 'Created to'),
+
+        ];
 
         foreach ($fields AS $field) {
 
@@ -260,7 +269,7 @@ abstract class ActiveRecord extends YiiRecord
         }
 
         foreach ($fields AS $field)
-            $field->search($query);
+            $field->applySearch($query);
 
         return $dataProvider;
 
