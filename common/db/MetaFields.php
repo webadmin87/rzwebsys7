@@ -32,7 +32,7 @@ abstract class MetaFields extends Object
      * @var array массив объектов полей модели
      */
 
-    protected $fields;
+    protected $_fields;
 
     /**
      * Конструктор
@@ -79,9 +79,9 @@ abstract class MetaFields extends Object
     public function getFields()
     {
 
-        if ($this->fields === null) {
+        if ($this->_fields === null) {
 
-            $this->fields = [];
+            $this->_fields = [];
 
             $config = ArrayHelper::merge($this->defaultConfig(), $this->config());
 
@@ -90,13 +90,13 @@ abstract class MetaFields extends Object
                 if (!is_array($config))
                     continue;
 
-                $this->fields[] = Yii::createObject($config["definition"], $config["params"]);
+                $this->_fields[] = Yii::createObject($config["definition"], $config["params"]);
 
             }
 
         }
 
-        return $this->fields;
+        return $this->_fields;
 
     }
 

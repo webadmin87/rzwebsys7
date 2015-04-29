@@ -49,7 +49,7 @@ abstract class ActiveRecord extends YiiRecord
     /**
      * @var \common\db\MetaFields объект с описанием полей модели
      */
-    protected $metaFields;
+    protected $_metaFields;
 
     /**
      * @var array массив сценариев при которых инициалихируются начальные значения
@@ -159,15 +159,15 @@ abstract class ActiveRecord extends YiiRecord
     public function getMetaFields()
     {
 
-        if ($this->metaFields === null) {
+        if ($this->_metaFields === null) {
 
             $class = $this->metaClass();
 
-            $this->metaFields = Yii::createObject($class, [$this]);
+            $this->_metaFields = Yii::createObject($class, [$this]);
 
         }
 
-        return $this->metaFields;
+        return $this->_metaFields;
 
     }
 
