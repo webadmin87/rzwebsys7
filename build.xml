@@ -10,7 +10,7 @@
     <property name="deploy.logfile" value="${deploy.logdir}/deploy.log" />
     <property name="deploy.composerLog" value="${deploy.logdir}/composer.log" />
 
-    <target name="fullDeploy" depends="deployWithVendors,updateRoles" description="Full deploy">
+    <target name="fullDeploy" depends="" description="Full deploy">
 
         <echo msg="Full deploy..."/>
 
@@ -20,15 +20,39 @@
 
         <echo msg="Deploy without vendors update..."/>
 
-        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; git pull origin master >> ${deploy.logfile}; ./init --env=Production --overwrite=1; ./yii migrate --interactive=0 >> ${deploy.logfile}; rm -rf ${deploy.cachedir};'" />
     </target>
 
-    <target name="deployWithVendors" depends="fastDeploy" description="Update vendors">
+    <target name="updateVendors" depends="prepareLogs" description="Update vendors">
 
-        <echo msg="Deploing and updating vendors ..."/>
+        <echo msg="Updating vendors..."/>
 
         <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; composer.phar install >> ${deploy.composerLog};'"/>
 
+    </target>
+
+
+    <target name="clearCache" depends="prepareLogs" description="Clear cache">
+
+        <echo msg="Clearing cache..."/>
+
+        <exec command="'cd ${deploy.dir}; rm -rf ${deploy.cachedir};'" />
+
+    </target>
+
+    <target name="migrate" depends="prepareLogs" description="Migrate">
+
+        <echo msg="Migrating..."/>
+
+        <exec command="'cd ${deploy.dir}; ./yii migrate --interactive=0 >> ${deploy.logfile};'" />
+
+    </target>
+
+
+    <target name="pullData" depends="prepareLogs" description="Pull date from repo">
+
+        <echo msg="Pulling data from repo..."/>
+
+        <exec command="'cd ${deploy.dir}; git pull origin master >> ${deploy.logfile}; ./init --env=Production --overwrite=1;'" />
     </target>
 
     <target name="updateRoles" depends="prepareLogs" description="Update roles">
