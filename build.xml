@@ -10,7 +10,7 @@
     <property name="deploy.logfile" value="${deploy.logdir}/deploy.log" />
     <property name="deploy.composerLog" value="${deploy.logdir}/composer.log" />
 
-    <target name="fullDeploy" depends="fastDeploy" description="Full deploy">
+    <target name="fullDeploy" depends="fastWithRoles" description="Full deploy">
 
         <echo msg="Full deploy..."/>
 
@@ -23,6 +23,13 @@
         <echo msg="Deploy without vendors update..."/>
 
         <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; mkdir -p ${deploy.logdir};  git pull origin master >> ${deploy.logfile}; ./init --env=Production --overwrite=1; ./yii migrate --interactive=0 >> ${deploy.logfile}; rm -rf ${deploy.cachedir};'" />
+    </target>
+
+    <target name="fastWithRoles" depends="fastDeploy" description="Deploy with roles install">
+
+        <echo msg="Deploy with roles install..."/>
+
+        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; ./yii install/roles >> ${deploy.logfile}; rm -rf ${deploy.cachedir};'" />
     </target>
 
 </project>
