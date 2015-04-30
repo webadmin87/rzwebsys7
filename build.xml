@@ -10,26 +10,40 @@
     <property name="deploy.logfile" value="${deploy.logdir}/deploy.log" />
     <property name="deploy.composerLog" value="${deploy.logdir}/composer.log" />
 
-    <target name="fullDeploy" depends="fastWithRoles" description="Full deploy">
+    <target name="fullDeploy" depends="deployWithVendors,updateRoles" description="Full deploy">
 
         <echo msg="Full deploy..."/>
+
+    </target>
+
+    <target name="fastDeploy" depends="prepareLogs" description="Deploy without vendors update">
+
+        <echo msg="Deploy without vendors update..."/>
+
+        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; git pull origin master >> ${deploy.logfile}; ./init --env=Production --overwrite=1; ./yii migrate --interactive=0 >> ${deploy.logfile}; rm -rf ${deploy.cachedir};'" />
+    </target>
+
+    <target name="deployWithVendors" depends="fastDeploy" description="Update vendors">
+
+        <echo msg="Deploing and updating vendors ..."/>
 
         <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; composer.phar install >> ${deploy.composerLog};'"/>
 
     </target>
 
-    <target name="fastDeploy" description="Deploy without vendors update">
+    <target name="updateRoles" depends="prepareLogs" description="Update roles">
 
-        <echo msg="Deploy without vendors update..."/>
-
-        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; mkdir -p ${deploy.logdir};  git pull origin master >> ${deploy.logfile}; ./init --env=Production --overwrite=1; ./yii migrate --interactive=0 >> ${deploy.logfile}; rm -rf ${deploy.cachedir};'" />
-    </target>
-
-    <target name="fastWithRoles" depends="fastDeploy" description="Deploy with roles install">
-
-        <echo msg="Deploy with roles install..."/>
+        <echo msg="Updating roles..."/>
 
         <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; ./yii install/roles >> ${deploy.logfile}; rm -rf ${deploy.cachedir};'" />
+    </target>
+
+    <target name="prepareLogs" description="Create logs dir">
+
+        <echo msg="Creating logs dir..."/>
+
+        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; mkdir -p ${deploy.logdir};'"/>
+
     </target>
 
 </project>
