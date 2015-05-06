@@ -16,6 +16,8 @@ use yii\db\Expression;
 abstract class ActiveRecord extends YiiRecord
 {
 
+    use CreatedAtSearchTrait;
+
     /**
      * Сценарии валидации
      */
@@ -47,7 +49,7 @@ abstract class ActiveRecord extends YiiRecord
     /**
      * @var \common\db\MetaFields объект с описанием полей модели
      */
-    protected $metaFields;
+    protected $_metaFields;
 
     /**
      * @var array массив сценариев при которых инициалихируются начальные значения
@@ -134,7 +136,9 @@ abstract class ActiveRecord extends YiiRecord
 
         $fields = $this->getMetaFields()->getFields();
 
-        $rules = [];
+        $rules = [
+            [["createdAtFrom", "createdAtTo"], "safe"],
+        ];
 
         foreach ($fields AS $field) {
 
@@ -155,15 +159,15 @@ abstract class ActiveRecord extends YiiRecord
     public function getMetaFields()
     {
 
-        if ($this->metaFields === null) {
+        if ($this->_metaFields === null) {
 
             $class = $this->metaClass();
 
-            $this->metaFields = Yii::createObject($class, [$this]);
+            $this->_metaFields = Yii::createObject($class, [$this]);
 
         }
 
-        return $this->metaFields;
+        return $this->_metaFields;
 
     }
 
@@ -184,7 +188,12 @@ abstract class ActiveRecord extends YiiRecord
 
         $fields = $this->getMetaFields()->getFields();
 
-        $labels = [];
+        $labels = [
+
+            "createdAtFrom"=>Yii::t('core', 'Created from'),
+            "createdAtTo"=>Yii::t('core', 'Created to'),
+
+        ];
 
         foreach ($fields AS $field) {
 
@@ -260,7 +269,7 @@ abstract class ActiveRecord extends YiiRecord
         }
 
         foreach ($fields AS $field)
-            $field->search($query);
+            $field->applySearch($query);
 
         return $dataProvider;
 

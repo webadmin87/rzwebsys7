@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="rzwebsys7" default="fullDeploy" basedir=".">
+<project name="rzwebsys7" default="maxDeploy" basedir=".">
 
     <property name="deploy.dir" value="/path/to/application" />
     <property name="ssh.host" value="hostname"/>
@@ -10,19 +10,70 @@
     <property name="deploy.logfile" value="${deploy.logdir}/deploy.log" />
     <property name="deploy.composerLog" value="${deploy.logdir}/composer.log" />
 
-    <target name="fullDeploy" depends="fastDeploy" description="Full deploy">
+    <target name="maxDeploy" depends="pullData,updateVendors,migrate,updateRoles,clearCache" description="Full deploy">
 
         <echo msg="Full deploy..."/>
+
+    </target>
+
+    <target name="middleDeploy" depends="pullData,updateVendors,migrate,clearCache" description="Deploy with vendors update">
+
+        <echo msg="Deploy with vendors update"/>
+
+    </target>
+
+    <target name="simpleDeploy" depends="pullData,migrate,clearCache" description="Deploy without vendors update">
+
+        <echo msg="Deploy without vendors update..."/>
+
+    </target>
+
+    <target name="updateVendors" depends="prepareLogs" description="Update vendors">
+
+        <echo msg="Updating vendors..."/>
 
         <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; composer.phar install >> ${deploy.composerLog};'"/>
 
     </target>
 
-    <target name="fastDeploy" description="Deploy without vendors update">
 
-        <echo msg="Deploy without vendors update..."/>
+    <target name="clearCache" depends="prepareLogs" description="Clear cache">
 
-        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; mkdir -p ${deploy.logdir};  git pull origin master >> ${deploy.logfile}; ./init --env=Production --overwrite=1; ./yii migrate --interactive=0 >> ${deploy.logfile}; rm -rf ${deploy.cachedir};'" />
+        <echo msg="Clearing cache..."/>
+
+        <exec command="'cd ${deploy.dir}; rm -rf ${deploy.cachedir};'" />
+
+    </target>
+
+    <target name="migrate" depends="prepareLogs" description="Migrate">
+
+        <echo msg="Migrating..."/>
+
+        <exec command="'cd ${deploy.dir}; ./yii migrate --interactive=0 >> ${deploy.logfile};'" />
+
+    </target>
+
+
+    <target name="pullData" depends="prepareLogs" description="Pull date from repo">
+
+        <echo msg="Pulling data from repo..."/>
+
+        <exec command="'cd ${deploy.dir}; git pull origin master >> ${deploy.logfile}; ./init --env=Production --overwrite=1;'" />
+    </target>
+
+    <target name="updateRoles" depends="prepareLogs" description="Update roles">
+
+        <echo msg="Updating roles..."/>
+
+        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; ./yii install/roles >> ${deploy.logfile}; rm -rf ${deploy.cachedir};'" />
+    </target>
+
+    <target name="prepareLogs" description="Create logs dir">
+
+        <echo msg="Creating logs dir..."/>
+
+        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; mkdir -p ${deploy.logdir};'"/>
+
     </target>
 
 </project>

@@ -32,7 +32,7 @@ abstract class MetaFields extends Object
      * @var array массив объектов полей модели
      */
 
-    protected $fields;
+    protected $_fields;
 
     /**
      * Конструктор
@@ -79,9 +79,9 @@ abstract class MetaFields extends Object
     public function getFields()
     {
 
-        if ($this->fields === null) {
+        if ($this->_fields === null) {
 
-            $this->fields = [];
+            $this->_fields = [];
 
             $config = ArrayHelper::merge($this->defaultConfig(), $this->config());
 
@@ -90,13 +90,13 @@ abstract class MetaFields extends Object
                 if (!is_array($config))
                     continue;
 
-                $this->fields[] = Yii::createObject($config["definition"], $config["params"]);
+                $this->_fields[] = Yii::createObject($config["definition"], $config["params"]);
 
             }
 
         }
 
-        return $this->fields;
+        return $this->_fields;
 
     }
 
@@ -122,7 +122,14 @@ abstract class MetaFields extends Object
                 'definition' => [
                     "class" => fields\TimestampField::className(),
                     "title" => Yii::t('core', 'Created'),
-					"showInExtendedFilter"=>false,
+                    "showInGrid"=>true,
+                    "showInFilter"=>false,
+					"filterInputClass"=>[
+                        "class"=>\common\inputs\DateRangeInput::className(),
+                        "fromAttr"=>"createdAtFrom",
+                        "toAttr"=>"createdAtTo",
+                    ],
+                    "queryModifier"=>[$this, "createdAtQueryModifier"],
                 ],
                 "params" => [$this->owner, "created_at"]
             ],
@@ -159,6 +166,20 @@ abstract class MetaFields extends Object
 
         ];
 
+    }
+
+    /**
+     * Поиск по диапазону дат создания
+     * @param \yii\db\ActiveQuery $q
+     * @param \common\db\fields\Field $f
+     */
+    public function createdAtQueryModifier($q, $f)
+    {
+        $table = $f->model->tableName();
+        $attr = $f->attr;
+        $toDate = $f->model->createdAtTo?$f->model->createdAtTo. " 23:59:59":$f->model->createdAtTo;
+        $q->andFilterWhere([">=", "{{%$table}}.{{%$attr}}", $f->model->createdAtFrom]);
+        $q->andFilterWhere(["<=", "{{%$table}}.{{%$attr}}", $toDate]);
     }
 
     /**

@@ -31,4 +31,6 @@ return [
 	"Coordinates select" => "Выбор координат",
 	"Input address and press Enter" => "Введите адрес и нажмите Enter",
     "Max uploaded file size {n} Mb"=>"Максимальный размер загружаемого файла {n} Mb",
+    "Created from"=>"Создан от",
+    "Created to"=>"Создан до",
 ];

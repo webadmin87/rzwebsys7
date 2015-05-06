@@ -141,9 +141,20 @@ class Field extends Object
     public $inputClass = "\\common\\inputs\\TextInput";
 
     /**
+     * @var string|array имя класса, либо конфигурация компонента который рендерит поле ввода расширенного фильтра
+     */
+    public $filterInputClass;
+
+    /**
      * @var string шаблон для поля
      */
     public $formTemplate = '<div class="row"><div class="co-xs-12 col-md-7 col-lg-5">{input}</div></div>';
+
+    /**
+     * @var callable функция для применения ограничений при поиске по полю.
+     * Принимает два аргумента \yii\db\ActiveQuery и \common\db\fields\Field
+     */
+    public $queryModifier;
 
     /**
      * @var array данные ассоциированные с полем (key=>value)
@@ -183,7 +194,7 @@ class Field extends Object
     public function extendedFilterForm(ActiveForm $form, Array $options = [])
     {
 
-        return $this->getForm($form, $options);
+        return $this->getForm($form, $options, false, $this->filterInputClass);
 
     }
 
@@ -192,15 +203,18 @@ class Field extends Object
      * @param ActiveForm $form объект форма
      * @param array $options массив html атрибутов поля
      * @param bool|int $index инднкс модели при табличном вводе
+     * @param string|array $cls класс поля, либо конфигурационный массив
      * @return string
      */
 
-    public function getForm(ActiveForm $form, Array $options = [], $index = false)
+    public function getForm(ActiveForm $form, Array $options = [], $index = false, $cls = null)
     {
 
-        $inputClass = is_array($this->inputClass)?$this->inputClass:["class"=>$this->inputClass];
+        $cls = $cls?:$this->inputClass;
 
-		$input = Yii::createObject(ArrayHelper::merge([
+        $inputClass = is_array($cls)?$cls:["class"=>$cls];
+
+        $input = Yii::createObject(ArrayHelper::merge([
             "modelField"=>$this,
             "options"=>$this->options,
             "widgetOptions"=>$this->widgetOptions,
@@ -248,6 +262,8 @@ class Field extends Object
 
 		if ($this->showInFilter)
 			$grid['filter'] = $this->getGridFilter();
+        else
+            $grid['filter'] = false;
 
 		if ($this->editInGrid) {
 
@@ -445,6 +461,24 @@ class Field extends Object
 
         if ($this->search)
             $query->andFilterWhere(["{{%$table}}.{{%$attr}}" => $this->model->{$this->attr}]);
+
+    }
+
+    /**
+     * Накладывает ограничение на поиск
+     * @param ActiveQuery $query
+     */
+    public function applySearch(ActiveQuery $query) {
+
+        if($this->queryModifier) {
+
+            call_user_func($this->queryModifier, $query, $this);
+
+        } else {
+
+            $this->search($query);
+
+        }
 
     }
 
