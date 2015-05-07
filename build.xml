@@ -41,7 +41,7 @@
 
         <echo msg="Clearing cache..."/>
 
-        <exec command="'cd ${deploy.dir}; rm -rf ${deploy.cachedir};'" />
+        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; rm -rf ${deploy.cachedir};'" />
 
     </target>
 
@@ -49,7 +49,7 @@
 
         <echo msg="Migrating..."/>
 
-        <exec command="'cd ${deploy.dir}; ./yii migrate --interactive=0 >> ${deploy.logfile};'" />
+        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; ./yii migrate --interactive=0 >> ${deploy.logfile};'" />
 
     </target>
 
@@ -58,7 +58,7 @@
 
         <echo msg="Pulling data from repo..."/>
 
-        <exec command="'cd ${deploy.dir}; git pull origin master >> ${deploy.logfile}; ./init --env=Production --overwrite=1;'" />
+        <exec command="ssh ${ssh.username}@${ssh.host} 'cd ${deploy.dir}; git pull origin master >> ${deploy.logfile}; ./init --env=Production --overwrite=1;'" />
     </target>
 
     <target name="updateRoles" depends="prepareLogs" description="Update roles">
