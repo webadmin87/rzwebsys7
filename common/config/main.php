@@ -13,7 +13,8 @@ return [
             'class'=>\app\modules\main\rbac\Installer::className()
         ],
         'formatter'=>[
-            'currencyCode'=>'RUB'
+            'currencyCode'=>'RUB',
+            'defaultTimeZone'=>'Europe/Moscow',
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
