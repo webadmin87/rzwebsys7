@@ -5,33 +5,32 @@
  */
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
-
+$this->title = Yii::t('import/app', 'Attributes to columns mapping');
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<h1><?= Yii::t('import/app', 'Attributes to columns mapping') ?></h1>
+<h1><?= $this->title ?></h1>
 
 <div class="row">
-    <div class="co-xs-12 col-md-7 col-lg-5">
+    <div class="co-xs-12 col-md-8 col-lg-6">
 
-        <?php
-        $form = ActiveForm::begin() ?>
+        <table class="table table-striped">
+            <tbody>
+                <?php
+                $form = ActiveForm::begin() ?>
 
-        <?foreach($importModel->getCsvAttributes() as $attr):?>
-
-            <div class="row">
-
-                <div class="col-xs-4">
-                    <?=$importModel->getAttributeLabel($attr)?>:
-                </div>
-
-                <div class="col-xs-8">
-                    <?= $form->field($model, "mapping[$attr]")->dropDownList($model->getColumns(), ['prompt'=>'']) ?>
-                </div>
-
-            </div>
-
-        <?endforeach;?>
-
+                <?foreach($importModel->getCsvAttributes() as $attr):?>
+                    <tr>
+                        <td>
+                            <span class="label label-default"><?=$importModel->getAttributeLabel($attr)?>:</span>
+                        </td>
+                        <td>
+                            <?= $form->field($model, "mapping[$attr]")->dropDownList($model->getColumns(), ['prompt'=>'']) ?>
+                        </td>
+                    </tr>
+                <?endforeach;?>
+            </tbody>
+        </table>
         <div class="form-group">
 
             <?= Html::submitButton(Yii::t('import/app', 'Start import'), ['class' => 'btn btn-primary']) ?>

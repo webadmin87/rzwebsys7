@@ -101,3 +101,16 @@ a.desc:after {
 .table-action td:last-child {
     vertical-align: middle;
 }
+
+
+#ajax-loader {
+    background: url('../images/ajax-loader.gif');
+    width: 32px;
+    height: 32px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+    display: none;
+}

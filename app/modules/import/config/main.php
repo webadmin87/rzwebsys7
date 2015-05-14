@@ -15,9 +15,8 @@ return [
                 'csvImporter'=>[
                     'class'=>\app\modules\import\components\CsvImporter::className(),
                     'allowedModels'=>[
-                        \app\modules\main\models\User::className()=>\app\modules\main\models\User::getEntityName(),
+                        \app\modules\main\models\User::className(),                    ],
                     ],
-                ],
             ],
             'controllerNamespace' => 'app\modules\import\controllers',
 				'modules' => [
@@ -28,6 +27,7 @@ return [
 							return [
 								[
 									'label' => Yii::t('import/app', 'Import module'),
+                                    'icon' => 'glyphicon glyphicon-import',
 									'items' => [
                                         ['label' => Yii::t('import/app', 'Csv import'), 'url' => ['/admin/import/csv-import'],
                                             "permission" => ["rootAccess"],

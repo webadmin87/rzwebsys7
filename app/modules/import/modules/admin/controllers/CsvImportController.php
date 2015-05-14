@@ -9,8 +9,9 @@
 namespace app\modules\import\modules\admin\controllers;
 
 use app\modules\import\models\CsvModel;
-use common\controllers\Admin;
-
+use common\controllers\Root;
+use Yii;
+use yii\helpers\Html;
 
 /**
  * Class CsvImportController
@@ -18,7 +19,7 @@ use common\controllers\Admin;
  * @package app\modules\import\modules\admin\controllers
  * @author Churkin Anton <webadmin87@gmail.com>
  */
-class CsvImportController extends Admin
+class CsvImportController extends Root
 {
 
     public $sessionKey = "csvImportModel";
@@ -30,18 +31,18 @@ class CsvImportController extends Admin
     public function actionIndex()
     {
 
-        $model = \Yii::$app->session->get($this->sessionKey);
+        $model = Yii::$app->session->get($this->sessionKey);
 
         if(!$model)
             $model = new CsvModel();
 
-        if(\Yii::$app->request->isPost) {
+        if(Yii::$app->request->isPost) {
 
-            $load = $model->load(\Yii::$app->request->post());
+            $load = $model->load(Yii::$app->request->post());
 
             if($load AND $model->validate()) {
 
-                \Yii::$app->session->set($this->sessionKey, $model);
+                Yii::$app->session->set($this->sessionKey, $model);
 
                 return $this->redirect(['/import/admin/csv-import/import/']);
 
@@ -49,7 +50,7 @@ class CsvImportController extends Admin
 
         }
 
-        $classes = \Yii::$app->getModule('import')->csvImporter->allowedModels;
+        $classes = Yii::$app->getModule('import')->csvImporter->getClasses();
 
         return $this->render("index", ["model"=>$model, "classes"=>$classes]);
 
@@ -62,23 +63,27 @@ class CsvImportController extends Admin
     public function actionImport()
     {
 
-        $model = \Yii::$app->session->get($this->sessionKey);
+        set_time_limit(0);
+
+        $model = Yii::$app->session->get($this->sessionKey);
 
         if(!$model)
             return $this->redirect(['/import/admin/csv-import/index/']);
 
-        if(\Yii::$app->request->isPost) {
+        $importer = Yii::$app->getModule('import')->csvImporter;
 
-            $load = $model->load(\Yii::$app->request->post());
+        if(Yii::$app->request->isPost) {
+
+            $load = $model->load(Yii::$app->request->post());
 
             $model->setScenario(CsvModel::SCENARIO_COMPLETE);
 
             if($load AND $model->validate()) {
 
-                $res = \Yii::$app->getModule('import')->csvImporter->import($model);
+                $res = $importer->import($model);
 
                 if($res)
-                    \Yii::$app->session->remove($this->sessionKey);
+                    Yii::$app->session->remove($this->sessionKey);
 
                 return $this->render("result", ["res"=>$res]);
 
@@ -94,11 +99,26 @@ class CsvImportController extends Admin
         if(empty($model->mapping))
             $model->loadMapping();
 
-        $importModel = $model->createImportModel();
+        $importModel = $importer->createImportModel($model->modelClass);
 
         return $this->render('import', ["model"=>$model, "importModel"=>$importModel]);
 
 
+    }
+
+    /**
+     * Зависимый список атрибутов модели
+     * @param string $cls класс
+     */
+    public function actionKeys($cls)
+    {
+        $attrs = Yii::$app->getModule('import')->csvImporter->getCsvAttributes($cls);
+
+        foreach($attrs AS $k => $v) {
+
+            echo Html::tag('option', $v, ['value'=>$k]);
+
+        }
     }
 
 } 

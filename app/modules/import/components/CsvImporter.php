@@ -3,8 +3,11 @@
 namespace app\modules\import\components;
 
 use app\modules\import\models\CsvModel;
+use app\modules\import\models\ICsvImportable;
 use common\db\ActiveRecord;
+use yii\base\ErrorException;
 use yii\base\Object;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class CsvImporter
@@ -96,9 +99,75 @@ class CsvImporter extends Object
 
     }
 
+    /**
+     * Является ли строка валидным json
+     * @param $string
+     * @return bool
+     */
     public function isJson($string) {
         json_decode($string);
         return (json_last_error() == JSON_ERROR_NONE);
     }
+
+    /**
+     * Создает экземпляр импортируемой модели
+     * @param string $cls класс модели
+     * @param array $config
+     * @return \yii\db\ActiveRecord
+     * @throws ErrorException
+     */
+    public function createImportModel($cls, $config=[])
+    {
+
+        $importModel = new $cls($config);
+
+        if(! $importModel instanceof ICsvImportable)
+            throw new ErrorException(get_class($importModel) . ' does not implement \app\modules\import\models\ICsvImportable');
+
+        return $importModel;
+
+    }
+
+    /**
+     * Возвращает массив названий атрибутов доступных для csv импорта
+     * @param string $cls класс импортируемой модели
+     * @return array
+     * @throws ErrorException
+     */
+    public function getCsvAttributes($cls)
+    {
+
+        $importModel = $this->createImportModel($cls);
+
+        $attrs = $importModel->getCsvAttributes();
+
+        $arr = [];
+
+        foreach($attrs as $attr) {
+
+            $arr[$attr] = $importModel->getAttributeLabel($attr);
+
+        }
+
+        return $arr;
+
+    }
+
+    /**
+     * Возвращает массив имен доступных классов
+     * @return array
+     */
+    public function getClasses()
+    {
+        $arr = ArrayHelper::map($this->allowedModels, function($data){
+            return $data;
+        }, function($data){
+            return $data::getEntityName();
+        });
+
+        return $arr;
+
+    }
+
 
 } 

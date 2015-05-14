@@ -8,9 +8,7 @@
 
 namespace app\modules\import\models;
 
-use common\db\ActiveRecord;
 use Yii;
-use yii\base\ErrorException;
 use yii\base\Model;
 
 /**
@@ -196,7 +194,7 @@ class CsvModel extends Model
 
             $columns = $this->getColumns();
 
-            $importModel = $this->createImportModel();
+            $importModel = Yii::$app->getModule('import')->csvImporter->createImportModel($this->modelClass);
 
             foreach($columns as $index => $attr) {
 
@@ -211,24 +209,5 @@ class CsvModel extends Model
 
         }
     }
-
-    /**
-     * Создает экземпляр импортируемой модели
-     * @param array $config
-     * @return \yii\db\ActiveRecord
-     * @throws ErrorException
-     */
-    public function createImportModel($config=[])
-    {
-
-        $importModel = new $this->modelClass($config);
-
-        if(! $importModel instanceof ICsvImportable)
-            throw new ErrorException(get_class($importModel) . ' does not implement \app\modules\import\models\ICsvImportable');
-
-        return $importModel;
-
-    }
-
 
 } 

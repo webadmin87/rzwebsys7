@@ -346,5 +346,13 @@ class User extends ActiveRecord implements IdentityInterface, ICsvImportable
 
     }
 
+    /**
+     * @inheritdoc
+     */
+    public static function getEntityName()
+    {
+        return Yii::t('main/app', 'Users');
+    }
+
 
 }
