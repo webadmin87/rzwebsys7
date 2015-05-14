@@ -39,4 +39,25 @@ class Delete extends Base
 
     }
 
+    /**
+     * @inheritdoc
+     */
+    protected function goBack()
+    {
+
+        $returnUrl = Yii::$app->request->referrer;
+
+        if (empty($returnUrl))
+            $returnUrl = $this->defaultRedirectUrl;
+
+        if(preg_match('!/view/\d+/?$!i',$returnUrl)) {
+
+            $returnUrl = preg_replace('!(view/\d+)!i', 'index', $returnUrl);
+
+        }
+
+        return $this->controller->redirect($returnUrl);
+
+    }
+
 }
