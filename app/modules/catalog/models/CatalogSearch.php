@@ -4,10 +4,11 @@ namespace app\modules\catalog\models;
 
 use yii\data\ActiveDataProvider;
 use Yii;
+use yii\db\Expression;
 
 /**
  * Class CatalogSearch
- * Модель для фильтрации элементов каталога в публичной части
+ * РњРѕРґРµР»СЊ РґР»СЏ С„РёР»СЊС‚СЂР°С†РёРё СЌР»РµРјРµРЅС‚РѕРІ РєР°С‚Р°Р»РѕРіР°
  * @package app\modules\catalog\models
  * @author Churkin Anton <webadmin87@gmail.com>
  */
@@ -16,19 +17,27 @@ class CatalogSearch extends Catalog
 
 
     /**
-     * Возвращает провайдер данных
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РїСЂРѕРІР°Р№РґРµСЂ РґР°РЅРЅС‹С…
      * @return ActiveDataProvider
      */
-    public function search()
+    public function publicSearch()
     {
 
         $query = $this->find();
 
         $query->modelClass = get_parent_class($this);
 
-        $query->bySections($this->sectionsIds);
+        if($this->validate()) {
 
-        $query->andFilterWhere($this->getAttributes());
+            $query->bySections($this->sectionsIds);
+
+            $query->andFilterWhere($this->getAttributes());
+
+        } else {
+
+            $query->where(new Expression("1!=1"));
+
+        }
 
         $dataProvider = Yii::createObject([
             'class' => ActiveDataProvider::className(),
