@@ -61,7 +61,7 @@ class CsvImporter extends Object
                 }
 
                 if(empty($importModel))
-                    $importModel = $model->createImportModel(["scenario"=>ActiveRecord::SCENARIO_INSERT]);
+                    $importModel = $this->createImportModel($cls, ["scenario"=>ActiveRecord::SCENARIO_INSERT]);
 
                 foreach($model->mapping AS $attr => $index) {
 
@@ -79,8 +79,11 @@ class CsvImporter extends Object
 
                 }
 
+                if(!$model->validate AND $importModel->hasAttribute('active')) {
+                    $importModel->active=false;
+                }
 
-                if($importModel->save())
+                if($importModel->save($model->validate))
                     $ok++;
                 else
                     $errors++;

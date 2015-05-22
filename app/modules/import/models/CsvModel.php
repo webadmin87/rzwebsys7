@@ -68,13 +68,18 @@ class CsvModel extends Model
     public $mapping = [];
 
     /**
+     * @var bool производить валидацию моделей при сохранении
+     */
+    public $validate = true;
+
+    /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
             [['modelClass', 'filePath', 'key', 'delimiter', 'enclosure', 'escape'], 'required'],
-            [['headLine', 'mapping'], 'safe'],
+            [['headLine', 'validate', 'mapping'], 'safe'],
             [['mapping'], 'required', 'on'=>self::SCENARIO_COMPLETE],
         ];
     }
@@ -94,6 +99,7 @@ class CsvModel extends Model
             "enclosure"=>\Yii::t('import/app', 'Enclosure'),
             "escape"=>\Yii::t('import/app', 'Escape'),
             "mapping"=>\Yii::t('import/app', 'Attributes to columns mapping'),
+            "validate"=>\Yii::t('import/app', 'Validate model'),
 
         ];
     }

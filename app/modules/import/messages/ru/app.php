@@ -18,5 +18,5 @@ return [
     'Success'=>"Успешно",
     "Errors"=>"Ошибок",
     "Import finished"=>"Импорт завершен",
-
+    "Validate model"=>"Валидировать модели",
 ];

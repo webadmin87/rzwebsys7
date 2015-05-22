@@ -51,6 +51,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($model, 'escape') ?>
 
+        <?= $form->field($model, 'validate')->checkbox(); ?>
+
         <div class="form-group">
 
             <?= Html::submitButton(Yii::t('import/app', 'Continue'), ['class' => 'btn btn-primary']) ?>
