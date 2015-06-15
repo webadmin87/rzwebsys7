@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        <link href="./assets/176fa81d/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/189f6e9/style.css" rel="stylesheet">
+<script src="./assets/4a01d129/jquery.js"></script>
+<script src="./assets/176fa81d/js/bootstrap.js"></script>
+<script src="./assets/74432bf7/jssearch.js"></script>    <title>RzWebSys 7 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w32621" class="navbar-inverse navbar-fixed-top navbar" role="navigation"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w32621-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">RzWebSys7 API Documentation</a></div><div id="w32621-collapse" class="collapse navbar-collapse"><ul id="w32622" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-32522" data-toggle="collapse" data-parent="#navigation">app\assets <b class="caret"></b></a><div id="navigation-32522" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-assets-adminasset.html">AdminAsset</a>
+<a class="list-group-item" href="./app-assets-swfobjectasset.html">SwfObjectAsset</a></div>
+<a class="list-group-item" href="#navigation-32523" data-toggle="collapse" data-parent="#navigation">app\controllers <b class="caret"></b></a><div id="navigation-32523" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-controllers-sitecontroller.html">SiteController</a></div>
+<a class="list-group-item" href="#navigation-32524" data-toggle="collapse" data-parent="#navigation">app\gii\generators\appmodule <b class="caret"></b></a><div id="navigation-32524" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-gii-generators-appmodule-generator.html">Generator</a></div>
+<a class="list-group-item" href="#navigation-32525" data-toggle="collapse" data-parent="#navigation">app\modules\banners <b class="caret"></b></a><div id="navigation-32525" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-banners.html">Banners</a></div>
+<a class="list-group-item" href="#navigation-32526" data-toggle="collapse" data-parent="#navigation">app\modules\banners\components <b class="caret"></b></a><div id="navigation-32526" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-components-abstractrenderer.html">AbstractRenderer</a>
+<a class="list-group-item" href="./app-modules-banners-components-flashrenderer.html">FlashRenderer</a>
+<a class="list-group-item" href="./app-modules-banners-components-imagerenderer.html">ImageRenderer</a>
+<a class="list-group-item" href="./app-modules-banners-components-rendererfactory.html">RendererFactory</a></div>
+<a class="list-group-item" href="#navigation-32527" data-toggle="collapse" data-parent="#navigation">app\modules\banners\controllers <b class="caret"></b></a><div id="navigation-32527" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-controllers-defaultcontroller.html">DefaultController</a></div>
+<a class="list-group-item" href="#navigation-32528" data-toggle="collapse" data-parent="#navigation">app\modules\banners\models <b class="caret"></b></a><div id="navigation-32528" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-models-banner.html">Banner</a>
+<a class="list-group-item" href="./app-modules-banners-models-place.html">Place</a></div>
+<a class="list-group-item" href="#navigation-32529" data-toggle="collapse" data-parent="#navigation">app\modules\banners\models\meta <b class="caret"></b></a><div id="navigation-32529" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-models-meta-bannermeta.html">BannerMeta</a>
+<a class="list-group-item" href="./app-modules-banners-models-meta-placemeta.html">PlaceMeta</a></div>
+<a class="list-group-item" href="#navigation-32530" data-toggle="collapse" data-parent="#navigation">app\modules\banners\modules\admin <b class="caret"></b></a><div id="navigation-32530" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-32531" data-toggle="collapse" data-parent="#navigation">app\modules\banners\modules\admin\controllers <b class="caret"></b></a><div id="navigation-32531" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-modules-admin-controllers-bannercontroller.html">BannerController</a>
+<a class="list-group-item" href="./app-modules-banners-modules-admin-controllers-placecontroller.html">PlaceController</a></div>
+<a class="list-group-item" href="#navigation-32532" data-toggle="collapse" data-parent="#navigation">app\modules\banners\widgets <b class="caret"></b></a><div id="navigation-32532" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-widgets-listbanners.html">ListBanners</a>
+<a class="list-group-item" href="./app-modules-banners-widgets-singlebanner.html">SingleBanner</a></div>
+<a class="list-group-item" href="#navigation-32533" data-toggle="collapse" data-parent="#navigation">app\modules\catalog <b class="caret"></b></a><div id="navigation-32533" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-catalog.html">Catalog</a></div>
+<a class="list-group-item" href="#navigation-32534" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\controllers <b class="caret"></b></a><div id="navigation-32534" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-controllers-catalogcontroller.html">CatalogController</a></div>
+<a class="list-group-item" href="#navigation-32535" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\db <b class="caret"></b></a><div id="navigation-32535" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-db-catalogquery.html">CatalogQuery</a></div>
+<a class="list-group-item" href="#navigation-32536" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\models <b class="caret"></b></a><div id="navigation-32536" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-models-catalog.html">Catalog</a>
+<a class="list-group-item" href="./app-modules-catalog-models-catalogsearch.html">CatalogSearch</a>
+<a class="list-group-item" href="./app-modules-catalog-models-catalogsection.html">CatalogSection</a>
+<a class="list-group-item" href="./app-modules-catalog-models-producer.html">Producer</a></div>
+<a class="list-group-item" href="#navigation-32537" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\models\meta <b class="caret"></b></a><div id="navigation-32537" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-models-meta-catalogmeta.html">CatalogMeta</a>
+<a class="list-group-item" href="./app-modules-catalog-models-meta-catalogsectionmeta.html">CatalogSectionMeta</a>
+<a class="list-group-item" href="./app-modules-catalog-models-meta-producermeta.html">ProducerMeta</a></div>
+<a class="list-group-item" href="#navigation-32538" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\modules\admin <b class="caret"></b></a><div id="navigation-32538" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-32539" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\modules\admin\controllers <b class="caret"></b></a><div id="navigation-32539" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-modules-admin-controllers-catalogcontroller.html">CatalogController</a>
+<a class="list-group-item" href="./app-modules-catalog-modules-admin-controllers-catalogsectioncontroller.html">CatalogSectionController</a>
+<a class="list-group-item" href="./app-modules-catalog-modules-admin-controllers-producercontroller.html">ProducerController</a></div>
+<a class="list-group-item" href="#navigation-32540" data-toggle="collapse" data-parent="#navigation">app\modules\geo <b class="caret"></b></a><div id="navigation-32540" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-geo.html">Geo</a></div>
+<a class="list-group-item" href="#navigation-32541" data-toggle="collapse" data-parent="#navigation">app\modules\geo\components <b class="caret"></b></a><div id="navigation-32541" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-components-suggestsfinder.html">SuggestsFinder</a></div>
+<a class="list-group-item" href="#navigation-32542" data-toggle="collapse" data-parent="#navigation">app\modules\geo\controllers <b class="caret"></b></a><div id="navigation-32542" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-controllers-listcontroller.html">ListController</a>
+<a class="list-group-item" href="./app-modules-geo-controllers-restcontroller.html">RestController</a></div>
+<a class="list-group-item" href="#navigation-32543" data-toggle="collapse" data-parent="#navigation">app\modules\geo\models <b class="caret"></b></a><div id="navigation-32543" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-models-country.html">Country</a>
+<a class="list-group-item" href="./app-modules-geo-models-np.html">Np</a>
+<a class="list-group-item" href="./app-modules-geo-models-rajon.html">Rajon</a>
+<a class="list-group-item" href="./app-modules-geo-models-region.html">Region</a>
+<a class="list-group-item" href="./app-modules-geo-models-street.html">Street</a></div>
+<a class="list-group-item" href="#navigation-32544" data-toggle="collapse" data-parent="#navigation">app\modules\geo\models\meta <b class="caret"></b></a><div id="navigation-32544" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-models-meta-countrymeta.html">CountryMeta</a>
+<a class="list-group-item" href="./app-modules-geo-models-meta-npmeta.html">NpMeta</a>
+<a class="list-group-item" href="./app-modules-geo-models-meta-rajonmeta.html">RajonMeta</a>
+<a class="list-group-item" href="./app-modules-geo-models-meta-regionmeta.html">RegionMeta</a>
+<a class="list-group-item" href="./app-modules-geo-models-meta-streetmeta.html">StreetMeta</a></div>
+<a class="list-group-item" href="#navigation-32545" data-toggle="collapse" data-parent="#navigation">app\modules\import <b class="caret"></b></a><div id="navigation-32545" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-import.html">Import</a></div>
+<a class="list-group-item" href="#navigation-32546" data-toggle="collapse" data-parent="#navigation">app\modules\import\components <b class="caret"></b></a><div id="navigation-32546" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-components-csvimporter.html">CsvImporter</a></div>
+<a class="list-group-item" href="#navigation-32547" data-toggle="collapse" data-parent="#navigation">app\modules\import\controllers <b class="caret"></b></a><div id="navigation-32547" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-controllers-defaultcontroller.html">DefaultController</a></div>
+<a class="list-group-item" href="#navigation-32548" data-toggle="collapse" data-parent="#navigation">app\modules\import\models <b class="caret"></b></a><div id="navigation-32548" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-models-csvmodel.html">CsvModel</a>
+<a class="list-group-item" href="./app-modules-import-models-icsvimportable.html">ICsvImportable</a></div>
+<a class="list-group-item" href="#navigation-32549" data-toggle="collapse" data-parent="#navigation">app\modules\import\modules\admin <b class="caret"></b></a><div id="navigation-32549" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-32550" data-toggle="collapse" data-parent="#navigation">app\modules\import\modules\admin\controllers <b class="caret"></b></a><div id="navigation-32550" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-modules-admin-controllers-csvimportcontroller.html">CsvImportController</a></div>
+<a class="list-group-item" href="#navigation-32551" data-toggle="collapse" data-parent="#navigation">app\modules\main <b class="caret"></b></a><div id="navigation-32551" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-main.html">Main</a></div>
+<a class="list-group-item" href="#navigation-32552" data-toggle="collapse" data-parent="#navigation">app\modules\main\actions <b class="caret"></b></a><div id="navigation-32552" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-actions-commentadd.html">CommentAdd</a>
+<a class="list-group-item" href="./app-modules-main-actions-feedback.html">Feedback</a></div>
+<a class="list-group-item" href="#navigation-32553" data-toggle="collapse" data-parent="#navigation">app\modules\main\actions\user <b class="caret"></b></a><div id="navigation-32553" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-actions-user-forgot.html">Forgot</a>
+<a class="list-group-item" href="./app-modules-main-actions-user-signin.html">SignIn</a>
+<a class="list-group-item" href="./app-modules-main-actions-user-signup.html">SignUp</a>
+<a class="list-group-item" href="./app-modules-main-actions-user-update.html">Update</a>
+<a class="list-group-item" href="./app-modules-main-actions-user-view.html">View</a></div>
+<a class="list-group-item" href="#navigation-32554" data-toggle="collapse" data-parent="#navigation">app\modules\main\components <b class="caret"></b></a><div id="navigation-32554" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-components-blocksprovider.html">BlocksProvider</a>
+<a class="list-group-item" href="./app-modules-main-components-config.html">Config</a>
+<a class="list-group-item" href="./app-modules-main-components-forgotmailnotifier.html">ForgotMailNotifier</a>
+<a class="list-group-item" href="./app-modules-main-components-mailertrait.html">MailerTrait</a>
+<a class="list-group-item" href="./app-modules-main-components-pageurlrule.html">PageUrlRule</a>
+<a class="list-group-item" href="./app-modules-main-components-permissiontrait.html">PermissionTrait</a>
+<a class="list-group-item" href="./app-modules-main-components-signupmailnotifier.html">SignUpMailNotifier</a>
+<a class="list-group-item" href="./app-modules-main-components-sphinxurlservice.html">SphinxUrlService</a></div>
+<a class="list-group-item" href="#navigation-32555" data-toggle="collapse" data-parent="#navigation">app\modules\main\controllers <b class="caret"></b></a><div id="navigation-32555" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-controllers-commentscontroller.html">CommentsController</a>
+<a class="list-group-item" href="./app-modules-main-controllers-feedbackcontroller.html">FeedbackController</a>
+<a class="list-group-item" href="./app-modules-main-controllers-pagescontroller.html">PagesController</a>
+<a class="list-group-item" href="./app-modules-main-controllers-usercontroller.html">UserController</a></div>
+<a class="list-group-item" href="#navigation-32556" data-toggle="collapse" data-parent="#navigation">app\modules\main\db <b class="caret"></b></a><div id="navigation-32556" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-db-migration.html">Migration</a></div>
+<a class="list-group-item" href="#navigation-32557" data-toggle="collapse" data-parent="#navigation">app\modules\main\models <b class="caret"></b></a><div id="navigation-32557" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-models-comments.html">Comments</a>
+<a class="list-group-item" href="./app-modules-main-models-config.html">Config</a>
+<a class="list-group-item" href="./app-modules-main-models-feedbackform.html">FeedbackForm</a>
+<a class="list-group-item" href="./app-modules-main-models-forgotform.html">ForgotForm</a>
+<a class="list-group-item" href="./app-modules-main-models-includegroup.html">IncludeGroup</a>
+<a class="list-group-item" href="./app-modules-main-models-includes.html">Includes</a>
+<a class="list-group-item" href="./app-modules-main-models-loginform.html">LoginForm</a>
+<a class="list-group-item" href="./app-modules-main-models-menu.html">Menu</a>
+<a class="list-group-item" href="./app-modules-main-models-pages.html">Pages</a>
+<a class="list-group-item" href="./app-modules-main-models-permission.html">Permission</a>
+<a class="list-group-item" href="./app-modules-main-models-template.html">Template</a>
+<a class="list-group-item" href="./app-modules-main-models-user.html">User</a></div>
+<a class="list-group-item" href="#navigation-32558" data-toggle="collapse" data-parent="#navigation">app\modules\main\models\meta <b class="caret"></b></a><div id="navigation-32558" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-models-meta-commentsmeta.html">CommentsMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-configmeta.html">ConfigMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-includegroupmeta.html">IncludeGroupMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-includesmeta.html">IncludesMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-menumeta.html">MenuMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-pagesmeta.html">PagesMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-permissionmeta.html">PermissionMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-templatesmeta.html">TemplatesMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-usermeta.html">UserMeta</a></div>
+<a class="list-group-item" href="#navigation-32559" data-toggle="collapse" data-parent="#navigation">app\modules\main\modules\admin <b class="caret"></b></a><div id="navigation-32559" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-32560" data-toggle="collapse" data-parent="#navigation">app\modules\main\modules\admin\controllers <b class="caret"></b></a><div id="navigation-32560" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-modules-admin-controllers-commentscontroller.html">CommentsController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-configcontroller.html">ConfigController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-defaultcontroller.html">DefaultController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-includegroupcontroller.html">IncludeGroupController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-includescontroller.html">IncludesController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-menucontroller.html">MenuController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-pagescontroller.html">PagesController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-permissioncontroller.html">PermissionController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-templatecontroller.html">TemplateController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-toolscontroller.html">ToolsController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-uploadcontroller.html">UploadController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-usercontroller.html">UserController</a></div>
+<a class="list-group-item" href="#navigation-32561" data-toggle="collapse" data-parent="#navigation">app\modules\main\rbac <b class="caret"></b></a><div id="navigation-32561" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-rbac-adminuserconstraint.html">AdminUserConstraint</a>
+<a class="list-group-item" href="./app-modules-main-rbac-authorconstraint.html">AuthorConstraint</a>
+<a class="list-group-item" href="./app-modules-main-rbac-createrule.html">CreateRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-createsrule.html">CreatesRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-deleterule.html">DeleteRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-deletesrule.html">DeletesRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-installer.html">Installer</a>
+<a class="list-group-item" href="./app-modules-main-rbac-listrule.html">ListRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-profileconstraint.html">ProfileConstraint</a>
+<a class="list-group-item" href="./app-modules-main-rbac-readrule.html">ReadRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-updaterule.html">UpdateRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-updatesrule.html">UpdatesRule</a></div>
+<a class="list-group-item" href="#navigation-32562" data-toggle="collapse" data-parent="#navigation">app\modules\main\sitemap <b class="caret"></b></a><div id="navigation-32562" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-sitemap-sitemap.html">Sitemap</a>
+<a class="list-group-item" href="./app-modules-main-sitemap-sitemapwidget.html">SitemapWidget</a></div>
+<a class="list-group-item" href="#navigation-32563" data-toggle="collapse" data-parent="#navigation">app\modules\main\web <b class="caret"></b></a><div id="navigation-32563" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-web-angularasset.html">AngularAsset</a>
+<a class="list-group-item" href="./app-modules-main-web-angularlocaleasset.html">AngularLocaleAsset</a></div>
+<a class="list-group-item" href="#navigation-32564" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\comments <b class="caret"></b></a><div id="navigation-32564" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-comments-comments.html">Comments</a>
+<a class="list-group-item" href="./app-modules-main-widgets-comments-commentsasset.html">CommentsAsset</a>
+<a class="list-group-item" href="./app-modules-main-widgets-comments-skinasset.html">SkinAsset</a></div>
+<a class="list-group-item" href="#navigation-32565" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\elist <b class="caret"></b></a><div id="navigation-32565" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-elist-elist.html">EList</a></div>
+<a class="list-group-item" href="#navigation-32566" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\feedback <b class="caret"></b></a><div id="navigation-32566" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-feedback-feedback.html">Feedback</a>
+<a class="list-group-item" href="./app-modules-main-widgets-feedback-feedbackasset.html">FeedbackAsset</a></div>
+<a class="list-group-item" href="#navigation-32567" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\gallery <b class="caret"></b></a><div id="navigation-32567" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-gallery-assetbundle.html">AssetBundle</a>
+<a class="list-group-item" href="./app-modules-main-widgets-gallery-gallery.html">Gallery</a></div>
+<a class="list-group-item" href="#navigation-32568" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\includes <b class="caret"></b></a><div id="navigation-32568" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-includes-includes.html">Includes</a>
+<a class="list-group-item" href="./app-modules-main-widgets-includes-includesgroup.html">IncludesGroup</a></div>
+<a class="list-group-item" href="#navigation-32569" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\menu <b class="caret"></b></a><div id="navigation-32569" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-menu-menu.html">Menu</a></div>
+<a class="list-group-item" href="#navigation-32570" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\treelist <b class="caret"></b></a><div id="navigation-32570" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-treelist-treelist.html">TreeList</a></div>
+<a class="list-group-item" href="#navigation-32571" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\user <b class="caret"></b></a><div id="navigation-32571" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-user-signin.html">SignIn</a>
+<a class="list-group-item" href="./app-modules-main-widgets-user-user.html">User</a></div>
+<a class="list-group-item" href="#navigation-32572" data-toggle="collapse" data-parent="#navigation">app\modules\news <b class="caret"></b></a><div id="navigation-32572" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-news.html">News</a></div>
+<a class="list-group-item" href="#navigation-32573" data-toggle="collapse" data-parent="#navigation">app\modules\news\controllers <b class="caret"></b></a><div id="navigation-32573" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-controllers-newscontroller.html">NewsController</a></div>
+<a class="list-group-item" href="#navigation-32574" data-toggle="collapse" data-parent="#navigation">app\modules\news\db <b class="caret"></b></a><div id="navigation-32574" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-db-newsquery.html">NewsQuery</a></div>
+<a class="list-group-item" href="#navigation-32575" data-toggle="collapse" data-parent="#navigation">app\modules\news\models <b class="caret"></b></a><div id="navigation-32575" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-models-news.html">News</a>
+<a class="list-group-item" href="./app-modules-news-models-newssection.html">NewsSection</a></div>
+<a class="list-group-item" href="#navigation-32576" data-toggle="collapse" data-parent="#navigation">app\modules\news\models\meta <b class="caret"></b></a><div id="navigation-32576" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-models-meta-newsmeta.html">NewsMeta</a>
+<a class="list-group-item" href="./app-modules-news-models-meta-newssectionmeta.html">NewsSectionMeta</a></div>
+<a class="list-group-item" href="#navigation-32577" data-toggle="collapse" data-parent="#navigation">app\modules\news\modules\admin <b class="caret"></b></a><div id="navigation-32577" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-32578" data-toggle="collapse" data-parent="#navigation">app\modules\news\modules\admin\controllers <b class="caret"></b></a><div id="navigation-32578" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-modules-admin-controllers-newscontroller.html">NewsController</a>
+<a class="list-group-item" href="./app-modules-news-modules-admin-controllers-newssectioncontroller.html">NewsSectionController</a></div>
+<a class="list-group-item" href="#navigation-32579" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery <b class="caret"></b></a><div id="navigation-32579" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-photogallery.html">Photogallery</a></div>
+<a class="list-group-item" href="#navigation-32580" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\controllers <b class="caret"></b></a><div id="navigation-32580" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-controllers-defaultcontroller.html">DefaultController</a></div>
+<a class="list-group-item" href="#navigation-32581" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\models <b class="caret"></b></a><div id="navigation-32581" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-models-gallery.html">Gallery</a></div>
+<a class="list-group-item" href="#navigation-32582" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\models\meta <b class="caret"></b></a><div id="navigation-32582" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-models-meta-gallerymeta.html">GalleryMeta</a></div>
+<a class="list-group-item" href="#navigation-32583" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\modules\admin <b class="caret"></b></a><div id="navigation-32583" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-32584" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\modules\admin\controllers <b class="caret"></b></a><div id="navigation-32584" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-modules-admin-controllers-gallerycontroller.html">GalleryController</a></div>
+<a class="list-group-item" href="#navigation-32585" data-toggle="collapse" data-parent="#navigation">app\modules\shop <b class="caret"></b></a><div id="navigation-32585" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-shop.html">Shop</a></div>
+<a class="list-group-item" href="#navigation-32586" data-toggle="collapse" data-parent="#navigation">app\modules\shop\components <b class="caret"></b></a><div id="navigation-32586" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-components-adminnotifier.html">AdminNotifier</a>
+<a class="list-group-item" href="./app-modules-shop-components-basket.html">Basket</a>
+<a class="list-group-item" href="./app-modules-shop-components-clientnotifier.html">ClientNotifier</a>
+<a class="list-group-item" href="./app-modules-shop-components-ideliverycalc.html">IDeliveryCalc</a>
+<a class="list-group-item" href="./app-modules-shop-components-ishopitem.html">IShopItem</a>
+<a class="list-group-item" href="./app-modules-shop-components-orderletters.html">OrderLetters</a>
+<a class="list-group-item" href="./app-modules-shop-components-ordermanager.html">OrderManager</a>
+<a class="list-group-item" href="./app-modules-shop-components-shopitemtrait.html">ShopItemTrait</a></div>
+<a class="list-group-item" href="#navigation-32587" data-toggle="collapse" data-parent="#navigation">app\modules\shop\controllers <b class="caret"></b></a><div id="navigation-32587" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-controllers-basketcontroller.html">BasketController</a>
+<a class="list-group-item" href="./app-modules-shop-controllers-basketrestcontroller.html">BasketRestController</a>
+<a class="list-group-item" href="./app-modules-shop-controllers-defaultcontroller.html">DefaultController</a></div>
+<a class="list-group-item" href="#navigation-32588" data-toggle="collapse" data-parent="#navigation">app\modules\shop\db <b class="caret"></b></a><div id="navigation-32588" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-db-statusquery.html">StatusQuery</a></div>
+<a class="list-group-item" href="#navigation-32589" data-toggle="collapse" data-parent="#navigation">app\modules\shop\db\fields <b class="caret"></b></a><div id="navigation-32589" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-db-fields-goodattrsfield.html">GoodAttrsField</a></div>
+<a class="list-group-item" href="#navigation-32590" data-toggle="collapse" data-parent="#navigation">app\modules\shop\models <b class="caret"></b></a><div id="navigation-32590" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-models-delivery.html">Delivery</a>
+<a class="list-group-item" href="./app-modules-shop-models-good.html">Good</a>
+<a class="list-group-item" href="./app-modules-shop-models-order.html">Order</a>
+<a class="list-group-item" href="./app-modules-shop-models-payment.html">Payment</a>
+<a class="list-group-item" href="./app-modules-shop-models-status.html">Status</a></div>
+<a class="list-group-item" href="#navigation-32591" data-toggle="collapse" data-parent="#navigation">app\modules\shop\models\meta <b class="caret"></b></a><div id="navigation-32591" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-models-meta-deliverymeta.html">DeliveryMeta</a>
+<a class="list-group-item" href="./app-modules-shop-models-meta-goodmeta.html">GoodMeta</a>
+<a class="list-group-item" href="./app-modules-shop-models-meta-ordermeta.html">OrderMeta</a>
+<a class="list-group-item" href="./app-modules-shop-models-meta-paymentmeta.html">PaymentMeta</a>
+<a class="list-group-item" href="./app-modules-shop-models-meta-statusmeta.html">StatusMeta</a></div>
+<a class="list-group-item" href="#navigation-32592" data-toggle="collapse" data-parent="#navigation">app\modules\shop\modules\admin <b class="caret"></b></a><div id="navigation-32592" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-32593" data-toggle="collapse" data-parent="#navigation">app\modules\shop\modules\admin\controllers <b class="caret"></b></a><div id="navigation-32593" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-deliverycontroller.html">DeliveryController</a>
+<a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-goodcontroller.html">GoodController</a>
+<a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-ordercontroller.html">OrderController</a>
+<a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-paymentcontroller.html">PaymentController</a>
+<a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-statuscontroller.html">StatusController</a></div>
+<a class="list-group-item" href="#navigation-32594" data-toggle="collapse" data-parent="#navigation">app\modules\shop\web <b class="caret"></b></a><div id="navigation-32594" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-web-shopasset.html">ShopAsset</a></div>
+<a class="list-group-item" href="#navigation-32595" data-toggle="collapse" data-parent="#navigation">app\modules\shop\widgets <b class="caret"></b></a><div id="navigation-32595" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-widgets-basketinfo.html">BasketInfo</a>
+<a class="list-group-item" href="./app-modules-shop-widgets-tobasket.html">ToBasket</a></div>
+<a class="list-group-item" href="#navigation-32596" data-toggle="collapse" data-parent="#navigation">app\themes\demo\assets <b class="caret"></b></a><div id="navigation-32596" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-themes-demo-assets-appasset.html">AppAsset</a></div>
+<a class="list-group-item" href="#navigation-32597" data-toggle="collapse" data-parent="#navigation">common\actions <b class="caret"></b></a><div id="navigation-32597" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-actions-upload.html">Upload</a></div>
+<a class="list-group-item" href="#navigation-32598" data-toggle="collapse" data-parent="#navigation">common\actions\crud <b class="caret"></b></a><div id="navigation-32598" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-actions-crud-admin.html">Admin</a>
+<a class="list-group-item" href="./common-actions-crud-base.html">Base</a>
+<a class="list-group-item" href="./common-actions-crud-create.html">Create</a>
+<a class="list-group-item" href="./common-actions-crud-delete.html">Delete</a>
+<a class="list-group-item" href="./common-actions-crud-groupdelete.html">GroupDelete</a>
+<a class="list-group-item" href="./common-actions-crud-tadmin.html">TAdmin</a>
+<a class="list-group-item" href="./common-actions-crud-tcreate.html">TCreate</a>
+<a class="list-group-item" href="./common-actions-crud-tdelete.html">TDelete</a>
+<a class="list-group-item" href="./common-actions-crud-tdown.html">TDown</a>
+<a class="list-group-item" href="./common-actions-crud-tgroupdelete.html">TGroupDelete</a>
+<a class="list-group-item" href="./common-actions-crud-treplace.html">TReplace</a>
+<a class="list-group-item" href="./common-actions-crud-tup.html">TUp</a>
+<a class="list-group-item" href="./common-actions-crud-tupdate.html">TUpdate</a>
+<a class="list-group-item" href="./common-actions-crud-update.html">Update</a>
+<a class="list-group-item" href="./common-actions-crud-view.html">View</a>
+<a class="list-group-item" href="./common-actions-crud-xeditable.html">XEditable</a></div>
+<a class="list-group-item" href="#navigation-32599" data-toggle="collapse" data-parent="#navigation">common\behaviors <b class="caret"></b></a><div id="navigation-32599" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-behaviors-arrayserializer.html">ArraySerializer</a>
+<a class="list-group-item" href="./common-behaviors-html5uploadbehavior.html">Html5UploadBehavior</a>
+<a class="list-group-item" href="./common-behaviors-manymanysaver.html">ManyManySaver</a>
+<a class="list-group-item" href="./common-behaviors-matchsuitable.html">MatchSuitable</a>
+<a class="list-group-item" href="./common-behaviors-nestedset.html">NestedSet</a>
+<a class="list-group-item" href="./common-behaviors-simpleuploadbehavior.html">SimpleUploadBehavior</a>
+<a class="list-group-item" href="./common-behaviors-tagcache.html">TagCache</a>
+<a class="list-group-item" href="./common-behaviors-uploadbehavior.html">UploadBehavior</a></div>
+<a class="list-group-item" href="#navigation-32600" data-toggle="collapse" data-parent="#navigation">common\cache <b class="caret"></b></a><div id="navigation-32600" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-cache-tagdependency.html">TagDependency</a></div>
+<a class="list-group-item" href="#navigation-32601" data-toggle="collapse" data-parent="#navigation">common\components <b class="caret"></b></a><div id="navigation-32601" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-components-assetbundle.html">AssetBundle</a>
+<a class="list-group-item" href="./common-components-bbcodeparser.html">BBCodeParser</a>
+<a class="list-group-item" href="./common-components-match.html">Match</a>
+<a class="list-group-item" href="./common-components-phpmatch.html">PhpMatch</a>
+<a class="list-group-item" href="./common-components-resizer.html">Resizer</a>
+<a class="list-group-item" href="./common-components-routematch.html">RouteMatch</a>
+<a class="list-group-item" href="./common-components-tagsconverter.html">TagsConverter</a>
+<a class="list-group-item" href="./common-components-treefinder.html">TreeFinder</a>
+<a class="list-group-item" href="./common-components-urlmatch.html">UrlMatch</a>
+<a class="list-group-item" href="./common-components-view.html">View</a></div>
+<a class="list-group-item" href="#navigation-32602" data-toggle="collapse" data-parent="#navigation">common\components\uiboot <b class="caret"></b></a><div id="navigation-32602" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-components-uiboot-themeasset.html">ThemeAsset</a></div>
+<a class="list-group-item" href="#navigation-32603" data-toggle="collapse" data-parent="#navigation">common\controllers <b class="caret"></b></a><div id="navigation-32603" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-controllers-admin.html">Admin</a>
+<a class="list-group-item" href="./common-controllers-app.html">App</a>
+<a class="list-group-item" href="./common-controllers-root.html">Root</a></div>
+<a class="list-group-item" href="#navigation-32604" data-toggle="collapse" data-parent="#navigation">common\core <b class="caret"></b></a><div id="navigation-32604" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-core-adminmodule.html">AdminModule</a>
+<a class="list-group-item" href="./common-core-file.html">File</a></div>
+<a class="list-group-item" href="#navigation-32605" data-toggle="collapse" data-parent="#navigation">common\db <b class="caret"></b></a><div id="navigation-32605" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-db-activequery.html">ActiveQuery</a>
+<a class="list-group-item" href="./common-db-activerecord.html">ActiveRecord</a>
+<a class="list-group-item" href="./common-db-createdatsearchtrait.html">CreatedAtSearchTrait</a>
+<a class="list-group-item" href="./common-db-metafields.html">MetaFields</a>
+<a class="list-group-item" href="./common-db-tactivequery.html">TActiveQuery</a>
+<a class="list-group-item" href="./common-db-tactiverecord.html">TActiveRecord</a></div>
+<a class="list-group-item" href="#navigation-32606" data-toggle="collapse" data-parent="#navigation">common\db\fields <b class="caret"></b></a><div id="navigation-32606" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-db-fields-autocompletefield.html">AutoCompleteField</a>
+<a class="list-group-item" href="./common-db-fields-checkboxfield.html">CheckBoxField</a>
+<a class="list-group-item" href="./common-db-fields-codefield.html">CodeField</a>
+<a class="list-group-item" href="./common-db-fields-datefield.html">DateField</a>
+<a class="list-group-item" href="./common-db-fields-emailfield.html">EmailField</a>
+<a class="list-group-item" href="./common-db-fields-field.html">Field</a>
+<a class="list-group-item" href="./common-db-fields-hasonefield.html">HasOneField</a>
+<a class="list-group-item" href="./common-db-fields-hasoneradiofield.html">HasOneRadioField</a>
+<a class="list-group-item" href="./common-db-fields-hiddenfield.html">HiddenField</a>
+<a class="list-group-item" href="./common-db-fields-html5filefield.html">Html5FileField</a>
+<a class="list-group-item" href="./common-db-fields-html5imagefield.html">Html5ImageField</a>
+<a class="list-group-item" href="./common-db-fields-htmlfield.html">HtmlField</a>
+<a class="list-group-item" href="./common-db-fields-listfield.html">ListField</a>
+<a class="list-group-item" href="./common-db-fields-manymanyfield.html">ManyManyField</a>
+<a class="list-group-item" href="./common-db-fields-manymanysortfield.html">ManyManySortField</a>
+<a class="list-group-item" href="./common-db-fields-markitupfield.html">MarkItUpField</a>
+<a class="list-group-item" href="./common-db-fields-numberfield.html">NumberField</a>
+<a class="list-group-item" href="./common-db-fields-parentlistfield.html">ParentListField</a>
+<a class="list-group-item" href="./common-db-fields-passwordfield.html">PasswordField</a>
+<a class="list-group-item" href="./common-db-fields-pkfield.html">PkField</a>
+<a class="list-group-item" href="./common-db-fields-radiolistfield.html">RadioListField</a>
+<a class="list-group-item" href="./common-db-fields-textareafield.html">TextAreaField</a>
+<a class="list-group-item" href="./common-db-fields-textfield.html">TextField</a>
+<a class="list-group-item" href="./common-db-fields-timestampfield.html">TimestampField</a>
+<a class="list-group-item" href="./common-db-fields-yamapfield.html">YaMapField</a></div>
+<a class="list-group-item" href="#navigation-32607" data-toggle="collapse" data-parent="#navigation">common\exceptions <b class="caret"></b></a><div id="navigation-32607" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-exceptions-ioexception.html">IoException</a></div>
+<a class="list-group-item" href="#navigation-32608" data-toggle="collapse" data-parent="#navigation">common\helpers <b class="caret"></b></a><div id="navigation-32608" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-helpers-confighelper.html">ConfigHelper</a>
+<a class="list-group-item" href="./common-helpers-filehelper.html">FileHelper</a></div>
+<a class="list-group-item" href="#navigation-32609" data-toggle="collapse" data-parent="#navigation">common\inputs <b class="caret"></b></a><div id="navigation-32609" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-inputs-autocompleteinput.html">AutoCompleteInput</a>
+<a class="list-group-item" href="./common-inputs-baseinput.html">BaseInput</a>
+<a class="list-group-item" href="./common-inputs-checkboxinput.html">CheckBoxInput</a>
+<a class="list-group-item" href="./common-inputs-dateinput.html">DateInput</a>
+<a class="list-group-item" href="./common-inputs-daterangeinput.html">DateRangeInput</a>
+<a class="list-group-item" href="./common-inputs-dropdowninput.html">DropDownInput</a>
+<a class="list-group-item" href="./common-inputs-hiddeninput.html">HiddenInput</a>
+<a class="list-group-item" href="./common-inputs-html5fileinput.html">Html5FileInput</a>
+<a class="list-group-item" href="./common-inputs-htmlinput.html">HtmlInput</a>
+<a class="list-group-item" href="./common-inputs-markitupinput.html">MarkItUpInput</a>
+<a class="list-group-item" href="./common-inputs-multiselectinput.html">MultiSelectInput</a>
+<a class="list-group-item" href="./common-inputs-numberinput.html">NumberInput</a>
+<a class="list-group-item" href="./common-inputs-passwordinput.html">PasswordInput</a>
+<a class="list-group-item" href="./common-inputs-radiolistinput.html">RadioListInput</a>
+<a class="list-group-item" href="./common-inputs-sortedtagsinput.html">SortedTagsInput</a>
+<a class="list-group-item" href="./common-inputs-textareainput.html">TextAreaInput</a>
+<a class="list-group-item" href="./common-inputs-textinput.html">TextInput</a>
+<a class="list-group-item" href="./common-inputs-yamapinput.html">YaMapInput</a></div>
+<a class="list-group-item" href="#navigation-32610" data-toggle="collapse" data-parent="#navigation">common\rbac <b class="caret"></b></a><div id="navigation-32610" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-rbac-iconstraint.html">IConstraint</a>
+<a class="list-group-item" href="./common-rbac-ipermission.html">IPermission</a></div>
+<a class="list-group-item" href="#navigation-32611" data-toggle="collapse" data-parent="#navigation">common\sphinx <b class="caret"></b></a><div id="navigation-32611" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-sphinx-sphinxdataprovider.html">SphinxDataProvider</a>
+<a class="list-group-item" href="./common-sphinx-sphinxsearch.html">SphinxSearch</a></div>
+<a class="list-group-item" href="#navigation-32612" data-toggle="collapse" data-parent="#navigation">common\web <b class="caret"></b></a><div id="navigation-32612" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-web-jquerynumberasset.html">JqueryNumberAsset</a></div>
+<a class="list-group-item" href="#navigation-32613" data-toggle="collapse" data-parent="#navigation">common\widgets <b class="caret"></b></a><div id="navigation-32613" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-app.html">App</a>
+<a class="list-group-item" href="./common-widgets-autocomplete.html">AutoComplete</a>
+<a class="list-group-item" href="./common-widgets-breadcrumbs.html">Breadcrumbs</a>
+<a class="list-group-item" href="./common-widgets-dependdropdown.html">DependDropDown</a>
+<a class="list-group-item" href="./common-widgets-formattednumberinput.html">FormattedNumberInput</a>
+<a class="list-group-item" href="./common-widgets-jscaptcha.html">JsCaptcha</a>
+<a class="list-group-item" href="./common-widgets-listview.html">ListView</a>
+<a class="list-group-item" href="./common-widgets-sortedtags.html">SortedTags</a></div>
+<a class="list-group-item" href="#navigation-32614" data-toggle="collapse" data-parent="#navigation">common\widgets\admin <b class="caret"></b></a><div id="navigation-32614" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-admin-actionbutton.html">ActionButton</a>
+<a class="list-group-item" href="./common-widgets-admin-crudlinks.html">CrudLinks</a>
+<a class="list-group-item" href="./common-widgets-admin-detail.html">Detail</a>
+<a class="list-group-item" href="./common-widgets-admin-extfilter.html">ExtFilter</a>
+<a class="list-group-item" href="./common-widgets-admin-form.html">Form</a>
+<a class="list-group-item" href="./common-widgets-admin-grid.html">Grid</a>
+<a class="list-group-item" href="./common-widgets-admin-menu.html">Menu</a>
+<a class="list-group-item" href="./common-widgets-admin-replaceintreebutton.html">ReplaceInTreeButton</a>
+<a class="list-group-item" href="./common-widgets-admin-tableinput.html">TableInput</a></div>
+<a class="list-group-item" href="#navigation-32615" data-toggle="collapse" data-parent="#navigation">common\widgets\html5uploader <b class="caret"></b></a><div id="navigation-32615" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-html5uploader-assetbundle.html">AssetBundle</a>
+<a class="list-group-item" href="./common-widgets-html5uploader-widget.html">Widget</a></div>
+<a class="list-group-item" href="#navigation-32616" data-toggle="collapse" data-parent="#navigation">common\widgets\launcher <b class="caret"></b></a><div id="navigation-32616" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-launcher-assetbundle.html">AssetBundle</a>
+<a class="list-group-item" href="./common-widgets-launcher-launcher.html">Launcher</a></div>
+<a class="list-group-item" href="#navigation-32617" data-toggle="collapse" data-parent="#navigation">common\widgets\markitup <b class="caret"></b></a><div id="navigation-32617" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-markitup-markitup.html">MarkItUp</a>
+<a class="list-group-item" href="./common-widgets-markitup-markitupasset.html">MarkItUpAsset</a>
+<a class="list-group-item" href="./common-widgets-markitup-setbbcodeasset.html">SetBbCodeAsset</a>
+<a class="list-group-item" href="./common-widgets-markitup-skinsimpleasset.html">SkinSimpleAsset</a></div>
+<a class="list-group-item" href="#navigation-32618" data-toggle="collapse" data-parent="#navigation">common\widgets\yamap <b class="caret"></b></a><div id="navigation-32618" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-yamap-yamap.html">YaMap</a>
+<a class="list-group-item" href="./common-widgets-yamap-yamapapiasset.html">YaMapApiAsset</a>
+<a class="list-group-item" href="./common-widgets-yamap-yamapinput.html">YaMapInput</a>
+<a class="list-group-item" href="./common-widgets-yamap-yamapinputasset.html">YaMapInputAsset</a></div>
+<a class="list-group-item" href="#navigation-32619" data-toggle="collapse" data-parent="#navigation">common\xeditable <b class="caret"></b></a><div id="navigation-32619" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-xeditable-xeditablecolumn.html">XEditableColumn</a></div>
+<a class="list-group-item" href="#navigation-32620" data-toggle="collapse" data-parent="#navigation">console\controllers <b class="caret"></b></a><div id="navigation-32620" class="submenu panel-collapse collapse"><a class="list-group-item" href="./console-controllers-installcontroller.html">InstallController</a>
+<a class="list-group-item" href="./console-controllers-migratecontroller.html">MigrateController</a>
+<a class="list-group-item" href="./console-controllers-sitemapcontroller.html">SitemapController</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main">
+        <h1>Class Reference</h1>
+
+<table class="summaryTable docIndex table table-bordered table-striped table-hover">
+    <colgroup>
+        <col class="col-package" />
+        <col class="col-class" />
+        <col class="col-description" />
+    </colgroup>
+    <tr>
+        <th>Class</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><a href="app-assets-adminasset.html">app\assets\AdminAsset</a></td>
+        <td>Class AdminAsset
+Ассет для админки</td>
+    </tr>
+    <tr>
+        <td><a href="app-assets-swfobjectasset.html">app\assets\SwfObjectAsset</a></td>
+        <td>Class SwfObjectAsset
+Ассет библиотеки swfobject</td>
+    </tr>
+    <tr>
+        <td><a href="app-controllers-sitecontroller.html">app\controllers\SiteController</a></td>
+        <td>Class SiteController
+Контроллер аутентификации и обработки ошибок</td>
+    </tr>
+    <tr>
+        <td><a href="app-gii-generators-appmodule-generator.html">app\gii\generators\appmodule\Generator</a></td>
+        <td>Данный генератор генерит скелет модуля приложения. В дополнение к стандартному функционалу
+генерит вложенный административный модуль, файл настроек и файл перевода.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-banners.html">app\modules\banners\Banners</a></td>
+        <td>Class Banners
+Баннерный модуль</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-components-abstractrenderer.html">app\modules\banners\components\AbstractRenderer</a></td>
+        <td>Class AbstractRenderer
+Абстрактный класс компонента рендеринга баннеров</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-components-flashrenderer.html">app\modules\banners\components\FlashRenderer</a></td>
+        <td>Class ImageRenderer
+Класс для рендеринга флеш - баннеров</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-components-imagerenderer.html">app\modules\banners\components\ImageRenderer</a></td>
+        <td>Class ImageRenderer
+Класс для рендеринга баннеров - изображений</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-components-rendererfactory.html">app\modules\banners\components\RendererFactory</a></td>
+        <td>Class RendererFactory
+Фабрика компонентов для рендера баннеров</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-controllers-defaultcontroller.html">app\modules\banners\controllers\DefaultController</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-models-banner.html">app\modules\banners\models\Banner</a></td>
+        <td>Class Banner
+Модель баннера</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-models-place.html">app\modules\banners\models\Place</a></td>
+        <td>Class Place
+Модель баннерного места</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-models-meta-bannermeta.html">app\modules\banners\models\meta\BannerMeta</a></td>
+        <td>Class BannerMeta
+Мета описание модели баннера</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-models-meta-placemeta.html">app\modules\banners\models\meta\PlaceMeta</a></td>
+        <td>Class PlaceMeta
+Мета описание модели баннерных мест</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-modules-admin-admin.html">app\modules\banners\modules\admin\Admin</a></td>
+        <td>Class Admin
+Административный модуль баннерного модуля</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-modules-admin-controllers-bannercontroller.html">app\modules\banners\modules\admin\controllers\BannerController</a></td>
+        <td>BannerController implements the CRUD actions for Banner model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-modules-admin-controllers-placecontroller.html">app\modules\banners\modules\admin\controllers\PlaceController</a></td>
+        <td>PlaceController implements the CRUD actions for Place model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-widgets-listbanners.html">app\modules\banners\widgets\ListBanners</a></td>
+        <td>Class ListBanners
+Отображает все баннеры по коду баннерного места
+Баннеры с одинаковым кодом ротируются в случайном порядке.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-banners-widgets-singlebanner.html">app\modules\banners\widgets\SingleBanner</a></td>
+        <td>Class SingleBanner
+Виджет отображения одного баннера по коду баннерного места.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-catalog.html">app\modules\catalog\Catalog</a></td>
+        <td>Class Catalog
+Модуль каталога товаров</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-controllers-catalogcontroller.html">app\modules\catalog\controllers\CatalogController</a></td>
+        <td>Class CatalogController
+Контроллер отображения каталога</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-db-catalogquery.html">app\modules\catalog\db\CatalogQuery</a></td>
+        <td>Class CatalogQuery
+Запрос для модели элемента каталога товаров</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-models-catalog.html">app\modules\catalog\models\Catalog</a></td>
+        <td>Class Catalog
+Модель каталога товаров</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-models-catalogsearch.html">app\modules\catalog\models\CatalogSearch</a></td>
+        <td>Class CatalogSearch
+Модель для фильтрации элементов каталога</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-models-catalogsection.html">app\modules\catalog\models\CatalogSection</a></td>
+        <td>Class CatalogSection
+Модель категорий каталога</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-models-producer.html">app\modules\catalog\models\Producer</a></td>
+        <td>Class Producer
+Модель производителей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-models-meta-catalogmeta.html">app\modules\catalog\models\meta\CatalogMeta</a></td>
+        <td>Class CatalogMeta
+Мета описание модели элемента каталога</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-models-meta-catalogsectionmeta.html">app\modules\catalog\models\meta\CatalogSectionMeta</a></td>
+        <td>Class CatalogSectionMeta
+Мета описание модели категорий каталога</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-models-meta-producermeta.html">app\modules\catalog\models\meta\ProducerMeta</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-modules-admin-admin.html">app\modules\catalog\modules\admin\Admin</a></td>
+        <td>Class Admin
+Административный модуль каталога</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-modules-admin-controllers-catalogcontroller.html">app\modules\catalog\modules\admin\controllers\CatalogController</a></td>
+        <td>CatalogController implements the CRUD actions for catalog model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-modules-admin-controllers-catalogsectioncontroller.html">app\modules\catalog\modules\admin\controllers\CatalogSectionController</a></td>
+        <td>CatalogSectionController implements the CRUD actions for CatalogSection model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-catalog-modules-admin-controllers-producercontroller.html">app\modules\catalog\modules\admin\controllers\ProducerController</a></td>
+        <td>ProducerController implements the CRUD actions for Producer model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-geo.html">app\modules\geo\Geo</a></td>
+        <td>Class Geo
+Модуль географического справочника</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-components-suggestsfinder.html">app\modules\geo\components\SuggestsFinder</a></td>
+        <td>Class SuggestsFinder
+Компонент формирования предположений для вывода в автокомплите</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-controllers-listcontroller.html">app\modules\geo\controllers\ListController</a></td>
+        <td>Class ListController
+Контроллер вывода html для заполнения связанных списков географического справочника</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-controllers-restcontroller.html">app\modules\geo\controllers\RestController</a></td>
+        <td>Class RestController</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-models-country.html">app\modules\geo\models\Country</a></td>
+        <td>Class Country
+Модель страны</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-models-np.html">app\modules\geo\models\Np</a></td>
+        <td>Class Np
+Модель населенного пункта</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-models-rajon.html">app\modules\geo\models\Rajon</a></td>
+        <td>Class Rajon
+Модель района</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-models-region.html">app\modules\geo\models\Region</a></td>
+        <td>Class Region
+Модель региона</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-models-street.html">app\modules\geo\models\Street</a></td>
+        <td>Class Street
+Модель улицы</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-models-meta-countrymeta.html">app\modules\geo\models\meta\CountryMeta</a></td>
+        <td>Class CountryMeta
+Мета описание модели страны</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-models-meta-npmeta.html">app\modules\geo\models\meta\NpMeta</a></td>
+        <td>Class NpMeta
+Мета описание модели населенного пункта</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-models-meta-rajonmeta.html">app\modules\geo\models\meta\RajonMeta</a></td>
+        <td>Class RajonMeta
+Мета описание модели района</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-models-meta-regionmeta.html">app\modules\geo\models\meta\RegionMeta</a></td>
+        <td>Class RegionMeta
+Мета описание модели региона</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-geo-models-meta-streetmeta.html">app\modules\geo\models\meta\StreetMeta</a></td>
+        <td>Class StreetMeta
+Мета описание модели улицы</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-import-import.html">app\modules\import\Import</a></td>
+        <td>Class Import
+Модуль импорта данных из внешних источников</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-import-components-csvimporter.html">app\modules\import\components\CsvImporter</a></td>
+        <td>Class CsvImporter
+Компонент импорта данных из csv файла</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-import-controllers-defaultcontroller.html">app\modules\import\controllers\DefaultController</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-import-models-csvmodel.html">app\modules\import\models\CsvModel</a></td>
+        <td>Class CsvModel
+Модель CSV файла</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-import-models-icsvimportable.html">app\modules\import\models\ICsvImportable</a></td>
+        <td>Interface ICsvImportable
+Интерфейс который должна реализовать модель, чтобы обеспечить импорт из CSV</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-import-modules-admin-admin.html">app\modules\import\modules\admin\Admin</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-import-modules-admin-controllers-csvimportcontroller.html">app\modules\import\modules\admin\controllers\CsvImportController</a></td>
+        <td>Class CsvImportController
+Контроллер импорта моделей из CSV файл</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-main.html">app\modules\main\Main</a></td>
+        <td>Class Main
+Главный модуль системы. Предоставляеет механизм управления статическими страницами,
+меню, включаемыми областями, подключением шаблонов, пользователями. Расширяет механизм
+управления правами доступа фрейморка.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-actions-commentadd.html">app\modules\main\actions\CommentAdd</a></td>
+        <td>Class CommentAdd
+Добавление комментария</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-actions-feedback.html">app\modules\main\actions\Feedback</a></td>
+        <td>Class Feedback
+Обратная связь</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-actions-user-forgot.html">app\modules\main\actions\user\Forgot</a></td>
+        <td>Class Forgot</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-actions-user-signin.html">app\modules\main\actions\user\SignIn</a></td>
+        <td>Class SignIn
+Действие входа в систему</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-actions-user-signup.html">app\modules\main\actions\user\SignUp</a></td>
+        <td>Class SignUp
+Действие регистрации пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-actions-user-update.html">app\modules\main\actions\user\Update</a></td>
+        <td>Class Update
+Действие вывода профиля пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-actions-user-view.html">app\modules\main\actions\user\View</a></td>
+        <td>Class View
+Действие вывода профиля пользователя</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-components-blocksprovider.html">app\modules\main\components\BlocksProvider</a></td>
+        <td>Class BlocksProvider
+Провайдер символьных идентификаторов меню и включаемых областей.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-components-config.html">app\modules\main\components\Config</a></td>
+        <td>Class Config
+Компонент доступа к настройкам хранящимся в БД</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-components-forgotmailnotifier.html">app\modules\main\components\ForgotMailNotifier</a></td>
+        <td>Class ForgotMailNotifier</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-components-mailertrait.html">app\modules\main\components\MailerTrait</a></td>
+        <td>Trait BaseMailer
+Трейт устанавливающий свойства для отправки писем</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-components-pageurlrule.html">app\modules\main\components\PageUrlRule</a></td>
+        <td>Class PageUrlRule
+Правило для роутинга текстовых страниц</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-components-permissiontrait.html">app\modules\main\components\PermissionTrait</a></td>
+        <td>Class PermissionTrait
+Предоставляет функциональность по проверке прав доступа</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-components-signupmailnotifier.html">app\modules\main\components\SignUpMailNotifier</a></td>
+        <td>Class SignUpMailNotifier</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-components-sphinxurlservice.html">app\modules\main\components\SphinxUrlService</a></td>
+        <td>Class SphinxUrlService
+Компонент для создание URL адресов результатов поиска сфинкса</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-controllers-commentscontroller.html">app\modules\main\controllers\CommentsController</a></td>
+        <td>Class CommentsController
+Контроллер комментариев</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-controllers-feedbackcontroller.html">app\modules\main\controllers\FeedbackController</a></td>
+        <td>Class FeedbackController
+Контроллер обратной связи</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-controllers-pagescontroller.html">app\modules\main\controllers\PagesController</a></td>
+        <td>Class PagesController
+Контроллер отображения текстовых страниц</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-controllers-usercontroller.html">app\modules\main\controllers\UserController</a></td>
+        <td>Class UserController</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-db-migration.html">app\modules\main\db\Migration</a></td>
+        <td>Class Migration
+Миграция. Добавлен функционал записи прав доступа на сущность по умолчанию для роли admin</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-comments.html">app\modules\main\models\Comments</a></td>
+        <td>Class Comments
+Модель комментариев</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-config.html">app\modules\main\models\Config</a></td>
+        <td>Class Config
+Модель конфига</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-feedbackform.html">app\modules\main\models\FeedbackForm</a></td>
+        <td>Class FeedbackForm
+Модель формы обратной связи</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-forgotform.html">app\modules\main\models\ForgotForm</a></td>
+        <td>Class ForgotForm</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-includegroup.html">app\modules\main\models\IncludeGroup</a></td>
+        <td>Class IncludeGroup
+Группа включаемых областей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-includes.html">app\modules\main\models\Includes</a></td>
+        <td>Class Includes
+Модель включаемых областей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-loginform.html">app\modules\main\models\LoginForm</a></td>
+        <td>Class LoginForm
+Модель формы логина</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-menu.html">app\modules\main\models\Menu</a></td>
+        <td>Class Menu
+Модель меню</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-pages.html">app\modules\main\models\Pages</a></td>
+        <td>Class Pages
+Модель текстовых страниц</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-permission.html">app\modules\main\models\Permission</a></td>
+        <td>Class Permission
+Модель прав доступа</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-template.html">app\modules\main\models\Template</a></td>
+        <td>Class Template
+Модель шаблона</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-user.html">app\modules\main\models\User</a></td>
+        <td>Модель пользователей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-meta-commentsmeta.html">app\modules\main\models\meta\CommentsMeta</a></td>
+        <td>Class CommentsMeta
+Мета описание модели комментариев</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-meta-configmeta.html">app\modules\main\models\meta\ConfigMeta</a></td>
+        <td>Class ConfigMeta
+Мета описание модели конфига</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-meta-includegroupmeta.html">app\modules\main\models\meta\IncludeGroupMeta</a></td>
+        <td>Class IncludeGroupMeta
+Мета описание группы включаемых областей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-meta-includesmeta.html">app\modules\main\models\meta\IncludesMeta</a></td>
+        <td>Class IncludesMeta
+Мета описание модели включаемой области</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-meta-menumeta.html">app\modules\main\models\meta\MenuMeta</a></td>
+        <td>Class MenuMeta
+Описание полей модели Menu</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-meta-pagesmeta.html">app\modules\main\models\meta\PagesMeta</a></td>
+        <td>Class PagesMeta
+Описание полей модели Pages</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-meta-permissionmeta.html">app\modules\main\models\meta\PermissionMeta</a></td>
+        <td>Class PermissionMeta
+Мета описание модели прав доступа</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-meta-templatesmeta.html">app\modules\main\models\meta\TemplatesMeta</a></td>
+        <td>Class TemplatesMeta
+Мета описание модели шаблонов</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-models-meta-usermeta.html">app\modules\main\models\meta\UserMeta</a></td>
+        <td>Class UserMeta
+Описание полей модеди User</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-admin.html">app\modules\main\modules\admin\Admin</a></td>
+        <td>Class Admin
+Административный модуль главного модуля</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-controllers-commentscontroller.html">app\modules\main\modules\admin\controllers\CommentsController</a></td>
+        <td>CommentsController implements the CRUD actions for Comments model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-controllers-configcontroller.html">app\modules\main\modules\admin\controllers\ConfigController</a></td>
+        <td>Class ConfigController
+Контроллер конфига</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-controllers-defaultcontroller.html">app\modules\main\modules\admin\controllers\DefaultController</a></td>
+        <td>Class DefaultController
+Контроллер шлавной страницы админки</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-controllers-includegroupcontroller.html">app\modules\main\modules\admin\controllers\IncludeGroupController</a></td>
+        <td>IncludeGroupController implements the CRUD actions for IncludeGroup model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-controllers-includescontroller.html">app\modules\main\modules\admin\controllers\IncludesController</a></td>
+        <td>IncludesController implements the CRUD actions for Includes model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-controllers-menucontroller.html">app\modules\main\modules\admin\controllers\MenuController</a></td>
+        <td>MenuController implements the CRUD actions for Menu model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-controllers-pagescontroller.html">app\modules\main\modules\admin\controllers\PagesController</a></td>
+        <td>Class PagesController
+Контроллер CRUD действий для моделей пользователей системы</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-controllers-permissioncontroller.html">app\modules\main\modules\admin\controllers\PermissionController</a></td>
+        <td>PermissionController implements the CRUD actions for Permission model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-controllers-templatecontroller.html">app\modules\main\modules\admin\controllers\TemplateController</a></td>
+        <td>TemplateController implements the CRUD actions for Template model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-controllers-toolscontroller.html">app\modules\main\modules\admin\controllers\ToolsController</a></td>
+        <td>Class ToolsController
+Контроллер различных административный действий</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-controllers-uploadcontroller.html">app\modules\main\modules\admin\controllers\UploadController</a></td>
+        <td>Class UploadController
+Контроллер загрузки файлов</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-modules-admin-controllers-usercontroller.html">app\modules\main\modules\admin\controllers\UserController</a></td>
+        <td>Class UserController
+Контроллер CRUD действий для моделей пользователей системы</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-rbac-adminuserconstraint.html">app\modules\main\rbac\AdminUserConstraint</a></td>
+        <td>Class AdminUserConstraint
+Ограничение админской роли на доступ к пользователям</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-rbac-authorconstraint.html">app\modules\main\rbac\AuthorConstraint</a></td>
+        <td>Class AuthorConstraint
+Ограничение по автору модели</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-rbac-createrule.html">app\modules\main\rbac\CreateRule</a></td>
+        <td>Class CreateRule
+Проверка прав на создание модели</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-rbac-createsrule.html">app\modules\main\rbac\CreatesRule</a></td>
+        <td>Class CreatesRule
+Проверка прав на создание моделей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-rbac-deleterule.html">app\modules\main\rbac\DeleteRule</a></td>
+        <td>Class DeleteRule
+Проверка прав на удаление модели</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-rbac-deletesrule.html">app\modules\main\rbac\DeletesRule</a></td>
+        <td>Class DeletesRule
+Проверка прав на удаление моделей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-rbac-installer.html">app\modules\main\rbac\Installer</a></td>
+        <td>Class Installer
+Установщик ролей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-rbac-listrule.html">app\modules\main\rbac\ListRule</a></td>
+        <td>Class ListRule
+Проверка прав на просмотр списка моделей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-rbac-profileconstraint.html">app\modules\main\rbac\ProfileConstraint</a></td>
+        <td>Class ProfileConstraint
+Ограничение на редактирование свонго профиля</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-rbac-readrule.html">app\modules\main\rbac\ReadRule</a></td>
+        <td>Class ReadRule
+Проверка прав на просмотр модели</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-rbac-updaterule.html">app\modules\main\rbac\UpdateRule</a></td>
+        <td>Class UpdateRule
+Проверка прав на изменение модели</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-rbac-updatesrule.html">app\modules\main\rbac\UpdatesRule</a></td>
+        <td>Class UpdatesRule
+Проверка прав на изменение моделей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-sitemap-sitemap.html">app\modules\main\sitemap\Sitemap</a></td>
+        <td>Class Sitemap
+Компонет для генерации карты сайта</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-sitemap-sitemapwidget.html">app\modules\main\sitemap\SitemapWidget</a></td>
+        <td>Class SitemapWidget
+Виджет отображения карты сайта</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-web-angularasset.html">app\modules\main\web\AngularAsset</a></td>
+        <td>Class AngularAsset
+Ассет бандл ангуляра</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-web-angularlocaleasset.html">app\modules\main\web\AngularLocaleAsset</a></td>
+        <td>Class AngularLocaleAsset
+Ассет бандл локали ангуляра</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-comments-comments.html">app\modules\main\widgets\comments\Comments</a></td>
+        <td>Class Comments
+Виджет добавления комментариев</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-comments-commentsasset.html">app\modules\main\widgets\comments\CommentsAsset</a></td>
+        <td>Class CommentsAsset
+Ассет для виджета комментариев</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-comments-skinasset.html">app\modules\main\widgets\comments\SkinAsset</a></td>
+        <td>Class SkinAsset
+Ассет для скина виджета</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-elist-elist.html">app\modules\main\widgets\elist\EList</a></td>
+        <td>Class EList
+Виджет для вывода элементов. Отображаемая сущность должна наследовать \common\db\ActiveRecord</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-feedback-feedback.html">app\modules\main\widgets\feedback\Feedback</a></td>
+        <td>Class Feedback
+Виджет формы обратной связи</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-feedback-feedbackasset.html">app\modules\main\widgets\feedback\FeedbackAsset</a></td>
+        <td>Class FeedbackAsset
+Ассет для виджета обратной связи</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-gallery-assetbundle.html">app\modules\main\widgets\gallery\AssetBundle</a></td>
+        <td>Class AssetBundle
+Ассет для фотогаллереи</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-gallery-gallery.html">app\modules\main\widgets\gallery\Gallery</a></td>
+        <td>Class Gallery
+Виджет для вывода фотогаллереи</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-includes-includes.html">app\modules\main\widgets\includes\Includes</a></td>
+        <td>Class Includes
+Виджет для вывода включаемых областей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-includes-includesgroup.html">app\modules\main\widgets\includes\IncludesGroup</a></td>
+        <td>Class IncludesGroup
+Виджет для отображения групп включаемых областей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-menu-menu.html">app\modules\main\widgets\menu\Menu</a></td>
+        <td>Class Menu
+Виджет мен.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-treelist-treelist.html">app\modules\main\widgets\treelist\TreeList</a></td>
+        <td>Class TreeList
+Виджет для вывода дерева. Отображаемая сущность должна наследовать \common\db\TActiveRecord</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-user-signin.html">app\modules\main\widgets\user\SignIn</a></td>
+        <td>Class SignIn
+Виджет формы логина</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-main-widgets-user-user.html">app\modules\main\widgets\user\User</a></td>
+        <td>Class User
+Виджет формы авторизации</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-news-news.html">app\modules\news\News</a></td>
+        <td>Class News
+Модуль новостей. Предоставляет возможность рубрикации новостей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-news-controllers-newscontroller.html">app\modules\news\controllers\NewsController</a></td>
+        <td>Class NewsController
+Контроллер отображения новостей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-news-db-newsquery.html">app\modules\news\db\NewsQuery</a></td>
+        <td>Class NewsQuery
+Запрос для модели новостей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-news-models-news.html">app\modules\news\models\News</a></td>
+        <td>Class News
+Модель новостей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-news-models-newssection.html">app\modules\news\models\NewsSection</a></td>
+        <td>Class NewsSection
+Модель категорий новостей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-news-models-meta-newsmeta.html">app\modules\news\models\meta\NewsMeta</a></td>
+        <td>Class NewsMeta
+Мета описание модели новостей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-news-models-meta-newssectionmeta.html">app\modules\news\models\meta\NewsSectionMeta</a></td>
+        <td>Class NewsSectionMeta
+Мета описание модели категорий новостей</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-news-modules-admin-admin.html">app\modules\news\modules\admin\Admin</a></td>
+        <td>Class Admin
+Административный модуль новостного модуля</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-news-modules-admin-controllers-newscontroller.html">app\modules\news\modules\admin\controllers\NewsController</a></td>
+        <td>NewsController implements the CRUD actions for News model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-news-modules-admin-controllers-newssectioncontroller.html">app\modules\news\modules\admin\controllers\NewsSectionController</a></td>
+        <td>NewsSectionController implements the CRUD actions for NewsSection model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-photogallery-photogallery.html">app\modules\photogallery\Photogallery</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-photogallery-controllers-defaultcontroller.html">app\modules\photogallery\controllers\DefaultController</a></td>
+        <td>Class DefaultController
+Контроллер публичной части фотогалереи</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-photogallery-models-gallery.html">app\modules\photogallery\models\Gallery</a></td>
+        <td>Class Gallery
+Фотогалерея</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-photogallery-models-meta-gallerymeta.html">app\modules\photogallery\models\meta\GalleryMeta</a></td>
+        <td>Class GalleryMeta
+Мета - описание фотогалереи</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-photogallery-modules-admin-admin.html">app\modules\photogallery\modules\admin\Admin</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-photogallery-modules-admin-controllers-gallerycontroller.html">app\modules\photogallery\modules\admin\controllers\GalleryController</a></td>
+        <td>GalleryController implements the CRUD actions for Gallery model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-shop.html">app\modules\shop\Shop</a></td>
+        <td>Class Shop
+Модуль интернет магазина</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-components-adminnotifier.html">app\modules\shop\components\AdminNotifier</a></td>
+        <td>Class AdminNotifier
+Компонент уведомления администратора сайта о состоянии заказа</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-components-basket.html">app\modules\shop\components\Basket</a></td>
+        <td>Class Basket
+Корзина. Сохраняет и получает заказ из сессии</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-components-clientnotifier.html">app\modules\shop\components\ClientNotifier</a></td>
+        <td>Class ClientNotifier
+Компонент уведомления клиента о состоянии заказа</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-components-ideliverycalc.html">app\modules\shop\components\IDeliveryCalc</a></td>
+        <td>Interface IDeliveryCalc
+Интерфейс рачета стоимости доставки</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-components-ishopitem.html">app\modules\shop\components\IShopItem</a></td>
+        <td>Interface IShopItem
+Интерфейс который необхимо реализовать модели каталога, чтобы использоваться в модуле магазина</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-components-orderletters.html">app\modules\shop\components\OrderLetters</a></td>
+        <td>Class OrderLetters
+Компонент управления шаблонами уведомлений о заказах</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-components-ordermanager.html">app\modules\shop\components\OrderManager</a></td>
+        <td>Class OrderManager
+Компонент получения текущего заказа</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-components-shopitemtrait.html">app\modules\shop\components\ShopItemTrait</a></td>
+        <td>Class ShopItemTrait
+Трейт предназначенный для реализации интерфейса IShopItem для \common\db\ActiveRecord
+Модель должна содержать атрибуты id, price и title</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-controllers-basketcontroller.html">app\modules\shop\controllers\BasketController</a></td>
+        <td>Class BasketController
+Контроллер корзины</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-controllers-basketrestcontroller.html">app\modules\shop\controllers\BasketRestController</a></td>
+        <td>Class BasketRestController
+Контроллер обрабатывающий запросы к корзине</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-controllers-defaultcontroller.html">app\modules\shop\controllers\DefaultController</a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-db-statusquery.html">app\modules\shop\db\StatusQuery</a></td>
+        <td>Class StatusQuery
+Запрос для модели статусов</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-db-fields-goodattrsfield.html">app\modules\shop\db\fields\GoodAttrsField</a></td>
+        <td>Class GoodAttrsField
+Поле для отображения связанных с заказанным товаром атрибутов</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-models-delivery.html">app\modules\shop\models\Delivery</a></td>
+        <td>Class Delivery
+Модель способов доставки</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-models-good.html">app\modules\shop\models\Good</a></td>
+        <td>Class Good
+Модель заказанного товара</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-models-order.html">app\modules\shop\models\Order</a></td>
+        <td>Class Order
+Модель заказа</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-models-payment.html">app\modules\shop\models\Payment</a></td>
+        <td>Class Payment
+Модель вариантов оплаты</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-models-status.html">app\modules\shop\models\Status</a></td>
+        <td>Class Status
+Модель статуса заказа</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-models-meta-deliverymeta.html">app\modules\shop\models\meta\DeliveryMeta</a></td>
+        <td>Class DeliveryMeta
+Мета описание модели способов доставки</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-models-meta-goodmeta.html">app\modules\shop\models\meta\GoodMeta</a></td>
+        <td>Class GoodMeta
+Мета описание модели заказанного товара</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-models-meta-ordermeta.html">app\modules\shop\models\meta\OrderMeta</a></td>
+        <td>Class OrderMeta
+Мета описание модели заказа</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-models-meta-paymentmeta.html">app\modules\shop\models\meta\PaymentMeta</a></td>
+        <td>Class PaymentMeta
+Мета описание модели способов оплаты</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-models-meta-statusmeta.html">app\modules\shop\models\meta\StatusMeta</a></td>
+        <td>Class StatusMeta
+Мета описание модели статусов</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-modules-admin-admin.html">app\modules\shop\modules\admin\Admin</a></td>
+        <td>Class Admin
+Административный модуль интернет - магазина</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-modules-admin-controllers-deliverycontroller.html">app\modules\shop\modules\admin\controllers\DeliveryController</a></td>
+        <td>DeliveryController implements the CRUD actions for Delivery model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-modules-admin-controllers-goodcontroller.html">app\modules\shop\modules\admin\controllers\GoodController</a></td>
+        <td>GoodController implements the CRUD actions for Good model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-modules-admin-controllers-ordercontroller.html">app\modules\shop\modules\admin\controllers\OrderController</a></td>
+        <td>OrderController implements the CRUD actions for Order model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-modules-admin-controllers-paymentcontroller.html">app\modules\shop\modules\admin\controllers\PaymentController</a></td>
+        <td>PaymentController implements the CRUD actions for Payment model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-modules-admin-controllers-statuscontroller.html">app\modules\shop\modules\admin\controllers\StatusController</a></td>
+        <td>StatusController implements the CRUD actions for Status model.</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-web-shopasset.html">app\modules\shop\web\ShopAsset</a></td>
+        <td>Class ShopAsset
+Ассет бандл интернет магазина</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-widgets-basketinfo.html">app\modules\shop\widgets\BasketInfo</a></td>
+        <td>Class BasketInfo
+Виджет вывода статистики корзины</td>
+    </tr>
+    <tr>
+        <td><a href="app-modules-shop-widgets-tobasket.html">app\modules\shop\widgets\ToBasket</a></td>
+        <td>Class ToBasket
+Виджет добавления товаров в корзину</td>
+    </tr>
+    <tr>
+        <td><a href="app-themes-demo-assets-appasset.html">app\themes\demo\assets\AppAsset</a></td>
+        <td>Class AppAsset
+Ассеты темы</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-upload.html">common\actions\Upload</a></td>
+        <td>Class Upload
+Действие загрузки файлов</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-admin.html">common\actions\crud\Admin</a></td>
+        <td>Class Admin
+Класс действия для вывода списка моделей для администрирования</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-base.html">common\actions\crud\Base</a></td>
+        <td>Class Base
+Базовый класс для CRUD действий</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-create.html">common\actions\crud\Create</a></td>
+        <td>Class Create
+Класс действия создания элемента модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-delete.html">common\actions\crud\Delete</a></td>
+        <td>Class Delete
+Класс действия для удаления модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-groupdelete.html">common\actions\crud\GroupDelete</a></td>
+        <td>Class GroupDelete
+Класс для группового удаления моделей</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-tadmin.html">common\actions\crud\TAdmin</a></td>
+        <td>Class TAdmin
+Класс действия для вывода списка древовидных моделей для администрирования</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-tcreate.html">common\actions\crud\TCreate</a></td>
+        <td>Class TCreate
+Класс действия создания элемента древовидной модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-tdelete.html">common\actions\crud\TDelete</a></td>
+        <td>Class TDelete
+Класс действия для удаления древовидной модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-tdown.html">common\actions\crud\TDown</a></td>
+        <td>Class TDown
+Класс действия для перемещения вниз древовидной модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-tgroupdelete.html">common\actions\crud\TGroupDelete</a></td>
+        <td>Class TGroupDelete
+Класс для группового удаления древовидных моделей</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-treplace.html">common\actions\crud\TReplace</a></td>
+        <td>Class TReplace
+Класс действия для перемещения древовидных моделей в иерархии</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-tup.html">common\actions\crud\TUp</a></td>
+        <td>Class TUp
+Класс действия для перемещения вверх древовидной модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-tupdate.html">common\actions\crud\TUpdate</a></td>
+        <td>Class TUpdate
+Класс действия обновления древовидных моделей</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-update.html">common\actions\crud\Update</a></td>
+        <td>Class Update
+Класс действия обновления модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-view.html">common\actions\crud\View</a></td>
+        <td>Class View
+Класс действия просмотра модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-actions-crud-xeditable.html">common\actions\crud\XEditable</a></td>
+        <td>Class XEditable
+Класс действия обновления модели через расширение XEditable</td>
+    </tr>
+    <tr>
+        <td><a href="common-behaviors-arrayserializer.html">common\behaviors\ArraySerializer</a></td>
+        <td>Class ArraySerializer
+Серилизует в JSON значение атрибута (массив) для сохранения в БД</td>
+    </tr>
+    <tr>
+        <td><a href="common-behaviors-html5uploadbehavior.html">common\behaviors\Html5UploadBehavior</a></td>
+        <td>Class Html5UploadBehavior
+Поведение для загрузки файлов через html5 виджет через ajax</td>
+    </tr>
+    <tr>
+        <td><a href="common-behaviors-manymanysaver.html">common\behaviors\ManyManySaver</a></td>
+        <td>Class ManyManySaver
+Поведение для сохранения связанных через MANY MANY записей</td>
+    </tr>
+    <tr>
+        <td><a href="common-behaviors-matchsuitable.html">common\behaviors\MatchSuitable</a></td>
+        <td>Class MatchSuitable
+Поведение для определения того, что выполняется заданное у модели условие</td>
+    </tr>
+    <tr>
+        <td><a href="common-behaviors-nestedset.html">common\behaviors\NestedSet</a></td>
+        <td>Class NestedSet
+Исправляет баги в оригинальном NestedSet</td>
+    </tr>
+    <tr>
+        <td><a href="common-behaviors-simpleuploadbehavior.html">common\behaviors\SimpleUploadBehavior</a></td>
+        <td>Class SimpleUploadBehavior
+Загрузка файлов отправленных с формой</td>
+    </tr>
+    <tr>
+        <td><a href="common-behaviors-tagcache.html">common\behaviors\TagCache</a></td>
+        <td>Class TagCache
+Поведение тегированного кеширования</td>
+    </tr>
+    <tr>
+        <td><a href="common-behaviors-uploadbehavior.html">common\behaviors\UploadBehavior</a></td>
+        <td>Class UploadBehavior
+Поведение загрузки файлов</td>
+    </tr>
+    <tr>
+        <td><a href="common-cache-tagdependency.html">common\cache\TagDependency</a></td>
+        <td>Class TagDependency
+Зависимость тегтрованного кеша</td>
+    </tr>
+    <tr>
+        <td><a href="common-components-assetbundle.html">common\components\AssetBundle</a></td>
+        <td>Class AssetBundle
+Добавлена возможность подключения минифицированного кода в зависимости от окружения</td>
+    </tr>
+    <tr>
+        <td><a href="common-components-bbcodeparser.html">common\components\BBCodeParser</a></td>
+        <td>Class BBCodeParser
+Парсер BB кодов в html</td>
+    </tr>
+    <tr>
+        <td><a href="common-components-match.html">common\components\Match</a></td>
+        <td>Class Match
+Базовый класс проверки условий</td>
+    </tr>
+    <tr>
+        <td><a href="common-components-phpmatch.html">common\components\PhpMatch</a></td>
+        <td>Class PhpMatch
+Php выражение</td>
+    </tr>
+    <tr>
+        <td><a href="common-components-resizer.html">common\components\Resizer</a></td>
+        <td>Class Resizer
+Компонент для ресайза изображений. Использует библиотеку расширение imagine</td>
+    </tr>
+    <tr>
+        <td><a href="common-components-routematch.html">common\components\RouteMatch</a></td>
+        <td>Class RouteMatch
+Совпадение с текущим маршрутом</td>
+    </tr>
+    <tr>
+        <td><a href="common-components-tagsconverter.html">common\components\TagsConverter</a></td>
+        <td>Class TagsConverter
+Конвертор тегов формируемых виджетом \common\widgets\SortedTags в массив идентификаторов моделей и обратно</td>
+    </tr>
+    <tr>
+        <td><a href="common-components-treefinder.html">common\components\TreeFinder</a></td>
+        <td>Class TreeFinder
+Поиск значений по дереву</td>
+    </tr>
+    <tr>
+        <td><a href="common-components-urlmatch.html">common\components\UrlMatch</a></td>
+        <td>Class UrlMatch
+Совпадение по URL</td>
+    </tr>
+    <tr>
+        <td><a href="common-components-view.html">common\components\View</a></td>
+        <td>Class View
+Расширяем функционал стандартного представления</td>
+    </tr>
+    <tr>
+        <td><a href="common-components-uiboot-themeasset.html">common\components\uiboot\ThemeAsset</a></td>
+        <td>Class ThemeAsset
+Тема jQuery UI под bootstrap</td>
+    </tr>
+    <tr>
+        <td><a href="common-controllers-admin.html">common\controllers\Admin</a></td>
+        <td>Class Admin базовый класс контроллеров административного модуля</td>
+    </tr>
+    <tr>
+        <td><a href="common-controllers-app.html">common\controllers\App</a></td>
+        <td>Class App
+Базовый контроллер для публичных модулей сайта</td>
+    </tr>
+    <tr>
+        <td><a href="common-controllers-root.html">common\controllers\Root</a></td>
+        <td>Class Root
+Базовый контроллер для разделов предназначенных только для суперпользователя</td>
+    </tr>
+    <tr>
+        <td><a href="common-core-adminmodule.html">common\core\AdminModule</a></td>
+        <td>Class AdminModule
+Базовый класс для административных модулей</td>
+    </tr>
+    <tr>
+        <td><a href="common-core-file.html">common\core\File</a></td>
+        <td>Class File
+Класс файла</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-activequery.html">common\db\ActiveQuery</a></td>
+        <td>Class ActiveQuery
+Системный ActiveQuery. Предоставляет системные scopes.</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-activerecord.html">common\db\ActiveRecord</a></td>
+        <td>Class ActiveRecord
+Надстройка над ActiveRecord фпеймворка.</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-createdatsearchtrait.html">common\db\CreatedAtSearchTrait</a></td>
+        <td>Class CreatedAtSearchTrait
+Добавляет атрибуты для поиска по диапазону даты создания</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-metafields.html">common\db\MetaFields</a></td>
+        <td>Class MetaFields
+Класс содержащий описание полей модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-tactivequery.html">common\db\TActiveQuery</a></td>
+        <td>Class TActiveQuery
+Системный ActiveQuery. Предоставляет системные scopes. Содержит поведения для реализации древовидных структур</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-tactiverecord.html">common\db\TActiveRecord</a></td>
+        <td>Class TActiveRecord
+Надстройка над ActiveRecord для реализации древовидных структур.</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-autocompletefield.html">common\db\fields\AutoCompleteField</a></td>
+        <td>Class AutoCompleteField
+Поле с автозаполнением.</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-checkboxfield.html">common\db\fields\CheckBoxField</a></td>
+        <td>Class CheckBoxField
+Поле чекбокса для модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-codefield.html">common\db\fields\CodeField</a></td>
+        <td>Class CodeField
+Поле символьного кода</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-datefield.html">common\db\fields\DateField</a></td>
+        <td>Class DateField
+Поле ввода даты</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-emailfield.html">common\db\fields\EmailField</a></td>
+        <td>Class EmailField
+Поле ввода Email</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-field.html">common\db\fields\Field</a></td>
+        <td>Class TextField
+Базовый класс полей.</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-hasonefield.html">common\db\fields\HasOneField</a></td>
+        <td>Class HasOneField
+Поле для связей Has One. Интерфейс привязки в форме в виде выпадающего списка.</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-hasoneradiofield.html">common\db\fields\HasOneRadioField</a></td>
+        <td>Class HasOneField
+Поле для связей Has One. Интерфейс привязки в форме в виде radio button.</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-hiddenfield.html">common\db\fields\HiddenField</a></td>
+        <td>Class HiddenField
+Скрытое поле модели.</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-html5filefield.html">common\db\fields\Html5FileField</a></td>
+        <td>Class Html5FileField
+Поле загрузки файлов средствами html5</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-html5imagefield.html">common\db\fields\Html5ImageField</a></td>
+        <td>Class Html5ImageField
+Поле загрузки изображений средствами html5</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-htmlfield.html">common\db\fields\HtmlField</a></td>
+        <td>Class HtmlField
+Поле WYSIWYG редактора. Использует CKEditor</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-listfield.html">common\db\fields\ListField</a></td>
+        <td>Class ListField
+Списочное поле модели. Поддерживает возможность создания зависимых списков.</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-manymanyfield.html">common\db\fields\ManyManyField</a></td>
+        <td>Class ManyManyField
+Поле для связей Many Many</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-manymanysortfield.html">common\db\fields\ManyManySortField</a></td>
+        <td>Class ManyManySortField
+Поле для связи ManyMany с возможностью сортировки привязанных элементов</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-markitupfield.html">common\db\fields\MarkItUpField</a></td>
+        <td>Class MarkItUpField
+Поле редактора MarkItUp</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-numberfield.html">common\db\fields\NumberField</a></td>
+        <td>Class NumberField
+Поле ввода чисел</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-parentlistfield.html">common\db\fields\ParentListField</a></td>
+        <td>Class ParentListField
+Поле для привязки древовидных моделей к родителю</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-passwordfield.html">common\db\fields\PasswordField</a></td>
+        <td>Class PasswordField
+Поле ввода пароля модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-pkfield.html">common\db\fields\PkField</a></td>
+        <td>Class PkField
+Поле первичного ключа</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-radiolistfield.html">common\db\fields\RadioListField</a></td>
+        <td>Class RadioListField
+Поле для связей Has One. Интерфейс привязки в форме в виде radiobutton.</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-textareafield.html">common\db\fields\TextAreaField</a></td>
+        <td>Class TextAreaField
+Поле текстовой области модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-textfield.html">common\db\fields\TextField</a></td>
+        <td>Class TextField
+Текстовое поле модели.</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-timestampfield.html">common\db\fields\TimestampField</a></td>
+        <td>Class TimestampField
+Поле метки времени</td>
+    </tr>
+    <tr>
+        <td><a href="common-db-fields-yamapfield.html">common\db\fields\YaMapField</a></td>
+        <td>Class YaMapField
+Поле выбора координат на яндекс карте</td>
+    </tr>
+    <tr>
+        <td><a href="common-exceptions-ioexception.html">common\exceptions\IoException</a></td>
+        <td>Class IoException
+Исключение возникающее при ошибка ввода вывода файловой системы</td>
+    </tr>
+    <tr>
+        <td><a href="common-helpers-confighelper.html">common\helpers\ConfigHelper</a></td>
+        <td>Class ConfigHelper
+Хелпер для формирования конфигов</td>
+    </tr>
+    <tr>
+        <td><a href="common-helpers-filehelper.html">common\helpers\FileHelper</a></td>
+        <td>Class FileHelper
+Содержит методы для аботы с файлами</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-autocompleteinput.html">common\inputs\AutoCompleteInput</a></td>
+        <td>Class AutoCompleteInput
+Поле с автозаполнением</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-baseinput.html">common\inputs\BaseInput</a></td>
+        <td>Class BaseInput
+Базовый класс полей ввода форм</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-checkboxinput.html">common\inputs\CheckBoxInput</a></td>
+        <td>Class CheckBoxInput
+Чекбокс</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-dateinput.html">common\inputs\DateInput</a></td>
+        <td>Class DateInput
+Поле ввода даты</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-daterangeinput.html">common\inputs\DateRangeInput</a></td>
+        <td>Class DateRangeInput
+Поле ввода диапазона дат</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-dropdowninput.html">common\inputs\DropDownInput</a></td>
+        <td>Class DropDownInput
+Выпадающий список</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-hiddeninput.html">common\inputs\HiddenInput</a></td>
+        <td>Class HiddenInput
+Текстовое поле</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-html5fileinput.html">common\inputs\Html5FileInput</a></td>
+        <td>Class Html5FileInput
+Поле загрузки файлов HTML5</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-htmlinput.html">common\inputs\HtmlInput</a></td>
+        <td>Class HtmlInput
+Html поле</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-markitupinput.html">common\inputs\MarkItUpInput</a></td>
+        <td>Class MarkItUpInput
+Редактор MarkItUp</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-multiselectinput.html">common\inputs\MultiSelectInput</a></td>
+        <td>Class MultiSelectInput
+Список множественного выбора</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-numberinput.html">common\inputs\NumberInput</a></td>
+        <td>Class NumberInput
+Поле ввода чисел</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-passwordinput.html">common\inputs\PasswordInput</a></td>
+        <td>Class PasswordInput
+Поле ввода пароля</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-radiolistinput.html">common\inputs\RadioListInput</a></td>
+        <td>Class RadioListInput
+Список radio переключателей</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-sortedtagsinput.html">common\inputs\SortedTagsInput</a></td>
+        <td>Class SortedTagsInput
+Список тегов с возможностью сортировки</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-textareainput.html">common\inputs\TextAreaInput</a></td>
+        <td>Class TextAreaInput
+Текстовая область</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-textinput.html">common\inputs\TextInput</a></td>
+        <td>Class TextInput
+Текстовое поле</td>
+    </tr>
+    <tr>
+        <td><a href="common-inputs-yamapinput.html">common\inputs\YaMapInput</a></td>
+        <td>Class YaMapInput
+Поле выбора координат на яндекс карте</td>
+    </tr>
+    <tr>
+        <td><a href="common-rbac-iconstraint.html">common\rbac\IConstraint</a></td>
+        <td>Interface IConstraint
+Интерфейс для создания правил ограничений прав доступа</td>
+    </tr>
+    <tr>
+        <td><a href="common-rbac-ipermission.html">common\rbac\IPermission</a></td>
+        <td>Interface IPermission
+Интерфейс проверки прав доступа</td>
+    </tr>
+    <tr>
+        <td><a href="common-sphinx-sphinxdataprovider.html">common\sphinx\SphinxDataProvider</a></td>
+        <td>Class SphinxDataProvider
+Провайдер данных для получения моделей через sphinx. Сначала из сфинкса выбираются id затем по этим id выбираются модели.</td>
+    </tr>
+    <tr>
+        <td><a href="common-sphinx-sphinxsearch.html">common\sphinx\SphinxSearch</a></td>
+        <td>Class SphinxSearch
+Полнотекстовый поиск моделей по индексу сфинкса</td>
+    </tr>
+    <tr>
+        <td><a href="common-web-jquerynumberasset.html">common\web\JqueryNumberAsset</a></td>
+        <td>Class JqueryNumberAsset
+Ассет дя jquery плагина форматирования чисел</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-app.html">common\widgets\App</a></td>
+        <td>Class App
+Базовый класс для виджетов приложения</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-autocomplete.html">common\widgets\AutoComplete</a></td>
+        <td>Class AutoComplete
+Виджет автозаполнения. Данные сохраняются в скрытое поле. Позволяет делать привязку по идентификатору.</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-breadcrumbs.html">common\widgets\Breadcrumbs</a></td>
+        <td>Class Breadcrumbs
+Виджет хлебных крошек. Добавлена возможность передачи html атрибутов ссылкам, а также задания шаблона для подписи.</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-dependdropdown.html">common\widgets\DependDropDown</a></td>
+        <td>Class DependDropDown
+Виджет для организации зависимых списков</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-formattednumberinput.html">common\widgets\FormattedNumberInput</a></td>
+        <td>Class FormattedNumberInput
+Виджет ввода чисел с форматированием</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-jscaptcha.html">common\widgets\JsCaptcha</a></td>
+        <td>Class JsCaptcha
+Втджет JS капчи</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-listview.html">common\widgets\ListView</a></td>
+        <td>Class ListView
+Переопределяем рендер пагинации в стандартном ListView</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-sortedtags.html">common\widgets\SortedTags</a></td>
+        <td>Class SortedTags
+Реализует выбор тегов из выпадающего списка с возможностью их сортировки. Формирует данные в виде строки вида "#id название"</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-admin-actionbutton.html">common\widgets\admin\ActionButton</a></td>
+        <td>Class ActionButton
+Кнопка групповых действий над элементами грида \common\widgets\admin\Grid</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-admin-crudlinks.html">common\widgets\admin\CrudLinks</a></td>
+        <td>Class CrudLinks
+Класс для отображения ссылок на CRUD действия</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-admin-detail.html">common\widgets\admin\Detail</a></td>
+        <td>Class Detail
+Виджет детального просмотра. Формируется на основе \common\db\MetaFields модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-admin-extfilter.html">common\widgets\admin\ExtFilter</a></td>
+        <td>Class ExtFilter
+Форма расширенного фильтра модели для админки. Формируется на основе \common\db\MetaFields модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-admin-form.html">common\widgets\admin\Form</a></td>
+        <td>Class Form
+Форма модели для админки. Формируется на основе \common\db\MetaFields модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+        <td>Class Grid
+Грид для админки. Формируется на основе \common\db\MetaFields модели</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-admin-menu.html">common\widgets\admin\Menu</a></td>
+        <td>Class Menu
+Виджет для формирования меню админки на основе настроек модулей</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-admin-replaceintreebutton.html">common\widgets\admin\ReplaceInTreeButton</a></td>
+        <td>Class ReplaceInTreeButton
+Виджет для перемещения древовидных моделей в иерархии</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-admin-tableinput.html">common\widgets\admin\TableInput</a></td>
+        <td>Class TableInput
+Виджет табличного ввода</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-html5uploader-assetbundle.html">common\widgets\html5uploader\AssetBundle</a></td>
+        <td>Class AssetBundle</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-html5uploader-widget.html">common\widgets\html5uploader\Widget</a></td>
+        <td>Class Widget
+Виджет загрузки файлов основанный на html5</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-launcher-assetbundle.html">common\widgets\launcher\AssetBundle</a></td>
+        <td>Class AssetBundle
+Ассет виджета</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-launcher-launcher.html">common\widgets\launcher\Launcher</a></td>
+        <td>Class Launcher
+Класс виджета для запуска действий через ajax с отображением процесса выполнения на прогресс баре.</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-markitup-markitup.html">common\widgets\markitup\MarkItUp</a></td>
+        <td>Class MarkItUp
+Виджет редактора MarkItUp</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-markitup-markitupasset.html">common\widgets\markitup\MarkItUpAsset</a></td>
+        <td>Class MarkItUpAsset
+Ассет для редактора MarkItUp</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-markitup-setbbcodeasset.html">common\widgets\markitup\SetBbCodeAsset</a></td>
+        <td>Class SetBbCodeAsset
+Ассет настроек для BbCode</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-markitup-skinsimpleasset.html">common\widgets\markitup\SkinSimpleAsset</a></td>
+        <td>Class SkinSimpleAsset
+Ассет базового скина</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-yamap-yamap.html">common\widgets\yamap\YaMap</a></td>
+        <td>Class YaMap
+Виджет отображения Яндекс карты</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-yamap-yamapapiasset.html">common\widgets\yamap\YaMapApiAsset</a></td>
+        <td>Class YaMapApiInput
+Ассет подключения API яндекс карт</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-yamap-yamapinput.html">common\widgets\yamap\YaMapInput</a></td>
+        <td>Class YaMapInput
+Виджет выбора координат с помощью яндекс карты</td>
+    </tr>
+    <tr>
+        <td><a href="common-widgets-yamap-yamapinputasset.html">common\widgets\yamap\YaMapInputAsset</a></td>
+        <td>Class YaMapInput
+Ассет виджета выбора координат</td>
+    </tr>
+    <tr>
+        <td><a href="common-xeditable-xeditablecolumn.html">common\xeditable\XEditableColumn</a></td>
+        <td>Class XEditableColumn
+Исправление багов расширения</td>
+    </tr>
+    <tr>
+        <td><a href="console-controllers-installcontroller.html">console\controllers\InstallController</a></td>
+        <td>Class InstallController
+Контроллнр установки системы</td>
+    </tr>
+    <tr>
+        <td><a href="console-controllers-migratecontroller.html">console\controllers\MigrateController</a></td>
+        <td>Manages application and extension migrations.</td>
+    </tr>
+    <tr>
+        <td><a href="console-controllers-sitemapcontroller.html">console\controllers\SitemapController</a></td>
+        <td>Class SitemapController
+Контроллер автоматической генерации карты сайта</td>
+    </tr>
+</table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $("a.toggle").on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents(".summary").find(".inherited").show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents(".summary").find(".inherited").hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*
+     $(".sourceCode a.show").toggle(function () {
+     $(this).text($(this).text().replace(/show/,'hide'));
+     $(this).parents(".sourceCode").find("div.code").show();
+     },function () {
+     $(this).text($(this).text().replace(/hide/,'show'));
+     $(this).parents(".sourceCode").find("div.code").hide();
+     });
+     $("a.sourceLink").click(function () {
+     $(this).attr('target','_blank');
+     });
+     */
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Mon, 15 Jun 2015 10:07:23 +0000</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script type="text/javascript">jQuery(document).ready(function () {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) shiftWindow();
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

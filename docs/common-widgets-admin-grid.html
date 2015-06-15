@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        <link href="./assets/176fa81d/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/189f6e9/style.css" rel="stylesheet">
+<script src="./assets/4a01d129/jquery.js"></script>
+<script src="./assets/176fa81d/js/bootstrap.js"></script>
+<script src="./assets/74432bf7/jssearch.js"></script>    <title>Grid, common\widgets\admin\Grid - RzWebSys7 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w21107" class="navbar-inverse navbar-fixed-top navbar" role="navigation"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w21107-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w21107-collapse" class="collapse navbar-collapse"><ul id="w21108" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-21008" data-toggle="collapse" data-parent="#navigation">app\assets <b class="caret"></b></a><div id="navigation-21008" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-assets-adminasset.html">AdminAsset</a>
+<a class="list-group-item" href="./app-assets-swfobjectasset.html">SwfObjectAsset</a></div>
+<a class="list-group-item" href="#navigation-21009" data-toggle="collapse" data-parent="#navigation">app\controllers <b class="caret"></b></a><div id="navigation-21009" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-controllers-sitecontroller.html">SiteController</a></div>
+<a class="list-group-item" href="#navigation-21010" data-toggle="collapse" data-parent="#navigation">app\gii\generators\appmodule <b class="caret"></b></a><div id="navigation-21010" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-gii-generators-appmodule-generator.html">Generator</a></div>
+<a class="list-group-item" href="#navigation-21011" data-toggle="collapse" data-parent="#navigation">app\modules\banners <b class="caret"></b></a><div id="navigation-21011" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-banners.html">Banners</a></div>
+<a class="list-group-item" href="#navigation-21012" data-toggle="collapse" data-parent="#navigation">app\modules\banners\components <b class="caret"></b></a><div id="navigation-21012" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-components-abstractrenderer.html">AbstractRenderer</a>
+<a class="list-group-item" href="./app-modules-banners-components-flashrenderer.html">FlashRenderer</a>
+<a class="list-group-item" href="./app-modules-banners-components-imagerenderer.html">ImageRenderer</a>
+<a class="list-group-item" href="./app-modules-banners-components-rendererfactory.html">RendererFactory</a></div>
+<a class="list-group-item" href="#navigation-21013" data-toggle="collapse" data-parent="#navigation">app\modules\banners\controllers <b class="caret"></b></a><div id="navigation-21013" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-controllers-defaultcontroller.html">DefaultController</a></div>
+<a class="list-group-item" href="#navigation-21014" data-toggle="collapse" data-parent="#navigation">app\modules\banners\models <b class="caret"></b></a><div id="navigation-21014" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-models-banner.html">Banner</a>
+<a class="list-group-item" href="./app-modules-banners-models-place.html">Place</a></div>
+<a class="list-group-item" href="#navigation-21015" data-toggle="collapse" data-parent="#navigation">app\modules\banners\models\meta <b class="caret"></b></a><div id="navigation-21015" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-models-meta-bannermeta.html">BannerMeta</a>
+<a class="list-group-item" href="./app-modules-banners-models-meta-placemeta.html">PlaceMeta</a></div>
+<a class="list-group-item" href="#navigation-21016" data-toggle="collapse" data-parent="#navigation">app\modules\banners\modules\admin <b class="caret"></b></a><div id="navigation-21016" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-21017" data-toggle="collapse" data-parent="#navigation">app\modules\banners\modules\admin\controllers <b class="caret"></b></a><div id="navigation-21017" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-modules-admin-controllers-bannercontroller.html">BannerController</a>
+<a class="list-group-item" href="./app-modules-banners-modules-admin-controllers-placecontroller.html">PlaceController</a></div>
+<a class="list-group-item" href="#navigation-21018" data-toggle="collapse" data-parent="#navigation">app\modules\banners\widgets <b class="caret"></b></a><div id="navigation-21018" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-widgets-listbanners.html">ListBanners</a>
+<a class="list-group-item" href="./app-modules-banners-widgets-singlebanner.html">SingleBanner</a></div>
+<a class="list-group-item" href="#navigation-21019" data-toggle="collapse" data-parent="#navigation">app\modules\catalog <b class="caret"></b></a><div id="navigation-21019" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-catalog.html">Catalog</a></div>
+<a class="list-group-item" href="#navigation-21020" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\controllers <b class="caret"></b></a><div id="navigation-21020" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-controllers-catalogcontroller.html">CatalogController</a></div>
+<a class="list-group-item" href="#navigation-21021" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\db <b class="caret"></b></a><div id="navigation-21021" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-db-catalogquery.html">CatalogQuery</a></div>
+<a class="list-group-item" href="#navigation-21022" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\models <b class="caret"></b></a><div id="navigation-21022" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-models-catalog.html">Catalog</a>
+<a class="list-group-item" href="./app-modules-catalog-models-catalogsearch.html">CatalogSearch</a>
+<a class="list-group-item" href="./app-modules-catalog-models-catalogsection.html">CatalogSection</a>
+<a class="list-group-item" href="./app-modules-catalog-models-producer.html">Producer</a></div>
+<a class="list-group-item" href="#navigation-21023" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\models\meta <b class="caret"></b></a><div id="navigation-21023" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-models-meta-catalogmeta.html">CatalogMeta</a>
+<a class="list-group-item" href="./app-modules-catalog-models-meta-catalogsectionmeta.html">CatalogSectionMeta</a>
+<a class="list-group-item" href="./app-modules-catalog-models-meta-producermeta.html">ProducerMeta</a></div>
+<a class="list-group-item" href="#navigation-21024" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\modules\admin <b class="caret"></b></a><div id="navigation-21024" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-21025" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\modules\admin\controllers <b class="caret"></b></a><div id="navigation-21025" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-modules-admin-controllers-catalogcontroller.html">CatalogController</a>
+<a class="list-group-item" href="./app-modules-catalog-modules-admin-controllers-catalogsectioncontroller.html">CatalogSectionController</a>
+<a class="list-group-item" href="./app-modules-catalog-modules-admin-controllers-producercontroller.html">ProducerController</a></div>
+<a class="list-group-item" href="#navigation-21026" data-toggle="collapse" data-parent="#navigation">app\modules\geo <b class="caret"></b></a><div id="navigation-21026" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-geo.html">Geo</a></div>
+<a class="list-group-item" href="#navigation-21027" data-toggle="collapse" data-parent="#navigation">app\modules\geo\components <b class="caret"></b></a><div id="navigation-21027" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-components-suggestsfinder.html">SuggestsFinder</a></div>
+<a class="list-group-item" href="#navigation-21028" data-toggle="collapse" data-parent="#navigation">app\modules\geo\controllers <b class="caret"></b></a><div id="navigation-21028" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-controllers-listcontroller.html">ListController</a>
+<a class="list-group-item" href="./app-modules-geo-controllers-restcontroller.html">RestController</a></div>
+<a class="list-group-item" href="#navigation-21029" data-toggle="collapse" data-parent="#navigation">app\modules\geo\models <b class="caret"></b></a><div id="navigation-21029" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-models-country.html">Country</a>
+<a class="list-group-item" href="./app-modules-geo-models-np.html">Np</a>
+<a class="list-group-item" href="./app-modules-geo-models-rajon.html">Rajon</a>
+<a class="list-group-item" href="./app-modules-geo-models-region.html">Region</a>
+<a class="list-group-item" href="./app-modules-geo-models-street.html">Street</a></div>
+<a class="list-group-item" href="#navigation-21030" data-toggle="collapse" data-parent="#navigation">app\modules\geo\models\meta <b class="caret"></b></a><div id="navigation-21030" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-models-meta-countrymeta.html">CountryMeta</a>
+<a class="list-group-item" href="./app-modules-geo-models-meta-npmeta.html">NpMeta</a>
+<a class="list-group-item" href="./app-modules-geo-models-meta-rajonmeta.html">RajonMeta</a>
+<a class="list-group-item" href="./app-modules-geo-models-meta-regionmeta.html">RegionMeta</a>
+<a class="list-group-item" href="./app-modules-geo-models-meta-streetmeta.html">StreetMeta</a></div>
+<a class="list-group-item" href="#navigation-21031" data-toggle="collapse" data-parent="#navigation">app\modules\import <b class="caret"></b></a><div id="navigation-21031" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-import.html">Import</a></div>
+<a class="list-group-item" href="#navigation-21032" data-toggle="collapse" data-parent="#navigation">app\modules\import\components <b class="caret"></b></a><div id="navigation-21032" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-components-csvimporter.html">CsvImporter</a></div>
+<a class="list-group-item" href="#navigation-21033" data-toggle="collapse" data-parent="#navigation">app\modules\import\controllers <b class="caret"></b></a><div id="navigation-21033" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-controllers-defaultcontroller.html">DefaultController</a></div>
+<a class="list-group-item" href="#navigation-21034" data-toggle="collapse" data-parent="#navigation">app\modules\import\models <b class="caret"></b></a><div id="navigation-21034" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-models-csvmodel.html">CsvModel</a>
+<a class="list-group-item" href="./app-modules-import-models-icsvimportable.html">ICsvImportable</a></div>
+<a class="list-group-item" href="#navigation-21035" data-toggle="collapse" data-parent="#navigation">app\modules\import\modules\admin <b class="caret"></b></a><div id="navigation-21035" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-21036" data-toggle="collapse" data-parent="#navigation">app\modules\import\modules\admin\controllers <b class="caret"></b></a><div id="navigation-21036" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-modules-admin-controllers-csvimportcontroller.html">CsvImportController</a></div>
+<a class="list-group-item" href="#navigation-21037" data-toggle="collapse" data-parent="#navigation">app\modules\main <b class="caret"></b></a><div id="navigation-21037" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-main.html">Main</a></div>
+<a class="list-group-item" href="#navigation-21038" data-toggle="collapse" data-parent="#navigation">app\modules\main\actions <b class="caret"></b></a><div id="navigation-21038" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-actions-commentadd.html">CommentAdd</a>
+<a class="list-group-item" href="./app-modules-main-actions-feedback.html">Feedback</a></div>
+<a class="list-group-item" href="#navigation-21039" data-toggle="collapse" data-parent="#navigation">app\modules\main\actions\user <b class="caret"></b></a><div id="navigation-21039" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-actions-user-forgot.html">Forgot</a>
+<a class="list-group-item" href="./app-modules-main-actions-user-signin.html">SignIn</a>
+<a class="list-group-item" href="./app-modules-main-actions-user-signup.html">SignUp</a>
+<a class="list-group-item" href="./app-modules-main-actions-user-update.html">Update</a>
+<a class="list-group-item" href="./app-modules-main-actions-user-view.html">View</a></div>
+<a class="list-group-item" href="#navigation-21040" data-toggle="collapse" data-parent="#navigation">app\modules\main\components <b class="caret"></b></a><div id="navigation-21040" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-components-blocksprovider.html">BlocksProvider</a>
+<a class="list-group-item" href="./app-modules-main-components-config.html">Config</a>
+<a class="list-group-item" href="./app-modules-main-components-forgotmailnotifier.html">ForgotMailNotifier</a>
+<a class="list-group-item" href="./app-modules-main-components-mailertrait.html">MailerTrait</a>
+<a class="list-group-item" href="./app-modules-main-components-pageurlrule.html">PageUrlRule</a>
+<a class="list-group-item" href="./app-modules-main-components-permissiontrait.html">PermissionTrait</a>
+<a class="list-group-item" href="./app-modules-main-components-signupmailnotifier.html">SignUpMailNotifier</a>
+<a class="list-group-item" href="./app-modules-main-components-sphinxurlservice.html">SphinxUrlService</a></div>
+<a class="list-group-item" href="#navigation-21041" data-toggle="collapse" data-parent="#navigation">app\modules\main\controllers <b class="caret"></b></a><div id="navigation-21041" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-controllers-commentscontroller.html">CommentsController</a>
+<a class="list-group-item" href="./app-modules-main-controllers-feedbackcontroller.html">FeedbackController</a>
+<a class="list-group-item" href="./app-modules-main-controllers-pagescontroller.html">PagesController</a>
+<a class="list-group-item" href="./app-modules-main-controllers-usercontroller.html">UserController</a></div>
+<a class="list-group-item" href="#navigation-21042" data-toggle="collapse" data-parent="#navigation">app\modules\main\db <b class="caret"></b></a><div id="navigation-21042" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-db-migration.html">Migration</a></div>
+<a class="list-group-item" href="#navigation-21043" data-toggle="collapse" data-parent="#navigation">app\modules\main\models <b class="caret"></b></a><div id="navigation-21043" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-models-comments.html">Comments</a>
+<a class="list-group-item" href="./app-modules-main-models-config.html">Config</a>
+<a class="list-group-item" href="./app-modules-main-models-feedbackform.html">FeedbackForm</a>
+<a class="list-group-item" href="./app-modules-main-models-forgotform.html">ForgotForm</a>
+<a class="list-group-item" href="./app-modules-main-models-includegroup.html">IncludeGroup</a>
+<a class="list-group-item" href="./app-modules-main-models-includes.html">Includes</a>
+<a class="list-group-item" href="./app-modules-main-models-loginform.html">LoginForm</a>
+<a class="list-group-item" href="./app-modules-main-models-menu.html">Menu</a>
+<a class="list-group-item" href="./app-modules-main-models-pages.html">Pages</a>
+<a class="list-group-item" href="./app-modules-main-models-permission.html">Permission</a>
+<a class="list-group-item" href="./app-modules-main-models-template.html">Template</a>
+<a class="list-group-item" href="./app-modules-main-models-user.html">User</a></div>
+<a class="list-group-item" href="#navigation-21044" data-toggle="collapse" data-parent="#navigation">app\modules\main\models\meta <b class="caret"></b></a><div id="navigation-21044" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-models-meta-commentsmeta.html">CommentsMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-configmeta.html">ConfigMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-includegroupmeta.html">IncludeGroupMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-includesmeta.html">IncludesMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-menumeta.html">MenuMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-pagesmeta.html">PagesMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-permissionmeta.html">PermissionMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-templatesmeta.html">TemplatesMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-usermeta.html">UserMeta</a></div>
+<a class="list-group-item" href="#navigation-21045" data-toggle="collapse" data-parent="#navigation">app\modules\main\modules\admin <b class="caret"></b></a><div id="navigation-21045" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-21046" data-toggle="collapse" data-parent="#navigation">app\modules\main\modules\admin\controllers <b class="caret"></b></a><div id="navigation-21046" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-modules-admin-controllers-commentscontroller.html">CommentsController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-configcontroller.html">ConfigController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-defaultcontroller.html">DefaultController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-includegroupcontroller.html">IncludeGroupController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-includescontroller.html">IncludesController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-menucontroller.html">MenuController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-pagescontroller.html">PagesController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-permissioncontroller.html">PermissionController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-templatecontroller.html">TemplateController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-toolscontroller.html">ToolsController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-uploadcontroller.html">UploadController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-usercontroller.html">UserController</a></div>
+<a class="list-group-item" href="#navigation-21047" data-toggle="collapse" data-parent="#navigation">app\modules\main\rbac <b class="caret"></b></a><div id="navigation-21047" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-rbac-adminuserconstraint.html">AdminUserConstraint</a>
+<a class="list-group-item" href="./app-modules-main-rbac-authorconstraint.html">AuthorConstraint</a>
+<a class="list-group-item" href="./app-modules-main-rbac-createrule.html">CreateRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-createsrule.html">CreatesRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-deleterule.html">DeleteRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-deletesrule.html">DeletesRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-installer.html">Installer</a>
+<a class="list-group-item" href="./app-modules-main-rbac-listrule.html">ListRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-profileconstraint.html">ProfileConstraint</a>
+<a class="list-group-item" href="./app-modules-main-rbac-readrule.html">ReadRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-updaterule.html">UpdateRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-updatesrule.html">UpdatesRule</a></div>
+<a class="list-group-item" href="#navigation-21048" data-toggle="collapse" data-parent="#navigation">app\modules\main\sitemap <b class="caret"></b></a><div id="navigation-21048" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-sitemap-sitemap.html">Sitemap</a>
+<a class="list-group-item" href="./app-modules-main-sitemap-sitemapwidget.html">SitemapWidget</a></div>
+<a class="list-group-item" href="#navigation-21049" data-toggle="collapse" data-parent="#navigation">app\modules\main\web <b class="caret"></b></a><div id="navigation-21049" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-web-angularasset.html">AngularAsset</a>
+<a class="list-group-item" href="./app-modules-main-web-angularlocaleasset.html">AngularLocaleAsset</a></div>
+<a class="list-group-item" href="#navigation-21050" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\comments <b class="caret"></b></a><div id="navigation-21050" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-comments-comments.html">Comments</a>
+<a class="list-group-item" href="./app-modules-main-widgets-comments-commentsasset.html">CommentsAsset</a>
+<a class="list-group-item" href="./app-modules-main-widgets-comments-skinasset.html">SkinAsset</a></div>
+<a class="list-group-item" href="#navigation-21051" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\elist <b class="caret"></b></a><div id="navigation-21051" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-elist-elist.html">EList</a></div>
+<a class="list-group-item" href="#navigation-21052" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\feedback <b class="caret"></b></a><div id="navigation-21052" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-feedback-feedback.html">Feedback</a>
+<a class="list-group-item" href="./app-modules-main-widgets-feedback-feedbackasset.html">FeedbackAsset</a></div>
+<a class="list-group-item" href="#navigation-21053" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\gallery <b class="caret"></b></a><div id="navigation-21053" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-gallery-assetbundle.html">AssetBundle</a>
+<a class="list-group-item" href="./app-modules-main-widgets-gallery-gallery.html">Gallery</a></div>
+<a class="list-group-item" href="#navigation-21054" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\includes <b class="caret"></b></a><div id="navigation-21054" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-includes-includes.html">Includes</a>
+<a class="list-group-item" href="./app-modules-main-widgets-includes-includesgroup.html">IncludesGroup</a></div>
+<a class="list-group-item" href="#navigation-21055" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\menu <b class="caret"></b></a><div id="navigation-21055" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-menu-menu.html">Menu</a></div>
+<a class="list-group-item" href="#navigation-21056" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\treelist <b class="caret"></b></a><div id="navigation-21056" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-treelist-treelist.html">TreeList</a></div>
+<a class="list-group-item" href="#navigation-21057" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\user <b class="caret"></b></a><div id="navigation-21057" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-user-signin.html">SignIn</a>
+<a class="list-group-item" href="./app-modules-main-widgets-user-user.html">User</a></div>
+<a class="list-group-item" href="#navigation-21058" data-toggle="collapse" data-parent="#navigation">app\modules\news <b class="caret"></b></a><div id="navigation-21058" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-news.html">News</a></div>
+<a class="list-group-item" href="#navigation-21059" data-toggle="collapse" data-parent="#navigation">app\modules\news\controllers <b class="caret"></b></a><div id="navigation-21059" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-controllers-newscontroller.html">NewsController</a></div>
+<a class="list-group-item" href="#navigation-21060" data-toggle="collapse" data-parent="#navigation">app\modules\news\db <b class="caret"></b></a><div id="navigation-21060" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-db-newsquery.html">NewsQuery</a></div>
+<a class="list-group-item" href="#navigation-21061" data-toggle="collapse" data-parent="#navigation">app\modules\news\models <b class="caret"></b></a><div id="navigation-21061" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-models-news.html">News</a>
+<a class="list-group-item" href="./app-modules-news-models-newssection.html">NewsSection</a></div>
+<a class="list-group-item" href="#navigation-21062" data-toggle="collapse" data-parent="#navigation">app\modules\news\models\meta <b class="caret"></b></a><div id="navigation-21062" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-models-meta-newsmeta.html">NewsMeta</a>
+<a class="list-group-item" href="./app-modules-news-models-meta-newssectionmeta.html">NewsSectionMeta</a></div>
+<a class="list-group-item" href="#navigation-21063" data-toggle="collapse" data-parent="#navigation">app\modules\news\modules\admin <b class="caret"></b></a><div id="navigation-21063" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-21064" data-toggle="collapse" data-parent="#navigation">app\modules\news\modules\admin\controllers <b class="caret"></b></a><div id="navigation-21064" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-modules-admin-controllers-newscontroller.html">NewsController</a>
+<a class="list-group-item" href="./app-modules-news-modules-admin-controllers-newssectioncontroller.html">NewsSectionController</a></div>
+<a class="list-group-item" href="#navigation-21065" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery <b class="caret"></b></a><div id="navigation-21065" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-photogallery.html">Photogallery</a></div>
+<a class="list-group-item" href="#navigation-21066" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\controllers <b class="caret"></b></a><div id="navigation-21066" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-controllers-defaultcontroller.html">DefaultController</a></div>
+<a class="list-group-item" href="#navigation-21067" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\models <b class="caret"></b></a><div id="navigation-21067" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-models-gallery.html">Gallery</a></div>
+<a class="list-group-item" href="#navigation-21068" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\models\meta <b class="caret"></b></a><div id="navigation-21068" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-models-meta-gallerymeta.html">GalleryMeta</a></div>
+<a class="list-group-item" href="#navigation-21069" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\modules\admin <b class="caret"></b></a><div id="navigation-21069" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-21070" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\modules\admin\controllers <b class="caret"></b></a><div id="navigation-21070" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-modules-admin-controllers-gallerycontroller.html">GalleryController</a></div>
+<a class="list-group-item" href="#navigation-21071" data-toggle="collapse" data-parent="#navigation">app\modules\shop <b class="caret"></b></a><div id="navigation-21071" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-shop.html">Shop</a></div>
+<a class="list-group-item" href="#navigation-21072" data-toggle="collapse" data-parent="#navigation">app\modules\shop\components <b class="caret"></b></a><div id="navigation-21072" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-components-adminnotifier.html">AdminNotifier</a>
+<a class="list-group-item" href="./app-modules-shop-components-basket.html">Basket</a>
+<a class="list-group-item" href="./app-modules-shop-components-clientnotifier.html">ClientNotifier</a>
+<a class="list-group-item" href="./app-modules-shop-components-ideliverycalc.html">IDeliveryCalc</a>
+<a class="list-group-item" href="./app-modules-shop-components-ishopitem.html">IShopItem</a>
+<a class="list-group-item" href="./app-modules-shop-components-orderletters.html">OrderLetters</a>
+<a class="list-group-item" href="./app-modules-shop-components-ordermanager.html">OrderManager</a>
+<a class="list-group-item" href="./app-modules-shop-components-shopitemtrait.html">ShopItemTrait</a></div>
+<a class="list-group-item" href="#navigation-21073" data-toggle="collapse" data-parent="#navigation">app\modules\shop\controllers <b class="caret"></b></a><div id="navigation-21073" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-controllers-basketcontroller.html">BasketController</a>
+<a class="list-group-item" href="./app-modules-shop-controllers-basketrestcontroller.html">BasketRestController</a>
+<a class="list-group-item" href="./app-modules-shop-controllers-defaultcontroller.html">DefaultController</a></div>
+<a class="list-group-item" href="#navigation-21074" data-toggle="collapse" data-parent="#navigation">app\modules\shop\db <b class="caret"></b></a><div id="navigation-21074" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-db-statusquery.html">StatusQuery</a></div>
+<a class="list-group-item" href="#navigation-21075" data-toggle="collapse" data-parent="#navigation">app\modules\shop\db\fields <b class="caret"></b></a><div id="navigation-21075" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-db-fields-goodattrsfield.html">GoodAttrsField</a></div>
+<a class="list-group-item" href="#navigation-21076" data-toggle="collapse" data-parent="#navigation">app\modules\shop\models <b class="caret"></b></a><div id="navigation-21076" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-models-delivery.html">Delivery</a>
+<a class="list-group-item" href="./app-modules-shop-models-good.html">Good</a>
+<a class="list-group-item" href="./app-modules-shop-models-order.html">Order</a>
+<a class="list-group-item" href="./app-modules-shop-models-payment.html">Payment</a>
+<a class="list-group-item" href="./app-modules-shop-models-status.html">Status</a></div>
+<a class="list-group-item" href="#navigation-21077" data-toggle="collapse" data-parent="#navigation">app\modules\shop\models\meta <b class="caret"></b></a><div id="navigation-21077" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-models-meta-deliverymeta.html">DeliveryMeta</a>
+<a class="list-group-item" href="./app-modules-shop-models-meta-goodmeta.html">GoodMeta</a>
+<a class="list-group-item" href="./app-modules-shop-models-meta-ordermeta.html">OrderMeta</a>
+<a class="list-group-item" href="./app-modules-shop-models-meta-paymentmeta.html">PaymentMeta</a>
+<a class="list-group-item" href="./app-modules-shop-models-meta-statusmeta.html">StatusMeta</a></div>
+<a class="list-group-item" href="#navigation-21078" data-toggle="collapse" data-parent="#navigation">app\modules\shop\modules\admin <b class="caret"></b></a><div id="navigation-21078" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-21079" data-toggle="collapse" data-parent="#navigation">app\modules\shop\modules\admin\controllers <b class="caret"></b></a><div id="navigation-21079" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-deliverycontroller.html">DeliveryController</a>
+<a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-goodcontroller.html">GoodController</a>
+<a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-ordercontroller.html">OrderController</a>
+<a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-paymentcontroller.html">PaymentController</a>
+<a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-statuscontroller.html">StatusController</a></div>
+<a class="list-group-item" href="#navigation-21080" data-toggle="collapse" data-parent="#navigation">app\modules\shop\web <b class="caret"></b></a><div id="navigation-21080" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-web-shopasset.html">ShopAsset</a></div>
+<a class="list-group-item" href="#navigation-21081" data-toggle="collapse" data-parent="#navigation">app\modules\shop\widgets <b class="caret"></b></a><div id="navigation-21081" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-widgets-basketinfo.html">BasketInfo</a>
+<a class="list-group-item" href="./app-modules-shop-widgets-tobasket.html">ToBasket</a></div>
+<a class="list-group-item" href="#navigation-21082" data-toggle="collapse" data-parent="#navigation">app\themes\demo\assets <b class="caret"></b></a><div id="navigation-21082" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-themes-demo-assets-appasset.html">AppAsset</a></div>
+<a class="list-group-item" href="#navigation-21083" data-toggle="collapse" data-parent="#navigation">common\actions <b class="caret"></b></a><div id="navigation-21083" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-actions-upload.html">Upload</a></div>
+<a class="list-group-item" href="#navigation-21084" data-toggle="collapse" data-parent="#navigation">common\actions\crud <b class="caret"></b></a><div id="navigation-21084" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-actions-crud-admin.html">Admin</a>
+<a class="list-group-item" href="./common-actions-crud-base.html">Base</a>
+<a class="list-group-item" href="./common-actions-crud-create.html">Create</a>
+<a class="list-group-item" href="./common-actions-crud-delete.html">Delete</a>
+<a class="list-group-item" href="./common-actions-crud-groupdelete.html">GroupDelete</a>
+<a class="list-group-item" href="./common-actions-crud-tadmin.html">TAdmin</a>
+<a class="list-group-item" href="./common-actions-crud-tcreate.html">TCreate</a>
+<a class="list-group-item" href="./common-actions-crud-tdelete.html">TDelete</a>
+<a class="list-group-item" href="./common-actions-crud-tdown.html">TDown</a>
+<a class="list-group-item" href="./common-actions-crud-tgroupdelete.html">TGroupDelete</a>
+<a class="list-group-item" href="./common-actions-crud-treplace.html">TReplace</a>
+<a class="list-group-item" href="./common-actions-crud-tup.html">TUp</a>
+<a class="list-group-item" href="./common-actions-crud-tupdate.html">TUpdate</a>
+<a class="list-group-item" href="./common-actions-crud-update.html">Update</a>
+<a class="list-group-item" href="./common-actions-crud-view.html">View</a>
+<a class="list-group-item" href="./common-actions-crud-xeditable.html">XEditable</a></div>
+<a class="list-group-item" href="#navigation-21085" data-toggle="collapse" data-parent="#navigation">common\behaviors <b class="caret"></b></a><div id="navigation-21085" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-behaviors-arrayserializer.html">ArraySerializer</a>
+<a class="list-group-item" href="./common-behaviors-html5uploadbehavior.html">Html5UploadBehavior</a>
+<a class="list-group-item" href="./common-behaviors-manymanysaver.html">ManyManySaver</a>
+<a class="list-group-item" href="./common-behaviors-matchsuitable.html">MatchSuitable</a>
+<a class="list-group-item" href="./common-behaviors-nestedset.html">NestedSet</a>
+<a class="list-group-item" href="./common-behaviors-simpleuploadbehavior.html">SimpleUploadBehavior</a>
+<a class="list-group-item" href="./common-behaviors-tagcache.html">TagCache</a>
+<a class="list-group-item" href="./common-behaviors-uploadbehavior.html">UploadBehavior</a></div>
+<a class="list-group-item" href="#navigation-21086" data-toggle="collapse" data-parent="#navigation">common\cache <b class="caret"></b></a><div id="navigation-21086" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-cache-tagdependency.html">TagDependency</a></div>
+<a class="list-group-item" href="#navigation-21087" data-toggle="collapse" data-parent="#navigation">common\components <b class="caret"></b></a><div id="navigation-21087" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-components-assetbundle.html">AssetBundle</a>
+<a class="list-group-item" href="./common-components-bbcodeparser.html">BBCodeParser</a>
+<a class="list-group-item" href="./common-components-match.html">Match</a>
+<a class="list-group-item" href="./common-components-phpmatch.html">PhpMatch</a>
+<a class="list-group-item" href="./common-components-resizer.html">Resizer</a>
+<a class="list-group-item" href="./common-components-routematch.html">RouteMatch</a>
+<a class="list-group-item" href="./common-components-tagsconverter.html">TagsConverter</a>
+<a class="list-group-item" href="./common-components-treefinder.html">TreeFinder</a>
+<a class="list-group-item" href="./common-components-urlmatch.html">UrlMatch</a>
+<a class="list-group-item" href="./common-components-view.html">View</a></div>
+<a class="list-group-item" href="#navigation-21088" data-toggle="collapse" data-parent="#navigation">common\components\uiboot <b class="caret"></b></a><div id="navigation-21088" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-components-uiboot-themeasset.html">ThemeAsset</a></div>
+<a class="list-group-item" href="#navigation-21089" data-toggle="collapse" data-parent="#navigation">common\controllers <b class="caret"></b></a><div id="navigation-21089" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-controllers-admin.html">Admin</a>
+<a class="list-group-item" href="./common-controllers-app.html">App</a>
+<a class="list-group-item" href="./common-controllers-root.html">Root</a></div>
+<a class="list-group-item" href="#navigation-21090" data-toggle="collapse" data-parent="#navigation">common\core <b class="caret"></b></a><div id="navigation-21090" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-core-adminmodule.html">AdminModule</a>
+<a class="list-group-item" href="./common-core-file.html">File</a></div>
+<a class="list-group-item" href="#navigation-21091" data-toggle="collapse" data-parent="#navigation">common\db <b class="caret"></b></a><div id="navigation-21091" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-db-activequery.html">ActiveQuery</a>
+<a class="list-group-item" href="./common-db-activerecord.html">ActiveRecord</a>
+<a class="list-group-item" href="./common-db-createdatsearchtrait.html">CreatedAtSearchTrait</a>
+<a class="list-group-item" href="./common-db-metafields.html">MetaFields</a>
+<a class="list-group-item" href="./common-db-tactivequery.html">TActiveQuery</a>
+<a class="list-group-item" href="./common-db-tactiverecord.html">TActiveRecord</a></div>
+<a class="list-group-item" href="#navigation-21092" data-toggle="collapse" data-parent="#navigation">common\db\fields <b class="caret"></b></a><div id="navigation-21092" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-db-fields-autocompletefield.html">AutoCompleteField</a>
+<a class="list-group-item" href="./common-db-fields-checkboxfield.html">CheckBoxField</a>
+<a class="list-group-item" href="./common-db-fields-codefield.html">CodeField</a>
+<a class="list-group-item" href="./common-db-fields-datefield.html">DateField</a>
+<a class="list-group-item" href="./common-db-fields-emailfield.html">EmailField</a>
+<a class="list-group-item" href="./common-db-fields-field.html">Field</a>
+<a class="list-group-item" href="./common-db-fields-hasonefield.html">HasOneField</a>
+<a class="list-group-item" href="./common-db-fields-hasoneradiofield.html">HasOneRadioField</a>
+<a class="list-group-item" href="./common-db-fields-hiddenfield.html">HiddenField</a>
+<a class="list-group-item" href="./common-db-fields-html5filefield.html">Html5FileField</a>
+<a class="list-group-item" href="./common-db-fields-html5imagefield.html">Html5ImageField</a>
+<a class="list-group-item" href="./common-db-fields-htmlfield.html">HtmlField</a>
+<a class="list-group-item" href="./common-db-fields-listfield.html">ListField</a>
+<a class="list-group-item" href="./common-db-fields-manymanyfield.html">ManyManyField</a>
+<a class="list-group-item" href="./common-db-fields-manymanysortfield.html">ManyManySortField</a>
+<a class="list-group-item" href="./common-db-fields-markitupfield.html">MarkItUpField</a>
+<a class="list-group-item" href="./common-db-fields-numberfield.html">NumberField</a>
+<a class="list-group-item" href="./common-db-fields-parentlistfield.html">ParentListField</a>
+<a class="list-group-item" href="./common-db-fields-passwordfield.html">PasswordField</a>
+<a class="list-group-item" href="./common-db-fields-pkfield.html">PkField</a>
+<a class="list-group-item" href="./common-db-fields-radiolistfield.html">RadioListField</a>
+<a class="list-group-item" href="./common-db-fields-textareafield.html">TextAreaField</a>
+<a class="list-group-item" href="./common-db-fields-textfield.html">TextField</a>
+<a class="list-group-item" href="./common-db-fields-timestampfield.html">TimestampField</a>
+<a class="list-group-item" href="./common-db-fields-yamapfield.html">YaMapField</a></div>
+<a class="list-group-item" href="#navigation-21093" data-toggle="collapse" data-parent="#navigation">common\exceptions <b class="caret"></b></a><div id="navigation-21093" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-exceptions-ioexception.html">IoException</a></div>
+<a class="list-group-item" href="#navigation-21094" data-toggle="collapse" data-parent="#navigation">common\helpers <b class="caret"></b></a><div id="navigation-21094" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-helpers-confighelper.html">ConfigHelper</a>
+<a class="list-group-item" href="./common-helpers-filehelper.html">FileHelper</a></div>
+<a class="list-group-item" href="#navigation-21095" data-toggle="collapse" data-parent="#navigation">common\inputs <b class="caret"></b></a><div id="navigation-21095" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-inputs-autocompleteinput.html">AutoCompleteInput</a>
+<a class="list-group-item" href="./common-inputs-baseinput.html">BaseInput</a>
+<a class="list-group-item" href="./common-inputs-checkboxinput.html">CheckBoxInput</a>
+<a class="list-group-item" href="./common-inputs-dateinput.html">DateInput</a>
+<a class="list-group-item" href="./common-inputs-daterangeinput.html">DateRangeInput</a>
+<a class="list-group-item" href="./common-inputs-dropdowninput.html">DropDownInput</a>
+<a class="list-group-item" href="./common-inputs-hiddeninput.html">HiddenInput</a>
+<a class="list-group-item" href="./common-inputs-html5fileinput.html">Html5FileInput</a>
+<a class="list-group-item" href="./common-inputs-htmlinput.html">HtmlInput</a>
+<a class="list-group-item" href="./common-inputs-markitupinput.html">MarkItUpInput</a>
+<a class="list-group-item" href="./common-inputs-multiselectinput.html">MultiSelectInput</a>
+<a class="list-group-item" href="./common-inputs-numberinput.html">NumberInput</a>
+<a class="list-group-item" href="./common-inputs-passwordinput.html">PasswordInput</a>
+<a class="list-group-item" href="./common-inputs-radiolistinput.html">RadioListInput</a>
+<a class="list-group-item" href="./common-inputs-sortedtagsinput.html">SortedTagsInput</a>
+<a class="list-group-item" href="./common-inputs-textareainput.html">TextAreaInput</a>
+<a class="list-group-item" href="./common-inputs-textinput.html">TextInput</a>
+<a class="list-group-item" href="./common-inputs-yamapinput.html">YaMapInput</a></div>
+<a class="list-group-item" href="#navigation-21096" data-toggle="collapse" data-parent="#navigation">common\rbac <b class="caret"></b></a><div id="navigation-21096" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-rbac-iconstraint.html">IConstraint</a>
+<a class="list-group-item" href="./common-rbac-ipermission.html">IPermission</a></div>
+<a class="list-group-item" href="#navigation-21097" data-toggle="collapse" data-parent="#navigation">common\sphinx <b class="caret"></b></a><div id="navigation-21097" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-sphinx-sphinxdataprovider.html">SphinxDataProvider</a>
+<a class="list-group-item" href="./common-sphinx-sphinxsearch.html">SphinxSearch</a></div>
+<a class="list-group-item" href="#navigation-21098" data-toggle="collapse" data-parent="#navigation">common\web <b class="caret"></b></a><div id="navigation-21098" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-web-jquerynumberasset.html">JqueryNumberAsset</a></div>
+<a class="list-group-item" href="#navigation-21099" data-toggle="collapse" data-parent="#navigation">common\widgets <b class="caret"></b></a><div id="navigation-21099" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-app.html">App</a>
+<a class="list-group-item" href="./common-widgets-autocomplete.html">AutoComplete</a>
+<a class="list-group-item" href="./common-widgets-breadcrumbs.html">Breadcrumbs</a>
+<a class="list-group-item" href="./common-widgets-dependdropdown.html">DependDropDown</a>
+<a class="list-group-item" href="./common-widgets-formattednumberinput.html">FormattedNumberInput</a>
+<a class="list-group-item" href="./common-widgets-jscaptcha.html">JsCaptcha</a>
+<a class="list-group-item" href="./common-widgets-listview.html">ListView</a>
+<a class="list-group-item" href="./common-widgets-sortedtags.html">SortedTags</a></div>
+<a class="list-group-item active" href="#navigation-21100" data-toggle="collapse" data-parent="#navigation">common\widgets\admin <b class="caret"></b></a><div id="navigation-21100" class="submenu panel-collapse collapse in"><a class="list-group-item" href="./common-widgets-admin-actionbutton.html">ActionButton</a>
+<a class="list-group-item" href="./common-widgets-admin-crudlinks.html">CrudLinks</a>
+<a class="list-group-item" href="./common-widgets-admin-detail.html">Detail</a>
+<a class="list-group-item" href="./common-widgets-admin-extfilter.html">ExtFilter</a>
+<a class="list-group-item" href="./common-widgets-admin-form.html">Form</a>
+<a class="list-group-item active" href="./common-widgets-admin-grid.html">Grid</a>
+<a class="list-group-item" href="./common-widgets-admin-menu.html">Menu</a>
+<a class="list-group-item" href="./common-widgets-admin-replaceintreebutton.html">ReplaceInTreeButton</a>
+<a class="list-group-item" href="./common-widgets-admin-tableinput.html">TableInput</a></div>
+<a class="list-group-item" href="#navigation-21101" data-toggle="collapse" data-parent="#navigation">common\widgets\html5uploader <b class="caret"></b></a><div id="navigation-21101" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-html5uploader-assetbundle.html">AssetBundle</a>
+<a class="list-group-item" href="./common-widgets-html5uploader-widget.html">Widget</a></div>
+<a class="list-group-item" href="#navigation-21102" data-toggle="collapse" data-parent="#navigation">common\widgets\launcher <b class="caret"></b></a><div id="navigation-21102" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-launcher-assetbundle.html">AssetBundle</a>
+<a class="list-group-item" href="./common-widgets-launcher-launcher.html">Launcher</a></div>
+<a class="list-group-item" href="#navigation-21103" data-toggle="collapse" data-parent="#navigation">common\widgets\markitup <b class="caret"></b></a><div id="navigation-21103" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-markitup-markitup.html">MarkItUp</a>
+<a class="list-group-item" href="./common-widgets-markitup-markitupasset.html">MarkItUpAsset</a>
+<a class="list-group-item" href="./common-widgets-markitup-setbbcodeasset.html">SetBbCodeAsset</a>
+<a class="list-group-item" href="./common-widgets-markitup-skinsimpleasset.html">SkinSimpleAsset</a></div>
+<a class="list-group-item" href="#navigation-21104" data-toggle="collapse" data-parent="#navigation">common\widgets\yamap <b class="caret"></b></a><div id="navigation-21104" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-yamap-yamap.html">YaMap</a>
+<a class="list-group-item" href="./common-widgets-yamap-yamapapiasset.html">YaMapApiAsset</a>
+<a class="list-group-item" href="./common-widgets-yamap-yamapinput.html">YaMapInput</a>
+<a class="list-group-item" href="./common-widgets-yamap-yamapinputasset.html">YaMapInputAsset</a></div>
+<a class="list-group-item" href="#navigation-21105" data-toggle="collapse" data-parent="#navigation">common\xeditable <b class="caret"></b></a><div id="navigation-21105" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-xeditable-xeditablecolumn.html">XEditableColumn</a></div>
+<a class="list-group-item" href="#navigation-21106" data-toggle="collapse" data-parent="#navigation">console\controllers <b class="caret"></b></a><div id="navigation-21106" class="submenu panel-collapse collapse"><a class="list-group-item" href="./console-controllers-installcontroller.html">InstallController</a>
+<a class="list-group-item" href="./console-controllers-migratecontroller.html">MigrateController</a>
+<a class="list-group-item" href="./console-controllers-sitemapcontroller.html">SitemapController</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main">
+        <h1>Class common\widgets\admin\Grid</h1>
+<div id="nav">
+    <a href="index.html">All Classes</a>
+            | <a href="#properties">Properties</a>
+                | <a href="#methods">Methods</a>
+                    | <a href="#constants">Constants</a>
+    </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a> &raquo;
+yii\base\Widget</td></tr>
+                                        </table>
+
+<div id="classDescription">
+    <p><strong>Class Grid
+Грид для админки. Формируется на основе \common\db\MetaFields модели</strong></p>
+    
+    </div>
+
+<a id="properties"></a>
+
+<div class="summary doc-property">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-property" />
+    <col class="col-type" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+                    <tr id="$dataProvider">
+        <td><a href="common-widgets-admin-grid.html#$dataProvider-detail">$dataProvider</a></td>
+        <td>\yii\data\ActiveDataProvider</td>
+        <td>провайдер данных</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+                <tr id="$model">
+        <td><a href="common-widgets-admin-grid.html#$model-detail">$model</a></td>
+        <td><a href="common-db-activerecord.html">common\db\ActiveRecord</a></td>
+        <td>модель</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+                <tr id="$tpl">
+        <td><a href="common-widgets-admin-grid.html#$tpl-detail">$tpl</a></td>
+        <td><a href="http://www.php.net/language.types.string">string</a></td>
+        <td>шаблон</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+            <tr id="$tree">
+        <td><a href="common-widgets-admin-grid.html#$tree-detail">$tree</a></td>
+        <td>bool</td>
+        <td>вывод древовидных моделей</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+            <tr id="$userColumns">
+        <td><a href="common-widgets-admin-grid.html#$userColumns-detail">$userColumns</a></td>
+        <td><a href="http://www.php.net/language.types.array">array</a></td>
+        <td>дополнительные пользовательские колонки</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+    </table>
+</div>
+
+<div class="summary doc-property">
+<h2>Protected Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-property" />
+    <col class="col-type" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+        <tr id="$_baseRoute">
+        <td><a href="common-widgets-admin-grid.html#$_baseRoute-detail">$_baseRoute</a></td>
+        <td><a href="http://www.php.net/language.types.string">string</a></td>
+        <td>базовая часть маршрута к действиям</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+            <tr id="$_groupButtons">
+        <td><a href="common-widgets-admin-grid.html#$_groupButtons-detail">$_groupButtons</a></td>
+        <td><a href="http://www.php.net/language.types.array">array</a></td>
+        <td>кнопки групповых операций</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+            <tr id="$_rowButtons">
+        <td><a href="common-widgets-admin-grid.html#$_rowButtons-detail">$_rowButtons</a></td>
+        <td><a href="http://www.php.net/language.types.array">array</a></td>
+        <td>кнопки строк грида</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+                <tr id="$id">
+        <td><a href="common-widgets-admin-grid.html#$id-detail">$id</a></td>
+        <td><a href="http://www.php.net/language.types.string">string</a></td>
+        <td>идентификатор виджета</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+                <tr id="$pjaxId">
+        <td><a href="common-widgets-admin-grid.html#$pjaxId-detail">$pjaxId</a></td>
+        <td><a href="http://www.php.net/language.types.string">string</a></td>
+        <td>идентификатор виджета PJAX</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+                </table>
+</div>
+
+<a id="methods"></a>
+
+<div class="summary doc-method">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-method" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+            <tr id="defaultRowButtons()">
+        <td><a href="common-widgets-admin-grid.html#defaultRowButtons()-detail">defaultRowButtons()</a></td>
+        <td>Возвращает настройки по умолчанию кнопок действий над моделями</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+            <tr id="getBaseRoute()">
+        <td><a href="common-widgets-admin-grid.html#getBaseRoute()-detail">getBaseRoute()</a></td>
+        <td></td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+                <tr id="getGroupButtons()">
+        <td><a href="common-widgets-admin-grid.html#getGroupButtons()-detail">getGroupButtons()</a></td>
+        <td>Возвращает массив кнопок групповых операций</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+            <tr id="getRowButtons()">
+        <td><a href="common-widgets-admin-grid.html#getRowButtons()-detail">getRowButtons()</a></td>
+        <td></td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+            <tr id="init()">
+        <td><a href="common-widgets-admin-grid.html#init()-detail">init()</a></td>
+        <td></td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+            <tr id="run()">
+        <td><a href="common-widgets-admin-grid.html#run()-detail">run()</a></td>
+        <td>Запуск виджета</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+            <tr id="setBaseRoute()">
+        <td><a href="common-widgets-admin-grid.html#setBaseRoute()-detail">setBaseRoute()</a></td>
+        <td></td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+            <tr id="setGroupButtons()">
+        <td><a href="common-widgets-admin-grid.html#setGroupButtons()-detail">setGroupButtons()</a></td>
+        <td>Установка кнопок групповых операций</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+            <tr id="setRowButtons()">
+        <td><a href="common-widgets-admin-grid.html#setRowButtons()-detail">setRowButtons()</a></td>
+        <td></td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+    </table>
+</div>
+
+<div class="summary doc-method">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-method" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+        <tr id="defaultGroupButtons()">
+        <td><a href="common-widgets-admin-grid.html#defaultGroupButtons()-detail">defaultGroupButtons()</a></td>
+        <td>Кнопки групповых операций по умолчанию</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+                    <tr id="getColumns()">
+        <td><a href="common-widgets-admin-grid.html#getColumns()-detail">getColumns()</a></td>
+        <td>Возвращает описание колонок</td>
+        <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+    </tr>
+                                </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+<div class="summary doc-const">
+    <h2>Constants</h2>
+
+    <p><a href="#" class="toggle">Hide inherited constants</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+    <colgroup>
+        <col class="col-const" />
+        <col class="col-value" />
+        <col class="col-description" />
+        <col class="col-defined" />
+    </colgroup>
+    <tr>
+        <th>Constant</th><th>Value</th><th>Description</th><th>Defined By</th>
+    </tr>
+            <tr id="GRID_ID_PREF">
+          <td id="GRID_ID_PREF-detail">GRID_ID_PREF</td>
+          <td>"grid-"</td>
+          <td>Преффикс идентификатора грида
+</td>
+          <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+        </tr>
+            <tr id="PJAX_SUF">
+          <td id="PJAX_SUF-detail">PJAX_SUF</td>
+          <td>"-pjax"</td>
+          <td>Суфикс иденификатора виджета Pjax
+</td>
+          <td><a href="common-widgets-admin-grid.html">common\widgets\admin\Grid</a></td>
+        </tr>
+        </table>
+</div>
+
+<h2>Property Details</h2>
+
+<div class="property-doc">
+
+    <div class="detail-header h3" id="$_baseRoute-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#$_baseRoute-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $_baseRoute        <span class="detailHeaderTag small">
+            protected                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.string">string</a> <a href="common-widgets-admin-grid.html#$_baseRoute-detail">$_baseRoute</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>базовая часть маршрута к действиям</p>
+
+    
+
+    <div class="detail-header h3" id="$_groupButtons-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#$_groupButtons-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $_groupButtons        <span class="detailHeaderTag small">
+            protected                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.array">array</a> <a href="common-widgets-admin-grid.html#$_groupButtons-detail">$_groupButtons</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>кнопки групповых операций</p>
+
+    
+
+    <div class="detail-header h3" id="$_rowButtons-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#$_rowButtons-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $_rowButtons        <span class="detailHeaderTag small">
+            protected                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.array">array</a> <a href="common-widgets-admin-grid.html#$_rowButtons-detail">$_rowButtons</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>кнопки строк грида</p>
+
+    
+
+    <div class="detail-header h3" id="$dataProvider-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#$dataProvider-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $dataProvider        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature">\yii\data\ActiveDataProvider <a href="common-widgets-admin-grid.html#$dataProvider-detail">$dataProvider</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>провайдер данных</p>
+
+    
+
+    <div class="detail-header h3" id="$id-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#$id-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $id        <span class="detailHeaderTag small">
+            protected                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.string">string</a> <a href="common-widgets-admin-grid.html#$id-detail">$id</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>идентификатор виджета</p>
+
+    
+
+    <div class="detail-header h3" id="$model-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#$model-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $model        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="common-db-activerecord.html">common\db\ActiveRecord</a> <a href="common-widgets-admin-grid.html#$model-detail">$model</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>модель</p>
+
+    
+
+    <div class="detail-header h3" id="$pjaxId-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#$pjaxId-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $pjaxId        <span class="detailHeaderTag small">
+            protected                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.string">string</a> <a href="common-widgets-admin-grid.html#$pjaxId-detail">$pjaxId</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+    <p>идентификатор виджета PJAX</p>
+
+    
+
+    <div class="detail-header h3" id="$tpl-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#$tpl-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $tpl        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.string">string</a> <a href="common-widgets-admin-grid.html#$tpl-detail">$tpl</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"grid"</span></div>
+
+    <p>шаблон</p>
+
+    
+
+    <div class="detail-header h3" id="$tree-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#$tree-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $tree        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature">bool <a href="common-widgets-admin-grid.html#$tree-detail">$tree</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">false</span></div>
+
+    <p>вывод древовидных моделей</p>
+
+    
+
+    <div class="detail-header h3" id="$userColumns-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#$userColumns-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $userColumns        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.array">array</a> <a href="common-widgets-admin-grid.html#$userColumns-detail">$userColumns</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;[]</span></div>
+
+    <p>дополнительные пользовательские колонки</p>
+
+    
+</div>
+<h2>Method Details</h2>
+
+<div class="method-doc">
+
+    <div class="detail-header h3" id="defaultGroupButtons()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#defaultGroupButtons()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        defaultGroupButtons()
+        <span class="detail-header-tag small">
+            protected            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong>Кнопки групповых операций по умолчанию</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><a href="http://www.php.net/language.types.array">array</a> <strong><a href="common-widgets-admin-grid.html#defaultGroupButtons()-detail">defaultGroupButtons</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;)</span></td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="defaultRowButtons()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#defaultRowButtons()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        defaultRowButtons()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong>Возвращает настройки по умолчанию кнопок действий над моделями</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><a href="http://www.php.net/language.types.array">array</a> <strong><a href="common-widgets-admin-grid.html#defaultRowButtons()-detail">defaultRowButtons</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;)</span></td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="getBaseRoute()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#getBaseRoute()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        getBaseRoute()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong></strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><a href="http://www.php.net/language.types.string">string</a> <strong><a href="common-widgets-admin-grid.html#getBaseRoute()-detail">getBaseRoute</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;)</span></td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="getColumns()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#getColumns()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        getColumns()
+        <span class="detail-header-tag small">
+            protected            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong>Возвращает описание колонок</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><a href="http://www.php.net/language.types.array">array</a> <strong><a href="common-widgets-admin-grid.html#getColumns()-detail">getColumns</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;)</span></td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="getGroupButtons()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#getGroupButtons()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        getGroupButtons()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong>Возвращает массив кнопок групповых операций</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature">\common\widgets\admin\arr <strong><a href="common-widgets-admin-grid.html#getGroupButtons()-detail">getGroupButtons</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;)</span></td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="getRowButtons()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#getRowButtons()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        getRowButtons()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong></strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><a href="http://www.php.net/language.types.array">array</a> <strong><a href="common-widgets-admin-grid.html#getRowButtons()-detail">getRowButtons</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;)</span></td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="init()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#init()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        init()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong></strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature">void <strong><a href="common-widgets-admin-grid.html#init()-detail">init</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;)</span></td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="run()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#run()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        run()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong>Запуск виджета</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><a href="http://www.php.net/language.types.string">string</a>|void <strong><a href="common-widgets-admin-grid.html#run()-detail">run</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;)</span></td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="setBaseRoute()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#setBaseRoute()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        setBaseRoute()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong></strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature">void <strong><a href="common-widgets-admin-grid.html#setBaseRoute()-detail">setBaseRoute</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$baseRoute&nbsp;</span><span style="color: #007700">)</span></td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$baseRoute</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="setGroupButtons()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#setGroupButtons()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        setGroupButtons()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong>Установка кнопок групповых операций</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature">void <strong><a href="common-widgets-admin-grid.html#setGroupButtons()-detail">setGroupButtons</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;array&nbsp;</span><span style="color: #0000BB">$buttons&nbsp;</span><span style="color: #007700">)</span></td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$buttons</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.array">array</a></td>
+                  <td class="param-desc-col"><p>параметры виджетов кнопок
+[
+ "delete"=&gt;[</p>
+<pre><code> "class"=&gt;\common\widgets\admin\ActionButton::getClass(),
+ "label"=&gt;Yii::t("core", "Delete"),
+ "url"=&gt;"groupdelete",
+</code></pre>
+<p> ],
+]</p>
+</td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="setRowButtons()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="common-widgets-admin-grid.html#setRowButtons()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        setRowButtons()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong></strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature">void <strong><a href="common-widgets-admin-grid.html#setRowButtons()-detail">setRowButtons</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$rowButtons&nbsp;</span><span style="color: #007700">)</span></td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$rowButtons</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.array">array</a></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+</div>
+        </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $("a.toggle").on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents(".summary").find(".inherited").show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents(".summary").find(".inherited").hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*
+     $(".sourceCode a.show").toggle(function () {
+     $(this).text($(this).text().replace(/show/,'hide'));
+     $(this).parents(".sourceCode").find("div.code").show();
+     },function () {
+     $(this).text($(this).text().replace(/hide/,'show'));
+     $(this).parents(".sourceCode").find("div.code").hide();
+     });
+     $("a.sourceLink").click(function () {
+     $(this).attr('target','_blank');
+     });
+     */
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Mon, 15 Jun 2015 10:07:20 +0000</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script type="text/javascript">jQuery(document).ready(function () {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) shiftWindow();
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

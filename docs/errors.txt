@@ -1,0 +1,2936 @@
+Array
+(
+    [0] => Array
+        (
+            [line] => 14
+            [file] => app/assets/AdminAsset.php
+            [message] => No docblock for element '$basePath'
+        )
+
+    [1] => Array
+        (
+            [line] => 14
+            [file] => app/assets/AdminAsset.php
+            [message] => No short description for element '$basePath'
+        )
+
+    [2] => Array
+        (
+            [line] => 15
+            [file] => app/assets/AdminAsset.php
+            [message] => No docblock for element '$baseUrl'
+        )
+
+    [3] => Array
+        (
+            [line] => 15
+            [file] => app/assets/AdminAsset.php
+            [message] => No short description for element '$baseUrl'
+        )
+
+    [4] => Array
+        (
+            [line] => 16
+            [file] => app/assets/AdminAsset.php
+            [message] => No docblock for element '$css'
+        )
+
+    [5] => Array
+        (
+            [line] => 16
+            [file] => app/assets/AdminAsset.php
+            [message] => No short description for element '$css'
+        )
+
+    [6] => Array
+        (
+            [line] => 17
+            [file] => app/assets/AdminAsset.php
+            [message] => No docblock for element '$js'
+        )
+
+    [7] => Array
+        (
+            [line] => 17
+            [file] => app/assets/AdminAsset.php
+            [message] => No short description for element '$js'
+        )
+
+    [8] => Array
+        (
+            [line] => 18
+            [file] => app/assets/AdminAsset.php
+            [message] => No docblock for element '$depends'
+        )
+
+    [9] => Array
+        (
+            [line] => 18
+            [file] => app/assets/AdminAsset.php
+            [message] => No short description for element '$depends'
+        )
+
+    [10] => Array
+        (
+            [line] => 14
+            [file] => app/assets/SwfObjectAsset.php
+            [message] => No docblock for element '$basePath'
+        )
+
+    [11] => Array
+        (
+            [line] => 14
+            [file] => app/assets/SwfObjectAsset.php
+            [message] => No short description for element '$basePath'
+        )
+
+    [12] => Array
+        (
+            [line] => 15
+            [file] => app/assets/SwfObjectAsset.php
+            [message] => No docblock for element '$baseUrl'
+        )
+
+    [13] => Array
+        (
+            [line] => 15
+            [file] => app/assets/SwfObjectAsset.php
+            [message] => No short description for element '$baseUrl'
+        )
+
+    [14] => Array
+        (
+            [line] => 16
+            [file] => app/assets/SwfObjectAsset.php
+            [message] => No docblock for element '$js'
+        )
+
+    [15] => Array
+        (
+            [line] => 16
+            [file] => app/assets/SwfObjectAsset.php
+            [message] => No short description for element '$js'
+        )
+
+    [16] => Array
+        (
+            [line] => 20
+            [file] => app/controllers/SiteController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\SiteController.
+        )
+
+    [17] => Array
+        (
+            [line] => 49
+            [file] => app/controllers/SiteController.php
+            [message] => Method actions has no parent to inherit from in app\controllers\SiteController.
+        )
+
+    [18] => Array
+        (
+            [line] => 61
+            [file] => app/controllers/SiteController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [19] => Array
+        (
+            [line] => 28
+            [file] => app/gii/generators/appmodule/Generator.php
+            [message] => No docblock for element '$moduleClass'
+        )
+
+    [20] => Array
+        (
+            [line] => 28
+            [file] => app/gii/generators/appmodule/Generator.php
+            [message] => No short description for element '$moduleClass'
+        )
+
+    [21] => Array
+        (
+            [line] => 29
+            [file] => app/gii/generators/appmodule/Generator.php
+            [message] => No docblock for element '$moduleID'
+        )
+
+    [22] => Array
+        (
+            [line] => 29
+            [file] => app/gii/generators/appmodule/Generator.php
+            [message] => No short description for element '$moduleID'
+        )
+
+    [23] => Array
+        (
+            [line] => 34
+            [file] => app/gii/generators/appmodule/Generator.php
+            [message] => Method getName has no parent to inherit from in app\gii\generators\appmodule\Generator.
+        )
+
+    [24] => Array
+        (
+            [line] => 42
+            [file] => app/gii/generators/appmodule/Generator.php
+            [message] => Method getDescription has no parent to inherit from in app\gii\generators\appmodule\Generator.
+        )
+
+    [25] => Array
+        (
+            [line] => 50
+            [file] => app/gii/generators/appmodule/Generator.php
+            [message] => Method rules has no parent to inherit from in app\gii\generators\appmodule\Generator.
+        )
+
+    [26] => Array
+        (
+            [line] => 64
+            [file] => app/gii/generators/appmodule/Generator.php
+            [message] => Method attributeLabels has no parent to inherit from in app\gii\generators\appmodule\Generator.
+        )
+
+    [27] => Array
+        (
+            [line] => 75
+            [file] => app/gii/generators/appmodule/Generator.php
+            [message] => Method hints has no parent to inherit from in app\gii\generators\appmodule\Generator.
+        )
+
+    [28] => Array
+        (
+            [line] => 86
+            [file] => app/gii/generators/appmodule/Generator.php
+            [message] => Method successMessage has no parent to inherit from in app\gii\generators\appmodule\Generator.
+        )
+
+    [29] => Array
+        (
+            [line] => 115
+            [file] => app/gii/generators/appmodule/Generator.php
+            [message] => Method requiredTemplates has no parent to inherit from in app\gii\generators\appmodule\Generator.
+        )
+
+    [30] => Array
+        (
+            [line] => 123
+            [file] => app/gii/generators/appmodule/Generator.php
+            [message] => Method generate has no parent to inherit from in app\gii\generators\appmodule\Generator.
+        )
+
+    [31] => Array
+        (
+            [line] => 20
+            [file] => app/modules/banners/Banners.php
+            [message] => Method init has no parent to inherit from in app\modules\banners\Banners.
+        )
+
+    [32] => Array
+        (
+            [line] => 7
+            [file] => app/modules/banners/controllers/DefaultController.php
+            [message] => No docblock for element 'app\modules\banners\controllers\DefaultController'
+        )
+
+    [33] => Array
+        (
+            [line] => 9
+            [file] => app/modules/banners/controllers/DefaultController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [34] => Array
+        (
+            [line] => 72
+            [file] => app/modules/banners/models/Banner.php
+            [message] => Method tableName has no parent to inherit from in app\modules\banners\models\Banner.
+        )
+
+    [35] => Array
+        (
+            [line] => 21
+            [file] => app/modules/banners/models/Place.php
+            [message] => Method tableName has no parent to inherit from in app\modules\banners\models\Place.
+        )
+
+    [36] => Array
+        (
+            [line] => 40
+            [file] => app/modules/banners/widgets/ListBanners.php
+            [message] => Method init has no parent to inherit from in app\modules\banners\widgets\ListBanners.
+        )
+
+    [37] => Array
+        (
+            [line] => 66
+            [file] => app/modules/banners/widgets/ListBanners.php
+            [message] => Method run has no parent to inherit from in app\modules\banners\widgets\ListBanners.
+        )
+
+    [38] => Array
+        (
+            [line] => 30
+            [file] => app/modules/banners/widgets/SingleBanner.php
+            [message] => Method init has no parent to inherit from in app\modules\banners\widgets\SingleBanner.
+        )
+
+    [39] => Array
+        (
+            [line] => 55
+            [file] => app/modules/banners/widgets/SingleBanner.php
+            [message] => Method run has no parent to inherit from in app\modules\banners\widgets\SingleBanner.
+        )
+
+    [40] => Array
+        (
+            [line] => 101
+            [file] => app/modules/catalog/models/Catalog.php
+            [message] => Method tableName has no parent to inherit from in app\modules\catalog\models\Catalog.
+        )
+
+    [41] => Array
+        (
+            [line] => 22
+            [file] => app/modules/catalog/models/CatalogSection.php
+            [message] => Method tableName has no parent to inherit from in app\modules\catalog\models\CatalogSection.
+        )
+
+    [42] => Array
+        (
+            [line] => 21
+            [file] => app/modules/catalog/models/Producer.php
+            [message] => Method tableName has no parent to inherit from in app\modules\catalog\models\Producer.
+        )
+
+    [43] => Array
+        (
+            [line] => 7
+            [file] => app/modules/catalog/models/meta/ProducerMeta.php
+            [message] => No docblock for element 'app\modules\catalog\models\meta\ProducerMeta'
+        )
+
+    [44] => Array
+        (
+            [line] => 13
+            [file] => app/modules/geo/Geo.php
+            [message] => No docblock for element '$controllerNamespace'
+        )
+
+    [45] => Array
+        (
+            [line] => 13
+            [file] => app/modules/geo/Geo.php
+            [message] => No short description for element '$controllerNamespace'
+        )
+
+    [46] => Array
+        (
+            [line] => 15
+            [file] => app/modules/geo/Geo.php
+            [message] => No docblock for element 'init'
+        )
+
+    [47] => Array
+        (
+            [line] => 15
+            [file] => app/modules/geo/controllers/RestController.php
+            [message] => No docblock for element '$streetsLimit'
+        )
+
+    [48] => Array
+        (
+            [line] => 15
+            [file] => app/modules/geo/controllers/RestController.php
+            [message] => No short description for element '$streetsLimit'
+        )
+
+    [49] => Array
+        (
+            [line] => 21
+            [file] => app/modules/geo/models/Country.php
+            [message] => Method tableName has no parent to inherit from in app\modules\geo\models\Country.
+        )
+
+    [50] => Array
+        (
+            [line] => 22
+            [file] => app/modules/geo/models/Np.php
+            [message] => Method tableName has no parent to inherit from in app\modules\geo\models\Np.
+        )
+
+    [51] => Array
+        (
+            [line] => 22
+            [file] => app/modules/geo/models/Rajon.php
+            [message] => Method tableName has no parent to inherit from in app\modules\geo\models\Rajon.
+        )
+
+    [52] => Array
+        (
+            [line] => 22
+            [file] => app/modules/geo/models/Region.php
+            [message] => Method tableName has no parent to inherit from in app\modules\geo\models\Region.
+        )
+
+    [53] => Array
+        (
+            [line] => 22
+            [file] => app/modules/geo/models/Street.php
+            [message] => Method tableName has no parent to inherit from in app\modules\geo\models\Street.
+        )
+
+    [54] => Array
+        (
+            [line] => 13
+            [file] => app/modules/import/Import.php
+            [message] => No docblock for element '$controllerNamespace'
+        )
+
+    [55] => Array
+        (
+            [line] => 13
+            [file] => app/modules/import/Import.php
+            [message] => No short description for element '$controllerNamespace'
+        )
+
+    [56] => Array
+        (
+            [line] => 15
+            [file] => app/modules/import/Import.php
+            [message] => No docblock for element 'init'
+        )
+
+    [57] => Array
+        (
+            [line] => 7
+            [file] => app/modules/import/controllers/DefaultController.php
+            [message] => No docblock for element 'app\modules\import\controllers\DefaultController'
+        )
+
+    [58] => Array
+        (
+            [line] => 9
+            [file] => app/modules/import/controllers/DefaultController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [59] => Array
+        (
+            [line] => 78
+            [file] => app/modules/import/models/CsvModel.php
+            [message] => Method rules has no parent to inherit from in app\modules\import\models\CsvModel.
+        )
+
+    [60] => Array
+        (
+            [line] => 90
+            [file] => app/modules/import/models/CsvModel.php
+            [message] => Method attributeLabels has no parent to inherit from in app\modules\import\models\CsvModel.
+        )
+
+    [61] => Array
+        (
+            [line] => 7
+            [file] => app/modules/import/modules/admin/Admin.php
+            [message] => No docblock for element 'app\modules\import\modules\admin\Admin'
+        )
+
+    [62] => Array
+        (
+            [line] => 25
+            [file] => app/modules/import/modules/admin/controllers/CsvImportController.php
+            [message] => No docblock for element '$sessionKey'
+        )
+
+    [63] => Array
+        (
+            [line] => 25
+            [file] => app/modules/import/modules/admin/controllers/CsvImportController.php
+            [message] => No short description for element '$sessionKey'
+        )
+
+    [64] => Array
+        (
+            [line] => 18
+            [file] => app/modules/main/actions/Feedback.php
+            [message] => No docblock for element '$letter'
+        )
+
+    [65] => Array
+        (
+            [line] => 18
+            [file] => app/modules/main/actions/Feedback.php
+            [message] => No short description for element '$letter'
+        )
+
+    [66] => Array
+        (
+            [line] => 39
+            [file] => app/modules/main/actions/user/Forgot.php
+            [message] => No docblock for element 'run'
+        )
+
+    [67] => Array
+        (
+            [line] => 30
+            [file] => app/modules/main/actions/user/SignIn.php
+            [message] => Method run has no parent to inherit from in app\modules\main\actions\user\SignIn.
+        )
+
+    [68] => Array
+        (
+            [line] => 65
+            [file] => app/modules/main/actions/user/SignUp.php
+            [message] => No docblock for element 'run'
+        )
+
+    [69] => Array
+        (
+            [line] => 34
+            [file] => app/modules/main/actions/user/Update.php
+            [message] => No docblock for element 'run'
+        )
+
+    [70] => Array
+        (
+            [line] => 22
+            [file] => app/modules/main/actions/user/View.php
+            [message] => No docblock for element 'run'
+        )
+
+    [71] => Array
+        (
+            [line] => 27
+            [file] => app/modules/main/components/ForgotMailNotifier.php
+            [message] => No docblock for element 'send'
+        )
+
+    [72] => Array
+        (
+            [line] => 35
+            [file] => app/modules/main/components/PageUrlRule.php
+            [message] => Method createUrl has no parent to inherit from in app\modules\main\components\PageUrlRule.
+        )
+
+    [73] => Array
+        (
+            [line] => 80
+            [file] => app/modules/main/components/PageUrlRule.php
+            [message] => Method parseRequest has no parent to inherit from in app\modules\main\components\PageUrlRule.
+        )
+
+    [74] => Array
+        (
+            [line] => 27
+            [file] => app/modules/main/components/SignUpMailNotifier.php
+            [message] => No docblock for element 'send'
+        )
+
+    [75] => Array
+        (
+            [line] => 26
+            [file] => app/modules/main/controllers/CommentsController.php
+            [message] => Method verbs has no parent to inherit from in app\modules\main\controllers\CommentsController.
+        )
+
+    [76] => Array
+        (
+            [line] => 39
+            [file] => app/modules/main/controllers/CommentsController.php
+            [message] => Method actions has no parent to inherit from in app\modules\main\controllers\CommentsController.
+        )
+
+    [77] => Array
+        (
+            [line] => 20
+            [file] => app/modules/main/controllers/FeedbackController.php
+            [message] => Method verbs has no parent to inherit from in app\modules\main\controllers\FeedbackController.
+        )
+
+    [78] => Array
+        (
+            [line] => 33
+            [file] => app/modules/main/controllers/FeedbackController.php
+            [message] => Method actions has no parent to inherit from in app\modules\main\controllers\FeedbackController.
+        )
+
+    [79] => Array
+        (
+            [line] => 20
+            [file] => app/modules/main/controllers/UserController.php
+            [message] => Method behaviors has no parent to inherit from in app\modules\main\controllers\UserController.
+        )
+
+    [80] => Array
+        (
+            [line] => 52
+            [file] => app/modules/main/controllers/UserController.php
+            [message] => Method actions has no parent to inherit from in app\modules\main\controllers\UserController.
+        )
+
+    [81] => Array
+        (
+            [line] => 31
+            [file] => app/modules/main/models/Comments.php
+            [message] => Method tableName has no parent to inherit from in app\modules\main\models\Comments.
+        )
+
+    [82] => Array
+        (
+            [line] => 20
+            [file] => app/modules/main/models/Config.php
+            [message] => Method tableName has no parent to inherit from in app\modules\main\models\Config.
+        )
+
+    [83] => Array
+        (
+            [line] => 57
+            [file] => app/modules/main/models/FeedbackForm.php
+            [message] => Method attributeLabels has no parent to inherit from in app\modules\main\models\FeedbackForm.
+        )
+
+    [84] => Array
+        (
+            [line] => 15
+            [file] => app/modules/main/models/ForgotForm.php
+            [message] => No docblock for element '$username'
+        )
+
+    [85] => Array
+        (
+            [line] => 15
+            [file] => app/modules/main/models/ForgotForm.php
+            [message] => No short description for element '$username'
+        )
+
+    [86] => Array
+        (
+            [line] => 17
+            [file] => app/modules/main/models/ForgotForm.php
+            [message] => No docblock for element '$email'
+        )
+
+    [87] => Array
+        (
+            [line] => 17
+            [file] => app/modules/main/models/ForgotForm.php
+            [message] => No short description for element '$email'
+        )
+
+    [88] => Array
+        (
+            [line] => 19
+            [file] => app/modules/main/models/ForgotForm.php
+            [message] => No docblock for element '$passwordLength'
+        )
+
+    [89] => Array
+        (
+            [line] => 19
+            [file] => app/modules/main/models/ForgotForm.php
+            [message] => No short description for element '$passwordLength'
+        )
+
+    [90] => Array
+        (
+            [line] => 26
+            [file] => app/modules/main/models/ForgotForm.php
+            [message] => Method rules has no parent to inherit from in app\modules\main\models\ForgotForm.
+        )
+
+    [91] => Array
+        (
+            [line] => 39
+            [file] => app/modules/main/models/ForgotForm.php
+            [message] => Method attributeLabels has no parent to inherit from in app\modules\main\models\ForgotForm.
+        )
+
+    [92] => Array
+        (
+            [line] => 25
+            [file] => app/modules/main/models/IncludeGroup.php
+            [message] => No docblock for element '$_includesMap'
+        )
+
+    [93] => Array
+        (
+            [line] => 25
+            [file] => app/modules/main/models/IncludeGroup.php
+            [message] => No short description for element '$_includesMap'
+        )
+
+    [94] => Array
+        (
+            [line] => 27
+            [file] => app/modules/main/models/IncludeGroup.php
+            [message] => No docblock for element '$_includesIdsStr'
+        )
+
+    [95] => Array
+        (
+            [line] => 27
+            [file] => app/modules/main/models/IncludeGroup.php
+            [message] => No short description for element '$_includesIdsStr'
+        )
+
+    [96] => Array
+        (
+            [line] => 29
+            [file] => app/modules/main/models/IncludeGroup.php
+            [message] => No docblock for element '$_includesIds'
+        )
+
+    [97] => Array
+        (
+            [line] => 29
+            [file] => app/modules/main/models/IncludeGroup.php
+            [message] => No short description for element '$_includesIds'
+        )
+
+    [98] => Array
+        (
+            [line] => 35
+            [file] => app/modules/main/models/IncludeGroup.php
+            [message] => Method tableName has no parent to inherit from in app\modules\main\models\IncludeGroup.
+        )
+
+    [99] => Array
+        (
+            [line] => 131
+            [file] => app/modules/main/models/IncludeGroup.php
+            [message] => Method __get has no parent to inherit from in app\modules\main\models\IncludeGroup.
+        )
+
+    [100] => Array
+        (
+            [line] => 28
+            [file] => app/modules/main/models/Includes.php
+            [message] => Method tableName has no parent to inherit from in app\modules\main\models\Includes.
+        )
+
+    [101] => Array
+        (
+            [line] => 35
+            [file] => app/modules/main/models/LoginForm.php
+            [message] => Method rules has no parent to inherit from in app\modules\main\models\LoginForm.
+        )
+
+    [102] => Array
+        (
+            [line] => 93
+            [file] => app/modules/main/models/LoginForm.php
+            [message] => Method attributeLabels has no parent to inherit from in app\modules\main\models\LoginForm.
+        )
+
+    [103] => Array
+        (
+            [line] => 43
+            [file] => app/modules/main/models/Menu.php
+            [message] => Method tableName has no parent to inherit from in app\modules\main\models\Menu.
+        )
+
+    [104] => Array
+        (
+            [line] => 27
+            [file] => app/modules/main/models/Pages.php
+            [message] => Method tableName has no parent to inherit from in app\modules\main\models\Pages.
+        )
+
+    [105] => Array
+        (
+            [line] => 21
+            [file] => app/modules/main/models/Permission.php
+            [message] => No short description for element '$_permissions'
+        )
+
+    [106] => Array
+        (
+            [line] => 57
+            [file] => app/modules/main/models/Permission.php
+            [message] => Method tableName has no parent to inherit from in app\modules\main\models\Permission.
+        )
+
+    [107] => Array
+        (
+            [line] => 40
+            [file] => app/modules/main/models/Template.php
+            [message] => Method tableName has no parent to inherit from in app\modules\main\models\Template.
+        )
+
+    [108] => Array
+        (
+            [line] => 73
+            [file] => app/modules/main/models/User.php
+            [message] => Method findIdentity has no parent to inherit from in app\modules\main\models\User.
+        )
+
+    [109] => Array
+        (
+            [line] => 81
+            [file] => app/modules/main/models/User.php
+            [message] => Method findIdentityByAccessToken has no parent to inherit from in app\modules\main\models\User.
+        )
+
+    [110] => Array
+        (
+            [line] => 224
+            [file] => app/modules/main/models/User.php
+            [message] => Method afterSave has no parent to inherit from in app\modules\main\models\User.
+        )
+
+    [111] => Array
+        (
+            [line] => 242
+            [file] => app/modules/main/models/User.php
+            [message] => Method getId has no parent to inherit from in app\modules\main\models\User.
+        )
+
+    [112] => Array
+        (
+            [line] => 250
+            [file] => app/modules/main/models/User.php
+            [message] => Method validateAuthKey has no parent to inherit from in app\modules\main\models\User.
+        )
+
+    [113] => Array
+        (
+            [line] => 258
+            [file] => app/modules/main/models/User.php
+            [message] => Method getAuthKey has no parent to inherit from in app\modules\main\models\User.
+        )
+
+    [114] => Array
+        (
+            [line] => 323
+            [file] => app/modules/main/models/User.php
+            [message] => Method fields has no parent to inherit from in app\modules\main\models\User.
+        )
+
+    [115] => Array
+        (
+            [line] => 14
+            [file] => app/modules/main/modules/admin/controllers/DefaultController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [116] => Array
+        (
+            [line] => 20
+            [file] => app/modules/main/modules/admin/controllers/UploadController.php
+            [message] => Method beforeAction has no parent to inherit from in app\modules\main\modules\admin\controllers\UploadController.
+        )
+
+    [117] => Array
+        (
+            [line] => 33
+            [file] => app/modules/main/modules/admin/controllers/UploadController.php
+            [message] => Method actions has no parent to inherit from in app\modules\main\modules\admin\controllers\UploadController.
+        )
+
+    [118] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/CreateRule.php
+            [message] => No docblock for element '$name'
+        )
+
+    [119] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/CreateRule.php
+            [message] => No short description for element '$name'
+        )
+
+    [120] => Array
+        (
+            [line] => 21
+            [file] => app/modules/main/rbac/CreateRule.php
+            [message] => Method execute has no parent to inherit from in app\modules\main\rbac\CreateRule.
+        )
+
+    [121] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/CreatesRule.php
+            [message] => No docblock for element '$name'
+        )
+
+    [122] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/CreatesRule.php
+            [message] => No short description for element '$name'
+        )
+
+    [123] => Array
+        (
+            [line] => 21
+            [file] => app/modules/main/rbac/CreatesRule.php
+            [message] => Method execute has no parent to inherit from in app\modules\main\rbac\CreatesRule.
+        )
+
+    [124] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/DeleteRule.php
+            [message] => No docblock for element '$name'
+        )
+
+    [125] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/DeleteRule.php
+            [message] => No short description for element '$name'
+        )
+
+    [126] => Array
+        (
+            [line] => 21
+            [file] => app/modules/main/rbac/DeleteRule.php
+            [message] => Method execute has no parent to inherit from in app\modules\main\rbac\DeleteRule.
+        )
+
+    [127] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/DeletesRule.php
+            [message] => No docblock for element '$name'
+        )
+
+    [128] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/DeletesRule.php
+            [message] => No short description for element '$name'
+        )
+
+    [129] => Array
+        (
+            [line] => 21
+            [file] => app/modules/main/rbac/DeletesRule.php
+            [message] => Method execute has no parent to inherit from in app\modules\main\rbac\DeletesRule.
+        )
+
+    [130] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/ListRule.php
+            [message] => No docblock for element '$name'
+        )
+
+    [131] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/ListRule.php
+            [message] => No short description for element '$name'
+        )
+
+    [132] => Array
+        (
+            [line] => 21
+            [file] => app/modules/main/rbac/ListRule.php
+            [message] => Method execute has no parent to inherit from in app\modules\main\rbac\ListRule.
+        )
+
+    [133] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/ReadRule.php
+            [message] => No docblock for element '$name'
+        )
+
+    [134] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/ReadRule.php
+            [message] => No short description for element '$name'
+        )
+
+    [135] => Array
+        (
+            [line] => 21
+            [file] => app/modules/main/rbac/ReadRule.php
+            [message] => Method execute has no parent to inherit from in app\modules\main\rbac\ReadRule.
+        )
+
+    [136] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/UpdateRule.php
+            [message] => No docblock for element '$name'
+        )
+
+    [137] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/UpdateRule.php
+            [message] => No short description for element '$name'
+        )
+
+    [138] => Array
+        (
+            [line] => 21
+            [file] => app/modules/main/rbac/UpdateRule.php
+            [message] => Method execute has no parent to inherit from in app\modules\main\rbac\UpdateRule.
+        )
+
+    [139] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/UpdatesRule.php
+            [message] => No docblock for element '$name'
+        )
+
+    [140] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/rbac/UpdatesRule.php
+            [message] => No short description for element '$name'
+        )
+
+    [141] => Array
+        (
+            [line] => 21
+            [file] => app/modules/main/rbac/UpdatesRule.php
+            [message] => Method execute has no parent to inherit from in app\modules\main\rbac\UpdatesRule.
+        )
+
+    [142] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/sitemap/SitemapWidget.php
+            [message] => No docblock for element '$tpl'
+        )
+
+    [143] => Array
+        (
+            [line] => 16
+            [file] => app/modules/main/sitemap/SitemapWidget.php
+            [message] => No short description for element '$tpl'
+        )
+
+    [144] => Array
+        (
+            [line] => 19
+            [file] => app/modules/main/sitemap/SitemapWidget.php
+            [message] => No docblock for element 'run'
+        )
+
+    [145] => Array
+        (
+            [line] => 130
+            [file] => app/modules/main/widgets/comments/Comments.php
+            [message] => Method init has no parent to inherit from in app\modules\main\widgets\comments\Comments.
+        )
+
+    [146] => Array
+        (
+            [line] => 171
+            [file] => app/modules/main/widgets/comments/Comments.php
+            [message] => Method run has no parent to inherit from in app\modules\main\widgets\comments\Comments.
+        )
+
+    [147] => Array
+        (
+            [line] => 15
+            [file] => app/modules/main/widgets/comments/CommentsAsset.php
+            [message] => No docblock for element '$js'
+        )
+
+    [148] => Array
+        (
+            [line] => 15
+            [file] => app/modules/main/widgets/comments/CommentsAsset.php
+            [message] => No short description for element '$js'
+        )
+
+    [149] => Array
+        (
+            [line] => 19
+            [file] => app/modules/main/widgets/comments/CommentsAsset.php
+            [message] => No docblock for element '$jsMin'
+        )
+
+    [150] => Array
+        (
+            [line] => 19
+            [file] => app/modules/main/widgets/comments/CommentsAsset.php
+            [message] => No short description for element '$jsMin'
+        )
+
+    [151] => Array
+        (
+            [line] => 23
+            [file] => app/modules/main/widgets/comments/CommentsAsset.php
+            [message] => No docblock for element '$depends'
+        )
+
+    [152] => Array
+        (
+            [line] => 23
+            [file] => app/modules/main/widgets/comments/CommentsAsset.php
+            [message] => No short description for element '$depends'
+        )
+
+    [153] => Array
+        (
+            [line] => 27
+            [file] => app/modules/main/widgets/comments/CommentsAsset.php
+            [message] => No docblock for element 'init'
+        )
+
+    [154] => Array
+        (
+            [line] => 15
+            [file] => app/modules/main/widgets/comments/SkinAsset.php
+            [message] => No docblock for element '$css'
+        )
+
+    [155] => Array
+        (
+            [line] => 15
+            [file] => app/modules/main/widgets/comments/SkinAsset.php
+            [message] => No short description for element '$css'
+        )
+
+    [156] => Array
+        (
+            [line] => 19
+            [file] => app/modules/main/widgets/comments/SkinAsset.php
+            [message] => No docblock for element 'init'
+        )
+
+    [157] => Array
+        (
+            [line] => 69
+            [file] => app/modules/main/widgets/elist/EList.php
+            [message] => Method init has no parent to inherit from in app\modules\main\widgets\elist\EList.
+        )
+
+    [158] => Array
+        (
+            [line] => 98
+            [file] => app/modules/main/widgets/elist/EList.php
+            [message] => Method run has no parent to inherit from in app\modules\main\widgets\elist\EList.
+        )
+
+    [159] => Array
+        (
+            [line] => 64
+            [file] => app/modules/main/widgets/feedback/Feedback.php
+            [message] => Method init has no parent to inherit from in app\modules\main\widgets\feedback\Feedback.
+        )
+
+    [160] => Array
+        (
+            [line] => 83
+            [file] => app/modules/main/widgets/feedback/Feedback.php
+            [message] => Method run has no parent to inherit from in app\modules\main\widgets\feedback\Feedback.
+        )
+
+    [161] => Array
+        (
+            [line] => 15
+            [file] => app/modules/main/widgets/feedback/FeedbackAsset.php
+            [message] => No docblock for element '$js'
+        )
+
+    [162] => Array
+        (
+            [line] => 15
+            [file] => app/modules/main/widgets/feedback/FeedbackAsset.php
+            [message] => No short description for element '$js'
+        )
+
+    [163] => Array
+        (
+            [line] => 19
+            [file] => app/modules/main/widgets/feedback/FeedbackAsset.php
+            [message] => No docblock for element '$jsMin'
+        )
+
+    [164] => Array
+        (
+            [line] => 19
+            [file] => app/modules/main/widgets/feedback/FeedbackAsset.php
+            [message] => No short description for element '$jsMin'
+        )
+
+    [165] => Array
+        (
+            [line] => 23
+            [file] => app/modules/main/widgets/feedback/FeedbackAsset.php
+            [message] => No docblock for element '$depends'
+        )
+
+    [166] => Array
+        (
+            [line] => 23
+            [file] => app/modules/main/widgets/feedback/FeedbackAsset.php
+            [message] => No short description for element '$depends'
+        )
+
+    [167] => Array
+        (
+            [line] => 27
+            [file] => app/modules/main/widgets/feedback/FeedbackAsset.php
+            [message] => No docblock for element 'init'
+        )
+
+    [168] => Array
+        (
+            [line] => 15
+            [file] => app/modules/main/widgets/gallery/AssetBundle.php
+            [message] => No docblock for element '$css'
+        )
+
+    [169] => Array
+        (
+            [line] => 15
+            [file] => app/modules/main/widgets/gallery/AssetBundle.php
+            [message] => No short description for element '$css'
+        )
+
+    [170] => Array
+        (
+            [line] => 19
+            [file] => app/modules/main/widgets/gallery/AssetBundle.php
+            [message] => No docblock for element 'init'
+        )
+
+    [171] => Array
+        (
+            [line] => 65
+            [file] => app/modules/main/widgets/gallery/Gallery.php
+            [message] => Method init has no parent to inherit from in app\modules\main\widgets\gallery\Gallery.
+        )
+
+    [172] => Array
+        (
+            [line] => 86
+            [file] => app/modules/main/widgets/gallery/Gallery.php
+            [message] => Method run has no parent to inherit from in app\modules\main\widgets\gallery\Gallery.
+        )
+
+    [173] => Array
+        (
+            [line] => 29
+            [file] => app/modules/main/widgets/includes/Includes.php
+            [message] => No docblock for element 'init'
+        )
+
+    [174] => Array
+        (
+            [line] => 44
+            [file] => app/modules/main/widgets/includes/Includes.php
+            [message] => Method run has no parent to inherit from in app\modules\main\widgets\includes\Includes.
+        )
+
+    [175] => Array
+        (
+            [line] => 32
+            [file] => app/modules/main/widgets/includes/IncludesGroup.php
+            [message] => Method init has no parent to inherit from in app\modules\main\widgets\includes\IncludesGroup.
+        )
+
+    [176] => Array
+        (
+            [line] => 66
+            [file] => app/modules/main/widgets/includes/IncludesGroup.php
+            [message] => Method run has no parent to inherit from in app\modules\main\widgets\includes\IncludesGroup.
+        )
+
+    [177] => Array
+        (
+            [line] => 67
+            [file] => app/modules/main/widgets/menu/Menu.php
+            [message] => Method init has no parent to inherit from in app\modules\main\widgets\menu\Menu.
+        )
+
+    [178] => Array
+        (
+            [line] => 119
+            [file] => app/modules/main/widgets/menu/Menu.php
+            [message] => Method run has no parent to inherit from in app\modules\main\widgets\menu\Menu.
+        )
+
+    [179] => Array
+        (
+            [line] => 75
+            [file] => app/modules/main/widgets/treelist/TreeList.php
+            [message] => Method init has no parent to inherit from in app\modules\main\widgets\treelist\TreeList.
+        )
+
+    [180] => Array
+        (
+            [line] => 113
+            [file] => app/modules/main/widgets/treelist/TreeList.php
+            [message] => Method run has no parent to inherit from in app\modules\main\widgets\treelist\TreeList.
+        )
+
+    [181] => Array
+        (
+            [line] => 33
+            [file] => app/modules/main/widgets/user/SignIn.php
+            [message] => Method run has no parent to inherit from in app\modules\main\widgets\user\SignIn.
+        )
+
+    [182] => Array
+        (
+            [line] => 46
+            [file] => app/modules/main/widgets/user/User.php
+            [message] => No docblock for element 'run'
+        )
+
+    [183] => Array
+        (
+            [line] => 118
+            [file] => app/modules/news/models/News.php
+            [message] => Method tableName has no parent to inherit from in app\modules\news\models\News.
+        )
+
+    [184] => Array
+        (
+            [line] => 22
+            [file] => app/modules/news/models/NewsSection.php
+            [message] => Method tableName has no parent to inherit from in app\modules\news\models\NewsSection.
+        )
+
+    [185] => Array
+        (
+            [line] => 5
+            [file] => app/modules/photogallery/Photogallery.php
+            [message] => No docblock for element 'app\modules\photogallery\Photogallery'
+        )
+
+    [186] => Array
+        (
+            [line] => 7
+            [file] => app/modules/photogallery/Photogallery.php
+            [message] => No docblock for element '$controllerNamespace'
+        )
+
+    [187] => Array
+        (
+            [line] => 7
+            [file] => app/modules/photogallery/Photogallery.php
+            [message] => No short description for element '$controllerNamespace'
+        )
+
+    [188] => Array
+        (
+            [line] => 9
+            [file] => app/modules/photogallery/Photogallery.php
+            [message] => No docblock for element 'init'
+        )
+
+    [189] => Array
+        (
+            [line] => 23
+            [file] => app/modules/photogallery/models/Gallery.php
+            [message] => Method tableName has no parent to inherit from in app\modules\photogallery\models\Gallery.
+        )
+
+    [190] => Array
+        (
+            [line] => 7
+            [file] => app/modules/photogallery/modules/admin/Admin.php
+            [message] => No docblock for element 'app\modules\photogallery\modules\admin\Admin'
+        )
+
+    [191] => Array
+        (
+            [line] => 19
+            [file] => app/modules/shop/Shop.php
+            [message] => No docblock for element '$controllerNamespace'
+        )
+
+    [192] => Array
+        (
+            [line] => 19
+            [file] => app/modules/shop/Shop.php
+            [message] => No short description for element '$controllerNamespace'
+        )
+
+    [193] => Array
+        (
+            [line] => 25
+            [file] => app/modules/shop/Shop.php
+            [message] => Method init has no parent to inherit from in app\modules\shop\Shop.
+        )
+
+    [194] => Array
+        (
+            [line] => 19
+            [file] => app/modules/shop/controllers/BasketController.php
+            [message] => No short description for element '$basket'
+        )
+
+    [195] => Array
+        (
+            [line] => 43
+            [file] => app/modules/shop/controllers/BasketController.php
+            [message] => No docblock for element 'actionProcess'
+        )
+
+    [196] => Array
+        (
+            [line] => 21
+            [file] => app/modules/shop/controllers/BasketRestController.php
+            [message] => No short description for element '$basket'
+        )
+
+    [197] => Array
+        (
+            [line] => 26
+            [file] => app/modules/shop/controllers/BasketRestController.php
+            [message] => Method init has no parent to inherit from in app\modules\shop\controllers\BasketRestController.
+        )
+
+    [198] => Array
+        (
+            [line] => 160
+            [file] => app/modules/shop/controllers/BasketRestController.php
+            [message] => Method verbs has no parent to inherit from in app\modules\shop\controllers\BasketRestController.
+        )
+
+    [199] => Array
+        (
+            [line] => 7
+            [file] => app/modules/shop/controllers/DefaultController.php
+            [message] => No docblock for element 'app\modules\shop\controllers\DefaultController'
+        )
+
+    [200] => Array
+        (
+            [line] => 9
+            [file] => app/modules/shop/controllers/DefaultController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+    [201] => Array
+        (
+            [line] => 17
+            [file] => app/modules/shop/db/fields/GoodAttrsField.php
+            [message] => No docblock for element '$showInGrid'
+        )
+
+    [202] => Array
+        (
+            [line] => 17
+            [file] => app/modules/shop/db/fields/GoodAttrsField.php
+            [message] => No short description for element '$showInGrid'
+        )
+
+    [203] => Array
+        (
+            [line] => 19
+            [file] => app/modules/shop/db/fields/GoodAttrsField.php
+            [message] => No docblock for element '$showInForm'
+        )
+
+    [204] => Array
+        (
+            [line] => 19
+            [file] => app/modules/shop/db/fields/GoodAttrsField.php
+            [message] => No short description for element '$showInForm'
+        )
+
+    [205] => Array
+        (
+            [line] => 21
+            [file] => app/modules/shop/db/fields/GoodAttrsField.php
+            [message] => No docblock for element '$showInFilter'
+        )
+
+    [206] => Array
+        (
+            [line] => 21
+            [file] => app/modules/shop/db/fields/GoodAttrsField.php
+            [message] => No short description for element '$showInFilter'
+        )
+
+    [207] => Array
+        (
+            [line] => 23
+            [file] => app/modules/shop/db/fields/GoodAttrsField.php
+            [message] => No docblock for element '$showInExtendedFilter'
+        )
+
+    [208] => Array
+        (
+            [line] => 23
+            [file] => app/modules/shop/db/fields/GoodAttrsField.php
+            [message] => No short description for element '$showInExtendedFilter'
+        )
+
+    [209] => Array
+        (
+            [line] => 25
+            [file] => app/modules/shop/db/fields/GoodAttrsField.php
+            [message] => No docblock for element '$showInTableInput'
+        )
+
+    [210] => Array
+        (
+            [line] => 25
+            [file] => app/modules/shop/db/fields/GoodAttrsField.php
+            [message] => No short description for element '$showInTableInput'
+        )
+
+    [211] => Array
+        (
+            [line] => 26
+            [file] => app/modules/shop/models/Delivery.php
+            [message] => Method tableName has no parent to inherit from in app\modules\shop\models\Delivery.
+        )
+
+    [212] => Array
+        (
+            [line] => 29
+            [file] => app/modules/shop/models/Good.php
+            [message] => No docblock for element '$_item'
+        )
+
+    [213] => Array
+        (
+            [line] => 29
+            [file] => app/modules/shop/models/Good.php
+            [message] => No short description for element '$_item'
+        )
+
+    [214] => Array
+        (
+            [line] => 54
+            [file] => app/modules/shop/models/Good.php
+            [message] => Method tableName has no parent to inherit from in app\modules\shop\models\Good.
+        )
+
+    [215] => Array
+        (
+            [line] => 125
+            [file] => app/modules/shop/models/Good.php
+            [message] => Method fields has no parent to inherit from in app\modules\shop\models\Good.
+        )
+
+    [216] => Array
+        (
+            [line] => 57
+            [file] => app/modules/shop/models/Order.php
+            [message] => Method tableName has no parent to inherit from in app\modules\shop\models\Order.
+        )
+
+    [217] => Array
+        (
+            [line] => 306
+            [file] => app/modules/shop/models/Order.php
+            [message] => Method afterSave has no parent to inherit from in app\modules\shop\models\Order.
+        )
+
+    [218] => Array
+        (
+            [line] => 331
+            [file] => app/modules/shop/models/Order.php
+            [message] => Method fields has no parent to inherit from in app\modules\shop\models\Order.
+        )
+
+    [219] => Array
+        (
+            [line] => 21
+            [file] => app/modules/shop/models/Payment.php
+            [message] => Method tableName has no parent to inherit from in app\modules\shop\models\Payment.
+        )
+
+    [220] => Array
+        (
+            [line] => 27
+            [file] => app/modules/shop/models/Status.php
+            [message] => Method tableName has no parent to inherit from in app\modules\shop\models\Status.
+        )
+
+    [221] => Array
+        (
+            [line] => 61
+            [file] => app/modules/shop/models/Status.php
+            [message] => Method afterSave has no parent to inherit from in app\modules\shop\models\Status.
+        )
+
+    [222] => Array
+        (
+            [line] => 73
+            [file] => app/modules/shop/models/Status.php
+            [message] => Method afterFind has no parent to inherit from in app\modules\shop\models\Status.
+        )
+
+    [223] => Array
+        (
+            [line] => 29
+            [file] => app/modules/shop/widgets/BasketInfo.php
+            [message] => Method run has no parent to inherit from in app\modules\shop\widgets\BasketInfo.
+        )
+
+    [224] => Array
+        (
+            [line] => 28
+            [file] => app/modules/shop/widgets/ToBasket.php
+            [message] => Method run has no parent to inherit from in app\modules\shop\widgets\ToBasket.
+        )
+
+    [225] => Array
+        (
+            [line] => 14
+            [file] => app/themes/demo/assets/AppAsset.php
+            [message] => No docblock for element '$basePath'
+        )
+
+    [226] => Array
+        (
+            [line] => 14
+            [file] => app/themes/demo/assets/AppAsset.php
+            [message] => No short description for element '$basePath'
+        )
+
+    [227] => Array
+        (
+            [line] => 15
+            [file] => app/themes/demo/assets/AppAsset.php
+            [message] => No docblock for element '$baseUrl'
+        )
+
+    [228] => Array
+        (
+            [line] => 15
+            [file] => app/themes/demo/assets/AppAsset.php
+            [message] => No short description for element '$baseUrl'
+        )
+
+    [229] => Array
+        (
+            [line] => 16
+            [file] => app/themes/demo/assets/AppAsset.php
+            [message] => No docblock for element '$css'
+        )
+
+    [230] => Array
+        (
+            [line] => 16
+            [file] => app/themes/demo/assets/AppAsset.php
+            [message] => No short description for element '$css'
+        )
+
+    [231] => Array
+        (
+            [line] => 17
+            [file] => app/themes/demo/assets/AppAsset.php
+            [message] => No docblock for element '$js'
+        )
+
+    [232] => Array
+        (
+            [line] => 17
+            [file] => app/themes/demo/assets/AppAsset.php
+            [message] => No short description for element '$js'
+        )
+
+    [233] => Array
+        (
+            [line] => 18
+            [file] => app/themes/demo/assets/AppAsset.php
+            [message] => No docblock for element '$depends'
+        )
+
+    [234] => Array
+        (
+            [line] => 18
+            [file] => app/themes/demo/assets/AppAsset.php
+            [message] => No short description for element '$depends'
+        )
+
+    [235] => Array
+        (
+            [line] => 64
+            [file] => common/actions/crud/Base.php
+            [message] => No docblock for element 'findModel'
+        )
+
+    [236] => Array
+        (
+            [line] => 17
+            [file] => common/actions/crud/TAdmin.php
+            [message] => No docblock for element 'run'
+        )
+
+    [237] => Array
+        (
+            [line] => 20
+            [file] => common/actions/crud/TDown.php
+            [message] => Method run has no parent to inherit from in common\actions\crud\TDown.
+        )
+
+    [238] => Array
+        (
+            [line] => 35
+            [file] => common/actions/crud/TReplace.php
+            [message] => Method run has no parent to inherit from in common\actions\crud\TReplace.
+        )
+
+    [239] => Array
+        (
+            [line] => 20
+            [file] => common/actions/crud/TUp.php
+            [message] => Method run has no parent to inherit from in common\actions\crud\TUp.
+        )
+
+    [240] => Array
+        (
+            [line] => 26
+            [file] => common/behaviors/ArraySerializer.php
+            [message] => Method events has no parent to inherit from in common\behaviors\ArraySerializer.
+        )
+
+    [241] => Array
+        (
+            [line] => 28
+            [file] => common/behaviors/ManyManySaver.php
+            [message] => Method events has no parent to inherit from in common\behaviors\ManyManySaver.
+        )
+
+    [242] => Array
+        (
+            [line] => 18
+            [file] => common/behaviors/NestedSet.php
+            [message] => Method afterFind has no parent to inherit from in common\behaviors\NestedSet.
+        )
+
+    [243] => Array
+        (
+            [line] => 163
+            [file] => common/behaviors/TagCache.php
+            [message] => Method events has no parent to inherit from in common\behaviors\TagCache.
+        )
+
+    [244] => Array
+        (
+            [line] => 84
+            [file] => common/behaviors/UploadBehavior.php
+            [message] => Method events has no parent to inherit from in common\behaviors\UploadBehavior.
+        )
+
+    [245] => Array
+        (
+            [line] => 16
+            [file] => common/cache/TagDependency.php
+            [message] => No docblock for element '$_tags'
+        )
+
+    [246] => Array
+        (
+            [line] => 16
+            [file] => common/cache/TagDependency.php
+            [message] => No short description for element '$_tags'
+        )
+
+    [247] => Array
+        (
+            [line] => 21
+            [file] => common/cache/TagDependency.php
+            [message] => Method getHasChanged has no parent to inherit from in common\cache\TagDependency.
+        )
+
+    [248] => Array
+        (
+            [line] => 96
+            [file] => common/cache/TagDependency.php
+            [message] => Method generateDependencyData has no parent to inherit from in common\cache\TagDependency.
+        )
+
+    [249] => Array
+        (
+            [line] => 32
+            [file] => common/components/AssetBundle.php
+            [message] => Method init has no parent to inherit from in common\components\AssetBundle.
+        )
+
+    [250] => Array
+        (
+            [line] => 15
+            [file] => common/components/uiboot/ThemeAsset.php
+            [message] => No docblock for element '$sourcePath'
+        )
+
+    [251] => Array
+        (
+            [line] => 15
+            [file] => common/components/uiboot/ThemeAsset.php
+            [message] => No short description for element '$sourcePath'
+        )
+
+    [252] => Array
+        (
+            [line] => 16
+            [file] => common/components/uiboot/ThemeAsset.php
+            [message] => No docblock for element '$css'
+        )
+
+    [253] => Array
+        (
+            [line] => 16
+            [file] => common/components/uiboot/ThemeAsset.php
+            [message] => No short description for element '$css'
+        )
+
+    [254] => Array
+        (
+            [line] => 37
+            [file] => common/controllers/Admin.php
+            [message] => Method behaviors has no parent to inherit from in common\controllers\Admin.
+        )
+
+    [255] => Array
+        (
+            [line] => 37
+            [file] => common/controllers/Admin.php
+            [message] => Method behaviors has no parent to inherit from in common\controllers\Admin.
+        )
+
+    [256] => Array
+        (
+            [line] => 37
+            [file] => common/controllers/Admin.php
+            [message] => Method behaviors has no parent to inherit from in common\controllers\Admin.
+        )
+
+    [257] => Array
+        (
+            [line] => 26
+            [file] => common/controllers/App.php
+            [message] => Method init has no parent to inherit from in common\controllers\App.
+        )
+
+    [258] => Array
+        (
+            [line] => 26
+            [file] => common/controllers/App.php
+            [message] => Method init has no parent to inherit from in common\controllers\App.
+        )
+
+    [259] => Array
+        (
+            [line] => 47
+            [file] => common/db/ActiveRecord.php
+            [message] => No short description for element '$_baseScenarios'
+        )
+
+    [260] => Array
+        (
+            [line] => 76
+            [file] => common/db/ActiveRecord.php
+            [message] => Method init has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [261] => Array
+        (
+            [line] => 76
+            [file] => common/db/ActiveRecord.php
+            [message] => Method init has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [262] => Array
+        (
+            [line] => 76
+            [file] => common/db/ActiveRecord.php
+            [message] => Method init has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [263] => Array
+        (
+            [line] => 76
+            [file] => common/db/ActiveRecord.php
+            [message] => Method init has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [264] => Array
+        (
+            [line] => 76
+            [file] => common/db/ActiveRecord.php
+            [message] => Method init has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [265] => Array
+        (
+            [line] => 76
+            [file] => common/db/ActiveRecord.php
+            [message] => Method init has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [266] => Array
+        (
+            [line] => 76
+            [file] => common/db/ActiveRecord.php
+            [message] => Method init has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [267] => Array
+        (
+            [line] => 76
+            [file] => common/db/ActiveRecord.php
+            [message] => Method init has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [268] => Array
+        (
+            [line] => 76
+            [file] => common/db/ActiveRecord.php
+            [message] => Method init has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [269] => Array
+        (
+            [line] => 76
+            [file] => common/db/ActiveRecord.php
+            [message] => Method init has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [270] => Array
+        (
+            [line] => 76
+            [file] => common/db/ActiveRecord.php
+            [message] => Method init has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [271] => Array
+        (
+            [line] => 282
+            [file] => common/db/ActiveRecord.php
+            [message] => Method find has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [272] => Array
+        (
+            [line] => 282
+            [file] => common/db/ActiveRecord.php
+            [message] => Method find has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [273] => Array
+        (
+            [line] => 282
+            [file] => common/db/ActiveRecord.php
+            [message] => Method find has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [274] => Array
+        (
+            [line] => 282
+            [file] => common/db/ActiveRecord.php
+            [message] => Method find has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [275] => Array
+        (
+            [line] => 282
+            [file] => common/db/ActiveRecord.php
+            [message] => Method find has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [276] => Array
+        (
+            [line] => 282
+            [file] => common/db/ActiveRecord.php
+            [message] => Method find has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [277] => Array
+        (
+            [line] => 282
+            [file] => common/db/ActiveRecord.php
+            [message] => Method find has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [278] => Array
+        (
+            [line] => 282
+            [file] => common/db/ActiveRecord.php
+            [message] => Method find has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [279] => Array
+        (
+            [line] => 282
+            [file] => common/db/ActiveRecord.php
+            [message] => Method find has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [280] => Array
+        (
+            [line] => 282
+            [file] => common/db/ActiveRecord.php
+            [message] => Method find has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [281] => Array
+        (
+            [line] => 282
+            [file] => common/db/ActiveRecord.php
+            [message] => Method find has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [282] => Array
+        (
+            [line] => 291
+            [file] => common/db/ActiveRecord.php
+            [message] => Method beforeSave has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [283] => Array
+        (
+            [line] => 291
+            [file] => common/db/ActiveRecord.php
+            [message] => Method beforeSave has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [284] => Array
+        (
+            [line] => 291
+            [file] => common/db/ActiveRecord.php
+            [message] => Method beforeSave has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [285] => Array
+        (
+            [line] => 291
+            [file] => common/db/ActiveRecord.php
+            [message] => Method beforeSave has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [286] => Array
+        (
+            [line] => 291
+            [file] => common/db/ActiveRecord.php
+            [message] => Method beforeSave has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [287] => Array
+        (
+            [line] => 291
+            [file] => common/db/ActiveRecord.php
+            [message] => Method beforeSave has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [288] => Array
+        (
+            [line] => 291
+            [file] => common/db/ActiveRecord.php
+            [message] => Method beforeSave has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [289] => Array
+        (
+            [line] => 291
+            [file] => common/db/ActiveRecord.php
+            [message] => Method beforeSave has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [290] => Array
+        (
+            [line] => 291
+            [file] => common/db/ActiveRecord.php
+            [message] => Method beforeSave has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [291] => Array
+        (
+            [line] => 291
+            [file] => common/db/ActiveRecord.php
+            [message] => Method beforeSave has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [292] => Array
+        (
+            [line] => 291
+            [file] => common/db/ActiveRecord.php
+            [message] => Method beforeSave has no parent to inherit from in common\db\ActiveRecord.
+        )
+
+    [293] => Array
+        (
+            [line] => 13
+            [file] => common/db/CreatedAtSearchTrait.php
+            [message] => No docblock for element '$_createdAtFrom'
+        )
+
+    [294] => Array
+        (
+            [line] => 13
+            [file] => common/db/CreatedAtSearchTrait.php
+            [message] => No short description for element '$_createdAtFrom'
+        )
+
+    [295] => Array
+        (
+            [line] => 14
+            [file] => common/db/CreatedAtSearchTrait.php
+            [message] => No docblock for element '$_createdAtTo'
+        )
+
+    [296] => Array
+        (
+            [line] => 14
+            [file] => common/db/CreatedAtSearchTrait.php
+            [message] => No short description for element '$_createdAtTo'
+        )
+
+    [297] => Array
+        (
+            [line] => 19
+            [file] => common/db/TActiveQuery.php
+            [message] => Method behaviors has no parent to inherit from in common\db\TActiveQuery.
+        )
+
+    [298] => Array
+        (
+            [line] => 337
+            [file] => common/db/fields/Field.php
+            [message] => No docblock for element 'xEditable'
+        )
+
+    [299] => Array
+        (
+            [line] => 18
+            [file] => common/db/fields/ManyManyField.php
+            [message] => No docblock for element '$inputClass'
+        )
+
+    [300] => Array
+        (
+            [line] => 18
+            [file] => common/db/fields/ManyManyField.php
+            [message] => No short description for element '$inputClass'
+        )
+
+    [301] => Array
+        (
+            [line] => 18
+            [file] => common/db/fields/ManyManySortField.php
+            [message] => No docblock for element '$inputClass'
+        )
+
+    [302] => Array
+        (
+            [line] => 18
+            [file] => common/db/fields/ManyManySortField.php
+            [message] => No short description for element '$inputClass'
+        )
+
+    [303] => Array
+        (
+            [line] => 20
+            [file] => common/exceptions/IoException.php
+            [message] => Method getName has no parent to inherit from in common\exceptions\IoException.
+        )
+
+    [304] => Array
+        (
+            [line] => 46
+            [file] => common/inputs/BaseInput.php
+            [message] => Method init has no parent to inherit from in common\inputs\BaseInput.
+        )
+
+    [305] => Array
+        (
+            [line] => 46
+            [file] => common/inputs/BaseInput.php
+            [message] => Method init has no parent to inherit from in common\inputs\BaseInput.
+        )
+
+    [306] => Array
+        (
+            [line] => 28
+            [file] => common/inputs/DateRangeInput.php
+            [message] => No docblock for element 'init'
+        )
+
+    [307] => Array
+        (
+            [line] => 65
+            [file] => common/sphinx/SphinxDataProvider.php
+            [message] => Method prepareModels has no parent to inherit from in common\sphinx\SphinxDataProvider.
+        )
+
+    [308] => Array
+        (
+            [line] => 114
+            [file] => common/sphinx/SphinxDataProvider.php
+            [message] => Method prepareTotalCount has no parent to inherit from in common\sphinx\SphinxDataProvider.
+        )
+
+    [309] => Array
+        (
+            [line] => 52
+            [file] => common/sphinx/SphinxSearch.php
+            [message] => Method init has no parent to inherit from in common\sphinx\SphinxSearch.
+        )
+
+    [310] => Array
+        (
+            [line] => 14
+            [file] => common/web/JqueryNumberAsset.php
+            [message] => No docblock for element '$basePath'
+        )
+
+    [311] => Array
+        (
+            [line] => 14
+            [file] => common/web/JqueryNumberAsset.php
+            [message] => No short description for element '$basePath'
+        )
+
+    [312] => Array
+        (
+            [line] => 15
+            [file] => common/web/JqueryNumberAsset.php
+            [message] => No docblock for element '$baseUrl'
+        )
+
+    [313] => Array
+        (
+            [line] => 15
+            [file] => common/web/JqueryNumberAsset.php
+            [message] => No short description for element '$baseUrl'
+        )
+
+    [314] => Array
+        (
+            [line] => 16
+            [file] => common/web/JqueryNumberAsset.php
+            [message] => No docblock for element '$js'
+        )
+
+    [315] => Array
+        (
+            [line] => 16
+            [file] => common/web/JqueryNumberAsset.php
+            [message] => No short description for element '$js'
+        )
+
+    [316] => Array
+        (
+            [line] => 17
+            [file] => common/web/JqueryNumberAsset.php
+            [message] => No docblock for element '$jsMin'
+        )
+
+    [317] => Array
+        (
+            [line] => 17
+            [file] => common/web/JqueryNumberAsset.php
+            [message] => No short description for element '$jsMin'
+        )
+
+    [318] => Array
+        (
+            [line] => 18
+            [file] => common/web/JqueryNumberAsset.php
+            [message] => No docblock for element '$depends'
+        )
+
+    [319] => Array
+        (
+            [line] => 18
+            [file] => common/web/JqueryNumberAsset.php
+            [message] => No short description for element '$depends'
+        )
+
+    [320] => Array
+        (
+            [line] => 41
+            [file] => common/widgets/AutoComplete.php
+            [message] => Method init has no parent to inherit from in common\widgets\AutoComplete.
+        )
+
+    [321] => Array
+        (
+            [line] => 105
+            [file] => common/widgets/AutoComplete.php
+            [message] => Method run has no parent to inherit from in common\widgets\AutoComplete.
+        )
+
+    [322] => Array
+        (
+            [line] => 33
+            [file] => common/widgets/Breadcrumbs.php
+            [message] => Method renderItem has no parent to inherit from in common\widgets\Breadcrumbs.
+        )
+
+    [323] => Array
+        (
+            [line] => 53
+            [file] => common/widgets/DependDropDown.php
+            [message] => Method init has no parent to inherit from in common\widgets\DependDropDown.
+        )
+
+    [324] => Array
+        (
+            [line] => 117
+            [file] => common/widgets/DependDropDown.php
+            [message] => Method run has no parent to inherit from in common\widgets\DependDropDown.
+        )
+
+    [325] => Array
+        (
+            [line] => 36
+            [file] => common/widgets/FormattedNumberInput.php
+            [message] => No short description for element '$hiddenId'
+        )
+
+    [326] => Array
+        (
+            [line] => 42
+            [file] => common/widgets/FormattedNumberInput.php
+            [message] => Method init has no parent to inherit from in common\widgets\FormattedNumberInput.
+        )
+
+    [327] => Array
+        (
+            [line] => 73
+            [file] => common/widgets/FormattedNumberInput.php
+            [message] => Method run has no parent to inherit from in common\widgets\FormattedNumberInput.
+        )
+
+    [328] => Array
+        (
+            [line] => 20
+            [file] => common/widgets/JsCaptcha.php
+            [message] => Method init has no parent to inherit from in common\widgets\JsCaptcha.
+        )
+
+    [329] => Array
+        (
+            [line] => 32
+            [file] => common/widgets/JsCaptcha.php
+            [message] => Method run has no parent to inherit from in common\widgets\JsCaptcha.
+        )
+
+    [330] => Array
+        (
+            [line] => 19
+            [file] => common/widgets/ListView.php
+            [message] => Method renderPager has no parent to inherit from in common\widgets\ListView.
+        )
+
+    [331] => Array
+        (
+            [line] => 17
+            [file] => common/widgets/SortedTags.php
+            [message] => No docblock for element '$bootstrap'
+        )
+
+    [332] => Array
+        (
+            [line] => 17
+            [file] => common/widgets/SortedTags.php
+            [message] => No short description for element '$bootstrap'
+        )
+
+    [333] => Array
+        (
+            [line] => 22
+            [file] => common/widgets/SortedTags.php
+            [message] => Method init has no parent to inherit from in common\widgets\SortedTags.
+        )
+
+    [334] => Array
+        (
+            [line] => 33
+            [file] => common/widgets/SortedTags.php
+            [message] => Method registerClientScript has no parent to inherit from in common\widgets\SortedTags.
+        )
+
+    [335] => Array
+        (
+            [line] => 56
+            [file] => common/widgets/SortedTags.php
+            [message] => Method run has no parent to inherit from in common\widgets\SortedTags.
+        )
+
+    [336] => Array
+        (
+            [line] => 57
+            [file] => common/widgets/admin/ActionButton.php
+            [message] => Method init has no parent to inherit from in common\widgets\admin\ActionButton.
+        )
+
+    [337] => Array
+        (
+            [line] => 57
+            [file] => common/widgets/admin/ActionButton.php
+            [message] => Method init has no parent to inherit from in common\widgets\admin\ActionButton.
+        )
+
+    [338] => Array
+        (
+            [line] => 57
+            [file] => common/widgets/admin/ActionButton.php
+            [message] => Method init has no parent to inherit from in common\widgets\admin\ActionButton.
+        )
+
+    [339] => Array
+        (
+            [line] => 104
+            [file] => common/widgets/admin/ActionButton.php
+            [message] => Method run has no parent to inherit from in common\widgets\admin\ActionButton.
+        )
+
+    [340] => Array
+        (
+            [line] => 104
+            [file] => common/widgets/admin/ActionButton.php
+            [message] => Method run has no parent to inherit from in common\widgets\admin\ActionButton.
+        )
+
+    [341] => Array
+        (
+            [line] => 104
+            [file] => common/widgets/admin/ActionButton.php
+            [message] => Method run has no parent to inherit from in common\widgets\admin\ActionButton.
+        )
+
+    [342] => Array
+        (
+            [line] => 47
+            [file] => common/widgets/admin/CrudLinks.php
+            [message] => Method run has no parent to inherit from in common\widgets\admin\CrudLinks.
+        )
+
+    [343] => Array
+        (
+            [line] => 44
+            [file] => common/widgets/admin/Detail.php
+            [message] => Method init has no parent to inherit from in common\widgets\admin\Detail.
+        )
+
+    [344] => Array
+        (
+            [line] => 57
+            [file] => common/widgets/admin/Detail.php
+            [message] => Method run has no parent to inherit from in common\widgets\admin\Detail.
+        )
+
+    [345] => Array
+        (
+            [line] => 71
+            [file] => common/widgets/admin/ExtFilter.php
+            [message] => Method init has no parent to inherit from in common\widgets\admin\ExtFilter.
+        )
+
+    [346] => Array
+        (
+            [line] => 104
+            [file] => common/widgets/admin/ExtFilter.php
+            [message] => Method run has no parent to inherit from in common\widgets\admin\ExtFilter.
+        )
+
+    [347] => Array
+        (
+            [line] => 53
+            [file] => common/widgets/admin/Form.php
+            [message] => No docblock for element 'init'
+        )
+
+    [348] => Array
+        (
+            [line] => 64
+            [file] => common/widgets/admin/Form.php
+            [message] => No docblock for element 'run'
+        )
+
+    [349] => Array
+        (
+            [line] => 135
+            [file] => common/widgets/admin/Grid.php
+            [message] => No docblock for element 'init'
+        )
+
+    [350] => Array
+        (
+            [line] => 44
+            [file] => common/widgets/admin/Menu.php
+            [message] => Method init has no parent to inherit from in common\widgets\admin\Menu.
+        )
+
+    [351] => Array
+        (
+            [line] => 152
+            [file] => common/widgets/admin/Menu.php
+            [message] => Method run has no parent to inherit from in common\widgets\admin\Menu.
+        )
+
+    [352] => Array
+        (
+            [line] => 55
+            [file] => common/widgets/admin/TableInput.php
+            [message] => Method run has no parent to inherit from in common\widgets\admin\TableInput.
+        )
+
+    [353] => Array
+        (
+            [line] => 14
+            [file] => common/widgets/html5uploader/AssetBundle.php
+            [message] => No docblock for element '$css'
+        )
+
+    [354] => Array
+        (
+            [line] => 14
+            [file] => common/widgets/html5uploader/AssetBundle.php
+            [message] => No short description for element '$css'
+        )
+
+    [355] => Array
+        (
+            [line] => 17
+            [file] => common/widgets/html5uploader/AssetBundle.php
+            [message] => No docblock for element '$js'
+        )
+
+    [356] => Array
+        (
+            [line] => 17
+            [file] => common/widgets/html5uploader/AssetBundle.php
+            [message] => No short description for element '$js'
+        )
+
+    [357] => Array
+        (
+            [line] => 21
+            [file] => common/widgets/html5uploader/AssetBundle.php
+            [message] => No docblock for element '$jsMin'
+        )
+
+    [358] => Array
+        (
+            [line] => 21
+            [file] => common/widgets/html5uploader/AssetBundle.php
+            [message] => No short description for element '$jsMin'
+        )
+
+    [359] => Array
+        (
+            [line] => 25
+            [file] => common/widgets/html5uploader/AssetBundle.php
+            [message] => No docblock for element '$depends'
+        )
+
+    [360] => Array
+        (
+            [line] => 25
+            [file] => common/widgets/html5uploader/AssetBundle.php
+            [message] => No short description for element '$depends'
+        )
+
+    [361] => Array
+        (
+            [line] => 31
+            [file] => common/widgets/html5uploader/AssetBundle.php
+            [message] => No docblock for element 'init'
+        )
+
+    [362] => Array
+        (
+            [line] => 53
+            [file] => common/widgets/html5uploader/Widget.php
+            [message] => Method init has no parent to inherit from in common\widgets\html5uploader\Widget.
+        )
+
+    [363] => Array
+        (
+            [line] => 146
+            [file] => common/widgets/html5uploader/Widget.php
+            [message] => Method run has no parent to inherit from in common\widgets\html5uploader\Widget.
+        )
+
+    [364] => Array
+        (
+            [line] => 15
+            [file] => common/widgets/launcher/AssetBundle.php
+            [message] => No docblock for element '$js'
+        )
+
+    [365] => Array
+        (
+            [line] => 15
+            [file] => common/widgets/launcher/AssetBundle.php
+            [message] => No short description for element '$js'
+        )
+
+    [366] => Array
+        (
+            [line] => 20
+            [file] => common/widgets/launcher/AssetBundle.php
+            [message] => No docblock for element '$jsMin'
+        )
+
+    [367] => Array
+        (
+            [line] => 20
+            [file] => common/widgets/launcher/AssetBundle.php
+            [message] => No short description for element '$jsMin'
+        )
+
+    [368] => Array
+        (
+            [line] => 25
+            [file] => common/widgets/launcher/AssetBundle.php
+            [message] => No docblock for element '$publishOptions'
+        )
+
+    [369] => Array
+        (
+            [line] => 25
+            [file] => common/widgets/launcher/AssetBundle.php
+            [message] => No short description for element '$publishOptions'
+        )
+
+    [370] => Array
+        (
+            [line] => 29
+            [file] => common/widgets/launcher/AssetBundle.php
+            [message] => No docblock for element '$depends'
+        )
+
+    [371] => Array
+        (
+            [line] => 29
+            [file] => common/widgets/launcher/AssetBundle.php
+            [message] => No short description for element '$depends'
+        )
+
+    [372] => Array
+        (
+            [line] => 34
+            [file] => common/widgets/launcher/AssetBundle.php
+            [message] => No docblock for element 'init'
+        )
+
+    [373] => Array
+        (
+            [line] => 39
+            [file] => common/widgets/launcher/Launcher.php
+            [message] => Method init has no parent to inherit from in common\widgets\launcher\Launcher.
+        )
+
+    [374] => Array
+        (
+            [line] => 52
+            [file] => common/widgets/launcher/Launcher.php
+            [message] => Method run has no parent to inherit from in common\widgets\launcher\Launcher.
+        )
+
+    [375] => Array
+        (
+            [line] => 98
+            [file] => common/widgets/markitup/MarkItUp.php
+            [message] => Method init has no parent to inherit from in common\widgets\markitup\MarkItUp.
+        )
+
+    [376] => Array
+        (
+            [line] => 125
+            [file] => common/widgets/markitup/MarkItUp.php
+            [message] => Method run has no parent to inherit from in common\widgets\markitup\MarkItUp.
+        )
+
+    [377] => Array
+        (
+            [line] => 15
+            [file] => common/widgets/markitup/MarkItUpAsset.php
+            [message] => No docblock for element '$js'
+        )
+
+    [378] => Array
+        (
+            [line] => 15
+            [file] => common/widgets/markitup/MarkItUpAsset.php
+            [message] => No short description for element '$js'
+        )
+
+    [379] => Array
+        (
+            [line] => 19
+            [file] => common/widgets/markitup/MarkItUpAsset.php
+            [message] => No docblock for element '$jsMin'
+        )
+
+    [380] => Array
+        (
+            [line] => 19
+            [file] => common/widgets/markitup/MarkItUpAsset.php
+            [message] => No short description for element '$jsMin'
+        )
+
+    [381] => Array
+        (
+            [line] => 23
+            [file] => common/widgets/markitup/MarkItUpAsset.php
+            [message] => No docblock for element '$depends'
+        )
+
+    [382] => Array
+        (
+            [line] => 23
+            [file] => common/widgets/markitup/MarkItUpAsset.php
+            [message] => No short description for element '$depends'
+        )
+
+    [383] => Array
+        (
+            [line] => 27
+            [file] => common/widgets/markitup/MarkItUpAsset.php
+            [message] => No docblock for element 'init'
+        )
+
+    [384] => Array
+        (
+            [line] => 15
+            [file] => common/widgets/markitup/SetBbCodeAsset.php
+            [message] => No docblock for element '$css'
+        )
+
+    [385] => Array
+        (
+            [line] => 15
+            [file] => common/widgets/markitup/SetBbCodeAsset.php
+            [message] => No short description for element '$css'
+        )
+
+    [386] => Array
+        (
+            [line] => 19
+            [file] => common/widgets/markitup/SetBbCodeAsset.php
+            [message] => No docblock for element '$js'
+        )
+
+    [387] => Array
+        (
+            [line] => 19
+            [file] => common/widgets/markitup/SetBbCodeAsset.php
+            [message] => No short description for element '$js'
+        )
+
+    [388] => Array
+        (
+            [line] => 23
+            [file] => common/widgets/markitup/SetBbCodeAsset.php
+            [message] => No docblock for element '$jsMin'
+        )
+
+    [389] => Array
+        (
+            [line] => 23
+            [file] => common/widgets/markitup/SetBbCodeAsset.php
+            [message] => No short description for element '$jsMin'
+        )
+
+    [390] => Array
+        (
+            [line] => 27
+            [file] => common/widgets/markitup/SetBbCodeAsset.php
+            [message] => No docblock for element '$depends'
+        )
+
+    [391] => Array
+        (
+            [line] => 27
+            [file] => common/widgets/markitup/SetBbCodeAsset.php
+            [message] => No short description for element '$depends'
+        )
+
+    [392] => Array
+        (
+            [line] => 31
+            [file] => common/widgets/markitup/SetBbCodeAsset.php
+            [message] => No docblock for element 'init'
+        )
+
+    [393] => Array
+        (
+            [line] => 15
+            [file] => common/widgets/markitup/SkinSimpleAsset.php
+            [message] => No docblock for element '$css'
+        )
+
+    [394] => Array
+        (
+            [line] => 15
+            [file] => common/widgets/markitup/SkinSimpleAsset.php
+            [message] => No short description for element '$css'
+        )
+
+    [395] => Array
+        (
+            [line] => 19
+            [file] => common/widgets/markitup/SkinSimpleAsset.php
+            [message] => No docblock for element 'init'
+        )
+
+    [396] => Array
+        (
+            [line] => 42
+            [file] => common/widgets/yamap/YaMap.php
+            [message] => Method init has no parent to inherit from in common\widgets\yamap\YaMap.
+        )
+
+    [397] => Array
+        (
+            [line] => 78
+            [file] => common/widgets/yamap/YaMap.php
+            [message] => Method run has no parent to inherit from in common\widgets\yamap\YaMap.
+        )
+
+    [398] => Array
+        (
+            [line] => 16
+            [file] => common/widgets/yamap/YaMapApiAsset.php
+            [message] => No docblock for element '$js'
+        )
+
+    [399] => Array
+        (
+            [line] => 16
+            [file] => common/widgets/yamap/YaMapApiAsset.php
+            [message] => No short description for element '$js'
+        )
+
+    [400] => Array
+        (
+            [line] => 20
+            [file] => common/widgets/yamap/YaMapApiAsset.php
+            [message] => No docblock for element '$jsMin'
+        )
+
+    [401] => Array
+        (
+            [line] => 20
+            [file] => common/widgets/yamap/YaMapApiAsset.php
+            [message] => No short description for element '$jsMin'
+        )
+
+    [402] => Array
+        (
+            [line] => 20
+            [file] => common/widgets/yamap/YaMapInput.php
+            [message] => No docblock for element '$assetBundle'
+        )
+
+    [403] => Array
+        (
+            [line] => 20
+            [file] => common/widgets/yamap/YaMapInput.php
+            [message] => No short description for element '$assetBundle'
+        )
+
+    [404] => Array
+        (
+            [line] => 136
+            [file] => common/widgets/yamap/YaMapInput.php
+            [message] => Method init has no parent to inherit from in common\widgets\yamap\YaMapInput.
+        )
+
+    [405] => Array
+        (
+            [line] => 170
+            [file] => common/widgets/yamap/YaMapInput.php
+            [message] => Method run has no parent to inherit from in common\widgets\yamap\YaMapInput.
+        )
+
+    [406] => Array
+        (
+            [line] => 16
+            [file] => common/widgets/yamap/YaMapInputAsset.php
+            [message] => No docblock for element '$js'
+        )
+
+    [407] => Array
+        (
+            [line] => 16
+            [file] => common/widgets/yamap/YaMapInputAsset.php
+            [message] => No short description for element '$js'
+        )
+
+    [408] => Array
+        (
+            [line] => 20
+            [file] => common/widgets/yamap/YaMapInputAsset.php
+            [message] => No docblock for element '$jsMin'
+        )
+
+    [409] => Array
+        (
+            [line] => 20
+            [file] => common/widgets/yamap/YaMapInputAsset.php
+            [message] => No short description for element '$jsMin'
+        )
+
+    [410] => Array
+        (
+            [line] => 24
+            [file] => common/widgets/yamap/YaMapInputAsset.php
+            [message] => No docblock for element '$depends'
+        )
+
+    [411] => Array
+        (
+            [line] => 24
+            [file] => common/widgets/yamap/YaMapInputAsset.php
+            [message] => No short description for element '$depends'
+        )
+
+    [412] => Array
+        (
+            [line] => 30
+            [file] => common/widgets/yamap/YaMapInputAsset.php
+            [message] => No docblock for element 'init'
+        )
+
+    [413] => Array
+        (
+            [line] => 17
+            [file] => common/xeditable/XEditableColumn.php
+            [message] => No docblock for element '$editable'
+        )
+
+    [414] => Array
+        (
+            [line] => 17
+            [file] => common/xeditable/XEditableColumn.php
+            [message] => No short description for element '$editable'
+        )
+
+    [415] => Array
+        (
+            [line] => 22
+            [file] => common/xeditable/XEditableColumn.php
+            [message] => Method getDataCellContent has no parent to inherit from in common\xeditable\XEditableColumn.
+        )
+
+    [416] => Array
+        (
+            [line] => 42
+            [file] => common/xeditable/XEditableColumn.php
+            [message] => Method renderDataCellContent has no parent to inherit from in common\xeditable\XEditableColumn.
+        )
+
+    [417] => Array
+        (
+            [line] => 113
+            [file] => console/controllers/MigrateController.php
+            [message] => Method options has no parent to inherit from in console\controllers\MigrateController.
+        )
+
+    [418] => Array
+        (
+            [line] => 16
+            [file] => console/controllers/SitemapController.php
+            [message] => No docblock for element 'actionIndex'
+        )
+
+)

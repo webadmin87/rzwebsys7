@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        <link href="./assets/176fa81d/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/189f6e9/style.css" rel="stylesheet">
+<script src="./assets/4a01d129/jquery.js"></script>
+<script src="./assets/176fa81d/js/bootstrap.js"></script>
+<script src="./assets/74432bf7/jssearch.js"></script>    <title>BannerController, app\modules\banners\modules\admin\controllers\BannerController - RzWebSys7 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w10805" class="navbar-inverse navbar-fixed-top navbar" role="navigation"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w10805-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">RzWebSys7 API Documentation</a></div><div id="w10805-collapse" class="collapse navbar-collapse"><ul id="w10806" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-10706" data-toggle="collapse" data-parent="#navigation">app\assets <b class="caret"></b></a><div id="navigation-10706" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-assets-adminasset.html">AdminAsset</a>
+<a class="list-group-item" href="./app-assets-swfobjectasset.html">SwfObjectAsset</a></div>
+<a class="list-group-item" href="#navigation-10707" data-toggle="collapse" data-parent="#navigation">app\controllers <b class="caret"></b></a><div id="navigation-10707" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-controllers-sitecontroller.html">SiteController</a></div>
+<a class="list-group-item" href="#navigation-10708" data-toggle="collapse" data-parent="#navigation">app\gii\generators\appmodule <b class="caret"></b></a><div id="navigation-10708" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-gii-generators-appmodule-generator.html">Generator</a></div>
+<a class="list-group-item" href="#navigation-10709" data-toggle="collapse" data-parent="#navigation">app\modules\banners <b class="caret"></b></a><div id="navigation-10709" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-banners.html">Banners</a></div>
+<a class="list-group-item" href="#navigation-10710" data-toggle="collapse" data-parent="#navigation">app\modules\banners\components <b class="caret"></b></a><div id="navigation-10710" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-components-abstractrenderer.html">AbstractRenderer</a>
+<a class="list-group-item" href="./app-modules-banners-components-flashrenderer.html">FlashRenderer</a>
+<a class="list-group-item" href="./app-modules-banners-components-imagerenderer.html">ImageRenderer</a>
+<a class="list-group-item" href="./app-modules-banners-components-rendererfactory.html">RendererFactory</a></div>
+<a class="list-group-item" href="#navigation-10711" data-toggle="collapse" data-parent="#navigation">app\modules\banners\controllers <b class="caret"></b></a><div id="navigation-10711" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-controllers-defaultcontroller.html">DefaultController</a></div>
+<a class="list-group-item" href="#navigation-10712" data-toggle="collapse" data-parent="#navigation">app\modules\banners\models <b class="caret"></b></a><div id="navigation-10712" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-models-banner.html">Banner</a>
+<a class="list-group-item" href="./app-modules-banners-models-place.html">Place</a></div>
+<a class="list-group-item" href="#navigation-10713" data-toggle="collapse" data-parent="#navigation">app\modules\banners\models\meta <b class="caret"></b></a><div id="navigation-10713" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-models-meta-bannermeta.html">BannerMeta</a>
+<a class="list-group-item" href="./app-modules-banners-models-meta-placemeta.html">PlaceMeta</a></div>
+<a class="list-group-item" href="#navigation-10714" data-toggle="collapse" data-parent="#navigation">app\modules\banners\modules\admin <b class="caret"></b></a><div id="navigation-10714" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item active" href="#navigation-10715" data-toggle="collapse" data-parent="#navigation">app\modules\banners\modules\admin\controllers <b class="caret"></b></a><div id="navigation-10715" class="submenu panel-collapse collapse in"><a class="list-group-item active" href="./app-modules-banners-modules-admin-controllers-bannercontroller.html">BannerController</a>
+<a class="list-group-item" href="./app-modules-banners-modules-admin-controllers-placecontroller.html">PlaceController</a></div>
+<a class="list-group-item" href="#navigation-10716" data-toggle="collapse" data-parent="#navigation">app\modules\banners\widgets <b class="caret"></b></a><div id="navigation-10716" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-banners-widgets-listbanners.html">ListBanners</a>
+<a class="list-group-item" href="./app-modules-banners-widgets-singlebanner.html">SingleBanner</a></div>
+<a class="list-group-item" href="#navigation-10717" data-toggle="collapse" data-parent="#navigation">app\modules\catalog <b class="caret"></b></a><div id="navigation-10717" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-catalog.html">Catalog</a></div>
+<a class="list-group-item" href="#navigation-10718" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\controllers <b class="caret"></b></a><div id="navigation-10718" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-controllers-catalogcontroller.html">CatalogController</a></div>
+<a class="list-group-item" href="#navigation-10719" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\db <b class="caret"></b></a><div id="navigation-10719" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-db-catalogquery.html">CatalogQuery</a></div>
+<a class="list-group-item" href="#navigation-10720" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\models <b class="caret"></b></a><div id="navigation-10720" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-models-catalog.html">Catalog</a>
+<a class="list-group-item" href="./app-modules-catalog-models-catalogsearch.html">CatalogSearch</a>
+<a class="list-group-item" href="./app-modules-catalog-models-catalogsection.html">CatalogSection</a>
+<a class="list-group-item" href="./app-modules-catalog-models-producer.html">Producer</a></div>
+<a class="list-group-item" href="#navigation-10721" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\models\meta <b class="caret"></b></a><div id="navigation-10721" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-models-meta-catalogmeta.html">CatalogMeta</a>
+<a class="list-group-item" href="./app-modules-catalog-models-meta-catalogsectionmeta.html">CatalogSectionMeta</a>
+<a class="list-group-item" href="./app-modules-catalog-models-meta-producermeta.html">ProducerMeta</a></div>
+<a class="list-group-item" href="#navigation-10722" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\modules\admin <b class="caret"></b></a><div id="navigation-10722" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-10723" data-toggle="collapse" data-parent="#navigation">app\modules\catalog\modules\admin\controllers <b class="caret"></b></a><div id="navigation-10723" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-catalog-modules-admin-controllers-catalogcontroller.html">CatalogController</a>
+<a class="list-group-item" href="./app-modules-catalog-modules-admin-controllers-catalogsectioncontroller.html">CatalogSectionController</a>
+<a class="list-group-item" href="./app-modules-catalog-modules-admin-controllers-producercontroller.html">ProducerController</a></div>
+<a class="list-group-item" href="#navigation-10724" data-toggle="collapse" data-parent="#navigation">app\modules\geo <b class="caret"></b></a><div id="navigation-10724" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-geo.html">Geo</a></div>
+<a class="list-group-item" href="#navigation-10725" data-toggle="collapse" data-parent="#navigation">app\modules\geo\components <b class="caret"></b></a><div id="navigation-10725" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-components-suggestsfinder.html">SuggestsFinder</a></div>
+<a class="list-group-item" href="#navigation-10726" data-toggle="collapse" data-parent="#navigation">app\modules\geo\controllers <b class="caret"></b></a><div id="navigation-10726" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-controllers-listcontroller.html">ListController</a>
+<a class="list-group-item" href="./app-modules-geo-controllers-restcontroller.html">RestController</a></div>
+<a class="list-group-item" href="#navigation-10727" data-toggle="collapse" data-parent="#navigation">app\modules\geo\models <b class="caret"></b></a><div id="navigation-10727" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-models-country.html">Country</a>
+<a class="list-group-item" href="./app-modules-geo-models-np.html">Np</a>
+<a class="list-group-item" href="./app-modules-geo-models-rajon.html">Rajon</a>
+<a class="list-group-item" href="./app-modules-geo-models-region.html">Region</a>
+<a class="list-group-item" href="./app-modules-geo-models-street.html">Street</a></div>
+<a class="list-group-item" href="#navigation-10728" data-toggle="collapse" data-parent="#navigation">app\modules\geo\models\meta <b class="caret"></b></a><div id="navigation-10728" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-geo-models-meta-countrymeta.html">CountryMeta</a>
+<a class="list-group-item" href="./app-modules-geo-models-meta-npmeta.html">NpMeta</a>
+<a class="list-group-item" href="./app-modules-geo-models-meta-rajonmeta.html">RajonMeta</a>
+<a class="list-group-item" href="./app-modules-geo-models-meta-regionmeta.html">RegionMeta</a>
+<a class="list-group-item" href="./app-modules-geo-models-meta-streetmeta.html">StreetMeta</a></div>
+<a class="list-group-item" href="#navigation-10729" data-toggle="collapse" data-parent="#navigation">app\modules\import <b class="caret"></b></a><div id="navigation-10729" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-import.html">Import</a></div>
+<a class="list-group-item" href="#navigation-10730" data-toggle="collapse" data-parent="#navigation">app\modules\import\components <b class="caret"></b></a><div id="navigation-10730" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-components-csvimporter.html">CsvImporter</a></div>
+<a class="list-group-item" href="#navigation-10731" data-toggle="collapse" data-parent="#navigation">app\modules\import\controllers <b class="caret"></b></a><div id="navigation-10731" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-controllers-defaultcontroller.html">DefaultController</a></div>
+<a class="list-group-item" href="#navigation-10732" data-toggle="collapse" data-parent="#navigation">app\modules\import\models <b class="caret"></b></a><div id="navigation-10732" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-models-csvmodel.html">CsvModel</a>
+<a class="list-group-item" href="./app-modules-import-models-icsvimportable.html">ICsvImportable</a></div>
+<a class="list-group-item" href="#navigation-10733" data-toggle="collapse" data-parent="#navigation">app\modules\import\modules\admin <b class="caret"></b></a><div id="navigation-10733" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-10734" data-toggle="collapse" data-parent="#navigation">app\modules\import\modules\admin\controllers <b class="caret"></b></a><div id="navigation-10734" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-import-modules-admin-controllers-csvimportcontroller.html">CsvImportController</a></div>
+<a class="list-group-item" href="#navigation-10735" data-toggle="collapse" data-parent="#navigation">app\modules\main <b class="caret"></b></a><div id="navigation-10735" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-main.html">Main</a></div>
+<a class="list-group-item" href="#navigation-10736" data-toggle="collapse" data-parent="#navigation">app\modules\main\actions <b class="caret"></b></a><div id="navigation-10736" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-actions-commentadd.html">CommentAdd</a>
+<a class="list-group-item" href="./app-modules-main-actions-feedback.html">Feedback</a></div>
+<a class="list-group-item" href="#navigation-10737" data-toggle="collapse" data-parent="#navigation">app\modules\main\actions\user <b class="caret"></b></a><div id="navigation-10737" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-actions-user-forgot.html">Forgot</a>
+<a class="list-group-item" href="./app-modules-main-actions-user-signin.html">SignIn</a>
+<a class="list-group-item" href="./app-modules-main-actions-user-signup.html">SignUp</a>
+<a class="list-group-item" href="./app-modules-main-actions-user-update.html">Update</a>
+<a class="list-group-item" href="./app-modules-main-actions-user-view.html">View</a></div>
+<a class="list-group-item" href="#navigation-10738" data-toggle="collapse" data-parent="#navigation">app\modules\main\components <b class="caret"></b></a><div id="navigation-10738" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-components-blocksprovider.html">BlocksProvider</a>
+<a class="list-group-item" href="./app-modules-main-components-config.html">Config</a>
+<a class="list-group-item" href="./app-modules-main-components-forgotmailnotifier.html">ForgotMailNotifier</a>
+<a class="list-group-item" href="./app-modules-main-components-mailertrait.html">MailerTrait</a>
+<a class="list-group-item" href="./app-modules-main-components-pageurlrule.html">PageUrlRule</a>
+<a class="list-group-item" href="./app-modules-main-components-permissiontrait.html">PermissionTrait</a>
+<a class="list-group-item" href="./app-modules-main-components-signupmailnotifier.html">SignUpMailNotifier</a>
+<a class="list-group-item" href="./app-modules-main-components-sphinxurlservice.html">SphinxUrlService</a></div>
+<a class="list-group-item" href="#navigation-10739" data-toggle="collapse" data-parent="#navigation">app\modules\main\controllers <b class="caret"></b></a><div id="navigation-10739" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-controllers-commentscontroller.html">CommentsController</a>
+<a class="list-group-item" href="./app-modules-main-controllers-feedbackcontroller.html">FeedbackController</a>
+<a class="list-group-item" href="./app-modules-main-controllers-pagescontroller.html">PagesController</a>
+<a class="list-group-item" href="./app-modules-main-controllers-usercontroller.html">UserController</a></div>
+<a class="list-group-item" href="#navigation-10740" data-toggle="collapse" data-parent="#navigation">app\modules\main\db <b class="caret"></b></a><div id="navigation-10740" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-db-migration.html">Migration</a></div>
+<a class="list-group-item" href="#navigation-10741" data-toggle="collapse" data-parent="#navigation">app\modules\main\models <b class="caret"></b></a><div id="navigation-10741" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-models-comments.html">Comments</a>
+<a class="list-group-item" href="./app-modules-main-models-config.html">Config</a>
+<a class="list-group-item" href="./app-modules-main-models-feedbackform.html">FeedbackForm</a>
+<a class="list-group-item" href="./app-modules-main-models-forgotform.html">ForgotForm</a>
+<a class="list-group-item" href="./app-modules-main-models-includegroup.html">IncludeGroup</a>
+<a class="list-group-item" href="./app-modules-main-models-includes.html">Includes</a>
+<a class="list-group-item" href="./app-modules-main-models-loginform.html">LoginForm</a>
+<a class="list-group-item" href="./app-modules-main-models-menu.html">Menu</a>
+<a class="list-group-item" href="./app-modules-main-models-pages.html">Pages</a>
+<a class="list-group-item" href="./app-modules-main-models-permission.html">Permission</a>
+<a class="list-group-item" href="./app-modules-main-models-template.html">Template</a>
+<a class="list-group-item" href="./app-modules-main-models-user.html">User</a></div>
+<a class="list-group-item" href="#navigation-10742" data-toggle="collapse" data-parent="#navigation">app\modules\main\models\meta <b class="caret"></b></a><div id="navigation-10742" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-models-meta-commentsmeta.html">CommentsMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-configmeta.html">ConfigMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-includegroupmeta.html">IncludeGroupMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-includesmeta.html">IncludesMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-menumeta.html">MenuMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-pagesmeta.html">PagesMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-permissionmeta.html">PermissionMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-templatesmeta.html">TemplatesMeta</a>
+<a class="list-group-item" href="./app-modules-main-models-meta-usermeta.html">UserMeta</a></div>
+<a class="list-group-item" href="#navigation-10743" data-toggle="collapse" data-parent="#navigation">app\modules\main\modules\admin <b class="caret"></b></a><div id="navigation-10743" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-10744" data-toggle="collapse" data-parent="#navigation">app\modules\main\modules\admin\controllers <b class="caret"></b></a><div id="navigation-10744" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-modules-admin-controllers-commentscontroller.html">CommentsController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-configcontroller.html">ConfigController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-defaultcontroller.html">DefaultController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-includegroupcontroller.html">IncludeGroupController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-includescontroller.html">IncludesController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-menucontroller.html">MenuController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-pagescontroller.html">PagesController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-permissioncontroller.html">PermissionController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-templatecontroller.html">TemplateController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-toolscontroller.html">ToolsController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-uploadcontroller.html">UploadController</a>
+<a class="list-group-item" href="./app-modules-main-modules-admin-controllers-usercontroller.html">UserController</a></div>
+<a class="list-group-item" href="#navigation-10745" data-toggle="collapse" data-parent="#navigation">app\modules\main\rbac <b class="caret"></b></a><div id="navigation-10745" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-rbac-adminuserconstraint.html">AdminUserConstraint</a>
+<a class="list-group-item" href="./app-modules-main-rbac-authorconstraint.html">AuthorConstraint</a>
+<a class="list-group-item" href="./app-modules-main-rbac-createrule.html">CreateRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-createsrule.html">CreatesRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-deleterule.html">DeleteRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-deletesrule.html">DeletesRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-installer.html">Installer</a>
+<a class="list-group-item" href="./app-modules-main-rbac-listrule.html">ListRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-profileconstraint.html">ProfileConstraint</a>
+<a class="list-group-item" href="./app-modules-main-rbac-readrule.html">ReadRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-updaterule.html">UpdateRule</a>
+<a class="list-group-item" href="./app-modules-main-rbac-updatesrule.html">UpdatesRule</a></div>
+<a class="list-group-item" href="#navigation-10746" data-toggle="collapse" data-parent="#navigation">app\modules\main\sitemap <b class="caret"></b></a><div id="navigation-10746" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-sitemap-sitemap.html">Sitemap</a>
+<a class="list-group-item" href="./app-modules-main-sitemap-sitemapwidget.html">SitemapWidget</a></div>
+<a class="list-group-item" href="#navigation-10747" data-toggle="collapse" data-parent="#navigation">app\modules\main\web <b class="caret"></b></a><div id="navigation-10747" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-web-angularasset.html">AngularAsset</a>
+<a class="list-group-item" href="./app-modules-main-web-angularlocaleasset.html">AngularLocaleAsset</a></div>
+<a class="list-group-item" href="#navigation-10748" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\comments <b class="caret"></b></a><div id="navigation-10748" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-comments-comments.html">Comments</a>
+<a class="list-group-item" href="./app-modules-main-widgets-comments-commentsasset.html">CommentsAsset</a>
+<a class="list-group-item" href="./app-modules-main-widgets-comments-skinasset.html">SkinAsset</a></div>
+<a class="list-group-item" href="#navigation-10749" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\elist <b class="caret"></b></a><div id="navigation-10749" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-elist-elist.html">EList</a></div>
+<a class="list-group-item" href="#navigation-10750" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\feedback <b class="caret"></b></a><div id="navigation-10750" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-feedback-feedback.html">Feedback</a>
+<a class="list-group-item" href="./app-modules-main-widgets-feedback-feedbackasset.html">FeedbackAsset</a></div>
+<a class="list-group-item" href="#navigation-10751" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\gallery <b class="caret"></b></a><div id="navigation-10751" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-gallery-assetbundle.html">AssetBundle</a>
+<a class="list-group-item" href="./app-modules-main-widgets-gallery-gallery.html">Gallery</a></div>
+<a class="list-group-item" href="#navigation-10752" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\includes <b class="caret"></b></a><div id="navigation-10752" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-includes-includes.html">Includes</a>
+<a class="list-group-item" href="./app-modules-main-widgets-includes-includesgroup.html">IncludesGroup</a></div>
+<a class="list-group-item" href="#navigation-10753" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\menu <b class="caret"></b></a><div id="navigation-10753" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-menu-menu.html">Menu</a></div>
+<a class="list-group-item" href="#navigation-10754" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\treelist <b class="caret"></b></a><div id="navigation-10754" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-treelist-treelist.html">TreeList</a></div>
+<a class="list-group-item" href="#navigation-10755" data-toggle="collapse" data-parent="#navigation">app\modules\main\widgets\user <b class="caret"></b></a><div id="navigation-10755" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-main-widgets-user-signin.html">SignIn</a>
+<a class="list-group-item" href="./app-modules-main-widgets-user-user.html">User</a></div>
+<a class="list-group-item" href="#navigation-10756" data-toggle="collapse" data-parent="#navigation">app\modules\news <b class="caret"></b></a><div id="navigation-10756" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-news.html">News</a></div>
+<a class="list-group-item" href="#navigation-10757" data-toggle="collapse" data-parent="#navigation">app\modules\news\controllers <b class="caret"></b></a><div id="navigation-10757" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-controllers-newscontroller.html">NewsController</a></div>
+<a class="list-group-item" href="#navigation-10758" data-toggle="collapse" data-parent="#navigation">app\modules\news\db <b class="caret"></b></a><div id="navigation-10758" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-db-newsquery.html">NewsQuery</a></div>
+<a class="list-group-item" href="#navigation-10759" data-toggle="collapse" data-parent="#navigation">app\modules\news\models <b class="caret"></b></a><div id="navigation-10759" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-models-news.html">News</a>
+<a class="list-group-item" href="./app-modules-news-models-newssection.html">NewsSection</a></div>
+<a class="list-group-item" href="#navigation-10760" data-toggle="collapse" data-parent="#navigation">app\modules\news\models\meta <b class="caret"></b></a><div id="navigation-10760" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-models-meta-newsmeta.html">NewsMeta</a>
+<a class="list-group-item" href="./app-modules-news-models-meta-newssectionmeta.html">NewsSectionMeta</a></div>
+<a class="list-group-item" href="#navigation-10761" data-toggle="collapse" data-parent="#navigation">app\modules\news\modules\admin <b class="caret"></b></a><div id="navigation-10761" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-10762" data-toggle="collapse" data-parent="#navigation">app\modules\news\modules\admin\controllers <b class="caret"></b></a><div id="navigation-10762" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-news-modules-admin-controllers-newscontroller.html">NewsController</a>
+<a class="list-group-item" href="./app-modules-news-modules-admin-controllers-newssectioncontroller.html">NewsSectionController</a></div>
+<a class="list-group-item" href="#navigation-10763" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery <b class="caret"></b></a><div id="navigation-10763" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-photogallery.html">Photogallery</a></div>
+<a class="list-group-item" href="#navigation-10764" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\controllers <b class="caret"></b></a><div id="navigation-10764" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-controllers-defaultcontroller.html">DefaultController</a></div>
+<a class="list-group-item" href="#navigation-10765" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\models <b class="caret"></b></a><div id="navigation-10765" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-models-gallery.html">Gallery</a></div>
+<a class="list-group-item" href="#navigation-10766" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\models\meta <b class="caret"></b></a><div id="navigation-10766" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-models-meta-gallerymeta.html">GalleryMeta</a></div>
+<a class="list-group-item" href="#navigation-10767" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\modules\admin <b class="caret"></b></a><div id="navigation-10767" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-10768" data-toggle="collapse" data-parent="#navigation">app\modules\photogallery\modules\admin\controllers <b class="caret"></b></a><div id="navigation-10768" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-photogallery-modules-admin-controllers-gallerycontroller.html">GalleryController</a></div>
+<a class="list-group-item" href="#navigation-10769" data-toggle="collapse" data-parent="#navigation">app\modules\shop <b class="caret"></b></a><div id="navigation-10769" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-shop.html">Shop</a></div>
+<a class="list-group-item" href="#navigation-10770" data-toggle="collapse" data-parent="#navigation">app\modules\shop\components <b class="caret"></b></a><div id="navigation-10770" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-components-adminnotifier.html">AdminNotifier</a>
+<a class="list-group-item" href="./app-modules-shop-components-basket.html">Basket</a>
+<a class="list-group-item" href="./app-modules-shop-components-clientnotifier.html">ClientNotifier</a>
+<a class="list-group-item" href="./app-modules-shop-components-ideliverycalc.html">IDeliveryCalc</a>
+<a class="list-group-item" href="./app-modules-shop-components-ishopitem.html">IShopItem</a>
+<a class="list-group-item" href="./app-modules-shop-components-orderletters.html">OrderLetters</a>
+<a class="list-group-item" href="./app-modules-shop-components-ordermanager.html">OrderManager</a>
+<a class="list-group-item" href="./app-modules-shop-components-shopitemtrait.html">ShopItemTrait</a></div>
+<a class="list-group-item" href="#navigation-10771" data-toggle="collapse" data-parent="#navigation">app\modules\shop\controllers <b class="caret"></b></a><div id="navigation-10771" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-controllers-basketcontroller.html">BasketController</a>
+<a class="list-group-item" href="./app-modules-shop-controllers-basketrestcontroller.html">BasketRestController</a>
+<a class="list-group-item" href="./app-modules-shop-controllers-defaultcontroller.html">DefaultController</a></div>
+<a class="list-group-item" href="#navigation-10772" data-toggle="collapse" data-parent="#navigation">app\modules\shop\db <b class="caret"></b></a><div id="navigation-10772" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-db-statusquery.html">StatusQuery</a></div>
+<a class="list-group-item" href="#navigation-10773" data-toggle="collapse" data-parent="#navigation">app\modules\shop\db\fields <b class="caret"></b></a><div id="navigation-10773" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-db-fields-goodattrsfield.html">GoodAttrsField</a></div>
+<a class="list-group-item" href="#navigation-10774" data-toggle="collapse" data-parent="#navigation">app\modules\shop\models <b class="caret"></b></a><div id="navigation-10774" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-models-delivery.html">Delivery</a>
+<a class="list-group-item" href="./app-modules-shop-models-good.html">Good</a>
+<a class="list-group-item" href="./app-modules-shop-models-order.html">Order</a>
+<a class="list-group-item" href="./app-modules-shop-models-payment.html">Payment</a>
+<a class="list-group-item" href="./app-modules-shop-models-status.html">Status</a></div>
+<a class="list-group-item" href="#navigation-10775" data-toggle="collapse" data-parent="#navigation">app\modules\shop\models\meta <b class="caret"></b></a><div id="navigation-10775" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-models-meta-deliverymeta.html">DeliveryMeta</a>
+<a class="list-group-item" href="./app-modules-shop-models-meta-goodmeta.html">GoodMeta</a>
+<a class="list-group-item" href="./app-modules-shop-models-meta-ordermeta.html">OrderMeta</a>
+<a class="list-group-item" href="./app-modules-shop-models-meta-paymentmeta.html">PaymentMeta</a>
+<a class="list-group-item" href="./app-modules-shop-models-meta-statusmeta.html">StatusMeta</a></div>
+<a class="list-group-item" href="#navigation-10776" data-toggle="collapse" data-parent="#navigation">app\modules\shop\modules\admin <b class="caret"></b></a><div id="navigation-10776" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-modules-admin-admin.html">Admin</a></div>
+<a class="list-group-item" href="#navigation-10777" data-toggle="collapse" data-parent="#navigation">app\modules\shop\modules\admin\controllers <b class="caret"></b></a><div id="navigation-10777" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-deliverycontroller.html">DeliveryController</a>
+<a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-goodcontroller.html">GoodController</a>
+<a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-ordercontroller.html">OrderController</a>
+<a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-paymentcontroller.html">PaymentController</a>
+<a class="list-group-item" href="./app-modules-shop-modules-admin-controllers-statuscontroller.html">StatusController</a></div>
+<a class="list-group-item" href="#navigation-10778" data-toggle="collapse" data-parent="#navigation">app\modules\shop\web <b class="caret"></b></a><div id="navigation-10778" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-web-shopasset.html">ShopAsset</a></div>
+<a class="list-group-item" href="#navigation-10779" data-toggle="collapse" data-parent="#navigation">app\modules\shop\widgets <b class="caret"></b></a><div id="navigation-10779" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-modules-shop-widgets-basketinfo.html">BasketInfo</a>
+<a class="list-group-item" href="./app-modules-shop-widgets-tobasket.html">ToBasket</a></div>
+<a class="list-group-item" href="#navigation-10780" data-toggle="collapse" data-parent="#navigation">app\themes\demo\assets <b class="caret"></b></a><div id="navigation-10780" class="submenu panel-collapse collapse"><a class="list-group-item" href="./app-themes-demo-assets-appasset.html">AppAsset</a></div>
+<a class="list-group-item" href="#navigation-10781" data-toggle="collapse" data-parent="#navigation">common\actions <b class="caret"></b></a><div id="navigation-10781" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-actions-upload.html">Upload</a></div>
+<a class="list-group-item" href="#navigation-10782" data-toggle="collapse" data-parent="#navigation">common\actions\crud <b class="caret"></b></a><div id="navigation-10782" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-actions-crud-admin.html">Admin</a>
+<a class="list-group-item" href="./common-actions-crud-base.html">Base</a>
+<a class="list-group-item" href="./common-actions-crud-create.html">Create</a>
+<a class="list-group-item" href="./common-actions-crud-delete.html">Delete</a>
+<a class="list-group-item" href="./common-actions-crud-groupdelete.html">GroupDelete</a>
+<a class="list-group-item" href="./common-actions-crud-tadmin.html">TAdmin</a>
+<a class="list-group-item" href="./common-actions-crud-tcreate.html">TCreate</a>
+<a class="list-group-item" href="./common-actions-crud-tdelete.html">TDelete</a>
+<a class="list-group-item" href="./common-actions-crud-tdown.html">TDown</a>
+<a class="list-group-item" href="./common-actions-crud-tgroupdelete.html">TGroupDelete</a>
+<a class="list-group-item" href="./common-actions-crud-treplace.html">TReplace</a>
+<a class="list-group-item" href="./common-actions-crud-tup.html">TUp</a>
+<a class="list-group-item" href="./common-actions-crud-tupdate.html">TUpdate</a>
+<a class="list-group-item" href="./common-actions-crud-update.html">Update</a>
+<a class="list-group-item" href="./common-actions-crud-view.html">View</a>
+<a class="list-group-item" href="./common-actions-crud-xeditable.html">XEditable</a></div>
+<a class="list-group-item" href="#navigation-10783" data-toggle="collapse" data-parent="#navigation">common\behaviors <b class="caret"></b></a><div id="navigation-10783" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-behaviors-arrayserializer.html">ArraySerializer</a>
+<a class="list-group-item" href="./common-behaviors-html5uploadbehavior.html">Html5UploadBehavior</a>
+<a class="list-group-item" href="./common-behaviors-manymanysaver.html">ManyManySaver</a>
+<a class="list-group-item" href="./common-behaviors-matchsuitable.html">MatchSuitable</a>
+<a class="list-group-item" href="./common-behaviors-nestedset.html">NestedSet</a>
+<a class="list-group-item" href="./common-behaviors-simpleuploadbehavior.html">SimpleUploadBehavior</a>
+<a class="list-group-item" href="./common-behaviors-tagcache.html">TagCache</a>
+<a class="list-group-item" href="./common-behaviors-uploadbehavior.html">UploadBehavior</a></div>
+<a class="list-group-item" href="#navigation-10784" data-toggle="collapse" data-parent="#navigation">common\cache <b class="caret"></b></a><div id="navigation-10784" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-cache-tagdependency.html">TagDependency</a></div>
+<a class="list-group-item" href="#navigation-10785" data-toggle="collapse" data-parent="#navigation">common\components <b class="caret"></b></a><div id="navigation-10785" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-components-assetbundle.html">AssetBundle</a>
+<a class="list-group-item" href="./common-components-bbcodeparser.html">BBCodeParser</a>
+<a class="list-group-item" href="./common-components-match.html">Match</a>
+<a class="list-group-item" href="./common-components-phpmatch.html">PhpMatch</a>
+<a class="list-group-item" href="./common-components-resizer.html">Resizer</a>
+<a class="list-group-item" href="./common-components-routematch.html">RouteMatch</a>
+<a class="list-group-item" href="./common-components-tagsconverter.html">TagsConverter</a>
+<a class="list-group-item" href="./common-components-treefinder.html">TreeFinder</a>
+<a class="list-group-item" href="./common-components-urlmatch.html">UrlMatch</a>
+<a class="list-group-item" href="./common-components-view.html">View</a></div>
+<a class="list-group-item" href="#navigation-10786" data-toggle="collapse" data-parent="#navigation">common\components\uiboot <b class="caret"></b></a><div id="navigation-10786" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-components-uiboot-themeasset.html">ThemeAsset</a></div>
+<a class="list-group-item" href="#navigation-10787" data-toggle="collapse" data-parent="#navigation">common\controllers <b class="caret"></b></a><div id="navigation-10787" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-controllers-admin.html">Admin</a>
+<a class="list-group-item" href="./common-controllers-app.html">App</a>
+<a class="list-group-item" href="./common-controllers-root.html">Root</a></div>
+<a class="list-group-item" href="#navigation-10788" data-toggle="collapse" data-parent="#navigation">common\core <b class="caret"></b></a><div id="navigation-10788" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-core-adminmodule.html">AdminModule</a>
+<a class="list-group-item" href="./common-core-file.html">File</a></div>
+<a class="list-group-item" href="#navigation-10789" data-toggle="collapse" data-parent="#navigation">common\db <b class="caret"></b></a><div id="navigation-10789" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-db-activequery.html">ActiveQuery</a>
+<a class="list-group-item" href="./common-db-activerecord.html">ActiveRecord</a>
+<a class="list-group-item" href="./common-db-createdatsearchtrait.html">CreatedAtSearchTrait</a>
+<a class="list-group-item" href="./common-db-metafields.html">MetaFields</a>
+<a class="list-group-item" href="./common-db-tactivequery.html">TActiveQuery</a>
+<a class="list-group-item" href="./common-db-tactiverecord.html">TActiveRecord</a></div>
+<a class="list-group-item" href="#navigation-10790" data-toggle="collapse" data-parent="#navigation">common\db\fields <b class="caret"></b></a><div id="navigation-10790" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-db-fields-autocompletefield.html">AutoCompleteField</a>
+<a class="list-group-item" href="./common-db-fields-checkboxfield.html">CheckBoxField</a>
+<a class="list-group-item" href="./common-db-fields-codefield.html">CodeField</a>
+<a class="list-group-item" href="./common-db-fields-datefield.html">DateField</a>
+<a class="list-group-item" href="./common-db-fields-emailfield.html">EmailField</a>
+<a class="list-group-item" href="./common-db-fields-field.html">Field</a>
+<a class="list-group-item" href="./common-db-fields-hasonefield.html">HasOneField</a>
+<a class="list-group-item" href="./common-db-fields-hasoneradiofield.html">HasOneRadioField</a>
+<a class="list-group-item" href="./common-db-fields-hiddenfield.html">HiddenField</a>
+<a class="list-group-item" href="./common-db-fields-html5filefield.html">Html5FileField</a>
+<a class="list-group-item" href="./common-db-fields-html5imagefield.html">Html5ImageField</a>
+<a class="list-group-item" href="./common-db-fields-htmlfield.html">HtmlField</a>
+<a class="list-group-item" href="./common-db-fields-listfield.html">ListField</a>
+<a class="list-group-item" href="./common-db-fields-manymanyfield.html">ManyManyField</a>
+<a class="list-group-item" href="./common-db-fields-manymanysortfield.html">ManyManySortField</a>
+<a class="list-group-item" href="./common-db-fields-markitupfield.html">MarkItUpField</a>
+<a class="list-group-item" href="./common-db-fields-numberfield.html">NumberField</a>
+<a class="list-group-item" href="./common-db-fields-parentlistfield.html">ParentListField</a>
+<a class="list-group-item" href="./common-db-fields-passwordfield.html">PasswordField</a>
+<a class="list-group-item" href="./common-db-fields-pkfield.html">PkField</a>
+<a class="list-group-item" href="./common-db-fields-radiolistfield.html">RadioListField</a>
+<a class="list-group-item" href="./common-db-fields-textareafield.html">TextAreaField</a>
+<a class="list-group-item" href="./common-db-fields-textfield.html">TextField</a>
+<a class="list-group-item" href="./common-db-fields-timestampfield.html">TimestampField</a>
+<a class="list-group-item" href="./common-db-fields-yamapfield.html">YaMapField</a></div>
+<a class="list-group-item" href="#navigation-10791" data-toggle="collapse" data-parent="#navigation">common\exceptions <b class="caret"></b></a><div id="navigation-10791" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-exceptions-ioexception.html">IoException</a></div>
+<a class="list-group-item" href="#navigation-10792" data-toggle="collapse" data-parent="#navigation">common\helpers <b class="caret"></b></a><div id="navigation-10792" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-helpers-confighelper.html">ConfigHelper</a>
+<a class="list-group-item" href="./common-helpers-filehelper.html">FileHelper</a></div>
+<a class="list-group-item" href="#navigation-10793" data-toggle="collapse" data-parent="#navigation">common\inputs <b class="caret"></b></a><div id="navigation-10793" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-inputs-autocompleteinput.html">AutoCompleteInput</a>
+<a class="list-group-item" href="./common-inputs-baseinput.html">BaseInput</a>
+<a class="list-group-item" href="./common-inputs-checkboxinput.html">CheckBoxInput</a>
+<a class="list-group-item" href="./common-inputs-dateinput.html">DateInput</a>
+<a class="list-group-item" href="./common-inputs-daterangeinput.html">DateRangeInput</a>
+<a class="list-group-item" href="./common-inputs-dropdowninput.html">DropDownInput</a>
+<a class="list-group-item" href="./common-inputs-hiddeninput.html">HiddenInput</a>
+<a class="list-group-item" href="./common-inputs-html5fileinput.html">Html5FileInput</a>
+<a class="list-group-item" href="./common-inputs-htmlinput.html">HtmlInput</a>
+<a class="list-group-item" href="./common-inputs-markitupinput.html">MarkItUpInput</a>
+<a class="list-group-item" href="./common-inputs-multiselectinput.html">MultiSelectInput</a>
+<a class="list-group-item" href="./common-inputs-numberinput.html">NumberInput</a>
+<a class="list-group-item" href="./common-inputs-passwordinput.html">PasswordInput</a>
+<a class="list-group-item" href="./common-inputs-radiolistinput.html">RadioListInput</a>
+<a class="list-group-item" href="./common-inputs-sortedtagsinput.html">SortedTagsInput</a>
+<a class="list-group-item" href="./common-inputs-textareainput.html">TextAreaInput</a>
+<a class="list-group-item" href="./common-inputs-textinput.html">TextInput</a>
+<a class="list-group-item" href="./common-inputs-yamapinput.html">YaMapInput</a></div>
+<a class="list-group-item" href="#navigation-10794" data-toggle="collapse" data-parent="#navigation">common\rbac <b class="caret"></b></a><div id="navigation-10794" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-rbac-iconstraint.html">IConstraint</a>
+<a class="list-group-item" href="./common-rbac-ipermission.html">IPermission</a></div>
+<a class="list-group-item" href="#navigation-10795" data-toggle="collapse" data-parent="#navigation">common\sphinx <b class="caret"></b></a><div id="navigation-10795" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-sphinx-sphinxdataprovider.html">SphinxDataProvider</a>
+<a class="list-group-item" href="./common-sphinx-sphinxsearch.html">SphinxSearch</a></div>
+<a class="list-group-item" href="#navigation-10796" data-toggle="collapse" data-parent="#navigation">common\web <b class="caret"></b></a><div id="navigation-10796" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-web-jquerynumberasset.html">JqueryNumberAsset</a></div>
+<a class="list-group-item" href="#navigation-10797" data-toggle="collapse" data-parent="#navigation">common\widgets <b class="caret"></b></a><div id="navigation-10797" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-app.html">App</a>
+<a class="list-group-item" href="./common-widgets-autocomplete.html">AutoComplete</a>
+<a class="list-group-item" href="./common-widgets-breadcrumbs.html">Breadcrumbs</a>
+<a class="list-group-item" href="./common-widgets-dependdropdown.html">DependDropDown</a>
+<a class="list-group-item" href="./common-widgets-formattednumberinput.html">FormattedNumberInput</a>
+<a class="list-group-item" href="./common-widgets-jscaptcha.html">JsCaptcha</a>
+<a class="list-group-item" href="./common-widgets-listview.html">ListView</a>
+<a class="list-group-item" href="./common-widgets-sortedtags.html">SortedTags</a></div>
+<a class="list-group-item" href="#navigation-10798" data-toggle="collapse" data-parent="#navigation">common\widgets\admin <b class="caret"></b></a><div id="navigation-10798" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-admin-actionbutton.html">ActionButton</a>
+<a class="list-group-item" href="./common-widgets-admin-crudlinks.html">CrudLinks</a>
+<a class="list-group-item" href="./common-widgets-admin-detail.html">Detail</a>
+<a class="list-group-item" href="./common-widgets-admin-extfilter.html">ExtFilter</a>
+<a class="list-group-item" href="./common-widgets-admin-form.html">Form</a>
+<a class="list-group-item" href="./common-widgets-admin-grid.html">Grid</a>
+<a class="list-group-item" href="./common-widgets-admin-menu.html">Menu</a>
+<a class="list-group-item" href="./common-widgets-admin-replaceintreebutton.html">ReplaceInTreeButton</a>
+<a class="list-group-item" href="./common-widgets-admin-tableinput.html">TableInput</a></div>
+<a class="list-group-item" href="#navigation-10799" data-toggle="collapse" data-parent="#navigation">common\widgets\html5uploader <b class="caret"></b></a><div id="navigation-10799" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-html5uploader-assetbundle.html">AssetBundle</a>
+<a class="list-group-item" href="./common-widgets-html5uploader-widget.html">Widget</a></div>
+<a class="list-group-item" href="#navigation-10800" data-toggle="collapse" data-parent="#navigation">common\widgets\launcher <b class="caret"></b></a><div id="navigation-10800" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-launcher-assetbundle.html">AssetBundle</a>
+<a class="list-group-item" href="./common-widgets-launcher-launcher.html">Launcher</a></div>
+<a class="list-group-item" href="#navigation-10801" data-toggle="collapse" data-parent="#navigation">common\widgets\markitup <b class="caret"></b></a><div id="navigation-10801" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-markitup-markitup.html">MarkItUp</a>
+<a class="list-group-item" href="./common-widgets-markitup-markitupasset.html">MarkItUpAsset</a>
+<a class="list-group-item" href="./common-widgets-markitup-setbbcodeasset.html">SetBbCodeAsset</a>
+<a class="list-group-item" href="./common-widgets-markitup-skinsimpleasset.html">SkinSimpleAsset</a></div>
+<a class="list-group-item" href="#navigation-10802" data-toggle="collapse" data-parent="#navigation">common\widgets\yamap <b class="caret"></b></a><div id="navigation-10802" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-widgets-yamap-yamap.html">YaMap</a>
+<a class="list-group-item" href="./common-widgets-yamap-yamapapiasset.html">YaMapApiAsset</a>
+<a class="list-group-item" href="./common-widgets-yamap-yamapinput.html">YaMapInput</a>
+<a class="list-group-item" href="./common-widgets-yamap-yamapinputasset.html">YaMapInputAsset</a></div>
+<a class="list-group-item" href="#navigation-10803" data-toggle="collapse" data-parent="#navigation">common\xeditable <b class="caret"></b></a><div id="navigation-10803" class="submenu panel-collapse collapse"><a class="list-group-item" href="./common-xeditable-xeditablecolumn.html">XEditableColumn</a></div>
+<a class="list-group-item" href="#navigation-10804" data-toggle="collapse" data-parent="#navigation">console\controllers <b class="caret"></b></a><div id="navigation-10804" class="submenu panel-collapse collapse"><a class="list-group-item" href="./console-controllers-installcontroller.html">InstallController</a>
+<a class="list-group-item" href="./console-controllers-migratecontroller.html">MigrateController</a>
+<a class="list-group-item" href="./console-controllers-sitemapcontroller.html">SitemapController</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main">
+        <h1>Class app\modules\banners\modules\admin\controllers\BannerController</h1>
+<div id="nav">
+    <a href="index.html">All Classes</a>
+            | <a href="#properties">Properties</a>
+                | <a href="#methods">Methods</a>
+            </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="app-modules-banners-modules-admin-controllers-bannercontroller.html">app\modules\banners\modules\admin\controllers\BannerController</a> &raquo;
+<a href="common-controllers-admin.html">common\controllers\Admin</a> &raquo;
+yii\web\Controller</td></tr>
+                                        </table>
+
+<div id="classDescription">
+    <p><strong>BannerController implements the CRUD actions for Banner model.</strong></p>
+    
+    </div>
+
+<a id="properties"></a>
+
+<div class="summary doc-property">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-property" />
+    <col class="col-type" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+        <tr class="inherited" id="$enableCsrfValidation">
+        <td><a href="common-controllers-admin.html#$enableCsrfValidation-detail">$enableCsrfValidation</a></td>
+        <td></td>
+        <td></td>
+        <td><a href="common-controllers-admin.html">common\controllers\Admin</a></td>
+    </tr>
+            <tr class="inherited" id="$layout">
+        <td><a href="common-controllers-admin.html#$layout-detail">$layout</a></td>
+        <td></td>
+        <td></td>
+        <td><a href="common-controllers-admin.html">common\controllers\Admin</a></td>
+    </tr>
+            <tr id="$tFile">
+        <td><a href="app-modules-banners-modules-admin-controllers-bannercontroller.html#$tFile-detail">$tFile</a></td>
+        <td><a href="http://www.php.net/language.types.string">string</a></td>
+        <td>идентификатор файла перевода</td>
+        <td><a href="app-modules-banners-modules-admin-controllers-bannercontroller.html">app\modules\banners\modules\admin\controllers\BannerController</a></td>
+    </tr>
+    </table>
+</div>
+
+<a id="methods"></a>
+
+<div class="summary doc-method">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-method" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+        <tr id="actions()">
+        <td><a href="app-modules-banners-modules-admin-controllers-bannercontroller.html#actions()-detail">actions()</a></td>
+        <td>Действия</td>
+        <td><a href="app-modules-banners-modules-admin-controllers-bannercontroller.html">app\modules\banners\modules\admin\controllers\BannerController</a></td>
+    </tr>
+            <tr id="behaviors()">
+        <td><a href="app-modules-banners-modules-admin-controllers-bannercontroller.html#behaviors()-detail">behaviors()</a></td>
+        <td>Поведения</td>
+        <td><a href="app-modules-banners-modules-admin-controllers-bannercontroller.html">app\modules\banners\modules\admin\controllers\BannerController</a></td>
+    </tr>
+    </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+
+<h2>Property Details</h2>
+
+<div class="property-doc">
+
+    <div class="detail-header h3" id="$tFile-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-modules-banners-modules-admin-controllers-bannercontroller.html#$tFile-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $tFile        <span class="detailHeaderTag small">
+            public                                    property
+                    </span>
+    </div>
+
+    <div class="signature"><a href="http://www.php.net/language.types.string">string</a> <a href="app-modules-banners-modules-admin-controllers-bannercontroller.html#$tFile-detail">$tFile</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"banners/app"</span></div>
+
+    <p>идентификатор файла перевода</p>
+
+    
+</div>
+<h2>Method Details</h2>
+
+<div class="method-doc">
+
+    <div class="detail-header h3" id="actions()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-modules-banners-modules-admin-controllers-bannercontroller.html#actions()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        actions()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong>Действия</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><a href="http://www.php.net/language.types.array">array</a> <strong><a href="app-modules-banners-modules-admin-controllers-bannercontroller.html#actions()-detail">actions</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;)</span></td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="behaviors()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="app-modules-banners-modules-admin-controllers-bannercontroller.html#behaviors()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        behaviors()
+        <span class="detail-header-tag small">
+            public            method
+                    </span>
+    </div>
+
+    <div class="doc-description">
+        <p><strong>Поведения</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><a href="http://www.php.net/language.types.array">array</a> <strong><a href="app-modules-banners-modules-admin-controllers-bannercontroller.html#behaviors()-detail">behaviors</a></strong><span style="color: #0000BB"></span><span style="color: #007700">(&nbsp;)</span></td></tr>
+            </table>
+
+<!--	-->
+</div>
+        </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $("a.toggle").on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents(".summary").find(".inherited").show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents(".summary").find(".inherited").hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*
+     $(".sourceCode a.show").toggle(function () {
+     $(this).text($(this).text().replace(/show/,'hide'));
+     $(this).parents(".sourceCode").find("div.code").show();
+     },function () {
+     $(this).text($(this).text().replace(/hide/,'show'));
+     $(this).parents(".sourceCode").find("div.code").hide();
+     });
+     $("a.sourceLink").click(function () {
+     $(this).attr('target','_blank');
+     });
+     */
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Mon, 15 Jun 2015 10:07:17 +0000</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script type="text/javascript">jQuery(document).ready(function () {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) shiftWindow();
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>
