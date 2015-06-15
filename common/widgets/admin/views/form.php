@@ -61,6 +61,8 @@ $this->registerJs("
 
 <?= Html::hiddenInput('apply', 0) ?>
 
+<?= Html::hiddenInput('tab', Yii::$app->request->post('tab')) ?>
+
 <? $returnUrl = Yii::$app->request->get('returnUrl', Yii::$app->request->post('returnUrl', Yii::$app->request->referrer)); ?>
 
 <?= Html::hiddenInput('returnUrl', $returnUrl) ?>
@@ -74,8 +76,21 @@ $this->registerJs("
 
 <?php
 $this->registerJs("
-	$('.form-apply').on('click', function(e){ $(\"input[name='apply']\").val(1);});
-	$('.form-cancel').on('click', function(e){ e.preventDefault(); window.location.href='$returnUrl'; });
+
+    (function(){
+
+        $('.form-apply').on('click', function(e){ $(\"input[name='apply']\").val(1);});
+	    $('.form-cancel').on('click', function(e){ e.preventDefault(); window.location.href='$returnUrl'; });
+	    $('#$tabId a').on('show.bs.tab', function(){ $('[name=\"tab\"]').val($(this).attr('href')) });
+
+        var activeTab = $('[name=\"tab\"]').val();
+
+        if(activeTab) {
+            $('#$tabId a[href=\"'+activeTab+'\"]').tab('show');
+        }
+
+    })();
+
 ");
 ?>
 
