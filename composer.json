@@ -1,10 +1,20 @@
 {
 	"name": "webadmin87/rzwebsys7",
 	"description": "RzWebSys7 - CMS powered by Yii Framework 2",
-	"keywords": ["rzwebsys7", "yii2", "cms"],
+	"keywords": ["rzwebsys7", "yii", "yii2", "cms"],
 	"homepage": "https://github.com/webadmin87/rzwebsys7",
 	"type": "project",
 	"license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Churkin Anton",
+            "email": "webadmin87@gmail.com"
+        },
+        {
+            "name": "Denis Chernyavsky",
+            "email": "panopticum87@gmail.com"
+        }
+    ],
 	"support": {
 		"issues": "https://github.com/webadmin87/rzwebsys7/issues",
 		"source": "https://github.com/webadmin87/rzwebsys7"
@@ -45,10 +55,10 @@
 	  }
 	},
     "autoload": {
-        "psr-0": {
-            "common\\": "",
-            "console\\": "",
-            "app\\": ""
+        "psr-4": {
+            "common\\": "common/",
+            "console\\": "console/",
+            "app\\": "app/"
         }
     }
 }
