@@ -6,7 +6,7 @@ use Yii;
 
 /**
  * Class RendererFactory
- * Фабрика создающая компоненты для рендера баннеров
+ * Р¤Р°Р±СЂРёРєР° РєРѕРјРїРѕРЅРµРЅС‚РѕРІ РґР»СЏ СЂРµРЅРґРµСЂР° Р±Р°РЅРЅРµСЂРѕРІ
  * @package app\modules\banners\components
  * @author Churkin Anton <webadmin87@gmail.com>
  */
@@ -14,8 +14,8 @@ class RendererFactory extends Object
 {
 
     /**
-     * Возвращает объект для рендера баннера
-     * @param \app\modules\banners\models\Banner $model модель баннера
+     * РЎРѕР·РґР°РµС‚ РєРѕРјРїРѕРЅРµРЅС‚
+     * @param \app\modules\banners\models\Banner $model РјРѕРґРµР»СЊ Р±Р°РЅРЅРµСЂР°
      * @return null|AbstractRenderer
      * @throws \yii\base\InvalidConfigException
      */
