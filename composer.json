@@ -2,7 +2,7 @@
 	"name": "webadmin87/rzwebsys7",
 	"description": "RzWebSys7 - CMS powered by Yii Framework 2",
 	"keywords": ["rzwebsys7", "yii", "yii2", "cms"],
-	"homepage": "https://github.com/webadmin87/rzwebsys7",
+	"homepage": "http://webadmin87.github.io/rzwebsys7/",
 	"type": "project",
 	"license": "BSD-3-Clause",
     "authors": [
