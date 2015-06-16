@@ -42,7 +42,7 @@ use yii\widgets\Breadcrumbs;
 
 <div id="ajax-loader"></div>
 
-<? $this->registerJs("$(window).bind('beforeunload', function(){
+<? $this->registerJs("$(window).on('beforeunload', function(){
         $('#ajax-loader').show();
     });") ?>
 
