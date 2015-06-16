@@ -42,7 +42,7 @@ class Form extends Widget
      * @var array параметры \yii\widgets\ActiveForm по умолчанию
      */
 
-    protected $defaultFormOptions = ['enableAjaxValidation' => 'true'];
+    protected $defaultFormOptions = ['enableAjaxValidation' => true, 'enableClientValidation' => false];
 
     /**
      * @var string идентификатор виджета

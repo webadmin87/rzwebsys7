@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a1edaf0e91801efc187df240e28b6847",
+    "hash": "7aa211044065bb4a71d8d584174d0d5d",
     "packages": [
         {
             "name": "2amigos/yii2-multi-select-widget",
@@ -60,17 +60,60 @@
             "time": "2015-03-31 21:53:14"
         },
         {
-            "name": "bower-asset/angular",
-            "version": "v1.3.15",
+            "name": "2amigos/yii2-transliterator-helper",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/angular/bower-angular.git",
-                "reference": "ba7abcfa409ba852146e6ba206693cf7bac3e359"
+                "url": "https://github.com/2amigos/yii2-transliterator-helper.git",
+                "reference": "b859f5205bcb14409a75687241a94331a0ff0f2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/angular/bower-angular/zipball/ba7abcfa409ba852146e6ba206693cf7bac3e359",
-                "reference": "ba7abcfa409ba852146e6ba206693cf7bac3e359",
+                "url": "https://api.github.com/repos/2amigos/yii2-transliterator-helper/zipball/b859f5205bcb14409a75687241a94331a0ff0f2b",
+                "reference": "b859f5205bcb14409a75687241a94331a0ff0f2b",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\transliterator\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Ramirez",
+                    "email": "ramirez.cobos@gmail.com",
+                    "homepage": "http://www.ramirezcobos.com"
+                }
+            ],
+            "description": "Transliterator Helper for Yii2.",
+            "keywords": [
+                "extension",
+                "helper",
+                "transliterator",
+                "yii"
+            ],
+            "time": "2014-01-17 15:55:42"
+        },
+        {
+            "name": "bower-asset/angular",
+            "version": "v1.3.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/angular/bower-angular.git",
+                "reference": "4e922aec99eae4ce4403e598c33357eff93fce4f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular/zipball/4e922aec99eae4ce4403e598c33357eff93fce4f",
+                "reference": "4e922aec99eae4ce4403e598c33357eff93fce4f",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -81,16 +124,16 @@
         },
         {
             "name": "bower-asset/angular-i18n",
-            "version": "v1.3.15",
+            "version": "v1.3.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/angular/bower-angular-i18n.git",
-                "reference": "b69173b747aa6d40c19b4ce19cdff01df5c3cd11"
+                "reference": "8fd9a7f7e4afd5eba5d0518215383930bfd739f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/angular/bower-angular-i18n/zipball/b69173b747aa6d40c19b4ce19cdff01df5c3cd11",
-                "reference": "b69173b747aa6d40c19b4ce19cdff01df5c3cd11",
+                "url": "https://api.github.com/repos/angular/bower-angular-i18n/zipball/8fd9a7f7e4afd5eba5d0518215383930bfd739f3",
+                "reference": "8fd9a7f7e4afd5eba5d0518215383930bfd739f3",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -157,16 +200,16 @@
         },
         {
             "name": "bower-asset/bootstrap-multiselect",
-            "version": "v0.9.12",
+            "version": "v0.9.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davidstutz/bootstrap-multiselect.git",
-                "reference": "e90ae15c34f8bbd21901b0737dfba7f2d6dfd5ea"
+                "reference": "6367ced04daafc054aeff51b2a903669eb0da214"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davidstutz/bootstrap-multiselect/zipball/e90ae15c34f8bbd21901b0737dfba7f2d6dfd5ea",
-                "reference": "e90ae15c34f8bbd21901b0737dfba7f2d6dfd5ea",
+                "url": "https://api.github.com/repos/davidstutz/bootstrap-multiselect/zipball/6367ced04daafc054aeff51b2a903669eb0da214",
+                "reference": "6367ced04daafc054aeff51b2a903669eb0da214",
                 "shasum": ""
             },
             "require": {
@@ -905,12 +948,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "ac8b475454c120bfb31f5bef475233dd4fb6b626"
+                "reference": "21b7eb31c51d98e9da0543527a0242875f3d92b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/ac8b475454c120bfb31f5bef475233dd4fb6b626",
-                "reference": "ac8b475454c120bfb31f5bef475233dd4fb6b626",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/21b7eb31c51d98e9da0543527a0242875f3d92b9",
+                "reference": "21b7eb31c51d98e9da0543527a0242875f3d92b9",
                 "shasum": ""
             },
             "require": {
@@ -946,10 +989,11 @@
             "description": "Swiftmailer, free feature-rich PHP mailer",
             "homepage": "http://swiftmailer.org",
             "keywords": [
+                "email",
                 "mail",
                 "mailer"
             ],
-            "time": "2015-05-06 16:40:00"
+            "time": "2015-06-06 14:20:09"
         },
         {
             "name": "vova07/yii2-select2-widget",
@@ -1157,16 +1201,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-composer.git",
-                "reference": "c7f59a6db76ae12aef4ddd244b0d02ab76b8a0b8"
+                "reference": "6b2a2b3bb83d4b3dd791f76e64c48973ce01bac6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/c7f59a6db76ae12aef4ddd244b0d02ab76b8a0b8",
-                "reference": "c7f59a6db76ae12aef4ddd244b0d02ab76b8a0b8",
+                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/6b2a2b3bb83d4b3dd791f76e64c48973ce01bac6",
+                "reference": "6b2a2b3bb83d4b3dd791f76e64c48973ce01bac6",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "1.0.0"
+                "composer-plugin-api": "^1.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -1196,7 +1240,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2015-04-29 09:00:02"
+            "time": "2015-06-11 19:55:58"
         },
         {
             "name": "yiisoft/yii2-imagine",
@@ -1395,6 +1439,52 @@
                 "yii2"
             ],
             "time": "2015-05-10 22:12:32"
+        },
+        {
+            "name": "zelenin/yii2-slug-behavior",
+            "version": "0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zelenin/yii2-slug-behavior.git",
+                "reference": "328f65de709999a2ec8812baeac846f02a9b5a02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zelenin/yii2-slug-behavior/zipball/328f65de709999a2ec8812baeac846f02a9b5a02",
+                "reference": "328f65de709999a2ec8812baeac846f02a9b5a02",
+                "shasum": ""
+            },
+            "require": {
+                "2amigos/yii2-transliterator-helper": "~0.1",
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "Zelenin\\yii\\behaviors\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Zelenin",
+                    "email": "aleksandr@zelenin.me",
+                    "homepage": "http://zelenin.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Yii2 slug behavior",
+            "homepage": "https://github.com/zelenin/yii2-slug-behavior",
+            "keywords": [
+                "Behavior",
+                "slug",
+                "yii",
+                "yii2"
+            ],
+            "time": "2015-06-16 08:41:19"
         }
     ],
     "packages-dev": [
@@ -1530,12 +1620,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27"
+                "reference": "9eed6c2a6fc9944903df92f9850b9dcc5a373410"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27",
-                "reference": "bcc07d0cb56cf5ec4fb6e66dda5f5fb9e39e5c27",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/9eed6c2a6fc9944903df92f9850b9dcc5a373410",
+                "reference": "9eed6c2a6fc9944903df92f9850b9dcc5a373410",
                 "shasum": ""
             },
             "require": {
@@ -1551,7 +1641,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5.x-dev"
+                    "dev-master": "1.6.x-dev"
                 }
             },
             "autoload": {
@@ -1574,7 +1664,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-05-20 13:03:42"
+            "time": "2015-06-15 08:56:21"
         },
         {
             "name": "mikevanriel/text-to-latex",
@@ -1716,16 +1806,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "dev-master",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "ae15da2ce234d3ffe5d7fafcdad19c7f1acf3568"
+                "reference": "d68dbdc53dc358a816f00b300704702b2eaff7b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/ae15da2ce234d3ffe5d7fafcdad19c7f1acf3568",
-                "reference": "ae15da2ce234d3ffe5d7fafcdad19c7f1acf3568",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/d68dbdc53dc358a816f00b300704702b2eaff7b8",
+                "reference": "d68dbdc53dc358a816f00b300704702b2eaff7b8",
                 "shasum": ""
             },
             "require": {
@@ -1735,8 +1825,8 @@
                 "phpunit/phpunit": "~4.0"
             },
             "suggest": {
-                "erusev/parsedown": "~1.0",
-                "league/commonmark": "*"
+                "dflydev/markdown": "~1.0",
+                "erusev/parsedown": "~1.0"
             },
             "type": "library",
             "extra": {
@@ -1761,7 +1851,7 @@
                     "email": "mike.vanriel@naenius.com"
                 }
             ],
-            "time": "2015-05-12 07:21:12"
+            "time": "2015-02-03 12:10:50"
         },
         {
             "name": "phpspec/php-diff",
@@ -1803,13 +1893,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "bf2c13de4300e227d7b2fd08027673a79c519987"
+                "reference": "9e45edca52cc9c954680072c93e621f8b71fab26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/bf2c13de4300e227d7b2fd08027673a79c519987",
-                "reference": "bf2c13de4300e227d7b2fd08027673a79c519987",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/9e45edca52cc9c954680072c93e621f8b71fab26",
+                "reference": "9e45edca52cc9c954680072c93e621f8b71fab26",
                 "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
             },
             "type": "library",
             "extra": {
@@ -1838,7 +1931,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2015-03-26 14:39:45"
+            "time": "2015-06-02 13:48:41"
         },
         {
             "name": "yiisoft/yii2-apidoc",

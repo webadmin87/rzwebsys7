@@ -88,6 +88,7 @@ class CatalogMeta extends MetaFields
                     "title" => Yii::t('catalog/app', 'Code'),
                     "isRequired" => true,
                     "showInGrid" => false,
+                    "generateFrom" => "title",
                 ],
                 "params" => [$this->owner, "code"]
             ],

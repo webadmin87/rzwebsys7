@@ -58,6 +58,7 @@ class PagesMeta extends MetaFields
                     "class" => \common\db\fields\CodeField::className(),
                     "title" => Yii::t('main/app', 'Code'),
                     "isRequired" => true,
+                    "generateFrom" => "title",
                 ],
                 "params" => [$this->owner, "code"]
             ],
