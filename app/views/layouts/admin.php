@@ -22,7 +22,10 @@ use yii\widgets\Breadcrumbs;
 
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
             <?php
-            if ($this->beginCache("adminMenu", ['variations' => [Yii::$app->user->identity->role]])) {
+            if ($this->beginCache("adminMenu", [
+                'variations' => [Yii::$app->user->identity->role],
+                'duration' => Yii::$app->params['cacheDuration'],
+            ])) {
                 echo Menu::widget(['options'=>['id'=>'left-admin-menu']]);
                 $this->endCache();
             }
@@ -37,6 +40,10 @@ use yii\widgets\Breadcrumbs;
 
 </div>
 
+<div id="ajax-loader"></div>
 
+<? $this->registerJs("$(window).on('beforeunload', function(){
+        $('#ajax-loader').show();
+    });") ?>
 
 <? $this->endContent(); ?>

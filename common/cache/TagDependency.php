@@ -85,7 +85,8 @@ class TagDependency extends Dependency
     public function addTag($tag)
     {
 
-        $this->_tags[] = $tag;
+        if(!in_array($tag, $this->_tags))
+            $this->_tags[] = $tag;
 
     }
 

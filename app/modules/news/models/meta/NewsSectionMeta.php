@@ -46,6 +46,7 @@ class NewsSectionMeta extends MetaFields
                     "class" => \common\db\fields\CodeField::className(),
                     "title" => Yii::t('news/app', 'Code'),
                     "isRequired" => true,
+                    "generateFrom" => "title",
                 ],
                 "params" => [$this->owner, "code"]
             ],

@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\main\models;
 
+use app\modules\import\models\ICsvImportable;
 use common\db\ActiveRecord;
 use Yii;
 use yii\base\NotSupportedException;
@@ -22,7 +23,7 @@ use yii\helpers\ArrayHelper;
  * @property integer $updated_at
  * @property string $password write-only password
  */
-class User extends ActiveRecord implements IdentityInterface
+class User extends ActiveRecord implements IdentityInterface, ICsvImportable
 {
 
     use \app\modules\main\components\PermissionTrait;
@@ -328,5 +329,30 @@ class User extends ActiveRecord implements IdentityInterface
 		return array_diff($arr, $disabled);
 
 	}
+
+    /**
+     * Возвращает массив атрибутов доступных для импорта из csv
+     * @return array
+     */
+    public function getCsvAttributes()
+    {
+        $attrs = array_keys($this->getAttributes(null, ['auth_key', 'password_hash', 'password_reset_token']));
+
+        $attrs[] = "password";
+
+        $attrs[] = "confirm_password";
+
+        return $attrs;
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function getEntityName()
+    {
+        return Yii::t('main/app', 'Users');
+    }
+
 
 }

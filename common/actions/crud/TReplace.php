@@ -65,14 +65,19 @@ class TReplace extends Base
 
             if (!empty($ids)) {
 
-                $query = $class::find()->where(['id' => $ids]);
+                foreach ($ids AS $id) {
 
-                foreach ($query->each() as $model) {
+                    $model = $class::findOne($id);
+
+                    if(!$model)
+                        continue;
 
                     if (!Yii::$app->user->can('updateModel', array("model" => $model)))
                         throw new ForbiddenHttpException('Forbidden');
 
                     $model->prependTo($parentModel);
+
+                    $parentModel->refresh();
 
                 }
 

@@ -63,7 +63,8 @@ trait MailerTrait
     {
 
         if ($this->_mailTo === null) {
-            $this->_mailTo = Yii::$app->params["adminEmail"];
+            $mailTo = Yii::$app->getModule('main')->config->get("adminEmail");
+            $this->_mailTo = $mailTo?:Yii::$app->params["adminEmail"];
         }
 
         return $this->_mailTo;

@@ -16,6 +16,11 @@ class NumberField extends Field
     public $inputClass = "\\common\\inputs\\NumberInput";
 
     /**
+     * @var bool число должно быть целым
+     */
+    public $integerOnly = false;
+
+    /**
      * Правила валидации
      * @return array
      */
@@ -25,7 +30,7 @@ class NumberField extends Field
 
         $rules = parent::rules();
 
-        $rules[] = [$this->attr, 'number'];
+        $rules[] = [$this->attr, 'number', 'integerOnly'=>$this->integerOnly];
 
         $rules[] = [$this->attr, 'filter', 'filter' => 'trim'];
 

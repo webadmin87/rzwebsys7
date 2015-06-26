@@ -73,6 +73,7 @@ class NewsMeta extends MetaFields
                     "title" => Yii::t('news/app', 'Code'),
                     "isRequired" => true,
                     "showInGrid" => false,
+                    "generateFrom" => "title",
                 ],
                 "params" => [$this->owner, "code"]
             ],

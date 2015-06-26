@@ -60,6 +60,7 @@ class CatalogSectionMeta extends MetaFields
                     "class" => \common\db\fields\CodeField::className(),
                     "title" => Yii::t('catalog/app', 'Code'),
                     "isRequired" => true,
+                    "generateFrom" => "title",
                 ],
                 "params" => [$this->owner, "code"]
             ],

@@ -66,9 +66,9 @@ class CatalogController extends App
 
         $searchModel = Yii::createObject(['class' => CatalogSearch::className(), 'scenario' => ActiveRecord::SCENARIO_SEARCH]);
 
-        $searchModel->load(Yii::$app->request->get());
+        $filter = $searchModel->load(Yii::$app->request->get());
 
-        if (empty($res)) {
+        if (empty($res) OR $filter) {
 
             $dependency = Yii::createObject(TagDependency::className());
 
@@ -81,13 +81,13 @@ class CatalogController extends App
                 if (!$res["sectionModel"])
                     throw new NotFoundHttpException;
 
-                $dependency->addTag($res["sectionModel"]->setItemTag());
+                $dependency->addTag($res["sectionModel"]->setItemTagSafe());
 
                 $searchModel->sectionsIds = $res["sectionModel"]->getFilterIds();
 
             }
 
-            $dataProvider = $searchModel->search();
+            $dataProvider = $searchModel->publicSearch();
 
             $dataProvider->getSort()->defaultOrder = $this->orderBy;
 
@@ -99,7 +99,8 @@ class CatalogController extends App
 
             $res["html"] = $this->renderPartial('_grid', ["dataProvider" => $dataProvider, "previewImageWidth" => $this->previewImageWidth]);
 
-            Yii::$app->cache->set($cacheId, $res, Yii::$app->params["cacheDuration"], $dependency);
+            if(!$filter)
+                Yii::$app->cache->set($cacheId, $res, Yii::$app->params["cacheDuration"], $dependency);
 
         }
 

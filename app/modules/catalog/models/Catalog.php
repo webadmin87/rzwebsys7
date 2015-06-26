@@ -33,7 +33,7 @@ class Catalog extends ActiveRecord implements IShopItem
     public function getSectionsIds()
     {
 
-        if ($this->_sectionsIds === null) {
+        if (!is_array($this->_sectionsIds) AND !$this->isNewRecord) {
 
             $this->_sectionsIds = $this->getManyManyIds("sections");
         }
