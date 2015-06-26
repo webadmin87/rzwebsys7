@@ -482,4 +482,13 @@ class Field extends Object
 
     }
 
+    /**
+     * Возвращает подпись атрибута
+     * @return array
+     */
+    public function getAttributeLabel()
+    {
+        return [$this->attr => $this->title];
+    }
+
 }
