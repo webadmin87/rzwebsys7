@@ -80,7 +80,7 @@ class User extends ActiveRecord implements IdentityInterface, ICsvImportable
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+        return static::findOne(["auth_key"=>$token]);
     }
 
     /**

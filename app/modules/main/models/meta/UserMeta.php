@@ -99,6 +99,19 @@ class UserMeta extends MetaFields
                 "params" => [$this->owner, "text"]
             ],
 
+            "auth_key" => [
+                "definition" => [
+                    "class" => \common\db\fields\Field::className(),
+                    "title" => Yii::t('main/app', 'Api key'),
+                    "isRequired" => false,
+                    "showInForm" => false,
+                    "showInGrid" => false,
+                    "showInExtendedFilter" => false,
+                    "isSafe"=>false,
+                ],
+                "params" => [$this->owner, "auth_key"]
+            ],
+
         ];
 
     }
