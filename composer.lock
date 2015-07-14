@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7aa211044065bb4a71d8d584174d0d5d",
+    "hash": "5b3fe1106d1d58ea4890412ac50c86c9",
     "packages": [
         {
             "name": "2amigos/yii2-multi-select-widget",
@@ -104,16 +104,16 @@
         },
         {
             "name": "bower-asset/angular",
-            "version": "v1.3.16",
+            "version": "v1.3.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/angular/bower-angular.git",
-                "reference": "4e922aec99eae4ce4403e598c33357eff93fce4f"
+                "reference": "a74a28d38edfb835ad0fe6cb1b36d8a2a82024e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/angular/bower-angular/zipball/4e922aec99eae4ce4403e598c33357eff93fce4f",
-                "reference": "4e922aec99eae4ce4403e598c33357eff93fce4f",
+                "url": "https://api.github.com/repos/angular/bower-angular/zipball/a74a28d38edfb835ad0fe6cb1b36d8a2a82024e3",
+                "reference": "a74a28d38edfb835ad0fe6cb1b36d8a2a82024e3",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -124,16 +124,16 @@
         },
         {
             "name": "bower-asset/angular-i18n",
-            "version": "v1.3.16",
+            "version": "v1.3.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/angular/bower-angular-i18n.git",
-                "reference": "8fd9a7f7e4afd5eba5d0518215383930bfd739f3"
+                "reference": "6a2de36c737b754aa071d9f94f9e95be92716f9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/angular/bower-angular-i18n/zipball/8fd9a7f7e4afd5eba5d0518215383930bfd739f3",
-                "reference": "8fd9a7f7e4afd5eba5d0518215383930bfd739f3",
+                "url": "https://api.github.com/repos/angular/bower-angular-i18n/zipball/6a2de36c737b754aa071d9f94f9e95be92716f9e",
+                "reference": "6a2de36c737b754aa071d9f94f9e95be92716f9e",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -148,16 +148,16 @@
         },
         {
             "name": "bower-asset/bootstrap",
-            "version": "v3.3.4",
+            "version": "v3.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "a10eb60bc0b07b747fa0c4ebd8821eb7307bd07f"
+                "reference": "16b48259a62f576e52c903c476bd42b90ab22482"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/a10eb60bc0b07b747fa0c4ebd8821eb7307bd07f",
-                "reference": "a10eb60bc0b07b747fa0c4ebd8821eb7307bd07f",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/16b48259a62f576e52c903c476bd42b90ab22482",
+                "reference": "16b48259a62f576e52c903c476bd42b90ab22482",
                 "shasum": ""
             },
             "require": {
@@ -167,13 +167,7 @@
             "extra": {
                 "bower-asset-main": [
                     "less/bootstrap.less",
-                    "dist/css/bootstrap.css",
-                    "dist/js/bootstrap.js",
-                    "dist/fonts/glyphicons-halflings-regular.eot",
-                    "dist/fonts/glyphicons-halflings-regular.svg",
-                    "dist/fonts/glyphicons-halflings-regular.ttf",
-                    "dist/fonts/glyphicons-halflings-regular.woff",
-                    "dist/fonts/glyphicons-halflings-regular.woff2"
+                    "dist/js/bootstrap.js"
                 ],
                 "bower-asset-ignore": [
                     "/.*",
@@ -186,6 +180,9 @@
                     "test-infra"
                 ]
             },
+            "license": [
+                "MIT"
+            ],
             "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
             "keywords": [
                 "css",
@@ -853,12 +850,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MihailDev/yii2-elfinder.git",
-                "reference": "56c340290ba0656d777e63c68141d31a92780cb6"
+                "reference": "7dc4d79cc6890162499a1db47e6cb742bf61a616"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MihailDev/yii2-elfinder/zipball/56c340290ba0656d777e63c68141d31a92780cb6",
-                "reference": "56c340290ba0656d777e63c68141d31a92780cb6",
+                "url": "https://api.github.com/repos/MihailDev/yii2-elfinder/zipball/7dc4d79cc6890162499a1db47e6cb742bf61a616",
+                "reference": "7dc4d79cc6890162499a1db47e6cb742bf61a616",
                 "shasum": ""
             },
             "require": {
@@ -895,7 +892,7 @@
                 "filemanager",
                 "yii"
             ],
-            "time": "2015-05-21 12:28:42"
+            "time": "2015-07-03 08:14:34"
         },
         {
             "name": "newerton/yii2-fancybox",
@@ -948,12 +945,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "21b7eb31c51d98e9da0543527a0242875f3d92b9"
+                "reference": "0a6e9031371dcb384d395b1fa7bd5139a7847a60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/21b7eb31c51d98e9da0543527a0242875f3d92b9",
-                "reference": "21b7eb31c51d98e9da0543527a0242875f3d92b9",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/0a6e9031371dcb384d395b1fa7bd5139a7847a60",
+                "reference": "0a6e9031371dcb384d395b1fa7bd5139a7847a60",
                 "shasum": ""
             },
             "require": {
@@ -993,7 +990,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2015-06-06 14:20:09"
+            "time": "2015-06-28 17:20:48"
         },
         {
             "name": "vova07/yii2-select2-widget",
@@ -1059,16 +1056,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.4",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "726867caee3f23aa7a6975c801e64b6021e14f86"
+                "reference": "ea8c13b9f5cd437bd7bf73cad8a3457a155f3727"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/726867caee3f23aa7a6975c801e64b6021e14f86",
-                "reference": "726867caee3f23aa7a6975c801e64b6021e14f86",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/ea8c13b9f5cd437bd7bf73cad8a3457a155f3727",
+                "reference": "ea8c13b9f5cd437bd7bf73cad8a3457a155f3727",
                 "shasum": ""
             },
             "require": {
@@ -1143,7 +1140,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-05-10 20:09:47"
+            "time": "2015-07-11 02:37:59"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1620,12 +1617,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "9eed6c2a6fc9944903df92f9850b9dcc5a373410"
+                "reference": "587a38f912801eb778125d67ed5feae0d6717cb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/9eed6c2a6fc9944903df92f9850b9dcc5a373410",
-                "reference": "9eed6c2a6fc9944903df92f9850b9dcc5a373410",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/587a38f912801eb778125d67ed5feae0d6717cb8",
+                "reference": "587a38f912801eb778125d67ed5feae0d6717cb8",
                 "shasum": ""
             },
             "require": {
@@ -1664,7 +1661,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-06-15 08:56:21"
+            "time": "2015-07-13 13:55:48"
         },
         {
             "name": "mikevanriel/text-to-latex",
