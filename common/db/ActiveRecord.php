@@ -6,6 +6,7 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord as YiiRecord;
 use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class ActiveRecord
@@ -197,7 +198,7 @@ abstract class ActiveRecord extends YiiRecord
 
         foreach ($fields AS $field) {
 
-            $labels[$field->attr] = $field->title;
+          $labels = ArrayHelper::merge($labels, $field->getAttributeLabel());
 
         }
 

@@ -90,7 +90,7 @@ class PageUrlRule extends UrlRule
 
 		foreach($sections AS $section) {
 
-			$model = $parent->children()->published()->andWhere(["code" => $section])->one();
+			$model = $parent->children(1)->published()->andWhere(["code" => $section])->one();
 
 			if(!$model)
 				return false;

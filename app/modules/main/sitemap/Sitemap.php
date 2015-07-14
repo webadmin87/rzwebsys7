@@ -22,6 +22,7 @@ class Sitemap extends Component
      * [
      *  [
      *      "class"=>"app\modules\main\models\Pages",
+     *      "entityLabel"=>function() { return 'News';},
      *      "entityRoute"=>"main/pages/index",
      *      "labelAttr"=>"title",
      *      "scopes" => ["active"],
@@ -85,7 +86,7 @@ class Sitemap extends Component
 
 
             $arr = [];
-            $arr['header'] = $item["class"]::getEntityName();
+            $arr['header'] = (!empty($item["entityLabel"]) && is_callable($item["entityLabel"]))?call_user_func($item["entityLabel"]):$item["class"]::getEntityName();
             if(!empty($item["entityRoute"]))
                 $arr['entityUrl'] = Url::toRoute($item["entityRoute"]);
             $arr['items'] = [];
@@ -134,7 +135,7 @@ class Sitemap extends Component
     public function renderXml()
     {
 
-       $path = Yii::getAlias($this->sitemapPath);
+        $path = Yii::getAlias($this->sitemapPath);
 
         $doc = new \DOMDocument('1.0', 'utf-8');
 
