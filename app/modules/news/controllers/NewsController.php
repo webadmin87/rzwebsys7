@@ -108,9 +108,12 @@ class NewsController extends App
 
             $this->view->addBreadCrumbs($crumbs);
         } else {
+
+            $this->view->title = Yii::t('news/app', 'News');
+
             $this->view->addBreadCrumb(
                 [
-                    "label"=>Yii::t('news/app', 'News'),
+                    "label"=>$this->view->title,
                     "url"=>Url::toRoute(["/news/news/index"])
                 ]
             );
