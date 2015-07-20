@@ -14,6 +14,19 @@ use Yii;
 class NewsSectionMeta extends MetaFields
 {
 
+    const SEO_TAB = "seo";
+
+    /**
+     * @inheritdoc
+     */
+
+    public function tabs()
+    {
+        $tabs = parent::tabs();
+        $tabs[self::SEO_TAB] = Yii::t('news/app', "SEO");
+        return $tabs;
+    }
+
     /**
      * @inheritdoc
      */
@@ -49,6 +62,39 @@ class NewsSectionMeta extends MetaFields
                     "generateFrom" => "title",
                 ],
                 "params" => [$this->owner, "code"]
+            ],
+
+            "metatitle" => [
+                "definition" => [
+                    "class" => \common\db\fields\TextField::className(),
+                    "title" => Yii::t('news/app', 'Meta title'),
+                    "isRequired" => false,
+                    "showInGrid" => false,
+                    "tab" => self::SEO_TAB,
+                ],
+                "params" => [$this->owner, "metatitle"]
+            ],
+
+            "keywords" => [
+                "definition" => [
+                    "class" => \common\db\fields\TextField::className(),
+                    "title" => Yii::t('news/app', 'Keywords'),
+                    "isRequired" => false,
+                    "showInGrid" => false,
+                    "tab" => self::SEO_TAB,
+                ],
+                "params" => [$this->owner, "keywords"]
+            ],
+
+            "description" => [
+                "definition" => [
+                    "class" => \common\db\fields\TextField::className(),
+                    "title" => Yii::t('news/app', 'Description'),
+                    "isRequired" => false,
+                    "showInGrid" => false,
+                    "tab" => self::SEO_TAB,
+                ],
+                "params" => [$this->owner, "description"]
             ],
 
         ];
