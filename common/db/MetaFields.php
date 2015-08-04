@@ -12,6 +12,9 @@ use yii\helpers\ArrayHelper;
  * Класс содержащий описание полей модели
  * @package common\db
  * @author Churkin Anton <webadmin87@gmail.com>
+ *
+ * @property-read \common\db\fields\Field[] $fields массив обектов полей модели
+ * @property-read [] $fieldsConfig массив конфигураций объектов полей модели
  */
 abstract class MetaFields extends Object
 {
@@ -19,26 +22,28 @@ abstract class MetaFields extends Object
     /**
      * Вкладка формы по умолчанию
      */
-
     const DEFAULT_TAB = "default";
 
     /**
      * @var ActiveRecord модель - владелец
      */
-
     protected $owner;
 
     /**
      * @var array массив объектов полей модели
      */
-
     protected $_fields;
+
+    /**
+     * @var array массив конфигураций объектов полей модели
+     */
+    protected $_fieldsConfig;
 
     /**
      * Конструктор
      * @param ActiveRecord $owner
+     * @param array $params
      */
-
     public function __construct(ActiveRecord $owner, $params = array())
     {
 
@@ -49,11 +54,37 @@ abstract class MetaFields extends Object
     }
 
     /**
+     * @inheritdoc
+     */
+    public function __get($name)
+    {
+        $config = $this->getFieldsConfig();
+
+        if ( isset($config[$name]) and is_array($config[$name]) ) {
+            return $this->getField($name);
+        }
+
+        return parent::__get($name);
+    }
+
+    /**
+     * Возвращает массив конфигураций обектов полей модели
+     * @return array
+     */
+    public function getFieldsConfig()
+    {
+        if ( !is_array($this->_fieldsConfig) ) {
+            $this->_fieldsConfig = ArrayHelper::merge($this->defaultConfig(), $this->config());
+        }
+
+        return $this->_fieldsConfig;
+    }
+
+    /**
      * Возвращает поля по коду вкладки
      * @param string $tab код вкладки
      * @return \common\db\fields\Field[]
      */
-
     public function getFieldsByTab($tab)
     {
 
@@ -75,7 +106,6 @@ abstract class MetaFields extends Object
      * Возвращает массив объектов полей модели
      * @return \common\db\fields\Field[]
      */
-
     public function getFields()
     {
 
@@ -83,14 +113,12 @@ abstract class MetaFields extends Object
 
             $this->_fields = [];
 
-            $config = ArrayHelper::merge($this->defaultConfig(), $this->config());
+            foreach ($this->fieldsConfig AS $name => $config) {
 
-            foreach ($config AS $config) {
-
-                if (!is_array($config))
+                if ( !empty($this->_fields[$name]) or !is_array($config) )
                     continue;
 
-                $this->_fields[] = Yii::createObject($config["definition"], $config["params"]);
+                $this->_fields[$name] = Yii::createObject($config["definition"], $config["params"]);
 
             }
 
@@ -101,10 +129,33 @@ abstract class MetaFields extends Object
     }
 
     /**
+     * Возвращает объект поля модели по его названию
+     * @param $name
+     * @throws \yii\base\InvalidConfigException
+     * @return \common\db\fields\Field
+     */
+    public function getField($name)
+    {
+
+        if ( !isset($this->_fields[$name]) ) {
+
+            $config = $this->fieldsConfig;
+
+            if ( !is_array($config) or !is_array($config[$name]) ) {
+                return;
+            }
+
+            $this->_fields[$name] = Yii::createObject($config['definition'], $config['params']);
+
+        }
+
+        return $this->_fields[$name];
+    }
+
+    /**
      * Конфигурация полей по умолчанию
      * @return array
      */
-
     protected function defaultConfig()
     {
 
@@ -124,7 +175,7 @@ abstract class MetaFields extends Object
                     "title" => Yii::t('core', 'Created'),
                     "showInGrid"=>true,
                     "showInFilter"=>false,
-					"filterInputClass"=>[
+                    "filterInputClass"=>[
                         "class"=>\common\inputs\DateRangeInput::className(),
                         "fromAttr"=>"createdAtFrom",
                         "toAttr"=>"createdAtTo",
@@ -138,7 +189,7 @@ abstract class MetaFields extends Object
                 'definition' => [
                     "class" => fields\TimestampField::className(),
                     "title" => Yii::t('core', 'Updated'),
-					"showInExtendedFilter"=>false,
+                    "showInExtendedFilter"=>false,
                 ],
                 "params" => [$this->owner, "updated_at"]
             ],
@@ -214,14 +265,12 @@ abstract class MetaFields extends Object
      *
      * @return array
      */
-
     abstract protected function config();
 
     /**
      * Массив вкладок формы редактирования модели (key=>name)
      * @return array
      */
-
     public function tabs()
     {
         return [self::DEFAULT_TAB => Yii::t('core', 'Element')];
