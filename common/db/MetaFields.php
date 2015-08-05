@@ -10,11 +10,10 @@ use yii\helpers\ArrayHelper;
 /**
  * Class MetaFields
  * Класс содержащий описание полей модели
+ * @property-read \common\db\fields\Field[] fields массив обектов полей модели
+ * @property-read array fieldsConfig массив конфигураций объектов полей модели
  * @package common\db
  * @author Churkin Anton <webadmin87@gmail.com>
- *
- * @property-read \common\db\fields\Field[] $fields массив обектов полей модели
- * @property-read [] $fieldsConfig массив конфигураций объектов полей модели
  */
 abstract class MetaFields extends Object
 {
