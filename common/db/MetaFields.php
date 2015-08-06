@@ -10,8 +10,8 @@ use yii\helpers\ArrayHelper;
 /**
  * Class MetaFields
  * Класс содержащий описание полей модели
- * @property-read \common\db\fields\Field[] fields массив обектов полей модели
  * @property-read array fieldsConfig массив конфигураций объектов полей модели
+ * @property-read \common\db\fields\Field[] fields массив обектов полей модели
  * @package common\db
  * @author Churkin Anton <webadmin87@gmail.com>
  */
@@ -114,7 +114,7 @@ abstract class MetaFields extends Object
 
             foreach ($this->fieldsConfig AS $name => $config) {
 
-                if ( !empty($this->_fields[$name]) or !is_array($config) )
+                if ( !is_array($config) )
                     continue;
 
                 $this->_fields[$name] = Yii::createObject($config["definition"], $config["params"]);
@@ -136,19 +136,9 @@ abstract class MetaFields extends Object
     public function getField($name)
     {
 
-        if ( !isset($this->_fields[$name]) ) {
-
-            $config = $this->fieldsConfig;
-
-            if ( !is_array($config) or !is_array($config[$name]) ) {
-                return;
-            }
-
-            $this->_fields[$name] = Yii::createObject($config['definition'], $config['params']);
-
+        if ( isset($this->fields[$name]) ) {
+            return $this->fields[$name];
         }
-
-        return $this->_fields[$name];
     }
 
     /**
