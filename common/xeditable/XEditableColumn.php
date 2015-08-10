@@ -4,6 +4,7 @@ namespace common\xeditable;
 
 use \mcms\xeditable\XEditableColumn as Base;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 /**
  * Class XEditableColumn
@@ -31,7 +32,7 @@ class XEditableColumn extends Base
             $value = call_user_func($this->value, $model, $index, $this);
         }
 
-        $value = '<a href="#" data-name="'.$this->attribute.'" data-value="' . $model->{$this->attribute} . '"  class="editable" data-type="' . $this->dataType . '" data-pk="' . $model->{$this->pk} . '" data-url="' . $this->url . '" data-title="' . $this->dataTitle . '">' .  $this->grid->formatter->format($value, $this->format) . '</a>';
+        $value = '<a href="#" data-name="'.$this->attribute.'" data-value="' . Html::encode($model->{$this->attribute}) . '"  class="editable" data-type="' . $this->dataType . '" data-pk="' . $model->{$this->pk} . '" data-url="' . $this->url . '" data-title="' . $this->dataTitle . '">' .  $this->grid->formatter->format($value, $this->format) . '</a>';
 
         return $value;
     }
