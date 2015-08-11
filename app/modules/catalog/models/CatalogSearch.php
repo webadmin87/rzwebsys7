@@ -31,7 +31,11 @@ class CatalogSearch extends Catalog
 
             $query->bySections($this->sectionsIds);
 
-            $query->andFilterWhere($this->getAttributes());
+            foreach ($this->metaFields->fields as $field) {
+
+                $field->applySearch($query);
+
+            }
 
         } else {
 

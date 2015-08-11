@@ -11,6 +11,7 @@ use yii\helpers\ArrayHelper;
 /**
  * Class ActiveRecord
  * Надстройка над ActiveRecord фпеймворка.
+ * @property-read MetaFields metaFields объект с описанием полей модели
  * @package common\db
  * @author Churkin Anton <webadmin87@gmail.com>
  */
