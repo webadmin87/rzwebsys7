@@ -31,4 +31,25 @@ class ParentListField extends ListField
      */
     public $search = false;
 
+    /**
+     * @var string атрибут родительской модели отображаемый при детальном просмотре
+     */
+    public $viewAttr = "title";
+
+    /**
+     * @inheritdoc
+     */
+    protected function view()
+    {
+        $parent = parent::view();
+
+        $parentModel = $this->model->parents(1)->one();
+
+        if($parentModel)
+            $parent['value']=$parentModel->{$this->viewAttr};
+
+        return $parent;
+    }
+
+
 }
