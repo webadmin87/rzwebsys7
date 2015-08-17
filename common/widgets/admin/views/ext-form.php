@@ -45,7 +45,10 @@ $searchBtnName = $id . "-search";
 
         <div class="form-group">
             <?= Html::submitButton(Yii::t('core', 'Search'), ['name' => $searchBtnName, 'class' => 'btn btn-primary']) ?>
+            <?= Html::a(Yii::t('core', 'Reset'), ["/".Yii::$app->controller->route],['class' => 'btn btn-default']) ?>
         </div>
+
+        <?=Html::hiddenInput('extendedFilter', 1)?>
 
         <? ActiveForm::end(); ?>
     </div>

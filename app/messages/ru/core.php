@@ -33,4 +33,5 @@ return [
     "Max uploaded file size {n} Mb"=>"Максимальный размер загружаемого файла {n} Mb",
     "Created from"=>"Создан от",
     "Created to"=>"Создан до",
+    "Reset"=>"Сброс",
 ];

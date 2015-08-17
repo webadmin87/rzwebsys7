@@ -44,6 +44,11 @@ class Grid extends Widget
     public $dataProvider;
 
     /**
+     * @var string имя параметра передаваемого расширенным фильтром
+     */
+    public $extFilterParam = "extendedFilter";
+
+    /**
      * @var array кнопки строк грида
      */
 
@@ -364,7 +369,7 @@ class Grid extends Widget
 
         ];
 
-        if ($this->tree) {
+        if ($this->tree AND !Yii::$app->request->get($this->extFilterParam)) {
 
             $arr["replace"] = [
 
