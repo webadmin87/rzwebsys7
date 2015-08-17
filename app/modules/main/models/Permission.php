@@ -43,7 +43,10 @@ class Permission extends ActiveRecord implements IPermission
             $class = '\\' . $class;
 
         if (!isset(self::$_permissions[$class])) {
-            self::$_permissions[$class] = static::find()->where(["model" => $class, "role" => Yii::$app->user->identity->role])->published()->one();
+            if(!Yii::$app->user->isGuest)
+                self::$_permissions[$class] = static::find()->where(["model" => $class, "role" => Yii::$app->user->identity->role])->published()->one();
+            else
+                self::$_permissions[$class] = null;
         }
 
         return self::$_permissions[$class];
