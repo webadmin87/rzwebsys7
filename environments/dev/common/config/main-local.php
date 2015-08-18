@@ -5,7 +5,7 @@ return [
            'class' => 'yii\db\Connection',
 			'dsn' => 'pgsql:host=127.0.0.1;port=5432;dbname=rzwebsys7',
 			'username' => 'postgres',
-			'password' => 'xh48u56',
+			'password' => 'password',
 			'charset' => 'utf8',
             'enableSchemaCache'=>true,
         ],
