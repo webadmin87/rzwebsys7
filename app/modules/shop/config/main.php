@@ -83,7 +83,9 @@ return [
 
         'urlManager' => [
 
-            'rules' => [],
+            'rules' => [
+				'shop/orders-rest/update/<id:\d+>'=>'shop/orders-rest/update'
+			],
 
         ],
 
