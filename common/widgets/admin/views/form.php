@@ -42,18 +42,41 @@ $this->registerJs("
     <div class="tab-content">
         <?
         $i = 0;
-        foreach ($meta->tabs() AS $key => $title): ?>
+ foreach ($meta->tabs() AS $key => $title):
+            $tpl = '';
+            $html = '';
+            $template = $this->context->getTplFile($key);
+            ?>
+
             <div class="<? if ($i == 0): ?>active <? endif; ?>tab-pane" id="<?= $key ?>">
 
-                <? foreach ($meta->getFieldsByTab($key) AS $field):
-                    if ($perm AND $perm->isAttributeForbidden($field->attr))
-                        continue;
-                    ?>
-                    <?= $field->getWrappedForm($form); ?>
-                <? endforeach; ?>
+                <?php
+
+                    foreach ($meta->getFieldsByTab($key) AS $field) {
+
+                        if ($perm AND $perm->isAttributeForbidden($field->attr)) {
+                            $tpl['search'][] = '/{' . $field->attr . '}/';
+                            $tpl['replace'][] = '';
+                            continue;
+                        }
+
+                        if ($template && strpos($template, '{' . $field->attr . '}') !== false) {
+                            $tpl['search'][] = '/{' . $field->attr . '}/';
+                            $tpl['replace'][] = $field->getWrappedForm($form);
+                        } else {
+                            $html .= $field->getWrappedForm($form);
+                        }
+
+                    }
+
+                    echo preg_replace($tpl['search'], $tpl['replace'], $template);
+                    echo $html;
+
+                ?>
 
             </div>
-            <?
+
+            <?php
             $i++;
         endforeach; ?>
     </div>
