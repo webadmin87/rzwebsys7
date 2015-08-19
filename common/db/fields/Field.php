@@ -148,7 +148,7 @@ class Field extends Object
     /**
      * @var string шаблон для поля
      */
-    public $formTemplate = '<div class="row"><div class="co-xs-12 col-md-7 col-lg-5">{input}</div></div>';
+    public $formTemplate = '<div class="row"><div class="co-xs-12 col-md-6 col-lg-12">{input}</div></div>';
 
     /**
      * @var callable функция для применения ограничений при поиске по полю.
