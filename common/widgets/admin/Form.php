@@ -47,8 +47,12 @@ class Form extends Widget
     /**
      * @var string идентификатор виджета
      */
-
     protected $id;
+    
+    /**
+     * @var директория с шаблонами
+     */
+    protected $_tplDir;
 
     public function init()
     {
@@ -73,6 +77,41 @@ class Form extends Widget
             ]
         );
 
+    }
+    
+        /**
+     * @var array директории, где хранятся шаблоны
+     */
+    public function getTplDir()
+    {
+        if ($this->_tplDir === null) {
+
+            $widgetTpl = [$this->viewPath . DIRECTORY_SEPARATOR . 'tpl' . DIRECTORY_SEPARATOR];
+
+            if (is_array($this->model->tplDir)) {
+                foreach ($this->model->tplDir as $dir) {
+                    $modelTpl[] = Yii::getAlias($dir);
+                }
+            } else {
+                $modelTpl = [Yii::getAlias($this->model->tplDir)];
+            }
+
+            $this->_tplDir = ArrayHelper::merge($modelTpl, $widgetTpl);
+        }
+
+        return $this->_tplDir;
+    }
+
+    /**
+     * @var string шаблон для вкладки формы
+     */
+    public function getTplFile($key = 'default')
+    {
+        foreach($this->tplDir as $dir){
+            $file = $dir . $key . '.tpl';
+            if (is_file($file)) return file_get_contents($file);
+        };
+        return false;
     }
 
 }
