@@ -44,7 +44,7 @@ $this->registerJs("
         $i = 0;
         
  	foreach ($meta->tabs() AS $key => $title):
-            $tpl = '';
+            $tpl = [];
             $html = '';
             $template = $this->context->getTplFile($key);
             ?>
@@ -55,7 +55,7 @@ $this->registerJs("
 
                     foreach ($meta->getFieldsByTab($key) AS $field) {
 
-                        if ($perm AND $perm->isAttributeForbidden($field->attr)) {
+                        if ($perm AND $perm->isAttributeForbidden($field->attr) AND strpos($template, '{' . $field->attr . '}') !== false) {
                             $tpl['search'][] = '/{' . $field->attr . '}/';
                             $tpl['replace'][] = '';
                             continue;
@@ -70,7 +70,9 @@ $this->registerJs("
 
                     }
 
-                    echo preg_replace($tpl['search'], $tpl['replace'], $template);
+                    if(!empty($tpl))
+                        echo preg_replace($tpl['search'], $tpl['replace'], $template);
+
                     echo $html;
 
                 ?>

@@ -1,13 +1,16 @@
 <?php
 namespace common\widgets\admin;
 
+use common\db\MetaFields;
 use Yii;
 use yii\base\Widget;
 use yii\bootstrap\BootstrapPluginAsset;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class Form
  * Форма модели для админки. Формируется на основе \common\db\MetaFields модели
+ * @property array $tplDir директории где хранятся шаблоны
  * @package common\widgets\admin
  * @author Churkin Anton <webadmin87@gmail.com>
  */
@@ -78,9 +81,9 @@ class Form extends Widget
         );
 
     }
-    
-        /**
-     * @var array директории, где хранятся шаблоны
+
+    /**
+     * @return директория где хранятся файлы
      */
     public function getTplDir()
     {
@@ -103,13 +106,15 @@ class Form extends Widget
     }
 
     /**
-     * @var string шаблон для вкладки формы
+     * Возвращает html код шаблона для вкладки таба
+     * @param string $key идентификатор вкладки
+     * @return bool|string
      */
-    public function getTplFile($key = 'default')
+    public function getTplFile($key = MetaFields::DEFAULT_TAB)
     {
         foreach($this->tplDir as $dir){
             $file = $dir . $key . '.tpl';
-            if (is_file($file)) return file_get_contents($file);
+            if (is_file($file)) return $this->renderFile($file);
         };
         return false;
     }
