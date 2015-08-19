@@ -42,7 +42,8 @@ $this->registerJs("
     <div class="tab-content">
         <?
         $i = 0;
- foreach ($meta->tabs() AS $key => $title):
+        
+ 	foreach ($meta->tabs() AS $key => $title):
             $tpl = '';
             $html = '';
             $template = $this->context->getTplFile($key);
