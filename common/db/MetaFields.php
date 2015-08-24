@@ -200,6 +200,7 @@ abstract class MetaFields extends Object
                     "showInForm" => true,
                     "data" => [$this, "getAuthorsList"],
                     "gridAttr" => "username",
+                    "eagerLoading" => true,
                 ],
                 "params" => [$this->owner, "author_id", "author"]
             ],

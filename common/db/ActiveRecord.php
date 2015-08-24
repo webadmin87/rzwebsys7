@@ -270,9 +270,9 @@ abstract class ActiveRecord extends YiiRecord
 
         $dataProvider->getSort()->defaultOrder = $this->_defaultSearchOrder;
 
-        if (!($this->load($params) && $this->validate())) {
-            return $dataProvider;
-        }
+        $this->load($params);
+
+        $this->validate();
 
         foreach ($fields AS $field)
             $field->applySearch($query);

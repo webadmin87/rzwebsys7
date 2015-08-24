@@ -1,6 +1,7 @@
 <?php
 namespace common\db\fields;
 
+use common\db\ActiveQuery;
 use common\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
@@ -12,6 +13,11 @@ use yii\helpers\ArrayHelper;
  */
 class HasOneField extends ListField
 {
+
+    /**
+     * @var bool жадная загрузка
+     */
+    public $eagerLoading = false;
 
     /**
      * @var string имя связи
@@ -74,5 +80,18 @@ class HasOneField extends ListField
         return $view;
 
     }
+
+    /**
+     * Поиск
+     * @param ActiveQuery $query запрос
+     */
+    public function search(ActiveQuery $query)
+    {
+        parent::search($query);
+        if($this->eagerLoading && $this->search) {
+            $query->with($this->relation);
+        }
+    }
+
 
 }
