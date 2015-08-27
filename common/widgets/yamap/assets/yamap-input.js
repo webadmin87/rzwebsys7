@@ -43,6 +43,25 @@
 
 			}
 
+	            ymaps.load(function () {
+	            	
+	                var suggestView = new ymaps.SuggestView(search.attr('id'), {
+	                    offset: [10, 10]
+	                });
+	
+	                suggestView.state.events.add('change', function () {
+	                    var activeIndex = suggestView.state.get('activeIndex');
+	                    if (typeof activeIndex == 'number') {
+	                        activeItem = suggestView.state.get('items')[activeIndex];
+	                        if (activeItem && activeItem.value != search.value) {
+	                            search.value = activeItem.value;
+	                        }
+	                    }
+	                });
+	
+	            });
+
+
 			ymaps.ready(function () {
 
 				var start = getDefaultPointCoords();
