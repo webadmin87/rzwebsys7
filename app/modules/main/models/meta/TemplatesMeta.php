@@ -2,6 +2,7 @@
 
 namespace app\modules\main\models\meta;
 
+use common\db\ActiveRecord;
 use common\db\MetaFields;
 use Yii;
 
@@ -63,8 +64,9 @@ class TemplatesMeta extends MetaFields
 
             "sort" => [
                 "definition" => [
-                    "class" => \common\db\fields\TextField::className(),
+                    "class" => \common\db\fields\NumberField::className(),
                     "title" => Yii::t('main/app', 'Sort'),
+                    "defaultValue"=>ActiveRecord::DEFAULT_SORT,
                     "isRequired" => false,
                     "editInGrid" => true,
                 ],

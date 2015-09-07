@@ -65,8 +65,6 @@ class Template extends ActiveRecord
 
         $rules = parent::rules();
 
-        $rules[] = ['sort', 'default', 'value' => ActiveRecord::DEFAULT_SORT];
-
         return $rules;
 
     }
