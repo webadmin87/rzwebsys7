@@ -103,9 +103,12 @@ abstract class MetaFields extends Object
 
     /**
      * Возвращает массив объектов полей модели
-     * @return \common\db\fields\Field[]
+     * @param null $names список имен атрибутов, которые необходимо вернуть
+     * @param array $except список имен атрибутов, которые необходимо исключить
+     * @return fields\Field[]
+     * @throws \yii\base\InvalidConfigException
      */
-    public function getFields()
+    public function getFields($names = null, $except = [])
     {
 
         if ($this->_fields === null) {
@@ -123,7 +126,13 @@ abstract class MetaFields extends Object
 
         }
 
-        return $this->_fields;
+        $fields = (!empty($names) and is_array($names)) ? array_intersect_key($this->_fields, array_flip($names)) : $this->_fields;
+
+        foreach ($except as $key) {
+            unset($fields[$key]);
+        }
+
+        return $fields;
 
     }
 
