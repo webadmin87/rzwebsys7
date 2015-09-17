@@ -499,7 +499,7 @@ abstract class UploadBehavior extends Behavior
         $attr = $this->attribute;
 
         if (!empty($this->owner->$attr))
-            $this->owner->$attr = unserialize($this->owner->$attr);
+            $this->owner->$attr = array_values(unserialize($this->owner->$attr));
 
         return true;
     }
@@ -516,7 +516,7 @@ abstract class UploadBehavior extends Behavior
 
         if (!empty($this->owner->$attr)) {
 
-            $arr = unserialize($this->owner->$attr);
+            $arr = array_values(unserialize($this->owner->$attr));
             $this->owner->$attr = $arr;
             $this->_value = $arr;
 
