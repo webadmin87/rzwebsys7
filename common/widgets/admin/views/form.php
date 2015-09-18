@@ -55,9 +55,13 @@ $this->registerJs("
 
                     foreach ($meta->getFieldsByTab($key) AS $field) {
 
-                        if ($perm AND $perm->isAttributeForbidden($field->attr) AND strpos($template, '{' . $field->attr . '}') !== false) {
-                            $tpl['search'][] = '/{' . $field->attr . '}/';
-                            $tpl['replace'][] = '';
+                        if ($perm AND $perm->isAttributeForbidden($field->attr)) {
+
+                            if(strpos($template, '{' . $field->attr . '}') !== false) {
+                                $tpl['search'][] = '/{' . $field->attr . '}/';
+                                $tpl['replace'][] = '';
+                            }
+
                             continue;
                         }
 
