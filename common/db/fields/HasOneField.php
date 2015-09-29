@@ -58,7 +58,9 @@ class HasOneField extends ListField
 
         $relation = $this->model->getRelation($this->relation);
 
-        $rules[] = [$this->attr, 'exist', 'targetClass' => $relation->modelClass, 'targetAttribute' => key($relation->link), 'except'=>[ActiveRecord::SCENARIO_SEARCH]];
+        $isEmpty = function($v) { return empty($v); };
+
+        $rules[] = [$this->attr, 'exist', 'isEmpty'=>$isEmpty, 'targetClass' => $relation->modelClass, 'targetAttribute' => key($relation->link), 'except'=>[ActiveRecord::SCENARIO_SEARCH]];
 
         return $rules;
     }
