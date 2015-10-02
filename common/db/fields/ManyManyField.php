@@ -15,6 +15,8 @@ use yii\widgets\ActiveForm;
 class ManyManyField extends HasOneField
 {
 
+    public $numeric = false;
+
     public $inputClass = "\\common\\inputs\\MultiSelectInput";
 
     /**
