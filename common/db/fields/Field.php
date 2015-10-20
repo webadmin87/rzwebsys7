@@ -34,7 +34,7 @@ class Field extends Object
     public $title;
 
     /**
-     * @var mixed значение присваевоемое полю при создании модели с сценарием \common\db\ActiveRecord::SCENARIO_SEARCH
+     * @var mixed значение присваевоемое полю при создании модели с сценарием \common\db\ActiveRecord::SCENARIO_INSERT
      */
     public $initValue;
 
@@ -110,11 +110,6 @@ class Field extends Object
 
     public $editableAction = "editable";
 
-	/**
-	 * @var array массив html атрибут поля формы
-	 */
-	public $options = [];
-
     /**
      * @var array опции по умолчанию при отображении в гриде
      */
@@ -124,11 +119,6 @@ class Field extends Object
      * @var array опции по умолчанию при детальном просмотре
      */
     public $viewOptions = [];
-
-    /**
-     * @var array параметры виджета поля ввода
-     */
-    public $widgetOptions = [];
 
     /**
      * @var callable функция возвращающая данные ассоциированные с полем
@@ -155,6 +145,12 @@ class Field extends Object
      * Принимает два аргумента \yii\db\ActiveQuery и \common\db\fields\Field
      */
     public $queryModifier;
+
+    /**
+     * @var array массив дополнительный правил валидации для поля
+     * ["validatorName" => ["prop" => "value"] ... ]
+     */
+    public $rules = [];
 
     /**
      * @var array данные ассоциированные с полем (key=>value)
@@ -191,7 +187,7 @@ class Field extends Object
      * @return string
      */
 
-    public function extendedFilterForm(ActiveForm $form, Array $options = [])
+    public function getExtendedFilterForm(ActiveForm $form, Array $options = [])
     {
 
         return $this->getForm($form, $options, false, $this->filterInputClass);
@@ -216,8 +212,6 @@ class Field extends Object
 
         $input = Yii::createObject(ArrayHelper::merge([
             "modelField"=>$this,
-            "options"=>$this->options,
-            "widgetOptions"=>$this->widgetOptions,
         ], $inputClass));
 
         return $input->renderInput($form, $options, $index);
@@ -334,7 +328,11 @@ class Field extends Object
 
     }
 
-    public function xEditable()
+    /**
+     * Конфтгурация редактируемой колонки
+     * @return array
+     */
+    protected function xEditable()
     {
 
         return [
@@ -411,6 +409,15 @@ class Field extends Object
         if($this->defaultValue !== null)
             $rules[] = [$this->attr, 'default', 'value'=>$this->defaultValue, 'except'=>[ActiveRecord::SCENARIO_SEARCH]];
 
+        foreach($this->rules AS  $name => $options) {
+
+            $options[0] = $this->attr;
+
+            $options[1] = $name;
+
+            $rules[] = $options;
+
+        }
 
         return $rules;
 
@@ -452,7 +459,7 @@ class Field extends Object
      * @param ActiveQuery $query запрос
      */
 
-    public function search(ActiveQuery $query)
+    protected function search(ActiveQuery $query)
     {
 
         $table = $this->model->tableName();

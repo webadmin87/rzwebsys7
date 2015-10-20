@@ -15,7 +15,11 @@ use yii\widgets\ActiveForm;
 class ManyManyField extends HasOneField
 {
 
+    public $eagerLoading = true;
+
     public $numeric = false;
+
+    public $checkExist = false;
 
     public $inputClass = "\\common\\inputs\\MultiSelectInput";
 
@@ -90,17 +94,20 @@ class ManyManyField extends HasOneField
     public function search(ActiveQuery $query)
     {
 
-        $table = $this->model->tableName();
+        if ($this->search) {
 
-        $relatedClass = $this->model->{"get" . ucfirst($this->relation)}()->modelClass;
+            $table = $this->model->tableName();
 
-        $tableRelated = $relatedClass::tableName();
+            $relatedClass = $this->model->{"get" . ucfirst($this->relation)}()->modelClass;
 
-        if ($this->search)
+            $tableRelated = $relatedClass::tableName();
+
             $query->
-            joinWith($this->relation, true)->
+            joinWith($this->relation, $this->eagerLoading)->
             andFilterWhere(["{{%$tableRelated}}.{{%id}}" => $this->model->{$this->attr}])->
             groupBy("$table.id");
+
+        }
 
     }
 

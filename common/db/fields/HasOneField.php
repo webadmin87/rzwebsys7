@@ -35,6 +35,11 @@ class HasOneField extends ListField
     public $numeric = true;
 
     /**
+     * @var проверять наличие связанной модели
+     */
+    public $checkExist = true;
+
+    /**
      * Конструктор
      * @param ActiveRecord $model модель
      * @param string $attr атрибут
@@ -56,7 +61,7 @@ class HasOneField extends ListField
     {
         $rules = parent::rules();
 
-        if($this->numeric) {
+        if($this->checkExist) {
 
             $relation = $this->model->getRelation($this->relation);
 

@@ -32,7 +32,7 @@ $searchBtnName = $id . "-search";
                     <? if (isset($fields[$j]) AND $fields[$j]->showInExtendedFilter): ?>
 
                         <div class="col-xs-12 col-sm-<?= $cls ?> col-md-<?= $cls ?> col-lg-<?= $cls ?>">
-                            <?= $fields[$j]->extendedFilterForm($form) ?>
+                            <?= $fields[$j]->getExtendedFilterForm($form) ?>
                         </div>
 
                     <? endif; ?>
