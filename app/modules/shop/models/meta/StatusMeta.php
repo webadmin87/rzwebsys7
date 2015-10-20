@@ -58,7 +58,9 @@ class StatusMeta extends MetaFields
                 "definition" => [
                     "class" => \common\db\fields\TextAreaField::className(),
                     "title" => Yii::t('shop/app', 'Letter tpl'),
-                    "options" => ["rows"=>20],
+                    "inputClassOptions" => [
+                        "options" => ["rows"=>20]
+                    ],
 
                 ],
                 "params" => [$this->owner, "tplHtml"]

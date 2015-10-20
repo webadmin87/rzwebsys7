@@ -131,6 +131,11 @@ class Field extends Object
     public $inputClass = "\\common\\inputs\\TextInput";
 
     /**
+     * @var array параметры поля ввода
+     */
+    public $inputClassOptions = [];
+
+    /**
      * @var string|array имя класса, либо конфигурация компонента который рендерит поле ввода расширенного фильтра
      */
     public $filterInputClass;
@@ -212,7 +217,7 @@ class Field extends Object
 
         $input = Yii::createObject(ArrayHelper::merge([
             "modelField"=>$this,
-        ], $inputClass));
+        ], $inputClass, $this->inputClassOptions));
 
         return $input->renderInput($form, $options, $index);
 
