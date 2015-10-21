@@ -112,7 +112,7 @@ class HasOneField extends ListField
      * Поиск
      * @param ActiveQuery $query запрос
      */
-    public function search(ActiveQuery $query)
+    protected function search(ActiveQuery $query)
     {
         parent::search($query);
         if($this->eagerLoading && $this->search) {
