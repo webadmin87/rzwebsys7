@@ -149,6 +149,7 @@ class OrderMeta extends MetaFields
 					"showInGrid" => true,
 					"showInForm" => false,
 					"isSafe"=>false,
+					"search"=>false,
 					"gridOptions"=>[
 						'format'=>'currency'
 					],
