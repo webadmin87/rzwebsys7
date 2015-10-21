@@ -276,7 +276,7 @@ abstract class ActiveRecord extends YiiRecord
 
         foreach ($fields AS $field) {
 
-            if($this->hasAttribute($field->attr) && $field->search)
+            if($field->search)
                 $field->applySearch($query);
 
         }

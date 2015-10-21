@@ -32,11 +32,15 @@ class TextField extends Field
     protected function search(ActiveQuery $query)
     {
 
-        $table = $this->model->tableName();
+        if($this->model->hasAttribute($this->attr)) {
 
-        $attr = $this->attr;
+            $table = $this->model->tableName();
 
-        $query->andFilterWhere(["~*", "{{%$table}}.{{%$attr}}", preg_quote($this->model->{$this->attr})]);
+            $attr = $this->attr;
+
+            $query->andFilterWhere(["~*", "{{%$table}}.{{%$attr}}", preg_quote($this->model->{$this->attr})]);
+
+        }
 
     }
 

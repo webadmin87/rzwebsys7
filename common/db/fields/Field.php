@@ -466,11 +466,15 @@ class Field extends Object
     protected function search(ActiveQuery $query)
     {
 
-        $table = $this->model->tableName();
+        if($this->model->hasAttribute($this->attr)) {
 
-        $attr = $this->attr;
+            $table = $this->model->tableName();
 
-        $query->andFilterWhere(["{{%$table}}.{{%$attr}}" => $this->model->{$this->attr}]);
+            $attr = $this->attr;
+
+            $query->andFilterWhere(["{{%$table}}.{{%$attr}}" => $this->model->{$this->attr}]);
+
+        }
 
     }
 
