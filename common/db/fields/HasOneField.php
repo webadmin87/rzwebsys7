@@ -115,7 +115,7 @@ class HasOneField extends ListField
     protected function search(ActiveQuery $query)
     {
         parent::search($query);
-        if($this->eagerLoading && $this->search) {
+        if($this->eagerLoading) {
             $query->with($this->relation);
         }
     }

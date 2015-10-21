@@ -91,23 +91,19 @@ class ManyManyField extends HasOneField
      * Поиск
      * @param ActiveQuery $query
      */
-    public function search(ActiveQuery $query)
+    protected function search(ActiveQuery $query)
     {
 
-        if ($this->search) {
+        $table = $this->model->tableName();
 
-            $table = $this->model->tableName();
+        $relatedClass = $this->model->{"get" . ucfirst($this->relation)}()->modelClass;
 
-            $relatedClass = $this->model->{"get" . ucfirst($this->relation)}()->modelClass;
+        $tableRelated = $relatedClass::tableName();
 
-            $tableRelated = $relatedClass::tableName();
-
-            $query->
-            joinWith($this->relation, $this->eagerLoading)->
-            andFilterWhere(["{{%$tableRelated}}.{{%id}}" => $this->model->{$this->attr}])->
-            groupBy("$table.id");
-
-        }
+        $query->
+        joinWith($this->relation, $this->eagerLoading)->
+        andFilterWhere(["{{%$tableRelated}}.{{%id}}" => $this->model->{$this->attr}])->
+        groupBy("$table.id");
 
     }
 

@@ -274,8 +274,12 @@ abstract class ActiveRecord extends YiiRecord
 
         $this->validate();
 
-        foreach ($fields AS $field)
-            $field->applySearch($query);
+        foreach ($fields AS $field) {
+
+            if($this->hasAttribute($field->attr) && $field->search)
+                $field->applySearch($query);
+
+        }
 
         return $dataProvider;
 

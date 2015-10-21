@@ -463,7 +463,6 @@ class Field extends Object
      * Поиск
      * @param ActiveQuery $query запрос
      */
-
     protected function search(ActiveQuery $query)
     {
 
@@ -471,8 +470,7 @@ class Field extends Object
 
         $attr = $this->attr;
 
-        if ($this->search)
-            $query->andFilterWhere(["{{%$table}}.{{%$attr}}" => $this->model->{$this->attr}]);
+        $query->andFilterWhere(["{{%$table}}.{{%$attr}}" => $this->model->{$this->attr}]);
 
     }
 

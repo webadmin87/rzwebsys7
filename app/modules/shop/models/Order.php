@@ -126,7 +126,10 @@ class Order extends ActiveRecord
 	 */
 	public function getAllGoods()
 	{
-		return array_merge($this->goods, $this->_goods);
+		if($this->isNewRecord)
+			return $this->_goods;
+		else
+			return array_merge($this->goods, $this->_goods);
 	}
 
 	/**
