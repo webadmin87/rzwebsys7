@@ -262,6 +262,8 @@ class Order extends ActiveRecord
 
 				unset($this->_goods[$k]);
 
+                $this->_goods = array_values($this->_goods);
+
 				return true;
 
 			}
