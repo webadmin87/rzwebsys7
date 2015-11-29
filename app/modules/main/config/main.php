@@ -74,6 +74,8 @@ return [
                                         "permission" => ["listModels", ["model" => Yii::createObject(models\IncludeGroup::className())]]],
                                     ['label' => Yii::t('main/app', 'Comments'), 'url' => ['/admin/main/comments'],
                                         "permission" => ["listModels", ["model" => Yii::createObject(models\Comments::className())]]],
+                                    ['label' => Yii::t('main/app', 'Reviews'), 'url' => ['/admin/main/review'],
+                                        "permission" => ["listModels", ["model" => Yii::createObject(models\Review::className())]]],
                                     ['label' => Yii::t('main/app', 'Tools'), 'url' => ['/admin/main/tools'],
                                         "permission" => ["rootAccess"]],
                                     ['label' => Yii::t('main/app', 'Permission'), 'url' => ['/admin/main/permission'],

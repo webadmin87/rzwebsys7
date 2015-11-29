@@ -67,7 +67,7 @@ class Comments extends Widget
      * @var string маршрут добавления комментария
      */
 
-    public $actionRoute = "/main/comments/add";
+    public $actionRoute = "/main/service/comment";
 
     /**
      * @var string имя класса виджета редактора комментариев

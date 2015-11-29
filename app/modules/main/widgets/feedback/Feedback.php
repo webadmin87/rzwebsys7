@@ -19,7 +19,7 @@ class Feedback extends Widget
      * @var array маршрут отправки формы
      */
 
-    public $route = ['/main/feedback/send'];
+    public $route = ['/main/service/feedback'];
 
     /**
      * @var string класс модели

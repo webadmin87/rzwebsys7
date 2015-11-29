@@ -11,7 +11,13 @@ use yii\helpers\ArrayHelper;
 /**
  * Class ActiveRecord
  * Надстройка над ActiveRecord фпеймворка.
- * @property-read MetaFields metaFields объект с описанием полей модели
+ * @property integer $id идентификатор
+ * @property boolean $active признак активности
+ * @property datetime $created_at время создания
+ * @property datetime $updated_at время редактирования
+ * @property integer $author_id идентификатор автора
+ * @property User $author автор
+ * @property-read MetaFields $metaFields объект с описанием полей модели
  * @package common\db
  * @author Churkin Anton <webadmin87@gmail.com>
  */
