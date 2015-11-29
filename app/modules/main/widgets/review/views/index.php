@@ -14,10 +14,10 @@ echo Html::beginTag('div', ['id' => $id]);
 Pjax::begin(["id" => "$id-pjax"]);
 
 echo ListView::widget([
+	'id' => "$id-list-view",
 	'dataProvider' => $dataProvider,
 	'itemView' => '_item',
 	'options' => [
-		'id' => "$id-list-view",
 		'class' => 'list-view reviews-list-view',
 	],
 	'summary' => '',
