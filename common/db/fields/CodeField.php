@@ -3,6 +3,7 @@ namespace common\db\fields;
 
 use common\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
+use yii\validators\UniqueValidator;
 
 /**
  * Class CodeField
@@ -37,6 +38,25 @@ class CodeField extends TextField
     public $slugOptions = [];
 
     /**
+     * @var string имя валидатора для проверки уникальности
+     */
+    public $uniqueValidatorClassName;
+
+    /**
+     * Initializes the object.
+     * This method is invoked at the end of the constructor after the object is initialized with the
+     * given configuration.
+     */
+    public function init()
+    {
+        parent::init();
+        if($this->uniqueValidatorClassName === null) {
+            $this->uniqueValidatorClassName = UniqueValidator::className();
+        }
+    }
+
+
+    /**
      * @inheritdoc
      */
     public function behaviors()
@@ -56,7 +76,7 @@ class CodeField extends TextField
                 'replacement' => '-',
                 'lowercase' => true,
                 'immutable' => true,
-                'uniqueValidator' => $this->uniqueParams,
+                'uniqueValidator' => array_merge(['class'=>$this->uniqueValidatorClassName], $this->uniqueParams),
                 'transliterateOptions' => 'Russian-Latin/BGN;'
             ], $this->slugOptions);
 
@@ -75,8 +95,11 @@ class CodeField extends TextField
 
         $rules = parent::rules();
 
-        if(empty($this->generateFrom))
-            $rules[] = array_merge([$this->attr, 'unique', 'except' => ActiveRecord::SCENARIO_SEARCH], $this->uniqueParams);
+        if(empty($this->generateFrom) && $this->uniqueValidatorClassName) {
+
+            $rules[] = array_merge([$this->attr, $this->uniqueValidatorClassName, 'except' => ActiveRecord::SCENARIO_SEARCH], $this->uniqueParams);
+
+        }
 
         $rules[] = [$this->attr, 'match', 'pattern' => '/^[A-z0-9_-]+$/i'];
 

@@ -36,31 +36,31 @@ class PageUrlRule extends UrlRule
 	{
 		if ($route === $this->route AND isset($params["model"]) AND $params["model"] instanceof Pages) {
 
-            if($params["model"]->code != Pages::INDEX_CODE) {
+			if($params["model"]->code != Pages::INDEX_CODE) {
 
-                $url = [];
+				$url = [];
 
-                $ancestors = $params["model"]->parents()->all();
+				$ancestors = $params["model"]->parents()->all();
 
-                foreach ($ancestors as $model) {
+				foreach ($ancestors as $model) {
 
-                    if ($model->isRoot())
-                        continue;
+					if ($model->isRoot())
+						continue;
 
-                    $url[] = $model->code;
+					$url[] = $model->code;
 
-                }
+				}
 
-                $url[] = $params["model"]->code;
+				$url[] = $params["model"]->code;
 
-                $str = implode("/", $url);
-            } else {
-                $str = "";
-            }
+				$str = implode("/", $url);
+			} else {
+				$str = "";
+			}
 
-            unset($params["model"]);
+			unset($params["model"]);
 
-            if ($str !== '') {
+			if ($str !== '') {
 				$str .= ($this->suffix === null ? $manager->suffix : $this->suffix);
 			}
 
@@ -86,7 +86,7 @@ class PageUrlRule extends UrlRule
 
 		$sections = explode("/", $pathInfo);
 
-        $parent = Pages::findOne(TActiveRecord::ROOT_ID);
+		$parent = Pages::findOne(TActiveRecord::ROOT_ID);
 
 		foreach($sections AS $section) {
 
@@ -94,13 +94,13 @@ class PageUrlRule extends UrlRule
 
 			if(!$model)
 				return false;
-            else
-                $parent = $model;
+			else
+				$parent = $model;
 		}
 
 		if(!empty($model)) {
 
-			return [$this->route, ['code'=>$model->code]];
+			return [$this->route, ['model'=>$model]];
 
 		}
 

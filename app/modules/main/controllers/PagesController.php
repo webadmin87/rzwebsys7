@@ -4,6 +4,7 @@ namespace app\modules\main\controllers;
 
 use app\modules\main\models\Pages;
 use common\controllers\App;
+use common\db\TActiveRecord;
 use yii\web\NotFoundHttpException;
 use yii\helpers\Html;
 
@@ -23,15 +24,16 @@ class PagesController extends App
 
     /**
      * Отображение текстовой страницы
-     * @param string $code символьный код страницы
+     * @param Pages|boolean $model модель страницы
      * @return string
      * @throws \yii\web\NotFoundHttpException
      */
 
-    public function actionIndex($code = Pages::INDEX_CODE)
+    public function actionIndex($model = false)
     {
 
-        $model = Pages::find()->published()->where(["code" => $code])->one();
+        if($model === false)
+            $model = Pages::findOne(TActiveRecord::ROOT_ID)->children(1)->andWhere(["code"=>Pages::INDEX_CODE])->one();
 
         if (!$model)
             throw new NotFoundHttpException;

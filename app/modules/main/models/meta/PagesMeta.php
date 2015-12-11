@@ -59,6 +59,7 @@ class PagesMeta extends MetaFields
                     "title" => Yii::t('main/app', 'Code'),
                     "isRequired" => true,
                     "generateFrom" => "title",
+                    "uniqueValidatorClassName"=>TreeUniqueValidator::className(),
                 ],
                 "params" => [$this->owner, "code"]
             ],
