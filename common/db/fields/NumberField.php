@@ -21,6 +21,16 @@ class NumberField extends Field
     public $integerOnly = false;
 
     /**
+     * @var integer|float минимальное значение
+     */
+    public $min;
+
+    /**
+     * @var integer|float максимальное значение
+     */
+    public $max;
+
+    /**
      * Правила валидации
      * @return array
      */
@@ -30,7 +40,17 @@ class NumberField extends Field
 
         $rules = parent::rules();
 
-        $rules[] = [$this->attr, 'number', 'integerOnly'=>$this->integerOnly];
+	    $numberValidator = [$this->attr, 'number', 'integerOnly'=>$this->integerOnly];
+
+	    if (is_numeric($this->min)) {
+		    $numberValidator['min'] = $this->min;
+	    }
+
+	    if (is_numeric($this->max)) {
+		    $numberValidator['max'] = $this->max;
+	    }
+
+	    $rules[] = $numberValidator;
 
         $rules[] = [$this->attr, 'filter', 'filter' => 'trim'];
 
