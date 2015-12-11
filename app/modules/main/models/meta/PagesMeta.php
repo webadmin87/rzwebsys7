@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\main\models\meta;
 
+use common\components\TreeUniqueValidator;
 use common\db\MetaFields;
 use Yii;
 
