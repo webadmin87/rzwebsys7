@@ -42,6 +42,7 @@ class TAdmin extends Admin
         else {
             $parentModel = $class::findOne($parent_id);
             $query = $parentModel->children(1);
+            $query->orderBy(null);
         }
 
         $dataProvider = $searchModel->search($requestParams, $this->dataProviderConfig, $query);
