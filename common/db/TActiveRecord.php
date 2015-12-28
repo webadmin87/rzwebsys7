@@ -73,7 +73,7 @@ abstract class TActiveRecord extends ActiveRecord
 
         }
 
-        $models = $model->children()->published()->all();
+        $models = $model->children()->all();
 
         $descendants = [];
 
