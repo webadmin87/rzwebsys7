@@ -14,6 +14,8 @@ use yii\web\ForbiddenHttpException;
 class TAdmin extends Admin
 {
 
+    public $orderBy = ['lft'=>SORT_ASC];
+
     /**
      * @var string имя параметра передаваемого расширенным фильтром
      */
