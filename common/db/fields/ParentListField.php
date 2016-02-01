@@ -14,7 +14,7 @@ class ParentListField extends ListField
     /**
      * @inheritdoc
      */
-    public $isRequired = true;
+    public $isRequired = false;
 
     /**
      * @inheritdoc

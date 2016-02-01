@@ -23,7 +23,7 @@ abstract class TActiveRecord extends ActiveRecord
      * @var int идентификатор родительской модели
      */
 
-    public $parent_id = self::ROOT_ID;
+    public $parent_id;
 
     /**
      * @inheritdoc

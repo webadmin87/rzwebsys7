@@ -49,6 +49,12 @@ class TCreate extends Create
 
 		$load = $model->load($request->post());
 
+        if(!$model->parent_id) {
+
+            $model->parent_id = $parent_id;
+
+        }
+
         $parentModel = $class::find()->where(["id" => (int) $model->parent_id])->one();
 
         if ($parentModel AND $parentModel->id != TActiveRecord::ROOT_ID AND !empty($this->extendedAttrs)) {

@@ -40,6 +40,10 @@ class TreeUniqueValidator extends Validator
 
             $parent = $model->findOne($model->$parentId);
 
+        } else if(!$model->isNewRecord) {
+
+            $parent = $model->parents(1)->one();
+
         } else {
 
             $parent = $model->findOne(TActiveRecord::ROOT_ID);

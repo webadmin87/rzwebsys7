@@ -43,7 +43,7 @@ class TUpdate extends Update
             return $this->performAjaxValidation($model);
         }
 
-		if ($parentModel->id != (int) $model->parent_id) {
+		if ($model->parent_id && $parentModel->id != (int) $model->parent_id) {
 			$parentModel = $class::find()->where(["id" => (int) $model->parent_id])->one();
 		} else {
 			$parentModel = null;
